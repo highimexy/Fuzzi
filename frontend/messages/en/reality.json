@@ -1,0 +1,105 @@
+{
+  "Reality": {
+    "header": {
+      "title": "Reality Check",
+      "subtitle": "The unfiltered truth about the IT ecosystem. Decoding the daily grind in startups and the strategic layers of corporations."
+    },
+    "hype": {
+      "label": "01 / The",
+      "title1": "The",
+      "title2": "Hype",
+      "tagline": "Marketing for bootcamps is not reality. The gold rush is over; the era of competence has begun.",
+      "quote": "\"You were told it's about ping-pong tables and free coffee. It's actually about staring at a terminal for 6 hours only to find a missing comma.\"",
+      "dream": {
+        "title": "The Dream",
+        "desc": "Building innovative startups in glass skyscrapers, disrupting industries, and retiring at 30 with a passive income stream."
+      },
+      "reality": {
+        "title": "The Reality",
+        "desc": "Maintaining a legacy PHP system for a local insurance company while attending four meetings a day that could have been an email."
+      }
+    },
+    "ai": {
+      "label": "02 / The AI",
+      "title1": "The AI",
+      "title2": "Barrier",
+      "tagline": "Machines are getting better at the 'how'. You must get better at the 'why'.",
+      "ghosting": {
+        "title": "Entry Level Ghosting",
+        "desc": "The junior market is saturated. AI can now write basic CRUD apps better and faster than a fresh graduate. To survive, you need to understand architecture, not just syntax."
+      },
+      "trap": {
+        "title": "The Prompt Trap",
+        "desc": "Relying on AI to solve every bug will stunt your growth. If you don't know how the code works, you can't fix it when the AI hallucinations start."
+      },
+      "vision": {
+        "title": "Critical Vision",
+        "desc": "\"Build what machines cannot imagine.\" Human intuition, empathy for the user, and complex decision-making are your only true defenses against replacement."
+      }
+    },
+    "market": {
+      "label": "03 / Market",
+      "title1": "Market",
+      "title2": "Dynamics",
+      "tagline": "Choosing your battleground defines your mental health.",
+      "table": {
+        "head1": "Sector",
+        "head2": "The Promise",
+        "head3": "The Sacrifice",
+        "cat1": "Big Tech",
+        "row1a": "High Salary & Stability",
+        "row1b": "Feeling like a cog in a massive, slow machine.",
+        "cat2": "Early Startup",
+        "row2a": "Fast Growth & Ownership",
+        "row2b": "Unpaid overtime and extreme burnout risk.",
+        "cat3": "Freelance",
+        "row3a": "Total Freedom",
+        "row3b": "Being a salesman, accountant, and dev all at once."
+      }
+    },
+    "human": {
+      "label": "04 / Human",
+      "title1": "Human",
+      "title2": "Survival",
+      "tagline": "Soft skills are the hard skills of the 2020s.",
+      "comm": {
+        "title": "Communication over Code",
+        "desc": "Being able to explain why a feature will take 3 weeks instead of 3 days to a non-technical manager is more important than knowing how to center a div."
+      },
+      "learn": {
+        "title": "Lifelong Unlearning",
+        "desc": "The framework you learn today will be obsolete in 24 months. Master the fundamentals, not the tools. Tools change; logic is eternal."
+      }
+    },
+    "academy": {
+      "label": "The Academy",
+      "title1": "Market",
+      "title2": "Survival",
+      "tagline": "Technical skills get you the interview; market intelligence gets you the job. Step into the lab to decode the hidden rules of the IT ecosystem.",
+      "curriculum": "Protocol v4.1",
+      "modules": "3 Layers Decoded",
+      "step1": {
+        "title": "Corporate Lexicon",
+        "desc": "Decoding OKRs and KPIs. Speak the language of business stakeholders.",
+        "btn": "Start Training"
+      },
+      "step2": {
+        "title": "The \"ASAP\" Drills",
+        "desc": "Negotiating timelines. How to say \"no\" while sounding like a \"yes\".",
+        "btn": "Enter Drills"
+      },
+      "step3": {
+        "title": "The AI Shield",
+        "desc": "Optimizing for ATS filters. Making it through the machine gatekeepers.",
+        "btn": "Start Audit"
+      }
+    },
+    "footer": {
+      "watermark": "Stars",
+      "label": "Manifesto End",
+      "title": "Now that you know the <purple>Truth</purple>, <break></break>will you still <u>Code?</u>",
+      "btn1": "Return to Entry",
+      "btn2": "Back to the Grind"
+    }
+  }
+}

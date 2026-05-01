@@ -1,0 +1,12 @@
+{
+  "NotFound": {
+    "void": "Void",
+    "errorLabel": "Error 404 / Missing Segment",
+    "title1": "Lost in",
+    "title2": "the Grid",
+    "description": "The route you are trying to access does not exist in this reality. Either the URL is a hallucination, or we haven't engineered this path yet.",
+    "btnHome": "Back to safe grounds",
+    "btnTruth": "Face the truth",
+    "endOfLine": "End of Line"
+  }
+}

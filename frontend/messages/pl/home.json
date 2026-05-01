@@ -1,0 +1,23 @@
+{
+  "Home": {
+    "qa": {
+      "label": "00. Quality Assurance",
+      "title1": "Brzemię",
+      "title2": "Sceptyka",
+      "quote": "\"Tu nie chodzi o szukanie błędów. Chodzi o bycie jedyną osobą w pokoju, która ma odwagę zepsuć wszystkim humor.\"",
+      "description": "Rzeczywistość QA to w 80% praca detektywistyczna nad bugiem, którego nikt inny nie potrafi zreprodukować, a w 20% walka o jakość.",
+      "link": "Sprawdź Roadmapę QA"
+    },
+    "reality": {
+      "watermark": "Rynek",
+      "label": "01. Zderzenie z Rzeczywistością",
+      "titleLine1": "<light>Prawda</light>",
+      "titleLine2": "Kryjąca się za <purple>Hype'em</purple>",
+      "dreamLabel": "Sen",
+      "dreamQuote": "\"Będziesz budować innowacyjne produkty i zmieniać świat w nowoczesnym biurze.\"",
+      "realityLabel": "Rzeczywistość",
+      "realityQuote": "\"Będziesz debugować kod napisany 5 lat temu i tłumaczyć, dlaczego estymata była błędna.\"",
+      "link": "Przeczytaj pełny manifest"
+    }
+  }
+}

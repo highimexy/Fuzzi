@@ -1,0 +1,26 @@
+{
+  "Changelog": {
+    "header": {
+      "title": "System Logs",
+      "subtitle": "Evolution history of the Journal structure."
+    },
+    "v120": {
+      "version": "v1.2.0",
+      "date": "2026-05-01",
+      "tag": "[SCOPE]",
+      "desc": "Scope refinement: Removed Frontend and 3D sections. Focused the Journal on QA Fundamentals and Reality Check. Reorganized translations into per-page files for better maintainability."
+    },
+    "v110": {
+      "version": "v1.1.0",
+      "date": "2026-04-22",
+      "tag": "[I18N]",
+      "desc": "Full implementation of the multi-language system (Next-intl). Architecture ready for content scaling."
+    },
+    "v100": {
+      "version": "v1.0.0",
+      "date": "2026-04-15",
+      "tag": "[INIT]",
+      "desc": "System core initialization. Deployment of design system, GSAP animations, and main layout."
+    }
+  }
+}

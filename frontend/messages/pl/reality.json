@@ -1,0 +1,105 @@
+{
+  "Reality": {
+    "header": {
+      "title": "Realiów Rynku",
+      "subtitle": "Nieprzefiltrowana prawda o IT. Dekodowanie codziennej harówki w startupach i gier w korporacjach."
+    },
+    "hype": {
+      "label": "01 / Cykl",
+      "title1": "Koniec",
+      "title2": "Hype'u",
+      "tagline": "Marketing bootcampów to nie rzeczywistość. Gorączka złota się skończyła; nadeszła era kompetencji.",
+      "quote": "\"Mówili, że to ping-pong i darmowa kawa. Naprawdę to gapienie się w terminal przez 6 godzin, by znaleźć brakujący przecinek.\"",
+      "dream": {
+        "title": "Sen",
+        "desc": "Budowanie innowacyjnych startupów w szklanych wieżowcach i emerytura w wieku 30 lat z dochodem pasywnym."
+      },
+      "reality": {
+        "title": "Rzeczywistość",
+        "desc": "Utrzymywanie legacy systemu PHP dla ubezpieczalni i udział w 4 spotkaniach dziennie, które mogły być mailem."
+      }
+    },
+    "ai": {
+      "label": "02 / Bariera AI",
+      "title1": "Bariera",
+      "title2": "Sztucznej Inteligencji",
+      "tagline": "Maszyny są coraz lepsze w tym 'jak'. Ty musisz stać się lepszy w tym 'dlaczego'.",
+      "ghosting": {
+        "title": "Ghosting Juniorów",
+        "desc": "Rynek jest nasycony. AI pisze proste CRUD-y szybciej niż absolwent. Żeby przetrwać, musisz rozumieć architekturę, nie tylko składnię."
+      },
+      "trap": {
+        "title": "Pułapka Promptu",
+        "desc": "Poleganie na AI przy każdym błędzie zahamuje Twój rozwój. Jeśli nie wiesz, jak działa kod, nie naprawisz go, gdy AI zacznie halucynować."
+      },
+      "vision": {
+        "title": "Krytyczna Wizja",
+        "desc": "\"Buduj to, czego maszyny nie potrafią sobie wyobrazić.\" Ludzka intuicja i złożone decyzje to Twoja jedyna obrona przed zastąpieniem."
+      }
+    },
+    "market": {
+      "label": "03 / Rynek",
+      "title1": "Dynamika",
+      "title2": "Rynku",
+      "tagline": "Wybór pola bitwy definiuje Twoje zdrowie psychiczne.",
+      "table": {
+        "head1": "Sektor",
+        "head2": "Obietnica",
+        "head3": "Poświęcenie",
+        "cat1": "Big Tech",
+        "row1a": "Wysoka Pensja i Stabilność",
+        "row1b": "Poczucie bycia trybikiem w wielkiej, powolnej maszynie.",
+        "cat2": "Startup",
+        "row2a": "Szybki Wzrost i Własność",
+        "row2b": "Darmowe nadgodziny i ekstremalne ryzyko wypalenia.",
+        "cat3": "Freelance",
+        "row3a": "Pełna Wolność",
+        "row3b": "Bycie handlowcem, księgowym i programistą w jednym."
+      }
+    },
+    "human": {
+      "label": "04 / Ludzie",
+      "title1": "Czynnik",
+      "title2": "Przetrwania",
+      "tagline": "Soft skille to nowe hard skille lat 2020.",
+      "comm": {
+        "title": "Komunikacja > Kod",
+        "desc": "Zdolność wytłumaczenia managerowi, dlaczego ficzer zajmie 3 tygodnie zamiast 3 dni, jest ważniejsza niż umiejętność wycentrowania diva."
+      },
+      "learn": {
+        "title": "Ciągłe Oduczanie",
+        "desc": "Framework z dziś będzie przestarzały za 2 lata. Opanuj fundamenty, nie narzędzia. Narzędzia się zmieniają; logika jest wieczna."
+      }
+    },
+    "academy": {
+      "label": "Akademia",
+      "title1": "Rynkowe",
+      "title2": "Przetrwanie",
+      "tagline": "Umiejętności techniczne dają Ci rozmowę; inteligencja rynkowa daje Ci pracę. Wejdź do labu, by zdekodować zasady IT.",
+      "curriculum": "Protokół v4.1",
+      "modules": "3 Zdekodowane Warstwy",
+      "step1": {
+        "title": "Korpo-Leksykon",
+        "desc": "Dekodowanie OKR-ów i KPI. Naucz się mówić językiem biznesu.",
+        "btn": "Rozpocznij Trening"
+      },
+      "step2": {
+        "title": "Trening \"ASAP\"",
+        "desc": "Negocjowanie terminów. Jak mówić \"nie\", brzmiąc jak \"tak\".",
+        "btn": "Wejdź do Treningu"
+      },
+      "step3": {
+        "title": "Tarcza Anty-AI",
+        "desc": "Optymalizacja pod filtry ATS. Jak przejść przez maszynowych strażników.",
+        "btn": "Rozpocznij Audyt"
+      }
+    },
+    "footer": {
+      "watermark": "Stars",
+      "label": "Koniec Manifestu",
+      "title": "Teraz, gdy znasz <purple>Prawdę</purple>, <break></break>czy wciąż będziesz <u>Kodować?</u>",
+      "btn1": "Powrót na start",
+      "btn2": "Wracaj do harówki"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "About": {
+    "header": {
+      "title": "O Systemie",
+      "subtitle": "Manifest przetrwania w erze Post-Juniora."
+    },
+    "nav": {
+      "manifesto": "01 / Manifest",
+      "architecture": "02 / Architektura",
+      "faq": "03 / Zapytania",
+      "resources": "04 / Archiwa"
+    },
+    "manifesto": {
+      "title": "Holistyczna Inżynieria",
+      "p1": "Era \"znajomości Reacta\" dobiegła końca. Kiedy AI generuje interfejsy w sekundy, Twoją jedyną przewagą jest zrozumienie całego ekosystemu. Musisz wiedzieć, jak kod pęka (QA), i jak przetrwać brutalne realia rynku IT.",
+      "p2": "Ten dziennik to zapis połączenia tych światów. To nie jest zbiór tutoriali. To zbiór twardych reguł przetrwania w realiach, w których bycie \"tylko\" koderem to wyrok szybkiego zastąpienia przez maszynę.",
+      "quote": "\"Twój kod to tylko produkt uboczny myślenia. Ucz się systemów, nie składni.\""
+    },
+    "architecture": {
+      "title": "Język Wzorców",
+      "p1": "Wzorce projektowe nie ograniczają się do klasycznego backendu. Architektura nowoczesnego frontendu, stabilność testów E2E i metodologie QA opierają się na tych samych inżynieryjnych pryncypiach.",
+      "p2": "The Frontend Journal to laboratorium analityczne. Zebrane tutaj sekcje służą dekonstrukcji interfejsów, logiki i realiów stojących za środowiskiem webowym, abyś potrafił zbudować system odporny na upływ czasu."
+    },
+    "faq": {
+      "title": "Pytania Systemowe",
+      "q1": "Dlaczego łączysz QA i Zderzenie z Realiami w jednym miejscu?",
+      "a1": "Bo w rzeczywistości produkcyjnej one nie istnieją w próżni. Brak testów QA sprawia, że Twój piękny interfejs wywala się u klienta, a zrozumienie realiów rynku oznacza, że przeżyjesz wystarczająco długo, żeby cokolwiek zbudować. Silny inżynier widzi matrycę w całości.",
+      "q2": "Mogę skopiować tutejsze rozwiązania 1:1?",
+      "a2": "Kopiowanie bez zrozumienia to zaciąganie długu technicznego na wysoki procent. Używaj tego dziennika do mapowania problemów i inspiracji, ale logikę zawsze pisz pod swój własny przypadek brzegowy.",
+      "q3": "O co chodzi z tym 'Zderzeniem z Realiami'?",
+      "a3": "Technologia to tylko 50% sukcesu. Reszta to poruszanie się po rynku, negocjacje z biznesem i filtrowanie korpo-żargonu. Ta sekcja to pancerz ochronny dla Twojego zdrowia psychicznego."
+    },
+    "resources": {
+      "title": "Wymagane Lektury",
+      "p1": "Wiedza nie kończy się na dokumentacji frameworków. Aby zrozumieć matrycę, musisz czytać fundamenty:",
+      "book1": "[QA/Testy] Explore It! Reduce Risk and Increase Confidence (Elisabeth Hendrickson)",
+      "book2": "[Architektura] A Philosophy of Software Design (John Ousterhout)",
+      "book3": "[Przetrwanie] Pragmatyczny Programista (David Thomas, Andrew Hunt)"
+    }
+  }
+}

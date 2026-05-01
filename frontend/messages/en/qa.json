@@ -1,0 +1,101 @@
+{
+  "QA": {
+    "header": {
+      "title": "QA Fundamentals",
+      "subtitle": "Mastering the art of breaking things to make them unbreakable. Logic, edge cases, and quality mindset."
+    },
+    "mindset": {
+      "label": "01 / The Skeptic",
+      "title1": "The Skeptic",
+      "title2": "Mindset",
+      "tagline": "Testing is not a phase; it's a pathological distrust of 'it works on my machine'.",
+      "quote": "\"A QA engineer doesn't walk into a bar to order a beer. They order 1 beer, 0 beers, 999999999 beers, a lizard, and -1 beers.\"",
+      "edgeCases": {
+        "title": "Edge Cases",
+        "desc": "Hunting for the 1% scenario that crashes the system. We don't care about the happy path; we care about what happens when the user loses Wi-Fi while submitting a credit card form."
+      },
+      "criticalThinking": {
+        "title": "Critical Thinking",
+        "desc": "Analyzing requirements to find contradictions before a single line of code is written. QA starts at the documentation level."
+      }
+    },
+    "anatomy": {
+      "label": "02 / UI",
+      "title1": "UI",
+      "title2": "Anatomy",
+      "tagline": "Learning to see the invisible structure of the modern web.",
+      "item1": {
+        "title": "The Box Model & Spacing",
+        "desc": "Padding vs. Margin. We check if the visual rhythm is consistent. 16px is not 15px. Inconsistent spacing is the first sign of a low-quality build."
+      },
+      "item2": {
+        "title": "Component States",
+        "desc": "Hover, Focus, Active, Disabled, Loading. A button is not just a rectangle; it's a multi-state machine that must remain accessible to screen readers."
+      },
+      "item3": {
+        "title": "Typography & Hierarchy",
+        "desc": "Font-weights, line-heights, and contrast ratios. We verify if the text is legible across all devices and follows WCAG accessibility standards."
+      }
+    },
+    "toolkit": {
+      "label": "03 / Technical",
+      "title1": "Technical",
+      "title2": "Toolkit",
+      "tagline": "The instruments we use to dissect, document, and debug reality.",
+      "table": {
+        "doc": "Documentation",
+        "track": "Tracking",
+        "debug": "Debug",
+        "head1": "Domain",
+        "head2": "Standard Tool",
+        "head3": "Core Purpose",
+        "row1": "Inspecting pixel values and design specs.",
+        "row2": "Managing the bug lifecycle and sprint progress.",
+        "row3": "Monitoring console errors and network latency."
+      }
+    },
+    "human": {
+      "label": "04 / Human",
+      "title1": "Human",
+      "title2": "Factor",
+      "tagline": "Software is built by people. Quality is maintained through communication.",
+      "designers": {
+        "title": "Working with Designers",
+        "desc": "You are the guardian of their vision. When a developer says \"it's too hard to implement,\" you find the middle ground that preserves the user experience."
+      },
+      "developers": {
+        "title": "Working with Developers",
+        "desc": "Don't just report bugs—report solutions. Provide logs, reproduction steps, and screen recordings to make their fixing process as painless as possible."
+      }
+    },
+    "academy": {
+      "label": "The Academy",
+      "title1": "Learning",
+      "title2": "Pathology",
+      "tagline": "Theoretical knowledge is a liability without practice. Master the QA craft in the Post-Junior era.",
+      "curriculum": "Curriculum v1.0",
+      "modules": "3 Modules Available",
+      "step1": {
+        "title": "The Lexicon",
+        "desc": "Terminology and visual evidence of UI components.",
+        "btn": "Start Training"
+      },
+      "step2": {
+        "title": "Evidence Room",
+        "desc": "Visual bug hunting in simulated environments.",
+        "btn": "Start Training"
+      },
+      "step3": {
+        "title": "Construction",
+        "desc": "Master technical documentation for developers.",
+        "btn": "Draft Ticket"
+      }
+    },
+    "footer": {
+      "watermark": "Shoot",
+      "label": "Next Level",
+      "title": "Ready to <green>Automate</green>?",
+      "btn": "Transition to Frontend"
+    }
+  }
+}

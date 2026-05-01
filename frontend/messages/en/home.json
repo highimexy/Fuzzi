@@ -1,0 +1,23 @@
+{
+  "Home": {
+    "qa": {
+      "label": "00. Quality Assurance",
+      "title1": "The Skeptic's",
+      "title2": "Burden",
+      "quote": "\"It's not about finding bugs. It's about being the only person in the room brave enough to ruin everyone's mood.\"",
+      "description": "The reality of QA is 80% detective work on a bug that no one else can reproduce, and 20% fighting for quality.",
+      "link": "Explore QA Roadmap"
+    },
+    "reality": {
+      "watermark": "Market",
+      "label": "01. Reality Check",
+      "titleLine1": "The <light>Truth</light>",
+      "titleLine2": "Behind the <purple>Hype</purple>",
+      "dreamLabel": "The Dream",
+      "dreamQuote": "\"You will build innovative products and change the world in a modern office.\"",
+      "realityLabel": "The Reality",
+      "realityQuote": "\"You will debug code written 5 years ago and explain why the estimate was wrong.\"",
+      "link": "Read the full manifesto"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "About": {
+    "header": {
+      "title": "About System",
+      "subtitle": "Survival manifesto for the Post-Junior era."
+    },
+    "nav": {
+      "manifesto": "01 / Manifesto",
+      "architecture": "02 / Architecture",
+      "faq": "03 / Queries",
+      "resources": "04 / Archives"
+    },
+    "manifesto": {
+      "title": "Holistic Engineering",
+      "p1": "The era of \"knowing React\" is over. When AI generates interfaces in seconds, your only advantage is understanding the entire ecosystem. You must know how code breaks (QA), and how to survive the harsh reality of the IT market.",
+      "p2": "This journal is a record of these intersecting worlds. It is not a collection of tutorials. It's a set of hard survival rules in a reality where being \"just\" a coder is a death sentence by automation.",
+      "quote": "\"Your code is merely a byproduct of your thinking. Learn systems, not syntax.\""
+    },
+    "architecture": {
+      "title": "A Pattern Language",
+      "p1": "Design patterns aren't limited to the backend. Modern frontend architecture, E2E testing stability, and QA methodologies rely on the exact same engineering principles.",
+      "p2": "The Frontend Journal is an analytical laboratory. The sections gathered here serve to dissect interfaces, logic, and the reality behind the web environment, allowing you to build systems resilient to time."
+    },
+    "faq": {
+      "title": "System Queries",
+      "q1": "Why combine QA and Reality Check in one place?",
+      "a1": "Because in a production environment, they don't exist in a vacuum. A lack of QA tests means your beautiful UI crashes for the client, and understanding market reality means you survive long enough to build anything at all. A strong engineer sees the entire matrix.",
+      "q2": "Can I copy solutions from here 1:1?",
+      "a2": "Copying without understanding is taking on high-interest technical debt. Use this journal to map problems and find inspiration, but always write the logic for your specific edge case.",
+      "q3": "What is the 'Reality Check' about?",
+      "a3": "Technology is only 50% of success. The rest is navigating the market, negotiating with business, and filtering corporate jargon. This section is armor for your mental health."
+    },
+    "resources": {
+      "title": "Required Reading",
+      "p1": "Knowledge doesn't end with framework documentation. To understand the matrix, you must read the fundamentals:",
+      "book1": "[QA/Testing] Explore It! Reduce Risk and Increase Confidence (Elisabeth Hendrickson)",
+      "book2": "[Architecture] A Philosophy of Software Design (John Ousterhout)",
+      "book3": "[Survival] The Pragmatic Programmer (David Thomas, Andrew Hunt)"
+    }
+  }
+}

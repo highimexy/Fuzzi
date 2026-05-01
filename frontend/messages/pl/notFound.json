@@ -1,0 +1,12 @@
+{
+  "NotFound": {
+    "void": "Pustka",
+    "errorLabel": "Błąd 404 / Brakujący Segment",
+    "title1": "Zagubiony w",
+    "title2": "Sieci",
+    "description": "Ścieżka, do której próbujesz uzyskać dostęp, nie istnieje w tej rzeczywistości. Albo ten URL to halucynacja, albo jeszcze nie zbudowaliśmy tej drogi.",
+    "btnHome": "Powrót w bezpieczne miejsce",
+    "btnTruth": "Poznaj prawdę",
+    "endOfLine": "Koniec Linii"
+  }
+}

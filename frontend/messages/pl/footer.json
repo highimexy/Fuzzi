@@ -1,0 +1,9 @@
+{
+  "Footer": {
+    "description": "Projekt autorstwa <bold>Wiktora EXY. Kowalczyka</bold>. Zbudowano w oparciu o <italic>Next.js</italic> i <italic>GSAP</italic>.",
+    "about": "O projekcie",
+    "coffee": "Postaw mi kawę",
+    "changelog": "Historia zmian",
+    "madeIn": "Wyprodukowano w Polsce"
+  }
+}

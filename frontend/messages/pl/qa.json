@@ -1,0 +1,101 @@
+{
+  "QA": {
+    "header": {
+      "title": "Fundamentów QA",
+      "subtitle": "Opanuj sztukę niszczenia rzeczy, aby stały się niezniszczalne. Logika, przypadki brzegowe i mentalność jakości."
+    },
+    "mindset": {
+      "label": "01 / Sceptyk",
+      "title1": "Mental",
+      "title2": "Sceptyka",
+      "tagline": "Testowanie to nie etap; to patologiczna nieufność wobec stwierdzenia „u mnie działa”.",
+      "quote": "\"Inżynier QA nie wchodzi do baru, żeby zamówić piwo. Zamawia 1 piwo, 0 piw, 999999999 piw, jaszczurkę i -1 piw.\"",
+      "edgeCases": {
+        "title": "Przypadki brzegowe",
+        "desc": "Polowanie na scenariusze 1%, które kładą system. Nie obchodzi nas „happy path”; interesuje nas, co się stanie, gdy użytkownik straci Wi-Fi podczas płacenia kartą."
+      },
+      "criticalThinking": {
+        "title": "Krytyczne myślenie",
+        "desc": "Analiza wymagań w celu znalezienia sprzeczności, zanim powstanie choćby linia kodu. QA zaczyna się na poziomie dokumentacji."
+      }
+    },
+    "anatomy": {
+      "label": "02 / UI",
+      "title1": "Anatomia",
+      "title2": "UI",
+      "tagline": "Nauka dostrzegania niewidzialnej struktury nowoczesnej sieci.",
+      "item1": {
+        "title": "Model pudełkowy i odstępy",
+        "desc": "Padding vs. Margin. Sprawdzamy, czy rytm wizualny jest spójny. 16px to nie 15px. Niespójne odstępy to pierwsza oznaka niskiej jakości wykonania."
+      },
+      "item2": {
+        "title": "Stany komponentów",
+        "desc": "Hover, Focus, Active, Disabled, Loading. Przycisk to nie tylko prostokąt; to maszyna stanów, która musi pozostać dostępna dla czytników ekranu."
+      },
+      "item3": {
+        "title": "Typografia i hierarchia",
+        "desc": "Grubości fontów, interlinie i kontrast. Weryfikujemy, czy tekst jest czytelny na wszystkich urządzeniach i spełnia standardy WCAG."
+      }
+    },
+    "toolkit": {
+      "label": "03 / Techniczne",
+      "title1": "Twój",
+      "title2": "Arsenał",
+      "tagline": "Instrumenty, których używamy do sekcji, dokumentacji i debugowania rzeczywistości.",
+      "table": {
+        "doc": "Dokumentacja",
+        "track": "Zarządzanie",
+        "debug": "Debugowanie",
+        "head1": "Obszar",
+        "head2": "Standard",
+        "head3": "Cel główny",
+        "row1": "Inspekcja wartości pikseli i specyfikacji.",
+        "row2": "Zarządzanie cyklem życia błędów i sprintem.",
+        "row3": "Monitorowanie błędów konsoli i opóźnień sieci."
+      }
+    },
+    "human": {
+      "label": "04 / Czynnik ludzki",
+      "title1": "Czynnik",
+      "title2": "Ludzki",
+      "tagline": "Oprogramowanie budują ludzie. Jakość utrzymuje się poprzez komunikację.",
+      "designers": {
+        "title": "Praca z Designerami",
+        "desc": "Jesteś strażnikiem ich wizji. Gdy deweloper mówi „to zbyt trudne\", Ty znajdujesz kompromis, który chroni user experience."
+      },
+      "developers": {
+        "title": "Praca z Deweloperami",
+        "desc": "Nie tylko raportuj błędy — raportuj rozwiązania. Dostarczaj logi i kroki reprodukcji, by proces naprawy był bezbolesny."
+      }
+    },
+    "academy": {
+      "label": "Akademia",
+      "title1": "Nauka",
+      "title2": "Patologii",
+      "tagline": "Wiedza teoretyczna to obciążenie bez praktyki. Opanuj rzemiosło QA w erze Post-Juniora.",
+      "curriculum": "Program v1.0",
+      "modules": "Dostępne 3 moduły",
+      "step1": {
+        "title": "Leksykon",
+        "desc": "Terminologia i dowody wizualne komponentów UI.",
+        "btn": "Rozpocznij trening"
+      },
+      "step2": {
+        "title": "Pokój dowodów",
+        "desc": "Wizualne polowanie na błędy w symulacjach.",
+        "btn": "Rozpocznij trening"
+      },
+      "step3": {
+        "title": "Konstrukcja",
+        "desc": "Mistrzowska dokumentacja techniczna dla deweloperów.",
+        "btn": "Szkicuj ticket"
+      }
+    },
+    "footer": {
+      "watermark": "Shoot",
+      "label": "Następny poziom",
+      "title": "Gotowy na <green>Automatyzację</green>?",
+      "btn": "Przejdź do Frontendu"
+    }
+  }
+}
