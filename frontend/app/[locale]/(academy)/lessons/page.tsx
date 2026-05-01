@@ -13,28 +13,7 @@ const learningPaths = [
     borderHover: 'hover:border-green-500/30',
     bgHover: 'hover:bg-green-500/5',
   },
-  {
-    id: 'frontend',
-    label: 'WEB DEVELOPMENT',
-    title: 'Frontend Mastery',
-    desc: 'Advanced React patterns, Next.js architecture, and brutalist UI.',
-    href: '/academy/frontend',
-    icon: FiLayout,
-    colorClass: 'text-yellow-500',
-    borderHover: 'hover:border-yellow-500/30',
-    bgHover: 'hover:bg-yellow-500/5',
-  },
-  {
-    id: '3d',
-    label: 'CREATIVE CODING',
-    title: 'Web 3D & WebGL',
-    desc: 'Three.js, React Three Fiber, and rendering immersive experiences.',
-    href: '/academy/3d',
-    icon: FiBox,
-    colorClass: 'text-red-500',
-    borderHover: 'hover:border-red-500/30',
-    bgHover: 'hover:bg-red-500/5',
-  },
+
   {
     id: 'reality',
     label: 'ENGINEERING TRUTHS',
@@ -50,9 +29,9 @@ const learningPaths = [
 
 export default function AcademyDashboard() {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center p-6 lg:p-12">
+    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col p-6 lg:p-12">
       {/* HEADER */}
-      <div className="border-foreground/10 mb-12 border-b pb-8">
+      <div className="border-foreground/10 mb-12 flex flex-col items-center border-b pb-8">
         <h1 className="font-serif text-3xl font-bold tracking-tighter lg:text-5xl">
           Select Domain.
         </h1>

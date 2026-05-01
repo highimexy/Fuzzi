@@ -15,9 +15,9 @@ export function Navbar() {
           <div className="border-foreground/10 flex flex-1 items-center justify-center border-r px-6 lg:px-10">
             <Link
               href="/lessons"
-              className="font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] font-bold transition-opacity hover:opacity-80"
+              className="font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] font-bold uppercase transition-opacity hover:opacity-80"
             >
-              The Frontend Journal
+              Frontline
             </Link>
           </div>
 
@@ -46,19 +46,16 @@ export function Navbar() {
               QA
             </Link>
             <Link
-              href="/frontend"
-              className="font-sans uppercase transition-opacity hover:opacity-80"
-            >
-              FRONTEND
-            </Link>
-            <Link href="/3d" className="font-sans uppercase transition-opacity hover:opacity-80">
-              3D
-            </Link>
-            <Link
               href="/reality-check"
               className="font-sans uppercase transition-opacity hover:opacity-80"
             >
               Reality Check
+            </Link>
+            <Link
+              href="/lessons"
+              className="font-sans uppercase transition-opacity hover:opacity-80"
+            >
+              Academy
             </Link>
           </div>
         </div>
@@ -68,14 +65,11 @@ export function Navbar() {
           <Link href="/qa" className="font-sans uppercase">
             QA
           </Link>
-          <Link href="/frontend" className="font-sans uppercase">
-            FRONTEND
-          </Link>
-          <Link href="/3d" className="font-sans uppercase">
-            3D
-          </Link>
-          <Link href="/reality-check" className="font-sans uppercase">
+          <Link href="reality-check" className="font-sans uppercase">
             Reality
+          </Link>
+          <Link href="/lessons" className="font-sans uppercase">
+            Academy
           </Link>
         </div>
       </Container>
