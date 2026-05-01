@@ -21,7 +21,7 @@ export default function Home() {
         <SectionDivider />
         <OperationsDashboard />
         <SectionDivider />
-        {/* 01. QA SECTION */}
+        {/* 00. QA SECTION */}
         <section className="border-foreground/10 w-full overflow-hidden border-b">
           <Container className="py-16 md:py-24">
             <div className="flex flex-col gap-12 px-6 lg:flex-row lg:items-start lg:justify-between">
@@ -53,75 +53,9 @@ export default function Home() {
         </section>
         <SectionDivider />
 
-        {/* 02. FRONTEND SECTION - MIRRORED */}
-        <section className="border-foreground/10 w-full overflow-hidden border-b bg-yellow-500/2">
-          <Container className="py-16 md:py-24">
-            <div className="flex flex-col gap-12 px-6 text-left lg:flex-row-reverse lg:items-start lg:justify-between lg:text-right">
-              <div className="min-w-fit flex-1">
-                <span className="text-fluid-small font-sans font-bold tracking-[0.3em] text-yellow-500 uppercase">
-                  {t('frontend.label')}
-                </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word hyphens-auto uppercase">
-                  {t('frontend.title1')} <br />{' '}
-                  <span className="italic opacity-30">{t('frontend.title2')}</span>
-                </h2>
-              </div>
 
-              <div className="flex w-full flex-col items-start lg:max-w-md lg:items-end xl:max-w-lg">
-                <p className="text-fluid-h3 font-serif leading-snug italic">
-                  {t('frontend.quote')}
-                </p>
-                <p className="mt-6 text-justify font-sans text-sm leading-relaxed opacity-60 lg:text-right">
-                  {t('frontend.description')}
-                </p>
-                <Link
-                  href="/frontend"
-                  className="group text-fluid-small mt-8 inline-flex items-center gap-3 border-b border-yellow-500 pb-1 font-bold tracking-widest uppercase transition-all"
-                >
-                  <span>{t('frontend.link')}</span>
-                  <FiArrowRight className="text-lg transition-transform duration-300 group-hover:translate-x-1.5" />
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
 
-        <SectionDivider />
-
-        {/* 03. 3D SECTION */}
-        <section className="border-foreground/10 w-full overflow-hidden border-b">
-          <Container className="py-16 md:py-24">
-            <div className="flex flex-col gap-12 px-6 lg:flex-row lg:items-start lg:justify-between">
-              <div className="min-w-fit flex-1">
-                <span className="text-fluid-small font-sans font-bold tracking-[0.3em] text-red-500 uppercase">
-                  {t('threeD.label')}
-                </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
-                  {t('threeD.title1')} <br />{' '}
-                  <span className="italic opacity-30">{t('threeD.title2')}</span>
-                </h2>
-              </div>
-
-              <div className="w-full lg:max-w-md xl:max-w-lg">
-                <p className="text-fluid-h3 font-serif leading-snug italic">{t('threeD.quote')}</p>
-                <p className="mt-6 font-sans text-sm leading-relaxed opacity-60">
-                  {t('threeD.description')}
-                </p>
-                <Link
-                  href="/3d"
-                  className="group text-fluid-small mt-8 inline-flex items-center gap-3 border-b border-red-500 pb-1 font-bold tracking-[0.2em] uppercase transition-all"
-                >
-                  <span>{t('threeD.link')}</span>
-                  <FiArrowRight className="text-lg transition-transform duration-300 group-hover:translate-x-1.5" />
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
-
-        <SectionDivider />
-
-        {/* 04. REALITY CHECK */}
+        {/* 01. REALITY CHECK */}
         <section className="border-foreground/10 relative w-full overflow-hidden border-b bg-purple-500/3">
           <Container className="relative py-16 md:py-24">
             <div className="pointer-events-none absolute top-10 right-10 hidden font-serif text-[clamp(4rem,15vw,12rem)] leading-none tracking-tighter uppercase opacity-[0.03] select-none lg:block">

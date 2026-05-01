@@ -29,32 +29,16 @@
   },
   "Home": {
     "qa": {
-      "label": "01. Quality Assurance",
+      "label": "00. Quality Assurance",
       "title1": "Brzemię",
       "title2": "Sceptyka",
       "quote": "\"Tu nie chodzi o szukanie błędów. Chodzi o bycie jedyną osobą w pokoju, która ma odwagę zepsuć wszystkim humor.\"",
       "description": "Rzeczywistość QA to w 80% praca detektywistyczna nad bugiem, którego nikt inny nie potrafi zreprodukować, a w 20% walka o jakość.",
       "link": "Sprawdź Roadmapę QA"
     },
-    "frontend": {
-      "label": "02. Frontend Development",
-      "title1": "Pikselowy",
-      "title2": "Perfekcjonista",
-      "quote": "\"Jesteś saperem na polu minowym przeglądarek. Jeden margines w Safari może wysadzić w powietrze całego Grida.\"",
-      "description": "Frontend to wieczna walka między wizją designera, ograniczeniami API a rzeczywistością kompatybilności między przeglądarkami.",
-      "link": "Sprawdź Ścieżkę Frontend"
-    },
-    "threeD": {
-      "label": "03. 3D & WebGL",
-      "title1": "Matematyczne",
-      "title2": "Szaleństwo",
-      "quote": "\"W 3D debugowanie to czysta geometria. Jeśli zepsujesz wektor, twój obiekt po prostu przestaje istnieć w naszej rzeczywistości.\"",
-      "description": "Macierze, kwaterniony i shadery to jedyne rzeczy stojące między pustym ekranem a fotorealistycznym światem.",
-      "link": "Sprawdź Wymiar 3D"
-    },
     "reality": {
       "watermark": "Rynek",
-      "label": "Ostatni Rozdział: Zderzenie z Rzeczywistością",
+      "label": "01. Zderzenie z Rzeczywistością",
       "titleLine1": "<light>Prawda</light>",
       "titleLine2": "Kryjąca się za <purple>Hype'em</purple>",
       "dreamLabel": "Sen",
