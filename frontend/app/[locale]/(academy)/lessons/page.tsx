@@ -44,7 +44,7 @@ function LessonsTable({
         <Link
           key={key}
           href={`${basePath}/${key}`}
-          className="group border-foreground/10 hover:bg-foreground/2 flex items-center justify-between border-b p-4 transition-colors"
+          className="group border-foreground/10 flex items-center justify-between border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
         >
           <div className="flex items-center gap-4">
             <span className="font-mono text-[10px] tracking-widest opacity-30">

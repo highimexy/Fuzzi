@@ -8,7 +8,7 @@ const navItems = [
   { href: '/lessons', label: 'Library', icon: FiBook },
   { href: '/quest', label: 'Quest', icon: FiTarget, badge: 'New' },
   { href: '/explore', label: 'Explore', icon: FiCompass },
-  { href: '/study-plan', label: 'Study Plan', icon: FiMap },
+  { href: '/road-map', label: 'Road Map', icon: FiMap },
 ]
 
 export function AcademySidebar() {
@@ -16,7 +16,7 @@ export function AcademySidebar() {
 
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
-  const allowedPaths = ['/lessons', '/quest', '/explore', '/study-plan']
+  const allowedPaths = ['/lessons', '/quest', '/explore', '/road-map']
   if (!allowedPaths.includes(cleanPath)) return null
 
   return (
