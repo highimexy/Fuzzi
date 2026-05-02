@@ -47,9 +47,11 @@ const SubNode = ({ data }: { data: any }) => (
 )
 
 const ListNode = ({ data }: { data: any }) => (
-  <div className="min-w-48 rounded-lg border border-purple-800 bg-zinc-900 p-3">
+  <div className="flex min-w-48 flex-col rounded-lg border border-purple-800 bg-zinc-900 p-3">
     <UniversalHandles />
-    <div className="mb-2 border-b font-serif tracking-wide text-yellow-500">{data.label}</div>
+    <div className="mb-2 flex justify-center border-b font-serif tracking-wide text-yellow-500">
+      {data.label}
+    </div>
     <ul className="flex flex-col gap-2 text-center">
       {data.items?.map((item: string, index: number) => (
         <li key={index} className="border font-bold">
@@ -125,7 +127,7 @@ const initialNodes = [
   {
     id: 'ntt2',
     type: 'list',
-    position: { x: 950, y: 380 },
+    position: { x: 850, y: 380 },
     data: {
       label: 'Functional Testing',
       items: [
@@ -140,22 +142,37 @@ const initialNodes = [
       ],
     },
   },
-  // POZIOMY 2-6
-  { id: 'n2', type: 'main', position: { x: 285, y: 150 }, data: { label: 'SDLC Delivery' } },
-  { id: 'n3', type: 'main', position: { x: 278, y: 300 }, data: { label: 'Methodologies' } },
-  { id: 'n4', type: 'main', position: { x: 305, y: 450 }, data: { label: 'Manual Testing' } },
-  { id: 'n5', type: 'main', position: { x: 302, y: 600 }, data: { label: 'Test Automation' } },
-  { id: 'n6', type: 'main', position: { x: 300, y: 750 }, data: { label: 'Non-Functional' } },
+  // SDLC Delivery
+  { id: 'n2', type: 'main', position: { x: 320, y: 380 }, data: { label: 'SDLC Delivery' } },
+
+  { id: 'n2a1', type: 'sub', position: { x: 230, y: 315 }, data: { label: 'Waterfall' } },
+  { id: 'n2a2', type: 'sub', position: { x: 230, y: 270 }, data: { label: 'V Model' } },
+  { id: 'n2a3', type: 'sub', position: { x: 230, y: 225 }, data: { label: 'Spiral' } },
+
+  {
+    id: 'n2b',
+    type: 'list',
+    position: { x: 0, y: 420 },
+    data: {
+      label: 'Functional Testing',
+      items: ['Kanban', 'Scrum', 'XP', 'SAFe'],
+    },
+  },
+
+  { id: 'n3', type: 'main', position: { x: 300, y: 550 }, data: { label: 'Methodologies' } },
+  { id: 'n4', type: 'main', position: { x: 305, y: 750 }, data: { label: 'Manual Testing' } },
+  { id: 'n5', type: 'main', position: { x: 302, y: 800 }, data: { label: 'Test Automation' } },
+  { id: 'n6', type: 'main', position: { x: 300, y: 1050 }, data: { label: 'Non-Functional' } },
 ]
 
 // ==========================================
 // 5. Connections (Edges)
 // ==========================================
 const initialEdges = [
-  // Z N1 W DÓŁ
+  // Z LEAR THE BASICS W DÓŁ
   { id: 'e1-2', source: 'n1', sourceHandle: 'bottom-s', target: 'n2', targetHandle: 'top-t' },
 
-  // Z N1 W PRAWO
+  // Z LEAR THE BASICS W PRAWO
   {
     id: 'e1-1a1',
     source: 'n1',
@@ -180,7 +197,7 @@ const initialEdges = [
     targetHandle: 'left-t',
     animated: true,
   },
-  // Z N1 W LEWO
+  // Z LEAR THE BASICS W LEWO
   {
     id: 'e1-1b1',
     source: 'n1',
@@ -205,7 +222,7 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-  //Z N1B3 NA DOL
+  //Z TESTING APPROACHES NA DOL
   {
     id: 'n1b3-n1b3a',
     source: 'n1b3',
@@ -215,8 +232,7 @@ const initialEdges = [
     animated: true,
   },
 
-  // Z NTT NA DOL
-
+  // Z TESTING TECHNIQUES NA DOL
   {
     id: 'ntt-ntt1',
     source: 'ntt',
@@ -226,8 +242,31 @@ const initialEdges = [
     animated: true,
   },
   {
-    
-  }
+    id: 'ntt-ntt2',
+    source: 'ntt',
+    sourceHandle: 'bottom-s',
+    target: 'ntt2',
+    targetHandle: 'top-t',
+    animated: true,
+  },
+  // Z SDLC DELIVERY NA LEWO
+  {
+    id: 'n2-n2a1',
+    source: 'n2',
+    sourceHandle: 'left-s',
+    target: 'n2a1',
+    targetHandle: 'bottom-t',
+    animated: true,
+  },
+  {
+    id: 'n2-n2b',
+    source: 'n2',
+    sourceHandle: 'left-s',
+    target: 'n2b',
+    targetHandle: 'top-t',
+    animated: true,
+  },
+
   // PIONOWY GŁÓWNY NURT
   { id: 'e2-3', source: 'n2', sourceHandle: 'bottom-s', target: 'n3', targetHandle: 'top-t' },
   { id: 'e3-4', source: 'n3', sourceHandle: 'bottom-s', target: 'n4', targetHandle: 'top-t' },

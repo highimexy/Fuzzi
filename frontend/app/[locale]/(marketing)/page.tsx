@@ -304,7 +304,7 @@ export default function Home() {
                   {t('cta.realityBtn')}
                 </Link>
                 <Link
-                  href="/academy"
+                  href="/lessons"
                   className="text-fluid-small inline-block border border-yellow-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-yellow-500 hover:text-black"
                 >
                   {t('cta.academyBtn')}
