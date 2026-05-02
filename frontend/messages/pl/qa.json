@@ -92,10 +92,10 @@
       }
     },
     "footer": {
-      "watermark": "Shoot",
-      "label": "Następny poziom",
-      "title": "Gotowy na <green>Automatyzację</green>?",
-      "btn": "Przejdź do Frontendu"
+      "watermark": "Kołchoz",
+      "label": "Kolejny krok",
+      "title": "Gotowy na zderzenie z <green>rynkiem</green>?",
+      "btn": "Poznaj Realia IT"
     }
   }
 }

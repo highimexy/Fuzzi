@@ -373,7 +373,7 @@ export default function RealityCheckPage() {
                 {t('footer.btn1')}
               </Link>
               <Link
-                href="/frontend"
+                href="/lessons"
                 className="text-fluid-small bg-purple-500 px-10 py-5 font-sans tracking-[0.3em] text-white uppercase transition-all duration-500 hover:bg-purple-600"
               >
                 {t('footer.btn2')}

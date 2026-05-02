@@ -37,61 +37,6 @@ export default function Home() {
                 {t('mission.description')}
               </p>
             </div>
-
-            <div className="border-foreground/10 mx-auto mt-16 max-w-5xl border-t pt-12">
-              <div className="grid gap-8 px-6 md:grid-cols-3 lg:gap-12">
-                <Link
-                  href="/qa"
-                  className="group border-foreground/10 rounded-lg border p-6 transition-all duration-300 hover:border-green-500/30 hover:bg-green-500/3"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="font-serif text-3xl text-green-500 opacity-40 transition-opacity group-hover:opacity-80">
-                      01
-                    </span>
-                    <h3 className="font-sans text-xs font-bold tracking-widest uppercase">
-                      {t('mission.pillars.qa.title')}
-                    </h3>
-                  </div>
-                  <p className="mt-4 text-xs leading-relaxed opacity-50">
-                    {t('mission.pillars.qa.desc')}
-                  </p>
-                </Link>
-
-                <Link
-                  href="/reality-check"
-                  className="group border-foreground/10 rounded-lg border p-6 transition-all duration-300 hover:border-purple-500/30 hover:bg-purple-500/3"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="font-serif text-3xl text-purple-500 opacity-40 transition-opacity group-hover:opacity-80">
-                      02
-                    </span>
-                    <h3 className="font-sans text-xs font-bold tracking-widest uppercase">
-                      {t('mission.pillars.reality.title')}
-                    </h3>
-                  </div>
-                  <p className="mt-4 text-xs leading-relaxed opacity-50">
-                    {t('mission.pillars.reality.desc')}
-                  </p>
-                </Link>
-
-                <Link
-                  href="/academy"
-                  className="group border-foreground/10 rounded-lg border p-6 transition-all duration-300 hover:border-yellow-500/30 hover:bg-yellow-500/3"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="font-serif text-3xl text-yellow-500 opacity-40 transition-opacity group-hover:opacity-80">
-                      03
-                    </span>
-                    <h3 className="font-sans text-xs font-bold tracking-widest uppercase">
-                      {t('mission.pillars.academy.title')}
-                    </h3>
-                  </div>
-                  <p className="mt-4 text-xs leading-relaxed opacity-50">
-                    {t('mission.pillars.academy.desc')}
-                  </p>
-                </Link>
-              </div>
-            </div>
           </Container>
         </section>
         <SectionDivider />
@@ -125,9 +70,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="border-foreground/10 mx-auto mt-16 max-w-5xl border-t pt-12">
+            <div className="border-foreground/10 mx-auto mt-16 max-w-5xl pt-12">
               <div className="grid gap-6 px-6 md:grid-cols-3">
-                <div className="border-foreground/10 border-t pt-6">
+                <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
                   <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.mindset.title')}
                   </h4>
@@ -135,7 +80,7 @@ export default function Home() {
                     {t('qa.preview.mindset.desc')}
                   </p>
                 </div>
-                <div className="border-foreground/10 border-t pt-6">
+                <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
                   <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.anatomy.title')}
                   </h4>
@@ -143,7 +88,7 @@ export default function Home() {
                     {t('qa.preview.anatomy.desc')}
                   </p>
                 </div>
-                <div className="border-foreground/10 border-t pt-6">
+                <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
                   <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.toolkit.title')}
                   </h4>
@@ -274,7 +219,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="border-foreground/10 mx-auto mt-16 w-full max-w-3xl border-t pt-12">
+              <div className="mx-auto mt-16 w-full max-w-3xl">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="border-foreground/10 border-t pt-6">
                     <h4 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
@@ -338,7 +283,7 @@ export default function Home() {
 
               <h2 className="mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('cta.title1')} <br />{' '}
-                <span className="text-green-500 italic opacity-60">{t('cta.title2')}</span>
+                <span className="text-zic-500 italic opacity-60">{t('cta.title2')}</span>
               </h2>
 
               <p className="mx-auto mt-8 max-w-2xl font-sans text-sm leading-relaxed opacity-60">
@@ -348,19 +293,19 @@ export default function Home() {
               <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
                 <Link
                   href="/qa"
-                  className="text-fluid-small inline-block border border-green-500/30 px-8 py-4 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-green-500 hover:text-white"
+                  className="text-fluid-small inline-block border border-green-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-green-500 hover:text-white"
                 >
                   {t('cta.qaBtn')}
                 </Link>
                 <Link
                   href="/reality-check"
-                  className="text-fluid-small inline-block border border-purple-500/30 px-8 py-4 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-purple-500 hover:text-white"
+                  className="text-fluid-small inline-block border border-purple-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-purple-500 hover:text-white"
                 >
                   {t('cta.realityBtn')}
                 </Link>
                 <Link
                   href="/academy"
-                  className="text-fluid-small inline-block border border-yellow-500/30 p-2 px-8 py-4 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-yellow-500 hover:text-black"
+                  className="text-fluid-small inline-block border border-yellow-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-yellow-500 hover:text-black"
                 >
                   {t('cta.academyBtn')}
                 </Link>

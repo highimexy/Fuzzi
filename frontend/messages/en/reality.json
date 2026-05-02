@@ -95,11 +95,11 @@
       }
     },
     "footer": {
-      "watermark": "Stars",
-      "label": "Manifesto End",
-      "title": "Now that you know the <purple>Truth</purple>, <break></break>will you still <u>Code?</u>",
-      "btn1": "Return to Entry",
-      "btn2": "Back to the Grind"
+      "watermark": "Survive",
+      "label": "End of Illusions",
+      "title": "Now that you know the <purple>Truth</purple>, <break></break>do you still want to <u>Test?</u>",
+      "btn1": "Back to start",
+      "btn2": "Back to bug hunting"
     }
   }
 }

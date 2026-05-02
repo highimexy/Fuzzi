@@ -372,7 +372,7 @@ export default function QaPage() {
                 })}
               </h2>
               <Link
-                href="/frontend"
+                href="/reality-check"
                 className="text-fluid-small mt-12 border border-green-500/30 px-10 py-5 font-sans tracking-[0.3em] uppercase transition-all duration-500 hover:bg-green-500 hover:text-white"
               >
                 {t('footer.btn')}
