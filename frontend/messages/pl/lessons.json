@@ -1,0 +1,84 @@
+{
+  "Lessons": {
+    "pageHeader": {
+      "title": "Wszystkie Lekcje",
+      "subtitle": "Ustrukturyzowane ścieżki nauki i indywidualne moduły lekcyjne."
+    },
+    "learningPaths": {
+      "label": "Ścieżki Nauki",
+      "description": "Wybierz specjalizację i zanurz się w ustrukturyzowanym programie nauczania."
+    },
+    "qaLessons": {
+      "label": "Lekcje QA",
+      "description": "Opanuj sztukę testowania, od fundamentów po automatyzację.",
+      "table": {
+        "lesson": "Lekcja",
+        "title": "Tytuł",
+        "status": "Status",
+        "action": "Rozpocznij"
+      },
+      "items": {
+        "1": {
+          "title": "Mentalność Sceptyka",
+          "status": "Wkrótce"
+        },
+        "2": {
+          "title": "Anatomia UI — Głębokie Zanurzenie",
+          "status": "Wkrótce"
+        },
+        "3": {
+          "title": "Arsenał Techniczny",
+          "status": "Wkrótce"
+        },
+        "4": {
+          "title": "Polowanie na Edge Case'y",
+          "status": "Wkrótce"
+        },
+        "5": {
+          "title": "Mistrzostwo Raportów Bugów",
+          "status": "Wkrótce"
+        },
+        "6": {
+          "title": "Czynnik Ludzki",
+          "status": "Wkrótce"
+        }
+      }
+    },
+    "realityLessons": {
+      "label": "Lekcje Zderzenia z Realiami",
+      "description": "Poruszaj się po rynku IT, zrozum wpływ AI i przetrwaj w branży.",
+      "table": {
+        "lesson": "Lekcja",
+        "title": "Tytuł",
+        "status": "Status",
+        "action": "Rozpocznij"
+      },
+      "items": {
+        "1": {
+          "title": "Cykl Hype'u",
+          "status": "Wkrótce"
+        },
+        "2": {
+          "title": "Bariera AI",
+          "status": "Wkrótce"
+        },
+        "3": {
+          "title": "Dynamika Rynku",
+          "status": "Wkrótce"
+        },
+        "4": {
+          "title": "Przewodnik Przetrwania",
+          "status": "Wkrótce"
+        },
+        "5": {
+          "title": "Korpo-Leksykon",
+          "status": "Wkrótce"
+        },
+        "6": {
+          "title": "Tarcza Anty-AI",
+          "status": "Wkrótce"
+        }
+      }
+    }
+  }
+}

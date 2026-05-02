@@ -1,0 +1,84 @@
+{
+  "Lessons": {
+    "pageHeader": {
+      "title": "All Lessons",
+      "subtitle": "Structured learning paths and individual lesson modules."
+    },
+    "learningPaths": {
+      "label": "Learning Paths",
+      "description": "Choose your specialization track and dive deep into structured curriculum."
+    },
+    "qaLessons": {
+      "label": "QA Lessons",
+      "description": "Master the art of testing, from fundamentals to automation.",
+      "table": {
+        "lesson": "Lesson",
+        "title": "Title",
+        "status": "Status",
+        "action": "Start"
+      },
+      "items": {
+        "1": {
+          "title": "The Skeptic Mindset",
+          "status": "Coming Soon"
+        },
+        "2": {
+          "title": "UI Anatomy Deep Dive",
+          "status": "Coming Soon"
+        },
+        "3": {
+          "title": "Technical Toolkit",
+          "status": "Coming Soon"
+        },
+        "4": {
+          "title": "Edge Case Hunting",
+          "status": "Coming Soon"
+        },
+        "5": {
+          "title": "Bug Report Mastery",
+          "status": "Coming Soon"
+        },
+        "6": {
+          "title": "The Human Factor",
+          "status": "Coming Soon"
+        }
+      }
+    },
+    "realityLessons": {
+      "label": "Reality Check Lessons",
+      "description": "Navigate the IT market, understand AI impact, and survive the industry.",
+      "table": {
+        "lesson": "Lesson",
+        "title": "Title",
+        "status": "Status",
+        "action": "Start"
+      },
+      "items": {
+        "1": {
+          "title": "The Hype Cycle",
+          "status": "Coming Soon"
+        },
+        "2": {
+          "title": "The AI Barrier",
+          "status": "Coming Soon"
+        },
+        "3": {
+          "title": "Market Dynamics",
+          "status": "Coming Soon"
+        },
+        "4": {
+          "title": "Human Survival Guide",
+          "status": "Coming Soon"
+        },
+        "5": {
+          "title": "Corporate Lexicon",
+          "status": "Coming Soon"
+        },
+        "6": {
+          "title": "The AI Shield",
+          "status": "Coming Soon"
+        }
+      }
+    }
+  }
+}
