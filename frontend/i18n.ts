@@ -17,6 +17,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     reality,
     about,
     changelog,
+    lessons,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/supportersTicker.json`, { with: { type: 'json' } }),
@@ -28,6 +29,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/reality.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/about.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/changelog.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/lessons.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -41,6 +43,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...reality.default,
     ...about.default,
     ...changelog.default,
+    ...lessons.default,
   }
 
   return {

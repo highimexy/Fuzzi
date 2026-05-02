@@ -16,8 +16,8 @@ export function AcademySidebar() {
 
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
-  const isLessonsPage = cleanPath === '/lessons' || cleanPath === '/library'
-  if (!isLessonsPage) return null
+  const allowedPaths = ['/lessons', '/quest', '/explore', '/study-plan']
+  if (!allowedPaths.includes(cleanPath)) return null
 
   return (
     <aside className="border-foreground/10 bg-background relative z-50 hidden w-40 shrink-0 flex-col border-r lg:flex">

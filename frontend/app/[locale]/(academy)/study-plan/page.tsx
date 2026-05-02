@@ -2,8 +2,8 @@
 
 export default function StudyPlanPage() {
   return (
-    <div>
-      <h1 className="font-mono">Study Plan Page</h1>
+    <div className="flex h-full w-full flex-col items-center justify-center">
+      <h1 className="font-serif">Study Plan Page</h1>
     </div>
   )
 }
