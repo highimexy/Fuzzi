@@ -14,7 +14,7 @@ import {
 import '@xyflow/react/dist/style.css'
 
 // ==========================================
-// 1. WSPÓŁDZIELONE PORTY
+// 1. Ports
 // ==========================================
 const UniversalHandles = () => (
   <>
@@ -30,7 +30,7 @@ const UniversalHandles = () => (
 )
 
 // ==========================================
-// 2. STYLE KAFELKÓW
+// 2. Nodes Styles
 // ==========================================
 const MainNode = ({ data }: { data: any }) => (
   <div className="min-w-48 border-2 border-yellow-500 bg-zinc-950 px-6 py-4 text-center">
@@ -49,12 +49,10 @@ const SubNode = ({ data }: { data: any }) => (
 const ListNode = ({ data }: { data: any }) => (
   <div className="min-w-48 rounded-lg border border-purple-800 bg-zinc-900 p-3">
     <UniversalHandles />
-    <div className="mb-2 border-b border-zinc-700 pb-1 font-serif font-bold tracking-wider text-purple-400 uppercase">
-      {data.label}
-    </div>
-    <ul className="flex flex-col gap-2 text-zinc-300">
+    <div className="mb-2 border-b font-serif tracking-wide text-yellow-500">{data.label}</div>
+    <ul className="flex flex-col gap-2 text-center">
       {data.items?.map((item: string, index: number) => (
-        <li key={index} className="border p-3 font-bold">
+        <li key={index} className="border font-bold">
           {item}
         </li>
       ))}
@@ -63,7 +61,7 @@ const ListNode = ({ data }: { data: any }) => (
 )
 
 // ==========================================
-// 3. REJESTRACJA KOMPONENTÓW
+// 3. Component Registration
 // ==========================================
 const nodeTypes = {
   main: MainNode,
@@ -72,7 +70,7 @@ const nodeTypes = {
 }
 
 // ==========================================
-// 4. STRUKTURA (WĘZŁY)
+// 4. Structure (Nodes)
 // ==========================================
 const initialNodes = [
   // POZIOM 1
@@ -94,13 +92,16 @@ const initialNodes = [
   {
     id: 'n1a4',
     type: 'list',
-    position: { x: 890, y: 85 },
+    position: { x: 835, y: 85 },
     data: { label: 'Manage your Testing', items: ['qTest', 'TestRail', 'TestLink', 'Zephyr'] },
   },
   //LEWO
   { id: 'n1b1', type: 'sub', position: { x: 0, y: -30 }, data: { label: 'What is QA?' } },
-  { id: 'n1b2', type: 'sub', position: { x: 0, y: 15 }, data: { label: 'QA Mindset' } },
-  { id: 'n1b3', type: 'sub', position: { x: 0, y: 60 }, data: { label: 'Testing Approaches' } },
+  { id: 'n1b2', type: 'sub', position: { x: 0, y: 20 }, data: { label: 'QA Mindset' } },
+  { id: 'n1b3', type: 'sub', position: { x: 0, y: 70 }, data: { label: 'Testing Approaches' } },
+  { id: 'n1b3a', type: 'sub', position: { x: 0, y: 150 }, data: { label: 'White Box Testing' } },
+  { id: 'n1b3b', type: 'sub', position: { x: 0, y: 195 }, data: { label: 'Grey Box Testing' } },
+  { id: 'n1b3c', type: 'sub', position: { x: 0, y: 240 }, data: { label: 'Black Box Testing' } },
 
   // POZIOMY 2-6
   { id: 'n2', type: 'main', position: { x: 285, y: 150 }, data: { label: 'SDLC Delivery' } },
@@ -111,7 +112,7 @@ const initialNodes = [
 ]
 
 // ==========================================
-// 5. POŁĄCZENIA (LINIE)
+// 5. Connections (Edges)
 // ==========================================
 const initialEdges = [
   // Z N1 W DÓŁ
@@ -167,6 +168,15 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
+  //Z N1B3 NA DOL
+  {
+    id: 'n1b3-n1b3a',
+    source: 'n1b3',
+    sourceHandle: 'bottom-s',
+    target: 'n1b3a',
+    targetHandle: 'top-t',
+    animated: true,
+  },
 
   // PIONOWY GŁÓWNY NURT
   { id: 'e2-3', source: 'n2', sourceHandle: 'bottom-s', target: 'n3', targetHandle: 'top-t' },
@@ -176,7 +186,7 @@ const initialEdges = [
 ]
 
 // ==========================================
-// 6. GŁÓWNY KOMPONENT WYKRESU
+// 6. Main Roadmap Component
 // ==========================================
 export function RoadmapGraph() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
