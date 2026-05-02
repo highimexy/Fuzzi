@@ -73,14 +73,14 @@ const nodeTypes = {
 // 4. Structure (Nodes)
 // ==========================================
 const initialNodes = [
-  // POZIOM 1
+  // LEARN THE BASICS
   {
     id: 'n1',
     type: 'main',
     position: { x: 300, y: 0 },
-    data: { label: 'Learn the Basics', sub: 'Krok 1' },
+    data: { label: 'Learn the Basics' },
   },
-  //PRAWO
+  //LEFT
   { id: 'n1a1', type: 'sub', position: { x: 650, y: -15 }, data: { label: 'Test Oracles' } },
   { id: 'n1a2', type: 'sub', position: { x: 650, y: 35 }, data: { label: 'Test Prioritization' } },
   {
@@ -95,7 +95,7 @@ const initialNodes = [
     position: { x: 835, y: 85 },
     data: { label: 'Manage your Testing', items: ['qTest', 'TestRail', 'TestLink', 'Zephyr'] },
   },
-  //LEWO
+  //RIGHT
   { id: 'n1b1', type: 'sub', position: { x: 0, y: -30 }, data: { label: 'What is QA?' } },
   { id: 'n1b2', type: 'sub', position: { x: 0, y: 20 }, data: { label: 'QA Mindset' } },
   { id: 'n1b3', type: 'sub', position: { x: 0, y: 70 }, data: { label: 'Testing Approaches' } },
@@ -103,6 +103,43 @@ const initialNodes = [
   { id: 'n1b3b', type: 'sub', position: { x: 0, y: 195 }, data: { label: 'Grey Box Testing' } },
   { id: 'n1b3c', type: 'sub', position: { x: 0, y: 240 }, data: { label: 'Black Box Testing' } },
 
+  // TESTING TECHNIQUES
+  { id: 'ntt', type: 'main', position: { x: 650, y: 310 }, data: { label: 'Testing Techniques' } },
+
+  {
+    id: 'ntt1',
+    type: 'list',
+    position: { x: 650, y: 380 },
+    data: {
+      label: 'Test Management',
+      items: [
+        'Load Testing',
+        'Performance Testing',
+        'Stress Testing',
+        'Security Testing',
+        'Accessibility Testing',
+      ],
+    },
+  },
+
+  {
+    id: 'ntt2',
+    type: 'list',
+    position: { x: 950, y: 380 },
+    data: {
+      label: 'Functional Testing',
+      items: [
+        'UAT',
+        'Exploratory Testing',
+        'Sanity Testing',
+        'Regression Testing',
+        'Smoke Testing',
+        'Unit Testing',
+        'Integration Testing',
+        'Mocking',
+      ],
+    },
+  },
   // POZIOMY 2-6
   { id: 'n2', type: 'main', position: { x: 285, y: 150 }, data: { label: 'SDLC Delivery' } },
   { id: 'n3', type: 'main', position: { x: 278, y: 300 }, data: { label: 'Methodologies' } },
@@ -178,6 +215,19 @@ const initialEdges = [
     animated: true,
   },
 
+  // Z NTT NA DOL
+
+  {
+    id: 'ntt-ntt1',
+    source: 'ntt',
+    sourceHandle: 'bottom-s',
+    target: 'ntt1',
+    targetHandle: 'top-t',
+    animated: true,
+  },
+  {
+    
+  }
   // PIONOWY GŁÓWNY NURT
   { id: 'e2-3', source: 'n2', sourceHandle: 'bottom-s', target: 'n3', targetHandle: 'top-t' },
   { id: 'e3-4', source: 'n3', sourceHandle: 'bottom-s', target: 'n4', targetHandle: 'top-t' },
