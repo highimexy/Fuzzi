@@ -1,23 +1,110 @@
 {
   "Home": {
+    "mission": {
+      "label": "Why We Are Here",
+      "title1": "Forging the Next",
+      "title2": "Generation of QA Engineers",
+      "description": "Frontline Journal is not a blog. It is a training ground for the Post-Junior era. AI generates code at scale, but it cannot think critically about quality. We prepare testers who don't just find bugs — they prevent them. Through hard QA fundamentals and an unfiltered look at the IT market, this is where theory meets practice.",
+      "pillars": {
+        "qa": {
+          "title": "QA Fundamentals",
+          "desc": "Edge cases, UI anatomy, and the skeptic mindset. Learn to see what others miss."
+        },
+        "reality": {
+          "title": "Reality Check",
+          "desc": "The market has changed. Understand the truth about salaries, AI, and survival in IT."
+        },
+        "academy": {
+          "title": "Frontline Academy",
+          "desc": "Hands-on modules. Visual evidence rooms. Technical documentation drills. Theory is a liability without practice."
+        }
+      }
+    },
     "qa": {
-      "label": "00. Quality Assurance",
+      "label": "01. Quality Assurance",
       "title1": "The Skeptic's",
       "title2": "Burden",
       "quote": "\"It's not about finding bugs. It's about being the only person in the room brave enough to ruin everyone's mood.\"",
-      "description": "The reality of QA is 80% detective work on a bug that no one else can reproduce, and 20% fighting for quality.",
-      "link": "Explore QA Roadmap"
+      "description": "The reality of QA is 80% detective work on a bug that no one else can reproduce, and 20% fighting for quality. Here you will learn to think like the user, the developer, and the adversary — all at once.",
+      "link": "Explore QA Roadmap",
+      "preview": {
+        "mindset": {
+          "title": "Skeptic Mindset",
+          "desc": "Pathological distrust of 'it works on my machine'. QA starts at the documentation level."
+        },
+        "anatomy": {
+          "title": "UI Anatomy",
+          "desc": "Box models, component states, and typography. Learn to see the invisible structure of the web."
+        },
+        "toolkit": {
+          "title": "Technical Toolkit",
+          "desc": "Figma, Jira, DevTools. The instruments we use to dissect, document, and debug reality."
+        }
+      }
+    },
+    "academy": {
+      "label": "Frontline Academy",
+      "title1": "Theory Is a",
+      "title2": "Liability",
+      "description": "The Academy is where Frontline Journal becomes practice. Each module is a hands-on training environment: visual evidence rooms, logic drills, and documentation workshops. No passive reading. You build skills by doing.",
+      "link": "Enter the Academy",
+      "stats": {
+        "modules": "Training Modules",
+        "approach": "Practice-First Learning"
+      },
+      "steps": {
+        "step1": {
+          "title": "The Lexicon",
+          "desc": "Terminology and visual evidence. Learn to identify every UI component state."
+        },
+        "step2": {
+          "title": "Evidence Room",
+          "desc": "Visual bug hunting in simulated environments. Train your eye to spot what others miss."
+        },
+        "step3": {
+          "title": "Construction",
+          "desc": "Master technical documentation. Write bug reports that developers actually want to read."
+        }
+      }
     },
     "reality": {
       "watermark": "Market",
-      "label": "01. Reality Check",
+      "label": "02. Reality Check",
       "titleLine1": "The <light>Truth</light>",
       "titleLine2": "Behind the <purple>Hype</purple>",
       "dreamLabel": "The Dream",
       "dreamQuote": "\"You will build innovative products and change the world in a modern office.\"",
       "realityLabel": "The Reality",
       "realityQuote": "\"You will debug code written 5 years ago and explain why the estimate was wrong.\"",
-      "link": "Read the full manifesto"
+      "description": "Technology is only 50% of success. The rest is navigating the market, understanding AI's impact, and filtering corporate jargon. Without this knowledge, even the best technical skills won't save you.",
+      "link": "Read the full manifesto",
+      "preview": {
+        "hype": {
+          "title": "The Hype Cycle",
+          "desc": "The gold rush is over. Bootcamp marketing is not reality."
+        },
+        "ai": {
+          "title": "The AI Barrier",
+          "desc": "Machines write CRUD apps faster than juniors. What's your edge?"
+        },
+        "market": {
+          "title": "Market Dynamics",
+          "desc": "Big Tech, startups, freelance. Every path has its price."
+        },
+        "human": {
+          "title": "Human Survival",
+          "desc": "Soft skills are the hard skills of the 2020s."
+        }
+      }
+    },
+    "cta": {
+      "label": "Your Starting Line",
+      "title1": "Ready to",
+      "title2": "Take Control?",
+      "description": "You don't need another tutorial. You need a survival plan. Start with QA fundamentals, face the market reality, and train in the Academy. The Post-Junior era rewards those who prepare.",
+      "qaBtn": "Start QA Path",
+      "realityBtn": "Face Reality",
+      "academyBtn": "Enter Academy"
     }
   }
 }

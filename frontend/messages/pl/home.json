@@ -1,23 +1,110 @@
 {
   "Home": {
+    "mission": {
+      "label": "Po co tu jesteśmy",
+      "title1": "Kujemy następne",
+      "title2": "pokolenie inżynierów QA",
+      "description": "Frontline Journal to nie blog. To poligon treningowy dla ery Post-Juniora. AI generuje kod na skalę, ale nie potrafi myśleć krytycznie o jakości. Przygotowujemy testerów, którzy nie tylko znajdują błędy — oni im zapobiegają. Przez twarde podstawy QA i niefiltrowane spojrzenie na rynek IT, tu teoria spotyka się z praktyką.",
+      "pillars": {
+        "qa": {
+          "title": "Fundamenty QA",
+          "desc": "Przypadki brzegowe, anatomia UI i mentalność sceptyka. Naucz się widzieć to, czego inni nie zauważają."
+        },
+        "reality": {
+          "title": "Zderzenie z Realiami",
+          "desc": "Rynek się zmienił. Zrozum prawdę o zarobkach, AI i przetrwaniu w IT."
+        },
+        "academy": {
+          "title": "Frontline Academy",
+          "desc": "Moduły praktyczne. Sale dowodów. Warsztaty z dokumentacji. Teoria bez praktyki to obciążenie."
+        }
+      }
+    },
     "qa": {
-      "label": "00. Quality Assurance",
+      "label": "01. Quality Assurance",
       "title1": "Brzemię",
       "title2": "Sceptyka",
       "quote": "\"Tu nie chodzi o szukanie błędów. Chodzi o bycie jedyną osobą w pokoju, która ma odwagę zepsuć wszystkim humor.\"",
-      "description": "Rzeczywistość QA to w 80% praca detektywistyczna nad bugiem, którego nikt inny nie potrafi zreprodukować, a w 20% walka o jakość.",
-      "link": "Sprawdź Roadmapę QA"
+      "description": "Rzeczywistość QA to w 80% praca detektywistyczna nad bugiem, którego nikt inny nie potrafi zreprodukować, a w 20% walka o jakość. Tutaj nauczysz się myśleć jak użytkownik, deweloper i przeciwnik — jednocześnie.",
+      "link": "Sprawdź Roadmapę QA",
+      "preview": {
+        "mindset": {
+          "title": "Mentalność Sceptyka",
+          "desc": "Patologiczna nieufność wobec 'u mnie działa'. QA zaczyna się na poziomie dokumentacji."
+        },
+        "anatomy": {
+          "title": "Anatomia UI",
+          "desc": "Box modele, stany komponentów i typografia. Naucz się widzieć niewidzialną strukturę webu."
+        },
+        "toolkit": {
+          "title": "Arsenał Techniczny",
+          "desc": "Figma, Jira, DevTools. Instrumenty do sekcji, dokumentacji i debugowania rzeczywistości."
+        }
+      }
+    },
+    "academy": {
+      "label": "Frontline Academy",
+      "title1": "Teoria to",
+      "title2": "Obciążenie",
+      "description": "Academy to miejsce, gdzie Frontline Journal staje się praktyką. Każdy moduł to środowisko treningowe: sale dowodów, ćwiczenia z logiki i warsztaty z dokumentacji. Zero biernego czytania. Budujesz umiejętności przez działanie.",
+      "link": "Wejdź do Akademii",
+      "stats": {
+        "modules": "Moduły treningowe",
+        "approach": "Nauka przez praktykę"
+      },
+      "steps": {
+        "step1": {
+          "title": "Leksykon",
+          "desc": "Terminologia i dowody wizualne. Naucz się identyfikować każdy stan komponentu UI."
+        },
+        "step2": {
+          "title": "Pokój Dowodów",
+          "desc": "Wizualne polowanie na błędy w symulacjach. Trenuj oko, by dostrzec to, czego inni nie widzą."
+        },
+        "step3": {
+          "title": "Konstrukcja",
+          "desc": "Mistrzostwo w dokumentacji technicznej. Pisz raporty bugów, które deweloperzy chcą czytać."
+        }
+      }
     },
     "reality": {
       "watermark": "Rynek",
-      "label": "01. Zderzenie z Rzeczywistością",
+      "label": "02. Zderzenie z Rzeczywistością",
       "titleLine1": "<light>Prawda</light>",
       "titleLine2": "Kryjąca się za <purple>Hype'em</purple>",
       "dreamLabel": "Sen",
       "dreamQuote": "\"Będziesz budować innowacyjne produkty i zmieniać świat w nowoczesnym biurze.\"",
       "realityLabel": "Rzeczywistość",
       "realityQuote": "\"Będziesz debugować kod napisany 5 lat temu i tłumaczyć, dlaczego estymata była błędna.\"",
-      "link": "Przeczytaj pełny manifest"
+      "description": "Technologia to tylko 50% sukcesu. Reszta to poruszanie się po rynku, zrozumienie wpływu AI i filtrowanie korpo-żargonu. Bez tej wiedzy nawet najlepsze umiejętności techniczne Cię nie uratują.",
+      "link": "Przeczytaj pełny manifest",
+      "preview": {
+        "hype": {
+          "title": "Cykl Hype'u",
+          "desc": "Gorączka złota się skończyła. Marketing bootcampów to nie rzeczywistość."
+        },
+        "ai": {
+          "title": "Bariera AI",
+          "desc": "Maszyny piszą CRUD-y szybciej niż juniorzy. Jaki jest Twój atut?"
+        },
+        "market": {
+          "title": "Dynamika Rynku",
+          "desc": "Big Tech, startupy, freelance. Każda ścieżka ma swoją cenę."
+        },
+        "human": {
+          "title": "Czynnik Przetrwania",
+          "desc": "Soft skille to nowe hard skille lat 2020."
+        }
+      }
+    },
+    "cta": {
+      "label": "Twój punkt startu",
+      "title1": "Gotowy, by",
+      "title2": "przejąć kontrolę?",
+      "description": "Nie potrzebujesz kolejnego tutoriala. Potrzebujesz planu przetrwania. Zacznij od fundamentów QA, zmierz się z realiami rynku i trenuj w Akademii. Era Post-Juniora nagradza tych, którzy się przygotowują.",
+      "qaBtn": "Zacznij ścieżkę QA",
+      "realityBtn": "Poznaj Realia",
+      "academyBtn": "Wejdź do Akademii"
     }
   }
 }

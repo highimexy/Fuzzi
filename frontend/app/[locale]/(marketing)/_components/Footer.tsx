@@ -13,12 +13,12 @@ export function Footer() {
     <footer className="bg-background border-foreground/10 sticky bottom-0 z-0 w-full border-t">
       <Container className="pt-24">
         <div className="flex flex-col gap-12 px-6 lg:flex-row lg:justify-between">
-          <div className="flex-1">
+          <div className="flex items-center">
             <Link
               href="/"
               className="text-fluid-h1 font-serif leading-[0.8] tracking-tighter uppercase transition-opacity hover:opacity-80"
             >
-              The Frontend <br /> Journal
+              Frontline
             </Link>
           </div>
 
@@ -63,7 +63,7 @@ export function Footer() {
 
         <div className="border-foreground/10 mt-20 flex flex-col items-center justify-between border-t px-6 pt-8 pb-8 opacity-30 md:flex-row">
           <p className="font-sans text-[10px] tracking-[0.3em] uppercase md:text-xs">
-            © {currentYear} The Frontend Journal
+            © {currentYear} Frontline
           </p>
           <span className="mt-4 font-sans text-[10px] tracking-[0.3em] uppercase italic md:mt-0 md:text-xs">
             {t('madeIn')}

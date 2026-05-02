@@ -37,16 +37,7 @@ export function HomeHeader() {
               green: (chunks) => <span className="text-green-500 italic opacity-90">{chunks}</span>,
             })}
             <br />
-            {t.rich('title2', {
-              yellow: (chunks) => (
-                <span className="text-yellow-400 italic opacity-90">{chunks}</span>
-              ),
-            })}
-            <br />
-            {t.rich('title3', {
-              red: (chunks) => <span className="text-red-500 italic opacity-90">{chunks}</span>,
-            })}
-            <br />
+
             {t.rich('title4', {
               purple: (chunks) => (
                 <span className="text-purple-500 italic opacity-90">{chunks}</span>

@@ -1,8 +1,8 @@
 {
   "HomeHeader": {
-    "title1": "Master the <green>Basics</green>",
-    "title4": "Face the <purple>Reality</purple>",
-    "description": "Let's be real: <bold>AI is already writing the code you're trying to learn.</bold> While you're dreaming of a six-figure salary, the market is preparing you for <bold>minimum wage entry roles</bold>. We skip the fluff. From the drudgery of <bold>QA Fundamentals</bold> to the brutal truth of the <bold>IT market</bold>, this is a survival guide for the <italic>Post-Junior era</italic>.<block>Build what machines cannot imagine, or get replaced by a prompt.</block>",
-    "footer": "A log for the curious."
+    "title1": "Secure the <green>Quality</green>",
+    "title4": "Expose the <purple>AI Slop</purple>",
+    "description": "Let's be real: <bold>devs are generating code faster than ever, and you are left to clean up the mess.</bold> The IT market has changed. Stop mindless clicking and start <bold>defending production</bold> against machine hallucinations. From hard <bold>QA Fundamentals</bold> to the brutal truth about <bold>salaries and survival</bold> – this is your arsenal for the new IT era.<block>Become the engineer that bad code fears, or get replaced by an automated script.</block>",
+    "footer": "Frontline: Reports from the trenches."
   }
 }
