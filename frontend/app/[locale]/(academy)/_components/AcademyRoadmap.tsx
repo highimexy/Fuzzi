@@ -337,14 +337,90 @@ const initialNodes = [
   {
     id: 'n11',
     type: 'main',
-    position: { x: 700, y: 1850 },
+    position: { x: 630, y: 1880 },
     data: { label: 'Testing Data Management' },
   },
   {
     id: 'n11a',
     type: 'sub',
-    position: { x: 850, y: 1900 },
+    position: { x: 630, y: 1780 },
     data: { label: 'Delphix' },
+  },
+
+  // REPORTING
+  {
+    id: 'n12',
+    type: 'main',
+    position: { x: 723, y: 2100 },
+    data: { label: 'Reporting' },
+  },
+  {
+    id: 'n12a',
+    type: 'sub',
+    position: { x: 1000, y: 2040 },
+    data: { label: 'TestRail' },
+  },
+  {
+    id: 'n12b',
+    type: 'sub',
+    position: { x: 1000, y: 2093 },
+    data: { label: 'Allure' },
+  },
+  {
+    id: 'n12c',
+    type: 'sub',
+    position: { x: 1000, y: 2146 },
+    data: { label: 'jUnit' },
+  },
+
+  // MONITORING & LOGS
+  {
+    id: 'n13',
+    type: 'main',
+    position: { x: 291, y: 2100 },
+    data: { label: 'Monitoring & Logs' },
+  },
+  {
+    id: 'n13a',
+    type: 'sub',
+    position: { x: 0, y: 1943 },
+    data: { label: 'New Relic' },
+  },
+  {
+    id: 'n13b',
+    type: 'sub',
+    position: { x: 0, y: 1993 },
+    data: { label: 'Runscope' },
+  },
+  {
+    id: 'n13c',
+    type: 'sub',
+    position: { x: 0, y: 2043 },
+    data: { label: 'Kibana' },
+  },
+  {
+    id: 'n13d',
+    type: 'sub',
+    position: { x: 0, y: 2093 },
+    data: { label: 'Datadog' },
+  },
+  {
+    id: 'n13e',
+    type: 'sub',
+    position: { x: 0, y: 2143 },
+    data: { label: 'Pager Duty' },
+  },
+  {
+    id: 'n13f',
+    type: 'sub',
+    position: { x: 0, y: 2193 },
+    data: { label: 'Grafana' },
+  },
+  {
+    id: 'n13g',
+    type: 'sub',
+    position: { x: 0, y: 2243 },
+    data: { label: 'Sentry' },
   },
 ]
 
@@ -363,6 +439,9 @@ const initialEdges = [
   { id: 'e7-8', source: 'n7', sourceHandle: 'bottom-s', target: 'n8', targetHandle: 'top-t' },
   { id: 'e8-9', source: 'n8', sourceHandle: 'right-s', target: 'n9', targetHandle: 'left-t' },
   { id: 'e9-10', source: 'n9', sourceHandle: 'right-s', target: 'n10', targetHandle: 'left-t' },
+  { id: 'e10-11', source: 'n10', sourceHandle: 'bottom-s', target: 'n11', targetHandle: 'top-t' },
+  { id: 'e11-12', source: 'n11', sourceHandle: 'bottom-s', target: 'n12', targetHandle: 'top-t' },
+  { id: 'e12-13', source: 'n12', sourceHandle: 'left-s', target: 'n13', targetHandle: 'right-t' },
 
   // Z LEAR THE BASICS W PRAWO
   {
@@ -548,6 +627,100 @@ const initialEdges = [
     sourceHandle: 'right-s',
     target: 'n10a1',
     targetHandle: 'top-t',
+    animated: true,
+  },
+
+  // TESTING DATA MANAGEMENT
+  {
+    id: 'n11-n11a',
+    source: 'n11',
+    sourceHandle: 'left-s',
+    target: 'n11a',
+    targetHandle: 'bottom-t',
+    animated: true,
+  },
+
+  // REPORTING
+  {
+    id: 'n12-n12a',
+    source: 'n12',
+    sourceHandle: 'right-s',
+    target: 'n12a',
+    targetHandle: 'left-t',
+    animated: true,
+  },
+  {
+    id: 'n12-n12b',
+    source: 'n12',
+    sourceHandle: 'right-s',
+    target: 'n12b',
+    targetHandle: 'left-t',
+    animated: true,
+  },
+  {
+    id: 'n12-n12c',
+    source: 'n12',
+    sourceHandle: 'right-s',
+    target: 'n12c',
+    targetHandle: 'left-t',
+    animated: true,
+  },
+
+  // MONITORING LOGS
+  {
+    id: 'n13-n12a',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13a',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12b',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13b',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12c',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13c',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12d',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13d',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12e',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13e',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12f',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13f',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n13-n12g',
+    source: 'n13',
+    sourceHandle: 'left-s',
+    target: 'n13g',
+    targetHandle: 'right-t',
     animated: true,
   },
 ]
