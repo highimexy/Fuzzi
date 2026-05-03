@@ -87,7 +87,7 @@ const initialNodes = [
   {
     id: 'n0',
     type: 'start',
-    position: { x: 355, y: -150 },
+    position: { x: 350, y: -150 },
     data: { label: '|Start|' },
   },
 
@@ -95,7 +95,7 @@ const initialNodes = [
   {
     id: 'n1',
     type: 'main',
-    position: { x: 300, y: 0 },
+    position: { x: 295, y: 0 },
     data: { label: 'Learn the Basics' },
   },
   //LEFT
@@ -114,8 +114,8 @@ const initialNodes = [
     data: { label: 'Manage your Testing', items: ['qTest', 'TestRail', 'TestLink', 'Zephyr'] },
   },
   //RIGHT
-  { id: 'n1b1', type: 'sub', position: { x: 0, y: -30 }, data: { label: 'What is QA?' } },
-  { id: 'n1b2', type: 'sub', position: { x: 0, y: 20 }, data: { label: 'QA Mindset' } },
+  { id: 'n1b1', type: 'sub', position: { x: 55, y: -30 }, data: { label: 'What is QA?' } },
+  { id: 'n1b2', type: 'sub', position: { x: 62, y: 20 }, data: { label: 'QA Mindset' } },
   { id: 'n1b3', type: 'sub', position: { x: 0, y: 70 }, data: { label: 'Testing Approaches' } },
   { id: 'n1b3a', type: 'sub', position: { x: 5, y: 150 }, data: { label: 'White Box Testing' } },
   { id: 'n1b3b', type: 'sub', position: { x: 5, y: 195 }, data: { label: 'Grey Box Testing' } },
@@ -160,7 +160,7 @@ const initialNodes = [
   },
 
   // SDLC Delivery
-  { id: 'n2', type: 'main', position: { x: 319, y: 380 }, data: { label: 'SDLC Delivery' } },
+  { id: 'n2', type: 'main', position: { x: 314, y: 380 }, data: { label: 'SDLC Delivery' } },
 
   { id: 'n2a1', type: 'sub', position: { x: 230, y: 315 }, data: { label: 'Waterfall' } },
   { id: 'n2a2', type: 'sub', position: { x: 230, y: 270 }, data: { label: 'V Model' } },
@@ -177,31 +177,31 @@ const initialNodes = [
   },
 
   // METHODOLOGIES
-  { id: 'n3', type: 'main', position: { x: 310.5, y: 550 }, data: { label: 'Methodologies' } },
+  { id: 'n3', type: 'main', position: { x: 305.5, y: 550 }, data: { label: 'Methodologies' } },
   { id: 'n3a1', type: 'sub', position: { x: 540, y: 610 }, data: { label: 'BDD' } },
   { id: 'n3a2', type: 'sub', position: { x: 540, y: 655 }, data: { label: 'RCA' } },
   { id: 'n3b1', type: 'sub', position: { x: 250, y: 610 }, data: { label: 'TDD' } },
   { id: 'n3b2', type: 'sub', position: { x: 250, y: 655 }, data: { label: 'ATDD' } },
 
   //MANUAL TESTING
-  { id: 'n4', type: 'main', position: { x: 306, y: 780 }, data: { label: 'Manual Testing' } },
+  { id: 'n4', type: 'main', position: { x: 301, y: 780 }, data: { label: 'Manual Testing' } },
   {
     id: 'n4a',
     type: 'sub',
     position: { x: -50, y: 700 },
     data: { label: 'Test Cases & Scenarios' },
   },
-  { id: 'n4b', type: 'sub', position: { x: -50, y: 750 }, data: { label: 'Compatibility' } },
+  { id: 'n4b', type: 'sub', position: { x: 25, y: 750 }, data: { label: 'Compatibility' } },
   {
     id: 'n4c',
     type: 'sub',
-    position: { x: -50, y: 800 },
+    position: { x: -62, y: 800 },
     data: { label: 'Verification & Validation' },
   },
-  { id: 'n4d', type: 'sub', position: { x: -50, y: 850 }, data: { label: 'Test Planning' } },
+  { id: 'n4d', type: 'sub', position: { x: 25, y: 850 }, data: { label: 'Test Planning' } },
 
   // AUTOMATED TESTING
-  { id: 'n5', type: 'main', position: { x: 287, y: 950 }, data: { label: 'Automated Testing' } },
+  { id: 'n5', type: 'main', position: { x: 282, y: 950 }, data: { label: 'Automated Testing' } },
   { id: 'n5a', type: 'sub', position: { x: 657, y: 943 }, data: { label: 'Frontend Automation' } },
 
   {
@@ -266,13 +266,13 @@ const initialNodes = [
   },
 
   // NON FUNCTIONAL
-  { id: 'n6', type: 'main', position: { x: 305, y: 1150 }, data: { label: 'Non-Functional' } },
+  { id: 'n6', type: 'main', position: { x: 300, y: 1150 }, data: { label: 'Non-Functional' } },
 
   // ACCESSIBILITY
   {
     id: 'n7',
     type: 'list',
-    position: { x: 342, y: 1250 },
+    position: { x: 337.5, y: 1250 },
     data: { label: 'Accessibility', items: ['Wave', 'Axe', 'Chrome DevTools'] },
   },
 
@@ -280,7 +280,7 @@ const initialNodes = [
   {
     id: 'n8',
     type: 'list',
-    position: { x: -100, y: 1500 },
+    position: { x: -95, y: 1500 },
     data: {
       label: 'Load & Performance',
       items: [
@@ -351,7 +351,7 @@ const initialNodes = [
   {
     id: 'n12',
     type: 'main',
-    position: { x: 723, y: 2100 },
+    position: { x: 722, y: 2100 },
     data: { label: 'Reporting' },
   },
   {
@@ -389,38 +389,192 @@ const initialNodes = [
   {
     id: 'n13b',
     type: 'sub',
-    position: { x: 0, y: 1993 },
+    position: { x: 4, y: 1993 },
     data: { label: 'Runscope' },
   },
   {
     id: 'n13c',
     type: 'sub',
-    position: { x: 0, y: 2043 },
+    position: { x: 22, y: 2043 },
     data: { label: 'Kibana' },
   },
   {
     id: 'n13d',
     type: 'sub',
-    position: { x: 0, y: 2093 },
+    position: { x: 15, y: 2093 },
     data: { label: 'Datadog' },
   },
   {
     id: 'n13e',
     type: 'sub',
-    position: { x: 0, y: 2143 },
+    position: { x: -8, y: 2143 },
     data: { label: 'Pager Duty' },
   },
   {
     id: 'n13f',
     type: 'sub',
-    position: { x: 0, y: 2193 },
+    position: { x: 13, y: 2193 },
     data: { label: 'Grafana' },
   },
   {
     id: 'n13g',
     type: 'sub',
-    position: { x: 0, y: 2243 },
+    position: { x: 26, y: 2243 },
     data: { label: 'Sentry' },
+  },
+
+  // VERSION CONTROL
+  {
+    id: 'n14',
+    type: 'main',
+    position: { x: 301, y: 2300 },
+    data: { label: 'Version Control' },
+  },
+  {
+    id: 'n14a',
+    type: 'sub',
+    position: { x: 650, y: 2293 },
+    data: { label: 'Git' },
+  },
+
+  // REPO HOSTING SERVICES
+  {
+    id: 'n15',
+    type: 'main',
+    position: { x: 321, y: 2450 },
+    data: { label: 'Repo Hosting' },
+  },
+  {
+    id: 'n15a',
+    type: 'sub',
+    position: { x: 100, y: 2393 },
+    data: { label: 'GitHub' },
+  },
+  {
+    id: 'n15b',
+    type: 'sub',
+    position: { x: 104, y: 2443 },
+    data: { label: 'GitLab' },
+  },
+  {
+    id: 'n15c',
+    type: 'sub',
+    position: { x: 83, y: 2493 },
+    data: { label: 'Bitbucket' },
+  },
+
+  // CI/CD
+  {
+    id: 'n16',
+    type: 'main',
+    position: { x: 650, y: 2650 },
+    data: { label: 'CI/CD' },
+  },
+  {
+    id: 'n16a1',
+    type: 'sub',
+    position: { x: 770, y: 2450 },
+    data: { label: 'Jenkins' },
+  },
+  {
+    id: 'n16a2',
+    type: 'sub',
+    position: { x: 763, y: 2500 },
+    data: { label: 'GitLab CI' },
+  },
+  {
+    id: 'n16a3',
+    type: 'sub',
+    position: { x: 766, y: 2550 },
+    data: { label: 'Circle CI' },
+  },
+  {
+    id: 'n16b1',
+    type: 'sub',
+    position: { x: 913, y: 2450 },
+    data: { label: 'Drone' },
+  },
+  {
+    id: 'n16b2',
+    type: 'sub',
+    position: { x: 904, y: 2500 },
+    data: { label: 'Bamboo' },
+  },
+  {
+    id: 'n16b3',
+    type: 'sub',
+    position: { x: 900, y: 2550 },
+    data: { label: 'Travis CI' },
+  },
+  {
+    id: 'n16c1',
+    type: 'sub',
+    position: { x: 1090, y: 2500 },
+    data: { label: 'TeamCity' },
+  },
+  {
+    id: 'n16c2',
+    type: 'sub',
+    position: { x: 1035, y: 2550 },
+    data: { label: 'Azure DevOps Services' },
+  },
+
+  // HEADLESS TESTING
+  {
+    id: 'n17',
+    type: 'main',
+    position: { x: 300, y: 2800 },
+    data: { label: 'Headless Testing' },
+  },
+  {
+    id: 'n17a1',
+    type: 'sub',
+    position: { x: -18, y: 2643 },
+    data: { label: 'Puppeteer' },
+  },
+  {
+    id: 'n17a2',
+    type: 'sub',
+    position: { x: 100, y: 2643 },
+    data: { label: 'Zombie.js' },
+  },
+  {
+    id: 'n17b1',
+    type: 'sub',
+    position: { x: -13, y: 2693 },
+    data: { label: 'Playwright' },
+  },
+  {
+    id: 'n17b2',
+    type: 'sub',
+    position: { x: 113, y: 2693 },
+    data: { label: 'Cypress' },
+  },
+  {
+    id: 'n17c',
+    type: 'sub',
+    position: { x: 38, y: 2743 },
+    data: { label: 'Headless Chrome' },
+  },
+  {
+    id: 'n17d',
+    type: 'sub',
+    position: { x: 73, y: 2793 },
+    data: { label: 'Headless Fox' },
+  },
+  {
+    id: 'n17e',
+    type: 'sub',
+    position: { x: 85, y: 2843 },
+    data: { label: 'HTML Unit' },
+  },
+
+  // END
+  {
+    id: 'end',
+    type: 'start',
+    position: { x: 371.5, y: 2900 },
+    data: { label: '|End|' },
   },
 ]
 
@@ -442,6 +596,11 @@ const initialEdges = [
   { id: 'e10-11', source: 'n10', sourceHandle: 'bottom-s', target: 'n11', targetHandle: 'top-t' },
   { id: 'e11-12', source: 'n11', sourceHandle: 'bottom-s', target: 'n12', targetHandle: 'top-t' },
   { id: 'e12-13', source: 'n12', sourceHandle: 'left-s', target: 'n13', targetHandle: 'right-t' },
+  { id: 'e13-14', source: 'n13', sourceHandle: 'bottom-s', target: 'n14', targetHandle: 'top-t' },
+  { id: 'e14-15', source: 'n14', sourceHandle: 'bottom-s', target: 'n15', targetHandle: 'top-t' },
+  { id: 'e15-16', source: 'n15', sourceHandle: 'bottom-s', target: 'n16', targetHandle: 'top-t' },
+  { id: 'e16-17', source: 'n16', sourceHandle: 'bottom-s', target: 'n17', targetHandle: 'top-t' },
+  { id: 'e17-end', source: 'n17', sourceHandle: 'bottom-s', target: 'end', targetHandle: 'top-t' },
 
   // Z LEAR THE BASICS W PRAWO
   {
@@ -720,6 +879,112 @@ const initialEdges = [
     source: 'n13',
     sourceHandle: 'left-s',
     target: 'n13g',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+
+  // VERSION CONTROL
+  {
+    id: 'n14-n14a',
+    source: 'n14',
+    sourceHandle: 'right-s',
+    target: 'n14a',
+    targetHandle: 'left-t',
+    animated: true,
+  },
+
+  // REPO HOSTING
+  {
+    id: 'n15-n15a',
+    source: 'n15',
+    sourceHandle: 'left-s',
+    target: 'n15a',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n15-n15b',
+    source: 'n15',
+    sourceHandle: 'left-s',
+    target: 'n15b',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n15-n15c',
+    source: 'n15',
+    sourceHandle: 'left-s',
+    target: 'n15c',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+
+  // CI/CD
+  {
+    id: 'n16-n16a3',
+    source: 'n16',
+    sourceHandle: 'right-s',
+    target: 'n16a3',
+    targetHandle: 'bottom-t',
+    animated: true,
+  },
+  {
+    id: 'n16-n16b3',
+    source: 'n16',
+    sourceHandle: 'right-s',
+    target: 'n16b3',
+    targetHandle: 'bottom-t',
+    animated: true,
+  },
+  {
+    id: 'n16-n16c2',
+    source: 'n16',
+    sourceHandle: 'right-s',
+    target: 'n16c2',
+    targetHandle: 'bottom-t',
+    animated: true,
+  },
+
+  // HEADLESS TESTING
+
+  {
+    id: 'n17-n17a2',
+    source: 'n17',
+    sourceHandle: 'left-s',
+    target: 'n17a2',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+
+  {
+    id: 'n17-n17b2',
+    source: 'n17',
+    sourceHandle: 'left-s',
+    target: 'n17b2',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n17-n17c',
+    source: 'n17',
+    sourceHandle: 'left-s',
+    target: 'n17c',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n17-n17d',
+    source: 'n17',
+    sourceHandle: 'left-s',
+    target: 'n17d',
+    targetHandle: 'right-t',
+    animated: true,
+  },
+  {
+    id: 'n17-n17e',
+    source: 'n17',
+    sourceHandle: 'left-s',
+    target: 'n17e',
     targetHandle: 'right-t',
     animated: true,
   },
