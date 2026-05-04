@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="flex items-center justify-center transition-opacity hover:opacity-70 focus:outline-none"
+      className="flex cursor-pointer items-center justify-center transition-opacity hover:opacity-70 focus:outline-none"
       aria-label="Toggle Theme"
     >
       {theme === 'dark' ? (
