@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { FiTerminal, FiTarget, FiArrowRight } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
+import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 const learningPaths = [
   {
@@ -53,7 +54,7 @@ function LessonsTable({
             <span className="font-sans text-sm font-bold tracking-wide">{lesson.title}</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="inline-block rounded-full bg-yellow-500/10 px-3 py-1 font-sans text-[9px] font-bold tracking-widest text-yellow-500 uppercase">
+            <span className="inline-block bg-yellow-500/10 px-3 py-1 font-sans text-[9px] font-bold tracking-widest text-yellow-500 uppercase">
               {lesson.status}
             </span>
             <FiArrowRight
@@ -70,10 +71,17 @@ export default function AcademyDashboard() {
   const t = useTranslations('Lessons')
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-1 p-6 lg:p-12">
-      <div className="flex w-full flex-col gap-0 lg:flex-row">
+    // TEN SAM GŁÓWNY WRAPPER
+    <div className="flex w-full flex-1 items-stretch justify-center font-sans">
+      {/* === LEWA SIATKA === */}
+      <div className="border-foreground/10 relative hidden flex-1 border-r lg:block">
+        <AcademyBackgroundGrid />
+      </div>
+
+      {/* === ŚRODKOWY KONTENT === */}
+      <div className="relative z-10 flex w-full max-w-4xl flex-col items-stretch lg:flex-row xl:max-w-5xl">
         {/* QA COLUMN */}
-        <div className="border-foreground/10 flex w-full flex-col border lg:w-1/2">
+        <div className="border-foreground/10 flex w-full flex-col border-b lg:w-1/2 lg:border-r lg:border-b-0">
           {(() => {
             const path = learningPaths[0]!
             const Icon = path.icon
@@ -121,7 +129,7 @@ export default function AcademyDashboard() {
         </div>
 
         {/* REALITY CHECK COLUMN */}
-        <div className="border-foreground/10 flex w-full flex-col border lg:w-1/2">
+        <div className="flex w-full flex-col lg:w-1/2">
           {(() => {
             const path = learningPaths[1]!
             const Icon = path.icon
@@ -169,6 +177,11 @@ export default function AcademyDashboard() {
             />
           </div>
         </div>
+      </div>
+
+      {/* === PRAWA SIATKA === */}
+      <div className="border-foreground/10 relative hidden flex-1 border-l lg:block">
+        <AcademyBackgroundGrid />
       </div>
     </div>
   )
