@@ -40,14 +40,14 @@ const MainNode = ({ data }: { data: any }) => (
 )
 
 const SubNode = ({ data }: { data: any }) => (
-  <div className="min-w-32 rounded-lg border px-4 py-2 text-center">
+  <div className="min-w-32 border px-4 py-2 text-center">
     <UniversalHandles />
     <div className="font-serif tracking-wide text-yellow-500">{data.label}</div>
   </div>
 )
 
 const ListNode = ({ data }: { data: any }) => (
-  <div className="flex min-w-48 flex-col rounded-lg border border-purple-800 bg-zinc-900 p-3">
+  <div className="flex min-w-48 flex-col border bg-zinc-900 p-3">
     <UniversalHandles />
     <div className="mb-2 flex justify-center border-b font-serif tracking-wide text-yellow-500">
       {data.label}

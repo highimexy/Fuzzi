@@ -36,7 +36,7 @@ export function StoreDropdown({ label, items }: DropdownProps) {
       {/* PRZYCISK TRIGGER */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`text-foreground/60 flex h-full items-center gap-1 border-b-2 px-1 font-sans uppercase transition-opacity hover:opacity-80 ${
+        className={`flex h-full cursor-pointer items-center gap-1 border-b-2 px-1 font-sans uppercase transition-opacity hover:opacity-80 ${
           isOpen ? 'text-foreground border-foreground/30' : 'border-transparent'
         }`}
       >
@@ -46,11 +46,11 @@ export function StoreDropdown({ label, items }: DropdownProps) {
 
       {/* MENU DROPDOWN  */}
       <div
-        className={`absolute left-1/2 z-50 w-48 origin-top -translate-x-1/2 pt-4 transition-all duration-200 ease-out ${
-          isOpen ? 'visible scale-100 opacity-100' : 'invisible scale-95 opacity-0'
+        className={`absolute left-1/2 z-100 w-48 origin-top -translate-x-1/2 transition-all duration-200 ease-out ${
+          isOpen ? 'visible' : 'invisible'
         }`}
       >
-        <div className="bg-background border-foreground/10 rounded-md border shadow-lg">
+        <div className="border-foreground/10 border bg-zinc-950">
           <div className="py-1" role="menu">
             {items.map((item, index) => (
               <Link

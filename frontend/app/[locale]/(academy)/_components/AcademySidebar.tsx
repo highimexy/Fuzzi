@@ -53,7 +53,7 @@ export function AcademySidebar() {
               </div>
 
               {item.badge && (
-                <span className="rounded bg-blue-500 px-1.5 py-0.5 text-[8px] font-bold tracking-wider text-white uppercase shadow-sm">
+                <span className="bg-blue-500 px-1.5 py-0.5 text-[8px] font-bold tracking-wider text-white uppercase shadow-sm">
                   {item.badge}
                 </span>
               )}
