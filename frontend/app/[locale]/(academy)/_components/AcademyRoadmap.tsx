@@ -1,5 +1,7 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
 import {
   ReactFlow,
   Controls,
@@ -33,28 +35,35 @@ const UniversalHandles = () => (
 // 2. Nodes Styles
 // ==========================================
 const MainNode = ({ data }: { data: any }) => (
-  <div className="min-w-48 border-2 border-yellow-500 bg-zinc-950 px-6 py-4 text-center">
+  <div className="border-foreground/30 bg-background min-w-48 border-2 px-6 py-4 text-center transition-colors dark:border-yellow-500">
     <UniversalHandles />
-    <div className="font-serif tracking-widest uppercase">{data.label}</div>
+    <div className="text-foreground font-serif tracking-widest uppercase transition-colors">
+      {data.label}
+    </div>
   </div>
 )
 
 const SubNode = ({ data }: { data: any }) => (
-  <div className="min-w-32 border px-4 py-2 text-center">
+  <div className="border-foreground/20 bg-background min-w-32 border px-4 py-2 text-center transition-colors">
     <UniversalHandles />
-    <div className="font-serif tracking-wide text-yellow-500">{data.label}</div>
+    <div className="text-foreground/80 font-serif tracking-wide transition-colors dark:text-yellow-500">
+      {data.label}
+    </div>
   </div>
 )
 
 const ListNode = ({ data }: { data: any }) => (
-  <div className="flex min-w-48 flex-col border bg-zinc-900 p-3">
+  <div className="border-foreground/20 bg-background dark:border-foreground/30 flex min-w-48 flex-col border p-3 transition-colors">
     <UniversalHandles />
-    <div className="mb-2 flex justify-center border-b font-serif tracking-wide text-yellow-500">
+    <div className="border-foreground/20 text-foreground/80 dark:border-foreground/30 mb-2 flex justify-center border-b font-serif tracking-wide transition-colors dark:text-yellow-500">
       {data.label}
     </div>
     <ul className="flex flex-col gap-2 text-center">
       {data.items?.map((item: string, index: number) => (
-        <li key={index} className="border font-bold">
+        <li
+          key={index}
+          className="border-foreground/10 bg-background text-foreground dark:border-foreground/20 border font-bold transition-colors"
+        >
           {item}
         </li>
       ))}
@@ -65,7 +74,9 @@ const ListNode = ({ data }: { data: any }) => (
 const StartNode = ({ data }: { data: any }) => (
   <div className="text-center">
     <UniversalHandles />
-    <div className="font-serif text-4xl tracking-wide text-yellow-500">{data.label}</div>
+    <div className="text-foreground font-serif text-4xl tracking-wide transition-colors dark:text-yellow-500">
+      {data.label}
+    </div>
   </div>
 )
 
@@ -83,22 +94,8 @@ const nodeTypes = {
 // 4. Structure (Nodes)
 // ==========================================
 const initialNodes = [
-  //START
-  {
-    id: 'n0',
-    type: 'start',
-    position: { x: 350, y: -150 },
-    data: { label: '|Start|' },
-  },
-
-  // LEARN THE BASICS
-  {
-    id: 'n1',
-    type: 'main',
-    position: { x: 295, y: 0 },
-    data: { label: 'Learn the Basics' },
-  },
-  //LEFT
+  { id: 'n0', type: 'start', position: { x: 350, y: -150 }, data: { label: '|Start|' } },
+  { id: 'n1', type: 'main', position: { x: 295, y: 0 }, data: { label: 'Learn the Basics' } },
   { id: 'n1a1', type: 'sub', position: { x: 650, y: -15 }, data: { label: 'Test Oracles' } },
   { id: 'n1a2', type: 'sub', position: { x: 650, y: 35 }, data: { label: 'Test Prioritization' } },
   {
@@ -113,17 +110,13 @@ const initialNodes = [
     position: { x: 834, y: 85 },
     data: { label: 'Manage your Testing', items: ['qTest', 'TestRail', 'TestLink', 'Zephyr'] },
   },
-  //RIGHT
   { id: 'n1b1', type: 'sub', position: { x: 55, y: -30 }, data: { label: 'What is QA?' } },
   { id: 'n1b2', type: 'sub', position: { x: 62, y: 20 }, data: { label: 'QA Mindset' } },
   { id: 'n1b3', type: 'sub', position: { x: 0, y: 70 }, data: { label: 'Testing Approaches' } },
   { id: 'n1b3a', type: 'sub', position: { x: 5, y: 150 }, data: { label: 'White Box Testing' } },
   { id: 'n1b3b', type: 'sub', position: { x: 5, y: 195 }, data: { label: 'Grey Box Testing' } },
   { id: 'n1b3c', type: 'sub', position: { x: 5, y: 240 }, data: { label: 'Black Box Testing' } },
-
-  // TESTING TECHNIQUES
   { id: 'ntt', type: 'main', position: { x: 650, y: 310 }, data: { label: 'Testing Techniques' } },
-
   {
     id: 'ntt1',
     type: 'list',
@@ -139,7 +132,6 @@ const initialNodes = [
       ],
     },
   },
-
   {
     id: 'ntt2',
     type: 'list',
@@ -158,32 +150,21 @@ const initialNodes = [
       ],
     },
   },
-
-  // SDLC Delivery
   { id: 'n2', type: 'main', position: { x: 314, y: 380 }, data: { label: 'SDLC Delivery' } },
-
   { id: 'n2a1', type: 'sub', position: { x: 230, y: 315 }, data: { label: 'Waterfall' } },
   { id: 'n2a2', type: 'sub', position: { x: 230, y: 270 }, data: { label: 'V Model' } },
   { id: 'n2a3', type: 'sub', position: { x: 230, y: 225 }, data: { label: 'Spiral' } },
-
   {
     id: 'n2b',
     type: 'list',
     position: { x: 0, y: 420 },
-    data: {
-      label: 'Functional Testing',
-      items: ['Kanban', 'Scrum', 'XP', 'SAFe'],
-    },
+    data: { label: 'Functional Testing', items: ['Kanban', 'Scrum', 'XP', 'SAFe'] },
   },
-
-  // METHODOLOGIES
   { id: 'n3', type: 'main', position: { x: 305.5, y: 550 }, data: { label: 'Methodologies' } },
   { id: 'n3a1', type: 'sub', position: { x: 540, y: 610 }, data: { label: 'BDD' } },
   { id: 'n3a2', type: 'sub', position: { x: 540, y: 655 }, data: { label: 'RCA' } },
   { id: 'n3b1', type: 'sub', position: { x: 250, y: 610 }, data: { label: 'TDD' } },
   { id: 'n3b2', type: 'sub', position: { x: 250, y: 655 }, data: { label: 'ATDD' } },
-
-  //MANUAL TESTING
   { id: 'n4', type: 'main', position: { x: 301, y: 780 }, data: { label: 'Manual Testing' } },
   {
     id: 'n4a',
@@ -199,11 +180,8 @@ const initialNodes = [
     data: { label: 'Verification & Validation' },
   },
   { id: 'n4d', type: 'sub', position: { x: 25, y: 850 }, data: { label: 'Test Planning' } },
-
-  // AUTOMATED TESTING
   { id: 'n5', type: 'main', position: { x: 282, y: 950 }, data: { label: 'Automated Testing' } },
   { id: 'n5a', type: 'sub', position: { x: 657, y: 943 }, data: { label: 'Frontend Automation' } },
-
   {
     id: 'n5a1',
     type: 'list',
@@ -234,10 +212,7 @@ const initialNodes = [
     id: 'n5a3',
     type: 'list',
     position: { x: 1097, y: 1050 },
-    data: {
-      label: 'Browser Addons',
-      items: ['Selenium IDE', 'BugBug', 'Ghost Inspector'],
-    },
+    data: { label: 'Browser Addons', items: ['Selenium IDE', 'BugBug', 'Ghost Inspector'] },
   },
   {
     id: 'n5b',
@@ -259,24 +234,15 @@ const initialNodes = [
     id: 'n5c',
     type: 'list',
     position: { x: -175, y: 1050 },
-    data: {
-      label: 'Mobile Automation',
-      items: ['Espresso', 'Detox', 'Appium', 'SwiftTesting'],
-    },
+    data: { label: 'Mobile Automation', items: ['Espresso', 'Detox', 'Appium', 'SwiftTesting'] },
   },
-
-  // NON FUNCTIONAL
   { id: 'n6', type: 'main', position: { x: 300, y: 1150 }, data: { label: 'Non-Functional' } },
-
-  // ACCESSIBILITY
   {
     id: 'n7',
     type: 'list',
     position: { x: 337.5, y: 1250 },
     data: { label: 'Accessibility', items: ['Wave', 'Axe', 'Chrome DevTools'] },
   },
-
-  // LOAD & PERFORMANCE
   {
     id: 'n8',
     type: 'list',
@@ -295,8 +261,6 @@ const initialNodes = [
       ],
     },
   },
-
-  // SECURITY TESTING
   {
     id: 'n9',
     type: 'list',
@@ -312,277 +276,63 @@ const initialNodes = [
       ],
     },
   },
-
-  // EMAIL TESTING
-  {
-    id: 'n10',
-    type: 'main',
-    position: { x: 700, y: 1647.5 },
-    data: { label: 'Email Testing' },
-  },
-  {
-    id: 'n10a1',
-    type: 'sub',
-    position: { x: 900, y: 1750 },
-    data: { label: 'Mailinator' },
-  },
-  {
-    id: 'n10a2',
-    type: 'sub',
-    position: { x: 900, y: 1795 },
-    data: { label: 'GmailTester' },
-  },
-
-  // TESTING DATA MANAGEMENT
+  { id: 'n10', type: 'main', position: { x: 700, y: 1647.5 }, data: { label: 'Email Testing' } },
+  { id: 'n10a1', type: 'sub', position: { x: 900, y: 1750 }, data: { label: 'Mailinator' } },
+  { id: 'n10a2', type: 'sub', position: { x: 900, y: 1795 }, data: { label: 'GmailTester' } },
   {
     id: 'n11',
     type: 'main',
     position: { x: 630, y: 1880 },
     data: { label: 'Testing Data Management' },
   },
-  {
-    id: 'n11a',
-    type: 'sub',
-    position: { x: 630, y: 1780 },
-    data: { label: 'Delphix' },
-  },
-
-  // REPORTING
-  {
-    id: 'n12',
-    type: 'main',
-    position: { x: 722, y: 2100 },
-    data: { label: 'Reporting' },
-  },
-  {
-    id: 'n12a',
-    type: 'sub',
-    position: { x: 1000, y: 2040 },
-    data: { label: 'TestRail' },
-  },
-  {
-    id: 'n12b',
-    type: 'sub',
-    position: { x: 1000, y: 2093 },
-    data: { label: 'Allure' },
-  },
-  {
-    id: 'n12c',
-    type: 'sub',
-    position: { x: 1000, y: 2146 },
-    data: { label: 'jUnit' },
-  },
-
-  // MONITORING & LOGS
-  {
-    id: 'n13',
-    type: 'main',
-    position: { x: 291, y: 2100 },
-    data: { label: 'Monitoring & Logs' },
-  },
-  {
-    id: 'n13a',
-    type: 'sub',
-    position: { x: 0, y: 1943 },
-    data: { label: 'New Relic' },
-  },
-  {
-    id: 'n13b',
-    type: 'sub',
-    position: { x: 4, y: 1993 },
-    data: { label: 'Runscope' },
-  },
-  {
-    id: 'n13c',
-    type: 'sub',
-    position: { x: 22, y: 2043 },
-    data: { label: 'Kibana' },
-  },
-  {
-    id: 'n13d',
-    type: 'sub',
-    position: { x: 15, y: 2093 },
-    data: { label: 'Datadog' },
-  },
-  {
-    id: 'n13e',
-    type: 'sub',
-    position: { x: -8, y: 2143 },
-    data: { label: 'Pager Duty' },
-  },
-  {
-    id: 'n13f',
-    type: 'sub',
-    position: { x: 13, y: 2193 },
-    data: { label: 'Grafana' },
-  },
-  {
-    id: 'n13g',
-    type: 'sub',
-    position: { x: 26, y: 2243 },
-    data: { label: 'Sentry' },
-  },
-
-  // VERSION CONTROL
-  {
-    id: 'n14',
-    type: 'main',
-    position: { x: 301, y: 2300 },
-    data: { label: 'Version Control' },
-  },
-  {
-    id: 'n14a',
-    type: 'sub',
-    position: { x: 650, y: 2293 },
-    data: { label: 'Git' },
-  },
-
-  // REPO HOSTING SERVICES
-  {
-    id: 'n15',
-    type: 'main',
-    position: { x: 321, y: 2450 },
-    data: { label: 'Repo Hosting' },
-  },
-  {
-    id: 'n15a',
-    type: 'sub',
-    position: { x: 100, y: 2393 },
-    data: { label: 'GitHub' },
-  },
-  {
-    id: 'n15b',
-    type: 'sub',
-    position: { x: 104, y: 2443 },
-    data: { label: 'GitLab' },
-  },
-  {
-    id: 'n15c',
-    type: 'sub',
-    position: { x: 83, y: 2493 },
-    data: { label: 'Bitbucket' },
-  },
-
-  // CI/CD
-  {
-    id: 'n16',
-    type: 'main',
-    position: { x: 650, y: 2650 },
-    data: { label: 'CI/CD' },
-  },
-  {
-    id: 'n16a1',
-    type: 'sub',
-    position: { x: 770, y: 2450 },
-    data: { label: 'Jenkins' },
-  },
-  {
-    id: 'n16a2',
-    type: 'sub',
-    position: { x: 763, y: 2500 },
-    data: { label: 'GitLab CI' },
-  },
-  {
-    id: 'n16a3',
-    type: 'sub',
-    position: { x: 766, y: 2550 },
-    data: { label: 'Circle CI' },
-  },
-  {
-    id: 'n16b1',
-    type: 'sub',
-    position: { x: 913, y: 2450 },
-    data: { label: 'Drone' },
-  },
-  {
-    id: 'n16b2',
-    type: 'sub',
-    position: { x: 904, y: 2500 },
-    data: { label: 'Bamboo' },
-  },
-  {
-    id: 'n16b3',
-    type: 'sub',
-    position: { x: 900, y: 2550 },
-    data: { label: 'Travis CI' },
-  },
-  {
-    id: 'n16c1',
-    type: 'sub',
-    position: { x: 1090, y: 2500 },
-    data: { label: 'TeamCity' },
-  },
+  { id: 'n11a', type: 'sub', position: { x: 630, y: 1780 }, data: { label: 'Delphix' } },
+  { id: 'n12', type: 'main', position: { x: 722, y: 2100 }, data: { label: 'Reporting' } },
+  { id: 'n12a', type: 'sub', position: { x: 1000, y: 2040 }, data: { label: 'TestRail' } },
+  { id: 'n12b', type: 'sub', position: { x: 1000, y: 2093 }, data: { label: 'Allure' } },
+  { id: 'n12c', type: 'sub', position: { x: 1000, y: 2146 }, data: { label: 'jUnit' } },
+  { id: 'n13', type: 'main', position: { x: 291, y: 2100 }, data: { label: 'Monitoring & Logs' } },
+  { id: 'n13a', type: 'sub', position: { x: 0, y: 1943 }, data: { label: 'New Relic' } },
+  { id: 'n13b', type: 'sub', position: { x: 4, y: 1993 }, data: { label: 'Runscope' } },
+  { id: 'n13c', type: 'sub', position: { x: 22, y: 2043 }, data: { label: 'Kibana' } },
+  { id: 'n13d', type: 'sub', position: { x: 15, y: 2093 }, data: { label: 'Datadog' } },
+  { id: 'n13e', type: 'sub', position: { x: -8, y: 2143 }, data: { label: 'Pager Duty' } },
+  { id: 'n13f', type: 'sub', position: { x: 13, y: 2193 }, data: { label: 'Grafana' } },
+  { id: 'n13g', type: 'sub', position: { x: 26, y: 2243 }, data: { label: 'Sentry' } },
+  { id: 'n14', type: 'main', position: { x: 301, y: 2300 }, data: { label: 'Version Control' } },
+  { id: 'n14a', type: 'sub', position: { x: 650, y: 2293 }, data: { label: 'Git' } },
+  { id: 'n15', type: 'main', position: { x: 321, y: 2450 }, data: { label: 'Repo Hosting' } },
+  { id: 'n15a', type: 'sub', position: { x: 100, y: 2393 }, data: { label: 'GitHub' } },
+  { id: 'n15b', type: 'sub', position: { x: 104, y: 2443 }, data: { label: 'GitLab' } },
+  { id: 'n15c', type: 'sub', position: { x: 83, y: 2493 }, data: { label: 'Bitbucket' } },
+  { id: 'n16', type: 'main', position: { x: 650, y: 2650 }, data: { label: 'CI/CD' } },
+  { id: 'n16a1', type: 'sub', position: { x: 770, y: 2450 }, data: { label: 'Jenkins' } },
+  { id: 'n16a2', type: 'sub', position: { x: 763, y: 2500 }, data: { label: 'GitLab CI' } },
+  { id: 'n16a3', type: 'sub', position: { x: 766, y: 2550 }, data: { label: 'Circle CI' } },
+  { id: 'n16b1', type: 'sub', position: { x: 913, y: 2450 }, data: { label: 'Drone' } },
+  { id: 'n16b2', type: 'sub', position: { x: 904, y: 2500 }, data: { label: 'Bamboo' } },
+  { id: 'n16b3', type: 'sub', position: { x: 900, y: 2550 }, data: { label: 'Travis CI' } },
+  { id: 'n16c1', type: 'sub', position: { x: 1090, y: 2500 }, data: { label: 'TeamCity' } },
   {
     id: 'n16c2',
     type: 'sub',
     position: { x: 1035, y: 2550 },
     data: { label: 'Azure DevOps Services' },
   },
-
-  // HEADLESS TESTING
-  {
-    id: 'n17',
-    type: 'main',
-    position: { x: 300, y: 2800 },
-    data: { label: 'Headless Testing' },
-  },
-  {
-    id: 'n17a1',
-    type: 'sub',
-    position: { x: -18, y: 2643 },
-    data: { label: 'Puppeteer' },
-  },
-  {
-    id: 'n17a2',
-    type: 'sub',
-    position: { x: 100, y: 2643 },
-    data: { label: 'Zombie.js' },
-  },
-  {
-    id: 'n17b1',
-    type: 'sub',
-    position: { x: -13, y: 2693 },
-    data: { label: 'Playwright' },
-  },
-  {
-    id: 'n17b2',
-    type: 'sub',
-    position: { x: 113, y: 2693 },
-    data: { label: 'Cypress' },
-  },
-  {
-    id: 'n17c',
-    type: 'sub',
-    position: { x: 38, y: 2743 },
-    data: { label: 'Headless Chrome' },
-  },
-  {
-    id: 'n17d',
-    type: 'sub',
-    position: { x: 73, y: 2793 },
-    data: { label: 'Headless Fox' },
-  },
-  {
-    id: 'n17e',
-    type: 'sub',
-    position: { x: 85, y: 2843 },
-    data: { label: 'HTML Unit' },
-  },
-
-  // END
-  {
-    id: 'end',
-    type: 'start',
-    position: { x: 371.5, y: 2900 },
-    data: { label: '|End|' },
-  },
+  { id: 'n17', type: 'main', position: { x: 300, y: 2800 }, data: { label: 'Headless Testing' } },
+  { id: 'n17a1', type: 'sub', position: { x: -18, y: 2643 }, data: { label: 'Puppeteer' } },
+  { id: 'n17a2', type: 'sub', position: { x: 100, y: 2643 }, data: { label: 'Zombie.js' } },
+  { id: 'n17b1', type: 'sub', position: { x: -13, y: 2693 }, data: { label: 'Playwright' } },
+  { id: 'n17b2', type: 'sub', position: { x: 113, y: 2693 }, data: { label: 'Cypress' } },
+  { id: 'n17c', type: 'sub', position: { x: 38, y: 2743 }, data: { label: 'Headless Chrome' } },
+  { id: 'n17d', type: 'sub', position: { x: 73, y: 2793 }, data: { label: 'Headless Fox' } },
+  { id: 'n17e', type: 'sub', position: { x: 85, y: 2843 }, data: { label: 'HTML Unit' } },
+  { id: 'end', type: 'start', position: { x: 371.5, y: 2900 }, data: { label: '|End|' } },
 ]
 
 // ==========================================
 // 5. Connections (Edges)
 // ==========================================
 const initialEdges = [
-  // MAIN CONNECTIONS
   { id: 'e0-1', source: 'n0', sourceHandle: 'bottom-s', target: 'n1', targetHandle: 'top-t' },
   { id: 'e1-2', source: 'n1', sourceHandle: 'bottom-s', target: 'n2', targetHandle: 'top-t' },
   { id: 'e2-3', source: 'n2', sourceHandle: 'bottom-s', target: 'n3', targetHandle: 'top-t' },
@@ -601,8 +351,6 @@ const initialEdges = [
   { id: 'e15-16', source: 'n15', sourceHandle: 'bottom-s', target: 'n16', targetHandle: 'top-t' },
   { id: 'e16-17', source: 'n16', sourceHandle: 'bottom-s', target: 'n17', targetHandle: 'top-t' },
   { id: 'e17-end', source: 'n17', sourceHandle: 'bottom-s', target: 'end', targetHandle: 'top-t' },
-
-  // Z LEAR THE BASICS W PRAWO
   {
     id: 'e1-1a1',
     source: 'n1',
@@ -627,7 +375,6 @@ const initialEdges = [
     targetHandle: 'left-t',
     animated: true,
   },
-  // Z LEAR THE BASICS W LEWO
   {
     id: 'e1-1b1',
     source: 'n1',
@@ -652,7 +399,6 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-  //Z TESTING APPROACHES NA DOL
   {
     id: 'n1b3-n1b3a',
     source: 'n1b3',
@@ -661,8 +407,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-
-  // Z TESTING TECHNIQUES NA DOL
   {
     id: 'ntt-ntt1',
     source: 'ntt',
@@ -679,7 +423,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-  // Z SDLC DELIVERY NA LEWO
   {
     id: 'n2-n2a1',
     source: 'n2',
@@ -696,7 +439,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-  // Z METHODOLOGIES
   {
     id: 'n3-n3a1',
     source: 'n3',
@@ -713,7 +455,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-  // MANUAL TESTING
   {
     id: 'n4-n4a',
     source: 'n4',
@@ -746,7 +487,6 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-  // AUTOMATED TESTING
   {
     id: 'n5-n5a',
     source: 'n5',
@@ -779,7 +519,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-  // EMAIL TESTING
   {
     id: 'n10-n10a1',
     source: 'n10',
@@ -788,8 +527,6 @@ const initialEdges = [
     targetHandle: 'top-t',
     animated: true,
   },
-
-  // TESTING DATA MANAGEMENT
   {
     id: 'n11-n11a',
     source: 'n11',
@@ -798,8 +535,6 @@ const initialEdges = [
     targetHandle: 'bottom-t',
     animated: true,
   },
-
-  // REPORTING
   {
     id: 'n12-n12a',
     source: 'n12',
@@ -824,8 +559,6 @@ const initialEdges = [
     targetHandle: 'left-t',
     animated: true,
   },
-
-  // MONITORING LOGS
   {
     id: 'n13-n12a',
     source: 'n13',
@@ -882,8 +615,6 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-
-  // VERSION CONTROL
   {
     id: 'n14-n14a',
     source: 'n14',
@@ -892,8 +623,6 @@ const initialEdges = [
     targetHandle: 'left-t',
     animated: true,
   },
-
-  // REPO HOSTING
   {
     id: 'n15-n15a',
     source: 'n15',
@@ -918,8 +647,6 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-
-  // CI/CD
   {
     id: 'n16-n16a3',
     source: 'n16',
@@ -944,9 +671,6 @@ const initialEdges = [
     targetHandle: 'bottom-t',
     animated: true,
   },
-
-  // HEADLESS TESTING
-
   {
     id: 'n17-n17a2',
     source: 'n17',
@@ -955,7 +679,6 @@ const initialEdges = [
     targetHandle: 'right-t',
     animated: true,
   },
-
   {
     id: 'n17-n17b2',
     source: 'n17',
@@ -993,20 +716,30 @@ const initialEdges = [
 // ==========================================
 // 6. Main Roadmap Component
 // ==========================================
-
 export function RoadmapGraph() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
 
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null // Zapobiega błędom hydracji Next.js
+
+  const isDark = resolvedTheme === 'dark'
+
   return (
-    <div className="border-foreground/10 h-full w-full overflow-hidden border bg-zinc-950">
+    <div className="border-foreground/10 bg-background h-full w-full overflow-hidden border">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        colorMode="dark"
+        colorMode={isDark ? 'dark' : 'light'}
         fitView
         nodesDraggable={false}
         nodesConnectable={false}
@@ -1016,8 +749,13 @@ export function RoadmapGraph() {
           style: { strokeWidth: 2 },
         }}
       >
-        <Controls className="fill-zinc-300" />
-        <Background variant={BackgroundVariant.Lines} gap={30} size={1} color="#0a0a0a" />
+        <Controls className={isDark ? 'fill-zinc-300' : 'fill-zinc-700'} />
+        <Background
+          variant={BackgroundVariant.Lines}
+          gap={30}
+          size={1}
+          color={isDark ? '#0a0a0a' : '#e5e5e5'}
+        />
       </ReactFlow>
     </div>
   )
