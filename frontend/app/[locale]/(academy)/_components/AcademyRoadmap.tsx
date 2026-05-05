@@ -141,7 +141,7 @@ const initialNodes = [
     id: 'n1a3',
     type: 'list',
     position: { x: 650, y: 85 },
-    data: { label: 'Testing Approaches', items: ['Attlasian', 'Assembla', 'Youtrack', 'Trello'] },
+    data: { label: 'Testing Approaches', items: ['Atlassian', 'Assembla', 'YouTrack', 'Trello'] },
   },
   {
     id: 'n1a4',
@@ -260,10 +260,10 @@ const initialNodes = [
     data: {
       label: 'Backend Automation',
       items: [
-        'Karateframework',
+        'Karate Framework',
         'Cypress',
         'Playwright',
-        'Soap UI',
+        'SoapUI',
         'Postman / Newman',
         'REST Assured',
       ],
@@ -273,7 +273,7 @@ const initialNodes = [
     id: 'n5c',
     type: 'list',
     position: { x: -175, y: 1050 },
-    data: { label: 'Mobile Automation', items: ['Espresso', 'Detox', 'Appium', 'SwiftTesting'] },
+    data: { label: 'Mobile Automation', items: ['Espresso', 'Detox', 'Appium', 'Swift Testing'] },
   },
   { id: 'n6', type: 'main', position: { x: 300, y: 1150 }, data: { label: 'Non-Functional' } },
   {
@@ -291,9 +291,9 @@ const initialNodes = [
       items: [
         'Lighthouse',
         'Locust',
-        'Webpagetest',
-        ' Gatling',
-        ' K6',
+        'WebPageTest',
+        'Gatling',
+        'K6',
         'Artillery',
         'Vegeta',
         'JMeter',
