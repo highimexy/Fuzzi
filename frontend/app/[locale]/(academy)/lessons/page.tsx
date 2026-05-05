@@ -40,12 +40,12 @@ function LessonsTable({
   basePath: string
 }) {
   return (
-    <div className="space-y-0">
+    <div className="border-foreground/10 relative border">
       {Object.entries(items).map(([key, lesson]) => (
         <Link
           key={key}
           href={`${basePath}/${key}`}
-          className="group border-foreground/10 flex items-center justify-between border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
+          className="group border-foreground/10 bg-background flex items-center justify-between border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
         >
           <div className="flex items-center gap-4">
             <span className="font-mono text-[10px] tracking-widest opacity-30">
@@ -91,7 +91,7 @@ export default function AcademyDashboard() {
                 className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300 ${path.borderHover} ${path.bgHover}`}
               >
                 <Icon
-                  className={`absolute -top-6 -right-6 text-9xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
+                  className={`absolute top-2 right-2 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
                 />
 
                 <div>
@@ -101,19 +101,11 @@ export default function AcademyDashboard() {
                     >
                       {path.label}
                     </span>
-                    <Icon
-                      className={`text-2xl opacity-50 transition-opacity group-hover:opacity-100 ${path.colorClass}`}
-                    />
                   </div>
                   <h3 className="mb-3 font-serif text-2xl font-bold tracking-tight">
                     {path.title}
                   </h3>
                   <p className="font-sans text-sm leading-relaxed opacity-60">{path.desc}</p>
-                </div>
-
-                <div className="border-foreground/10 mt-10 flex items-center gap-3 border-t pt-4 font-serif text-xs font-bold uppercase opacity-50 transition-opacity group-hover:opacity-100">
-                  <span className="mt-2">Enter Path</span>
-                  <FiArrowRight className="mt-2 text-lg transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </Link>
             )
@@ -139,7 +131,7 @@ export default function AcademyDashboard() {
                 className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300 ${path.borderHover} ${path.bgHover}`}
               >
                 <Icon
-                  className={`absolute -top-6 -right-6 text-9xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
+                  className={`absolute top-3 right-3 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
                 />
 
                 <div>
@@ -149,19 +141,11 @@ export default function AcademyDashboard() {
                     >
                       {path.label}
                     </span>
-                    <Icon
-                      className={`text-2xl opacity-50 transition-opacity group-hover:opacity-100 ${path.colorClass}`}
-                    />
                   </div>
                   <h3 className="mb-3 font-serif text-2xl font-bold tracking-tight">
                     {path.title}
                   </h3>
                   <p className="font-sans text-sm leading-relaxed opacity-60">{path.desc}</p>
-                </div>
-
-                <div className="border-foreground/10 mt-10 flex items-center gap-3 border-t pt-4 font-serif text-xs font-bold uppercase opacity-50 transition-opacity group-hover:opacity-100">
-                  <span className="mt-2">Enter Path</span>
-                  <FiArrowRight className="mt-2 text-lg transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </Link>
             )
