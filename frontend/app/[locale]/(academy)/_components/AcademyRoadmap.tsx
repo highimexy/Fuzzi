@@ -133,7 +133,7 @@ const nodeTypes = {
 // 4. Structure (Nodes)
 // ==========================================
 const initialNodes = [
-  { id: 'n0', type: 'start', position: { x: 350, y: -150 }, data: { label: '|Start|' } },
+  { id: 'n0', type: 'start', position: { x: 347, y: -150 }, data: { label: '|Start|' } },
   { id: 'n1', type: 'main', position: { x: 295, y: 0 }, data: { label: 'Learn the Basics' } },
   { id: 'n1a1', type: 'sub', position: { x: 650, y: -15 }, data: { label: 'Test Oracles' } },
   { id: 'n1a2', type: 'sub', position: { x: 650, y: 35 }, data: { label: 'Test Prioritization' } },
@@ -146,20 +146,20 @@ const initialNodes = [
   {
     id: 'n1a4',
     type: 'list',
-    position: { x: 834, y: 85 },
+    position: { x: 842, y: 85 },
     data: { label: 'Manage your Testing', items: ['qTest', 'TestRail', 'TestLink', 'Zephyr'] },
   },
-  { id: 'n1b1', type: 'sub', position: { x: 55, y: -30 }, data: { label: 'What is QA?' } },
-  { id: 'n1b2', type: 'sub', position: { x: 62, y: 20 }, data: { label: 'QA Mindset' } },
+  { id: 'n1b1', type: 'sub', position: { x: 59, y: -30 }, data: { label: 'What is QA?' } },
+  { id: 'n1b2', type: 'sub', position: { x: 66, y: 20 }, data: { label: 'QA Mindset' } },
   { id: 'n1b3', type: 'sub', position: { x: 0, y: 70 }, data: { label: 'Testing Approaches' } },
   { id: 'n1b3a', type: 'sub', position: { x: 5, y: 150 }, data: { label: 'White Box Testing' } },
-  { id: 'n1b3b', type: 'sub', position: { x: 5, y: 195 }, data: { label: 'Grey Box Testing' } },
-  { id: 'n1b3c', type: 'sub', position: { x: 5, y: 240 }, data: { label: 'Black Box Testing' } },
+  { id: 'n1b3b', type: 'sub', position: { x: 11, y: 192 }, data: { label: 'Grey Box Testing' } },
+  { id: 'n1b3c', type: 'sub', position: { x: 8, y: 234 }, data: { label: 'Black Box Testing' } },
   { id: 'ntt', type: 'main', position: { x: 650, y: 310 }, data: { label: 'Testing Techniques' } },
   {
     id: 'ntt1',
     type: 'list',
-    position: { x: 650, y: 400 },
+    position: { x: 650, y: 425 },
     data: {
       label: 'Test Management',
       items: [
@@ -174,7 +174,7 @@ const initialNodes = [
   {
     id: 'ntt2',
     type: 'list',
-    position: { x: 850, y: 400 },
+    position: { x: 850, y: 425 },
     data: {
       label: 'Functional Testing',
       items: [
@@ -190,9 +190,9 @@ const initialNodes = [
     },
   },
   { id: 'n2', type: 'main', position: { x: 314, y: 380 }, data: { label: 'SDLC Delivery' } },
-  { id: 'n2a1', type: 'sub', position: { x: 230, y: 315 }, data: { label: 'Waterfall' } },
-  { id: 'n2a2', type: 'sub', position: { x: 230, y: 270 }, data: { label: 'V Model' } },
-  { id: 'n2a3', type: 'sub', position: { x: 230, y: 225 }, data: { label: 'Spiral' } },
+  { id: 'n2a1', type: 'sub', position: { x: 227, y: 315 }, data: { label: 'Waterfall' } },
+  { id: 'n2a2', type: 'sub', position: { x: 227, y: 273 }, data: { label: 'V Model' } },
+  { id: 'n2a3', type: 'sub', position: { x: 227, y: 231 }, data: { label: 'Spiral' } },
   {
     id: 'n2b',
     type: 'list',
@@ -200,27 +200,27 @@ const initialNodes = [
     data: { label: 'Functional Testing', items: ['Kanban', 'Scrum', 'XP', 'SAFe'] },
   },
   { id: 'n3', type: 'main', position: { x: 305.5, y: 550 }, data: { label: 'Methodologies' } },
-  { id: 'n3a1', type: 'sub', position: { x: 540, y: 610 }, data: { label: 'BDD' } },
-  { id: 'n3a2', type: 'sub', position: { x: 540, y: 655 }, data: { label: 'RCA' } },
-  { id: 'n3b1', type: 'sub', position: { x: 250, y: 610 }, data: { label: 'TDD' } },
-  { id: 'n3b2', type: 'sub', position: { x: 250, y: 655 }, data: { label: 'ATDD' } },
+  { id: 'n3a1', type: 'sub', position: { x: 495, y: 620 }, data: { label: 'BDD' } },
+  { id: 'n3a2', type: 'sub', position: { x: 495, y: 662 }, data: { label: 'RCA' } },
+  { id: 'n3b1', type: 'sub', position: { x: 215, y: 620 }, data: { label: 'TDD' } },
+  { id: 'n3b2', type: 'sub', position: { x: 215, y: 662 }, data: { label: 'ATDD' } },
   { id: 'n4', type: 'main', position: { x: 301, y: 780 }, data: { label: 'Manual Testing' } },
   {
     id: 'n4a',
     type: 'sub',
-    position: { x: -50, y: 700 },
+    position: { x: -55, y: 700 },
     data: { label: 'Test Cases & Scenarios' },
   },
-  { id: 'n4b', type: 'sub', position: { x: 25, y: 750 }, data: { label: 'Compatibility' } },
+  { id: 'n4b', type: 'sub', position: { x: 24, y: 750 }, data: { label: 'Compatibility' } },
   {
     id: 'n4c',
     type: 'sub',
-    position: { x: -62, y: 800 },
+    position: { x: -71, y: 800 },
     data: { label: 'Verification & Validation' },
   },
-  { id: 'n4d', type: 'sub', position: { x: 25, y: 850 }, data: { label: 'Test Planning' } },
+  { id: 'n4d', type: 'sub', position: { x: 23, y: 850 }, data: { label: 'Test Planning' } },
   { id: 'n5', type: 'main', position: { x: 282, y: 950 }, data: { label: 'Automated Testing' } },
-  { id: 'n5a', type: 'sub', position: { x: 657, y: 943 }, data: { label: 'Frontend Automation' } },
+  { id: 'n5a', type: 'sub', position: { x: 653, y: 959 }, data: { label: 'Frontend Automation' } },
   {
     id: 'n5a1',
     type: 'list',
@@ -250,13 +250,13 @@ const initialNodes = [
   {
     id: 'n5a3',
     type: 'list',
-    position: { x: 1097, y: 1050 },
+    position: { x: 1106, y: 1050 },
     data: { label: 'Browser Addons', items: ['Selenium IDE', 'BugBug', 'Ghost Inspector'] },
   },
   {
     id: 'n5b',
     type: 'list',
-    position: { x: 10, y: 1050 },
+    position: { x: 22, y: 1050 },
     data: {
       label: 'Backend Automation',
       items: [
@@ -279,7 +279,7 @@ const initialNodes = [
   {
     id: 'n7',
     type: 'list',
-    position: { x: 337.5, y: 1250 },
+    position: { x: 324.3, y: 1260 },
     data: { label: 'Accessibility', items: ['Wave', 'Axe', 'Chrome DevTools'] },
   },
   {
@@ -315,7 +315,7 @@ const initialNodes = [
       ],
     },
   },
-  { id: 'n10', type: 'main', position: { x: 700, y: 1647.5 }, data: { label: 'Email Testing' } },
+  { id: 'n10', type: 'main', position: { x: 700, y: 1631.5 }, data: { label: 'Email Testing' } },
   { id: 'n10a1', type: 'sub', position: { x: 900, y: 1750 }, data: { label: 'Mailinator' } },
   { id: 'n10a2', type: 'sub', position: { x: 900, y: 1795 }, data: { label: 'GmailTester' } },
   {
@@ -325,7 +325,7 @@ const initialNodes = [
     data: { label: 'Testing Data Management' },
   },
   { id: 'n11a', type: 'sub', position: { x: 630, y: 1780 }, data: { label: 'Delphix' } },
-  { id: 'n12', type: 'main', position: { x: 722, y: 2100 }, data: { label: 'Reporting' } },
+  { id: 'n12', type: 'main', position: { x: 711.5, y: 2100 }, data: { label: 'Reporting' } },
   { id: 'n12a', type: 'sub', position: { x: 1000, y: 2040 }, data: { label: 'TestRail' } },
   { id: 'n12b', type: 'sub', position: { x: 1000, y: 2093 }, data: { label: 'Allure' } },
   { id: 'n12c', type: 'sub', position: { x: 1000, y: 2146 }, data: { label: 'jUnit' } },
@@ -365,7 +365,7 @@ const initialNodes = [
   { id: 'n17c', type: 'sub', position: { x: 38, y: 2743 }, data: { label: 'Headless Chrome' } },
   { id: 'n17d', type: 'sub', position: { x: 73, y: 2793 }, data: { label: 'Headless Fox' } },
   { id: 'n17e', type: 'sub', position: { x: 85, y: 2843 }, data: { label: 'HTML Unit' } },
-  { id: 'end', type: 'start', position: { x: 371.5, y: 2900 }, data: { label: '|End|' } },
+  { id: 'end', type: 'start', position: { x: 369.2, y: 2910 }, data: { label: '|End|' } },
 ]
 
 // ==========================================
