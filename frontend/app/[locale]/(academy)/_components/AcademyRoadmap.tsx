@@ -13,7 +13,7 @@ import {
   Handle,
   Position,
 } from '@xyflow/react'
-
+import { TopicSidebarContent } from './AcademyRoadMapSidebarContent'
 import '@xyflow/react/dist/style.css'
 
 // ==========================================
@@ -834,14 +834,7 @@ export function RoadmapGraph() {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-              <p className="text-foreground/70 font-sans text-sm">
-                Tutaj możesz załadować dynamiczne dane (z bazy lub pliku JSON) dotyczące tematu:{' '}
-                <strong className="text-foreground">{selectedTopic.title}</strong>.
-              </p>
-
-              <div className="border-foreground/20 mt-8 border border-dashed p-4 text-center text-xs opacity-50">
-                [ Placeholder na treść z CMS / Plików MDX ]
-              </div>
+              <TopicSidebarContent topicTitle={selectedTopic.title} />
             </div>
           </>
         )}
