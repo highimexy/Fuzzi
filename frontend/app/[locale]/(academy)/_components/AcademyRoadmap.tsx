@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useTheme } from 'next-themes'
+import { FiX } from 'react-icons/fi'
 import {
   ReactFlow,
   Controls,
@@ -20,14 +21,54 @@ import '@xyflow/react/dist/style.css'
 // ==========================================
 const UniversalHandles = () => (
   <>
-    <Handle id="top-t" type="target" position={Position.Top} className="bg-zinc-500!" />
-    <Handle id="top-s" type="source" position={Position.Top} className="bg-zinc-500!" />
-    <Handle id="bottom-t" type="target" position={Position.Bottom} className="bg-zinc-500!" />
-    <Handle id="bottom-s" type="source" position={Position.Bottom} className="bg-zinc-500!" />
-    <Handle id="left-t" type="target" position={Position.Left} className="bg-zinc-500!" />
-    <Handle id="left-s" type="source" position={Position.Left} className="bg-zinc-500!" />
-    <Handle id="right-t" type="target" position={Position.Right} className="bg-zinc-500!" />
-    <Handle id="right-s" type="source" position={Position.Right} className="bg-zinc-500!" />
+    <Handle
+      id="top-t"
+      type="target"
+      position={Position.Top}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="top-s"
+      type="source"
+      position={Position.Top}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="bottom-t"
+      type="target"
+      position={Position.Bottom}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="bottom-s"
+      type="source"
+      position={Position.Bottom}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="left-t"
+      type="target"
+      position={Position.Left}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="left-s"
+      type="source"
+      position={Position.Left}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="right-t"
+      type="target"
+      position={Position.Right}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
+    <Handle
+      id="right-s"
+      type="source"
+      position={Position.Right}
+      className="bg-foreground/30! dark:bg-zinc-500!"
+    />
   </>
 )
 
@@ -35,7 +76,7 @@ const UniversalHandles = () => (
 // 2. Nodes Styles
 // ==========================================
 const MainNode = ({ data }: { data: any }) => (
-  <div className="border-foreground/30 bg-background min-w-48 border-2 px-6 py-4 text-center transition-colors dark:border-yellow-500">
+  <div className="bg-background border-foreground/20 min-w-48 cursor-pointer border-2 px-6 py-4 text-center transition-colors hover:border-yellow-500">
     <UniversalHandles />
     <div className="text-foreground font-serif tracking-widest uppercase transition-colors">
       {data.label}
@@ -44,25 +85,23 @@ const MainNode = ({ data }: { data: any }) => (
 )
 
 const SubNode = ({ data }: { data: any }) => (
-  <div className="border-foreground/20 bg-background min-w-32 border px-4 py-2 text-center transition-colors">
+  <div className="border-foreground/20 bg-background min-w-32 cursor-pointer border px-4 py-2 text-center transition-colors hover:border-yellow-500">
     <UniversalHandles />
-    <div className="text-foreground/80 font-serif tracking-wide transition-colors dark:text-yellow-500">
-      {data.label}
-    </div>
+    <div className="font-serif tracking-wide text-yellow-500 transition-colors">{data.label}</div>
   </div>
 )
 
 const ListNode = ({ data }: { data: any }) => (
-  <div className="border-foreground/20 bg-background dark:border-foreground/30 flex min-w-48 flex-col border p-3 transition-colors">
+  <div className="border-foreground/30 bg-background flex min-w-48 flex-col border p-3 transition-colors">
     <UniversalHandles />
-    <div className="border-foreground/20 text-foreground/80 dark:border-foreground/30 mb-2 flex justify-center border-b font-serif tracking-wide transition-colors dark:text-yellow-500">
+    <div className="border-foreground/20 mb-2 flex cursor-pointer justify-center border-b font-serif tracking-wide text-yellow-500 transition-colors hover:text-yellow-300">
       {data.label}
     </div>
     <ul className="flex flex-col gap-2 text-center">
       {data.items?.map((item: string, index: number) => (
         <li
           key={index}
-          className="border-foreground/10 bg-background text-foreground dark:border-foreground/20 border font-bold transition-colors"
+          className="border-foreground/20 bg-background text-foreground cursor-pointer border font-bold transition-colors hover:border-yellow-500"
         >
           {item}
         </li>
@@ -74,7 +113,7 @@ const ListNode = ({ data }: { data: any }) => (
 const StartNode = ({ data }: { data: any }) => (
   <div className="text-center">
     <UniversalHandles />
-    <div className="text-foreground font-serif text-4xl tracking-wide transition-colors dark:text-yellow-500">
+    <div className="font-serif text-4xl tracking-wide text-yellow-500 transition-colors">
       {data.label}
     </div>
   </div>
@@ -723,22 +762,35 @@ export function RoadmapGraph() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
+  const [selectedTopic, setSelectedTopic] = useState<{ title: string; type: string } | null>(null)
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null // Zapobiega błędom hydracji Next.js
+  const handleNodeClick = useCallback((event: React.MouseEvent, node: any) => {
+    const target = event.target as HTMLElement
+
+    if (target.tagName.toLowerCase() === 'li') {
+      setSelectedTopic({ title: target.innerText, type: 'Sub-topic' })
+    } else if (node.type !== 'start') {
+      setSelectedTopic({ title: node.data.label, type: 'Category' })
+    }
+  }, [])
+
+  if (!mounted) return null
 
   const isDark = resolvedTheme === 'dark'
 
   return (
-    <div className="border-foreground/10 bg-background h-full w-full overflow-hidden border">
+    <div className="border-foreground/10 bg-background relative h-full w-full overflow-hidden border">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
+        onNodeClick={handleNodeClick}
         colorMode={isDark ? 'dark' : 'light'}
         fitView
         nodesDraggable={false}
@@ -757,6 +809,43 @@ export function RoadmapGraph() {
           color={isDark ? '#0a0a0a' : '#e5e5e5'}
         />
       </ReactFlow>
+
+      {/* BOCZNY PANEL (MODAL / SIDEBAR) */}
+      <div
+        className={`bg-background border-foreground/10 absolute top-0 right-0 z-50 flex h-full w-full flex-col border-l transition-transform duration-300 ease-in-out lg:w-150 ${
+          selectedTopic ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        {selectedTopic && (
+          <>
+            <div className="border-foreground/10 flex flex-col border-b p-4">
+              <div className="flex items-center justify-between">
+                <span className="font-bold tracking-widest text-yellow-500 uppercase">
+                  {selectedTopic.type}
+                </span>
+                <button
+                  onClick={() => setSelectedTopic(null)}
+                  className="text-foreground/50 hover:text-foreground p-2 transition-colors"
+                >
+                  <FiX className="text-2xl" />
+                </button>
+              </div>
+              <h3 className="font-serif">{selectedTopic.title}</h3>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6">
+              <p className="text-foreground/70 font-sans text-sm">
+                Tutaj możesz załadować dynamiczne dane (z bazy lub pliku JSON) dotyczące tematu:{' '}
+                <strong className="text-foreground">{selectedTopic.title}</strong>.
+              </p>
+
+              <div className="border-foreground/20 mt-8 border border-dashed p-4 text-center text-xs opacity-50">
+                [ Placeholder na treść z CMS / Plików MDX ]
+              </div>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }
