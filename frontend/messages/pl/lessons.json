@@ -9,74 +9,1216 @@
       "description": "Wybierz specjalizację i zanurz się w ustrukturyzowanym programie nauczania."
     },
     "qaLessons": {
-      "label": "Lekcje QA",
-      "description": "Opanuj sztukę testowania, od fundamentów po automatyzację.",
-      "table": {
-        "lesson": "Lekcja",
-        "title": "Tytuł",
-        "status": "Status",
-        "action": "Rozpocznij"
-      },
+      "label": "Ostateczne Kompendium QA",
+      "description": "Definitywny, atomowy przewodnik po testowaniu. Od pakietów sieciowych po mikrointerakcje każdego komponentu UI.",
+      "table": { "lesson": "Moduł", "title": "Tytuł", "status": "Status", "action": "Rozpocznij" },
       "items": {
         "1": {
-          "title": "Mentalność Sceptyka",
-          "status": "Wkrótce"
+          "title": "Systemy Binarne i Heksadecymalne",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         },
         "2": {
-          "title": "Anatomia UI — Głębokie Zanurzenie",
-          "status": "Wkrótce"
+          "title": "Architektura CPU i RAM",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         },
         "3": {
-          "title": "Arsenał Techniczny",
-          "status": "Wkrótce"
+          "title": "Wnętrze Systemów Operacyjnych (Podstawy Kernela)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         },
         "4": {
-          "title": "Polowanie na Edge Case'y",
-          "status": "Wkrótce"
+          "title": "Systemy Plików i Uprawnienia",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         },
         "5": {
-          "title": "Mistrzostwo Raportów Bugów",
-          "status": "Wkrótce"
+          "title": "Mistrzostwo Terminala (Bash/Zsh)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         },
         "6": {
-          "title": "Czynnik Ludzki",
-          "status": "Wkrótce"
+          "title": "SSH i Zdalne Serwery",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "7": {
+          "title": "Procesy vs Wątki",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "8": {
+          "title": "Zarządzanie Pamięcią - Podstawy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "9": {
+          "title": "Wstęp do Algorytmów",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "10": {
+          "title": "Struktury Danych dla QA",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "11": {
+          "title": "Modele OSI i ISO",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "12": {
+          "title": "TCP/IP vs UDP",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "13": {
+          "title": "DNS i Routing",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "14": {
+          "title": "SSL/TLS Handshake",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "15": {
+          "title": "HTTP/1.1 vs HTTP/2 vs HTTP/3",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "16": {
+          "title": "WebSockets i gRPC",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "17": {
+          "title": "Load Balancery i Proxy",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "18": {
+          "title": "Konteneryzacja (Docker)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "19": {
+          "title": "Orkiestracja (Kubernetes)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "20": {
+          "title": "Podstawy Chmury (AWS/Azure/GCP)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "21": {
+          "title": "Architektura Klient-Serwer",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "22": {
+          "title": "Mikroserwisy vs Monolity",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "23": {
+          "title": "Bazy Danych SQL i ACID",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "24": {
+          "title": "NoSQL i Caching (Redis)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "25": {
+          "title": "Kolejki Wiadomości (Kafka/RabbitMQ)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "26": {
+          "title": "Architektura Serverless",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "27": {
+          "title": "Rendering: SSR vs CSR vs SSG",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "28": {
+          "title": "Service Workers i PWA",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "29": {
+          "title": "WebAssembly (Wasm)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "30": {
+          "title": "Bezpieczeństwo Webowe (OWASP Top 10)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "31": {
+          "title": "Komponent: Akordeon (Accordion)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "32": {
+          "title": "Komponent: Alerty i Toasty",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "33": {
+          "title": "Komponent: Avatar",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "34": {
+          "title": "Komponent: Badge i Tag",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "35": {
+          "title": "Komponent: Breadcrumbs (Okruszki)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "36": {
+          "title": "Komponent: Button (Stany i Focus)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "37": {
+          "title": "Komponent: Grupa Przycisków (Button Group)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "38": {
+          "title": "Komponent: Karta i Kafelek (Card & Tile)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "39": {
+          "title": "Komponent: Karuzela i Slider",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "40": {
+          "title": "Komponent: Checkbox",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "41": {
+          "title": "Komponent: Color Picker (Wybór koloru)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "42": {
+          "title": "Komponent: Combobox i Autocomplete",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "43": {
+          "title": "Komponent: Date Input (Pole daty)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "44": {
+          "title": "Komponent: Datepicker i Kalendarz",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "45": {
+          "title": "Komponent: Drawer i Sheet (Szuflada)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "46": {
+          "title": "Komponent: Dropdown Menu",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "47": {
+          "title": "Komponent: Pusty Stan (Empty State)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "48": {
+          "title": "Komponent: Fieldset",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "49": {
+          "title": "Komponent: Upload Plików i Dropzone",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "50": {
+          "title": "Komponent: Footer (Stopka)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "51": {
+          "title": "Komponent: Walidacja Formularzy",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "52": {
+          "title": "Komponent: Header i Pasek Nawigacji",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "53": {
+          "title": "Komponent: Sekcja Hero",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "54": {
+          "title": "Komponent: Ikony (SVG vs Web Fonts)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "55": {
+          "title": "Komponent: Obrazy i Lazy Loading",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "56": {
+          "title": "Komponent: Link i Kotwica (Anchor)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "57": {
+          "title": "Komponent: Listy (ul/ol/dl)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "58": {
+          "title": "Komponent: Modal i Okno Dialogowe",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "59": {
+          "title": "Komponent: Nawigacja Mobilna",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "60": {
+          "title": "Komponent: Paginacja",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "61": {
+          "title": "Komponent: Popover",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "62": {
+          "title": "Komponent: Progress Bar (Pasek postępu)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "63": {
+          "title": "Komponent: Progress Indicator (Stepper)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "64": {
+          "title": "Komponent: Cytat i Blockquote",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "65": {
+          "title": "Komponent: Radio Button",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "66": {
+          "title": "Komponent: Ocena (Rating Stars)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "67": {
+          "title": "Komponent: Edytor Rich Text (WYSIWYG)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "68": {
+          "title": "Komponent: Pole Wyszukiwania",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "69": {
+          "title": "Komponent: Segmented Control",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "70": {
+          "title": "Komponent: Select",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "71": {
+          "title": "Komponent: Separator i Divider",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "72": {
+          "title": "Komponent: Skeleton Loader",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "73": {
+          "title": "Komponent: Slider (Suwak)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "74": {
+          "title": "Komponent: Spinner i Loader",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "75": {
+          "title": "Komponent: Data Table (Sortowanie/Filtry)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "76": {
+          "title": "Metadane: Favicon i App Manifest",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "77": {
+          "title": "Metadane: Tagi SEO i Opisy Meta",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "78": {
+          "title": "Metadane: Open Graph i Twitter Cards",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "79": {
+          "title": "Semantyczny HTML: Nagłówki (H1-H6)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "80": {
+          "title": "Dostępność (a11y) i Atrybuty ARIA",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "81": {
+          "title": "Lokalizacja (i18n) i Tłumaczenia",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "82": {
+          "title": "Strefy Czasowe i Unix Timestamps",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "83": {
+          "title": "Formatowanie: Waluty, Daty i Ustawienia Lokalne",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "84": {
+          "title": "Prywatność: Cookies, RODO i Zgody",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "85": {
+          "title": "Tracking, Analityka i Testowanie Pixeli",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "86": {
+          "title": "Podstawy Testów Wydajnościowych",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "87": {
+          "title": "Testy Obciążeniowe i Stress Testy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "88": {
+          "title": "Podstawy Inżynierii Chaosu (Chaos Engineering)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "89": {
+          "title": "Testy Mutacyjne",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "90": {
+          "title": "Testy Regresji Wizualnej",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "91": {
+          "title": "Automatyzacja UI: Playwright",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "92": {
+          "title": "Automatyzacja UI: Cypress",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "93": {
+          "title": "Testowanie Kontraktów API",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "94": {
+          "title": "Mobile: Symulatory vs Fizyczny Sprzęt",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "95": {
+          "title": "Testowanie Aplikacji Desktopowych (Electron)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "96": {
+          "title": "Testy Integracyjne vs Jednostkowe",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "97": {
+          "title": "Smoke vs Sanity vs Regression",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "98": {
+          "title": "Definiowanie Strategii Testów",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "99": {
+          "title": "Triage i Priorytetyzacja Defektów",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "100": {
+          "title": "AI w QA: Copilot i Promptowanie",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         }
       }
     },
     "realityLessons": {
-      "label": "Lekcje Zderzenia z Realiami",
-      "description": "Poruszaj się po rynku IT, zrozum wpływ AI i przetrwaj w branży.",
-      "table": {
-        "lesson": "Lekcja",
-        "title": "Tytuł",
-        "status": "Status",
-        "action": "Rozpocznij"
-      },
+      "label": "Zderzenie z Realiami: 100 Twardych Prawd",
+      "description": "To, czego nie powiedzą Ci na bootcampie. Przetrwanie w branży, która nigdy nie śpi.",
+      "table": { "lesson": "Lekcja", "title": "Tytuł", "status": "Status", "action": "Rozpocznij" },
       "items": {
         "1": {
-          "title": "Cykl Hype'u",
-          "status": "Wkrótce"
+          "title": "Cykl Hype'u Rynku IT vs Rzeczywistość",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         },
         "2": {
-          "title": "Bariera AI",
-          "status": "Wkrótce"
+          "title": "Prawda o Bootcampach i Pułapka na Juniorów",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         },
         "3": {
-          "title": "Dynamika Rynku",
-          "status": "Wkrótce"
+          "title": "Jak Pokonać ATS (Systemy Śledzenia Aplikantów)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         },
         "4": {
-          "title": "Przewodnik Przetrwania",
-          "status": "Wkrótce"
+          "title": "Optymalizacja CV: Maszyny vs Ludzie",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         },
         "5": {
-          "title": "Korpo-Leksykon",
-          "status": "Wkrótce"
+          "title": "Algorytm LinkedIna i Budowanie Zasięgów",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
         },
         "6": {
-          "title": "Tarcza Anty-AI",
-          "status": "Wkrótce"
+          "title": "Marka Osobista dla Inżynierów",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "7": {
+          "title": "Networking vs Nepotyzm",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "8": {
+          "title": "Dlaczego Juniorzy Nie Mogą Znaleźć Pracy",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "9": {
+          "title": "Rozmowa z HR: Psychologia 'Culture Fit'",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "10": {
+          "title": "Demaskowanie Rekruterów Technicznych i Agencji",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "11": {
+          "title": "Jak Przetrwać Testy Techniczne Bez Paniki",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "12": {
+          "title": "Strategia Live Coding i Głośne Myślenie",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "13": {
+          "title": "Mądre Pytania do Twoich Rekruterów",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "14": {
+          "title": "Podstawy Negocjacji Wynagrodzenia",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "15": {
+          "title": "ESOP, Opcje na Akcje i Ukryte Bonusy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "16": {
+          "title": "B2B vs UoP (Podatki i Ryzyko)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "17": {
+          "title": "Ciemna Strona Freelancingu",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "18": {
+          "title": "Kultura 'Hustle' vs Prawdziwe Życie",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "19": {
+          "title": "Izolacja w Pracy Zdalnej",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "20": {
+          "title": "Praca w Biurze: Ekspres do Kawy i Polityka",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "21": {
+          "title": "Przetrwanie Pierwszych 90 Dni (Onboarding)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "22": {
+          "title": "Bullshit Agile i Codzienne Rytuały",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "23": {
+          "title": "Jira: Narzędzie Pomocy czy Mikrozarządzania?",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "24": {
+          "title": "Polityka Biurowa i Struktury Władzy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "25": {
+          "title": "Dlaczego Seniorzy Czasem Mają Dość Juniorów",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "26": {
+          "title": "Praca w Startupie (Zorganizowany Chaos)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "27": {
+          "title": "Praca w Korporacji (Biurokracja)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "28": {
+          "title": "Dynamika Software House'ów (Klient to Bóg)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "29": {
+          "title": "Managing Up (Jak Zarządzać Swoim Szefem)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "30": {
+          "title": "Zarządzanie Interesariuszami i Asertywność",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "31": {
+          "title": "Odwieczny Konflikt: Deweloperzy vs QA",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "32": {
+          "title": "Kłamstwo Estymacji (Story Points)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "33": {
+          "title": "Crunch i Bezpłatne Nadgodziny",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "34": {
+          "title": "Przyjmowanie Feedbacku Bez Defensywy",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "35": {
+          "title": "Roczne Oceny Pracownicze (Teatr)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "36": {
+          "title": "Jak Faktycznie Dostać Awans",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "37": {
+          "title": "Kiedy i Jak Prosić o Podwyżkę",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "38": {
+          "title": "Wewnętrzny Networking i Widoczność",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "39": {
+          "title": "Transfery Między Działami",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "40": {
+          "title": "Zwalnianie Się z Klasą (Nie Pal Mostów)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "41": {
+          "title": "Syndrom Oszusta (Imposter Syndrome)",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "42": {
+          "title": "Wypalenie Zawodowe i Znaki Ostrzegawcze",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "43": {
+          "title": "Depresja i Zdrowie Psychiczne w IT",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "44": {
+          "title": "Ergonomia i Zdrowie Fizyczne",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "45": {
+          "title": "Biohacking dla Pracowników Biurowych",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "46": {
+          "title": "Deep Work i Zarządzanie Czasem",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "47": {
+          "title": "Sztuka Mówienia 'NIE'",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "48": {
+          "title": "Asertywność w Komunikacji Technicznej",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "49": {
+          "title": "Rozwiązywanie Konfliktów w Miejscu Pracy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "50": {
+          "title": "Radzenie Sobie z Toksycznymi Ludźmi",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "51": {
+          "title": "Post-mortems: Szukanie Winnych vs Rozwój",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "52": {
+          "title": "Dokumentacja: Rzecz, Której Nikt Nie Czyta",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "53": {
+          "title": "Wiedza Domenowa vs Umiejętności Techniczne",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "54": {
+          "title": "Pułapka Ciągłego Uczenia Się",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "55": {
+          "title": "FOMO Technologiczne",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "56": {
+          "title": "Projekty po Godzinach: Pasja vs Zysk",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "57": {
+          "title": "Finanse Osobiste: Poduszka Finansowa",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "58": {
+          "title": "Inwestowanie dla Programistów",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "59": {
+          "title": "Ruch FIRE (Niezależność Finansowa)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "60": {
+          "title": "Work-Life Balance: Mit czy Cel?",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "61": {
+          "title": "AI: Zagrożenie dla Branży czy Narzędzie?",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "62": {
+          "title": "Czy GenAI Zastąpi QA?",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "63": {
+          "title": "Prompt Engineering w Codziennych Zadaniach",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "64": {
+          "title": "Automatyzacja Nudnej Pracy Korporacyjnej",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "65": {
+          "title": "Etyka w Wytwarzaniu Oprogramowania",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "66": {
+          "title": "Prywatność i Inwigilacja Użytkowników",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "67": {
+          "title": "Prawdziwa Wartość Open Source",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "68": {
+          "title": "Konferencje IT: Turystyka czy Nauka?",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "69": {
+          "title": "Realna Wartość Certyfikatów (ISTQB/AWS)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "70": {
+          "title": "Specjalizacja vs Generalizacja",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "71": {
+          "title": "Ukryte Pieniądze w Systemach Legacy",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "72": {
+          "title": "Dlaczego Chmura Kosztuje Tak Dużo",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "73": {
+          "title": "Cyberbezpieczeństwo to Odpowiedzialność Każdego",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "74": {
+          "title": "Dane to Nowa Ropa",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "75": {
+          "title": "Dlaczego QA Musi Rozumieć UX",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "76": {
+          "title": "System Design dla Nie-Architektów",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "77": {
+          "title": "Ruch Low-Code i No-Code",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "78": {
+          "title": "Testowanie na Produkcji",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "79": {
+          "title": "Feature Flags i Stopniowe Wdrażanie",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "80": {
+          "title": "Monitoring i Observability",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "81": {
+          "title": "Stoicyzm w Świecie IT",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "82": {
+          "title": "Krytyczne Myślenie i Logika",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "83": {
+          "title": "Czytanie Między Wierszami Komunikatów PR",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "84": {
+          "title": "Manipulacja Statystykami na Dashboardach",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "85": {
+          "title": "Prawda o Zwolnieniach w Techu (Layoffs)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "86": {
+          "title": "Przetrwanie Korporacyjnej Restrukturyzacji",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "87": {
+          "title": "Globalna Konkurencja (Indie, LATAM, Europa Wschodnia)",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "88": {
+          "title": "Optymalizacja Podatkowa w IT",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "89": {
+          "title": "Prawa Autorskie i Własność Intelektualna Kodu",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "90": {
+          "title": "Kariera w Techu po 40-tce i 50-tce",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "91": {
+          "title": "Ścieżka Managerska (Koniec z Kodowaniem?)",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "92": {
+          "title": "Jak Być Mentorem dla Juniorów",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "93": {
+          "title": "Pisanie Techniczne i Dokumentacja",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "94": {
+          "title": "Prezentowanie Kwestii Technicznych Biznesowi",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "95": {
+          "title": "Eco-IT i Ślad Węglowy",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
+        },
+        "96": {
+          "title": "Web3 i Hype na Decentralizację",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "97": {
+          "title": "Wpływ Komputerów Kwantowych",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "98": {
+          "title": "Budowanie Odporności Psychicznej",
+          "status": "Wkrótce",
+          "difficulty": "Zaawansowany",
+          "progress": 0
+        },
+        "99": {
+          "title": "Tworzenie Własnego Planu 5-letniego",
+          "status": "Wkrótce",
+          "difficulty": "Średni",
+          "progress": 0
+        },
+        "100": {
+          "title": "Definiowanie Własnego Sukcesu w IT",
+          "status": "Wkrótce",
+          "difficulty": "Początkujący",
+          "progress": 0
         }
       }
     }

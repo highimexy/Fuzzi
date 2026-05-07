@@ -9,74 +9,1216 @@
       "description": "Choose your specialization track and dive deep into structured curriculum."
     },
     "qaLessons": {
-      "label": "QA Lessons",
-      "description": "Master the art of testing, from fundamentals to automation.",
-      "table": {
-        "lesson": "Lesson",
-        "title": "Title",
-        "status": "Status",
-        "action": "Start"
-      },
+      "label": "Ultimate QA Compendium",
+      "description": "The definitive, atomic guide to testing. From network packets to the micro-interactions of every UI component.",
+      "table": { "lesson": "Module", "title": "Title", "status": "Status", "action": "Start" },
       "items": {
         "1": {
-          "title": "The Skeptic Mindset",
-          "status": "Coming Soon"
+          "title": "Binary & Hex Systems",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         },
         "2": {
-          "title": "UI Anatomy Deep Dive",
-          "status": "Coming Soon"
+          "title": "CPU & RAM Architecture",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         },
         "3": {
-          "title": "Technical Toolkit",
-          "status": "Coming Soon"
+          "title": "OS Internals (Kernel basics)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         },
         "4": {
-          "title": "Edge Case Hunting",
-          "status": "Coming Soon"
+          "title": "Filesystems & Permissions",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         },
         "5": {
-          "title": "Bug Report Mastery",
-          "status": "Coming Soon"
+          "title": "Terminal Mastery (Bash/Zsh)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         },
         "6": {
-          "title": "The Human Factor",
-          "status": "Coming Soon"
+          "title": "SSH & Remote Servers",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "7": {
+          "title": "Processes vs Threads",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "8": {
+          "title": "Memory Management Basics",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "9": {
+          "title": "Intro to Algorithms",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "10": {
+          "title": "Data Structures for QA",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "11": {
+          "title": "OSI & ISO Models",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "12": {
+          "title": "TCP/IP vs UDP",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "13": {
+          "title": "DNS & Routing",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "14": {
+          "title": "SSL/TLS Handshake",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "15": {
+          "title": "HTTP/1.1 vs HTTP/2 vs HTTP/3",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "16": {
+          "title": "WebSockets & gRPC",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "17": {
+          "title": "Load Balancers & Proxies",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "18": {
+          "title": "Containerization (Docker)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "19": {
+          "title": "Orchestration (Kubernetes)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "20": {
+          "title": "Cloud Basics (AWS/Azure/GCP)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "21": {
+          "title": "Client-Server Architecture",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "22": {
+          "title": "Microservices vs Monoliths",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "23": {
+          "title": "SQL Databases & ACID",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "24": {
+          "title": "NoSQL & Caching (Redis)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "25": {
+          "title": "Message Brokers (Kafka/RabbitMQ)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "26": {
+          "title": "Serverless Architecture",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "27": {
+          "title": "Rendering: SSR vs CSR vs SSG",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "28": {
+          "title": "Service Workers & PWA",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "29": {
+          "title": "WebAssembly (Wasm)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "30": {
+          "title": "Web Security (OWASP Top 10)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "31": {
+          "title": "Component: Accordion",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "32": {
+          "title": "Component: Alert & Toast",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "33": {
+          "title": "Component: Avatar",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "34": {
+          "title": "Component: Badge & Tag",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "35": {
+          "title": "Component: Breadcrumbs",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "36": {
+          "title": "Component: Button (States & Focus)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "37": {
+          "title": "Component: Button Group",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "38": {
+          "title": "Component: Card & Tile",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "39": {
+          "title": "Component: Carousel & Slider",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "40": {
+          "title": "Component: Checkbox",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "41": {
+          "title": "Component: Color Picker",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "42": {
+          "title": "Component: Combobox & Autocomplete",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "43": {
+          "title": "Component: Date Input",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "44": {
+          "title": "Component: Datepicker & Calendar",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "45": {
+          "title": "Component: Drawer & Sheet",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "46": {
+          "title": "Component: Dropdown Menu",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "47": {
+          "title": "Component: Empty State",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "48": {
+          "title": "Component: Fieldset",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "49": {
+          "title": "Component: File Upload & Dropzone",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "50": {
+          "title": "Component: Footer",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "51": {
+          "title": "Component: Form Validation",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "52": {
+          "title": "Component: Header & Nav Bar",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "53": {
+          "title": "Component: Hero Section",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "54": {
+          "title": "Component: Icon (SVG vs Font)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "55": {
+          "title": "Component: Image & Lazy Loading",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "56": {
+          "title": "Component: Link & Anchor",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "57": {
+          "title": "Component: List (ul/ol/dl)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "58": {
+          "title": "Component: Modal & Dialog",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "59": {
+          "title": "Component: Mobile Navigation",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "60": {
+          "title": "Component: Pagination",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "61": {
+          "title": "Component: Popover",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "62": {
+          "title": "Component: Progress Bar",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "63": {
+          "title": "Component: Progress Indicator (Stepper)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "64": {
+          "title": "Component: Quote & Blockquote",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "65": {
+          "title": "Component: Radio Button",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "66": {
+          "title": "Component: Rating (Stars)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "67": {
+          "title": "Component: Rich Text Editor (WYSIWYG)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "68": {
+          "title": "Component: Search Input",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "69": {
+          "title": "Component: Segmented Control",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "70": {
+          "title": "Component: Select",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "71": {
+          "title": "Component: Separator & Divider",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "72": {
+          "title": "Component: Skeleton Loader",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "73": {
+          "title": "Component: Slider (Range)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "74": {
+          "title": "Component: Spinner & Loader",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "75": {
+          "title": "Component: Data Table (Sort/Filter)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "76": {
+          "title": "Metadata: Favicon & App Manifest",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "77": {
+          "title": "Metadata: SEO Tags & Meta Descriptions",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "78": {
+          "title": "Metadata: Open Graph & Twitter Cards",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "79": {
+          "title": "Semantic HTML: Headings (H1-H6)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "80": {
+          "title": "Accessibility (a11y) & ARIA Attributes",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "81": {
+          "title": "Localization (i18n) & Translations",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "82": {
+          "title": "Timezone Handling & Unix Timestamps",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "83": {
+          "title": "Formatting: Currencies, Dates & Locales",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "84": {
+          "title": "Privacy: Cookies, GDPR & Consent",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "85": {
+          "title": "Tracking, Analytics & Pixel Testing",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "86": {
+          "title": "Performance Testing Fundamentals",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "87": {
+          "title": "Load & Stress Testing",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "88": {
+          "title": "Chaos Engineering Basics",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "89": {
+          "title": "Mutation Testing",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "90": {
+          "title": "Visual Regression Testing",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "91": {
+          "title": "UI Automation: Playwright",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "92": {
+          "title": "UI Automation: Cypress",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "93": {
+          "title": "API Contract Testing",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "94": {
+          "title": "Mobile: Simulators vs Real Hardware",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "95": {
+          "title": "Desktop App Testing (Electron)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "96": {
+          "title": "Integration vs Unit Testing",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "97": {
+          "title": "Smoke vs Sanity vs Regression",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "98": {
+          "title": "Defining a Test Strategy",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "99": {
+          "title": "Defect Triage & Prioritization",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "100": {
+          "title": "AI in QA: Copilot & Prompting",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         }
       }
     },
     "realityLessons": {
-      "label": "Reality Check Lessons",
-      "description": "Navigate the IT market, understand AI impact, and survive the industry.",
-      "table": {
-        "lesson": "Lesson",
-        "title": "Title",
-        "status": "Status",
-        "action": "Start"
-      },
+      "label": "Reality Check: 100 Hard Truths",
+      "description": "What they don't tell you at the bootcamp. Survival in an industry that never sleeps.",
+      "table": { "lesson": "Lesson", "title": "Title", "status": "Status", "action": "Start" },
       "items": {
         "1": {
-          "title": "The Hype Cycle",
-          "status": "Coming Soon"
+          "title": "The IT Market Cycle vs Reality",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         },
         "2": {
-          "title": "The AI Barrier",
-          "status": "Coming Soon"
+          "title": "The Bootcamp Truth & The Junior Trap",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         },
         "3": {
-          "title": "Market Dynamics",
-          "status": "Coming Soon"
+          "title": "Beating the ATS (Applicant Tracking Systems)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         },
         "4": {
-          "title": "Human Survival Guide",
-          "status": "Coming Soon"
+          "title": "CV Optimization: Machines vs Humans",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         },
         "5": {
-          "title": "Corporate Lexicon",
-          "status": "Coming Soon"
+          "title": "LinkedIn Algorithm & Reach",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
         },
         "6": {
-          "title": "The AI Shield",
-          "status": "Coming Soon"
+          "title": "Personal Branding for Engineers",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "7": {
+          "title": "Networking vs Nepotism",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "8": {
+          "title": "Why Juniors Can't Find Jobs",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "9": {
+          "title": "HR Screening: The Psychology of 'Culture Fit'",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "10": {
+          "title": "Exposing Tech Recruiters & Agencies",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "11": {
+          "title": "Surviving Technical Tests Without Panicking",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "12": {
+          "title": "Live Coding Strategy & Thinking Out Loud",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "13": {
+          "title": "Smart Questions to Ask Your Interviewers",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "14": {
+          "title": "Salary Negotiation 101",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "15": {
+          "title": "ESOP, Options & Hidden Bonuses",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "16": {
+          "title": "B2B vs Employment Contract (Taxes & Risk)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "17": {
+          "title": "The Dark Side of Freelancing",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "18": {
+          "title": "Hustle Culture vs Actual Life",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "19": {
+          "title": "Remote Work Isolation",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "20": {
+          "title": "Office Work: Coffee Machine Politics",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "21": {
+          "title": "Surviving the First 90 Days (Onboarding)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "22": {
+          "title": "Agile Bullshit & Rituals",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "23": {
+          "title": "Jira: Tool of Help or Micromanagement?",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "24": {
+          "title": "Office Politics & Power Structures",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "25": {
+          "title": "Why Seniors Sometimes Resent Juniors",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "26": {
+          "title": "Working in a Startup (Organized Chaos)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "27": {
+          "title": "Working in an Enterprise (Red Tape)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "28": {
+          "title": "Software House Dynamics (The Client is God)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "29": {
+          "title": "Managing Up (How to Handle Your Boss)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "30": {
+          "title": "Handling Stakeholders & Pushback",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "31": {
+          "title": "The Eternal Conflict: Devs vs QA",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "32": {
+          "title": "The Estimation Lie (Story Points)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "33": {
+          "title": "Crunch Time & Unpaid Overtime",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "34": {
+          "title": "Taking Feedback Without Getting Defensive",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "35": {
+          "title": "Annual Performance Reviews (Theater)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "36": {
+          "title": "How to Actually Get Promoted",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "37": {
+          "title": "When and How to Ask for a Raise",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "38": {
+          "title": "Internal Networking & Visibility",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "39": {
+          "title": "Transferring Between Departments",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "40": {
+          "title": "Quitting Gracefully (Don't Burn Bridges)",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "41": {
+          "title": "Imposter Syndrome",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "42": {
+          "title": "Job Burnout & Warning Signs",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "43": {
+          "title": "Depression & Mental Health in IT",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "44": {
+          "title": "Ergonomics & Physical Health",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "45": {
+          "title": "Biohacking for Desk Workers",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "46": {
+          "title": "Deep Work & Time Management",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "47": {
+          "title": "The Art of Saying 'NO'",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "48": {
+          "title": "Assertiveness in Tech Communication",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "49": {
+          "title": "Conflict Resolution in the Workplace",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "50": {
+          "title": "Dealing with Toxic Team Members",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "51": {
+          "title": "Post-mortems: Blame vs Growth",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "52": {
+          "title": "Documentation: The Thing Nobody Reads",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "53": {
+          "title": "Domain Knowledge vs Technical Skills",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "54": {
+          "title": "The Continuous Learning Trap",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "55": {
+          "title": "Technology FOMO",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "56": {
+          "title": "Side Projects: Passion vs Profit",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "57": {
+          "title": "Personal Finance: The Emergency Fund",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "58": {
+          "title": "Investing for Tech Professionals",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "59": {
+          "title": "FIRE Movement (Financial Independence)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "60": {
+          "title": "Work-Life Balance: Myth or Goal?",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "61": {
+          "title": "AI: Industry Threat or Ultimate Tool?",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "62": {
+          "title": "Will GenAI Replace QA?",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "63": {
+          "title": "Prompt Engineering for Daily Tasks",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "64": {
+          "title": "Automating Boring Corporate Work",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "65": {
+          "title": "Ethics in Software Development",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "66": {
+          "title": "Privacy & User Surveillance",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "67": {
+          "title": "The True Value of Open Source",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "68": {
+          "title": "Tech Conferences: Tourism or Learning?",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "69": {
+          "title": "The Real Value of Certifications (ISTQB/AWS)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "70": {
+          "title": "Specialization vs Generalization",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "71": {
+          "title": "The Hidden Money in Legacy Systems",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "72": {
+          "title": "Why Cloud is So Expensive",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "73": {
+          "title": "Cybersecurity is Everyone's Job",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "74": {
+          "title": "Data is the New Oil",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "75": {
+          "title": "Why QA Must Understand UX",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "76": {
+          "title": "System Design for Non-Architects",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "77": {
+          "title": "Low-Code & No-Code Movement",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "78": {
+          "title": "Testing in Production",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "79": {
+          "title": "Feature Flags & Phased Rollouts",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "80": {
+          "title": "Monitoring & Observability",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "81": {
+          "title": "Stoicism in the IT World",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "82": {
+          "title": "Critical Thinking & Logic",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "83": {
+          "title": "Reading Between the Lines of PR",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "84": {
+          "title": "Statistic Manipulation in Dashboards",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "85": {
+          "title": "The Truth About Tech Layoffs",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "86": {
+          "title": "Surviving Corporate Restructuring",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "87": {
+          "title": "Global Competition (India, LATAM, EE)",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "88": {
+          "title": "Tax Optimization for Techies",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "89": {
+          "title": "Copyright & IP in Code",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "90": {
+          "title": "Tech Career After 40 & 50",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "91": {
+          "title": "The Management Track (End of Coding?)",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "92": {
+          "title": "How to Mentor Junior Engineers",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "93": {
+          "title": "Technical Writing & Documentation",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "94": {
+          "title": "Presenting Tech to Business People",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "95": {
+          "title": "Eco-IT & Carbon Footprint",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
+        },
+        "96": {
+          "title": "Web3 & Decentralization Hype",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "97": {
+          "title": "Quantum Computing Impact",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "98": {
+          "title": "Building Psychological Resilience",
+          "status": "Coming Soon",
+          "difficulty": "Advanced",
+          "progress": 0
+        },
+        "99": {
+          "title": "Creating Your 5-Year Plan",
+          "status": "Coming Soon",
+          "difficulty": "Intermediate",
+          "progress": 0
+        },
+        "100": {
+          "title": "Defining Your Own Success in Tech",
+          "status": "Coming Soon",
+          "difficulty": "Beginner",
+          "progress": 0
         }
       }
     }

@@ -12,6 +12,15 @@ import {
   FiUser,
   FiBriefcase,
   FiSmile,
+  FiCamera,
+  FiVideo,
+  FiType,
+  FiMaximize,
+  FiLayers,
+  FiMessageSquare,
+  FiCode,
+  FiFolder,
+  FiHelpCircle,
 } from 'react-icons/fi'
 import Link from 'next/link'
 
@@ -20,21 +29,148 @@ import Link from 'next/link'
 // ==========================================
 const CAROUSEL_DATA = {
   tools: [
-    { id: 1, title: 'WAVE Evaluation Tool', label: '01', icon: FiMonitor },
-    { id: 2, title: 'PerfectPixel', label: '02', icon: FiTarget },
-    { id: 3, title: 'Color Contrast Analyzer', label: '03', icon: FiSmartphone },
-    { id: 4, title: 'Lighthouse DevTools', label: '04', icon: FiTerminal },
-    { id: 5, title: 'Axe Accessibility', label: '05', icon: FiStar },
-    { id: 6, title: 'Postman API Client', label: '06', icon: FiTerminal },
-    { id: 7, title: 'Charles Proxy', label: '07', icon: FiMonitor },
+    {
+      id: 1,
+      title: 'PerfectPixel',
+      label: '01',
+      icon: FiTarget,
+      description: 'Overlay graphic designs directly onto your coded webpage.',
+    },
+    {
+      id: 2,
+      title: 'Greenshot / Flameshot',
+      label: '02',
+      icon: FiCamera,
+      description: 'Advanced screenshots with annotations, arrows, and blurring.',
+    },
+    {
+      id: 3,
+      title: 'Loom / OBS Studio',
+      label: '03',
+      icon: FiVideo,
+      description: 'Record your screen with voice comments for bug reporting.',
+    },
+    {
+      id: 4,
+      title: 'Handbrake',
+      label: '04',
+      icon: FiMonitor,
+      description: 'Compress video recordings to fit GitHub or Jira file size limits.',
+    },
+    {
+      id: 5,
+      title: 'Expo Go / TestFlight',
+      label: '05',
+      icon: FiSmartphone,
+      description: 'Test mobile and web apps directly on physical devices.',
+    },
+    {
+      id: 6,
+      title: 'Responsively App',
+      label: '06',
+      icon: FiMonitor,
+      description: 'Preview your project across multiple resolutions simultaneously.',
+    },
+    {
+      id: 7,
+      title: 'BrowserStack',
+      label: '07',
+      icon: FiSmartphone,
+      description: 'Cross-browser testing on virtual mobile devices.',
+    },
+    {
+      id: 8,
+      title: 'Fonts Ninja',
+      label: '08',
+      icon: FiType,
+      description: 'Quickly identify, test, and download fonts used on any website.',
+    },
+    {
+      id: 9,
+      title: 'Window Resizer',
+      label: '09',
+      icon: FiMaximize,
+      description: 'Resize your browser window to test responsive web design (RWD).',
+    },
+    {
+      id: 10,
+      title: 'Wappalyzer',
+      label: '10',
+      icon: FiLayers,
+      description: 'Check technologies, frameworks, and analytics tools used on a webpage.',
+    },
   ],
   interviews: [
-    { id: 1, title: 'Mastering Body Language', label: '01', icon: FiUser },
-    { id: 2, title: 'Dress Code for Tech', label: '02', icon: FiBriefcase },
-    { id: 3, title: 'Answering "Why You?"', label: '03', icon: FiTarget },
-    { id: 4, title: 'Salary Negotiation', label: '04', icon: FiStar },
-    { id: 5, title: 'Stress Management', label: '05', icon: FiSmile },
-    { id: 6, title: 'Mock Interview Simulator', label: '06', icon: FiTerminal },
+    {
+      id: 1,
+      title: 'Mastering Body Language',
+      label: '01',
+      icon: FiUser,
+      description: 'Non-verbal communication tips to look confident.',
+    },
+    {
+      id: 2,
+      title: 'Dress Code for Tech',
+      label: '02',
+      icon: FiBriefcase,
+      description: 'What to wear for success in modern tech interviews.',
+    },
+    {
+      id: 3,
+      title: 'Answering "Why You?"',
+      label: '03',
+      icon: FiTarget,
+      description: 'Craft your perfect pitch and stand out from the crowd.',
+    },
+    {
+      id: 4,
+      title: 'Salary Negotiation',
+      label: '04',
+      icon: FiStar,
+      description: 'Strategies to get the compensation you actually deserve.',
+    },
+    {
+      id: 5,
+      title: 'Stress Management',
+      label: '05',
+      icon: FiSmile,
+      description: 'Stay calm and focused under extreme pressure.',
+    },
+    {
+      id: 6,
+      title: 'Mock Interview Simulator',
+      label: '06',
+      icon: FiTerminal,
+      description: 'Practice makes perfect with realistic scenarios.',
+    },
+    {
+      id: 7,
+      title: 'The STAR Method',
+      label: '07',
+      icon: FiMessageSquare,
+      description: 'Structure your behavioral answers (Situation, Task, Action, Result).',
+    },
+    {
+      id: 8,
+      title: 'Live Coding Survival',
+      label: '08',
+      icon: FiCode,
+      description: 'How to think out loud and handle pressure during technical tasks.',
+    },
+    {
+      id: 9,
+      title: 'Portfolio Presentation',
+      label: '09',
+      icon: FiFolder,
+      description: 'Showcase your projects and explain architectural decisions effectively.',
+    },
+    {
+      id: 10,
+      title: 'Questions for Them',
+      label: '10',
+      icon: FiHelpCircle,
+      description: 'Smart questions to ask your interviewers to show real engagement.',
+    },
   ],
 }
 
@@ -62,7 +198,6 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current && scrollContainerRef.current.firstElementChild) {
-      // Pobieramy faktyczną szerokość pierwszej karty i dodajemy gap (16px)
       const cardWidth = scrollContainerRef.current.firstElementChild.clientWidth
       const scrollAmount = direction === 'left' ? -(cardWidth + 16) : cardWidth + 16
 
@@ -72,7 +207,6 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      {/* Tytuł sekcji */}
       <div className="flex items-center justify-between px-4 lg:px-8">
         <h3 className="font-serif text-2xl font-bold tracking-wide">{title}</h3>
         <button className="text-foreground/50 hover:text-foreground text-sm font-bold tracking-widest uppercase transition-colors">
@@ -80,9 +214,7 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
         </button>
       </div>
 
-      {/* WRAPPER KARUZELI I PRZYCISKÓW */}
       <div className="relative w-full">
-        {/* Przycisk LEWO */}
         <button
           onClick={() => scroll('left')}
           className={`bg-background/80 border-foreground/10 text-foreground absolute top-1/2 left-4 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-xl backdrop-blur-md transition-all duration-300 hover:scale-110 sm:left-8 lg:left-12 ${
@@ -92,7 +224,6 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
           <FiArrowLeft className="text-lg" />
         </button>
 
-        {/* Kontener scrollowany */}
         <div
           ref={scrollContainerRef}
           onScroll={checkScroll}
@@ -107,7 +238,7 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
               >
                 <Link
                   href="#"
-                  className="bg-background border-foreground/10 group relative flex h-48 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:border-zinc-500/30 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
+                  className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
                 >
                   <Icon className="absolute -top-6 -right-6 text-8xl text-yellow-500 opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
 
@@ -116,6 +247,9 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
                       {item.label}
                     </span>
                     <h4 className="font-serif text-lg leading-tight font-bold">{item.title}</h4>
+                    <p className="text-foreground/60 mt-2 line-clamp-2 text-xs">
+                      {item.description}
+                    </p>
                   </div>
 
                   <div className="flex items-center gap-2 font-sans text-xs font-bold tracking-wider uppercase opacity-50 transition-opacity group-hover:opacity-100">
@@ -128,7 +262,6 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
           })}
         </div>
 
-        {/* Przycisk PRAWO */}
         <button
           onClick={() => scroll('right')}
           className={`bg-background/80 border-foreground/10 text-foreground absolute top-1/2 right-4 z-30 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border shadow-xl backdrop-blur-md transition-all duration-300 hover:scale-110 sm:right-8 lg:right-12 ${
