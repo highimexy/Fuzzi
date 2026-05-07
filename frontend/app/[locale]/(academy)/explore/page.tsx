@@ -81,7 +81,7 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
       </div>
 
       {/* WRAPPER KARUZELI I PRZYCISKÓW */}
-      <div className="group relative w-full">
+      <div className="relative w-full">
         {/* Przycisk LEWO */}
         <button
           onClick={() => scroll('left')}
@@ -107,7 +107,7 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
               >
                 <Link
                   href="#"
-                  className="bg-background border-foreground/10 group relative flex h-48 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:border-zinc-500/30 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
+                  className="bg-background border-foreground/10 group relative flex h-48 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:border-zinc-500/30 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]"
                 >
                   <Icon className="absolute -top-6 -right-6 text-8xl text-yellow-500 opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
 
