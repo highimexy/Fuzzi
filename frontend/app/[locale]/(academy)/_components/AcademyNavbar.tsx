@@ -13,9 +13,9 @@ export function AcademyNavbar() {
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
   const storeItems = [
-    { label: 'Merch Shop', href: '/academy/store/merch' },
-    { label: 'Premium Subscriptions', href: '/academy/store/premium' },
-    { label: 'Gift Cards', href: '/academy/store/gifts' },
+    { label: 'Merch Shop', href: '/store/merch' },
+    { label: 'Redeem', href: '/store/redeem' },
+    { label: 'Premium', href: '/premium' },
   ]
 
   const navLinks = [
