@@ -121,7 +121,7 @@ export function AcademyNavbar() {
           <Link
             key={link.href}
             href={link.href}
-            className={`font-sans text-xs uppercase transition-all ${
+            className={`font-sans uppercase transition-all ${
               link.active ? 'font-bold underline decoration-2 underline-offset-4' : ''
             }`}
           >
