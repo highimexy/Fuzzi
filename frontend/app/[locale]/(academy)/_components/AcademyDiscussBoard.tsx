@@ -15,8 +15,8 @@ import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 const DISCUSS_POSTS = [
   {
     id: 1,
-    author: 'AcademyTeam',
     isVerified: true,
+    author: 'AcademyTeam',
     date: 'Apr 27, 2026',
     title: 'Would you trust AI code as is?',
     excerpt:
@@ -24,14 +24,10 @@ const DISCUSS_POSTS = [
     upvotes: 6,
     views: '1.9K',
     comments: 27,
-    hasImage: true,
-    imageColor: 'from-indigo-500 to-purple-600',
-    imageText: 'Coding Lab',
   },
   {
     id: 2,
     author: 'AcademyTeam',
-    isVerified: true,
     date: 'Apr 16, 2026',
     title: 'Academy App at Your Fingertips',
     excerpt:
@@ -39,14 +35,11 @@ const DISCUSS_POSTS = [
     upvotes: 162,
     views: '30K',
     comments: 75,
-    hasImage: true,
-    imageColor: 'from-slate-800 to-slate-900',
-    imageText: 'Mobile App',
   },
   {
     id: 3,
-    author: 'AcademyTeam',
     isVerified: true,
+    author: 'AcademyTeam',
     date: 'Apr 13, 2026',
     title: '💥 Contest Rating Rule Updates 💥',
     excerpt:
@@ -54,12 +47,11 @@ const DISCUSS_POSTS = [
     upvotes: 93,
     views: '16.2K',
     comments: 39,
-    hasImage: false,
   },
   {
     id: 4,
+    isVerified: true,
     author: 'Anonymous User',
-    isVerified: false,
     date: 'an hour ago',
     title: 'Need some advice',
     excerpt:
@@ -67,7 +59,6 @@ const DISCUSS_POSTS = [
     upvotes: 0,
     views: '28',
     comments: 0,
-    hasImage: false,
   },
 ]
 
@@ -86,18 +77,21 @@ export function AcademyDiscussBoard() {
         {/* === TOP NAVIGATION === */}
         <div className="border-foreground/10 flex border-b py-2">
           <div className="flex flex-1 items-center">
-            <button className="border-foreground/10 flex items-center border-r font-bold">
+            <button className="border-foreground/10 flex cursor-pointer items-center border-r font-bold">
               <span className="text-lg">🔥</span>
               <span className="mr-2">For You</span>
             </button>
             {TABS.slice(1).map((tab) => (
-              <button key={tab} className="border-foreground/10 rounded-lg border-r">
+              <button
+                key={tab}
+                className="border-foreground/20 hover:text-foreground/80 cursor-pointer border-r"
+              >
                 <span className="mr-2 ml-2">{tab}</span>
               </button>
             ))}
           </div>
 
-          <button className="flex items-center gap-2 bg-green-600 text-sm font-bold">
+          <button className="flex cursor-pointer items-center gap-2 rounded-md bg-yellow-500/10 px-2 font-bold text-yellow-500 hover:bg-yellow-500/20">
             <FiEdit3 className="text-lg" />
             <span className="">Create</span>
           </button>
@@ -105,10 +99,10 @@ export function AcademyDiscussBoard() {
 
         {/* === SORTING BAR === */}
         <div className="text-foreground/60 border-foreground/10 mt-2 flex items-center gap-4 border-b pb-2">
-          <button className="hover:text-foreground border-foreground/10 flex items-center gap-2 border-r">
+          <button className="hover:text-foreground border-foreground/10 flex cursor-pointer items-center gap-2 border-r">
             <FiArrowUp className="text-base" /> <span className="mr-2">Most Votes</span>
           </button>
-          <button className="hover:text-foreground flex items-center gap-2">
+          <button className="hover:text-foreground flex cursor-pointer items-center gap-2">
             <FiStar className="text-base" /> Newest
           </button>
         </div>
@@ -118,19 +112,8 @@ export function AcademyDiscussBoard() {
           {DISCUSS_POSTS.map((post) => (
             <div
               key={post.id}
-              className="border-foreground/10 hover:bg-foreground/4 flex flex-col gap-4 border-b"
+              className="border-foreground/10 flex cursor-pointer flex-col gap-4 border-b"
             >
-              {/* Avatar */}
-              <div className="bg-foreground/10 w-10items-center hidden h-10 justify-center rounded-full sm:flex">
-                {post.isVerified ? (
-                  <div className="bg-foreground text-background flex h-full w-full items-center justify-center rounded-full">
-                    <FiCheckCircle className="text-xl" />
-                  </div>
-                ) : (
-                  <FiUser className="text-foreground/50 text-xl" />
-                )}
-              </div>
-
               {/* Treść posta */}
               <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 py-2">
                 <div className="text-foreground/60 flex items-center gap-1 pb-2 text-xs">
@@ -138,7 +121,7 @@ export function AcademyDiscussBoard() {
                     <FiUser className="text-md" />
                   </div>
                   <span className="text-foreground/80 font-bold">{post.author}</span>
-                  {post.isVerified && <FiCheckCircle className="text-red-500" />}
+                  {post.isVerified && <FiCheckCircle className="text-blue-500" />}
                   <span>•</span>
                   <span>{post.date}</span>
                 </div>
@@ -151,38 +134,27 @@ export function AcademyDiscussBoard() {
 
                 <div className="text-foreground/50 flex items-center justify-between">
                   <div className="flex items-center gap-4 sm:gap-6">
-                    <span className="hover:text-foreground flex cursor-pointer items-center gap-1 transition-colors">
+                    <span className="flex items-center gap-1 transition-colors hover:text-yellow-500">
                       <FiArrowUp className="text-base" /> {post.upvotes}
                     </span>
                     <span className="flex items-center gap-1">
                       <FiEye className="text-base" /> {post.views}
                     </span>
-                    <span className="hover:text-foreground flex cursor-pointer items-center gap-1 transition-colors">
+                    <span className="flex items-center gap-1 transition-colors">
                       <FiMessageSquare className="text-base" /> {post.comments}
                     </span>
                   </div>
 
-                  <button className="hover:bg-foreground/10 hover:text-foreground transition-colors">
+                  <button className="hover:bg-foreground/10 hover:text-foreground rounded-md p-2 transition-colors hover:cursor-pointer">
                     <FiMoreHorizontal className="text-lg" />
                   </button>
                 </div>
               </div>
-
-              {/* Obrazek/miniatura */}
-              {post.hasImage && (
-                <div
-                  className={`hidden h-24 w-40 shrink-0 items-center justify-center rounded-xl bg-linear-to-br shadow-inner sm:flex ${post.imageColor}`}
-                >
-                  <span className="text-center font-bold text-white shadow-black drop-shadow-md">
-                    {post.imageText}
-                  </span>
-                </div>
-              )}
             </div>
           ))}
         </div>
         <div className="mt-2 flex justify-center">
-          <button className="font-bold uppercase transition-opacity hover:opacity-80">
+          <button className="text-foreground hover:text-foreground/80 cursor-pointer font-bold uppercase transition-opacity">
             Load more
           </button>
         </div>
