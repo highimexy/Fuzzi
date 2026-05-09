@@ -31,7 +31,7 @@ export default function Home() {
               </span>
               <h2 className="mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('mission.title1')} <br />{' '}
-                <span className="text-zinc-100 italic opacity-60">{t('mission.title2')}</span>
+                <span className="text-zinc-400 italic opacity-60">{t('mission.title2')}</span>
               </h2>
               <p className="mx-auto mt-8 max-w-2xl font-sans text-sm leading-relaxed opacity-60">
                 {t('mission.description')}
