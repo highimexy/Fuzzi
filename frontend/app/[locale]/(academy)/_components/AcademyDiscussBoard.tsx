@@ -73,7 +73,7 @@ export function AcademyDiscussBoard() {
       </div>
 
       {/* === ŚRODKOWY KONTENT === */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col px-4 py-8 lg:px-8 xl:max-w-5xl">
+      <div className="relative z-10 flex w-full max-w-4xl flex-col p-8 xl:max-w-5xl">
         {/* === TOP NAVIGATION === */}
         <div className="border-foreground/10 flex border-b py-2">
           <div className="flex flex-1 items-center">
@@ -91,7 +91,7 @@ export function AcademyDiscussBoard() {
             ))}
           </div>
 
-          <button className="flex cursor-pointer items-center gap-2 rounded-md bg-yellow-500/10 px-2 font-bold text-yellow-500 hover:bg-yellow-500/20">
+          <button className="flex cursor-pointer items-center gap-2 border bg-yellow-500/10 px-2 font-bold text-yellow-500 hover:bg-yellow-500/20">
             <FiEdit3 className="text-lg" />
             <span className="">Create</span>
           </button>
