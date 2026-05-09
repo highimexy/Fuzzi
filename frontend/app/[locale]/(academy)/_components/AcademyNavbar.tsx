@@ -107,7 +107,7 @@ export function AcademyNavbar() {
             </Link>
             <Link
               href="/premium"
-              className="bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20"
+              className="border bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20"
             >
               Premium
             </Link>
