@@ -2,7 +2,6 @@
 
 import { FaCrown } from 'react-icons/fa'
 import { FiUser } from 'react-icons/fi'
-
 import { AcademyBackgroundGrid } from './AcademyBackgroundGrid'
 
 const RANKING_DATA = [
@@ -18,94 +17,129 @@ const RANKING_DATA = [
   { id: 10, name: 'fmota', score: 3453, attended: 65 },
 ]
 
-export function AcademyRankingBoard() {
-  const first = RANKING_DATA[0]
-  const second = RANKING_DATA[1]
-  const third = RANKING_DATA[2]
-  const rest = RANKING_DATA.slice(3)
+const MEDAL_COLORS = {
+  1: {
+    crown: 'text-yellow-500',
+    avatar: 'ring-yellow-500 text-yellow-500',
+    platform: 'h-20 bg-yellow-500/10 border-yellow-500/30',
+    name: 'text-yellow-500',
+  },
+  2: {
+    crown: 'text-zinc-400',
+    avatar: 'ring-zinc-400 text-zinc-400',
+    platform: 'h-14 bg-zinc-400/10 border-zinc-400/30',
+    name: 'text-zinc-400',
+  },
+  3: {
+    crown: 'text-amber-700',
+    avatar: 'ring-amber-700 text-amber-700',
+    platform: 'h-10 bg-amber-700/10 border-amber-700/30',
+    name: 'text-amber-700',
+  },
+}
+
+function PodiumCard({ user, rank }: { user: (typeof RANKING_DATA)[0]; rank: 1 | 2 | 3 }) {
+  const colors = MEDAL_COLORS[rank]
+  const isFirst = rank === 1
 
   return (
-    // Używamy IDEALNIE tego samego głównego wrappera co w DiscussBoard
+    <div className="flex flex-col items-center">
+      {/* Crown + Avatar */}
+      <div className={`flex flex-col items-center ${isFirst ? 'mb-0' : 'mt-8'}`}>
+        <FaCrown className={`mb-2 ${colors.crown} ${isFirst ? 'text-3xl' : 'text-xl'}`} />
+        <div
+          className={`flex items-center justify-center rounded-full ring-2 ${colors.avatar} ${
+            isFirst ? 'h-16 w-16' : 'h-12 w-12'
+          }`}
+        >
+          <FiUser className={isFirst ? 'text-2xl' : 'text-xl'} />
+        </div>
+      </div>
+
+      {/* Name + Score */}
+      <div className="mt-3 flex flex-col items-center">
+        <span
+          className={`max-w-20 truncate text-center font-bold sm:max-w-25 ${
+            isFirst ? 'text-sm' : 'text-xs'
+          } ${colors.name}`}
+        >
+          {user.name}
+        </span>
+        <span className="text-foreground/50 text-xs">{user.score}</span>
+      </div>
+
+      {/* Platform step */}
+      <div
+        className={`mt-3 flex w-20 items-center justify-center border-t sm:w-24 ${colors.platform}`}
+      >
+        <span className="text-foreground/30 text-xs font-bold"># {rank}</span>
+      </div>
+    </div>
+  )
+}
+
+export function AcademyRankingBoard() {
+  const [first, second, third, ...rest] = RANKING_DATA
+
+  return (
     <div className="flex w-full flex-1 items-stretch justify-center font-sans">
-      {/* === LEWA SIATKA === */}
+      {/* LEWA SIATKA */}
       <div className="border-foreground/10 relative hidden flex-1 border-r lg:block">
         <AcademyBackgroundGrid />
       </div>
 
-      {/* === ŚRODKOWY KONTENT === */}
-      <div className="lg-py-8 relative z-10 flex w-full max-w-4xl flex-col items-center justify-center p-8 xl:max-w-5xl">
-        <div className="flex w-full flex-col items-center gap-10 lg:gap-16">
-          {/* LEWA KOLUMNA: PODIUM (TOP 3) */}
-          <div className="flex w-full justify-center gap-3 sm:gap-6">
-            {/* 2. MIEJSCE */}
-            {second && (
-              <div className="flex w-24 flex-col items-center sm:w-32">
-                <FaCrown className="mb-2 text-2xl text-zinc-400 sm:text-3xl" />
-                <div className="border-foreground/10 flex h-16 w-16 items-center justify-center">
-                  <FiUser className="text-4xl text-zinc-400" />
-                </div>
-                <div className="border-foreground/10 mt-3 flex w-full flex-col items-center rounded-xl border p-3">
-                  <span className="truncate font-bold">{second.name}</span>
-                  <span className="text-zinc-400">{second.score}</span>
-                </div>
-              </div>
-            )}
+      {/* ŚRODKOWY KONTENT */}
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center justify-center px-4 py-12 sm:px-8 xl:max-w-5xl">
+        {/* UKRYTY NAGŁÓWEK I OPIS DLA SEO / CZYTNIKÓW EKRANOWYCH */}
+        <h1 className="sr-only">Leaderboard</h1>
+        <p className="sr-only">Top rated players this season</p>
 
-            {/* 1. MIEJSCE */}
-            {first && (
-              <div className="flex flex-col items-center">
-                <FaCrown className="mb-2 text-4xl text-yellow-500" />
-                <div className="border-foreground/10 flex h-20 w-20 items-center justify-center">
-                  <FiUser className="text-4xl text-yellow-500" />
-                </div>
-                <div className="border-foreground/10 mt-3 flex w-full flex-col items-center rounded-xl border p-4">
-                  <span className="truncate font-bold">{first.name}</span>
-                  <span className="text-zinc-400">{first.score}</span>
-                </div>
-              </div>
-            )}
-
-            {/* 3. MIEJSCE */}
-            {third && (
-              <div className="flex w-24 flex-col items-center">
-                <FaCrown className="mb-2 text-2xl text-amber-700" />
-                <div className="border-foreground/10 flex h-16 w-16 items-center justify-center">
-                  <FiUser className="text-3xl text-amber-700" />
-                </div>
-                <div className="border-foreground/10 mt-3 flex w-full flex-col items-center rounded-xl border p-3">
-                  <span className="truncate font-bold">{third.name}</span>
-                  <span className="text-zinc-400">{third.score}</span>
-                </div>
-              </div>
-            )}
+        {/* PODIUM + LIST — side by side on md+ */}
+        <div className="flex w-full flex-col gap-10 md:flex-row md:items-start md:gap-12">
+          {/* PODIUM (TOP 3) */}
+          <div className="flex flex-col items-center md:w-72 md:shrink-0">
+            <div className="border-foreground/10 flex w-full items-end justify-center gap-2 border-b pb-0 sm:gap-4">
+              {/* 2nd */}
+              <PodiumCard user={second} rank={2} />
+              {/* 1st */}
+              <PodiumCard user={first} rank={1} />
+              {/* 3rd */}
+              <PodiumCard user={third} rank={3} />
+            </div>
           </div>
 
-          {/* PRAWA KOLUMNA: LISTA (4+) */}
-          <div className="flex w-full max-w-md flex-col gap-2">
+          {/* LIST (4–10) */}
+          <div className="flex flex-1 flex-col gap-2">
             {rest.map((user) => (
               <div
                 key={user.id}
-                className="border-foreground/10 flex items-center gap-3 rounded-xl border p-3 sm:p-3 sm:px-4"
+                className="border-foreground/10 hover:bg-foreground/5 flex items-center gap-3 border p-3 px-4 transition-colors"
               >
-                <div className="bg-foreground/10 flex h-7 w-7 items-center justify-center rounded-full p-2 font-bold">
+                {/* Rank badge */}
+                <div className="text-foreground/30 w-5 text-center font-bold tabular-nums">
                   {user.id}
                 </div>
-                <div className="bg-foreground/10 flex h-7 w-7 items-center justify-center rounded-full">
-                  <FiUser className="text-foreground/50 text-2xl" />
+
+                {/* Avatar */}
+                <div className="border-foreground/10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border">
+                  <FiUser className="text-foreground/40 text-sm" />
                 </div>
-                <div className="flex flex-1 items-center gap-2 overflow-hidden">
-                  <span className="truncate font-bold">{user.name}</span>
-                </div>
-                <div className="flex flex-col text-right">
-                  <div className="text-zinc-400">
-                    Rating: <span className="font-bold">{user.score}</span>
-                  </div>
-                  <div className="text-zinc-400">Attended: {user.attended}</div>
+
+                {/* Name */}
+                <span className="flex-1 truncate font-bold">{user.name}</span>
+
+                {/* Stats */}
+                <div className="flex flex-col items-end text-right">
+                  <span className="font-bold tabular-nums">{user.score}</span>
+                  <span className="text-foreground/40 text-xs tabular-nums">
+                    {user.attended} contests
+                  </span>
                 </div>
               </div>
             ))}
+
             {rest.length >= 7 && (
-              <button className="mt-2 font-bold uppercase transition-opacity hover:opacity-80">
+              <button className="text-foreground/50 hover:text-foreground mt-2 text-xs font-bold tracking-widest uppercase transition-opacity hover:opacity-80">
                 Show More
               </button>
             )}
@@ -113,7 +147,7 @@ export function AcademyRankingBoard() {
         </div>
       </div>
 
-      {/* === PRAWA SIATKA === */}
+      {/* PRAWA SIATKA */}
       <div className="border-foreground/10 relative hidden flex-1 border-l lg:block">
         <AcademyBackgroundGrid />
       </div>
