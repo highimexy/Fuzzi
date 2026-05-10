@@ -44,7 +44,7 @@ export function AcademyNavbar() {
           <div className="border-foreground/10 flex flex-1 items-center justify-center border-r px-6 lg:flex-none lg:px-8">
             <Link
               href="/"
-              className="font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] font-bold whitespace-nowrap uppercase transition-opacity hover:opacity-80"
+              className="font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] font-bold whitespace-nowrap text-yellow-500 uppercase transition-opacity hover:opacity-80"
             >
               Frontline
             </Link>

@@ -126,7 +126,8 @@ export function AcademyDiscussBoard() {
                   <span>{post.date}</span>
                 </div>
 
-                <h3 className="font-serif text-base font-bold sm:text-lg">{post.title}</h3>
+                {/* NAPRAWIONY HEADING: Zmiana z h3 na h2 */}
+                <h2 className="font-serif text-base font-bold sm:text-lg">{post.title}</h2>
 
                 <p className="line-clamp-2 pb-2 text-sm text-zinc-400 sm:text-base">
                   {post.excerpt}
