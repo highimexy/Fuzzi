@@ -138,6 +138,9 @@ export default function AcademyDashboard() {
 
       {/* === ŚRODKOWY KONTENT === */}
       <div className="relative z-10 flex w-full max-w-5xl flex-col items-stretch lg:flex-row xl:max-w-7xl">
+        {/* Niewidoczny nagłówek H1 dla SEO i czytników ekranowych */}
+        <h1 className="sr-only">Academy Curriculum</h1>
+
         {/* QA COLUMN */}
         <div className="border-foreground/10 flex w-full flex-col border-b lg:w-1/2 lg:border-r lg:border-b-0">
           {(() => {
@@ -160,9 +163,10 @@ export default function AcademyDashboard() {
                       {path.label}
                     </span>
                   </div>
-                  <h3 className="mb-3 font-serif text-2xl font-bold tracking-tight">
+                  {/* NAPRAWIONY NAGŁÓWEK: h3 -> h2 */}
+                  <h2 className="mb-3 font-serif text-4xl font-bold tracking-tight">
                     {path.title}
-                  </h3>
+                  </h2>
                   <p className="font-sans text-sm leading-relaxed opacity-60">{path.desc}</p>
                 </div>
               </Link>
@@ -200,9 +204,10 @@ export default function AcademyDashboard() {
                       {path.label}
                     </span>
                   </div>
-                  <h3 className="mb-3 font-serif text-2xl font-bold tracking-tight">
+                  {/* NAPRAWIONY NAGŁÓWEK: h3 -> h2 */}
+                  <h2 className="mb-3 font-serif text-4xl font-bold tracking-tight">
                     {path.title}
-                  </h3>
+                  </h2>
                   <p className="font-sans text-sm leading-relaxed opacity-60">{path.desc}</p>
                 </div>
               </Link>

@@ -31,7 +31,7 @@ export default function RealityCheckPage() {
               >
                 {t('hype.label')}
               </span>
-              <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('hype.title1')} <br />
                 <span className={`italic opacity-30 ${accentColor}`}>{t('hype.title2')}</span>
               </h2>
@@ -46,19 +46,19 @@ export default function RealityCheckPage() {
                 </p>
                 <div className="grid gap-8 sm:grid-cols-2">
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4
+                    <h3
                       className={`mb-3 font-sans text-[11px] font-bold tracking-widest uppercase ${accentColor}`}
                     >
                       {t('hype.dream.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">{t('hype.dream.desc')}</p>
                   </div>
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4
+                    <h3
                       className={`mb-3 font-sans text-[11px] font-bold tracking-widest uppercase ${accentColor}`}
                     >
                       {t('hype.reality.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">{t('hype.reality.desc')}</p>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export default function RealityCheckPage() {
               >
                 {t('ai.label')}
               </span>
-              <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('ai.title1')} <br />
                 <span className={`italic opacity-30 ${accentColor}`}>{t('ai.title2')}</span>
               </h2>
@@ -95,9 +95,9 @@ export default function RealityCheckPage() {
                     <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                       01
                     </span>
-                    <h4 className="font-sans font-bold tracking-widest uppercase">
+                    <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('ai.ghosting.title')}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="mt-4 text-sm leading-relaxed opacity-60">{t('ai.ghosting.desc')}</p>
                 </article>
@@ -107,9 +107,9 @@ export default function RealityCheckPage() {
                     <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                       02
                     </span>
-                    <h4 className={`font-sans font-bold tracking-widest uppercase`}>
+                    <h3 className={`font-sans font-bold tracking-widest uppercase`}>
                       {t('ai.trap.title')}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="mt-4 text-sm leading-relaxed opacity-60">{t('ai.trap.desc')}</p>
                 </article>
@@ -119,9 +119,9 @@ export default function RealityCheckPage() {
                     <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                       03
                     </span>
-                    <h4 className="font-sans font-bold tracking-widest uppercase">
+                    <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('ai.vision.title')}
-                    </h4>
+                    </h3>
                   </div>
                   <p className="mt-4 text-sm leading-relaxed italic opacity-60">
                     {t('ai.vision.desc')}
@@ -145,7 +145,7 @@ export default function RealityCheckPage() {
               >
                 {t('market.label')}
               </span>
-              <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('market.title1')} <br />
                 <span className={`italic opacity-30 ${accentColor}`}>{t('market.title2')}</span>
               </h2>
@@ -199,7 +199,7 @@ export default function RealityCheckPage() {
               >
                 {t('human.label')}
               </span>
-              <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('human.title1')} <br />
                 <span className={`italic opacity-30 ${accentColor}`}>{t('human.title2')}</span>
               </h2>
@@ -210,15 +210,15 @@ export default function RealityCheckPage() {
             <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
               <div className="flex flex-col gap-12">
                 <div className="border-l-2 border-purple-500/20 pl-8 opacity-60">
-                  <h4 className={`font-sans font-bold tracking-widest uppercase`}>
+                  <h3 className={`font-sans font-bold tracking-widest uppercase`}>
                     {t('human.comm.title')}
-                  </h4>
+                  </h3>
                   <p className="mt-4 text-sm leading-relaxed opacity-60">{t('human.comm.desc')}</p>
                 </div>
                 <div className="border-l-2 border-purple-500/20 pl-8 opacity-60">
-                  <h4 className="font-sans font-bold tracking-widest uppercase">
+                  <h3 className="font-sans font-bold tracking-widest uppercase">
                     {t('human.learn.title')}
-                  </h4>
+                  </h3>
                   <p className="mt-4 text-sm leading-relaxed opacity-60">{t('human.learn.desc')}</p>
                 </div>
               </div>
@@ -354,7 +354,7 @@ export default function RealityCheckPage() {
             <span className="text-fluid-small font-sans tracking-[0.4em] uppercase opacity-40">
               {t('footer.label')}
             </span>
-            <h2 className="mt-6 max-w-2xl font-serif tracking-tighter wrap-break-word uppercase">
+            <h2 className="text-fluid-h2 mt-6 max-w-2xl font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
               {t.rich('footer.title', {
                 purple: (chunks) => <span className={`italic ${accentColor}`}>{chunks}</span>,
                 u: (chunks) => (

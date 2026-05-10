@@ -32,7 +32,7 @@ export default function QaPage() {
                 >
                   {t('mindset.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('mindset.title1')} <br />
                   <span className={`italic opacity-30 ${accentColor}`}>{t('mindset.title2')}</span>
                 </h2>
@@ -42,26 +42,26 @@ export default function QaPage() {
               </div>
               <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
                 <div className="space-y-8">
-                  <p className="text-fluid-h3 font-serif leading-snug italic opacity-80">
+                  <p className="text-fluid-h4 font-serif leading-snug italic opacity-80">
                     {t('mindset.quote')}
                   </p>
                   <div className="grid gap-8 sm:grid-cols-2">
                     <div className="border-foreground/10 border-t pt-6">
-                      <h4
+                      <h3
                         className={`mb-3 font-sans text-[11px] font-bold tracking-widest uppercase ${accentColor}`}
                       >
                         {t('mindset.edgeCases.title')}
-                      </h4>
+                      </h3>
                       <p className="text-sm leading-relaxed opacity-60">
                         {t('mindset.edgeCases.desc')}
                       </p>
                     </div>
                     <div className="border-foreground/10 border-t pt-6">
-                      <h4
+                      <h3
                         className={`mb-3 font-sans text-[11px] font-bold tracking-widest uppercase ${accentColor}`}
                       >
                         {t('mindset.criticalThinking.title')}
-                      </h4>
+                      </h3>
                       <p className="text-sm leading-relaxed opacity-60">
                         {t('mindset.criticalThinking.desc')}
                       </p>
@@ -85,7 +85,7 @@ export default function QaPage() {
                 >
                   {t('anatomy.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('anatomy.title1')} <br />
                   <span className={`italic opacity-30 ${accentColor}`}>{t('anatomy.title2')}</span>
                 </h2>
@@ -100,9 +100,9 @@ export default function QaPage() {
                       <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                         01
                       </span>
-                      <h4 className="font-sans font-bold tracking-widest uppercase">
+                      <h3 className="font-sans font-bold tracking-widest uppercase">
                         {t('anatomy.item1.title')}
-                      </h4>
+                      </h3>
                     </div>
                     <p className="mt-4 text-sm leading-relaxed opacity-60">
                       {t('anatomy.item1.desc')}
@@ -113,9 +113,9 @@ export default function QaPage() {
                       <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                         02
                       </span>
-                      <h4 className="font-sans font-bold tracking-widest uppercase">
+                      <h3 className="font-sans font-bold tracking-widest uppercase">
                         {t('anatomy.item2.title')}
-                      </h4>
+                      </h3>
                     </div>
                     <p className="mt-4 text-sm leading-relaxed opacity-60">
                       {t('anatomy.item2.desc')}
@@ -126,9 +126,9 @@ export default function QaPage() {
                       <span className="font-serif text-2xl opacity-20 transition-opacity group-hover:opacity-100">
                         03
                       </span>
-                      <h4 className="font-sans font-bold tracking-widest uppercase">
+                      <h3 className="font-sans font-bold tracking-widest uppercase">
                         {t('anatomy.item3.title')}
-                      </h4>
+                      </h3>
                     </div>
                     <p className="mt-4 text-sm leading-relaxed opacity-60">
                       {t('anatomy.item3.desc')}
@@ -152,7 +152,7 @@ export default function QaPage() {
                 >
                   {t('toolkit.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('toolkit.title1')} <br />
                   <span className={`italic opacity-30 ${accentColor}`}>{t('toolkit.title2')}</span>
                 </h2>
@@ -212,7 +212,7 @@ export default function QaPage() {
                 >
                   {t('human.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('human.title1')} <br />
                   <span className={`italic opacity-30 ${accentColor}`}>{t('human.title2')}</span>
                 </h2>
@@ -223,17 +223,17 @@ export default function QaPage() {
               <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
                 <div className="flex flex-col gap-12">
                   <div className="border-l-2 border-green-500/20 pl-8 opacity-60">
-                    <h4 className="font-sans font-bold tracking-widest uppercase">
+                    <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('human.designers.title')}
-                    </h4>
+                    </h3>
                     <p className="mt-4 text-sm leading-relaxed opacity-60">
                       {t('human.designers.desc')}
                     </p>
                   </div>
                   <div className="border-l-2 border-green-500/20 pl-8 opacity-60">
-                    <h4 className="font-sans font-bold tracking-widest uppercase">
+                    <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('human.developers.title')}
-                    </h4>
+                    </h3>
                     <p className="mt-4 text-sm leading-relaxed opacity-60">
                       {t('human.developers.desc')}
                     </p>
@@ -366,7 +366,7 @@ export default function QaPage() {
               <span className="text-fluid-small font-sans tracking-[0.4em] uppercase opacity-40">
                 {t('footer.label')}
               </span>
-              <h2 className="mt-6 font-serif tracking-tighter uppercase">
+              <h2 className="text-fluid-h2 mt-6 font-serif tracking-tighter uppercase">
                 {t.rich('footer.title', {
                   green: (chunks) => <span className="text-green-500 italic">{chunks}</span>,
                 })}

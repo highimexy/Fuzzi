@@ -30,22 +30,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  font-size: var(--text-fluid-p);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-}
-
-h1 {
-  font-size: var(--text-fluid-h1);
-  line-height: 0.9;
-}
-h2 {
-  font-size: var(--text-fluid-h2);
-  line-height: 0.9;
-}
-h3 {
-  font-size: var(--text-fluid-h3);
-  line-height: 1.1;
-}
-p {
-  font-size: var(--text-fluid-p);
 }

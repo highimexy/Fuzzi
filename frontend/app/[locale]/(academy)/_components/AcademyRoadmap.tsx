@@ -517,6 +517,7 @@ const initialEdges = [
     target: 'n4c',
     targetHandle: 'right-t',
     animated: true,
+    animated: true,
   },
   {
     id: 'n4-n4d',
@@ -784,6 +785,9 @@ export function RoadmapGraph() {
 
   return (
     <div className="border-foreground/10 bg-background relative h-full w-full overflow-hidden border">
+      {/* UKRYTY NAGŁÓWEK H1 DLA STRUKTURY DOKUMENTU */}
+      <h1 className="sr-only">Interactive Learning Roadmap</h1>
+
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -830,7 +834,10 @@ export function RoadmapGraph() {
                   <FiX className="text-2xl" />
                 </button>
               </div>
-              <h3 className="font-serif">{selectedTopic.title}</h3>
+              {/* ZMIENIONO H3 NA H2 Z ODPOWIEDNIĄ KLASĄ WIELKOŚCI */}
+              <h2 className="mt-2 font-serif text-2xl font-bold md:text-3xl">
+                {selectedTopic.title}
+              </h2>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">

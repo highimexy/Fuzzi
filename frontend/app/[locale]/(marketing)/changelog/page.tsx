@@ -59,9 +59,10 @@ export default function ChangelogPage() {
                 >
                   <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                     <div className="flex items-center gap-5">
-                      <span className="font-serif text-xl font-bold text-zinc-500 transition-colors group-hover:text-zinc-300">
+                      {/* ZMIENIONO SPAN NA H2 */}
+                      <h2 className="font-serif text-xl font-bold text-zinc-500 transition-colors group-hover:text-zinc-300">
                         {t(`${v}.version`)}
-                      </span>
+                      </h2>
                       <span className="bg-foreground/5 px-3 py-1 font-sans text-[10px] font-bold tracking-widest uppercase opacity-50">
                         {t(`${v}.tag`)}
                       </span>

@@ -30,7 +30,10 @@ export function HomeHeader() {
       <Container className="relative overflow-hidden">
         <BackgroundGrid />
 
-        <div ref={containerRef} className="flex flex-col px-6 py-18 text-center">
+        <div
+          ref={containerRef}
+          className="text-fluid-h1 flex flex-col px-6 py-18 text-center leading-[0.9]"
+        >
           {/* NAGŁÓWEK */}
           <h1 className="gsap-item font-serif">
             {t.rich('title1', {

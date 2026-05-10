@@ -18,10 +18,14 @@ export default function MerchShopPage() {
         <AcademyBackgroundGrid />
       </div>
 
+      {/* UKRYTY GŁÓWNY NAGŁÓWEK DLA STRONY */}
+      <h1 className="sr-only">Merch Shop</h1>
+
       {/* Kolumna 1 */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
         <div className="flex flex-1 items-center justify-center">
-          <h1 className="font-sans">3D Model</h1>
+          {/* ZMIENIONO H1 NA H2 */}
+          <h2 className="font-sans text-2xl font-bold">3D Model</h2>
         </div>
         <div className="mt-auto mb-4 flex gap-2">
           <button className="flex items-center gap-2 border bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20">
@@ -37,9 +41,10 @@ export default function MerchShopPage() {
       </div>
 
       {/* Kolumna 2 */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
         <div className="flex flex-1 items-center justify-center">
-          <h1 className="font-sans">3D Model</h1>
+          {/* ZMIENIONO H1 NA H2 */}
+          <h2 className="font-sans text-2xl font-bold">3D Model</h2>
         </div>
         <button className="mt-auto mb-4 flex gap-2 border bg-yellow-500/10 px-3 py-1.75 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20">
           <BsFillBasketFill className="text-xl" />

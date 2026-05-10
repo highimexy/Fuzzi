@@ -117,10 +117,11 @@ export default function AboutPage() {
                 <div className="grid max-w-3xl gap-12">
                   {[1, 2, 3].map((num) => (
                     <div key={`q${num}`} className="group">
-                      <h4 className="text-foreground mb-4 font-sans text-sm font-bold tracking-widest uppercase">
+                      {/* ZMIENIONO H4 NA H3 */}
+                      <h3 className="text-foreground mb-4 font-sans text-sm font-bold tracking-widest uppercase">
                         <span className="mr-2 text-zinc-500 opacity-50">Q:</span>
                         {t(`faq.q${num}`)}
-                      </h4>
+                      </h3>
                       <p className="ml-1 border-l border-zinc-500/30 pl-4 font-sans text-base leading-relaxed opacity-60">
                         {t(`faq.a${num}`)}
                       </p>

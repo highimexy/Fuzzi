@@ -11,21 +11,19 @@ export default function LoginPage() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center justify-center p-8 xl:max-w-2xl">
-        {/* Texts */}
-        <div className="mb-16 flex flex-col gap-4">
-          <div className="flex items-center justify-center">
-            <h2 className="font-serif uppercase">
+      <div className="flex w-full max-w-4xl flex-col items-center justify-center p-8 xl:max-w-2xl">
+        {/* Texts - NAPRAWIONE */}
+        <div className="mb-16 flex flex-col">
+          <h1 className="flex flex-col items-center justify-center leading-[0.99]">
+            <span className="text-fluid-h2 font-serif uppercase">
               I want <span className="font-serif underline">you</span>
-            </h2>
-          </div>
-          <div className="flex items-center justify-center">
-            <h3 className="mr-4 font-serif">for the</h3>
-            <h2 className="font-serif text-amber-500 uppercase">Frontier</h2>
-          </div>
-          <div className="flex items-center justify-center">
-            <h2 className="font-serif uppercase">Enlist Now</h2>
-          </div>
+            </span>
+            <span className="flex items-center justify-center">
+              <span className="text-fluid-h3 mr-4 font-serif">for the</span>
+              <span className="text-fluid-h2 font-serif text-amber-500 uppercase">Frontier</span>
+            </span>
+            <span className="text-fluid-h2 font-serif uppercase">Enlist Now</span>
+          </h1>
         </div>
 
         {/* Buttons & Inputs */}
@@ -59,7 +57,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      <div className="border-foreground/10 relative hidden flex-1 border-r border-l lg:block">
+      <div className="border-foreground/10 relative hidden flex-1 border-l lg:block">
         <AcademyBackgroundGrid />
       </div>
     </div>

@@ -208,7 +208,8 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
   return (
     <div className="flex w-full flex-col gap-4">
       <div className="flex items-center justify-between px-4 lg:px-8">
-        <h3 className="font-serif text-2xl font-bold tracking-wide">{title}</h3>
+        {/* H2 - tytuł sekcji karuzeli */}
+        <h2 className="font-serif text-2xl font-bold tracking-wide">{title}</h2>
         <button className="text-foreground/50 hover:text-foreground text-sm font-bold tracking-widest uppercase transition-colors">
           View All
         </button>
@@ -246,7 +247,8 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
                     <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-yellow-500 uppercase">
                       {item.label}
                     </span>
-                    <h4 className="font-serif text-lg leading-tight font-bold">{item.title}</h4>
+                    {/* H3 - tytuł konkretnej karty */}
+                    <h3 className="font-serif text-lg leading-tight font-bold">{item.title}</h3>
                     <p className="text-foreground/60 mt-2 line-clamp-2 text-xs">
                       {item.description}
                     </p>
@@ -281,6 +283,9 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
 export default function ExplorePage() {
   return (
     <div className="flex w-full flex-1 flex-col justify-center gap-8 overflow-hidden py-8 lg:gap-12 lg:py-12">
+      {/* H1 - Niewidoczny nagłówek SEO dla strony */}
+      <h1 className="sr-only">Explore Collections</h1>
+
       <CarouselRow title="Useful tools" items={CAROUSEL_DATA.tools} />
       <CarouselRow title="Interviews & Growth" items={CAROUSEL_DATA.interviews} />
     </div>
