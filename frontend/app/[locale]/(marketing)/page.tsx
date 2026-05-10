@@ -29,7 +29,7 @@ export default function Home() {
               <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-white/40 uppercase">
                 {t('mission.label')}
               </span>
-              <h2 className="mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('mission.title1')} <br />{' '}
                 <span className="text-zinc-400 italic opacity-60">{t('mission.title2')}</span>
               </h2>
@@ -49,14 +49,14 @@ export default function Home() {
                 <span className="text-fluid-small font-sans font-bold tracking-[0.3em] text-green-500 uppercase">
                   {t('qa.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('qa.title1')} <br />{' '}
                   <span className="italic opacity-30">{t('qa.title2')}</span>
                 </h2>
               </div>
 
               <div className="w-full lg:max-w-md xl:max-w-lg">
-                <p className="text-fluid-h3 font-serif leading-snug italic">{t('qa.quote')}</p>
+                <p className="text-fluid-h4 font-serif leading-snug italic">{t('qa.quote')}</p>
                 <p className="mt-6 font-sans text-sm leading-relaxed opacity-60">
                   {t('qa.description')}
                 </p>
@@ -73,25 +73,25 @@ export default function Home() {
             <div className="border-foreground/10 mx-auto mt-16 max-w-5xl pt-12">
               <div className="grid gap-6 px-6 md:grid-cols-3">
                 <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
-                  <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
+                  <h3 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.mindset.title')}
-                  </h4>
+                  </h3>
                   <p className="text-sm leading-relaxed opacity-60">
                     {t('qa.preview.mindset.desc')}
                   </p>
                 </div>
                 <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
-                  <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
+                  <h3 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.anatomy.title')}
-                  </h4>
+                  </h3>
                   <p className="text-sm leading-relaxed opacity-60">
                     {t('qa.preview.anatomy.desc')}
                   </p>
                 </div>
                 <div className="border-foreground/10 flex flex-col items-center border-t pt-6">
-                  <h4 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
+                  <h3 className="mb-3 font-sans text-[11px] font-bold tracking-widest text-green-500 uppercase">
                     {t('qa.preview.toolkit.title')}
-                  </h4>
+                  </h3>
                   <p className="text-sm leading-relaxed opacity-60">
                     {t('qa.preview.toolkit.desc')}
                   </p>
@@ -114,7 +114,7 @@ export default function Home() {
                 <span className="text-fluid-small font-sans font-bold tracking-[0.3em] text-yellow-500 uppercase">
                   {t('academy.label')}
                 </span>
-                <h2 className="mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+                <h2 className="text-fluid-h2 mt-4 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                   {t('academy.title1')} <br />{' '}
                   <span className="italic opacity-30">{t('academy.title2')}</span>
                 </h2>
@@ -142,9 +142,9 @@ export default function Home() {
                 <div className="border-foreground/20 bg-background flex items-start gap-4 border p-5 transition-colors hover:border-yellow-500/30">
                   <span className="font-serif text-2xl text-yellow-500 opacity-30">01</span>
                   <div>
-                    <h4 className="font-sans text-[11px] font-bold tracking-widest uppercase">
+                    <h3 className="font-sans text-[11px] font-bold tracking-widest uppercase">
                       {t('academy.steps.step1.title')}
-                    </h4>
+                    </h3>
                     <p className="mt-1 text-xs leading-relaxed opacity-50">
                       {t('academy.steps.step1.desc')}
                     </p>
@@ -153,9 +153,9 @@ export default function Home() {
                 <div className="border-foreground/20 bg-background flex items-start gap-4 border p-5 transition-colors hover:border-yellow-500/30">
                   <span className="font-serif text-2xl text-yellow-500 opacity-30">02</span>
                   <div>
-                    <h4 className="font-sans text-[11px] font-bold tracking-widest uppercase">
+                    <h3 className="font-sans text-[11px] font-bold tracking-widest uppercase">
                       {t('academy.steps.step2.title')}
-                    </h4>
+                    </h3>
                     <p className="mt-1 text-xs leading-relaxed opacity-50">
                       {t('academy.steps.step2.desc')}
                     </p>
@@ -164,9 +164,9 @@ export default function Home() {
                 <div className="border-foreground/20 bg-background flex items-start gap-4 border p-5 transition-colors hover:border-yellow-500/30">
                   <span className="font-serif text-2xl text-yellow-500 opacity-30">03</span>
                   <div>
-                    <h4 className="font-sans text-[11px] font-bold tracking-widest uppercase">
+                    <h3 className="font-sans text-[11px] font-bold tracking-widest uppercase">
                       {t('academy.steps.step3.title')}
-                    </h4>
+                    </h3>
                     <p className="mt-1 text-xs leading-relaxed opacity-50">
                       {t('academy.steps.step3.desc')}
                     </p>
@@ -190,7 +190,7 @@ export default function Home() {
                 {t('reality.label')}
               </span>
 
-              <h2 className="mt-6 font-serif leading-[0.85] tracking-tighter uppercase">
+              <h2 className="text-fluid-h2 mt-6 font-serif leading-[0.85] tracking-tighter uppercase">
                 {t.rich('reality.titleLine1', {
                   light: (chunks) => <span className="italic opacity-30">{chunks}</span>,
                 })}
@@ -206,49 +206,49 @@ export default function Home() {
 
               <div className="border-foreground/10 mt-12 grid gap-8 border-t pt-12 text-left md:grid-cols-2 lg:gap-16">
                 <div className="space-y-4">
-                  <h4 className="text-fluid-small font-sans font-bold tracking-widest text-purple-500 uppercase opacity-60">
+                  <h3 className="text-fluid-small font-sans font-bold tracking-widest text-purple-500 uppercase opacity-60">
                     {t('reality.dreamLabel')}
-                  </h4>
-                  <p className="text-fluid-h3 font-serif italic">{t('reality.dreamQuote')}</p>
+                  </h3>
+                  <p className="text-fluid-h4 font-serif italic">{t('reality.dreamQuote')}</p>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-fluid-small font-sans font-bold tracking-widest text-purple-500 uppercase opacity-60">
+                  <h3 className="text-fluid-small font-sans font-bold tracking-widest text-purple-500 uppercase opacity-60">
                     {t('reality.realityLabel')}
-                  </h4>
-                  <p className="text-fluid-h3 font-serif italic">{t('reality.realityQuote')}</p>
+                  </h3>
+                  <p className="text-fluid-h4 font-serif italic">{t('reality.realityQuote')}</p>
                 </div>
               </div>
 
               <div className="mx-auto mt-16 w-full max-w-3xl">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
+                    <h3 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
                       {t('reality.preview.hype.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">
                       {t('reality.preview.hype.desc')}
                     </p>
                   </div>
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
+                    <h3 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
                       {t('reality.preview.ai.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">
                       {t('reality.preview.ai.desc')}
                     </p>
                   </div>
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
+                    <h3 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
                       {t('reality.preview.market.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">
                       {t('reality.preview.market.desc')}
                     </p>
                   </div>
                   <div className="border-foreground/10 border-t pt-6">
-                    <h4 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
+                    <h3 className="mb-2 font-sans text-[11px] font-bold tracking-widest text-purple-500 uppercase">
                       {t('reality.preview.human.title')}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed opacity-60">
                       {t('reality.preview.human.desc')}
                     </p>
@@ -281,7 +281,7 @@ export default function Home() {
                 {t('cta.label')}
               </span>
 
-              <h2 className="mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
+              <h2 className="text-fluid-h2 mt-6 font-serif leading-[0.85] tracking-tighter wrap-break-word uppercase">
                 {t('cta.title1')} <br />{' '}
                 <span className="text-zic-500 italic opacity-60">{t('cta.title2')}</span>
               </h2>
@@ -293,19 +293,19 @@ export default function Home() {
               <div className="mt-16 flex flex-wrap items-center justify-center gap-6">
                 <Link
                   href="/qa"
-                  className="text-fluid-small inline-block border border-green-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-green-500 hover:text-white"
+                  className="text-fluid-small inline-block border border-green-500/30 px-10 py-5 font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:bg-green-500 hover:text-white"
                 >
                   {t('cta.qaBtn')}
                 </Link>
                 <Link
                   href="/reality-check"
-                  className="text-fluid-small inline-block border border-purple-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-purple-500 hover:text-white"
+                  className="text-fluid-small inline-block border border-purple-500/30 px-10 py-5 font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:bg-purple-500 hover:text-white"
                 >
                   {t('cta.realityBtn')}
                 </Link>
                 <Link
                   href="/lessons"
-                  className="text-fluid-small inline-block border border-yellow-500/30 px-10 py-5 tracking-[0.2em] uppercase transition-all duration-500 hover:bg-yellow-500 hover:text-black"
+                  className="text-fluid-small inline-block border border-yellow-500/30 px-10 py-5 font-bold tracking-[0.2em] uppercase transition-all duration-500 hover:bg-yellow-500 hover:text-black"
                 >
                   {t('cta.academyBtn')}
                 </Link>
