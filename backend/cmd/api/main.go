@@ -27,19 +27,19 @@ func main() {
 	// MARKET MODULE (WebSockets)
 	marketHub := market.NewHub()
 	marketEngine := market.NewEngine(marketHub)
-	
+
 	// PRZEKAZUJEMY KLUCZ DO SILNIKA RYNKOWEGO
 	go marketEngine.Start(finnhubKey)
 
 	// ROUTING
 	mux := http.NewServeMux()
-	
+
 	mux.HandleFunc("GET /api/v1/tweets", twitter.NewHandler(tweetCache))
 	mux.HandleFunc("/ws/market", market.NewHandler(marketHub, marketEngine))
 
 	port := ":8080"
 	log.Printf("[SYSTEM] API listening on port %s", port)
-	
+
 	if err := http.ListenAndServe(port, mux); err != nil {
 		log.Fatalf("[FATAL] Server crashed: %v", err)
 	}
