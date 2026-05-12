@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/highimexy/it-shit/backend/internal/auth" // 1. DODAJ IMPORT AUTH
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
 	"github.com/highimexy/it-shit/backend/internal/market"
@@ -20,37 +21,44 @@ func main() {
 		log.Println("[SYSTEM WARNING] No .env file found. Using system environment variables.")
 	}
 
-	// 1. BAZA DANYCH (Postgres + GORM)
 	database.Connect()
 
 	finnhubKey := os.Getenv("FINNHUB_API_KEY")
 
-	// 2. TWITTER MODULE
 	tweetCache := twitter.NewCache()
 	go twitter.StartWorker(tweetCache)
 
-	// 3. MARKET MODULE (WebSockets)
 	marketHub := market.NewHub()
 	marketEngine := market.NewEngine(marketHub)
 	go marketEngine.Start(finnhubKey)
 
-	// 4. ROUTING (GIN)
 	r := gin.Default()
 
-	// ODBLOKOWANIE CORS DLA FRONTENDU
-    config := cors.DefaultConfig()
-    config.AllowOrigins = []string{"http://localhost:3000"}
-    r.Use(cors.New(config))
+	// ODBLOKOWANIE CORS - Dodaj Authorization do AllowedHeaders
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"} // 2. DODAJ AUTHORIZATION
+	r.Use(cors.New(config))
 
-	// Podpinamy Twoje ISTNIEJĄCE standardowe handlery HTTP za pomocą gin.WrapF
 	r.GET("/api/v1/tweets", gin.WrapF(twitter.NewHandler(tweetCache)))
 	r.GET("/ws/market", gin.WrapF(market.NewHandler(marketHub, marketEngine)))
 
-	// Nasze NOWE natywne handlery Gina dla Akademii
+	// GRUPA PUBLICZNA
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/lessons", lessons.ListHandler)
-		v1.GET("/lessons/:id", lessons.GetHandler) // W Gin parametr to :id
+		v1.GET("/lessons/:id", lessons.GetHandler)
+
+		// 3. NOWE ENDPOINTY DLA LOGOWANIA OTP (BEZPIECZNE PROXY)
+		v1.POST("/auth/otp/start", auth.StartOTPHandler)   // Wysyła maila przez Auth0
+		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler) // Wymienia kod na JWT
+	}
+
+	// 4. GRUPA CHRONIONA (Tylko dla zalogowanych)
+	protected := r.Group("/api/v1")
+	protected.Use(auth.EnsureValidToken()) // Middleware sprawdzający JWT z Auth0
+	{
+		protected.GET("/sync-user", auth.SyncUserHandler) // Rejestruje/Loguje usera w DB
 	}
 
 	port := ":8080"
