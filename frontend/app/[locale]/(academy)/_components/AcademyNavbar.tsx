@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi'
 import { StoreDropdown } from './StoreDropdown'
 import { AcademyLanguageSwitcher } from './AcademyLanguageSwitcher'
 import AcademyThemeSwitcher from './AcademyThemeSwitcher'
+import { AuthNavMenu } from './AuthNavMenu'
 
 export function AcademyNavbar() {
   const pathname = usePathname()
@@ -77,7 +78,10 @@ export function AcademyNavbar() {
 
         {/* 3. PRAWA STRONA (Szukajka + Auth + Switchery Mobile) */}
         <div className="flex shrink-0">
-          {/* Switchery MOBILE - ukryte na desktopie */}
+          {/* Auth + Switchery MOBILE - ukryte na desktopie */}
+          <div className="border-foreground/10 flex items-center border-l px-3 lg:hidden">
+            <AuthNavMenu />
+          </div>
           <div className="border-foreground/10 flex items-center border-l px-3 lg:hidden">
             <AcademyThemeSwitcher />
           </div>
@@ -99,12 +103,7 @@ export function AcademyNavbar() {
 
           {/* Komórka: Auth (Tylko Desktop) */}
           <div className="hidden shrink-0 items-center justify-center gap-4 px-4 lg:flex">
-            <Link
-              href="/login"
-              className="font-sans font-bold uppercase transition-opacity hover:opacity-80"
-            >
-              Sign In
-            </Link>
+            <AuthNavMenu />
             <Link
               href="/premium"
               className="border bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20"
