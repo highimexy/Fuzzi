@@ -36,8 +36,8 @@ export default function LoginPage() {
       })
       if (res.ok) {
         setStep('otp')
-        setResendTimer(30) 
-        setCode('') 
+        setResendTimer(30)
+        setCode('')
       } else {
         setError('Failed to send code. Please try again.')
       }
@@ -103,13 +103,13 @@ export default function LoginPage() {
       <div className="flex w-full max-w-4xl flex-col items-center justify-center p-8 xl:max-w-2xl">
         {/* Texts */}
         <div className="mb-16 flex flex-col">
-          <h1 className="flex flex-col items-center justify-center leading-[0.99]">
+          <h1 className="flex flex-col items-center justify-center leading-tight">
             <span className="text-fluid-h2 font-serif uppercase">
               I want <span className="font-serif underline">you</span>
             </span>
             <span className="flex items-center justify-center">
               <span className="text-fluid-h3 mr-4 font-serif">for the</span>
-              <span className="text-fluid-h2 font-serif text-amber-500 uppercase">Frontier</span>
+              <span className="text-fluid-h2 font-serif text-yellow-500 uppercase">Frontier</span>
             </span>
             <span className="text-fluid-h2 font-serif uppercase">Enlist Now</span>
           </h1>
