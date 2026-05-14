@@ -7,11 +7,10 @@ import (
 
 type Lesson struct {
 	ID         string `gorm:"primaryKey;type:varchar(12)" json:"id"`
-	Track      string `json:"track"`      // "qa" lub "reality"
-	Difficulty string `json:"difficulty"` // "Beginner", "Intermediate", "Advanced"
-	Status     string `json:"status"`     // "LIVE", "Coming Soon"
+	Track      string `json:"track"`
+	Difficulty string `json:"difficulty"`
+	Status     string `json:"status"`
 
-	// Pola wielojęzyczne
 	TitleEN    string `json:"title_en"`
 	TitlePL    string `json:"title_pl"`
 	ContentEN  string `json:"content_en"`
