@@ -34,10 +34,8 @@ func main() {
 	godotenv.Load()
 	database.Connect()
 
-	// WYMUSZAMY STWORZENIE TABELI Z NOWYMI KOLUMNAMI I18N
 	database.DB.AutoMigrate(&models.Lesson{})
 
-	// ZAKTUALIZOWANE ŚCIEŻKI
 	enFile, err := os.ReadFile("data/lessons/en.json")
 	if err != nil {
 		log.Fatalf("[FATAL] Brak pliku en.json: %v", err)
