@@ -4,6 +4,11 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { FiChevronDown } from 'react-icons/fi'
 
+type DropdownProps = {
+  label: string
+  items: { label: string; href: string }[]
+}
+
 export function StoreDropdown({ label, items }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [position, setPosition] = useState({ top: 0, left: 0 })
