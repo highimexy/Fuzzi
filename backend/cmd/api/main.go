@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/highimexy/it-shit/backend/internal/auth" // 1. DODAJ IMPORT AUTH
+	"github.com/highimexy/it-shit/backend/internal/auth"
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
 	"github.com/highimexy/it-shit/backend/internal/market"
@@ -34,31 +34,29 @@ func main() {
 
 	r := gin.Default()
 
-	// ODBLOKOWANIE CORS - Dodaj Authorization do AllowedHeaders
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"http://localhost:3000"}
-	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"} // 2. DODAJ AUTHORIZATION
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
 	r.Use(cors.New(config))
 
 	r.GET("/api/v1/tweets", gin.WrapF(twitter.NewHandler(tweetCache)))
 	r.GET("/ws/market", gin.WrapF(market.NewHandler(marketHub, marketEngine)))
 
-	// GRUPA PUBLICZNA
+	// PUBLIC
 	v1 := r.Group("/api/v1")
 	{
 		v1.GET("/lessons", lessons.ListHandler)
 		v1.GET("/lessons/:id", lessons.GetHandler)
 
-		// 3. NOWE ENDPOINTY DLA LOGOWANIA OTP (BEZPIECZNE PROXY)
-		v1.POST("/auth/otp/start", auth.StartOTPHandler)   // Wysyła maila przez Auth0
-		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler) // Wymienia kod na JWT
+		v1.POST("/auth/otp/start", auth.StartOTPHandler)
+		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
 	}
 
-	// 4. GRUPA CHRONIONA (Tylko dla zalogowanych)
+	// 4. PROTECTED
 	protected := r.Group("/api/v1")
-	protected.Use(auth.EnsureValidToken()) // Middleware sprawdzający JWT z Auth0
+	protected.Use(auth.EnsureValidToken())
 	{
-		protected.GET("/sync-user", auth.SyncUserHandler) // Rejestruje/Loguje usera w DB
+		protected.GET("/sync-user", auth.SyncUserHandler)
 	}
 
 	port := ":8080"
