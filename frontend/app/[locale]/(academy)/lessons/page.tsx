@@ -6,7 +6,6 @@ import { FiTerminal, FiTarget, FiArrowRight } from 'react-icons/fi'
 import { useLocale } from 'next-intl'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
-// 1. Zaktualizowany Interfejs (zgodnie z nowym modelem GORM)
 interface Lesson {
   id: string
   track: string
@@ -19,25 +18,17 @@ interface Lesson {
 const learningPaths = [
   {
     id: 'qa',
-    label: 'QA AUTOMATION',
     title: 'Quality Assurance',
     desc: 'Master E2E testing, Cypress, and robust API mocking strategies.',
     href: '/academy/qa',
     icon: FiTerminal,
-    colorClass: 'text-green-500',
-    borderHover: 'hover:border-green-500/30',
-    bgHover: 'hover:bg-green-500/5',
   },
   {
     id: 'reality',
-    label: 'ENGINEERING TRUTHS',
     title: 'Reality Check',
     desc: 'System design, career architecture, and surviving the tech industry.',
     href: '/academy/reality-check',
     icon: FiTarget,
-    colorClass: 'text-purple-500',
-    borderHover: 'hover:border-purple-500/30',
-    bgHover: 'hover:bg-purple-500/5',
   },
 ]
 
@@ -147,19 +138,13 @@ export default function AcademyDashboard() {
             const Icon = path.icon
             return (
               <div
-                className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300 ${path.borderHover} ${path.bgHover}`}
+                className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300`}
               >
                 <Icon
-                  className={`absolute top-2 right-2 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
+                  className={`absolute top-2 right-2 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08]`}
                 />
                 <div>
-                  <div className="mb-4 flex items-center justify-between">
-                    <span
-                      className={`font-sans font-bold tracking-widest uppercase ${path.colorClass}`}
-                    >
-                      {path.label}
-                    </span>
-                  </div>
+                  <div className="mb-4 flex items-center justify-between"></div>
                   <h2 className="mb-3 font-serif text-4xl font-bold tracking-tight">
                     {path.title}
                   </h2>
@@ -181,19 +166,13 @@ export default function AcademyDashboard() {
             const Icon = path.icon
             return (
               <div
-                className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300 ${path.borderHover} ${path.bgHover}`}
+                className={`group relative flex flex-col justify-between overflow-hidden p-8 transition-all duration-300`}
               >
                 <Icon
-                  className={`absolute top-3 right-3 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08] ${path.colorClass}`}
+                  className={`absolute top-3 right-3 text-8xl opacity-[0.03] transition-transform duration-500 group-hover:scale-110 group-hover:opacity-[0.08]`}
                 />
                 <div>
-                  <div className="mb-4 flex items-center justify-between">
-                    <span
-                      className={`font-sans font-bold tracking-widest uppercase ${path.colorClass}`}
-                    >
-                      {path.label}
-                    </span>
-                  </div>
+                  <div className="mb-4 flex items-center justify-between"></div>
                   <h2 className="mb-3 font-serif text-4xl font-bold tracking-tight">
                     {path.title}
                   </h2>
