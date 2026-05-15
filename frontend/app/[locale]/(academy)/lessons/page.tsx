@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { FiTerminal, FiTarget, FiArrowRight } from 'react-icons/fi'
 import { useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 interface Lesson {
@@ -106,6 +107,27 @@ function LessonsTable({ items, basePath }: { items: Lesson[]; basePath: string }
 
 // 3. Główny komponent widoku
 export default function AcademyDashboard() {
+  const router = useRouter()
+
+  useEffect(() => {
+    const hash = window.location.hash
+
+    if (hash) {
+      const params = new URLSearchParams(hash.substring(1))
+      const accessToken = params.get('access_token')
+
+      if (accessToken) {
+        localStorage.setItem('token', accessToken)
+
+        window.dispatchEvent(new Event('auth-change'))
+
+        window.history.replaceState(null, '', window.location.pathname)
+
+        console.log('Zalogowano pomyślnie przez Google!')
+      }
+    }
+  }, [router])
+
   const [lessons, setLessons] = useState<Lesson[]>([])
 
   useEffect(() => {
