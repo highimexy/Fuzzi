@@ -82,7 +82,7 @@ export default function LoginPage() {
   const handleGoogleLogin = () => {
     const domain = process.env.NEXT_PUBLIC_AUTH0_DOMAIN
     const clientId = process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID
-    const redirectUri = encodeURIComponent('http://localhost:3000/academy')
+    const redirectUri = encodeURIComponent('http://localhost:3000/lessons')
     window.location.href = `https://${domain}/authorize?response_type=token&client_id=${clientId}&connection=google-oauth2&redirect_uri=${redirectUri}`
   }
 
