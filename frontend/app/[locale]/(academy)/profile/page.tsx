@@ -11,7 +11,7 @@ import {
   FiLock,
 } from 'react-icons/fi'
 import { ActivityCalendar, ThemeInput } from 'react-activity-calendar'
-import { GoTrophy } from 'react-icons/go'
+import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 const generateMockData = () => {
   const data = []
@@ -46,8 +46,10 @@ const calendarTheme: ThemeInput = {
 
 export default function ProfilePage() {
   return (
-    <div className="flex h-full items-center py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative flex h-full items-center overflow-hidden py-10">
+      <AcademyBackgroundGrid />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* TOP INFO BAR */}
         <div className="mb-6 flex justify-end">
           <p className="text-foreground/40 flex items-center gap-2 font-sans text-xs tracking-widest uppercase">
@@ -145,27 +147,26 @@ export default function ProfilePage() {
 
               {/* STATS 2 - KARMA */}
               <div className="border-foreground/10 bg-background flex flex-col justify-center border p-6">
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="text-xl">👤</span>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div>
+                      <p className="text-foreground/40 font-sans text-[10px] leading-none font-bold tracking-widest uppercase">
+                        Karma
+                      </p>
+                      <p className="font-serif text-2xl font-bold">0</p>
+                    </div>
+                  </div>
                   <div>
-                    <p className="text-foreground/40 font-sans text-[10px] leading-none font-bold tracking-widest uppercase">
-                      Karma
-                    </p>
-                    <p className="font-serif text-2xl font-bold">0</p>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between font-sans text-sm">
-                    <span className="text-foreground/60 text-[10px] font-bold tracking-widest uppercase">
+                    <p className="text-foreground/40 font-sans text-[10px] font-bold tracking-widest uppercase">
                       Upvotes
-                    </span>
-                    <span className="font-bold">0</span>
+                    </p>
+                    <p className="font-serif text-lg font-bold">4</p>
                   </div>
-                  <div className="flex justify-between font-sans text-sm">
-                    <span className="text-foreground/60 text-[10px] font-bold tracking-widest uppercase">
+                  <div>
+                    <p className="text-foreground/40 font-sans text-[10px] font-bold tracking-widest uppercase">
                       Thanks received
-                    </span>
-                    <span className="font-bold">0</span>
+                    </p>
+                    <p className="font-serif text-lg font-bold">11</p>
                   </div>
                 </div>
               </div>
