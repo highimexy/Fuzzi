@@ -34,13 +34,13 @@ const generateMockData = () => {
 const activityData = generateMockData()
 
 const calendarTheme: ThemeInput = {
-  light: ['#1f1f1f', '#fef08a', '#fde047', '#eab308', '#a16207'],
+  light: ['#1f1f1f', '#89937e', '#89937e', '#576966', '#fde047'],
   dark: [
     'rgba(255,255,255,0.05)',
-    'rgba(234, 179, 8, 0.3)',
-    'rgba(234, 179, 8, 0.6)',
-    'rgba(234, 179, 8, 0.8)',
-    '#eab308',
+    'rgba(253, 224, 71, 0.3)',
+    'rgba(253, 224, 71, 0.6)',
+    'rgba(253, 224, 71, 0.8)',
+    '#fde047',
   ],
 }
 
@@ -66,7 +66,7 @@ export default function ProfilePage() {
           <div className="space-y-4 md:col-span-3">
             <div className="border-foreground/10 bg-background flex flex-col items-center border p-6 text-center">
               <div className="group relative">
-                <button className="mb-4 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-yellow-500/50">
+                <button className="mb-4 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-accent/50">
                   {' '}
                   <FiUser className="text-6xl" />
                 </button>
@@ -79,7 +79,7 @@ export default function ProfilePage() {
               <div className="border-foreground/5 w-full border-t pt-4 text-left">
                 <div className="flex items-center justify-center gap-2">
                   <span className="font-serif text-lg font-bold uppercase">Level 1</span>
-                  <span className="font-sans text-sm font-bold text-blue-500 uppercase">
+                  <span className="font-sans text-sm font-bold text-primary uppercase">
                     280 XP
                   </span>
                 </div>

@@ -54,14 +54,14 @@ export default function AchievementsPage() {
               key={ach.id}
               className={`flex flex-col items-center border p-8 text-center transition-all ${
                 ach.unlocked
-                  ? 'bg-background border-yellow-500/30 hover:border-yellow-500/60'
+                  ? 'bg-background border-accent/30 hover:border-accent/60'
                   : 'border-foreground/5 bg-foreground/5 opacity-60 grayscale'
               }`}
             >
               <div
                 className={`mb-4 flex h-16 w-16 items-center justify-center rounded-full border-2 ${
                   ach.unlocked
-                    ? 'border-yellow-500 text-yellow-500'
+                    ? 'border-accent text-accent'
                     : 'border-foreground/20 text-foreground/40'
                 }`}
               >
@@ -75,7 +75,7 @@ export default function AchievementsPage() {
               <div className="border-foreground/10 mt-6 w-full border-t pt-4">
                 <span
                   className={`font-sans text-[10px] font-bold tracking-widest uppercase ${
-                    ach.unlocked ? 'text-yellow-500' : 'text-foreground/40'
+                    ach.unlocked ? 'text-accent' : 'text-foreground/40'
                   }`}
                 >
                   {ach.unlocked ? 'Unlocked' : 'Locked'}

@@ -109,7 +109,7 @@ export default function LoginPage() {
             </span>
             <span className="flex items-center justify-center">
               <span className="text-fluid-h3 mr-4 font-serif">for the</span>
-              <span className="text-fluid-h2 font-serif text-yellow-500 uppercase">Frontier</span>
+              <span className="text-fluid-h2 font-serif text-accent uppercase">Frontier</span>
             </span>
             <span className="text-fluid-h2 font-serif uppercase">Enlist Now</span>
           </h1>
@@ -138,11 +138,11 @@ export default function LoginPage() {
                   className="border-foreground/20 focus:border-foreground/50 w-full border p-3 font-sans outline-none disabled:opacity-50"
                   onKeyDown={(e) => e.key === 'Enter' && handleSendOTP()}
                 />
-                {error && <span className="text-sm text-red-500">{error}</span>}
+                {error && <span className="text-sm text-error">{error}</span>}
                 <button
                   onClick={handleSendOTP}
                   disabled={loading || !email}
-                  className="w-full border bg-yellow-500/10 p-3 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20 disabled:opacity-50"
+                  className="w-full border bg-accent/10 p-3 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20 disabled:opacity-50"
                 >
                   {loading ? 'Sending...' : 'Continue with email'}
                 </button>
@@ -162,11 +162,11 @@ export default function LoginPage() {
                   className="border-foreground/20 focus:border-foreground/50 w-full border p-3 text-center font-mono tracking-widest outline-none disabled:opacity-50"
                   onKeyDown={(e) => e.key === 'Enter' && handleVerifyOTP()}
                 />
-                {error && <span className="text-center text-sm text-red-500">{error}</span>}
+                {error && <span className="text-center text-sm text-error">{error}</span>}
                 <button
                   onClick={handleVerifyOTP}
                   disabled={loading || code.length < 6}
-                  className="w-full border bg-yellow-500 p-3 font-sans font-bold text-black uppercase transition-colors hover:bg-yellow-400 disabled:opacity-50"
+                  className="w-full border bg-accent p-3 font-sans font-bold text-black uppercase transition-colors hover:bg-accent disabled:opacity-50"
                 >
                   {loading ? 'Verifying...' : 'Verify & Enter'}
                 </button>

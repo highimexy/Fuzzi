@@ -97,7 +97,7 @@
     "footer": {
       "watermark": "Survive",
       "label": "Koniec Iluzji",
-      "title": "Teraz, gdy znasz <purple>Prawdę</purple>, <break></break>czy wciąż będziesz <u>Testować?</u>",
+      "title": "Teraz, gdy znasz <secondary>Prawdę</secondary>, <break></break>czy wciąż będziesz <u>Testować?</u>",
       "btn1": "Powrót na start",
       "btn2": "Wracaj szukać bugów"
     }

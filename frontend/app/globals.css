@@ -1,29 +1,84 @@
 @import 'tailwindcss';
 
 @theme inline {
+  /* BAZA */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Główne logotypy / Header (duże) */
+  /* LING (DEADLING) THEME */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+
+  /* SYSTEM */
+  --color-error: var(--error);
+
+  /* TYPOGRAPHY */
   --text-fluid-h1: clamp(2.5rem, 8vw, 6rem);
-  /* Tytuły sekcji (Burden, Madness) */
   --text-fluid-h2: clamp(2rem, 6vw, 4.5rem);
-  /* Cytaty / Lead text */
   --text-fluid-h3: clamp(1.5rem, 4vw, 2.5rem);
-  /* Standardowy tekst */
   --text-fluid-p: clamp(0.875rem, 1.2vw, 1rem);
-  /* Metadane / Opisy pod tytułami */
   --text-fluid-small: clamp(0.7rem, 0.8vw, 0.8rem);
 }
 
+/* ==========================================================================
+  DEADLING DESIGN SYSTEM - ZASADY UŻYCIA KOLORÓW
+  ==========================================================================
+
+  1. --background (Jasny Szary / Głęboki Granat)
+     -> Płótno. Używaj wyłącznie jako głównego tła całej strony i kart.
+
+  2. --foreground (Ciemny Szary / Jasny Szary)
+     -> Kontrast. Używaj do głównego tekstu, nagłówków i ikon, które
+        muszą być w 100% czytelne.
+
+  3. --primary : #89937E (Oliwkowa Skóra Linga)
+     -> ZASADA: "Działanie i Postęp".
+     -> Użycie: Główne przyciski (Rozpocznij, Zapisz), pełne progress bary,
+        aktywne zakładki w nawigacji, ikony sukcesu, avatar domyślny.
+
+  4. --secondary : #576966 (Szaro-Niebieski Pancerz)
+     -> ZASADA: "Struktura i Tło techniczne".
+     -> Użycie: Obramowania (borders), tła zagnieżdżonych paneli,
+        nieaktywne/zablokowane przyciski, puste progress bary,
+        wyciszony tekst (w połączeniu z opacity, np. text-secondary/70).
+
+  5. --accent : #FDE047 (Sygnałowy Żółty)
+     -> ZASADA: "Światło Ostrzegawcze / Nagroda".
+     -> Użycie: UŻYWAJ SPORADYCZNIE! Odblokowane osiągnięcia,
+        bardzo ważne powiadomienia, "Level Up", oznaczanie nowości,
+        najważniejsze Call-To-Action (np. "Kup Premium").
+
+  6. --error : #DC2626 / #EF4444 (Taktyczna Czerwień)
+     -> ZASADA: "Martwy Link / Krytyczny Błąd".
+     -> Użycie: Komunikaty o błędach (złe hasło, błąd serwera),
+        niezaliczone zadania, niszczycielskie akcje (usuwanie konta).
+  ==========================================================================
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* JASNY MOTYW - Surowy, techniczny klimat */
+  --background: #e2e8f0;
+  --foreground: #1a202c;
+
+  --primary: #89937e;
+  --secondary: #576966;
+  --accent: #fde047;
+
+  --error: #dc2626;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* CIEMNY MOTYW - Odwracamy tło i tekst */
+  --background: #1a202c;
+  --foreground: #e2e8f0;
+
+  /* Kolory Linga zostają niezmienne */
+  --primary: #89937e;
+  --secondary: #576966;
+  --accent: #fde047;
+
+  --error: #ef4444; /* Nieco jaśniejszy czerwony, żeby "świecił" w ciemności */
 }
 
 body {

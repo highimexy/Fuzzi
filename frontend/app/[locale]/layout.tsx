@@ -18,7 +18,7 @@ const sans = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'The Frontend Journal',
+  title: 'Fuzzi. | QA Heaven',
   description: 'Twoje źródło inspiracji UI ze opruszone szczyptą 3D',
 }
 

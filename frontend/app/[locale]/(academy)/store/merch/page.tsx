@@ -28,7 +28,7 @@ export default function MerchShopPage() {
           <h2 className="font-sans text-2xl font-bold">3D Model</h2>
         </div>
         <div className="mt-auto mb-4 flex gap-2">
-          <button className="flex items-center gap-2 border bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20">
+          <button className="flex items-center gap-2 border bg-accent/10 px-3 py-1.5 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
             <BsFillBasketFill className="text-xl" />
             Add to Cart
           </button>
@@ -46,7 +46,7 @@ export default function MerchShopPage() {
           {/* ZMIENIONO H1 NA H2 */}
           <h2 className="font-sans text-2xl font-bold">3D Model</h2>
         </div>
-        <button className="mt-auto mb-4 flex gap-2 border bg-yellow-500/10 px-3 py-1.75 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20">
+        <button className="mt-auto mb-4 flex gap-2 border bg-accent/10 px-3 py-1.75 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
           <BsFillBasketFill className="text-xl" />
           Add to Cart
         </button>

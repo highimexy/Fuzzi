@@ -1,8 +1,8 @@
 {
   "HomeHeader": {
-    "title1": "Zabezpiecz <green>Jakość</green>",
-    "title4": "Zdemaskuj <purple>AI Slop</purple>",
+    "title1": "Zabezpiecz <primary>Jakość</primary>",
+    "title4": "Zdemaskuj <secondary>AI Slop</secondary>",
     "description": "Bądźmy szczerzy: <bold>programiści generują kod szybciej niż kiedykolwiek, a Ty musisz to sprzątać.</bold> Rynek IT się zmienił. Czas przestać klikać na oślep i zacząć <bold>bronić produkcji</bold> przed halucynacjami maszyn. Od twardych <bold>podstaw QA</bold> po brutalną prawdę o <bold>zarobkach i przetrwaniu</bold> – to Twój arsenał na nową erę IT.<block>Zostań inżynierem, którego boi się zły kod, albo daj się zredukować do skryptu.</block>",
-    "footer": "Frontline: Raport z linii frontu."
+    "footer": "Fuzzi: Raport z linii frontu."
   }
 }

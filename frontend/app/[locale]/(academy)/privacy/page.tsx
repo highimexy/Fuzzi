@@ -94,7 +94,7 @@ export default function PrivacyPage() {
             <h2 className="text-foreground mb-4 font-serif text-2xl font-bold">6. Contact Us</h2>
             <p>
               For any privacy-related inquiries or data deletion requests, please email us at{' '}
-              <a href="mailto:privacy@frontier.dev" className="text-purple-500 hover:underline">
+              <a href="mailto:privacy@frontier.dev" className="text-secondary hover:underline">
                 privacy@frontier.dev
               </a>
               .

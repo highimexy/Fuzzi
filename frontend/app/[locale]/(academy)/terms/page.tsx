@@ -78,7 +78,7 @@ export default function TermsPage() {
             <h2 className="text-foreground mb-4 font-serif text-2xl font-bold">6. Contact Us</h2>
             <p>
               If you have any questions about these Terms, please contact us at{' '}
-              <a href="mailto:legal@frontier.dev" className="text-yellow-500 hover:underline">
+              <a href="mailto:legal@frontier.dev" className="text-accent hover:underline">
                 legal@frontier.dev
               </a>
               .

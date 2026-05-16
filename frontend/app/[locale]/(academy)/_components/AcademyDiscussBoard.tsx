@@ -91,7 +91,7 @@ export function AcademyDiscussBoard() {
             ))}
           </div>
 
-          <button className="flex cursor-pointer items-center gap-2 border bg-yellow-500/10 px-2 font-bold text-yellow-500 hover:bg-yellow-500/20">
+          <button className="flex cursor-pointer items-center gap-2 border bg-accent/10 px-2 font-bold text-accent hover:bg-accent/20">
             <FiEdit3 className="text-lg" />
             <span className="">Create</span>
           </button>
@@ -121,7 +121,7 @@ export function AcademyDiscussBoard() {
                     <FiUser className="text-md" />
                   </div>
                   <span className="text-foreground/80 font-bold">{post.author}</span>
-                  {post.isVerified && <FiCheckCircle className="text-blue-500" />}
+                  {post.isVerified && <FiCheckCircle className="text-primary" />}
                   <span>•</span>
                   <span>{post.date}</span>
                 </div>
@@ -129,13 +129,13 @@ export function AcademyDiscussBoard() {
                 {/* NAPRAWIONY HEADING: Zmiana z h3 na h2 */}
                 <h2 className="font-serif text-base font-bold sm:text-lg">{post.title}</h2>
 
-                <p className="line-clamp-2 pb-2 text-sm text-zinc-400 sm:text-base">
+                <p className="line-clamp-2 pb-2 text-sm text-foreground/60 sm:text-base">
                   {post.excerpt}
                 </p>
 
                 <div className="text-foreground/50 flex items-center justify-between">
                   <div className="flex items-center gap-4 sm:gap-6">
-                    <span className="flex items-center gap-1 transition-colors hover:text-yellow-500">
+                    <span className="flex items-center gap-1 transition-colors hover:text-accent">
                       <FiArrowUp className="text-base" /> {post.upvotes}
                     </span>
                     <span className="flex items-center gap-1">

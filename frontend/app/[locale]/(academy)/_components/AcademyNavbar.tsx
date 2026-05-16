@@ -3,12 +3,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FiMenu, FiSearch, FiX } from 'react-icons/fi'
+import { FiMenu, FiX } from 'react-icons/fi'
 import gsap from 'gsap'
 import { StoreDropdown } from './StoreDropdown'
 import { AcademyLanguageSwitcher } from './AcademyLanguageSwitcher'
 import AcademyThemeSwitcher from './AcademyThemeSwitcher'
 import { AuthNavMenu } from './AuthNavMenu'
+import Dot from '../../global-components/dot/page'
+import { FuzziMark } from '../../global-components/logo/page'
 
 export function AcademyNavbar() {
   const pathname = usePathname()
@@ -93,13 +95,24 @@ export function AcademyNavbar() {
         <div className="flex h-16 w-full lg:grid lg:grid-cols-3">
           {/* LEWA STRONA */}
           <div className="flex flex-1 lg:flex-none">
-            <div className="border-foreground/10 flex flex-1 items-center justify-start px-6 lg:justify-center lg:border-r lg:px-8">
+            <div className="border-foreground/10 flex flex-1 items-center justify-start px-4 lg:justify-center lg:border-r lg:px-8">
               <Link
                 href="/"
                 onClick={() => isMobileMenuOpen && handleCloseMenu()}
-                className="font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] font-bold whitespace-nowrap text-yellow-500 uppercase transition-opacity hover:opacity-80"
+                className="flex items-center gap-2 transition-opacity hover:opacity-80 lg:gap-3"
               >
-                Frontline
+                {/* Ikona pająka zgrupowana z tekstem */}
+                <FuzziMark size={40} />
+
+                {/* Nazwa + Kropka z wyrównaniem do dolnej krawędzi */}
+                <span className="flex items-end gap-1">
+                  <span className="text-foreground font-serif text-[clamp(1.1rem,2.3vw,1.8rem)] leading-none font-bold whitespace-nowrap uppercase">
+                    Fuzzi
+                  </span>
+                  <div className="relative top-0.5 shrink-0 lg:top-auto lg:-bottom-0.5">
+                    <Dot />
+                  </div>
+                </span>
               </Link>
             </div>
 
@@ -139,7 +152,7 @@ export function AcademyNavbar() {
             <div className="hidden shrink-0 items-center justify-center px-4 lg:flex">
               <Link
                 href="/premium"
-                className="border bg-yellow-500/10 px-3 py-1.5 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20"
+                className="bg-accent/10 text-accent hover:bg-accent/20 border px-3 py-1.5 font-sans font-bold uppercase transition-colors"
               >
                 Premium
               </Link>

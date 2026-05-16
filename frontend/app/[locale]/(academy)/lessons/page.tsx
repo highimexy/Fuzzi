@@ -39,7 +39,7 @@ const getDifficultyStyles = (diff: string) => {
     return 'text-emerald-500 border-emerald-500/30 bg-emerald-500/10'
   }
   if (d.includes('intermediate') || d.includes('średni')) {
-    return 'text-blue-500 border-blue-500/30 bg-blue-500/10'
+    return 'text-primary border-primary/30 bg-primary/10'
   }
   if (d.includes('advanced') || d.includes('zaawansowany')) {
     return 'text-rose-500 border-rose-500/30 bg-rose-500/10'
@@ -72,7 +72,7 @@ function LessonsTable({ items, basePath }: { items: Lesson[]; basePath: string }
           <Link
             key={lesson.id}
             href={`${basePath}/${lesson.id}`}
-            className="group border-foreground/10 bg-background flex flex-col justify-between gap-4 border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)] sm:flex-row sm:items-center"
+            className="group border-foreground/10 bg-background flex flex-col justify-between gap-4 border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] sm:flex-row sm:items-center"
           >
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-4">
@@ -84,7 +84,7 @@ function LessonsTable({ items, basePath }: { items: Lesson[]; basePath: string }
               </div>
 
               <div className="flex flex-wrap items-center gap-2 pl-8">
-                <span className="bg-yellow-500/10 px-2 py-0.5 font-sans text-[9px] font-bold tracking-widest text-yellow-500 uppercase">
+                <span className="bg-accent/10 px-2 py-0.5 font-sans text-[9px] font-bold tracking-widest text-accent uppercase">
                   {lesson.status}
                 </span>
                 <span

@@ -43,7 +43,7 @@ export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
       {/* DARMOWE ZASOBY & PROMPTY */}
       {content.resources.length > 0 && (
         <div className="border-foreground/10 border-t pt-6">
-          <h4 className="mb-4 font-sans text-xs font-bold tracking-widest text-yellow-500 uppercase">
+          <h4 className="mb-4 font-sans text-xs font-bold tracking-widest text-accent uppercase">
             Free Resources & Prompts
           </h4>
           <div className="flex flex-col gap-3">
@@ -59,7 +59,7 @@ export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
                     className="group hover:bg-foreground/5 flex w-full items-start gap-3 rounded-md p-2 text-left transition-colors"
                   >
                     <Icon
-                      className={`mt-0.5 transition-colors ${isCopied ? 'text-green-500' : 'text-foreground/50 group-hover:text-yellow-500'}`}
+                      className={`mt-0.5 transition-colors ${isCopied ? 'text-primary' : 'text-foreground/50 group-hover:text-accent'}`}
                     />
                     <span className="text-foreground/80 group-hover:text-foreground font-sans text-sm font-semibold transition-colors">
                       {isCopied ? 'Copied to clipboard!' : res.title}
@@ -76,7 +76,7 @@ export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
                   rel="noopener noreferrer"
                   className="group hover:bg-foreground/5 flex items-start gap-3 rounded-md p-2 transition-colors"
                 >
-                  <Icon className="text-foreground/50 mt-0.5 transition-colors group-hover:text-yellow-500" />
+                  <Icon className="text-foreground/50 mt-0.5 transition-colors group-hover:text-accent" />
                   <span className="text-foreground/80 group-hover:text-foreground font-sans text-sm font-semibold transition-colors">
                     {res.title}
                   </span>

@@ -74,15 +74,15 @@ export default function SettingsPage() {
           </section>
 
           {/* DANGER ZONE */}
-          <section className="border border-red-500/20 bg-red-500/5 p-8">
-            <h2 className="mb-6 flex items-center gap-2 border-b border-red-500/20 pb-4 font-serif text-xl font-bold text-red-500 uppercase">
+          <section className="border border-error/20 bg-error/5 p-8">
+            <h2 className="mb-6 flex items-center gap-2 border-b border-error/20 pb-4 font-serif text-xl font-bold text-error uppercase">
               <FiShield /> Danger Zone
             </h2>
             <p className="text-foreground/70 mb-4 font-sans text-sm">
               Permanently erase your data and revoke your access to the Frontier. This action cannot
               be undone.
             </p>
-            <button className="border border-red-500 bg-red-500/10 px-6 py-2 font-sans text-sm font-bold text-red-500 uppercase transition-colors hover:bg-red-500 hover:text-white">
+            <button className="border border-error bg-error/10 px-6 py-2 font-sans text-sm font-bold text-error uppercase transition-colors hover:bg-error hover:text-white">
               Deactivate Account
             </button>
           </section>

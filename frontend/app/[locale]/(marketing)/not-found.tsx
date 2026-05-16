@@ -16,7 +16,7 @@ export default function NotFound() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center px-6">
-          <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-red-500 uppercase">
+          <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-error uppercase">
             {t('errorLabel')}
           </span>
 

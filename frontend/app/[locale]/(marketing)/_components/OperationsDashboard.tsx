@@ -150,7 +150,7 @@ export function OperationsDashboard() {
                   ))
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-center opacity-30">
-                    <span className="font-mono text-[10px] tracking-widest text-red-500 uppercase">
+                    <span className="font-mono text-[10px] tracking-widest text-error uppercase">
                       [ Connection Failed ]
                     </span>
                   </div>
@@ -164,9 +164,9 @@ export function OperationsDashboard() {
             <div className="border-foreground/20 bg-background flex h-150 flex-col overflow-hidden rounded-xl border shadow-2xl backdrop-blur-md">
               <div className="border-foreground/10 bg-foreground/5 flex h-10 w-full items-center justify-between border-b px-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full border border-red-500/30 bg-red-500/80" />
-                  <div className="h-3 w-3 rounded-full border border-yellow-500/30 bg-yellow-500/80" />
-                  <div className="h-3 w-3 rounded-full border border-green-500/30 bg-green-500/80" />
+                  <div className="h-3 w-3 rounded-full border border-error/30 bg-error/80" />
+                  <div className="h-3 w-3 rounded-full border border-accent/30 bg-accent/80" />
+                  <div className="h-3 w-3 rounded-full border border-primary/30 bg-primary/80" />
                   <div className="text-foreground ml-2 flex translate-y-0.5 items-center gap-2 font-mono text-[10px] leading-none opacity-50">
                     <FiTerminal className="text-xs" />
                     <span>market_board.zsh</span>
@@ -175,7 +175,7 @@ export function OperationsDashboard() {
 
                 <div className="flex items-center gap-2">
                   <div
-                    className={`h-2 w-2 rounded-full ${wsStatus === 'CONNECTED' ? 'animate-pulse bg-green-500' : 'bg-red-500'}`}
+                    className={`h-2 w-2 rounded-full ${wsStatus === 'CONNECTED' ? 'animate-pulse bg-primary' : 'bg-error'}`}
                   />
                   <span className="text-foreground translate-y-px font-mono text-[8px] opacity-40">
                     {wsStatus}
@@ -203,7 +203,7 @@ export function OperationsDashboard() {
                           [{row.category}]
                         </span>
                         {row.status && (
-                          <span className="text-[9px] font-bold tracking-widest text-yellow-500/70 uppercase">
+                          <span className="text-[9px] font-bold tracking-widest text-accent/70 uppercase">
                             {row.status}
                           </span>
                         )}
@@ -218,7 +218,7 @@ export function OperationsDashboard() {
                                 {item.price}
                               </span>
                               <span
-                                className={`w-14 animate-pulse text-right ${item.up ? 'text-green-500' : 'text-red-500'}`}
+                                className={`w-14 animate-pulse text-right ${item.up ? 'text-primary' : 'text-error'}`}
                               >
                                 {item.chg}
                               </span>

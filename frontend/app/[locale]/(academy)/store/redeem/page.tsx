@@ -49,7 +49,7 @@ export default function RedeemPage() {
             placeholder="Enter Redeem Code"
             className="border-foreground/20 focus:border-foreground/50 w-56 border p-3 font-sans outline-none lg:w-72"
           />
-          <button className="w-32 border bg-yellow-500/10 p-3 font-sans font-bold text-yellow-500 uppercase transition-colors hover:bg-yellow-500/20">
+          <button className="w-32 border bg-accent/10 p-3 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
             Redeem
           </button>
         </div>
@@ -60,11 +60,11 @@ export default function RedeemPage() {
             const Icon = item.icon
             return (
               <div key={item.id} className="border-foreground/10 max-w-70 min-w-70 border">
-                <div className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)]">
-                  <Icon className="absolute -top-6 -right-6 text-8xl text-yellow-500 opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
+                <div className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                  <Icon className="absolute -top-6 -right-6 text-8xl text-accent opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
 
                   <div>
-                    <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-yellow-500 uppercase">
+                    <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-accent uppercase">
                       {item.label}
                     </span>
                     {/* ZMIENIONO H4 NA H2 */}

@@ -25,49 +25,49 @@ const UniversalHandles = () => (
       id="top-t"
       type="target"
       position={Position.Top}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="top-s"
       type="source"
       position={Position.Top}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="bottom-t"
       type="target"
       position={Position.Bottom}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="bottom-s"
       type="source"
       position={Position.Bottom}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="left-t"
       type="target"
       position={Position.Left}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="left-s"
       type="source"
       position={Position.Left}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="right-t"
       type="target"
       position={Position.Right}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
     <Handle
       id="right-s"
       type="source"
       position={Position.Right}
-      className="bg-foreground/30! dark:bg-zinc-500!"
+      className="bg-foreground/30! dark:bg-foreground/20!"
     />
   </>
 )
@@ -76,7 +76,7 @@ const UniversalHandles = () => (
 // 2. Nodes Styles
 // ==========================================
 const MainNode = ({ data }: { data: any }) => (
-  <div className="bg-background border-foreground/20 min-w-48 cursor-pointer border-2 px-6 py-4 text-center transition-colors hover:border-yellow-500">
+  <div className="bg-background border-foreground/20 min-w-48 cursor-pointer border-2 px-6 py-4 text-center transition-colors hover:border-accent">
     <UniversalHandles />
     <div className="text-foreground font-serif tracking-widest uppercase transition-colors">
       {data.label}
@@ -85,23 +85,23 @@ const MainNode = ({ data }: { data: any }) => (
 )
 
 const SubNode = ({ data }: { data: any }) => (
-  <div className="border-foreground/20 bg-background min-w-32 cursor-pointer border px-4 py-2 text-center transition-colors hover:border-yellow-500">
+  <div className="border-foreground/20 bg-background min-w-32 cursor-pointer border px-4 py-2 text-center transition-colors hover:border-accent">
     <UniversalHandles />
-    <div className="font-serif tracking-wide text-yellow-500 transition-colors">{data.label}</div>
+    <div className="font-serif tracking-wide text-accent transition-colors">{data.label}</div>
   </div>
 )
 
 const ListNode = ({ data }: { data: any }) => (
   <div className="border-foreground/30 bg-background flex min-w-48 flex-col border p-3 transition-colors">
     <UniversalHandles />
-    <div className="border-foreground/20 mb-2 flex cursor-pointer justify-center border-b font-serif tracking-wide text-yellow-500 transition-colors hover:text-yellow-300">
+    <div className="border-foreground/20 mb-2 flex cursor-pointer justify-center border-b font-serif tracking-wide text-accent transition-colors hover:text-accent">
       {data.label}
     </div>
     <ul className="flex flex-col gap-2 text-center">
       {data.items?.map((item: string, index: number) => (
         <li
           key={index}
-          className="border-foreground/20 bg-background text-foreground cursor-pointer border font-bold transition-colors hover:border-yellow-500"
+          className="border-foreground/20 bg-background text-foreground cursor-pointer border font-bold transition-colors hover:border-accent"
         >
           {item}
         </li>
@@ -113,7 +113,7 @@ const ListNode = ({ data }: { data: any }) => (
 const StartNode = ({ data }: { data: any }) => (
   <div className="text-center">
     <UniversalHandles />
-    <div className="font-serif text-4xl tracking-wide text-yellow-500 transition-colors">
+    <div className="font-serif text-4xl tracking-wide text-accent transition-colors">
       {data.label}
     </div>
   </div>
@@ -824,7 +824,7 @@ export function RoadmapGraph() {
           <>
             <div className="border-foreground/10 flex flex-col border-b p-4">
               <div className="flex items-center justify-between">
-                <span className="font-bold tracking-widest text-yellow-500 uppercase">
+                <span className="font-bold tracking-widest text-accent uppercase">
                   {selectedTopic.type}
                 </span>
                 <button

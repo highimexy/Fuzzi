@@ -47,7 +47,7 @@ export function ExperienceBar() {
           <div className="bg-foreground/10 h-full w-full overflow-hidden rounded-xs">
             <div
               ref={barRef}
-              className="h-full w-10 rounded-xs bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+              className="h-full w-10 rounded-xs bg-primary shadow-[0_0_10px_rgba(0,0,0,0.12)]"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ export function ExperienceBar() {
           >
             <div className="flex flex-col gap-1">
               <div className="flex justify-between font-sans font-bold tracking-tighter uppercase">
-                <span className="text-right text-blue-500">
+                <span className="text-right text-primary">
                   350 <span className="text-foreground">/</span> 1000
                 </span>
                 <span>XP</span>

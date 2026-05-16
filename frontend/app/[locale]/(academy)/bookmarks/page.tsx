@@ -35,7 +35,7 @@ export default function BookmarksPage() {
       <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="border-foreground/10 flex items-center justify-end pb-4">
           <div className="border-foreground/10 bg-background flex h-12 w-12 items-center justify-center border">
-            <FiBookmark className="text-xl text-yellow-500" />
+            <FiBookmark className="text-xl text-accent" />
           </div>
         </div>
 
@@ -46,7 +46,7 @@ export default function BookmarksPage() {
               className="group border-foreground/10 bg-background hover:border-foreground/30 flex flex-col justify-between border p-6 transition-colors sm:flex-row sm:items-center"
             >
               <div className="mb-4 sm:mb-0">
-                <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-yellow-500 uppercase">
+                <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-accent uppercase">
                   {bm.category}
                 </span>
                 <h3 className="font-serif text-xl font-bold uppercase">{bm.title}</h3>

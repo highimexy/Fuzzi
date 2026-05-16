@@ -54,7 +54,7 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
 
   if (!lesson) {
     return (
-      <div className="flex h-screen items-center justify-center font-mono text-red-500">
+      <div className="flex h-screen items-center justify-center font-mono text-error">
         404 - Lesson not found
       </div>
     )
@@ -70,7 +70,7 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
         className={`${activeTab === 'theory' ? 'flex' : 'hidden'} border-foreground/10 h-full w-full flex-col overflow-y-auto border-r p-6 pb-24 lg:flex lg:w-1/2 lg:p-12 lg:pb-12`}
       >
         <div className="mb-4 flex items-center gap-3">
-          <span className="bg-yellow-500/10 px-2 py-0.5 font-mono text-[10px] tracking-widest text-yellow-500 uppercase">
+          <span className="bg-accent/10 px-2 py-0.5 font-mono text-[10px] tracking-widest text-accent uppercase">
             {lesson.track}
           </span>
           <span className="border-foreground/10 border px-2 py-0.5 font-mono text-[10px] tracking-widest uppercase opacity-50">

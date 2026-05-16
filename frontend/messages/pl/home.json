@@ -4,7 +4,7 @@
       "label": "Po co tu jesteśmy",
       "title1": "Kujemy następne",
       "title2": "pokolenie inżynierów QA",
-      "description": "Frontline Journal to nie blog. To poligon treningowy dla ery Post-Juniora. AI generuje kod na skalę, ale nie potrafi myśleć krytycznie o jakości. Przygotowujemy testerów, którzy nie tylko znajdują błędy — oni im zapobiegają. Przez twarde podstawy QA i niefiltrowane spojrzenie na rynek IT, tu teoria spotyka się z praktyką.",
+      "description": "Fuzzi Journal to nie blog. To poligon treningowy dla ery Post-Juniora. AI generuje kod na skalę, ale nie potrafi myśleć krytycznie o jakości. Przygotowujemy testerów, którzy nie tylko znajdują błędy — oni im zapobiegają. Przez twarde podstawy QA i niefiltrowane spojrzenie na rynek IT, tu teoria spotyka się z praktyką.",
       "pillars": {
         "qa": {
           "title": "Fundamenty QA",
@@ -15,7 +15,7 @@
           "desc": "Rynek się zmienił. Zrozum prawdę o zarobkach, AI i przetrwaniu w IT."
         },
         "academy": {
-          "title": "Frontline Academy",
+          "title": "Fuzzi Academy",
           "desc": "Moduły praktyczne. Sale dowodów. Warsztaty z dokumentacji. Teoria bez praktyki to obciążenie."
         }
       }
@@ -43,10 +43,10 @@
       }
     },
     "academy": {
-      "label": "Frontline Academy",
+      "label": "Fuzzi Academy",
       "title1": "Teoria to",
       "title2": "Obciążenie",
-      "description": "Academy to miejsce, gdzie Frontline Journal staje się praktyką. Każdy moduł to środowisko treningowe: sale dowodów, ćwiczenia z logiki i warsztaty z dokumentacji. Zero biernego czytania. Budujesz umiejętności przez działanie.",
+      "description": "Academy to miejsce, gdzie Fuzzi Journal staje się praktyką. Każdy moduł to środowisko treningowe: sale dowodów, ćwiczenia z logiki i warsztaty z dokumentacji. Zero biernego czytania. Budujesz umiejętności przez działanie.",
       "link": "Wejdź do Akademii",
       "stats": {
         "modules": "Moduły treningowe",
@@ -71,7 +71,7 @@
       "watermark": "Rynek",
       "label": "02. Zderzenie z Rzeczywistością",
       "titleLine1": "<light>Prawda</light>",
-      "titleLine2": "Kryjąca się za <purple>Hype'em</purple>",
+      "titleLine2": "Kryjąca się za <secondary>Hype'em</secondary>",
       "dreamLabel": "Sen",
       "dreamQuote": "\"Będziesz budować innowacyjne produkty i zmieniać świat w nowoczesnym biurze.\"",
       "realityLabel": "Rzeczywistość",

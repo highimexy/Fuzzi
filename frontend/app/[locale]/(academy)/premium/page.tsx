@@ -41,7 +41,7 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
-          className="flex w-full items-start justify-between text-left transition-colors hover:text-yellow-500 sm:items-center"
+          className="flex w-full items-start justify-between text-left transition-colors hover:text-accent sm:items-center"
         >
           <span className="pr-8">{q}</span>
           {isOpen ? (
@@ -82,7 +82,7 @@ export default function PremiumPage() {
           </h1>
           <p className="text-foreground/80 font-sans text-sm md:text-base">
             Get started with a{' '}
-            <span className="font-serif font-bold text-yellow-500">Frontier</span> Subscription that
+            <span className="font-serif font-bold text-accent">Frontier</span> Subscription that
             works for you.
           </p>
         </div>
@@ -122,7 +122,7 @@ export default function PremiumPage() {
           </div>
 
           {/* YEARLY CARD (POPULAR) */}
-          <div className="relative flex flex-1 flex-col justify-between overflow-hidden bg-linear-to-br from-[#F0B100] to-[#5a450c] p-8 text-zinc-900 shadow-[0_0_40px_rgba(251,146,60,0.15)]">
+          <div className="relative flex flex-1 flex-col justify-between overflow-hidden bg-linear-to-br from-[#F0B100] to-[#5a450c] p-8 text-zinc-900 shadow-[0_0_40px_rgba(0,0,0,0.08)]">
             <div>
               <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
                 <div className="flex items-baseline gap-2">

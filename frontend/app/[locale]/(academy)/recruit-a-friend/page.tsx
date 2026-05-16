@@ -4,7 +4,7 @@ import { FiUsers, FiCopy, FiGift, FiShare2 } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 export default function RecruitPage() {
-  const referralLink = 'https://frontline.academy/r/user_74583428'
+  const referralLink = 'https://fuzzi.academy/r/user_74583428'
 
   const handleCopy = () => {
     navigator.clipboard.writeText(referralLink)
@@ -20,7 +20,7 @@ export default function RecruitPage() {
           {/* LEWA KOLUMNA - LINK */}
           <div className="border-foreground/10 bg-background flex flex-col justify-between border p-8">
             <div>
-              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-yellow-500/30 bg-yellow-500/10 text-yellow-500">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center border border-accent/30 bg-accent/10 text-accent">
                 <FiShare2 className="text-xl" />
               </div>
               <h2 className="mb-4 font-serif text-2xl font-bold uppercase">
@@ -45,7 +45,7 @@ export default function RecruitPage() {
                 />
                 <button
                   onClick={handleCopy}
-                  className="flex items-center justify-center gap-2 border border-yellow-500 bg-yellow-500 px-6 py-3 font-sans font-bold text-black uppercase transition-colors hover:bg-yellow-400"
+                  className="flex items-center justify-center gap-2 border border-accent bg-accent px-6 py-3 font-sans font-bold text-black uppercase transition-colors hover:bg-accent"
                 >
                   <FiCopy /> Copy
                 </button>
@@ -68,7 +68,7 @@ export default function RecruitPage() {
                 </div>
               </div>
               <div className="bg-foreground/10 mt-6 h-2 w-full">
-                <div className="h-full w-[0%] bg-yellow-500 transition-all"></div>
+                <div className="h-full w-[0%] bg-accent transition-all"></div>
               </div>
               <p className="text-foreground/50 mt-4 font-sans text-xs">
                 Recruit 5 more to unlock the 'Commander' medal.
@@ -77,7 +77,7 @@ export default function RecruitPage() {
 
             <div className="border-foreground/10 bg-background flex flex-1 flex-col justify-center border p-8">
               <div className="flex items-center gap-4">
-                <FiGift className="text-4xl text-yellow-500/50" />
+                <FiGift className="text-4xl text-accent/50" />
                 <div>
                   <p className="text-foreground/40 font-sans text-[10px] font-bold tracking-widest uppercase">
                     Premium Earned

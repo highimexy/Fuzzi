@@ -97,7 +97,7 @@
     "footer": {
       "watermark": "Survive",
       "label": "End of Illusions",
-      "title": "Now that you know the <purple>Truth</purple>, <break></break>do you still want to <u>Test?</u>",
+      "title": "Now that you know the <secondary>Truth</secondary>, <break></break>do you still want to <u>Test?</u>",
       "btn1": "Back to start",
       "btn2": "Back to bug hunting"
     }

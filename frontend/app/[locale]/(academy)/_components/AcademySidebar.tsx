@@ -33,19 +33,19 @@ export function AcademySidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`group border-b-foreground/10 relative flex items-center justify-between border border-transparent px-4 py-5 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-zinc-500/30 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(161,161,170,0.15)] ${
+              className={`group border-b-foreground/10 relative flex items-center justify-between border border-transparent px-4 py-5 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] ${
                 isActive ? 'bg-foreground/5 opacity-100' : 'hover:bg-background opacity-60'
               }`}
             >
               <div className="flex items-center gap-2">
                 <Icon
                   className={`text-base transition-colors ${
-                    isActive ? 'text-foreground' : 'group-hover:text-zinc-400'
+                    isActive ? 'text-foreground' : 'group-hover:text-foreground/60'
                   }`}
                 />
                 <span
                   className={`font-sans text-[10px] font-bold tracking-widest uppercase transition-colors ${
-                    isActive ? 'text-foreground' : 'group-hover:text-zinc-400'
+                    isActive ? 'text-foreground' : 'group-hover:text-foreground/60'
                   }`}
                 >
                   {item.label}
@@ -53,7 +53,7 @@ export function AcademySidebar() {
               </div>
 
               {item.badge && (
-                <span className="bg-blue-500 px-1.5 py-0.5 text-[8px] font-bold tracking-wider text-white uppercase shadow-sm">
+                <span className="bg-primary px-1.5 py-0.5 text-[8px] font-bold tracking-wider text-white uppercase shadow-sm">
                   {item.badge}
                 </span>
               )}

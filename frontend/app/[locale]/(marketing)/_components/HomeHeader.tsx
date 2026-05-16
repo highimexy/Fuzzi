@@ -37,13 +37,13 @@ export function HomeHeader() {
           {/* NAGŁÓWEK */}
           <h1 className="gsap-item font-serif">
             {t.rich('title1', {
-              green: (chunks) => <span className="text-green-500 italic opacity-90">{chunks}</span>,
+              primary: (chunks) => <span className="text-primary italic opacity-90">{chunks}</span>,
             })}
             <br />
 
             {t.rich('title4', {
-              purple: (chunks) => (
-                <span className="text-purple-500 italic opacity-90">{chunks}</span>
+              secondary: (chunks) => (
+                <span className="text-secondary italic opacity-90">{chunks}</span>
               ),
             })}
           </h1>

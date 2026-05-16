@@ -20,22 +20,22 @@ const RANKING_DATA = [
 // Zmienione wysokości i dodane twardsze bordery, żeby platformy wyglądały solidnie
 const MEDAL_COLORS = {
   1: {
-    crown: 'text-yellow-500',
-    avatar: 'border-yellow-500 text-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.2)]',
-    platform: 'h-32 sm:h-40 bg-yellow-500/10 border-yellow-500 border-t-2 border-l-2 border-r-2',
-    name: 'text-yellow-500',
+    crown: 'text-accent',
+    avatar: 'border-accent text-accent shadow-[0_0_15px_rgba(0,0,0,0.08)]',
+    platform: 'h-32 sm:h-40 bg-accent/10 border-accent border-t-2 border-l-2 border-r-2',
+    name: 'text-accent',
   },
   2: {
-    crown: 'text-zinc-400',
-    avatar: 'border-zinc-400 text-zinc-400',
-    platform: 'h-24 sm:h-28 bg-zinc-400/10 border-zinc-400 border-t-2 border-l-2 border-r-2',
-    name: 'text-zinc-400',
+    crown: 'text-foreground/60',
+    avatar: 'border-foreground/30 text-foreground/60',
+    platform: 'h-24 sm:h-28 bg-foreground/10 border-foreground/30 border-t-2 border-l-2 border-r-2',
+    name: 'text-foreground/60',
   },
   3: {
-    crown: 'text-amber-700',
-    avatar: 'border-amber-700 text-amber-700',
-    platform: 'h-16 sm:h-20 bg-amber-700/10 border-amber-700 border-t-2 border-l-2 border-r-2',
-    name: 'text-amber-700',
+    crown: 'text-accent',
+    avatar: 'border-accent text-accent',
+    platform: 'h-16 sm:h-20 bg-accent/10 border-accent border-t-2 border-l-2 border-r-2',
+    name: 'text-accent',
   },
 }
 
@@ -142,7 +142,7 @@ export function AcademyRankingBoard() {
 
                 {/* Stats */}
                 <div className="flex flex-col items-end text-right">
-                  <span className="font-sans text-sm font-bold tracking-widest text-yellow-500">
+                  <span className="font-sans text-sm font-bold tracking-widest text-accent">
                     {user.score} XP
                   </span>
                   <span className="text-foreground/40 font-sans text-[10px] font-bold tracking-widest uppercase">

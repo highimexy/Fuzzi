@@ -4,7 +4,7 @@
       "label": "Why We Are Here",
       "title1": "Forging the Next",
       "title2": "Generation of QA Engineers",
-      "description": "Frontline Journal is not a blog. It is a training ground for the Post-Junior era. AI generates code at scale, but it cannot think critically about quality. We prepare testers who don't just find bugs — they prevent them. Through hard QA fundamentals and an unfiltered look at the IT market, this is where theory meets practice.",
+      "description": "Fuzzi Journal is not a blog. It is a training ground for the Post-Junior era. AI generates code at scale, but it cannot think critically about quality. We prepare testers who don't just find bugs — they prevent them. Through hard QA fundamentals and an unfiltered look at the IT market, this is where theory meets practice.",
       "pillars": {
         "qa": {
           "title": "QA Fundamentals",
@@ -15,7 +15,7 @@
           "desc": "The market has changed. Understand the truth about salaries, AI, and survival in IT."
         },
         "academy": {
-          "title": "Frontline Academy",
+          "title": "Fuzzi Academy",
           "desc": "Hands-on modules. Visual evidence rooms. Technical documentation drills. Theory is a liability without practice."
         }
       }
@@ -43,10 +43,10 @@
       }
     },
     "academy": {
-      "label": "Frontline Academy",
+      "label": "Fuzzi Academy",
       "title1": "Theory Is a",
       "title2": "Liability",
-      "description": "The Academy is where Frontline Journal becomes practice. Each module is a hands-on training environment: visual evidence rooms, logic drills, and documentation workshops. No passive reading. You build skills by doing.",
+      "description": "The Academy is where Fuzzi Journal becomes practice. Each module is a hands-on training environment: visual evidence rooms, logic drills, and documentation workshops. No passive reading. You build skills by doing.",
       "link": "Enter the Academy",
       "stats": {
         "modules": "Training Modules",
@@ -71,7 +71,7 @@
       "watermark": "Market",
       "label": "02. Reality Check",
       "titleLine1": "The <light>Truth</light>",
-      "titleLine2": "Behind the <purple>Hype</purple>",
+      "titleLine2": "Behind the <secondary>Hype</secondary>",
       "dreamLabel": "The Dream",
       "dreamQuote": "\"You will build innovative products and change the world in a modern office.\"",
       "realityLabel": "The Reality",

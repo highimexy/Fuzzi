@@ -71,7 +71,7 @@ export function SupportersTicker() {
             <span className="font-serif text-xl tracking-tighter uppercase italic opacity-70">
               {name}
             </span>
-            <LuSparkles className="text-yellow-500/80" />
+            <LuSparkles className="text-accent/80" />
           </div>
         ))}
       </div>

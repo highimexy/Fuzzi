@@ -123,7 +123,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
                 ))}
                 <button
                   onClick={handleLogout}
-                  className="hover:bg-foreground/5 border-foreground/5 block w-full border-t p-4 text-left font-sans text-sm text-red-500 uppercase transition-colors"
+                  className="hover:bg-foreground/5 border-foreground/5 block w-full border-t p-4 text-left font-sans text-sm text-error uppercase transition-colors"
                   role="menuitem"
                 >
                   Logout
