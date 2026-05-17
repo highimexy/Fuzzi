@@ -1,6 +1,6 @@
 'use client'
 
-import { FiSettings, FiMail, FiShield, FiBell } from 'react-icons/fi'
+import { FiMail, FiShield, FiBell } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 export default function SettingsPage() {
