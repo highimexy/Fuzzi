@@ -1,110 +1,119 @@
 {
   "Home": {
-    "mission": {
-      "label": "Po co tu jesteśmy",
-      "title1": "Kujemy następne",
-      "title2": "pokolenie inżynierów QA",
-      "description": "Fuzzi Journal to nie blog. To poligon treningowy dla ery Post-Juniora. AI generuje kod na skalę, ale nie potrafi myśleć krytycznie o jakości. Przygotowujemy testerów, którzy nie tylko znajdują błędy — oni im zapobiegają. Przez twarde podstawy QA i niefiltrowane spojrzenie na rynek IT, tu teoria spotyka się z praktyką.",
-      "pillars": {
-        "qa": {
-          "title": "Fundamenty QA",
-          "desc": "Przypadki brzegowe, anatomia UI i mentalność sceptyka. Naucz się widzieć to, czego inni nie zauważają."
-        },
-        "reality": {
-          "title": "Zderzenie z Realiami",
-          "desc": "Rynek się zmienił. Zrozum prawdę o zarobkach, AI i przetrwaniu w IT."
-        },
-        "academy": {
-          "title": "Fuzzi Academy",
-          "desc": "Moduły praktyczne. Sale dowodów. Warsztaty z dokumentacji. Teoria bez praktyki to obciążenie."
-        }
-      }
+    "hero": {
+      "badge": "Era Post-Junior",
+      "headline": "AI nie zabija <accent>testerów</accent>. Zabija tych, którzy testują jak <dim>5 lat temu</dim>.",
+      "subheadline": "Poligon treningowy dla QA inżynierów.",
+      "cta": "Zacznij za darmo",
+      "ctaSecondary": "Sprawdź Academy",
+      "socialProof": "Dołącz do inżynierów, którzy nie czekają aż AI ich zastąpi"
     },
-    "qa": {
-      "label": "01. Quality Assurance",
-      "title1": "Brzemię",
-      "title2": "Sceptyka",
-      "quote": "\"Tu nie chodzi o szukanie błędów. Chodzi o bycie jedyną osobą w pokoju, która ma odwagę zepsuć wszystkim humor.\"",
-      "description": "Rzeczywistość QA to w 80% praca detektywistyczna nad bugiem, którego nikt inny nie potrafi zreprodukować, a w 20% walka o jakość. Tutaj nauczysz się myśleć jak użytkownik, deweloper i przeciwnik — jednocześnie.",
-      "link": "Sprawdź Roadmapę QA",
-      "preview": {
-        "mindset": {
-          "title": "Mentalność Sceptyka",
-          "desc": "Patologiczna nieufność wobec 'u mnie działa'. QA zaczyna się na poziomie dokumentacji."
-        },
-        "anatomy": {
-          "title": "Anatomia UI",
-          "desc": "Box modele, stany komponentów i typografia. Naucz się widzieć niewidzialną strukturę webu."
-        },
-        "toolkit": {
-          "title": "Arsenał Techniczny",
-          "desc": "Figma, Jira, DevTools. Instrumenty do sekcji, dokumentacji i debugowania rzeczywistości."
-        }
-      }
-    },
-    "academy": {
-      "label": "Fuzzi Academy",
-      "title1": "Teoria to",
-      "title2": "Obciążenie",
-      "description": "Academy to miejsce, gdzie Fuzzi Journal staje się praktyką. Każdy moduł to środowisko treningowe: sale dowodów, ćwiczenia z logiki i warsztaty z dokumentacji. Zero biernego czytania. Budujesz umiejętności przez działanie.",
-      "link": "Wejdź do Akademii",
-      "stats": {
-        "modules": "Moduły treningowe",
-        "approach": "Nauka przez praktykę"
+    "problem": {
+      "label": "Rzeczywistość rynku",
+      "card1": {
+        "title": "Rynek się zmienił",
+        "body": "Bootcampy sprzedają sny z 2019. AI pisze CRUD-y szybciej niż junior.",
+        "stat": "72% juniorów nie dostaje odpowiedzi na aplikacje"
       },
-      "steps": {
-        "step1": {
-          "title": "Leksykon",
-          "desc": "Terminologia i dowody wizualne. Naucz się identyfikować każdy stan komponentu UI."
-        },
-        "step2": {
-          "title": "Pokój Dowodów",
-          "desc": "Wizualne polowanie na błędy w symulacjach. Trenuj oko, by dostrzec to, czego inni nie widzą."
-        },
-        "step3": {
-          "title": "Konstrukcja",
-          "desc": "Mistrzostwo w dokumentacji technicznej. Pisz raporty bugów, które deweloperzy chcą czytać."
-        }
+      "card2": {
+        "title": "Technika to za mało",
+        "body": "Umiesz pisać testy. Nie umiesz przeżyć daily standupu, code review ani rozmowy o estymacji."
+      },
+      "card3": {
+        "title": "AI nie jest Twoim wrogiem. Twoja ignorancja jest.",
+        "body": "Ci, którzy rozumieją AI w QA, zarabiają więcej. Reszta czeka na maila o restrukturyzacji."
       }
     },
-    "reality": {
-      "watermark": "Rynek",
-      "label": "02. Zderzenie z Rzeczywistością",
-      "titleLine1": "<light>Prawda</light>",
-      "titleLine2": "Kryjąca się za <secondary>Hype'em</secondary>",
-      "dreamLabel": "Sen",
-      "dreamQuote": "\"Będziesz budować innowacyjne produkty i zmieniać świat w nowoczesnym biurze.\"",
-      "realityLabel": "Rzeczywistość",
-      "realityQuote": "\"Będziesz debugować kod napisany 5 lat temu i tłumaczyć, dlaczego estymata była błędna.\"",
-      "description": "Technologia to tylko 50% sukcesu. Reszta to poruszanie się po rynku, zrozumienie wpływu AI i filtrowanie korpo-żargonu. Bez tej wiedzy nawet najlepsze umiejętności techniczne Cię nie uratują.",
-      "link": "Przeczytaj pełny manifest",
-      "preview": {
-        "hype": {
-          "title": "Cykl Hype'u",
-          "desc": "Gorączka złota się skończyła. Marketing bootcampów to nie rzeczywistość."
-        },
-        "ai": {
-          "title": "Bariera AI",
-          "desc": "Maszyny piszą CRUD-y szybciej niż juniorzy. Jaki jest Twój atut?"
-        },
-        "market": {
-          "title": "Dynamika Rynku",
-          "desc": "Big Tech, startupy, freelance. Każda ścieżka ma swoją cenę."
-        },
-        "human": {
-          "title": "Czynnik Przetrwania",
-          "desc": "Soft skille to nowe hard skille lat 2020."
-        }
+    "solution": {
+      "label": "Trzy antidota",
+      "item1": {
+        "num": "01",
+        "title": "QA Fundamentals",
+        "quote": "Przestań klikać. Zacznij myśleć jak architekt jakości.",
+        "link": "Sprawdź ścieżkę QA"
+      },
+      "item2": {
+        "num": "02",
+        "title": "Reality Check",
+        "quote": "Nikomu nie powiedzą Ci tego na rozmowie rekrutacyjnej.",
+        "link": "Przeczytaj Reality Check"
+      },
+      "item3": {
+        "num": "03",
+        "title": "Fuzzi Academy",
+        "quote": "Teoria bez praktyki to dług. Tu spłacasz go każdego dnia.",
+        "link": "Wejdź do Academy"
       }
     },
-    "cta": {
-      "label": "Twój punkt startu",
-      "title1": "Gotowy, by",
-      "title2": "przejąć kontrolę?",
-      "description": "Nie potrzebujesz kolejnego tutoriala. Potrzebujesz planu przetrwania. Zacznij od fundamentów QA, zmierz się z realiami rynku i trenuj w Akademii. Era Post-Juniora nagradza tych, którzy się przygotowują.",
-      "qaBtn": "Zacznij ścieżkę QA",
-      "realityBtn": "Poznaj Realia",
-      "academyBtn": "Wejdź do Akademii"
+    "education": {
+      "label": "Edukacja / Wektory",
+      "title": "Dwa wektory ataku.<br></br><dim>Jeden cel.</dim>",
+      "description": "Zanim wejdziesz do Akademii, musisz zrozumieć zasady gry. Poznaj twarde fundamenty inżynierii jakości lub zderz swoje wyobrażenia z brutalną rynkową rzeczywistością.",
+      "vector1": {
+        "label": "Wektor 01",
+        "title": "Fundamenty QA",
+        "desc": "Zrozum anatomię błędów, mindset testera i taktyki, którymi posługują się najlepsi inżynierowie. Zbuduj solidną bazę, zanim w ogóle dotkniesz automatyzacji.",
+        "cta": "Poznaj system QA"
+      },
+      "vector2": {
+        "label": "Wektor 02",
+        "title": "Reality Check",
+        "desc": "Rynek juniorów nie istnieje? AI zabierze Ci pracę? Odrzucamy marketingowy bullshit kursów od zera i zderzamy mity z twardymi realiami IT.",
+        "cta": "Zderz się z rynkiem"
+      }
+    },
+    "trust": {
+      "label": "Dlaczego Fuzzi",
+      "stat1": {
+        "value": "3 ścieżki",
+        "sub": "QA, Reality, Academy"
+      },
+      "stat2": {
+        "value": "Post-Junior",
+        "sub": "Przygotuj się zanim będzie za późno"
+      },
+      "stat3": {
+        "value": "Zero BS",
+        "sub": "Niefiltrowana prawda o rynku"
+      },
+      "testimonial1": {
+        "initials": "MK",
+        "name": "Michał K.",
+        "role": "Inżynier QA",
+        "quote": "Fuzzi dał mi język, którym mogę rozmawiać z deweloperami. Nie tylko narzędzia.",
+        "tag": "Fundamentalne"
+      },
+      "testimonial2": {
+        "initials": "AS",
+        "name": "Anna S.",
+        "role": "Senior QA",
+        "quote": "Reality Check to jedyna sekcja w internecie, która mówi prawdę o juniorach w IT.",
+        "tag": "Zweryfikowane"
+      }
+    },
+    "conversion": {
+      "headline": "Gotowy przestać być zastępowalny?",
+      "cta": "Zacznij naukę",
+      "secondary1": "Sprawdź Reality Check",
+      "secondary2": "Wejdź do Academy",
+      "pricesNote": "Ceny podane w USD",
+      "monthly": {
+        "period": "Miesięcznie",
+        "billedLabel": "płatny miesięcznie",
+        "description": "Nasz plan miesięczny daje dostęp do <strong>wszystkich funkcji premium</strong>, najlepszy plan dla subskrybentów krótkoterminowych.",
+        "price": "$35",
+        "unit": "/mc",
+        "cta": "Wybierz Monthly"
+      },
+      "yearly": {
+        "badge": "Najpopularniejszy",
+        "period": "Rocznie",
+        "billedLabel": "płatny rocznie",
+        "description": "Najlepszy arsenał. Daje dostęp do <strong>wszystkiego</strong> plus przyszłych treści, oszczędzając 20%.",
+        "price": "$14.92",
+        "unit": "/mc",
+        "cta": "Wybierz Yearly"
+      }
     }
   }
 }
