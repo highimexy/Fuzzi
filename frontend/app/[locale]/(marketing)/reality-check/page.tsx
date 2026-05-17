@@ -41,7 +41,7 @@ export default function RealityCheckPage() {
             </div>
             <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
               <div className="space-y-8">
-                <p className="text-fluid-h3 font-serif leading-snug italic opacity-80">
+                <p className="text-fluid-h4 font-serif leading-snug italic opacity-80">
                   {t('hype.quote')}
                 </p>
                 <div className="grid gap-8 sm:grid-cols-2">
@@ -209,13 +209,13 @@ export default function RealityCheckPage() {
             </div>
             <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
               <div className="flex flex-col gap-12">
-                <div className="border-l-2 border-secondary/20 pl-8 opacity-60">
+                <div className="border-secondary/20 border-l-2 pl-8 opacity-60">
                   <h3 className={`font-sans font-bold tracking-widest uppercase`}>
                     {t('human.comm.title')}
                   </h3>
                   <p className="mt-4 text-sm leading-relaxed opacity-60">{t('human.comm.desc')}</p>
                 </div>
-                <div className="border-l-2 border-secondary/20 pl-8 opacity-60">
+                <div className="border-secondary/20 border-l-2 pl-8 opacity-60">
                   <h3 className="font-sans font-bold tracking-widest uppercase">
                     {t('human.learn.title')}
                   </h3>
@@ -230,13 +230,13 @@ export default function RealityCheckPage() {
       <SectionDivider />
 
       {/* THE ACADEMY / ROADMAP - REALITY CHECK SURVIVAL */}
-      <section className="relative overflow-hidden bg-secondary/2">
+      <section className="bg-secondary/2 relative overflow-hidden">
         <BackgroundGrid color="rgb(168 85 247 / 0.1)" />
         <Container className="relative z-10">
           <div className="px-3 py-24 text-left md:px-6">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-xl">
-                <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-secondary uppercase">
+                <span className="text-fluid-small text-secondary font-sans font-bold tracking-[0.4em] uppercase">
                   {t('academy.label')}
                 </span>
                 <h2 className="text-fluid-h2 mt-4 font-serif leading-none tracking-tighter uppercase">
@@ -249,11 +249,11 @@ export default function RealityCheckPage() {
                   {t('academy.tagline')}
                 </p>
               </div>
-              <div className="hidden border-l border-secondary/20 pl-6 lg:block">
+              <div className="border-secondary/20 hidden border-l pl-6 lg:block">
                 <span className="block font-mono text-[10px] uppercase opacity-40">
                   {t('academy.curriculum')}
                 </span>
-                <span className="mt-1 block font-mono text-[10px] font-bold text-secondary uppercase">
+                <span className="text-secondary mt-1 block font-mono text-[10px] font-bold uppercase">
                   {t('academy.modules')}
                 </span>
               </div>
@@ -267,11 +267,11 @@ export default function RealityCheckPage() {
               >
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                   <div className="flex items-start gap-4 md:items-center md:gap-8">
-                    <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-secondary group-hover:opacity-100 md:text-4xl">
+                    <span className="group-hover:text-secondary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                       01
                     </span>
                     <div className="flex flex-col gap-1">
-                      <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-secondary md:text-base">
+                      <h3 className="group-hover:text-secondary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                         {t('academy.step1.title')}
                       </h3>
                       <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -279,7 +279,7 @@ export default function RealityCheckPage() {
                       </p>
                     </div>
                   </div>
-                  <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-secondary group-hover:bg-secondary group-hover:text-black md:self-auto md:text-[10px]">
+                  <span className="border-foreground/10 group-hover:border-secondary group-hover:bg-secondary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                     {t('academy.step1.btn')}{' '}
                     <FiArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
                   </span>
@@ -293,11 +293,11 @@ export default function RealityCheckPage() {
               >
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                   <div className="flex items-start gap-4 md:items-center md:gap-8">
-                    <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-secondary group-hover:opacity-100 md:text-4xl">
+                    <span className="group-hover:text-secondary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                       02
                     </span>
                     <div className="flex flex-col gap-1">
-                      <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-secondary md:text-base">
+                      <h3 className="group-hover:text-secondary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                         {t('academy.step2.title')}
                       </h3>
                       <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -305,7 +305,7 @@ export default function RealityCheckPage() {
                       </p>
                     </div>
                   </div>
-                  <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-secondary group-hover:bg-secondary group-hover:text-black md:self-auto md:text-[10px]">
+                  <span className="border-foreground/10 group-hover:border-secondary group-hover:bg-secondary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                     {t('academy.step2.btn')}{' '}
                     <FiArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
                   </span>
@@ -319,11 +319,11 @@ export default function RealityCheckPage() {
               >
                 <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                   <div className="flex items-start gap-4 md:items-center md:gap-8">
-                    <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-secondary group-hover:opacity-100 md:text-4xl">
+                    <span className="group-hover:text-secondary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                       03
                     </span>
                     <div className="flex flex-col gap-1">
-                      <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-secondary md:text-base">
+                      <h3 className="group-hover:text-secondary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                         {t('academy.step3.title')}
                       </h3>
                       <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -331,7 +331,7 @@ export default function RealityCheckPage() {
                       </p>
                     </div>
                   </div>
-                  <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-secondary group-hover:bg-secondary group-hover:text-black md:self-auto md:text-[10px]">
+                  <span className="border-foreground/10 group-hover:border-secondary group-hover:bg-secondary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                     {t('academy.step3.btn')}{' '}
                     <FiArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
                   </span>
@@ -358,7 +358,7 @@ export default function RealityCheckPage() {
               {t.rich('footer.title', {
                 secondary: (chunks) => <span className={`italic ${accentColor}`}>{chunks}</span>,
                 u: (chunks) => (
-                  <span className="underline decoration-secondary/30 underline-offset-8 transition-colors hover:decoration-secondary">
+                  <span className="decoration-secondary/30 hover:decoration-secondary underline underline-offset-8 transition-colors">
                     {chunks}
                   </span>
                 ),
@@ -374,7 +374,7 @@ export default function RealityCheckPage() {
               </Link>
               <Link
                 href="/lessons"
-                className="text-fluid-small bg-secondary px-10 py-5 font-sans tracking-[0.3em] text-white uppercase transition-all duration-500 hover:bg-secondary"
+                className="text-fluid-small bg-accent text-background px-10 py-5 font-sans tracking-[0.3em] uppercase transition-opacity duration-300 hover:opacity-80"
               >
                 {t('footer.btn2')}
               </Link>
