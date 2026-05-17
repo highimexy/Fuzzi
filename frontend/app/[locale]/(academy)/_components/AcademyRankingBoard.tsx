@@ -113,11 +113,11 @@ export function AcademyRankingBoard() {
           {/* PODIUM (TOP 3) - Wycentrowane */}
           <div className="border-foreground/10 flex w-full max-w-2xl items-end justify-center gap-2 border-b pb-0 sm:gap-4">
             {/* 2nd */}
-            <PodiumCard user={second} rank={2} />
+            <PodiumCard user={second!} rank={2} />
             {/* 1st */}
-            <PodiumCard user={first} rank={1} />
+            <PodiumCard user={first!} rank={1} />
             {/* 3rd */}
-            <PodiumCard user={third} rank={3} />
+            <PodiumCard user={third!} rank={3} />
           </div>
 
           {/* LISTA (4–10) - Wycentrowana pod podium */}
