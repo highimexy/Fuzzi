@@ -1,110 +1,119 @@
 {
   "Home": {
-    "mission": {
-      "label": "Why We Are Here",
-      "title1": "Forging the Next",
-      "title2": "Generation of QA Engineers",
-      "description": "Fuzzi Journal is not a blog. It is a training ground for the Post-Junior era. AI generates code at scale, but it cannot think critically about quality. We prepare testers who don't just find bugs — they prevent them. Through hard QA fundamentals and an unfiltered look at the IT market, this is where theory meets practice.",
-      "pillars": {
-        "qa": {
-          "title": "QA Fundamentals",
-          "desc": "Edge cases, UI anatomy, and the skeptic mindset. Learn to see what others miss."
-        },
-        "reality": {
-          "title": "Reality Check",
-          "desc": "The market has changed. Understand the truth about salaries, AI, and survival in IT."
-        },
-        "academy": {
-          "title": "Fuzzi Academy",
-          "desc": "Hands-on modules. Visual evidence rooms. Technical documentation drills. Theory is a liability without practice."
-        }
-      }
+    "hero": {
+      "badge": "Post-Junior Era",
+      "headline": "AI doesn't kill <accent>testers</accent>. It kills those who test like <dim>it's 5 years ago</dim>.",
+      "subheadline": "A training ground for QA engineers.",
+      "cta": "Start for free",
+      "ctaSecondary": "Explore Academy",
+      "socialProof": "Join engineers who aren't waiting to be replaced"
     },
-    "qa": {
-      "label": "01. Quality Assurance",
-      "title1": "The Skeptic's",
-      "title2": "Burden",
-      "quote": "\"It's not about finding bugs. It's about being the only person in the room brave enough to ruin everyone's mood.\"",
-      "description": "The reality of QA is 80% detective work on a bug that no one else can reproduce, and 20% fighting for quality. Here you will learn to think like the user, the developer, and the adversary — all at once.",
-      "link": "Explore QA Roadmap",
-      "preview": {
-        "mindset": {
-          "title": "Skeptic Mindset",
-          "desc": "Pathological distrust of 'it works on my machine'. QA starts at the documentation level."
-        },
-        "anatomy": {
-          "title": "UI Anatomy",
-          "desc": "Box models, component states, and typography. Learn to see the invisible structure of the web."
-        },
-        "toolkit": {
-          "title": "Technical Toolkit",
-          "desc": "Figma, Jira, DevTools. The instruments we use to dissect, document, and debug reality."
-        }
-      }
-    },
-    "academy": {
-      "label": "Fuzzi Academy",
-      "title1": "Theory Is a",
-      "title2": "Liability",
-      "description": "The Academy is where Fuzzi Journal becomes practice. Each module is a hands-on training environment: visual evidence rooms, logic drills, and documentation workshops. No passive reading. You build skills by doing.",
-      "link": "Enter the Academy",
-      "stats": {
-        "modules": "Training Modules",
-        "approach": "Practice-First Learning"
+    "problem": {
+      "label": "Market reality",
+      "card1": {
+        "title": "The market has changed",
+        "body": "Bootcamps sell 2019 dreams. AI writes CRUDs faster than any junior.",
+        "stat": "72% of juniors get no response on their applications"
       },
-      "steps": {
-        "step1": {
-          "title": "The Lexicon",
-          "desc": "Terminology and visual evidence. Learn to identify every UI component state."
-        },
-        "step2": {
-          "title": "Evidence Room",
-          "desc": "Visual bug hunting in simulated environments. Train your eye to spot what others miss."
-        },
-        "step3": {
-          "title": "Construction",
-          "desc": "Master technical documentation. Write bug reports that developers actually want to read."
-        }
+      "card2": {
+        "title": "Technical skills aren't enough",
+        "body": "You can write tests. You can't survive a daily standup, code review, or estimation conversation."
+      },
+      "card3": {
+        "title": "AI isn't your enemy. Your ignorance is.",
+        "body": "Those who understand AI in QA earn more. The rest wait for the restructuring email."
       }
     },
-    "reality": {
-      "watermark": "Market",
-      "label": "02. Reality Check",
-      "titleLine1": "The <light>Truth</light>",
-      "titleLine2": "Behind the <secondary>Hype</secondary>",
-      "dreamLabel": "The Dream",
-      "dreamQuote": "\"You will build innovative products and change the world in a modern office.\"",
-      "realityLabel": "The Reality",
-      "realityQuote": "\"You will debug code written 5 years ago and explain why the estimate was wrong.\"",
-      "description": "Technology is only 50% of success. The rest is navigating the market, understanding AI's impact, and filtering corporate jargon. Without this knowledge, even the best technical skills won't save you.",
-      "link": "Read the full manifesto",
-      "preview": {
-        "hype": {
-          "title": "The Hype Cycle",
-          "desc": "The gold rush is over. Bootcamp marketing is not reality."
-        },
-        "ai": {
-          "title": "The AI Barrier",
-          "desc": "Machines write CRUD apps faster than juniors. What's your edge?"
-        },
-        "market": {
-          "title": "Market Dynamics",
-          "desc": "Big Tech, startups, freelance. Every path has its price."
-        },
-        "human": {
-          "title": "Human Survival",
-          "desc": "Soft skills are the hard skills of the 2020s."
-        }
+    "solution": {
+      "label": "Three antidotes",
+      "item1": {
+        "num": "01",
+        "title": "QA Fundamentals",
+        "quote": "Stop clicking. Start thinking like a quality architect.",
+        "link": "Explore QA path"
+      },
+      "item2": {
+        "num": "02",
+        "title": "Reality Check",
+        "quote": "No one will tell you this in a job interview.",
+        "link": "Read Reality Check"
+      },
+      "item3": {
+        "num": "03",
+        "title": "Fuzzi Academy",
+        "quote": "Theory without practice is debt. Here you pay it off every day.",
+        "link": "Enter Academy"
       }
     },
-    "cta": {
-      "label": "Your Starting Line",
-      "title1": "Ready to",
-      "title2": "Take Control?",
-      "description": "You don't need another tutorial. You need a survival plan. Start with QA fundamentals, face the market reality, and train in the Academy. The Post-Junior era rewards those who prepare.",
-      "qaBtn": "Start QA Path",
-      "realityBtn": "Face Reality",
-      "academyBtn": "Enter Academy"
+    "education": {
+      "label": "Education / Vectors",
+      "title": "Two attack vectors.<br></br><dim>One goal.</dim>",
+      "description": "Before you enter the Academy, you need to understand the rules of the game. Learn the hard foundations of quality engineering or collide your expectations with the brutal market reality.",
+      "vector1": {
+        "label": "Vector 01",
+        "title": "QA Fundamentals",
+        "desc": "Understand the anatomy of bugs, the tester mindset, and the tactics used by the best engineers. Build a solid base before you even touch automation.",
+        "cta": "Explore QA System"
+      },
+      "vector2": {
+        "label": "Vector 02",
+        "title": "Reality Check",
+        "desc": "The junior market doesn't exist? AI will take your job? We reject the marketing bullshit of zero-to-hero courses and collide myths with hard IT realities.",
+        "cta": "Collide with the Market"
+      }
+    },
+    "trust": {
+      "label": "Why Fuzzi",
+      "stat1": {
+        "value": "3 paths",
+        "sub": "QA, Reality, Academy"
+      },
+      "stat2": {
+        "value": "Post-Junior",
+        "sub": "Prepare before it's too late"
+      },
+      "stat3": {
+        "value": "Zero BS",
+        "sub": "Unfiltered truth about the market"
+      },
+      "testimonial1": {
+        "initials": "MK",
+        "name": "Michael K.",
+        "role": "QA Engineer",
+        "quote": "Fuzzi gave me the language to talk to developers. Not just tools.",
+        "tag": "Foundational"
+      },
+      "testimonial2": {
+        "initials": "AS",
+        "name": "Anna S.",
+        "role": "Senior QA",
+        "quote": "Reality Check is the only place on the internet that tells the truth about juniors in IT.",
+        "tag": "Verified"
+      }
+    },
+    "conversion": {
+      "headline": "Ready to stop being replaceable?",
+      "cta": "Start Learning",
+      "secondary1": "Check Reality Check",
+      "secondary2": "Enter Academy",
+      "pricesNote": "Prices are marked in USD",
+      "monthly": {
+        "period": "Monthly",
+        "billedLabel": "billed monthly",
+        "description": "Our monthly plan grants access to <strong>all premium features</strong>, the best plan for short-term subscribers.",
+        "price": "$35",
+        "unit": "/mo",
+        "cta": "Choose Monthly"
+      },
+      "yearly": {
+        "badge": "Most Popular",
+        "period": "Yearly",
+        "billedLabel": "billed annually",
+        "description": "The ultimate arsenal. Grants access to <strong>everything</strong> plus future content, saving you 20%.",
+        "price": "$14.92",
+        "unit": "/mo",
+        "cta": "Choose Yearly"
+      }
     }
   }
 }
