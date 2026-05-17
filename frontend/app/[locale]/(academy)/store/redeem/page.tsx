@@ -1,7 +1,7 @@
 'use client'
 
 import { AcademyBackgroundGrid } from '../../_components/AcademyBackgroundGrid'
-import { FiArrowRight, FiClock, FiStar, FiShoppingBag } from 'react-icons/fi'
+import { FiClock, FiStar, FiShoppingBag } from 'react-icons/fi'
 
 const CARDS = [
   {
