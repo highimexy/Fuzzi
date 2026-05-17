@@ -1,5 +1,10 @@
 {
   "SupportersTicker": {
-    "label": "Wspierający"
+    "phrase0": "AI napisze Twój test szybciej niż go przemyślisz",
+    "phrase1": "Junior market -67% ofert pracy YoY",
+    "phrase2": "Selenium - Playwright - AI agents. Nadążasz?",
+    "phrase3": "Soft skills to nowe hard skills",
+    "phrase4": "Dokumentacja którą deweloper chce czytać",
+    "phrase5": "Twój bug report to Twoja wizytówka"
   }
 }
