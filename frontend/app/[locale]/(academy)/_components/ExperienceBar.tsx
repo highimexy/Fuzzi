@@ -21,12 +21,6 @@ export function ExperienceBar() {
     }
   }, [showPopover])
 
-  // Logika zdobywania expa (przykład animacji paska)
-  // Możesz to wywołać, gdy dostaniesz info z bazy/socketu
-  const animateExpGain = (newWidth: string) => {
-    gsap.to(barRef.current, { width: newWidth, duration: 1, ease: 'elastic.out(1, 0.3)' })
-  }
-
   return (
     <div className="flex items-center" ref={containerRef}>
       {/* Tekst Levelu */}
