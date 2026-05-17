@@ -14,7 +14,7 @@ export default function QaPage() {
 
   return (
     <div className="flex min-h-screen flex-col overflow-x-hidden">
-      <main className="flex-1">
+      <main className="flex-1 pb-1">
         <SubpageHeader
           title={t('header.title')}
           subtitle={t('header.subtitle')}
@@ -173,21 +173,21 @@ export default function QaPage() {
                     <tbody className="opacity-80">
                       <tr className="border-foreground/10 hover:bg-foreground/2 border-b">
                         <td className="py-6">{t('toolkit.table.doc')}</td>
-                        <td className="py-6 font-bold italic underline decoration-primary/30">
+                        <td className="decoration-primary/30 py-6 font-bold italic underline">
                           Figma
                         </td>
                         <td className="py-6">{t('toolkit.table.row1')}</td>
                       </tr>
                       <tr className="border-foreground/10 hover:bg-foreground/2 border-b">
                         <td className="py-6">{t('toolkit.table.track')}</td>
-                        <td className="py-6 font-bold italic underline decoration-primary/30">
+                        <td className="decoration-primary/30 py-6 font-bold italic underline">
                           Jira
                         </td>
                         <td className="py-6">{t('toolkit.table.row2')}</td>
                       </tr>
                       <tr className="border-foreground/10 hover:bg-foreground/2 border-b">
                         <td className="py-6">{t('toolkit.table.debug')}</td>
-                        <td className="py-6 font-bold italic underline decoration-primary/30">
+                        <td className="decoration-primary/30 py-6 font-bold italic underline">
                           DevTools
                         </td>
                         <td className="py-6">{t('toolkit.table.row3')}</td>
@@ -222,7 +222,7 @@ export default function QaPage() {
               </div>
               <div className="w-full flex-1 lg:max-w-2xl xl:max-w-3xl">
                 <div className="flex flex-col gap-12">
-                  <div className="border-l-2 border-primary/20 pl-8 opacity-60">
+                  <div className="border-primary/20 border-l-2 pl-8 opacity-60">
                     <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('human.designers.title')}
                     </h3>
@@ -230,7 +230,7 @@ export default function QaPage() {
                       {t('human.designers.desc')}
                     </p>
                   </div>
-                  <div className="border-l-2 border-primary/20 pl-8 opacity-60">
+                  <div className="border-primary/20 border-l-2 pl-8 opacity-60">
                     <h3 className="font-sans font-bold tracking-widest uppercase">
                       {t('human.developers.title')}
                     </h3>
@@ -247,13 +247,13 @@ export default function QaPage() {
         <SectionDivider />
 
         {/* THE ACADEMY / ROADMAP */}
-        <section className="relative overflow-hidden bg-primary/2">
+        <section className="bg-primary/2 relative overflow-hidden">
           <BackgroundGrid color="rgb(34 197 94 / 0.1)" />
           <Container className="relative z-10">
             <div className="px-3 py-24 md:px-6">
               <div className="flex flex-col gap-8 text-left lg:flex-row lg:items-end lg:justify-between">
                 <div className="max-w-xl">
-                  <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-primary uppercase">
+                  <span className="text-fluid-small text-primary font-sans font-bold tracking-[0.4em] uppercase">
                     {t('academy.label')}
                   </span>
                   <h2 className="text-fluid-h2 mt-4 font-serif leading-none tracking-tighter uppercase">
@@ -266,11 +266,11 @@ export default function QaPage() {
                     {t('academy.tagline')}
                   </p>
                 </div>
-                <div className="hidden border-l border-primary/20 pl-6 lg:block">
+                <div className="border-primary/20 hidden border-l pl-6 lg:block">
                   <span className="block font-mono text-[10px] uppercase opacity-40">
                     {t('academy.curriculum')}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] font-bold text-primary uppercase">
+                  <span className="text-primary mt-1 block font-mono text-[10px] font-bold uppercase">
                     {t('academy.modules')}
                   </span>
                 </div>
@@ -284,11 +284,11 @@ export default function QaPage() {
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                     <div className="flex items-start gap-4 md:gap-8">
-                      <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-primary group-hover:opacity-100 md:text-4xl">
+                      <span className="group-hover:text-primary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                         01
                       </span>
                       <div className="flex flex-col gap-1">
-                        <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-primary md:text-base">
+                        <h3 className="group-hover:text-primary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                           {t('academy.step1.title')}
                         </h3>
                         <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -296,7 +296,7 @@ export default function QaPage() {
                         </p>
                       </div>
                     </div>
-                    <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black md:self-auto md:text-[10px]">
+                    <span className="border-foreground/10 group-hover:border-primary group-hover:bg-primary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                       {t('academy.step1.btn')} <FiArrowRight className="text-sm" />
                     </span>
                   </div>
@@ -308,11 +308,11 @@ export default function QaPage() {
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                     <div className="flex items-start gap-4 md:gap-8">
-                      <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-primary group-hover:opacity-100 md:text-4xl">
+                      <span className="group-hover:text-primary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                         02
                       </span>
                       <div className="flex flex-col gap-1">
-                        <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-primary md:text-base">
+                        <h3 className="group-hover:text-primary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                           {t('academy.step2.title')}
                         </h3>
                         <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -320,7 +320,7 @@ export default function QaPage() {
                         </p>
                       </div>
                     </div>
-                    <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black md:self-auto md:text-[10px]">
+                    <span className="border-foreground/10 group-hover:border-primary group-hover:bg-primary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                       {t('academy.step2.btn')} <FiArrowRight className="text-sm" />
                     </span>
                   </div>
@@ -332,11 +332,11 @@ export default function QaPage() {
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
                     <div className="flex items-start gap-4 md:gap-8">
-                      <span className="shrink-0 font-serif text-xl opacity-10 transition-all group-hover:text-primary group-hover:opacity-100 md:text-4xl">
+                      <span className="group-hover:text-primary shrink-0 font-serif text-xl opacity-10 transition-all group-hover:opacity-100 md:text-4xl">
                         03
                       </span>
                       <div className="flex flex-col gap-1">
-                        <h3 className="font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors group-hover:text-primary md:text-base">
+                        <h3 className="group-hover:text-primary font-sans text-[13px] leading-tight font-bold tracking-widest text-white uppercase transition-colors md:text-base">
                           {t('academy.step3.title')}
                         </h3>
                         <p className="max-w-60 text-[11px] leading-relaxed italic opacity-50 md:max-w-sm md:text-sm">
@@ -344,7 +344,7 @@ export default function QaPage() {
                         </p>
                       </div>
                     </div>
-                    <span className="border-foreground/10 flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:border-primary group-hover:bg-primary group-hover:text-black md:self-auto md:text-[10px]">
+                    <span className="border-foreground/10 group-hover:border-primary group-hover:bg-primary flex w-fit items-center gap-2 self-start border px-3 py-2 text-[8px] font-bold tracking-[0.2em] whitespace-nowrap uppercase transition-all group-hover:text-black md:self-auto md:text-[10px]">
                       {t('academy.step3.btn')} <FiArrowRight className="text-sm" />
                     </span>
                   </div>
@@ -373,7 +373,7 @@ export default function QaPage() {
               </h2>
               <Link
                 href="/reality-check"
-                className="text-fluid-small mt-12 border border-primary/30 px-10 py-5 font-sans tracking-[0.3em] uppercase transition-all duration-500 hover:bg-primary hover:text-white"
+                className="text-fluid-small border-primary/30 hover:bg-primary mt-12 border px-10 py-5 font-sans tracking-[0.3em] uppercase transition-all duration-500 hover:text-white"
               >
                 {t('footer.btn')}
               </Link>
