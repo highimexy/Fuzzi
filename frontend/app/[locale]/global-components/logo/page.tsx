@@ -143,8 +143,8 @@ export function FuzziMark({ size = 40, className = '' }) {
 
               {/* Szpon — cienki, spiczasty trójkąt */}
               {(() => {
-                const [tx, ty] = leg.t
-                const [kx, ky] = leg.k
+                const [tx, ty] = leg.t as [number, number]
+                const [kx, ky] = leg.k as [number, number]
                 // kierunek ostatniego segmentu
                 const dx = tx - kx,
                   dy = ty - ky
