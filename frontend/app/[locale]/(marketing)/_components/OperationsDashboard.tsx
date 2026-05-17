@@ -79,7 +79,7 @@ export function OperationsDashboard() {
   }, [])
 
   return (
-    <section className="border-foreground/10 relative overflow-hidden border-b">
+    <section className="relative overflow-hidden">
       <Container className="relative z-10 py-20 lg:py-32">
         {/* SIDE WATERMARKS */}
         <div className="pointer-events-none absolute top-1/2 left-1 -z-10 hidden -translate-y-1/2 select-none lg:block">
@@ -150,7 +150,7 @@ export function OperationsDashboard() {
                   ))
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-center opacity-30">
-                    <span className="font-mono text-[10px] tracking-widest text-error uppercase">
+                    <span className="text-error font-mono text-[10px] tracking-widest uppercase">
                       [ Connection Failed ]
                     </span>
                   </div>
@@ -164,9 +164,9 @@ export function OperationsDashboard() {
             <div className="border-foreground/20 bg-background flex h-150 flex-col overflow-hidden rounded-xl border shadow-2xl backdrop-blur-md">
               <div className="border-foreground/10 bg-foreground/5 flex h-10 w-full items-center justify-between border-b px-4">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full border border-error/30 bg-error/80" />
-                  <div className="h-3 w-3 rounded-full border border-accent/30 bg-accent/80" />
-                  <div className="h-3 w-3 rounded-full border border-primary/30 bg-primary/80" />
+                  <div className="border-error/30 bg-error/80 h-3 w-3 rounded-full border" />
+                  <div className="border-accent/30 bg-accent/80 h-3 w-3 rounded-full border" />
+                  <div className="border-primary/30 bg-primary/80 h-3 w-3 rounded-full border" />
                   <div className="text-foreground ml-2 flex translate-y-0.5 items-center gap-2 font-mono text-[10px] leading-none opacity-50">
                     <FiTerminal className="text-xs" />
                     <span>market_board.zsh</span>
@@ -175,7 +175,7 @@ export function OperationsDashboard() {
 
                 <div className="flex items-center gap-2">
                   <div
-                    className={`h-2 w-2 rounded-full ${wsStatus === 'CONNECTED' ? 'animate-pulse bg-primary' : 'bg-error'}`}
+                    className={`h-2 w-2 rounded-full ${wsStatus === 'CONNECTED' ? 'bg-primary animate-pulse' : 'bg-error'}`}
                   />
                   <span className="text-foreground translate-y-px font-mono text-[8px] opacity-40">
                     {wsStatus}
@@ -203,7 +203,7 @@ export function OperationsDashboard() {
                           [{row.category}]
                         </span>
                         {row.status && (
-                          <span className="text-[9px] font-bold tracking-widest text-accent/70 uppercase">
+                          <span className="text-accent/70 text-[9px] font-bold tracking-widest uppercase">
                             {row.status}
                           </span>
                         )}
