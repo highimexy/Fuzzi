@@ -12,8 +12,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-background border-foreground/10 sticky bottom-0 z-0 w-full border-t">
-      <Container className="pt-24">
+    <footer className="bg-background sticky bottom-0 z-0 w-full">
+      <Container className="lg:pt-24">
         <div className="flex flex-col gap-12 px-6 lg:flex-row lg:justify-between">
           <div className="flex items-end">
             <Link
