@@ -23,7 +23,7 @@ const generateMockData = () => {
     const level = count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 8 ? 3 : 4
 
     data.push({
-      date: date.toISOString().split('T')[0],
+      date: date.toISOString().split('T')[0] ?? '',
       count,
       level,
     })
