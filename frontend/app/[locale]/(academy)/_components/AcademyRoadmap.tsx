@@ -517,7 +517,6 @@ const initialEdges = [
     target: 'n4c',
     targetHandle: 'right-t',
     animated: true,
-    animated: true,
   },
   {
     id: 'n4-n4d',
@@ -757,8 +756,8 @@ const initialEdges = [
 // 6. Main Roadmap Component
 // ==========================================
 export function RoadmapGraph() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
+  const [nodes, , onNodesChange] = useNodesState(initialNodes)
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges)
 
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
