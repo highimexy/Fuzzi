@@ -9,7 +9,9 @@ interface ContainerProps {
 export function Container({ children, className = '', withBorders = true }: ContainerProps) {
   return (
     <div
-      className={`mx-auto max-w-360 ${withBorders ? 'border-foreground/10 border-x' : ''} ${className}`}
+      className={`mx-auto w-[calc(100%-2rem)] max-w-360 md:w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] ${
+        withBorders ? 'border-foreground/10 border-x' : ''
+      } ${className}`}
     >
       {children}
     </div>
