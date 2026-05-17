@@ -6,8 +6,10 @@ import { LanguageSwitcher } from './LanguageSwitcher'
 import { Container } from '../../wrappers/Container'
 import { FuzziMark } from '../../global-components/logo/page'
 import Dot from '../../global-components/dot/page'
+import { useTranslations } from 'next-intl'
 
 export function Navbar() {
+  const t = useTranslations('Navbar')
   return (
     <>
       <nav className="border-foreground/10 bg-background sticky top-0 z-50 w-full border-b">
@@ -47,19 +49,19 @@ export function Navbar() {
             {/* 3. LINKI (Desktop) */}
             <div className="hidden items-center justify-around px-4 lg:flex">
               <Link href="/qa" className="font-sans uppercase transition-opacity hover:opacity-80">
-                QA
+                {t('qa')}
               </Link>
               <Link
                 href="/reality-check"
                 className="font-sans uppercase transition-opacity hover:opacity-80"
               >
-                Reality Check
+                {t('reality')}
               </Link>
               <Link
                 href="/lessons"
                 className="font-sans uppercase transition-opacity hover:opacity-80"
               >
-                Academy
+                {t('academy')}
               </Link>
             </div>
           </div>
@@ -67,13 +69,13 @@ export function Navbar() {
           {/* LINKI (Mobile – pasek dolny) */}
           <div className="border-foreground/10 flex h-12 items-center justify-around border-t px-6 lg:hidden">
             <Link href="/qa" className="font-sans uppercase">
-              QA
+              {t('qa')}
             </Link>
             <Link href="/reality-check" className="font-sans uppercase">
-              Reality
+              {t('reality')}
             </Link>
             <Link href="/lessons" className="font-sans uppercase">
-              Academy
+              {t('academy')}
             </Link>
           </div>
         </Container>
