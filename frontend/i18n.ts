@@ -18,6 +18,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     about,
     changelog,
     lessons,
+    navbar,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/supportersTicker.json`, { with: { type: 'json' } }),
@@ -30,6 +31,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/about.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/changelog.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/lessons.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/navbar.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -44,6 +46,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...about.default,
     ...changelog.default,
     ...lessons.default,
+    ...navbar.default,
   }
 
   return {
