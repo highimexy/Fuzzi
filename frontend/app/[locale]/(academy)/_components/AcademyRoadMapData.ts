@@ -1917,7 +1917,7 @@ export const ROADMAP_DATA: Record<string, TopicContent> = {
       },
     ],
   },
-  'Security Testing': {
+  'Security Testing: Defense in Depth': {
     sections: [
       {
         heading: 'Protecting the System',
@@ -2627,7 +2627,7 @@ export const ROADMAP_DATA: Record<string, TopicContent> = {
       },
     ],
   },
-  Playwright: {
+  'Playwright: Headless Mode': {
     // Playwright w tej sekcji też! (jeśli kliknie z "Headless Testing")
     sections: [
       {
@@ -2644,7 +2644,7 @@ export const ROADMAP_DATA: Record<string, TopicContent> = {
       },
     ],
   },
-  Cypress: {
+  'Cypress: Headless Mode': {
     // Dodany dla spójności listnode
     sections: [
       {
