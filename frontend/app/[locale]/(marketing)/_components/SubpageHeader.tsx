@@ -14,7 +14,7 @@ export function SubpageHeader({ title, subtitle, accentColor }: SubpageHeaderPro
   const t = useTranslations('SubpageHeader')
 
   return (
-    <header className="border-foreground/10 w-full border-b">
+    <header className="w-full">
       <Container className="relative overflow-hidden">
         <BackgroundGrid />
         <div className="relative z-10 flex flex-col px-6 py-20 text-center">
