@@ -6,7 +6,6 @@ import { SupportersTicker } from './home/SupportersTicker'
 import { ProblemSection } from './home/ProblemSection'
 import { EducationSection } from './home/EducationSection'
 import { TrustSection } from './home/TrustSection'
-import { ConversionSection } from './home/ConversionSection'
 import { LastSection } from './home/LastSection'
 
 export default function Home() {
