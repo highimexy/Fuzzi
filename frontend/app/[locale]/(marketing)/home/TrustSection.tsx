@@ -16,6 +16,7 @@ import {
   SiPostgresql,
   SiDocker,
 } from 'react-icons/si'
+import { BackgroundGrid } from '../_components/BackgroundGrid'
 
 // ─────────────────────────────────────────────
 // Typy
@@ -177,7 +178,7 @@ export function TrustSection() {
   ]
 
   return (
-    <section className="bg-background border-foreground/10 relative w-full overflow-hidden border-t">
+    <section className="relative w-full overflow-hidden">
       <Container className="py-14 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
@@ -228,13 +229,22 @@ export function TrustSection() {
 function LogCard({ log }: { log: LogEntry }) {
   return (
     <div
-      className={`group flex h-full flex-col p-8 text-left transition-all duration-300 ${
+      className={`group relative flex h-full flex-col overflow-hidden p-8 text-left transition-all duration-300 ${
         log.featured
           ? 'border-accent shadow-accent/20 bg-background ring-accent/30 hover:bg-accent/2 cursor-pointer justify-center border shadow-2xl ring-1'
           : 'hover:bg-foreground/2 justify-between'
       }`}
     >
-      <div className={log.featured ? 'flex flex-col items-center text-center' : ''}>
+      {log.featured && (
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+          <BackgroundGrid color="rgba(255, 255, 255, 0.15)" />
+        </div>
+      )}
+
+      {/* ZAWARTOSC KARTY */}
+      <div
+        className={`relative z-10 ${log.featured ? 'flex flex-col items-center text-center' : ''}`}
+      >
         {/* NAGŁÓWEK */}
         <div
           className={`border-foreground/10 mb-6 flex flex-wrap items-center gap-4 ${
@@ -244,7 +254,7 @@ function LogCard({ log }: { log: LogEntry }) {
           }`}
         >
           <div className={`flex items-center gap-4 ${log.featured ? 'flex-col' : ''}`}>
-            {/* AVATAR - Obsługa zdjęć ORAZ komponentów */}
+            {/* AVATAR */}
             <div
               className={`relative flex shrink-0 items-center justify-center overflow-hidden border ${
                 log.featured
@@ -257,10 +267,10 @@ function LogCard({ log }: { log: LogEntry }) {
                   src={log.avatar}
                   alt={log.id}
                   fill
-                  className="object-cover opacity-70 transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                  className="object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center p-2.5">
+                <div className="featured:p-0 flex h-full w-full items-center justify-center p-1.5">
                   {log.avatar}
                 </div>
               )}
@@ -269,7 +279,7 @@ function LogCard({ log }: { log: LogEntry }) {
             {/* ID + rola */}
             <div className={`flex flex-col gap-0.5 ${log.featured ? 'mt-2 items-center' : ''}`}>
               <span
-                className={`font-serif text-[10px] font-bold tracking-widest uppercase ${
+                className={`font-mono text-[10px] font-bold tracking-widest uppercase ${
                   log.featured ? 'text-accent text-xs' : 'text-foreground/80'
                 }`}
               >
@@ -287,7 +297,7 @@ function LogCard({ log }: { log: LogEntry }) {
 
           {/* Status badge */}
           {!log.featured && (
-            <span className="text-foreground/30 font-serif text-[8px] font-bold tracking-widest uppercase">
+            <span className="text-foreground/30 font-mono text-[8px] font-bold tracking-widest uppercase">
               {log.status}
             </span>
           )}
@@ -305,6 +315,13 @@ function LogCard({ log }: { log: LogEntry }) {
           {log.text}
           {!log.featured && <>&rdquo;</>}
         </p>
+
+        {/* Przycisk akcji */}
+        {log.featured && (
+          <div className="text-accent mt-8 font-mono text-[10px] font-bold tracking-widest uppercase opacity-80 transition-opacity group-hover:opacity-100">
+            [ Rozpocznij Eksplorację ✛ ]
+          </div>
+        )}
       </div>
     </div>
   )
