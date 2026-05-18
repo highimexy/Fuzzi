@@ -45,7 +45,7 @@ export function ProblemSection() {
                   >
                     {item.number}
                   </div>
-                  <div className="mt-1 font-mono text-[10px] font-bold tracking-widest text-white/30 uppercase">
+                  <div className="text-foreground/80 mt-1 font-mono text-[10px] font-bold tracking-widest uppercase">
                     {item.unit}
                   </div>
                 </div>
