@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import ThemeSwitch from './ThemeSwitch'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { Container } from '../../wrappers/Container'
@@ -10,6 +11,28 @@ import { useTranslations } from 'next-intl'
 
 export function Navbar() {
   const t = useTranslations('Navbar')
+  const pathname = usePathname()
+
+  const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
+
+  const navLinks = [
+    {
+      href: '/qa',
+      label: t('qa'),
+      active: cleanPath === '/qa' || cleanPath.startsWith('/qa/'),
+    },
+    {
+      href: '/reality-check',
+      label: t('reality'),
+      active: cleanPath === '/reality-check' || cleanPath.startsWith('/reality-check/'),
+    },
+    {
+      href: '/lessons',
+      label: t('academy'),
+      active: cleanPath === '/lessons' || cleanPath.startsWith('/lessons/'),
+    },
+  ]
+
   return (
     <>
       <nav className="border-foreground/10 bg-background sticky top-0 z-50 w-full border-b">
@@ -48,35 +71,37 @@ export function Navbar() {
 
             {/* 3. LINKI (Desktop) */}
             <div className="hidden items-center justify-around px-4 lg:flex">
-              <Link href="/qa" className="font-sans uppercase transition-opacity hover:opacity-80">
-                {t('qa')}
-              </Link>
-              <Link
-                href="/reality-check"
-                className="font-sans uppercase transition-opacity hover:opacity-80"
-              >
-                {t('reality')}
-              </Link>
-              <Link
-                href="/lessons"
-                className="font-sans uppercase transition-opacity hover:opacity-80"
-              >
-                {t('academy')}
-              </Link>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`font-sans uppercase transition-all hover:opacity-80 ${
+                    link.active
+                      ? 'text-foreground font-bold underline decoration-2 underline-offset-[6px]'
+                      : 'text-foreground'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
 
           {/* LINKI (Mobile – pasek dolny) */}
           <div className="border-foreground/10 flex h-12 items-center justify-around border-t px-6 lg:hidden">
-            <Link href="/qa" className="font-sans uppercase">
-              {t('qa')}
-            </Link>
-            <Link href="/reality-check" className="font-sans uppercase">
-              {t('reality')}
-            </Link>
-            <Link href="/lessons" className="font-sans uppercase">
-              {t('academy')}
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-sans uppercase transition-all ${
+                  link.active
+                    ? 'text-accent font-bold underline decoration-2 underline-offset-4'
+                    : 'text-foreground'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </Container>
       </nav>
