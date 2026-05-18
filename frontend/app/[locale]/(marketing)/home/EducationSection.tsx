@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 import { Container } from '../../wrappers/Container'
 import { useTranslations } from 'next-intl'
+import RoughBackground from '../../wrappers/RoughBackground'
 
 export function EducationSection() {
   const t = useTranslations('EducationSection')
@@ -16,8 +17,9 @@ export function EducationSection() {
       cta: t('vector1.cta'),
       href: '/qa',
       labelColor: 'text-primary',
-      hoverBorder: 'hover:border-primary/50',
+      hoverBorder: 'hover:border-primary/50 hover:bg-primary/[0.02]',
       ctaColor: 'text-primary',
+      lineColor: 'bg-primary/40 group-hover:bg-primary',
     },
     {
       label: t('vector2.label'),
@@ -26,55 +28,78 @@ export function EducationSection() {
       cta: t('vector2.cta'),
       href: '/reality-check',
       labelColor: 'text-secondary',
-      hoverBorder: 'hover:border-secondary/50',
+      hoverBorder: 'hover:border-secondary/50 hover:bg-secondary/[0.02]',
       ctaColor: 'text-secondary',
+      lineColor: 'bg-secondary/40 group-hover:bg-secondary',
     },
   ]
 
   return (
-    <section className="w-full overflow-hidden">
+    <RoughBackground
+      className="relative w-full overflow-hidden"
+      padding="0"
+      color="var(--background)"
+    >
       <Container className="py-16 md:py-24">
+        {/* NAGŁÓWEK SEKCJI */}
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <span className="text-fluid-small text-secondary font-sans font-bold tracking-[0.4em] uppercase">
+          <span className="text-fluid-small text-secondary flex items-center justify-center gap-2 font-mono font-bold tracking-[0.4em] uppercase">
+            <span className="bg-secondary/50 h-1.5 w-1.5 animate-pulse rounded-full" />
             {t('label')}
           </span>
-          <h2 className="text-fluid-h3 mt-6 font-serif leading-[0.85] tracking-tighter uppercase">
+
+          <h2 className="text-fluid-h3 mt-6 font-serif leading-[0.85] tracking-tighter text-pretty uppercase sm:text-balance">
             {t.rich('title', {
               dim: (chunks) => (
                 <span className="text-foreground/60 italic opacity-60">{chunks}</span>
               ),
-              br: () => <br />,
+              br: () => <br className="hidden sm:block" />,
             })}
           </h2>
+
           <p className="mx-auto mt-8 max-w-2xl font-sans text-sm leading-relaxed opacity-60">
             {t('description')}
           </p>
         </div>
 
+        {/* KARTY WEKTORÓW */}
         <div className="mx-auto mt-16 grid max-w-5xl gap-6 px-6 md:grid-cols-2">
           {vectors.map((vec, idx) => (
             <div
               key={idx}
-              className={`border-foreground/20 group flex flex-col border p-8 transition-colors ${vec.hoverBorder}`}
+              className={`border-foreground/10 group flex flex-col justify-between border p-8 transition-all duration-300 ${vec.hoverBorder}`}
             >
-              <span
-                className={`font-mono text-[10px] font-bold tracking-widest uppercase opacity-60 ${vec.labelColor}`}
-              >
-                {vec.label}
-              </span>
-              <h3 className="mt-4 font-serif text-2xl uppercase">{vec.title}</h3>
-              <p className="mt-4 font-sans text-sm opacity-60">{vec.desc}</p>
-              <Link
-                href={vec.href}
-                className={`mt-8 inline-flex items-center gap-3 font-sans text-xs font-bold tracking-widest uppercase ${vec.ctaColor}`}
-              >
-                <span>{vec.cta}</span>
-                <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
-              </Link>
+              <div>
+                <span
+                  className={`font-mono text-[10px] font-bold tracking-widest uppercase opacity-80 ${vec.labelColor}`}
+                >
+                  {vec.label}
+                </span>
+                <h3 className="text-foreground mt-4 font-serif text-2xl uppercase">{vec.title}</h3>
+                <p className="mt-4 font-sans text-sm leading-relaxed opacity-60">{vec.desc}</p>
+              </div>
+
+              <div className="mt-12 flex flex-col items-start gap-8">
+                <Link
+                  href={vec.href}
+                  className={`inline-flex items-center gap-3 font-sans text-xs font-bold tracking-widest uppercase transition-opacity hover:opacity-80 ${vec.ctaColor}`}
+                >
+                  <span>{vec.cta}</span>
+                  <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1.5" />
+                </Link>
+
+                {/* Taktyczny Footer Karty */}
+                <div className="border-foreground/10 flex w-full items-center gap-2 border-t pt-6">
+                  <div className={`h-1 w-8 transition-colors duration-300 ${vec.lineColor}`} />
+                  <span className="font-mono text-[8px] tracking-widest uppercase opacity-20">
+                    System Path {idx + 1}
+                  </span>
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </Container>
-    </section>
+    </RoughBackground>
   )
 }
