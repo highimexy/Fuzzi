@@ -3,12 +3,18 @@
 import { useTranslations } from 'next-intl'
 import { Container } from '../../wrappers/Container'
 import Link from 'next/link'
+import RoughBackground from '../../wrappers/RoughBackground'
 
 export function LastSection() {
   const t = useTranslations('LastSection')
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <RoughBackground
+      className="relative w-full overflow-hidden"
+      padding="0"
+      color="var(--background)"
+    >
+      {/* 2. Container wewnątrz zapewnia zachowanie siatki i linii pionowych */}
       <Container className="py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-6">
           {/* Main CTA */}
@@ -42,6 +48,6 @@ export function LastSection() {
           </div>
         </div>
       </Container>
-    </section>
+    </RoughBackground>
   )
 }
