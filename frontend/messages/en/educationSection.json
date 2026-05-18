@@ -1,0 +1,19 @@
+{
+  "EducationSection": {
+    "label": "Education / Vectors",
+    "title": "Two attack vectors.<br></br><dim>One goal.</dim>",
+    "description": "Before you enter the Academy, you need to understand the rules of the game. Learn the hard foundations of quality engineering or collide your expectations with the brutal market reality.",
+    "vector1": {
+      "label": "Vector 01",
+      "title": "QA Fundamentals",
+      "desc": "Understand the anatomy of bugs, the tester mindset, and the tactics used by the best engineers. Build a solid base before you even touch automation.",
+      "cta": "Explore QA System"
+    },
+    "vector2": {
+      "label": "Vector 02",
+      "title": "Reality Check",
+      "desc": "The junior market doesn't exist? AI will take your job? We reject the marketing bullshit of zero-to-hero courses and collide myths with hard IT realities.",
+      "cta": "Collide with the Market"
+    }
+  }
+}

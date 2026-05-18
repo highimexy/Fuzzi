@@ -1,0 +1,19 @@
+{
+  "EducationSection": {
+    "label": "Edukacja / Wektory",
+    "title": "Dwa wektory ataku.<br></br><dim>Jeden cel.</dim>",
+    "description": "Zanim wejdziesz do Akademii, musisz zrozumieć zasady gry. Poznaj twarde fundamenty inżynierii jakości lub zderz swoje wyobrażenia z brutalną rynkową rzeczywistością.",
+    "vector1": {
+      "label": "Wektor 01",
+      "title": "Fundamenty QA",
+      "desc": "Zrozum anatomię błędów, mindset testera i taktyki, którymi posługują się najlepsi inżynierowie. Zbuduj solidną bazę, zanim w ogóle dotkniesz automatyzacji.",
+      "cta": "Poznaj system QA"
+    },
+    "vector2": {
+      "label": "Wektor 02",
+      "title": "Reality Check",
+      "desc": "Rynek juniorów nie istnieje? AI zabierze Ci pracę? Odrzucamy marketingowy bullshit kursów od zera i zderzamy mity z twardymi realiami IT.",
+      "cta": "Zderz się z rynkiem"
+    }
+  }
+}

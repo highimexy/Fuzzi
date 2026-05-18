@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
 
 export function HomeHeader() {
-  const t = useTranslations('Home')
+  const t = useTranslations('HomeHeader')
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

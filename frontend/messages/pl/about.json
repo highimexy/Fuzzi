@@ -4,6 +4,7 @@
       "title": "O Systemie",
       "subtitle": "Manifest przetrwania w erze Post-Juniora."
     },
+    "sidebarTitle": "Wykaz Sekcji",
     "nav": {
       "manifesto": "01 / Manifest",
       "architecture": "02 / Architektura",
@@ -35,7 +36,8 @@
       "p1": "Wiedza nie kończy się na dokumentacji frameworków. Aby zrozumieć matrycę, musisz czytać fundamenty:",
       "book1": "[QA/Testy] Explore It! Reduce Risk and Increase Confidence (Elisabeth Hendrickson)",
       "book2": "[Architektura] A Philosophy of Software Design (John Ousterhout)",
-      "book3": "[Przetrwanie] Pragmatyczny Programista (David Thomas, Andrew Hunt)"
+      "book3": "[Przetrwanie] Pragmatyczny Programista (David Thomas, Andrew Hunt)",
+      "book4": "[Realia] Accelerate: Budowanie i skalowanie wydajnych organizacji technologicznych (Forsgren, Humble, Kim)"
     }
   }
 }

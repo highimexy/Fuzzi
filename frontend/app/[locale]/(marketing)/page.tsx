@@ -33,10 +33,6 @@ export default function Home() {
         <TrustSection />
         <SectionDivider />
 
-        {/* 6. SPRZEDAŻ: Ostateczna konwersja / Pricing */}
-        <ConversionSection />
-        <SectionDivider />
-
         <LastSection />
         <SectionDivider />
       </main>

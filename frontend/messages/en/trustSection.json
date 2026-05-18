@@ -1,0 +1,37 @@
+{
+  "TrustSection": {
+    "badge": "Built by engineers, for engineers",
+    "title": "Built with passion.",
+    "titleHighlight": "Proven in action.",
+    "log1": {
+      "id": "OP-473",
+      "role": "Junior QA Engineer",
+      "status": "BETA FEEDBACK",
+      "text": "You can feel that the people behind this project have real QA battle experience. Zero filler. After a few lessons I finally understood what a true quality engineer mindset looks like — not just mindlessly clicking through UI."
+    },
+    "log2": {
+      "id": "OP-112",
+      "role": "Manual → Auto QA",
+      "status": "BETA FEEDBACK",
+      "text": "UI Anatomy opened my eyes. It shows how frontend developers build components under the hood and where they most often make mistakes. I immediately applied it at work."
+    },
+    "log3": {
+      "id": "FUZZI CORE",
+      "role": "Creators & Community",
+      "status": "SYSTEM STATUS",
+      "text": "We built this tool out of pure passion for engineering and frustration with a market flooded with theoretical bootcamps. We wanted to create the place we wished we could learn from years ago. An environment free of fluff, full of market realities and brutal edge cases.\n\nYou don't have to take our word for it. Step inside, check the system anatomy and test us yourself. Fuzzi is waiting for new operators."
+    },
+    "log4": {
+      "id": "OP-891",
+      "role": "Mid QA Engineer",
+      "status": "BETA FEEDBACK",
+      "text": "I was surprised how deep we go into edge cases here. You can see the vast market experience of the creators. Fuzzi gently guides you through difficult concepts. Worth giving a shot even if you already have solid experience."
+    },
+    "log5": {
+      "id": "OP-204",
+      "role": "Frontend Developer",
+      "status": "BETA FEEDBACK",
+      "text": "Technically excellent platform. Clean, highly responsive interface without marketing babble. A lot of heart went into this and it really shows."
+    }
+  }
+}

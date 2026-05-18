@@ -1,0 +1,25 @@
+{
+  "ProblemSection": {
+    "item1": {
+      "number": "92%",
+      "unit": "of QA courses",
+      "headline": "teach theory, not reality.",
+      "body": "They teach you to click buttons, not think like an engineer. It's not your fault — the QA learning system is broken at its core.",
+      "tag": "01"
+    },
+    "item2": {
+      "number": "7/10",
+      "unit": "junior QAs",
+      "headline": "fail a screen after \"completing a course\".",
+      "body": "A certificate won't replace instinct. Recruiters see it in 5 minutes. Your CV says one thing — the interview says another.",
+      "tag": "02"
+    },
+    "item3": {
+      "number": "~ 6 mo.",
+      "unit": "in the first job",
+      "headline": "before you understand how frontend works.",
+      "body": "Nobody told you this earlier. They should have. We tell you straight — and cut that time down to weeks.",
+      "tag": "03"
+    }
+  }
+}

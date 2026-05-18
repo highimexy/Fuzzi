@@ -8,32 +8,32 @@ import { FiArrowRight } from 'react-icons/fi'
 const solutionLinks = ['/qa', '/reality-check', '/lessons'] as const
 
 export function SolutionSection() {
-  const t = useTranslations('Home')
+  const t = useTranslations('SolutionSection')
 
   const items = [
     {
-      num: t('solution.item1.num'),
-      title: t('solution.item1.title'),
-      quote: t('solution.item1.quote'),
-      link: t('solution.item1.link'),
+      num: t('item1.num'),
+      title: t('item1.title'),
+      quote: t('item1.quote'),
+      link: t('item1.link'),
       href: solutionLinks[0],
       color: 'text-primary',
       border: 'border-primary/30',
     },
     {
-      num: t('solution.item2.num'),
-      title: t('solution.item2.title'),
-      quote: t('solution.item2.quote'),
-      link: t('solution.item2.link'),
+      num: t('item2.num'),
+      title: t('item2.title'),
+      quote: t('item2.quote'),
+      link: t('item2.link'),
       href: solutionLinks[1],
       color: 'text-secondary',
       border: 'border-secondary/30',
     },
     {
-      num: t('solution.item3.num'),
-      title: t('solution.item3.title'),
-      quote: t('solution.item3.quote'),
-      link: t('solution.item3.link'),
+      num: t('item3.num'),
+      title: t('item3.title'),
+      quote: t('item3.quote'),
+      link: t('item3.link'),
       href: solutionLinks[2],
       color: 'text-accent',
       border: 'border-accent/30',
@@ -45,7 +45,7 @@ export function SolutionSection() {
       <Container className="py-16 md:py-24">
         <div className="px-6">
           <span className="text-fluid-small font-sans font-bold tracking-[0.4em] text-white/40 uppercase">
-            {t('solution.label')}
+            {t('label')}
           </span>
 
           <div className="mt-12 flex flex-col gap-0 lg:flex-row">

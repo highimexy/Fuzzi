@@ -1,0 +1,23 @@
+{
+  "SolutionSection": {
+    "label": "Trzy antidota",
+    "item1": {
+      "num": "01",
+      "title": "QA Fundamentals",
+      "quote": "Przestań klikać. Zacznij myśleć jak architekt jakości.",
+      "link": "Sprawdź ścieżkę QA"
+    },
+    "item2": {
+      "num": "02",
+      "title": "Reality Check",
+      "quote": "Nikomu nie powiedzą Ci tego na rozmowie rekrutacyjnej.",
+      "link": "Przeczytaj Reality Check"
+    },
+    "item3": {
+      "num": "03",
+      "title": "Fuzzi Academy",
+      "quote": "Teoria bez praktyki to dług. Tu spłacasz go każdego dnia.",
+      "link": "Wejdź do Academy"
+    }
+  }
+}

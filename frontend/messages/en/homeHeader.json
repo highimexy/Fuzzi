@@ -1,8 +1,12 @@
 {
   "HomeHeader": {
-    "title1": "Secure the <primary>Quality</primary>",
-    "title4": "Expose the <secondary>AI Slop</secondary>",
-    "description": "Let's be real: <bold>devs are generating code faster than ever, and you are left to clean up the mess.</bold> The IT market has changed. Stop mindless clicking and start <bold>defending production</bold> against machine hallucinations. From hard <bold>QA Fundamentals</bold> to the brutal truth about <bold>salaries and survival</bold> – this is your arsenal for the new IT era.<block>Become the engineer that bad code fears, or get replaced by an automated script.</block>",
-    "footer": "Fuzzi: Reports from the trenches."
+    "hero": {
+      "badge": "Post-Junior Era",
+      "headline": "AI doesn't kill <accent>testers</accent>. It kills those who test like <dim>it's 5 years ago</dim>.",
+      "subheadline": "A training ground for QA engineers.",
+      "cta": "Start for free",
+      "ctaSecondary": "Explore Academy",
+      "socialProof": "Join engineers who aren't waiting to be replaced"
+    }
   }
 }

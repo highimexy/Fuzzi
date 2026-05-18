@@ -5,7 +5,7 @@ import { Container } from '../../wrappers/Container'
 import Link from 'next/link'
 
 export function ConversionSection() {
-  const t = useTranslations('Home')
+  const t = useTranslations('ConversionSection')
 
   return (
     <section className="relative w-full overflow-hidden">
@@ -17,14 +17,14 @@ export function ConversionSection() {
               <div>
                 <div className="mb-6 flex items-baseline gap-3">
                   <h2 className="font-serif text-2xl leading-none font-bold">
-                    {t('conversion.monthly.period')}
+                    {t('monthly.period')}
                   </h2>
                   <span className="text-foreground/60 font-sans text-sm">
-                    {t('conversion.monthly.billedLabel')}
+                    {t('monthly.billedLabel')}
                   </span>
                 </div>
                 <p className="text-foreground/60 font-sans text-sm leading-relaxed">
-                  {t.rich('conversion.monthly.description', {
+                  {t.rich('monthly.description', {
                     strong: (chunks) => <strong className="text-foreground">{chunks}</strong>,
                   })}
                 </p>
@@ -35,21 +35,17 @@ export function ConversionSection() {
                   <span className="text-foreground/40 font-sans text-2xl font-bold line-through">
                     $39
                   </span>
-                  <span className="font-sans text-4xl font-bold">
-                    {t('conversion.monthly.price')}
-                  </span>
-                  <span className="text-foreground/60 font-sans text-sm">
-                    {t('conversion.monthly.unit')}
-                  </span>
+                  <span className="font-sans text-4xl font-bold">{t('monthly.price')}</span>
+                  <span className="text-foreground/60 font-sans text-sm">{t('monthly.unit')}</span>
                 </div>
                 <p className="text-foreground/40 mb-6 font-sans text-[10px] tracking-widest uppercase">
-                  {t('conversion.pricesNote')}
+                  {t('pricesNote')}
                 </p>
                 <Link
                   href="/premium"
                   className="bg-foreground text-background hover:bg-foreground/90 block w-full py-3 text-center font-sans font-bold transition-transform hover:scale-[1.02]"
                 >
-                  {t('conversion.monthly.cta')}
+                  {t('monthly.cta')}
                 </Link>
               </div>
             </div>
@@ -60,18 +56,18 @@ export function ConversionSection() {
                 <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-baseline gap-2">
                     <h2 className="font-serif text-2xl leading-none font-bold">
-                      {t('conversion.yearly.period')}
+                      {t('yearly.period')}
                     </h2>
                     <span className="font-sans text-sm text-zinc-900/70">
-                      {t('conversion.yearly.billedLabel')}
+                      {t('yearly.billedLabel')}
                     </span>
                   </div>
                   <span className="flex items-center gap-1 bg-white p-2 font-sans text-[10px] font-bold tracking-widest uppercase">
-                    {t('conversion.yearly.badge')}
+                    {t('yearly.badge')}
                   </span>
                 </div>
                 <p className="font-sans text-sm leading-relaxed text-zinc-900/80">
-                  {t.rich('conversion.yearly.description', {
+                  {t.rich('yearly.description', {
                     strong: (chunks) => <strong className="text-zinc-900">{chunks}</strong>,
                   })}
                 </p>
@@ -79,21 +75,17 @@ export function ConversionSection() {
 
               <div className="mt-8">
                 <div className="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                  <span className="font-sans text-4xl font-bold">
-                    {t('conversion.yearly.price')}
-                  </span>
-                  <span className="font-sans text-sm text-zinc-900/70">
-                    {t('conversion.yearly.unit')}
-                  </span>
+                  <span className="font-sans text-4xl font-bold">{t('yearly.price')}</span>
+                  <span className="font-sans text-sm text-zinc-900/70">{t('yearly.unit')}</span>
                 </div>
                 <p className="mb-6 font-sans text-[10px] tracking-widest text-zinc-900/50 uppercase">
-                  {t('conversion.pricesNote')}
+                  {t('pricesNote')}
                 </p>
                 <Link
                   href="/premium"
                   className="block w-full bg-zinc-900 py-3 text-center font-sans font-bold text-white transition-transform hover:scale-[1.02] hover:bg-zinc-800"
                 >
-                  {t('conversion.yearly.cta')}
+                  {t('yearly.cta')}
                 </Link>
               </div>
             </div>

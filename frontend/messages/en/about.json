@@ -4,6 +4,7 @@
       "title": "About System",
       "subtitle": "Survival manifesto for the Post-Junior era."
     },
+    "sidebarTitle": "Section Index",
     "nav": {
       "manifesto": "01 / Manifesto",
       "architecture": "02 / Architecture",
@@ -35,7 +36,8 @@
       "p1": "Knowledge doesn't end with framework documentation. To understand the matrix, you must read the fundamentals:",
       "book1": "[QA/Testing] Explore It! Reduce Risk and Increase Confidence (Elisabeth Hendrickson)",
       "book2": "[Architecture] A Philosophy of Software Design (John Ousterhout)",
-      "book3": "[Survival] The Pragmatic Programmer (David Thomas, Andrew Hunt)"
+      "book3": "[Survival] The Pragmatic Programmer (David Thomas, Andrew Hunt)",
+      "book4": "[Reality] Accelerate: Building and Scaling High Performing Technology Organizations (Forsgren, Humble, Kim)"
     }
   }
 }

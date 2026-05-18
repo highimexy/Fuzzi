@@ -1,8 +1,12 @@
 {
   "HomeHeader": {
-    "title1": "Zabezpiecz <primary>Jakość</primary>",
-    "title4": "Zdemaskuj <secondary>AI Slop</secondary>",
-    "description": "Bądźmy szczerzy: <bold>programiści generują kod szybciej niż kiedykolwiek, a Ty musisz to sprzątać.</bold> Rynek IT się zmienił. Czas przestać klikać na oślep i zacząć <bold>bronić produkcji</bold> przed halucynacjami maszyn. Od twardych <bold>podstaw QA</bold> po brutalną prawdę o <bold>zarobkach i przetrwaniu</bold> – to Twój arsenał na nową erę IT.<block>Zostań inżynierem, którego boi się zły kod, albo daj się zredukować do skryptu.</block>",
-    "footer": "Fuzzi: Raport z linii frontu."
+    "hero": {
+      "badge": "Era Post-Junior",
+      "headline": "AI nie zabija <accent>testerów</accent>. Zabija tych, którzy testują jak <dim>5 lat temu</dim>.",
+      "subheadline": "Poligon treningowy dla QA inżynierów.",
+      "cta": "Zacznij za darmo",
+      "ctaSecondary": "Sprawdź Academy",
+      "socialProof": "Dołącz do inżynierów, którzy nie czekają aż AI ich zastąpi"
+    }
   }
 }

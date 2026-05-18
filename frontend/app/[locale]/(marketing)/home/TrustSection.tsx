@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import Image from 'next/image'
 import { Container } from '../../wrappers/Container'
 import { FuzziMark } from '../../global-components/logo/page'
+import { useTranslations } from 'next-intl'
 import {
   SiNextdotjs,
   SiGo,
@@ -30,7 +31,7 @@ type LogEntry = {
   status: string
   text: string
   featured: boolean
-  avatar: string | React.ReactNode // ZMIANA: Pozwala na przekazanie komponentu React
+  avatar: string | React.ReactNode
 }
 
 // ─────────────────────────────────────────────
@@ -130,44 +131,46 @@ function PoweredBySlotMachine() {
 // 3. Komponent główny
 // ─────────────────────────────────────────────
 export function TrustSection() {
+  const t = useTranslations('TrustSection')
+
   const betaLogs: LogEntry[] = [
     {
-      id: 'OP-473',
-      role: 'Junior QA Engineer',
-      status: 'BETA FEEDBACK',
-      text: 'Czuć, że za tym projektem stoją ludzie, którzy zjedli zęby na testowaniu. Zero lania wody. Po kilku lekcjach w końcu zrozumiałem, na czym polega prawdziwy mindset inżyniera jakości, a nie tylko bezmyślne klikanie w UI.',
+      id: t('log1.id'),
+      role: t('log1.role'),
+      status: t('log1.status'),
+      text: t('log1.text'),
       featured: false,
       avatar: '/1.jpg',
     },
     {
-      id: 'OP-112',
-      role: 'Manual → Auto QA',
-      status: 'BETA FEEDBACK',
-      text: 'Anatomia UI otworzyła mi oczy. Pokazuje jak frontendowcy budują komponenty pod spodem i gdzie najczęściej popełniają błędy. Od razu wdrożyłem to w pracy.',
+      id: t('log2.id'),
+      role: t('log2.role'),
+      status: t('log2.status'),
+      text: t('log2.text'),
       featured: false,
       avatar: '/2.jpg',
     },
     {
-      id: 'FUZZI CORE',
-      role: 'Creators & Community',
-      status: 'SYSTEM STATUS',
-      text: "Zbudowaliśmy to narzędzie z czystej pasji do inżynierii i frustracji rynkiem przepełnionym teoretycznymi bootcampami. Chcieliśmy stworzyć miejsce, w którym sami chcielibyśmy się uczyć lata temu. Środowisko pozbawione lania wody, pełne rynkowych realiów i brutalnych edge-case'ów.\n\nNie musisz nam wierzyć na słowo. Wejdź do środka, sprawdź anatomię systemu i przetestuj nas sam. Fuzzi czeka na nowych operatorów.",
+      id: t('log3.id'),
+      role: t('log3.role'),
+      status: t('log3.status'),
+      text: t('log3.text'),
       featured: true,
       avatar: <FuzziMark size={90} />,
     },
     {
-      id: 'OP-891',
-      role: 'Mid QA Engineer',
-      status: 'BETA FEEDBACK',
-      text: "Zaskoczyło mnie, jak głęboko wchodzimy tu w edge-case'y. Widać ogrom rynkowego doświadczenia twórców. Fuzzi łagodnie prowadzi za rękę przez trudne koncepty. Warto dać szansę, nawet jak masz już solidnego expa.",
+      id: t('log4.id'),
+      role: t('log4.role'),
+      status: t('log4.status'),
+      text: t('log4.text'),
       featured: false,
       avatar: '/3.jpg',
     },
     {
-      id: 'OP-204',
-      role: 'Frontend Developer',
-      status: 'BETA FEEDBACK',
-      text: 'Świetnie zrobiona platforma od strony technicznej. Czysty, bardzo responsywny interfejs bez marketingowego bełkotu. Włożono w to mnóstwo serca i to po prostu widać.',
+      id: t('log5.id'),
+      role: t('log5.role'),
+      status: t('log5.status'),
+      text: t('log5.text'),
       featured: false,
       avatar: '/4.jpg',
     },
@@ -180,11 +183,11 @@ export function TrustSection() {
           <div className="flex flex-col items-center text-center">
             <span className="text-accent flex items-center gap-2 font-sans text-[10px] font-bold tracking-widest uppercase opacity-80">
               <span className="bg-accent h-2 w-2 animate-pulse rounded-full" />
-              Od inżynierów dla inżynierów
+              {t('badge')}
             </span>
             <h2 className="text-fluid-h3 mt-4 max-w-2xl font-serif leading-[0.9] tracking-tighter uppercase">
-              Stworzone z pasją. <br />
-              <span className="text-foreground/60 italic opacity-60">Sprawdzone w akcji.</span>
+              {t('title')} <br />
+              <span className="text-foreground/60 italic opacity-60">{t('titleHighlight')}</span>
             </h2>
           </div>
 

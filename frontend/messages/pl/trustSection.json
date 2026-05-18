@@ -1,0 +1,37 @@
+{
+  "TrustSection": {
+    "badge": "Od inżynierów dla inżynierów",
+    "title": "Stworzone z pasją.",
+    "titleHighlight": "Sprawdzone w akcji.",
+    "log1": {
+      "id": "OP-473",
+      "role": "Junior QA Engineer",
+      "status": "BETA FEEDBACK",
+      "text": "Czuć, że za tym projektem stoją ludzie, którzy zjedli zęby na testowaniu. Zero lania wody. Po kilku lekcjach w końcu zrozumiałem, na czym polega prawdziwy mindset inżyniera jakości, a nie tylko bezmyślne klikanie w UI."
+    },
+    "log2": {
+      "id": "OP-112",
+      "role": "Manual → Auto QA",
+      "status": "BETA FEEDBACK",
+      "text": "Anatomia UI otworzyła mi oczy. Pokazuje jak frontendowcy budują komponenty pod spodem i gdzie najczęściej popełniają błędy. Od razu wdrożyłem to w pracy."
+    },
+    "log3": {
+      "id": "FUZZI CORE",
+      "role": "Creators & Community",
+      "status": "SYSTEM STATUS",
+      "text": "Zbudowaliśmy to narzędzie z czystej pasji do inżynierii i frustracji rynkiem przepełnionym teoretycznymi bootcampami. Chcieliśmy stworzyć miejsce, w którym sami chcielibyśmy się uczyć lata temu. Środowisko pozbawione lania wody, pełne rynkowych realiów i brutalnych edge-case'ów.\n\nNie musisz nam wierzyć na słowo. Wejdź do środka, sprawdź anatomię systemu i przetestuj nas sam. Fuzzi czeka na nowych operatorów."
+    },
+    "log4": {
+      "id": "OP-891",
+      "role": "Mid QA Engineer",
+      "status": "BETA FEEDBACK",
+      "text": "Zaskoczyło mnie, jak głęboko wchodzimy tu w edge-case'y. Widać ogrom rynkowego doświadczenia twórców. Fuzzi łagodnie prowadzi za rękę przez trudne koncepty. Warto dać szansę, nawet jak masz już solidnego expa."
+    },
+    "log5": {
+      "id": "OP-204",
+      "role": "Frontend Developer",
+      "status": "BETA FEEDBACK",
+      "text": "Świetnie zrobiona platforma od strony technicznej. Czysty, bardzo responsywny interfejs bez marketingowego bełkotu. Włożono w to mnóstwo serca i to po prostu widać."
+    }
+  }
+}

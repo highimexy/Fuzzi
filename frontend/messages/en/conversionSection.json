@@ -1,0 +1,22 @@
+{
+  "ConversionSection": {
+    "pricesNote": "Prices are marked in USD",
+    "monthly": {
+      "period": "Monthly",
+      "billedLabel": "billed monthly",
+      "description": "Our monthly plan grants access to <strong>all premium features</strong>, the best plan for short-term subscribers.",
+      "price": "$35",
+      "unit": "/mo",
+      "cta": "Choose Monthly"
+    },
+    "yearly": {
+      "badge": "Most Popular",
+      "period": "Yearly",
+      "billedLabel": "billed annually",
+      "description": "The ultimate arsenal. Grants access to <strong>everything</strong> plus future content, saving you 20%.",
+      "price": "$14.92",
+      "unit": "/mo",
+      "cta": "Choose Yearly"
+    }
+  }
+}

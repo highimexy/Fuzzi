@@ -1,0 +1,22 @@
+{
+  "ConversionSection": {
+    "pricesNote": "Ceny podane w USD",
+    "monthly": {
+      "period": "Miesięcznie",
+      "billedLabel": "płatny miesięcznie",
+      "description": "Nasz plan miesięczny daje dostęp do <strong>wszystkich funkcji premium</strong>, najlepszy plan dla subskrybentów krótkoterminowych.",
+      "price": "$35",
+      "unit": "/mc",
+      "cta": "Wybierz Monthly"
+    },
+    "yearly": {
+      "badge": "Najpopularniejszy",
+      "period": "Rocznie",
+      "billedLabel": "płatny rocznie",
+      "description": "Najlepszy arsenał. Daje dostęp do <strong>wszystkiego</strong> plus przyszłych treści, oszczędzając 20%.",
+      "price": "$14.92",
+      "unit": "/mc",
+      "cta": "Wybierz Yearly"
+    }
+  }
+}

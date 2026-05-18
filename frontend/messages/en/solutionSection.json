@@ -1,0 +1,23 @@
+{
+  "SolutionSection": {
+    "label": "Three antidotes",
+    "item1": {
+      "num": "01",
+      "title": "QA Fundamentals",
+      "quote": "Stop clicking. Start thinking like a quality architect.",
+      "link": "Explore QA path"
+    },
+    "item2": {
+      "num": "02",
+      "title": "Reality Check",
+      "quote": "No one will tell you this in a job interview.",
+      "link": "Read Reality Check"
+    },
+    "item3": {
+      "num": "03",
+      "title": "Fuzzi Academy",
+      "quote": "Theory without practice is debt. Here you pay it off every day.",
+      "link": "Enter Academy"
+    }
+  }
+}
