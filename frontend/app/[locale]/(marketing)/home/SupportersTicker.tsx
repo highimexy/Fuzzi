@@ -3,8 +3,8 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { useTranslations } from 'next-intl'
-
 import { FaRegCommentDots } from 'react-icons/fa6'
+import RoughBackground from '../../wrappers/RoughBackground'
 
 export function SupportersTicker() {
   const t = useTranslations('SupportersTicker')
@@ -52,21 +52,23 @@ export function SupportersTicker() {
   }
 
   return (
-    <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="bg-background w-full overflow-hidden py-4 select-none"
-    >
-      <div ref={wrapperRef} className="flex w-fit whitespace-nowrap will-change-transform">
-        {infinitePhrases.map((phrase, idx) => (
-          <div key={idx} className="flex shrink-0 items-center gap-3 px-8">
-            <span className="font-sans text-xs tracking-wide opacity-60">{phrase}</span>
-            <span className="text-accent font-serif text-base opacity-40">
-              <FaRegCommentDots />
-            </span>
-          </div>
-        ))}
+    <RoughBackground className="w-full select-none" padding="0" color="var(--background)">
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="w-full overflow-hidden py-4"
+      >
+        <div ref={wrapperRef} className="flex w-fit whitespace-nowrap will-change-transform">
+          {infinitePhrases.map((phrase, idx) => (
+            <div key={idx} className="flex shrink-0 items-center gap-3 px-8">
+              <span className="font-sans text-xs tracking-wide opacity-60">{phrase}</span>
+              <span className="text-accent font-serif text-base opacity-40">
+                <FaRegCommentDots />
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </RoughBackground>
   )
 }
