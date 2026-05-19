@@ -57,6 +57,8 @@ func main() {
 	protected.Use(auth.EnsureValidToken())
 	{
 		protected.GET("/sync-user", auth.SyncUserHandler)
+		protected.POST("/lessons/:id/submit", lessons.SubmitHandler)
+		protected.GET("/lessons/:id/progress", lessons.ProgressHandler)
 	}
 
 	port := ":8080"

@@ -10,11 +10,15 @@ type Lesson struct {
 	Track      string `json:"track"`
 	Difficulty string `json:"difficulty"`
 	Status     string `json:"status"`
+	LessonType string `json:"lesson_type"`
 
 	TitleEN    string `json:"title_en"`
 	TitlePL    string `json:"title_pl"`
 	ContentEN  string `json:"content_en"`
 	ContentPL  string `json:"content_pl"`
+
+	PayloadEN string `json:"payload_en"`
+	PayloadPL string `json:"payload_pl"`
 }
 
 func (l *Lesson) BeforeCreate(tx *gorm.DB) (err error) {
