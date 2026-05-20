@@ -279,7 +279,7 @@ function LogCard({ log }: { log: LogEntry }) {
             {/* ID + rola */}
             <div className={`flex flex-col gap-0.5 ${log.featured ? 'mt-2 items-center' : ''}`}>
               <span
-                className={`font-mono text-[10px] font-bold tracking-widest uppercase ${
+                className={`font-sans text-[10px] font-bold tracking-widest uppercase ${
                   log.featured ? 'text-accent text-xs' : 'text-foreground/80'
                 }`}
               >
@@ -297,7 +297,7 @@ function LogCard({ log }: { log: LogEntry }) {
 
           {/* Status badge */}
           {!log.featured && (
-            <span className="text-foreground/30 font-mono text-[8px] font-bold tracking-widest uppercase">
+            <span className="text-foreground/30 font-sans text-[8px] font-bold tracking-widest uppercase">
               {log.status}
             </span>
           )}
@@ -318,7 +318,7 @@ function LogCard({ log }: { log: LogEntry }) {
 
         {/* Przycisk akcji */}
         {log.featured && (
-          <div className="text-accent mt-8 font-mono text-[10px] font-bold tracking-widest uppercase opacity-80 transition-opacity group-hover:opacity-100">
+          <div className="text-accent mt-8 font-sans text-[10px] font-bold tracking-widest uppercase opacity-80 transition-opacity group-hover:opacity-100">
             [ Rozpocznij Eksplorację ✛ ]
           </div>
         )}
