@@ -1,48 +1,191 @@
 package lessons
 
 import (
+	"encoding/json"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/models"
+	"gorm.io/gorm"
 )
 
-func ListHandler(c *gin.Context) {
-	var lessons []models.Lesson
+// ─────────────────────────────────────────────
+// TRACK HANDLER
+// GET /api/v1/tracks/:track/groups
+// Zwraca LessonGroup[] z progressem dla zalogowanego usera
+// ─────────────────────────────────────────────
 
-	result := database.DB.Find(&lessons)
-	if result.Error != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch lessons"})
+type LessonGroupResponse struct {
+	models.LessonGroup
+	SubLessonCount int `json:"sub_lesson_count"`
+	CompletedCount int `json:"completed_count"`
+}
+
+func TrackHandler(c *gin.Context) {
+	track := c.Param("track")
+
+	var groups []models.LessonGroup
+	if err := database.DB.
+		Where("track = ?", track).
+		Order("\"order\" ASC").
+		Find(&groups).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch groups"})
 		return
 	}
 
+	// Pobierz userID z kontekstu (nil jeśli niezalogowany)
+	userID := getUserID(c)
+
+	result := make([]LessonGroupResponse, 0, len(groups))
+
+	for _, group := range groups {
+		resp := LessonGroupResponse{LessonGroup: group}
+
+		// Policz sub-lekcje dla grupy
+		var subCount int64
+		database.DB.Model(&models.Lesson{}).
+			Where("lesson_group_id = ?", group.ID).
+			Count(&subCount)
+		resp.SubLessonCount = int(subCount)
+
+		// Policz ukończone (tylko dla zalogowanych)
+		if userID != "" {
+			var completedCount int64
+			database.DB.Model(&models.LessonProgress{}).
+				Joins("JOIN lessons ON lessons.id = lesson_progresses.lesson_id").
+				Where("lesson_progresses.user_id = ? AND lessons.lesson_group_id = ? AND lesson_progresses.completed = true", userID, group.ID).
+				Count(&completedCount)
+			resp.CompletedCount = int(completedCount)
+		}
+
+		result = append(result, resp)
+	}
+
+	c.JSON(http.StatusOK, result)
+}
+
+// ─────────────────────────────────────────────
+// GROUP HANDLER
+// GET /api/v1/groups/:groupId
+// Zwraca LessonGroup z listą sub-lekcji
+// ─────────────────────────────────────────────
+
+func GroupHandler(c *gin.Context) {
+	groupID := c.Param("groupId")
+
+	var group models.LessonGroup
+	if err := database.DB.
+		Preload("Lessons", func(db *gorm.DB) *gorm.DB {
+			return db.Order("\"order\" ASC")
+		}).
+		First(&group, "id = ?", groupID).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Group not found"})
+		return
+	}
+
+	c.JSON(http.StatusOK, group)
+}
+
+// ─────────────────────────────────────────────
+// GROUP PROGRESS HANDLER
+// GET /api/v1/groups/:groupId/progress
+// Zwraca postęp zalogowanego usera dla grupy
+// ─────────────────────────────────────────────
+
+type GroupProgressResponse struct {
+	GroupID   string `json:"group_id"`
+	Total     int    `json:"total"`
+	Completed int    `json:"completed"`
+	Percent   int    `json:"percent"`
+}
+
+func GroupProgressHandler(c *gin.Context) {
+	groupID := c.Param("groupId")
+	userID := getUserID(c)
+
+	if userID == "" {
+		c.JSON(http.StatusOK, GroupProgressResponse{GroupID: groupID})
+		return
+	}
+
+	var total int64
+	database.DB.Model(&models.Lesson{}).
+		Where("lesson_group_id = ?", groupID).
+		Count(&total)
+
+	var completed int64
+	database.DB.Model(&models.LessonProgress{}).
+		Joins("JOIN lessons ON lessons.id = lesson_progresses.lesson_id").
+		Where("lesson_progresses.user_id = ? AND lessons.lesson_group_id = ? AND lesson_progresses.completed = true", userID, groupID).
+		Count(&completed)
+
+	percent := 0
+	if total > 0 {
+		percent = int(completed * 100 / total)
+	}
+
+	c.JSON(http.StatusOK, GroupProgressResponse{
+		GroupID:   groupID,
+		Total:     int(total),
+		Completed: int(completed),
+		Percent:   percent,
+	})
+}
+
+// ─────────────────────────────────────────────
+// LIST HANDLER (zachowany dla kompatybilności)
+// GET /api/v1/lessons
+// ─────────────────────────────────────────────
+
+func ListHandler(c *gin.Context) {
+	var lessons []models.Lesson
+	if err := database.DB.Find(&lessons).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch lessons"})
+		return
+	}
 	c.JSON(http.StatusOK, lessons)
 }
+
+// ─────────────────────────────────────────────
+// GET HANDLER
+// GET /api/v1/lessons/:id
+// ─────────────────────────────────────────────
 
 func GetHandler(c *gin.Context) {
 	id := c.Param("id")
 	var lesson models.Lesson
-
-	result := database.DB.Where("id = ?", id).First(&lesson)
-	if result.Error != nil {
+	if err := database.DB.First(&lesson, "id = ?", id).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Lesson not found"})
 		return
 	}
-
 	c.JSON(http.StatusOK, lesson)
 }
+
+// ─────────────────────────────────────────────
+// SUBMIT HANDLER
+// POST /api/v1/lessons/:id/submit
+// ─────────────────────────────────────────────
 
 type SubmitRequest struct {
 	Answer      string  `json:"answer"`
 	Confidence  *string `json:"confidence"`
 	NeedsReview bool    `json:"needs_review"`
+	Locale      string  `json:"locale"`
+}
+
+type quizPayload struct {
+	Correct string `json:"correct"`
 }
 
 func SubmitHandler(c *gin.Context) {
 	lessonID := c.Param("id")
-	userID := "mock-user-123" // TODO: Zamienić na ID z tokena JWT/middleware
+	userID := getUserID(c)
+	if userID == "" {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Login required to save progress"})
+		return
+	}
 
 	var req SubmitRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -56,39 +199,81 @@ func SubmitHandler(c *gin.Context) {
 		return
 	}
 
-	isCorrect := true
-	score := 100
+	// Walidacja odpowiedzi
+	rawPayload := lesson.PayloadEN
+	if req.Locale == "pl" && len(lesson.PayloadPL) > 2 {
+		rawPayload = lesson.PayloadPL
+	}
 
+	var qp quizPayload
+	isCorrect := false
+	if err := json.Unmarshal(rawPayload, &qp); err == nil && qp.Correct != "" {
+		isCorrect = req.Answer == qp.Correct
+	}
+
+	score := 0
+	if isCorrect {
+		score = 100
+	}
+
+	// Upsert progressu
 	var progress models.LessonProgress
-	database.DB.Where(models.LessonProgress{UserID: userID, LessonID: lessonID}).
-		Assign(models.LessonProgress{
-			Completed: isCorrect,
-			Score:     score,
-			UpdatedAt: time.Now(),
-		}).FirstOrCreate(&progress)
+	database.DB.Where(models.LessonProgress{
+		UserID:   userID,
+		LessonID: lessonID,
+	}).FirstOrCreate(&progress)
+
+	database.DB.Model(&progress).Updates(map[string]interface{}{
+		"completed":  progress.Completed || isCorrect,
+		"score":      score,
+		"attempts":   progress.Attempts + 1,
+		"updated_at": time.Now(),
+	})
 
 	c.JSON(http.StatusOK, gin.H{
-		"status":   "success",
-		"progress": progress,
 		"correct":  isCorrect,
+		"score":    score,
+		"progress": progress,
 	})
 }
 
+// ─────────────────────────────────────────────
+// PROGRESS HANDLER
+// GET /api/v1/lessons/:id/progress
+// ─────────────────────────────────────────────
+
 func ProgressHandler(c *gin.Context) {
 	lessonID := c.Param("id")
-	userID := "mock-user-123"
+	userID := getUserID(c)
+
+	if userID == "" {
+		c.JSON(http.StatusOK, gin.H{"completed": false, "score": 0, "attempts": 0})
+		return
+	}
 
 	var progress models.LessonProgress
-	result := database.DB.Where("user_id = ? AND lesson_id = ?", userID, lessonID).First(&progress)
-
-	if result.Error != nil {
-		c.JSON(http.StatusOK, gin.H{
-			"completed": false,
-			"score":     0,
-			"attempts":  0,
-		})
+	if err := database.DB.
+		Where("user_id = ? AND lesson_id = ?", userID, lessonID).
+		First(&progress).Error; err != nil {
+		c.JSON(http.StatusOK, gin.H{"completed": false, "score": 0, "attempts": 0})
 		return
 	}
 
 	c.JSON(http.StatusOK, progress)
+}
+
+// ─────────────────────────────────────────────
+// HELPER — pobierz userID z JWT kontekstu
+// ─────────────────────────────────────────────
+
+func getUserID(c *gin.Context) string {
+	userID, exists := c.Get("user_id")
+	if !exists {
+		return ""
+	}
+	str, ok := userID.(string)
+	if !ok {
+		return ""
+	}
+	return str
 }
