@@ -45,20 +45,24 @@ func main() {
 	// PUBLIC
 	v1 := r.Group("/api/v1")
 	{
-		v1.GET("/lessons", lessons.ListHandler)
-		v1.GET("/lessons/:id", lessons.GetHandler)
+    v1.GET("/tracks/:track/groups", lessons.TrackHandler)
+    v1.GET("/groups/:groupId", lessons.GroupHandler)
+    v1.GET("/lessons", lessons.ListHandler)
+    v1.GET("/lessons/:id", lessons.GetHandler)
 
-		v1.POST("/auth/otp/start", auth.StartOTPHandler)
-		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
+    v1.POST("/auth/otp/start", auth.StartOTPHandler)
+    v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
 	}
 
-	// 4. PROTECTED
+	// PROTECTED
 	protected := r.Group("/api/v1")
 	protected.Use(auth.EnsureValidToken())
 	{
 		protected.GET("/sync-user", auth.SyncUserHandler)
 		protected.POST("/lessons/:id/submit", lessons.SubmitHandler)
 		protected.GET("/lessons/:id/progress", lessons.ProgressHandler)
+
+		protected.GET("/groups/:groupId/progress", lessons.GroupProgressHandler)
 	}
 
 	port := ":8080"
