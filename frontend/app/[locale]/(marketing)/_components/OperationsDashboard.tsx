@@ -26,6 +26,9 @@ interface MarketRow {
   status?: string
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'
+const WS_URL = API_URL.replace('http', 'ws')
+
 export function OperationsDashboard() {
   const [tweets, setTweets] = useState<Tweet[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -38,7 +41,7 @@ export function OperationsDashboard() {
   useEffect(() => {
     const fetchTweets = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/v1/tweets?t=${Date.now()}`)
+        const res = await fetch(`${API_URL}/api/v1/tweets?t=${Date.now()}`)
         if (!res.ok) throw new Error('Server connection error')
 
         const data = await res.json()
@@ -58,7 +61,7 @@ export function OperationsDashboard() {
   }, [])
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080/ws/market')
+    const ws = new WebSocket(`${WS_URL}/ws/market`)
 
     ws.onopen = () => {
       setWsStatus('CONNECTED')
@@ -103,7 +106,7 @@ export function OperationsDashboard() {
 
             <div className="border-foreground/10 bg-background relative flex flex-1 flex-col overflow-hidden rounded-[2.5rem] border shadow-inner">
               <div className="border-foreground/10 bg-foreground/5 border-b p-4 pt-10 text-center">
-                <span className="text-foreground font-mono text-[9px] font-bold tracking-widest uppercase opacity-50">
+                <span className="text-foreground font-sans text-[9px] font-bold tracking-widest uppercase opacity-50">
                   AI Pulse // Live Feed
                 </span>
               </div>
@@ -112,7 +115,7 @@ export function OperationsDashboard() {
                 {isLoading ? (
                   <div className="flex h-full w-full flex-col items-center justify-center text-center opacity-40">
                     <span className="border-foreground h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></span>
-                    <span className="mt-4 animate-pulse font-mono text-[10px] tracking-widest uppercase">
+                    <span className="mt-4 animate-pulse font-sans text-[10px] tracking-widest uppercase">
                       [ Establishing Uplink... ]
                     </span>
                   </div>
@@ -139,7 +142,7 @@ export function OperationsDashboard() {
                             </span>
                           </div>
                         </div>
-                        <span className="text-foreground font-mono text-[9px] opacity-30">
+                        <span className="text-foreground font-sans text-[9px] opacity-30">
                           {tweet.time}
                         </span>
                       </div>
@@ -150,7 +153,7 @@ export function OperationsDashboard() {
                   ))
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-center opacity-30">
-                    <span className="text-error font-mono text-[10px] tracking-widest uppercase">
+                    <span className="text-error font-sans text-[10px] tracking-widest uppercase">
                       [ Connection Failed ]
                     </span>
                   </div>
@@ -167,7 +170,7 @@ export function OperationsDashboard() {
                   <div className="border-error/30 bg-error/80 h-3 w-3 rounded-full border" />
                   <div className="border-accent/30 bg-accent/80 h-3 w-3 rounded-full border" />
                   <div className="border-primary/30 bg-primary/80 h-3 w-3 rounded-full border" />
-                  <div className="text-foreground ml-2 flex translate-y-0.5 items-center gap-2 font-mono text-[10px] leading-none opacity-50">
+                  <div className="text-foreground ml-2 flex translate-y-0.5 items-center gap-2 font-sans text-[10px] leading-none opacity-50">
                     <FiTerminal className="text-xs" />
                     <span>market_board.zsh</span>
                   </div>
@@ -177,13 +180,13 @@ export function OperationsDashboard() {
                   <div
                     className={`h-2 w-2 rounded-full ${wsStatus === 'CONNECTED' ? 'bg-primary animate-pulse' : 'bg-error'}`}
                   />
-                  <span className="text-foreground translate-y-px font-mono text-[8px] opacity-40">
+                  <span className="text-foreground translate-y-px font-sans text-[8px] opacity-40">
                     {wsStatus}
                   </span>
                 </div>
               </div>
 
-              <div className="flex flex-col p-6 font-mono text-sm leading-relaxed">
+              <div className="flex flex-col p-6 font-sans text-sm leading-relaxed">
                 <div className="mb-12 flex flex-col gap-1 text-xs opacity-60">
                   <span>[!] Initializing secure WebSocket stream... OK.</span>
                   <span>[!] Fetching {markets.length || 2} data streams... OK.</span>
