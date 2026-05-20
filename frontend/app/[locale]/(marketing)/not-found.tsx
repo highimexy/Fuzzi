@@ -46,7 +46,7 @@ export default function NotFound() {
 
           <div className="mt-20 flex items-center gap-4 opacity-20">
             <div className="bg-foreground h-px w-12" />
-            <span className="font-mono text-[10px] tracking-widest uppercase">
+            <span className="font-sans text-[10px] tracking-widest uppercase">
               {t('endOfLine')}
             </span>
             <div className="bg-foreground h-px w-12" />
