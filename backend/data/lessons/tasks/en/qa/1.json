@@ -1,15 +1,13 @@
 {
-  "question": "What is the primary purpose of the OSI model?",
+  "type": "quiz",
+  "question": "A QA engineer receives a file with header bytes: 89 50 4E 47. Which file type is this?",
   "options": [
-    { "id": "a", "text": "To provide a physical connection between devices." },
-    {
-      "id": "b",
-      "text": "To standardize the functions of a telecommunication or computing system."
-    },
-    { "id": "c", "text": "To secure data transmissions over the internet." },
-    { "id": "d", "text": "To replace the TCP/IP protocol suite." }
+    { "id": "a", "text": "JPEG image" },
+    { "id": "b", "text": "PNG image" },
+    { "id": "c", "text": "PDF document" },
+    { "id": "d", "text": "ZIP archive" }
   ],
   "correct": "b",
-  "explanation": "The OSI model provides a conceptual framework...",
-  "trap_explanation": "Option A refers only to Layer 1 (Physical)."
+  "explanation": "The bytes 89 50 4E 47 are the magic bytes (file signature) of a PNG file. As a QA engineer, recognizing file headers helps you validate that uploaded files are what they claim to be — a JPEG renamed to .png still has JPEG headers.",
+  "trap_explanation": "Option A (JPEG) is the most common wrong answer. JPEG files start with FF D8 FF, not 89 50 4E 47."
 }
