@@ -250,10 +250,10 @@ export default function RealityCheckPage() {
                 </p>
               </div>
               <div className="border-secondary/20 hidden border-l pl-6 lg:block">
-                <span className="block font-mono text-[10px] uppercase opacity-40">
+                <span className="block font-sans text-[10px] uppercase opacity-40">
                   {t('academy.curriculum')}
                 </span>
-                <span className="text-secondary mt-1 block font-mono text-[10px] font-bold uppercase">
+                <span className="text-secondary mt-1 block font-sans text-[10px] font-bold uppercase">
                   {t('academy.modules')}
                 </span>
               </div>
