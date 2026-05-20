@@ -35,7 +35,7 @@ export default function AboutPage() {
                   <a
                     key={sec.id}
                     href={`#${sec.id}`}
-                    className={`group hover:bg-background hover:border-foreground/20 relative flex items-center justify-between border border-transparent px-6 py-5 opacity-60 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] ${
+                    className={`group hover:bg-background hover:border-foreground/30 relative flex items-center justify-between border border-transparent px-6 py-5 opacity-60 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] ${
                       index !== sections.length - 1
                         ? 'border-b-foreground/10 hover:border-b-foreground/30'
                         : ''
@@ -144,7 +144,7 @@ export default function AboutPage() {
                       key={`book${num}`}
                       className="border-foreground/10 hover:bg-foreground/5 flex items-start gap-4 border p-6 transition-colors"
                     >
-                      <span className="mt-1 font-mono text-xs opacity-30">0{num}</span>
+                      <span className="mt-1 font-sans text-xs opacity-30">0{num}</span>
                       <span className="font-sans text-sm font-bold opacity-80">
                         {t(`resources.book${num}`)}
                       </span>
