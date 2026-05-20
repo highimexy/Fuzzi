@@ -1,15 +1,13 @@
 {
-  "question": "What is the primary purpose of the OSI model?",
+  "type": "quiz",
+  "question": "Inżynier QA otrzymuje plik z nagłówkiem (header bytes): 89 50 4E 47. Jaki to typ pliku?",
   "options": [
-    { "id": "a", "text": "To provide a physical connection between devices." },
-    {
-      "id": "b",
-      "text": "To standardize the functions of a telecommunication or computing system."
-    },
-    { "id": "c", "text": "To secure data transmissions over the internet." },
-    { "id": "d", "text": "To replace the TCP/IP protocol suite." }
+    { "id": "a", "text": "Obraz JPEG" },
+    { "id": "b", "text": "Obraz PNG" },
+    { "id": "c", "text": "Dokument PDF" },
+    { "id": "d", "text": "Archiwum ZIP" }
   ],
   "correct": "b",
-  "explanation": "The OSI model provides a conceptual framework...",
-  "trap_explanation": "Option A refers only to Layer 1 (Physical)."
+  "explanation": "Bajty 89 50 4E 47 to tak zwane 'magic bytes' (sygnatura pliku) formatu PNG. Jako QA warto je znać — plik JPEG przemianowany na .png nadal będzie miał nagłówek JPEG, co można wykryć właśnie przez analizę bajtów.",
+  "trap_explanation": "Opcja A (JPEG) to najczęstszy błędny wybór. Pliki JPEG zaczynają się od FF D8 FF, nie 89 50 4E 47."
 }
