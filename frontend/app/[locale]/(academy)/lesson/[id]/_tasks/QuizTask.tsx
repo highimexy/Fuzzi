@@ -31,15 +31,33 @@ export default function QuizTask({ lessonId, payload }: TaskProps) {
   const handleSubmit = async () => {
     setSubmitted(true)
 
-    await fetch(`/api/v1/lessons/${lessonId}/submit`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        answer: selected,
-        confidence,
-        needs_review: confidence === 'sure' && !isCorrect,
-      }),
-    })
+    const token = localStorage.getItem('token')
+    const locale = document.documentElement.lang || 'en'
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/v1/lessons/${lessonId}/submit`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          },
+          body: JSON.stringify({
+            answer: selected,
+            confidence,
+            needs_review: confidence === 'sure' && !isCorrect,
+            locale,
+          }),
+        }
+      )
+
+      if (!res.ok) {
+        console.error('Submit failed:', res.status, await res.text())
+      }
+    } catch (err) {
+      console.error('Submit network error:', err)
+    }
   }
 
   useEffect(() => {
@@ -146,7 +164,7 @@ export default function QuizTask({ lessonId, payload }: TaskProps) {
           }`}
         >
           <p
-            className={`mb-2 font-mono text-xs font-bold tracking-widest uppercase ${
+            className={`mb-2 font-sans text-xs font-bold tracking-widest uppercase ${
               isCorrect ? 'text-emerald-500' : 'text-rose-500'
             }`}
           >
