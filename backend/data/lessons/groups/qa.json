@@ -1,0 +1,38 @@
+[
+  {
+    "order": 1,
+    "title_en": "Binary & Hex Systems",
+    "title_pl": "Systemy Binarne i Heksadecymalne",
+    "desc_en": "The fundamental language of all hardware and software.",
+    "desc_pl": "Fundamentalny język całego sprzętu i oprogramowania.",
+    "difficulty": "Beginner",
+    "access_tier": "free"
+  },
+  {
+    "order": 2,
+    "title_en": "CPU & RAM Architecture",
+    "title_pl": "Architektura CPU i RAM",
+    "desc_en": "How processors and memory work under the hood.",
+    "desc_pl": "Jak działają procesory i pamięć pod maską.",
+    "difficulty": "Beginner",
+    "access_tier": "free"
+  },
+  {
+    "order": 3,
+    "title_en": "OS Internals",
+    "title_pl": "Wnętrze Systemów Operacyjnych",
+    "desc_en": "Kernel basics every QA engineer should know.",
+    "desc_pl": "Podstawy kernela które każdy QA powinien znać.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 4,
+    "title_en": "Filesystems & Permissions",
+    "title_pl": "Systemy Plików i Uprawnienia",
+    "desc_en": "Files, directories, and permission models.",
+    "desc_pl": "Pliki, katalogi i modele uprawnień.",
+    "difficulty": "Beginner",
+    "access_tier": "registered"
+  }
+]
