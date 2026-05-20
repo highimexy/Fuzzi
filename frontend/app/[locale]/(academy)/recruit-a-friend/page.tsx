@@ -41,7 +41,7 @@ export default function RecruitPage() {
                   type="text"
                   readOnly
                   value={referralLink}
-                  className="border-foreground/20 bg-foreground/5 flex-1 border px-4 py-3 font-mono text-sm outline-none"
+                  className="border-foreground/20 bg-foreground/5 flex-1 border px-4 py-3 font-sans text-sm outline-none"
                 />
                 <button
                   onClick={handleCopy}

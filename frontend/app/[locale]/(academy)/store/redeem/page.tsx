@@ -60,7 +60,7 @@ export default function RedeemPage() {
             const Icon = item.icon
             return (
               <div key={item.id} className="border-foreground/10 max-w-70 min-w-70 border">
-                <div className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <div className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/30 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
                   <Icon className="absolute -top-6 -right-6 text-8xl text-accent opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
 
                   <div>
