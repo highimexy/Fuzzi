@@ -1,0 +1,15 @@
+{
+  "question": "What is the primary purpose of the OSI model?",
+  "options": [
+    { "id": "a", "text": "To provide a physical connection between devices." },
+    {
+      "id": "b",
+      "text": "To standardize the functions of a telecommunication or computing system."
+    },
+    { "id": "c", "text": "To secure data transmissions over the internet." },
+    { "id": "d", "text": "To replace the TCP/IP protocol suite." }
+  ],
+  "correct": "b",
+  "explanation": "The OSI model provides a conceptual framework...",
+  "trap_explanation": "Option A refers only to Layer 1 (Physical)."
+}
