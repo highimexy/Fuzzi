@@ -43,7 +43,7 @@ export function EducationSection() {
       <Container className="py-16 md:py-24">
         {/* NAGŁÓWEK SEKCJI */}
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <span className="text-fluid-small text-secondary flex items-center justify-center gap-2 font-mono font-bold tracking-[0.4em] uppercase">
+          <span className="text-fluid-small text-secondary flex items-center justify-center gap-2 font-sans font-bold tracking-[0.4em] uppercase">
             <span className="bg-secondary/50 h-1.5 w-1.5 animate-pulse rounded-full" />
             {t('label')}
           </span>
@@ -71,7 +71,7 @@ export function EducationSection() {
             >
               <div>
                 <span
-                  className={`font-mono text-[10px] font-bold tracking-widest uppercase opacity-80 ${vec.labelColor}`}
+                  className={`font-sans text-[10px] font-bold tracking-widest uppercase opacity-80 ${vec.labelColor}`}
                 >
                   {vec.label}
                 </span>
@@ -91,7 +91,7 @@ export function EducationSection() {
                 {/* Taktyczny Footer Karty */}
                 <div className="border-foreground/10 flex w-full items-center gap-2 border-t pt-6">
                   <div className={`h-1 w-8 transition-colors duration-300 ${vec.lineColor}`} />
-                  <span className="font-mono text-[8px] tracking-widest uppercase opacity-20">
+                  <span className="font-sans text-[8px] tracking-widest uppercase opacity-20">
                     System Path {idx + 1}
                   </span>
                 </div>
