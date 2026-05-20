@@ -29,7 +29,7 @@ export default function LoginPage() {
     setError('')
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:8080/api/v1/auth/otp/start', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/v1/auth/otp/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -55,7 +55,7 @@ export default function LoginPage() {
     setError('')
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:8080/api/v1/auth/otp/verify', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/v1/auth/otp/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code }),
@@ -159,7 +159,7 @@ export default function LoginPage() {
                   onChange={(e) => setCode(e.target.value)}
                   disabled={loading}
                   maxLength={6}
-                  className="border-foreground/20 focus:border-foreground/50 w-full border p-3 text-center font-mono tracking-widest outline-none disabled:opacity-50"
+                  className="border-foreground/20 focus:border-foreground/50 w-full border p-3 text-center font-sans tracking-widest outline-none disabled:opacity-50"
                   onKeyDown={(e) => e.key === 'Enter' && handleVerifyOTP()}
                 />
                 {error && <span className="text-center text-sm text-error">{error}</span>}
