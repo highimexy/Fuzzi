@@ -32,7 +32,7 @@ export default function ChangelogPage() {
                   <a
                     key={`nav-${v}`}
                     href={`#${v}`}
-                    className={`group hover:bg-background hover:border-foreground/20 relative flex items-center justify-between border border-transparent px-6 py-5 opacity-60 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] ${
+                    className={`group hover:bg-background hover:border-foreground/30 relative flex items-center justify-between border border-transparent px-6 py-5 opacity-60 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:opacity-100 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)] ${
                       index !== versions.length - 1
                         ? 'border-b-foreground/10 hover:border-b-foreground/30'
                         : ''
@@ -55,7 +55,7 @@ export default function ChangelogPage() {
                 <div
                   key={v}
                   id={v}
-                  className="bg-background group hover:border-foreground/20 relative scroll-mt-32 border border-transparent p-4 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] md:p-6 md:hover:translate-x-2 md:hover:-translate-y-2 md:hover:shadow-[-20px_25px_50px_-15px_rgba(0,0,0,0.12)] lg:p-8"
+                  className="bg-background group hover:border-foreground/30 relative scroll-mt-32 border border-transparent p-4 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] md:p-6 md:hover:translate-x-2 md:hover:-translate-y-2 md:hover:shadow-[-20px_25px_50px_-15px_rgba(0,0,0,0.12)] lg:p-8"
                 >
                   <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
                     <div className="flex items-center gap-5">
