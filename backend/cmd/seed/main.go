@@ -2,24 +2,23 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/models"
 	"github.com/joho/godotenv"
+	gonanoid "github.com/matoous/go-nanoid/v2"
+	"gorm.io/datatypes"
 )
 
+// Struktury JSON
 type MessagesFile struct {
 	Lessons struct {
-		QALessons struct {
-			Items map[string]LessonItem `json:"items"`
-		} `json:"qaLessons"`
-		RealityLessons struct {
-			Items map[string]LessonItem `json:"items"`
-		} `json:"realityLessons"`
+		QALessons      struct { Items map[string]LessonItem `json:"items"` } `json:"qaLessons"`
+		RealityLessons struct { Items map[string]LessonItem `json:"items"` } `json:"realityLessons"`
 	} `json:"Lessons"`
 }
 
@@ -29,13 +28,33 @@ type LessonItem struct {
 	Difficulty string `json:"difficulty"`
 }
 
+// Funkcje pomocnicze
+func readContent(path string) string {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return "## Content Pending\nThis content is being written..."
+	}
+	return string(content)
+}
+
+func readPayload(path string) datatypes.JSON {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return datatypes.JSON([]byte("{}"))
+	}
+	return datatypes.JSON(content)
+}
+
 func main() {
 	log.Println("[SEEDER] Inicjalizacja...")
 	godotenv.Load()
 	database.Connect()
 
+	// Reset bazy
+	database.DB.Exec("DROP TABLE IF EXISTS lessons CASCADE")
 	database.DB.AutoMigrate(&models.Lesson{})
 
+	// Wczytaj bazowe JSONy
 	enFile, err := os.ReadFile("data/lessons/en.json")
 	if err != nil {
 		log.Fatalf("[FATAL] Brak pliku en.json: %v", err)
@@ -51,46 +70,61 @@ func main() {
 
 	var lessonsToInsert []models.Lesson
 
-	for i := 1; i <= 100; i++ {
-		key := strconv.Itoa(i)
-		enItem, okEN := enData.Lessons.QALessons.Items[key]
-		plItem, okPL := plData.Lessons.QALessons.Items[key]
+	// Funkcja seedująca dla QA i Reality
+	seedTrack := func(track string, items map[string]LessonItem, isQA bool) {
+		for i := 1; i <= 100; i++ {
+			key := strconv.Itoa(i)
+			enItem, ok := items[key]
+			if !ok {
+				continue
+			}
 
-		if okEN && okPL {
+			contentEN := readContent(filepath.Join("data", "lessons", "markdown", "en", track, key+".md"))
+			contentPL := readContent(filepath.Join("data", "lessons", "markdown", "pl", track, key+".md"))
+
+			payloadEN := readPayload(filepath.Join("data", "lessons", "tasks", "en", track, key+".json"))
+			payloadPL := readPayload(filepath.Join("data", "lessons", "tasks", "pl", track, key+".json"))
+
+			// Typ lekcji
+			lessonType := "article"
+			if string(payloadEN) != "{}" {
+				lessonType = "quiz"
+			}
+
+			// Mapowanie tytułu PL
+			var titlePL string
+			if isQA {
+				titlePL = plData.Lessons.QALessons.Items[key].Title
+			} else {
+				titlePL = plData.Lessons.RealityLessons.Items[key].Title
+			}
+
+			// Generowanie unikalnego ID (NanoID)
+			id, _ := gonanoid.New()
+
 			lessonsToInsert = append(lessonsToInsert, models.Lesson{
-				Track:      "qa",
+				ID:         id,
+				Track:      track,
 				Difficulty: enItem.Difficulty,
 				Status:     enItem.Status,
+				LessonType: lessonType,
 				TitleEN:    enItem.Title,
-				TitlePL:    plItem.Title,
-				ContentEN:  fmt.Sprintf("# %s\n\nLesson content is being written...", enItem.Title),
-				ContentPL:  fmt.Sprintf("# %s\n\nTreść lekcji jest w przygotowaniu...", plItem.Title),
+				TitlePL:    titlePL,
+				ContentEN:  contentEN,
+				ContentPL:  contentPL,
+				PayloadEN:  payloadEN,
+				PayloadPL:  payloadPL,
 			})
 		}
 	}
 
-	for i := 1; i <= 100; i++ {
-		key := strconv.Itoa(i)
-		enItem, okEN := enData.Lessons.RealityLessons.Items[key]
-		plItem, okPL := plData.Lessons.RealityLessons.Items[key]
+	// Odpal seedowanie dla obu ścieżek
+	seedTrack("qa", enData.Lessons.QALessons.Items, true)
+	seedTrack("reality", enData.Lessons.RealityLessons.Items, false)
 
-		if okEN && okPL {
-			lessonsToInsert = append(lessonsToInsert, models.Lesson{
-				Track:      "reality",
-				Difficulty: enItem.Difficulty,
-				Status:     enItem.Status,
-				TitleEN:    enItem.Title,
-				TitlePL:    plItem.Title,
-				ContentEN:  fmt.Sprintf("# %s\n\nLesson content is being written...", enItem.Title),
-				ContentPL:  fmt.Sprintf("# %s\n\nTreść lekcji jest w przygotowaniu...", plItem.Title),
-			})
-		}
+	if err := database.DB.Create(&lessonsToInsert).Error; err != nil {
+		log.Fatalf("[FATAL] Błąd zapisu do bazy: %v", err)
 	}
 
-	result := database.DB.Create(&lessonsToInsert)
-	if result.Error != nil {
-		log.Fatalf("[FATAL] Błąd zapisu do bazy: %v", result.Error)
-	}
-
-	log.Printf("[SUCCESS] Zasiano %d dwujęzycznych lekcji w bazie danych!", result.RowsAffected)
+	log.Printf("[SUCCESS] Zasiano %d lekcji!", len(lessonsToInsert))
 }
