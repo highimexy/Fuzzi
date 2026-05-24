@@ -1,0 +1,56 @@
+[
+  {
+    "order": 1,
+    "title_en": "IT Market Reality",
+    "title_pl": "Realia Rynku IT",
+    "desc_en": "What the bootcamp won't tell you about the job market and salaries.",
+    "desc_pl": "To czego nie powiedzą Ci na bootcampie o rynku pracy i zarobkach.",
+    "difficulty": "Beginner",
+    "access_tier": "free"
+  },
+  {
+    "order": 2,
+    "title_en": "Working with Developers",
+    "title_pl": "Praca z Developerami",
+    "desc_en": "Conflicts, code reviews and building a real quality culture.",
+    "desc_pl": "Konflikty, code review i budowanie kultury jakości w zespole.",
+    "difficulty": "Beginner",
+    "access_tier": "free"
+  },
+  {
+    "order": 3,
+    "title_en": "QA Career Path",
+    "title_pl": "Ścieżka Kariery QA",
+    "desc_en": "From junior to senior: what actually works and what wastes your time.",
+    "desc_pl": "Od juniora do seniora: co naprawdę działa, a co marnuje Twój czas.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 4,
+    "title_en": "IT Recruitment",
+    "title_pl": "Rekrutacja w IT",
+    "desc_en": "How hiring processes really work and how to negotiate your offer.",
+    "desc_pl": "Jak naprawdę wyglądają procesy rekrutacyjne i jak negocjować ofertę.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 5,
+    "title_en": "Corporate Life",
+    "title_pl": "Praca w Korporacji",
+    "desc_en": "Processes, politics and how to survive (and thrive) in a big company.",
+    "desc_pl": "Procesy, polityka i jak przetrwać (i awansować) w dużej firmie.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 6,
+    "title_en": "Wellbeing & Burnout",
+    "title_pl": "Wellbeing i Burnout",
+    "desc_en": "Mental health in an industry that never sleeps. Signs, causes, solutions.",
+    "desc_pl": "Zdrowie psychiczne w branży która nigdy nie śpi. Sygnały, przyczyny, rozwiązania.",
+    "difficulty": "Advanced",
+    "access_tier": "free"
+  }
+]
