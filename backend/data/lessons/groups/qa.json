@@ -1,38 +1,74 @@
 [
   {
     "order": 1,
-    "title_en": "Binary & Hex Systems",
-    "title_pl": "Systemy Binarne i Heksadecymalne",
-    "desc_en": "The fundamental language of all hardware and software.",
-    "desc_pl": "Fundamentalny język całego sprzętu i oprogramowania.",
+    "title_en": "QA Fundamentals",
+    "title_pl": "Podstawy QA",
+    "desc_en": "What quality assurance is and why it matters in every team.",
+    "desc_pl": "Czym jest zapewnianie jakości i dlaczego ma znaczenie w każdym zespole.",
     "difficulty": "Beginner",
     "access_tier": "free"
   },
   {
     "order": 2,
-    "title_en": "CPU & RAM Architecture",
-    "title_pl": "Architektura CPU i RAM",
-    "desc_en": "How processors and memory work under the hood.",
-    "desc_pl": "Jak działają procesory i pamięć pod maską.",
+    "title_en": "Manual Testing",
+    "title_pl": "Testy Manualne",
+    "desc_en": "Test cases, bug reports, and exploratory testing done right.",
+    "desc_pl": "Przypadki testowe, raporty błędów i exploratory testing.",
     "difficulty": "Beginner",
     "access_tier": "free"
   },
   {
     "order": 3,
-    "title_en": "OS Internals",
-    "title_pl": "Wnętrze Systemów Operacyjnych",
-    "desc_en": "Kernel basics every QA engineer should know.",
-    "desc_pl": "Podstawy kernela które każdy QA powinien znać.",
+    "title_en": "API Testing",
+    "title_pl": "Testowanie API",
+    "desc_en": "REST, HTTP, Postman and how to test what the UI hides.",
+    "desc_pl": "REST, HTTP, Postman i testowanie tego, czego UI nie pokazuje.",
     "difficulty": "Intermediate",
     "access_tier": "free"
   },
   {
     "order": 4,
-    "title_en": "Filesystems & Permissions",
-    "title_pl": "Systemy Plików i Uprawnienia",
-    "desc_en": "Files, directories, and permission models.",
-    "desc_pl": "Pliki, katalogi i modele uprawnień.",
-    "difficulty": "Beginner",
-    "access_tier": "registered"
+    "title_en": "Web & Mobile Testing",
+    "title_pl": "Testowanie Web i Mobile",
+    "desc_en": "DevTools, responsiveness, cross-browser and real device testing.",
+    "desc_pl": "DevTools, responsywność, cross-browser i testowanie na urządzeniach.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 5,
+    "title_en": "SQL & Database Testing",
+    "title_pl": "SQL i Bazy Danych",
+    "desc_en": "Data validation directly in the database — the QA superpower.",
+    "desc_pl": "Walidacja danych bezpośrednio w bazie — supermoc każdego QA.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 6,
+    "title_en": "Test Automation",
+    "title_pl": "Automatyzacja Testów",
+    "desc_en": "When, why and how to automate. Playwright, Selenium and beyond.",
+    "desc_pl": "Kiedy, dlaczego i jak automatyzować. Playwright, Selenium i więcej.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
+  },
+  {
+    "order": 7,
+    "title_en": "CI/CD & Environments",
+    "title_pl": "CI/CD i Środowiska",
+    "desc_en": "Pipelines, deployment environments and QA's role in the delivery chain.",
+    "desc_pl": "Pipelines, środowiska i rola QA w łańcuchu dostarczania oprogramowania.",
+    "difficulty": "Advanced",
+    "access_tier": "free"
+  },
+  {
+    "order": 8,
+    "title_en": "Performance & Security",
+    "title_pl": "Performance i Bezpieczeństwo",
+    "desc_en": "Load testing, OWASP Top 10 and the bugs that cost millions.",
+    "desc_pl": "Load testing, OWASP Top 10 i błędy, które kosztują miliony.",
+    "difficulty": "Advanced",
+    "access_tier": "free"
   }
 ]
