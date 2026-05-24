@@ -1,0 +1,32 @@
+{
+  "type": "salary_decoder",
+  "job_offer": {
+    "title": "Mid QA Engineer",
+    "company": "FinBridge S.A. — firma fintech, ~200 osób, Warszawa (hybrid 3 dni w tygodniu)",
+    "raw_text": "Oferujemy:\n• Wynagrodzenie: 10 000 – 14 000 PLN brutto (UoP) lub 11 000 – 15 500 PLN netto (B2B)\n• 26 dni urlopu (UoP) lub 'elastyczne warunki' (B2B)\n• Pakiet benefitów: MultiSport, prywatna opieka medyczna Lux Med\n• 'Competitive salary reviewed annually'\n• Budżet na szkolenia: 'dostępny po okresie próbnym'\n• Sprzęt: MacBook Pro lub Dell, do wyboru\n• Equity/opcje: brak\n• Atmosfera: 'startup mindset w stabilnej firmie'"
+  },
+  "red_flags": [
+    {
+      "phrase": "10 000 – 14 000 PLN brutto (UoP) vs 11 000 – 15 500 PLN netto (B2B)",
+      "reality": "Celowe zestawienie które wygląda korzystnie dla B2B. Ale: UoP 14k brutto = ok 10k netto. B2B 15.5k netto minus ZUS (~1.8k) = ok 13.7k netto. Różnica jest mniejsza niż wygląda. Zawsze przelicz do porównywalnej podstawy. Pytaj też o to czy firma daje 'koszty uzyskania' na B2B — różnica może być znaczna przy niskich kosztach."
+    },
+    {
+      "phrase": "'Elastyczne warunki' urlopu na B2B",
+      "reality": "Eufemizm który znaczy 'nie masz gwarantowanego urlopu'. Na B2B urlop sam finansujesz przez brak fakturowania. 'Elastyczne' = negocjowalny przez Ciebie, nie gwarantowany przez firmę. Zapytaj wprost: ile dni płatnego urlopu przewidują i czy to jest w umowie."
+    },
+    {
+      "phrase": "Competitive salary reviewed annually",
+      "reality": "To standard który nic nie gwarantuje. 'Annually reviewed' nie znaczy 'annually raised'. Podwyżka może być 0-2% (poniżej inflacji). Zapytaj: jaka była średnia podwyżka dla QA w ostatnich 2 latach? Jeśli nie wiedzą lub unikają — to czerwona flaga."
+    },
+    {
+      "phrase": "Budżet na szkolenia dostępny po okresie próbnym",
+      "reality": "Ile trwa okres próbny? (3 lub 6 miesięcy?) Ile wynosi budżet? (1000 PLN vs 10 000 PLN to duża różnica.) Czy budżet przepada jeśli nie wykorzystany? Czy możesz go użyć na konferencje, kursy online, certyfikaty? Te szczegóły mają znaczenie."
+    },
+    {
+      "phrase": "startup mindset w stabilnej firmie",
+      "reality": "Marketingowe zdanie które nic nie mówi. Może znaczyć: kultura innowacji i autonomii (dobrze) — lub: praca po godzinach, brak procesów, nagłe zmiany priorytetów (źle). Zapytaj na rozmowie o konkretne przykłady jak wygląda 'startup mindset' w praktyce."
+    }
+  ],
+  "fuzzi_verdict": "Oferta jest w rynku — 14k UoP to przyzwoite wynagrodzenie dla Mid QA w Warszawie. Ale kilka punktów wymaga doprecyzowania przed podpisaniem: gwarantowany urlop na B2B, konkretna kwota budżetu szkoleniowego, historyczne dane o podwyżkach. Negocjuj: zacznij od 14k UoP jako dolnej granicy, cel 15.5-16k. Masz pole do rozmowy — widełki kończą się na 14k, co zazwyczaj oznacza że jest przestrzeń powyżej.",
+  "market_context": "Mid QA w Warszawie (2025): 11 000–16 000 PLN brutto UoP. Fintech zazwyczaj płaci 10-15% powyżej rynkowej średniej. Oferta jest w dolnej części widełków — jest przestrzeń do negocjacji."
+}

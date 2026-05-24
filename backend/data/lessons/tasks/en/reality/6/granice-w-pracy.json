@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś QA Engineerem z rocznym stażem w firmie. Pracujesz dobrze, manager jest zadowolony. Stałeś się 'go-to person' dla wielu pytań — developerzy pytają Cię o środowisko, PM pyta o status bugów, nowi pracownicy proszą o wdrożenie. Czujesz że masz wpływ, ale też że zaczynasz topić się w zadaniach spoza swojego zakresu.",
+  "decisions": [
+    {
+      "id": "d1",
+      "decision": "Zacząć dokumentować wszystkie pytania i prośby spoza zakresu, żeby mieć dane do rozmowy z managerem o zakresie odpowiedzialności",
+      "correct_risk": "safe",
+      "explanation": "Dokumentacja to fundament każdej rozmowy o granicach. Bez danych ('w tym tygodniu spędziłem 8h na onboardingu nowych pracowników') rozmowa jest subiektywna. Z danymi — konkretna i konstruktywna."
+    },
+    {
+      "id": "d2",
+      "decision": "Zacząć odmawiać wszystkich próśb spoza zakresu bez uprzedniej rozmowy z managerem",
+      "correct_risk": "risky",
+      "explanation": "Nagła zmiana zachowania bez kontekstu będzie odebrana jako złośliwość lub brak team spirit. Najpierw rozmowa z managerem, ustalenie granic, potem konsekwentne ich stosowanie. Jednostronne 'nie' bez komunikacji niszczy relacje."
+    },
+    {
+      "id": "d3",
+      "decision": "Porozmawiać z managerem: pokazać dane, zapytać czy dodatkowe zadania są częścią Twojej roli (i czy wpływają na ocenę/wynagrodzenie), zaproponować rozwiązanie (dedykowana osoba do onboardingu, dokumentacja zamiast osobistego wdrożenia)",
+      "correct_risk": "safe",
+      "explanation": "Najlepsza opcja. Rozmowa z danymi i propozycją rozwiązania to dojrzała profesjonalna postawa. Manager może nie wiedzieć że jesteś przeciążony — ta rozmowa daje mu informację i możliwość działania."
+    },
+    {
+      "id": "d4",
+      "decision": "Kontynuować pomaganie wszystkim — to buduje relacje i jest pozytywnie odbierane przez zespół",
+      "correct_risk": "risky",
+      "explanation": "Krótkoterminowo buduje relacje. Długoterminowo: wypalenie, rosnące oczekiwania bez wzrostu wynagrodzenia, bycie 'pomagaczem' zamiast specjalistą. Granice wcześnie ustawione są łatwiejsze niż zmiana oczekiwań po roku bycia dostępnym dla wszystkich."
+    },
+    {
+      "id": "d5",
+      "decision": "Napisać dokumentację FAQ dla pytań które otrzymujesz najczęściej, żeby zmniejszyć liczbę bezpośrednich pytań",
+      "correct_risk": "safe",
+      "explanation": "Skalowalne rozwiązanie. Dokumentacja raz — pomaga wielu osobom. Zmniejsza obciążenie bez odmawiania pomocy. Przy okazji pokazuje proaktywność i myślenie systemowe — co jest pozytywnie oceniane."
+    },
+    {
+      "id": "d6",
+      "decision": "Zaktualizować swój status na Slacku na 'Nie przeszkadzać' permanentnie żeby zmniejszyć liczbę wiadomości",
+      "correct_risk": "risky",
+      "explanation": "Techniczna blokada bez komunikacji. Współpracownicy będą sfrustrowani lub znajdą inne kanały (email, podejście przy biurku). Nie rozwiązuje problemu — tylko go przesuwa. Granice komunikacyjne muszą być ustalone przez rozmowę, nie blokowanie."
+    }
+  ],
+  "senior_comment": "Bycie 'go-to person' to podwójny miecz: daje wpływ i widoczność, ale bez granic staje się nieodpłatnym drugim etatem. Kluczowe: ustal granice zanim poczujesz się wypalony — reaktywne 'nie' boli bardziej niż proaktywna rozmowa o zakresie."
+}

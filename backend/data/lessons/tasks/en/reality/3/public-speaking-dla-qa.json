@@ -1,0 +1,18 @@
+{
+  "type": "interview",
+  "question": "Złożyłeś propozycję tematu na lokalny meetup QA: 'Jak znaleźć buga w płatnościach który kosztował firmę 100k PLN'. Organizator akceptuje i pyta Cię o 20-minutową prezentację za 6 tygodni.\n\nPo tygodniu dostajesz wiadomość od znajomego który był na poprzednim meetupie: 'Hej, widziałem że będziesz mówić. Pamiętaj że na tym meetupie jest dużo seniorów — lepiej przygotuj coś zaawansowanego, bo juniorzy nie lubią jak senior QA mówi o prostych bugach'.\n\nJak reagujesz i jak planujesz prezentację?",
+  "context": "To jest pytanie o podejście do public speaking i radzenie sobie z zewnętrzną presją. Twoja historia jest autentyczna i wartościowa. Pytanie sprawdza: czy pozwolisz presji zmienić Twój pomysł, i jak planujesz dostarczyć wartość dla zróżnicowanej publiczności.",
+  "star_hints": {
+    "s": "Sytuacja: przygotowujesz pierwszą zewnętrzną prezentację, dostajesz niepokojący feedback od znajomego",
+    "t": "Zadanie: zdecydować jak podejść do prezentacji mimo wątpliwości",
+    "a": "Działania: jak planujesz temat, strukturę, i jak radzisz sobie z presją",
+    "r": "Rezultat: jaki jest Twój plan i dlaczego jesteś w nim pewny"
+  },
+  "evaluation_criteria": [
+    "Nie zmienia tematu pod wpływem zewnętrznej presji bez dobrego powodu",
+    "Rozumie że autentyczna historia jest wartościowa niezależnie od poziomu publiczności",
+    "Planuje prezentację z myślą o zróżnicowanej publiczności",
+    "Ma konkretny plan zamiast ogólnych deklaracji"
+  ],
+  "example_answer": "Doceniam feedback od znajomego, ale nie zmienię tematu.\n\nPo pierwsze — 'seniorzy nie lubią prostych bugów' to założenie, nie fakt. Moja historia ma kilka warstw: sam bug jest prosty technicznie, ale proces jego odkrycia, analiza impaktu biznesowego i wnioski które z tego wyciągnąłem — to jest wartość dla każdego poziomu.\n\nMój plan prezentacji:\n\nOtwieram od impaktu biznesowego, nie od technikaliów: '100k PLN straciła firma przez buga który był w systemie 3 sprinty.' To przykuwa uwagę senior i juniora jednakowo.\n\nPotem prowadzę przez odkrycie: jak testowałem, co pominąłem za pierwszym razem, jaki edge case był kluczowy. Tu jest wartość dla juniorów — konkretna technika.\n\nFinał dla seniorów: co ten przypadek mówi o procesie? Dlaczego bug przeżył 3 sprinty? Co zmieniliśmy w regresji, definicji done, i pair testing po tym incydencie.\n\nZróżnicowana publiczność dostaje zróżnicowane warstwy tej samej historii.\n\nJeśli ktoś po prezentacji powie 'za proste' — to będzie jeden głos. Ale przewiduję że historia z konkretnym impaktem finansowym i procesowymi wnioskami trafi zarówno do juniora jak i seniora. Autentyczność > sztuczna złożoność."
+}

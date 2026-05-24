@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Pracujesz zdalnie w teamie rozproszonym: Ty w Warszawie (UTC+1), developer Raj w Bangalore (UTC+5:30), PM Sarah w Nowym Jorku (UTC-5). Overlap czasowy między Tobą a Rajem: 1.5h rano (9:00-10:30 Twojego czasu). Z Sarah pracujesz prawie wyłącznie async.\n\nJest piątek 15:00 Twojego czasu. Znalazłaś krytycznego buga w module płatności — użytkownicy nie mogą finalizować transakcji. Deployment był godzinę temu. Support zaczyna dostawać zgłoszenia.\n\nRaj skończył pracę 2 godziny temu (20:30 jego czas). Sarah zacznie pracę za 5 godzin. Twój czas pracy kończy się za 2 godziny.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Piszesz do Sarah na Slacku że masz krytycznego buga i czekasz na odpowiedź — to jej decyzja.",
+      "user_percentage": 8,
+      "consequences": "Za pasywne. Sarah zacznie pracę za 5 godzin i bug będzie aktywny przez cały ten czas — setki nieudanych transakcji. W kryzysie czekanie na decyzję od kogoś kto śpi to nieakceptowalne. QA w sytuacji kryzysowej musi być proaktywny: pisz do Sarah (nagłe ping jest OK) i równolegle skontaktuj się z Rajem."
+    },
+    {
+      "id": "b",
+      "text": "Napisz do Raja mimo że skończył pracę — krytyczny bug na produkcji jest wystarczającym powodem. Jednocześnie powiadom Sarah z pełnym opisem buga, krokami repro i rekomendacją (rollback lub hotfix).",
+      "user_percentage": 67,
+      "consequences": "Właściwe podejście. W distributed teamie krytyczny produkcyjny bug jest uzasadnieniem kontaktu poza godzinami pracy — to norma w IT. Kluczowe: ping Raja Z kontekstem (nie tylko 'hej'), powiadomienie Sarah z pełnymi informacjami żeby mogła podjąć decyzję, i dokumentacja całego incydentu. Nie musisz czekać aż Sarah potwierdzi żeby zaalarmować Raja."
+    },
+    {
+      "id": "c",
+      "text": "Pracujesz sama przez kolejne 2 godziny próbując zdiagnozować i naprawić buga samodzielnie zanim skończy Ci się czas pracy.",
+      "user_percentage": 14,
+      "consequences": "QA nie naprawia produkcyjnych bugów — developer to robi. Twoja rola: zdiagnozować, udokumentować, zaraportować i koordynować odpowiedź. Samodzielna próba naprawy w kodzie produkcyjnym przez QA to wykroczenie poza zakres kompetencji i może pogorszyć sytuację."
+    },
+    {
+      "id": "d",
+      "text": "Piszesz pełny raport buga i zostawiasz go na Slacku — ktoś zobaczy rano.",
+      "user_percentage": 11,
+      "consequences": "Nie do przyjęcia dla krytycznego buga. 'Ktoś zobaczy rano' oznacza że bug będzie aktywny przez 5-10 godzin. Transakcje będą failować. W distributed teamie krytyczne incydenty wymagają bezpośredniego alertowania ludzi, nie czekania aż sami sprawdzą kanał."
+    }
+  ]
+}

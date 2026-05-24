@@ -1,0 +1,15 @@
+{
+  "type": "salary_decoder",
+  "job_posting": "QA Engineer (Senior)\n\nFirma: TechFlow Sp. z o.o. (startup, 40 osób, seria A)\nMiejsce: Warszawa / Remote (2 dni w biurze)\nWidełki: 7 000 – 9 000 PLN brutto (UoP)\n\nO roli:\nSzukamy doświadczonego QA który przejmie ownership nad jakością naszego produktu. Będziesz pracować blisko developerów w dynamicznym, zwinnym środowisku. Oczekujemy samodzielności i proaktywności.\n\nZadania:\n• Testowanie manualne i automatyzacja (Playwright)\n• Budowanie procesu QA od podstaw\n• Code review pod kątem jakości\n• Dokumentacja i raportowanie dla stakeholderów\n• Mentoring juniorów (planujemy zatrudnienie za 6 miesięcy)\n\nWymagania:\n• 3+ lata w QA\n• Znajomość Playwright lub Cypress\n• Doświadczenie w startupie mile widziane\n• Dyspozycyjność – czasem pilne sytuacje wymagają szybkiej reakcji",
+  "red_flags": [
+    { "text": "Widełki 7 000–9 000 PLN brutto dla Seniora z 3+ latami", "is_red_flag": true },
+    { "text": "Praca zdalna z 2 dniami w biurze", "is_red_flag": false },
+    { "text": "\"Budowanie procesu QA od podstaw\" jako jedno z zadań", "is_red_flag": true },
+    { "text": "\"Mentoring juniorów\" w przyszłości (ale teraz nie ma juniorów)", "is_red_flag": false },
+    { "text": "\"Dyspozycyjność – czasem pilne sytuacje wymagają szybkiej reakcji\"", "is_red_flag": true },
+    { "text": "Doświadczenie w startupie mile widziane", "is_red_flag": false },
+    { "text": "Ownership nad jakością produktu", "is_red_flag": true }
+  ],
+  "salary_verdict": "unfair",
+  "fuzzi_comment": "9 000 PLN brutto dla Seniora QA z Playwright w Warszawie to poniżej rynku o ~20–30%. Rynek 2024/2025 dla tego profilu to 11 000–16 000 PLN brutto (UoP) lub 130–200 PLN/h (B2B). Startup tłumaczy niższe stawki 'możliwościami wzrostu' — ale budowanie procesów od zera, samodzielność i ewentualny mentoring to praca dla co najmniej 2 osób. Jeśli aplikujesz, otwieraj negocjacje od 13 000 PLN i traktuj 9k jako dolny próg akceptowalny tylko z bardzo atrakcyjnym equity."
+}

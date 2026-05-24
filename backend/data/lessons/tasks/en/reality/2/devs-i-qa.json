@@ -1,0 +1,15 @@
+{
+  "type": "dev_comm",
+  "variant": "rewrite",
+  "original_message": "hej, na checkoucie jest jakis blad, jak wchodzisz i klikasz to sie wywala, sprawdz prosze bo juz drugi raz to widze i klient moze miec problem",
+  "task_instruction": "Przepisz tę wiadomość jako profesjonalne zgłoszenie buga w Jira. Pamiętaj o tytule, krokach reprodukcji, oczekiwanym i aktualnym zachowaniu oraz środowisku.",
+  "checklist": [
+    "Tytuł jest konkretny — opisuje CO i GDZIE się dzieje, nie tylko 'błąd'",
+    "Kroki reprodukcji są numerowane i precyzyjne",
+    "Opisuje oczekiwane zachowanie (co powinno się stać)",
+    "Opisuje aktualne zachowanie (co się dzieje zamiast tego)",
+    "Zawiera środowisko (URL, przeglądarka / urządzenie)",
+    "Ton jest profesjonalny i neutralny — bez emocji"
+  ],
+  "example_answer": "Tytuł: [Checkout] Crash aplikacji po kliknięciu 'Przejdź do płatności'\n\nKroki reprodukcji:\n1. Przejdź na stronę /cart z co najmniej jednym produktem w koszyku\n2. Kliknij przycisk 'Przejdź do płatności'\n3. Zaobserwuj zachowanie aplikacji\n\nOczekiwane zachowanie:\nAplikacja przechodzi do kroku płatności (/checkout/payment)\n\nAktualne zachowanie:\nAplikacja crashuje — biały ekran lub komunikat błędu. Problem powtarzalny — zaobserwowany 2 razy.\n\nŚrodowisko: https://app.example.com/cart | Chrome 124 | Windows 11\n\nPriorytet: High (blokuje podstawowy flow zakupowy)"
+}

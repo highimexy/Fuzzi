@@ -1,0 +1,37 @@
+{
+  "type": "cv_audit",
+  "cv_fragment": "GitHub Portfolio: github.com/mateusz-qa\n\nRepozytorium 1: selenium-tests\n- README: 'Testy selenium'\n- Pliki: test_login.py, test_product.py, test_checkout.py\n- Ostatni commit: 14 miesięcy temu\n- Stars: 0\n- Testy dla: 'nasza wewnętrzna aplikacja' (URL niedostępny)\n\nRepozytorium 2: qa-notes\n- README: brak\n- Pliki: notki.txt, todo.md, random_stuff.md\n- Ostatni commit: 8 miesięcy temu\n\nRepozytorium 3: playwright-learning\n- README: 'Learning playwright'\n- Pliki: test1.spec.ts, test2.spec.ts, test_final.spec.ts\n- Ostatni commit: 6 miesięcy temu\n- Brak CI/CD integration\n- Aplikacja testowana: nieznana (URL nie działa)\n\nLinkedIn: Portfolio sekcja zawiera link do github.com/mateusz-qa",
+  "items": [
+    {
+      "text": "Repozytorium 'selenium-tests' z testami dla niedostępnej wewnętrznej aplikacji",
+      "is_problem": true,
+      "reason": "Portfolio QA musi być testowalny przez rekrutera. Testy dla prywatnej/niedostępnej aplikacji są niemożliwe do oceny. Rekruter widzi kod ale nie może sprawdzić co testuje. Użyj publicznych demo aplikacji (SauceDemo, OpenCart, Petstore API) żeby każdy mógł zobaczyć framework w akcji."
+    },
+    {
+      "text": "Repozytorium 'selenium-tests' — ostatni commit 14 miesięcy temu",
+      "is_problem": true,
+      "reason": "Nieaktywne repozytorium sugeruje że projekt jest porzucony lub nigdy nie był serio rozwijany. Rekruterzy zwracają uwagę na aktywność. Aktualizuj portfolio regularnie lub oznacz jako 'archiwum' jeśli nie chcesz go rozwijać."
+    },
+    {
+      "text": "Repozytorium 'qa-notes' bez README i z plikami notki.txt, random_stuff.md",
+      "is_problem": true,
+      "reason": "Prywatne notatki w publicznym repozytorium wyglądają nieprofesjonalnie. Albo zamień je na prywatne repozytorium, albo usuń. Portfolio musi być starannie skuratowane — każde publiczne repozytorium to część Twojej marki."
+    },
+    {
+      "text": "Repozytorium 'playwright-learning' z testami dla niedziałającego URL",
+      "is_problem": true,
+      "reason": "Ten sam problem co selenium-tests — rekruter nie może zweryfikować co testujesz. Zmień na publiczną demo aplikację. Brak CI/CD = rekruter nie widzi że testy faktycznie przechodzą."
+    },
+    {
+      "text": "Brak GitHub Actions / CI integration w jakimkolwiek repozytorium",
+      "is_problem": true,
+      "reason": "CI/CD to standard w branży. Portfolio bez CI pokazuje że nie masz doświadczenia z pipeline. Dodaj prosty GitHub Actions workflow który uruchamia testy — to zajmie 1-2 godziny i znacząco podnosi wartość portfolio."
+    },
+    {
+      "text": "Brak README w 'playwright-learning'",
+      "is_problem": true,
+      "reason": "README to wizytówka repozytorium. Bez niego rekruter widzi pliki bez kontekstu: co testujesz, jakie wzorce używasz, jak uruchomić. README z tymi informacjami to różnica między 'szkieletem' a 'portfolio'."
+    }
+  ],
+  "fuzzi_audit": "To portfolio w obecnym stanie bardziej szkodzi niż pomaga. Trzy prywatne aplikacje których nikt nie może zobaczyć, nieaktywne repozytoria, brak README, brak CI — wszystko to sygnalizuje brak dbałości o szczegóły (zły sygnał dla QA). Naprawki: (1) usuń lub zarchiwizuj qa-notes, (2) przepisz testy na publiczne demo apps (SauceDemo.com lub Petstore API), (3) dodaj README do każdego repozytorium z opisem co testujesz i jak uruchomić, (4) dodaj GitHub Actions workflow. 8-10 godzin pracy przekształci to w portfolio które pomaga przy rekrutacji."
+}

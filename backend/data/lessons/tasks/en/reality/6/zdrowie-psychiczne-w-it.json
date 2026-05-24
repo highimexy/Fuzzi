@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Twój kolega z teamu, Marek, ostatnio jest bardzo cichy. Był wcześniej aktywny na standupach, teraz mówi minimum. Kilka razy w ostatnich tygodniach przyszedł na meeting wyraźnie nieobecny duchem. Raz powiedział żartem 'wszystko jedno, zróbcie jak chcecie' gdy dyskutowaliście o priorytetach.\n\nNie jesteś jego managerem. Jesteście kolegami w teamie, znacie się 1.5 roku.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Nic nie robisz — to nie Twoja sprawa, może po prostu jest zmęczony.",
+      "user_percentage": 22,
+      "consequences": "Najczęstszy wybór i często błędny. Objawy które opisujesz (wycofanie, apatia, 'wszystko jedno') mogą być sygnałami poważniejszych problemów. Izolacja jest zarówno objawem jak i wzmacniaczem problemów psychicznych. Ktoś w tym stanie często potrzebuje żeby ktoś zauważył."
+    },
+    {
+      "id": "b",
+      "text": "Mówisz managerowi że Marek 'chyba ma problemy psychiczne' i prosisz o interwencję.",
+      "user_percentage": 8,
+      "consequences": "Zbyt szybka eskalacja bez rozmowy z Markiem. Może go zawstydzić lub pozbawić poczucia kontroli. Zacznij od bezpośredniego kontaktu — dopiero gdy masz obawy o bezpieczeństwo lub Marek prosi Cię o pomoc z przekazaniem czegoś do managera, eskaluj."
+    },
+    {
+      "id": "c",
+      "text": "Piszesz do Marka prywatną wiadomość: 'Hej, ostatnio wydajesz się jakiś przybity. Wszystko OK? Jeśli chcesz pogadać — jestem.' I dajesz mu przestrzeń na odpowiedź lub nie.",
+      "user_percentage": 63,
+      "consequences": "Właściwe podejście. Nie diagnozujesz, nie eskalujesz, nie dajesz rady. Zauważasz i otwierasz drzwi. Marek może powiedzieć 'ok dzięki, wszystko w porządku' (przynajmniej wie że ktoś zauważył) lub może zacząć rozmowę. Dajesz mu wybór."
+    },
+    {
+      "id": "d",
+      "text": "Zapraszasz Marka na kawę i pytasz wprost: 'Wyglądasz źle od tygodni. Masz problemy psychiczne? Powinieneś iść do terapeuty.'",
+      "user_percentage": 7,
+      "consequences": "Za dużo, za szybko. Diagnozowanie ('problemy psychiczne') i dawanie rad ('idź do terapeuty') bez zaproszenia może być odbierane jako naruszenie granicy i spowodować wycofanie. Najpierw zwykłe 'jak się masz?' — nie psychologiczny wywiad."
+    }
+  ]
+}

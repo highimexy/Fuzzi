@@ -1,0 +1,18 @@
+{
+  "type": "interview",
+  "question": "Pracujesz 3 lata jako QA. Teraz rekrutujesz się na pozycję Junior Developer w tej samej firmie (wewnętrzna rekrutacja). Rozmowa techniczna za 2 tygodnie. Twój manager (który Cię poleca) mówi: 'Musisz ich przekonać że Twój QA background jest atutem, nie przeszkodą.'\n\nJak odpiszesz na pytanie rekrutera: 'Dlaczego QA miałby być dobrym developerem?'",
+  "context": "Wewnętrzna rekrutacja w firmie fintech, 80 osób. Pozycja: Junior Backend Developer (Python/Django). Ty: 3 lata QA, podstawy Pythona (skrypty automatyzacji), znajomość API, SQL. Znasz produkt od środka.",
+  "star_hints": {
+    "s": "Opisz sytuację: 3 lata jako QA, znajomość produktu, background techniczny",
+    "t": "Zadanie: przekonać że QA daje unikalne atuty jako developer",
+    "a": "Działania: wymień konkretne umiejętności i perspektywę QA",
+    "r": "Rezultat: co firma zyska zatrudniając QA jako developera"
+  },
+  "evaluation_criteria": [
+    "Konkretne przykłady jak QA background przekłada się na lepszy kod",
+    "Świadomość własnych słabości i plan ich uzupełnienia",
+    "Zrozumienie perspektywy pracodawcy (co wnosi, nie tylko czego chce)",
+    "Brak defensywności — pewność siebie bez arogancji"
+  ],
+  "example_answer": "QA background daje mi trzy rzeczy których junior developer bez tego doświadczenia zazwyczaj nie ma.\n\nPo pierwsze — piszę kod który jest testowalny. Przez 3 lata testowania widziałem co boli: klasy które robią za dużo, funkcje bez single responsibility, side effects które niemożliwe do zmockowania. Gdy piszę kod, naturalnie myślę 'jak to przetestuję?' — to sprawia że kod jest czytelniejszy i łatwiejszy w utrzymaniu.\n\nPo drugie — znam produkt od strony użytkownika. Wiem które flows są krytyczne, które edge cases powodują bugi, jak zachowują się dane w skrajnych warunkach. To skraca czas który normalnie junior spędza na zrozumieniu domeny.\n\nPo trzecie — debuguję systematycznie. QA uczy izolowania zmiennych, czytania logów, formułowania hipotez. Te same umiejętności stosuję do debugowania kodu.\n\nJednocześnie wiem co mi brakuje: CS fundamentals (algorytmy, złożoność) i doświadczenie z dużymi codebases. Mam plan: kurs algorytmów (robię od miesiąca) i proszę o pair programming z bardziej doświadczonymi developerami przez pierwszy kwartał.\n\nW skrócie: firma zyska kogoś kto rozumie produkt i jego ryzyko, pisze testowalny kod, i szybko wdroży się w domenę. W zamian inwestuje w uzupełnienie CS gaps które są możliwe do nadrobienia."
+}

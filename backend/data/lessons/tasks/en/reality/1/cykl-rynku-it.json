@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Junior chce zacząć karierę QA w 2025. Co jest NAJBARDZIEJ wartościowe do pokazania na rekrutacji?",
+  "options": [
+    { "id": "a", "text": "Certyfikat ISTQB Foundation Level" },
+    { "id": "b", "text": "Ukończony kurs online 'QA w 30 dni'" },
+    { "id": "c", "text": "Repozytorium na GitHub z test cases, bug reports i prostymi testami automatycznymi" },
+    { "id": "d", "text": "Profil LinkedIn z 500+ połączeniami" }
+  ],
+  "correct": "c",
+  "explanation": "Portfolio na GitHub pokazuje praktyczne umiejętności, nie tylko teorię. Rekruter może zobaczyć jak piszesz test case'y, jak raportujesz bugi, czy umiesz kod. Certyfikat ISTQB jest 'nice to have' ale bez praktyki nic nie znaczy. Kurs bez efektów jest nawet słabszy.",
+  "trap_explanation": "ISTQB to częsta pułapka — certyfikat kosztuje czas i pieniądze, ale rynek bardziej ceni kompetencje niż papier. Traktuj go jako uzupełnienie portfolio, nie fundament."
+}

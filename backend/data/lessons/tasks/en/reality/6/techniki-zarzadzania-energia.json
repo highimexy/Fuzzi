@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jest środek sprintu. Masz na sobie:\n- Testowanie nowej funkcji (deadline: jutro)\n- 3 otwarte bugi do retest po naprawach developerów\n- Sprint review prezentacja do przygotowania (pojutrze)\n- Manager poprosił Cię o 'quick look' na dokumentację środowiska (30 min 'pewnie')\n- Kolega QA jest chory — manager sugeruje żebyś przejął jego zadania\n\nJest 10:00 rano, masz 6 godzin produktywnej pracy dziś. Czujesz się skupiony i masz energię.\n\nJak planujesz dzień?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zaczynam od najłatwiejszych zadań — retest 3 bugów, potem dokumentacja. Zakończę dniem ciężkim testowaniem funkcji i przygotowaniem prezentacji.",
+      "user_percentage": 18,
+      "consequences": "Błąd klasyczny: zaczy od łatwego żeby 'rozgrzać się'. Ale masz energię rano — to najlepszy czas na głęboką pracę. Retest i dokumentacja to 'shallow work' — możesz je zrobić mając mniej energii po południu. Testowanie nowej funkcji wymaga skupienia i kreatywności — powinno być pierwsze, gdy masz szczyt."
+    },
+    {
+      "id": "b",
+      "text": "Blokujesz 9:00-12:00 na testowanie nowej funkcji (głęboka praca, brak Slacka). Po lunchu: retest 3 bugów (1.5h), dokumentacja środowiska (30 min), wieczorem lub jutro rano: prezentacja. Zadania kolegi: omów z managerem co jest realnie możliwe.",
+      "user_percentage": 58,
+      "consequences": "Najlepsza odpowiedź. Priorytet na głęboką pracę (testowanie) w szczycie energetycznym. Shallow work (retest, dokumentacja) popołudniu. Prezentacja jutro rano — nadal będziesz mieć energię. Co do zadań kolegi: zamiast automatycznie wziąć je wszystkie, negocjujesz co jest realistyczne. To jest zarządzanie energią i scope'em, nie unikanie pracy."
+    },
+    {
+      "id": "c",
+      "text": "Bierzesz wszystko: zadania kolegi, swoje zadania, dokumentację. Zostajesz dłużej jeśli trzeba — jesteś częścią teamu.",
+      "user_percentage": 16,
+      "consequences": "Overcommitment. 'Biorę wszystko' brzmi lojalnie ale prowadzi do: niedotrzymania terminów, niskiej jakości w każdym zadaniu, lub wypalenia. Manager który prosi o przejęcie zadań chorego kolegi nie zawsze myśli o Twoich obecnych zobowiązaniach. Twoja rola: pokazać pełny obraz i negocjować — co odkładamy, żeby można dodać zadania kolegi?"
+    },
+    {
+      "id": "d",
+      "text": "Odpowiadasz managerowi że nie możesz przejąć żadnych zadań bo masz pełny sprint.",
+      "user_percentage": 8,
+      "consequences": "Zbyt sztywne. Manager może nie wiedzieć co masz na liście. Zamiast 'nie' — pokaż mu pełną listę i zapytaj 'które zadania mam zdjąć żeby przejąć pracę kolegi?' To daje mu informację do decyzji. Absolutne 'nie' bez kontekstu jest odbierane jako brak zaangażowania, choć jest uzasadnione."
+    }
+  ]
+}

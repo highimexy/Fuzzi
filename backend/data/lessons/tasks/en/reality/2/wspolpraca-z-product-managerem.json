@@ -1,0 +1,15 @@
+{
+  "type": "dev_comm",
+  "variant": "rewrite",
+  "original_message": "Nie mogę przetestować tej funkcji bo nie mam wymagań. Nikt mi nie powiedział jak to ma działać. Jak mam testować coś czego nie rozumiem? To nie jest moja wina że nie wiemy co chcemy zbudować.",
+  "context": "Sprint kończy się za 3 dni. PM Asia zapytała QA Michała o status testowania nowej funkcji 'zapraszanie współpracowników do projektu'. Michał dostał ticket z Figma linkiem i jednym zdaniem opisu. Przez 4 dni nie pytał o wyjaśnienia. Asia teraz pyta na Slacku 'Kiedy skończymy testowanie?' i Michał odpowiedział powyższą wiadomością. Asia jest sfrustrowana — nie wiedziała że Michał ma wątpliwości.",
+  "good_example": "Hej Asia,\n\nZanim zacznę testowanie 'zapraszania współpracowników', potrzebuję wyjaśnić kilka rzeczy żeby przetestować to właściwie:\n\n1. Jakie role można zapraszać? (tylko member, czy też admin?)\n2. Co się dzieje gdy zaproszony user już ma konto? Kiedy jeszcze nie?\n3. Czy jest limit liczby współpracowników w projekcie?\n4. Co widzi zaproszony w emailu — czy jest link który wygasa?\n\nMogę zaplanować testowanie jutro jeśli dostanę odpowiedzi dziś po południu. Chcesz żebym wrzucił te pytania do ticketu, czy wolisz szybką rozmowę (15 min)?\n\nPrzy okazji — na przyszłość, jeśli dostanę ticket bez kryteriów akceptacji, zapytam od razu na sprint planning. Tym razem czekałem za długo.",
+  "evaluation_tips": [
+    "Bierze odpowiedzialność za swoje zachowanie ('czekałem za długo') bez nadmiernych przeprosin",
+    "Pyta o konkretne luki w wymaganiach zamiast narzekać ogólnie",
+    "Daje PM-owi opcje jak rozwiązać problem (ticket vs rozmowa)",
+    "Proponuje realistyczny plan ('jutro jeśli odpowiedzi dziś')",
+    "Nie oskarża PM-a o brak dokumentacji — zamiast tego proponuje lepszy proces na przyszłość",
+    "Ton jest profesjonalny i rozwiązaniowy — nie defensywny"
+  ]
+}

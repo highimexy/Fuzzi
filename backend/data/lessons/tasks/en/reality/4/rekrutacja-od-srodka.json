@@ -1,0 +1,28 @@
+{
+  "type": "bullshit_detector",
+  "quote": "Szukamy zmotywowanego QA Ninja który przejmie ownership nad quality w naszym fast-paced, hyper-growth środowisku. Oczekujemy self-startera z can-do attitude który nie boi się wear multiple hats i będzie passion-driven w każdym aspekcie swojej pracy.",
+  "source": "LinkedIn, ogłoszenie o pracę — startup z 15 osobami",
+  "phrases": [
+    {
+      "phrase": "QA Ninja",
+      "reality": "Nie mają budżetu na specjalistę — chcą jednej osoby która zrobi pracę dla trzech. 'Ninja' znaczy: bez procesów, bez wsparcia, sam sobie radź."
+    },
+    {
+      "phrase": "przejmie ownership nad quality",
+      "reality": "Jesteś jedynym QA. Gdy coś wyjdzie na produkcję — to Twoja odpowiedzialność. Gdy developerzy mają za mało czasu na testy — to też Twój problem."
+    },
+    {
+      "phrase": "hyper-growth, fast-paced",
+      "reality": "Chaos. Procesy nie istnieją lub zmieniają się co sprint. Priorytety zmieniają się każdego poniedziałku. Overtime jest normą, nie wyjątkiem."
+    },
+    {
+      "phrase": "wear multiple hats",
+      "reality": "Będziesz QA + support L1 + dokumentacja + onboarding nowych pracowników + 'a przy okazji napisz skrypt do deploymentu'."
+    },
+    {
+      "phrase": "passion-driven",
+      "reality": "Oczekują że będziesz pracować ponad godziny bez żalu, bo 'kochasz to co robisz'. Słowo 'passion' w ogłoszeniu często sygnalizuje że firma nie wierzy w pracę za sensowne wynagrodzenie."
+    }
+  ],
+  "fuzzi_translation": "Szukamy jednej osoby która wykona pracę całego działu QA za pensję juniora, będzie dostępna po godzinach, nie będzie narzekać na brak procesów i przyjmie odpowiedzialność za wszystkie problemy z jakością w firmie — i to najlepiej z uśmiechem, bo 'passion'."
+}

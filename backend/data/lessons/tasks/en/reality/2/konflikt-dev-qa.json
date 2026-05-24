@@ -1,0 +1,15 @@
+{
+  "type": "dev_comm",
+  "variant": "rewrite",
+  "original_message": "Nie rozumiem jak można było to wypuścić w takim stanie. Ten kod nie działa na mobile, znalazłam 4 bugi w 5 minut. Następnym razem przynajmniej sprawdź na telefonie przed mergem bo traci na tym cały team.",
+  "context": "Nowa wersja strony produktu (v2.1) wyszła na staging. Marta (QA) testuje na iPhonie 12 Safari i znajduje 4 bugi: layout się łamie, przycisk 'Kup' jest niewidoczny, ceny się nakładają na tekst, a slider zdjęć nie działa. Developer Krzysiek zmergował kod wczoraj późnym wieczorem pod presją deadline. Manager chciał mieć to na stagingu przed jutrzejszym demo. Marta i Krzysiek dobrze się znają i często ze sobą pracują.",
+  "good_example": "Hej Krzysiek,\n\nTestuję v2.1 strony produktu na iPhone 12 Safari i mam kilka bugów do omówienia przed jutrzejszym demo:\n\n#6201 — Layout łamie się na < 375px (iPhone 12) - przycisk 'Kup' poza ekranem [screenshot]\n#6202 — Ceny nakładają się na opis produktu przy długich tytułach [screenshot]\n#6203 — Slider zdjęć nie reaguje na swipe na iOS Safari [nagranie]\n#6204 — Brak padding pod sekcją reviews na mobile\n\nWiedzę że wczorajszy wieczór był pod presją — dlatego piszę teraz żebyśmy mieli czas przed demo.\n\nKtóry z tych bugów możesz naprawić do jutra 10:00? Jeśli layout (#6201) i slider (#6203) będą działać, demo powinno pójść OK. Reszta może poczekać na sprint 26.\n\nDaj znać jak mogę pomóc — mam kroki repro i mogę być dostępna do testów w ciągu dnia.",
+  "evaluation_tips": [
+    "Ton jest neutralny — opisujesz fakty (4 bugi, konkretne numery), nie atakujesz osoby",
+    "Dajesz kontekst biznesowy (demo jutro) bez dramatyzowania",
+    "Priorytetujesz — które bugi MUSZĄ być naprawione, które mogą czekać",
+    "Oferujesz pomoc zamiast tylko zgłaszać problemy",
+    "Uznanie że był pod presją — empathy bez usprawiedliwiania bugów",
+    "Konkretna prośba: 'co możesz naprawić do 10:00?' nie 'napraw wszystko'"
+  ]
+}

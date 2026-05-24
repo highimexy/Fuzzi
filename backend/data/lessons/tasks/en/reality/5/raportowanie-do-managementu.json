@@ -1,0 +1,28 @@
+{
+  "type": "bullshit_detector",
+  "quote": "Sprint 24 QA Status Report:\n\nWykonaliśmy 847 przypadków testowych z coverage na poziomie 73.2%. Defect density wyniosła 4.7 defects/KLOC. Mean Time to Detect (MTTD) to 2.3 sprint cycles. Test execution rate osiągnął 94.7% przy flaky test rate 3.8%. Automated test coverage zwiększył się o 8.3 percentage points. Regresja pokrywa 62.4% critical paths z confidence level 87%.",
+  "source": "Raport QA do managementu wysłany przez Senior QA na Slack #management-updates",
+  "phrases": [
+    {
+      "phrase": "847 przypadków testowych z coverage 73.2%",
+      "reality": "Manager nie wie czy 847 to dużo czy mało. 73.2% brzmi precyzyjnie ale co oznacza? 73% czego? Użyteczna wersja: 'Przetestowaliśmy 18 z 22 zaplanowanych user stories. 4 pozostałe to low-priority items na Q2.'"
+    },
+    {
+      "phrase": "Defect density: 4.7 defects/KLOC",
+      "reality": "KLOC (tysiąc linii kodu) to metryka której manager zazwyczaj nie rozumie i nie powinien musieć. Co to mówi o stanie produktu? Użyteczna wersja: 'W module checkout znaleźliśmy 12 bugów — 2x więcej niż w poprzednich modułach, co sugeruje potrzebę pair testing przy następnej zmianie.'"
+    },
+    {
+      "phrase": "MTTD: 2.3 sprint cycles",
+      "reality": "Metryka użyteczna dla QA, ale niezrozumiała dla managera bez kontekstu. Czy 2.3 sprinty to dobrze czy źle? Użyteczna wersja: 'Średnio bugi są wykrywane po 5 tygodniach od wprowadzenia. Cel: < 2 tygodnie (szybsze wykrywanie = tańsza naprawa).'"
+    },
+    {
+      "phrase": "Flaky test rate 3.8%",
+      "reality": "Manager nie wie co to jest flakey test. Użyteczna wersja: 'Co 26 uruchomień CI daje fałszywy alarm — developer traci ~15 minut sprawdzając czy to prawdziwy bug. Planujemy naprawę 3 najgorszych testów w przyszłym sprincie.'"
+    },
+    {
+      "phrase": "Confidence level 87%",
+      "reality": "Statistycznie brzmiące słowo bez wyjaśnienia metodologii jest confusing lub budzące nieufność. Skąd to 87%? Jak liczone? Użyteczna wersja: 'Krytyczne flows są pokryte testami automatycznymi. 4 nowe moduły z tego kwartału nie mają jeszcze pokrycia — planujemy je dodać do Q2 roadmap.'"
+    }
+  ],
+  "fuzzi_translation": "Ten raport jest napisany dla QA, nie dla managementu. Zawiera metryki techniczne bez kontekstu biznesowego, bez trendów, bez rekomendacji i bez klarownego 'co to oznacza dla release'. Przepisany raport powinien odpowiadać na: (1) Czy możemy bezpiecznie wypuścić? (2) Jakie są otwarte ryzyka? (3) Jaki jest trend? — w języku który manager rozumie bez słowniczka QA."
+}

@@ -1,0 +1,20 @@
+{
+  "type": "interview",
+  "question": "Opisz sytuację, gdy znalazłeś krytycznego buga tuż przed releasem. Jak postąpiłeś i co się stało dalej?",
+  "context": "Klasyczne pytanie behawioralne. Rekruter sprawdza: czy rozumiesz co to 'critical', jak działasz pod presją, jak komunikujesz z zespołem i czy bierzesz odpowiedzialność.",
+  "star_hints": {
+    "s": "Jaki był projekt, sprint, termin? Co testowałeś i w jakim kontekście?",
+    "t": "Jaka była Twoja rola? Czy byłeś jedynym QA? Jaka była stawka (klient, launch, SLA)?",
+    "a": "Co dokładnie zrobiłeś: kroки repro, komu i jak zgłosiłeś, jak eskalowaałeś, co zaproponowałeś?",
+    "r": "Co się stało: czy release się opóźnił? Czy bug wyszedł na produkcję? Czego się nauczyłeś?"
+  },
+  "evaluation_criteria": [
+    { "criterion": "Używam struktury STAR — moja odpowiedź ma wyraźne Situation, Task, Action, Result" },
+    { "criterion": "Opisuję konkretną sytuację, nie 'zazwyczaj gdy...' lub hipotetyczną" },
+    { "criterion": "Wspominam jak komunikowałem z zespołem (developer, PM, manager)" },
+    { "criterion": "Pokazuję że rozumiem wagę decyzji (release vs delay) i dałem świadomą rekomendację" },
+    { "criterion": "Kończę rezultatem — co się stało i/lub czego się nauczyłem" },
+    { "criterion": "Nie gram bohatera — opisuję co faktycznie zrobiłem, nie idealne zachowanie" }
+  ],
+  "example_answer": "S: Dwa dni przed launchem nowej funkcji płatności kartą dla klienta z branży ubezpieczeniowej. Sprint był napiętym od początku, mieliśmy okno deployment'u w piątek o 22:00.\n\nT: Byłem jedynym QA na tym feature. W specyfikacji był zapisany flow dla kart Visa i Mastercard, ale Amex był w zakresie implicitly.\n\nA: W czwartek wieczorem przy testach regresji znalazłem że płatność kartą Amex kończy się błędem 500. Zrobiłem pełne kroki repro, screenshoty i zapisy network requests. Zgłosiłem PM-owi i lead developerowi przez Slacka o 19:30 z dokumentacją i jasną rekomendacją: 'albo naprawiamy do 20:00 jutro, albo wyłączamy Amex z scope'u release'u'.\n\nR: Developer naprawił bug do 14:00 następnego dnia. Launch przeszedł zgodnie z planem. Po sprint review PM przyznał że dokumentacja buga (z jasną rekomendacją decyzyjną) pozwoliła szybko podjąć decyzję bez chaotycznej eskalacji. Nauczyłem się że 'co testować' to za mało — QA musi też zapytać 'co jest w scope, a co nie jest określone'."
+}

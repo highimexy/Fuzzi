@@ -1,0 +1,39 @@
+{
+  "type": "diff_inspector",
+  "changelog": "PR #247: Dodanie funkcji 'Zapisz na później' dla produktów w sklepie",
+  "before_description": "Brak funkcji zapisywania produktów. Użytkownik mógł tylko dodawać do koszyka.",
+  "after_description": "Użytkownik może kliknąć ikonę serca przy produkcie aby zapisać go na liście ulubionych. Lista ulubionych dostępna przez /wishlist. Endpoint: POST /api/wishlist/:productId (wymaga autoryzacji).",
+  "changes": [
+    {
+      "id": "cr1",
+      "description": "Endpoint POST /api/wishlist/:productId nie sprawdza czy produkt o danym ID istnieje przed zapisem",
+      "correct_category": "missing_change",
+      "explanation": "To brakująca walidacja — można zapisać do wishlisty produkt który nie istnieje (ID z dupy). Przy wyświetlaniu wishlisty system będzie próbował pobrać nieistniejący produkt, co może powodować null reference error lub 404 bez obsługi."
+    },
+    {
+      "id": "cr2",
+      "description": "Endpoint zwraca 200 OK gdy produkt jest już na liście (duplikat) zamiast 409 Conflict",
+      "correct_category": "wrong_change",
+      "explanation": "Konwencja REST mówi że próba dodania duplikatu powinna zwrócić 409 Conflict lub 200 z informacją 'already exists'. Milcząca ignorancja duplikatu ukrywa problem — frontend nie wie czy produkt został dopiero co dodany czy już był. Może prowadzić do zduplikowanych rekordów jeśli constraint na bazie danych też nie istnieje."
+    },
+    {
+      "id": "cr3",
+      "description": "Ikona serca zmienia się na wypełnioną po kliknięciu (optimistic update bez czekania na odpowiedź API)",
+      "correct_category": "correct_change",
+      "explanation": "Optimistic update to świadomy wybór UX — dobra praktyka dla operacji które rzadko failują. Serce zmienia się natychmiast, a jeśli API zafoiluje, cofa się do pustego. Poprawna implementacja o ile jest rollback przy błędzie."
+    },
+    {
+      "id": "cr4",
+      "description": "Brak limitu liczby produktów na wishliście (użytkownik może dodać nieograniczoną liczbę)",
+      "correct_category": "missing_change",
+      "explanation": "Brak limitu to potencjalny DoS (denial of service) — złośliwy użytkownik może zapchać bazę danych dodając miliony produktów przez API. Powinien być limit (np. 200) z odpowiednim error message."
+    },
+    {
+      "id": "cr5",
+      "description": "Endpoint wymaga autoryzacji (token Bearer), zwraca 401 bez tokena",
+      "correct_category": "correct_change",
+      "explanation": "Poprawna implementacja autoryzacji. Wishlist jest per-user, więc autoryzacja jest wymagana. 401 bez tokena to właściwy status code."
+    }
+  ],
+  "summary": "PR ma 2 poprawne zmiany i 3 problemy do adresowania: brak walidacji istnienia produktu, błędny status code dla duplikatu, brak limitu na rozmiar wishlisty. Żaden z nich nie jest blokerem, ale wszystkie są warte komentarza przed mergem."
+}

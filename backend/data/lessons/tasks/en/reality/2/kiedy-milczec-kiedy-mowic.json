@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA na firmie e-commerce. W środę po południu podczas testowania nowej funkcji rabatów, odkrywasz że kod rabatowy 'WELCOME100' daje 100% zniżki zamiast zamierzone 10%. Bug jest reprodukowalny.\n\nKod rabatu 'WELCOME100' jest zaplanowany do wysyłki w kampanii email do 50 000 klientów — wysyłka jest zaplanowana na czwartek o 9:00 rano (jutro). Jesteś na koniec dnia pracy, jest 17:30.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zgłaszasz buga w Jirze jako 'Critical', opisujesz problem dokładnie i kończysz pracę. Jutro ktoś to zobaczy.",
+      "user_percentage": 8,
+      "consequences": "Ticket w Jirze może być niezauważony do rana — kampania emailowa pójdzie o 9:00. 50 000 osób dostanie kod na 100% zniżki. Utrata przychodów może być ogromna. Jira to dobry kanał dla normalnych bugów — nie dla incydentów z licznikiem odliczającym do rana."
+    },
+    {
+      "id": "b",
+      "text": "Natychmiast kontaktujesz PM i/lub tech leada bezpośrednio (Slack, telefon jeśli potrzeba). Opisujesz bug, impact, i timeline: 'kampania emailowa jutro o 9:00, mamy ~15h na naprawę lub wstrzymanie kampanii'.",
+      "user_percentage": 76,
+      "consequences": "Jedyna właściwa odpowiedź. Bug bezpośrednio zagraża przychodom firmy z konkretnym deadline'em. Eskalacja natychmiastowa, bezpośrednia, z pełnym kontekstem. PM może zdecydować: naprawić, opóźnić kampanię, lub wstrzymać kod. Twoja rola to dać im informację i czas na decyzję."
+    },
+    {
+      "id": "c",
+      "text": "Zmieniasz kod rabatowy w bazie danych na 20% zniżki żeby 'zminimalizować szkody' jeśli kampania pójdzie.",
+      "user_percentage": 4,
+      "consequences": "Absolutnie nie. Samodzielna modyfikacja danych produkcyjnych bez autoryzacji to naruszenie procedur, może tworzyć nowe bugi, i zdejmuje Ci odpowiedzialność za pierwotny problem. Twoja rola to raportowanie, nie naprawianie bez autoryzacji."
+    },
+    {
+      "id": "d",
+      "text": "Wysyłasz emaila do całego zespołu opisując bug i prosząc ktokolwiek go naprawi.",
+      "user_percentage": 12,
+      "consequences": "Email do całego zespołu może być zignorowany lub może spowodować chaos. Eskalacja powinna być do konkretnej osoby decyzyjnej (PM/CTO/tech lead), nie do grupy. Grupowe emaile 'ktokolwiek to naprawi' rozmywają odpowiedzialność."
+    }
+  ]
+}

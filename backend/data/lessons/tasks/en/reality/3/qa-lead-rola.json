@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA Lead od 3 miesięcy. W Twoim teamie jest Kasia — doświadczona QA która pracuje tu dłużej niż Ty i była kandydatką na Twoje stanowisko. Kasia jest technicznie dobra, ale od kiedy dostałeś awans, jest wyraźnie mniej zaangażowana — późno oddaje testy, na retrospective milczy, nie bierze inicjatywy.\n\nManager pyta Cię prywatnie: 'Jak Kasia sobie radzi?'\n\nCo odpowiadasz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Mówisz managerowi że Kasia ma problem z zaangażowaniem i prosisz o interwencję.",
+      "user_percentage": 12,
+      "consequences": "Zbyt szybka eskalacja bez własnej próby rozwiązania. Manager może odebrać to jako brak umiejętności zarządzania po Twojej stronie. Ponadto: Kasia nie dostała szansy żeby wyrazić swoje stanowisko ani usłyszeć Twoje obawy bezpośrednio."
+    },
+    {
+      "id": "b",
+      "text": "Mówisz że 'wszystko OK' — nie chcesz eskalować problemu i masz nadzieję że samo minie.",
+      "user_percentage": 18,
+      "consequences": "Unikanie problemu który jest widoczny dla managera. Skoro manager pyta — widzi problem. 'OK' to nieprawdziwa odpowiedź, a jak problem narastanie — będziesz wyglądał jakbyś go ignorował lub nie zauważył."
+    },
+    {
+      "id": "c",
+      "text": "Mówisz managerowi szczerze: 'Widzę że Kasia jest mniej zaangażowana od czasu mojego awansu. Zamierzam przeprowadzić z nią 1-on-1 w tym tygodniu żeby zrozumieć co się dzieje. Daj mi tydzień zanim podejmiesz jakiekolwiek decyzje.'",
+      "user_percentage": 65,
+      "consequences": "Właściwa odpowiedź. Jesteś szczery (nie mówisz że wszystko OK), bierzesz odpowiedzialność (próbujesz rozwiązać bezpośrednio, nie eskalujesz), i dajesz sobie czas na rozmowę z Kasią zanim manager zdecyduje. To jest zarządzanie — nie unikanie, nie eskalacja."
+    },
+    {
+      "id": "d",
+      "text": "Prosisz managera żeby sam porozmawiał z Kasią — 'to poza Twoimi kompetencjami'.",
+      "user_percentage": 5,
+      "consequences": "Rezygnacja z roli lidera. Zarządzanie relacjami w teamie jest centralną częścią roli QA Lead. Delegowanie trudnych rozmów do managera sygnalizuje że nie jesteś gotowy na tę rolę."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś QA Manualnym z 1.5 roku doświadczenia. Aktualnie testujesz ręcznie aplikację webową (React + Node.js). Chcesz awansować i zwiększyć zarobki. Masz 10 godzin tygodniowo na naukę poza pracą.",
+  "decisions": [
+    {
+      "id": "tech1",
+      "decision": "Zacząć naukę Playwright — napisać 10 testów E2E dla aplikacji w pracy w ciągu 2 miesięcy",
+      "correct_risk": "safe",
+      "explanation": "Playwright to najlepsza inwestycja dla QA manual → automation. Duże zapotrzebowanie rynkowe, możliwość natychmiastowego zastosowania w pracy, i 2-miesięczna ramka czasowa jest realistyczna dla podstawowego poziomu użyteczności."
+    },
+    {
+      "id": "tech2",
+      "decision": "Kupić kurs Selenium + Java + TestNG i spędzić 3 miesiące na opanowaniu full stack automation w Javie",
+      "correct_risk": "risky",
+      "explanation": "Selenium/Java to stara technologia w odwrocie dla nowych projektów. 3 miesiące inwestycji w coś co Playwright robi szybciej i lepiej to nieefektywne użycie czasu. Jedynym uzasadnieniem byłoby gdyby Twoja firma używa Javy i musisz utrzymywać istniejące testy."
+    },
+    {
+      "id": "tech3",
+      "decision": "Nauczyć się podstawowego SQL — móc pisać SELECT z JOIN i WHERE do weryfikacji danych w bazie",
+      "correct_risk": "safe",
+      "explanation": "SQL to jedna z najwyższych ROI inwestycji dla QA. Możesz weryfikować dane bezpośrednio w bazie, debugować bugi głębiej, i jest wymagany w większości ofert. 4-6 tygodni dla użytecznego poziomu, natychmiastowe zastosowanie."
+    },
+    {
+      "id": "tech4",
+      "decision": "Zdać ISTQB Foundation Level przed aplikowaniem na pierwsze stanowisko automation QA",
+      "correct_risk": "depends",
+      "explanation": "ISTQB Foundation jest pomocne dla korporacji (szczególnie banki, ubezpieczenia) ale nie jest wymagane w startupach i product companies. Nie czekaj z aplikowaniem na zdanie ISTQB — aplikuj równolegle. Certyfikat wzmocni CV ale nie zastąpi praktycznych umiejętności."
+    },
+    {
+      "id": "tech5",
+      "decision": "Zbudować portfolio na GitHub: 5 przykładowych projektów testowych z Playwright + README opisujący co testowałeś",
+      "correct_risk": "safe",
+      "explanation": "Portfolio z konkretnymi testami na GitHub to najlepszy dowód umiejętności dla rekrutera. Lepsze niż certyfikat, lepsze niż deklaracja na CV. 5 projektów to realistyczny cel na 2-3 miesiące."
+    },
+    {
+      "id": "tech6",
+      "decision": "Nauczyć się Appium do testowania mobilnego — niszowa specjalizacja z dobrymi zarobkami",
+      "correct_risk": "risky",
+      "explanation": "Appium to dobra specjalizacja ale nie jako pierwszy krok. Zanim specjalizujesz się w mobile, powinieneś mieć solidne podstawy (Playwright/API testing/SQL). Specjalizacja w mobile bez fundamentów = trudniejsze znalezienie pierwszej pracy automation QA."
+    }
+  ],
+  "senior_comment": "Dla QA manual → automation: Playwright + SQL to najkrótsza ścieżka do wyraźnej podwyżki. Rób jedną rzecz na raz i rób ją dobrze — 10h/tydzień to za mało żeby uczyć się 3 rzeczy jednocześnie."
+}

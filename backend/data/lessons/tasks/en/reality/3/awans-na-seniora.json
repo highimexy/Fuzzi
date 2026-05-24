@@ -1,0 +1,20 @@
+{
+  "type": "interview",
+  "question": "Opisz jak zdefiniowałbyś/abyś strategię testowania dla nowego projektu od zera. Co weźmiesz pod uwagę i od czego zaczniesz?",
+  "context": "Pytanie zadawane na rozmowach na Senior QA. Rekruter sprawdza: czy myślisz strategicznie (nie tylko operacyjnie), czy rozumiesz priorytety ryzyka, czy potrafisz komunikować decyzje techniczne do stakeholderów.",
+  "star_hints": {
+    "s": "Opisz kontekst projektu: nowy produkt? migracja? microservices? Jaka firma, jaki team, jakie zasoby?",
+    "t": "Jaka była Twoja rola w definiowaniu strategii? Samodzielnie czy z teamem? Jakie były ograniczenia (czas, budżet, skill set)?",
+    "a": "Co konkretnie zrobiłeś: analiza ryzyka? piramida testów? wybór narzędzi? CI/CD integration? Jak priorytetyzowałeś co automatyzować?",
+    "r": "Jaki był efekt: pokrycie testami, czas CI, liczba bugów na produkcji przed/po, zadowolenie zespołu?"
+  },
+  "evaluation_criteria": [
+    { "criterion": "Zaczynam od analizy ryzyka — identyfikuję co jest krytyczne dla biznesu (płatności, logowanie, core flow)" },
+    { "criterion": "Wybieram typy testów świadomie: co jednostkowe (developer), co API (QA), co E2E (QA, tylko happy path)" },
+    { "criterion": "Uwzględniam zasoby: ile czasu, jaki skill set w teamie, jakie narzędzia są już w użyciu" },
+    { "criterion": "Planuję integrację z CI/CD — testy muszą działać w pipeline, nie tylko lokalnie" },
+    { "criterion": "Komunikuję strategię do stakeholderów — PM/PO musi rozumieć co jest pokryte, co nie, i dlaczego" },
+    { "criterion": "Mówię o iteracji — strategia ewoluuje z produktem, nie jest ustalana raz na zawsze" }
+  ],
+  "example_answer": "S: W poprzedniej pracy zaczynałem jako pierwszy QA w projekcie SaaS dla branży medycznej — brak jakichkolwiek testów, 6-osobowy team developerów, release co 2 tygodnie.\n\nT: Moim zadaniem było zdefiniowanie strategii od zera w ciągu pierwszego miesiąca i wdrożenie podstaw w 3 miesiące.\n\nA: Zacząłem od warsztatu ryzyka z PM i tech leadem — 2h dyskusji o tym co jest krytyczne (dane pacjentów, obliczenia dawek leków = critical; eksport raportów = important; UI kosmetyka = low). Na tej podstawie zbudowałem piramidę: developerzy piszą unit testy dla logiki medycznej (100% pokrycia), ja koncentruję się na API integration tests dla core flows i 5-10 E2E dla krytycznych ścieżek. Wybrałem Playwright (team znał JavaScript) i k6 dla performance (dane medyczne = SLA compliance). Zintegrowałem testy z GitHub Actions — każdy PR blokowany jeśli testy nie przejdą.\n\nR: Po 6 miesiącach: 0 bugów w logice obliczeniowej na produkcji (poprzednio 2-3/sprint), czas CI wzrósł o 8 minut (akceptowalne), PM miał dashboard pokrycia dla każdego release'u. Byłem w stanie wytłumaczyć każdą decyzję ryzykiem a nie preferencją narzędziową."
+}

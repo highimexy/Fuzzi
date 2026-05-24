@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Od 3 miesięcy pracujesz po 10–11 godzin dziennie. Projekt jest 'krytyczny', deadline goni deadline. Zacząłeś popełniać błędy których wcześniej nie robiłeś — przeoczyłeś oczywistego buga w tygodniu, gdy byłeś pewny że wszystko sprawdziłeś. Rano z trudem wstajesz do pracy. Wieczorami siedzisz przy komputerze, ale nic nie robisz — tylko przeglądasz Twittera.\n\nTwój team lead mówi: 'Jeszcze tylko ten jeden sprint, potem spokojniej'. Słyszysz to samo zdanie od 6 tygodni.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Wytrwaj — to przejdzie, sprint się skończy i będzie spokojniej. Nie chcesz być postrzegany jako słaby.",
+      "user_percentage": 14,
+      "consequences": "Burnout się nie leczy przez 'przetrwanie'. Po kolejnych 4 tygodniach objawy nasilą się — błędy w pracy staną się częstsze, relacje z teamem zaczną cierpieć. 'Jeszcze jeden sprint' to pułapka — nieograniczona w czasie. Osoby które 'wytrwają' zazwyczaj kończą nagłym odejściem lub chorobą."
+    },
+    {
+      "id": "b",
+      "text": "Napisz wypowiedzenie w ten weekend — ta firma nie szanuje Twoich granic i nigdy się nie zmieni.",
+      "user_percentage": 9,
+      "consequences": "Pochopna decyzja podjęta w najgorszym możliwym stanie emocjonalnym. Burnout zaburza ocenę sytuacji — to co teraz wydaje się beznadziejne może być do rozwiązania. Zmiana pracy w stanie wypalenia przeniesie problem do nowego miejsca. Wyjdź ze spirali zanim podejmiesz decyzje których nie możesz cofnąć."
+    },
+    {
+      "id": "c",
+      "text": "Zaproponuj meeting 1-on-1 z team leadem. Powiedz wprost: 'Jestem przeciążony od 3 miesięcy i to zaczyna wpływać na jakość mojej pracy. Chcę porozmawiać o konkretnych zmianach — mniejszy scope, rotacja odpowiedzialności, albo tymczasowe ograniczenie godzin.'",
+      "user_percentage": 61,
+      "consequences": "Najtrudniejsza i najlepsza opcja. Większość team leadów nie widzi przeciążenia dopóki ktoś wprost go nie powie. 'Praca po 10 godzin' jest niewidoczna jeśli deliverables są na czas. Konkretna propozycja rozwiązania (nie tylko skarga) daje Ci siłę w rozmowie. Nawet jeśli nic się nie zmieni — wiesz że powiedziałeś i możesz podjąć świadomą decyzję o odejściu."
+    },
+    {
+      "id": "d",
+      "text": "Idź na zwolnienie lekarskie bez wcześniejszej rozmowy z pracodawcą — potrzebujesz czasu żeby dojść do siebie.",
+      "user_percentage": 16,
+      "consequences": "L4 jest uzasadnione gdy stan zdrowia wymaga przerwy — i burnout jest realnym problemem zdrowotnym. Jednak bez wcześniejszej rozmowy wrócisz do tych samych warunków. L4 daje czas, ale nie rozwiązuje przyczyny. Jeśli zdrowie na to pozwala — najpierw rozmowa, potem decyzja o L4 jako ewentualność."
+    }
+  ]
+}

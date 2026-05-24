@@ -1,0 +1,28 @@
+{
+  "type": "bullshit_detector",
+  "quote": "Zapraszamy na darmowe webinary: 'Jak zarobić 50,000 PLN miesięcznie jako QA freelancer'. Poznaj sekrety które banki przed Tobą ukrywają. Nasz ekspert zarabia pasywnie 30,000 PLN miesięcznie z inwestycji. Na webinarze pokażemy jak w 3 miesiące przejść z etatu 5,000 PLN na 50,000 PLN freelance. Bez doświadczenia, bez sieci kontaktów. Tylko nasza sprawdzona metoda. Miejsca ograniczone — zapisz się TERAZ zanim ktoś zajmie Twoje miejsce!",
+  "source": "Reklama na LinkedIn, Fanpage 'IT Finanse Pro', 15,000 obserwujących",
+  "phrases": [
+    {
+      "phrase": "50,000 PLN miesięcznie jako QA freelancer",
+      "reality": "50k PLN/miesiąc netto jako QA freelancer w Polsce to góra możliwości zarobkowych przy pracy dla zagranicznych firm. Możliwe — ale dla seniorów z 5+ lat doświadczenia, bardzo dobrym angielskim, silną siecią kontaktów lub wyjątkową specjalizacją. Jako cel na start od etatu 5k: nierealistyczne w 3 miesiące."
+    },
+    {
+      "phrase": "Sekrety które banki przed Tobą ukrywają",
+      "reality": "Banki nie ukrywają sekretów finansowych. Podstawy inwestowania (ETF, IKE, IKZE, dywersyfikacja) są powszechnie dostępne bezpłatnie. 'Sekrety które X ukrywa' to klasyczny chwyt marketingowy który sygnalizuje brak substancji w ofercie."
+    },
+    {
+      "phrase": "Pasywny dochód 30,000 PLN miesięcznie z inwestycji",
+      "reality": "30k PLN/miesiąc pasywnie z inwestycji wymaga kapitału ok. 7,200,000 PLN przy 5% dywidendzie. Jeśli 'ekspert' to osiągnął — prawdopodobnie zarabia głównie na sprzedawaniu kursów o pasywnym dochodzie, nie z inwestycji."
+    },
+    {
+      "phrase": "W 3 miesiące z 5,000 PLN etatu na 50,000 PLN freelance",
+      "reality": "10× wzrost wynagrodzenia w 3 miesiące przez zmianę formy zatrudnienia: niemożliwe bez radykalnej zmiany kompetencji lub sieci kontaktów. Freelancing QA bez portfolio i sieci zazwyczaj zaczyna od stawek podobnych do etatu, a wzrost zajmuje lata."
+    },
+    {
+      "phrase": "Miejsca ograniczone — zapisz się TERAZ",
+      "reality": "Sztuczna pilność (FOMO marketing). Webinar online nie ma fizycznych 'miejsc'. To technika sprzedażowa żeby skłonić do szybkiej decyzji bez zastanowienia. Rzetelne kursy i webinary nie potrzebują takich chwytów."
+    }
+  ],
+  "fuzzi_translation": "To jest reklama kursu lub mentoringi który sprzedaje marzenie a nie wiedzę. Sygnały: obietnice niemożliwe do spełnienia w deklarowanym czasie, 'sekrety' bez treści, FOMO marketing. Realne podejście do finansów w IT: 3-6 miesięcy funduszu awaryjnego, regularne oszczędności 15-20% dochodu, proste inwestowanie (ETF), i stopniowy wzrost wynagrodzenia przez kompetencje i negocjacje — nie magiczne skróty."
+}

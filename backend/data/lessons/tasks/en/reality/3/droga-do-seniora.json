@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Mid QA Engineer, 2 lata doświadczenia, solidne podstawy manualne, zaczyna uczyć się automatyzacji",
+  "decisions": [
+    {
+      "id": "1",
+      "decision": "Zmieniasz pracę i akceptujesz pierwszą ofertę bez negocjacji, bo boisz się że stracisz okazję.",
+      "correct_risk": "risky",
+      "explanation": "Brak negocjacji to najczęstsza kosztowna decyzja juniorów i midów. Firmy zawsze zostawiają margines na negocjacje. Akceptacja pierwszej oferty to zazwyczaj strata 1 000–3 000 PLN miesięcznie bez żadnego powodu. Minimum: zawsze poproś o dzień na namysł i złóż kontrofertę."
+    },
+    {
+      "id": "2",
+      "decision": "Uczysz się Playwright/Cypress wieczorami i weekendami, realizując mini-projekty.",
+      "correct_risk": "safe",
+      "explanation": "To standardowa inwestycja która przekłada się bezpośrednio na wyższe stawki i lepsze oferty. Automatyzacja to umiejętność niezbędna dla Mid+ QA. Koszt: czas. Benefit: +2 000–5 000 PLN miesięcznie w ciągu 6–12 miesięcy."
+    },
+    {
+      "id": "3",
+      "decision": "Rezygnujesz z pracy bez podpisanej nowej umowy, bo obecna bardzo Ci nie odpowiada.",
+      "correct_risk": "risky",
+      "explanation": "Rynek QA jest konkretny — znalezienie kolejnej pracy może zająć 2–4 miesiące. Bez finansowej poduszki (min. 6 miesięcy wydatków) to duże ryzyko. Wyjątek: środowisko jest toksyczne i nie możesz tam pozostać — wtedy kalkulacja się zmienia."
+    },
+    {
+      "id": "4",
+      "decision": "Prosisz seniora w swoim teamie o regularne 1:1 z feedbackiem na temat swojej pracy.",
+      "correct_risk": "safe",
+      "explanation": "Jeden z najszybszych sposobów na wzrost. Większość seniorów chętnie mentoruje — to też ich rozwój. Regularny feedback skraca drogę do seniora o połowę w porównaniu do samodzielnej nauki metodą prób i błędów."
+    },
+    {
+      "id": "5",
+      "decision": "Specjalizujesz się w performance testing zanim opanujesz automatyzację funkcjonalną.",
+      "correct_risk": "depends",
+      "explanation": "Zależy od kontekstu. Jeśli Twoja firma ma konkretne potrzeby w performance i zapewni Ci czas na naukę — może być dobra okazja. Jeśli zaczynasz od zera bez mentora, ryzyko że zostaniesz 'specjalistą od jednej rzeczy' bez solidnych podstaw. Performance testing jest wartościowy, ale tradycyjnie przychodzi po opanowaniu automatyzacji funkcjonalnej."
+    },
+    {
+      "id": "6",
+      "decision": "Zgłaszasz się do prowadzenia retrospektywy jakości lub wewnętrznego szkolenia dla zespołu.",
+      "correct_risk": "safe",
+      "explanation": "Widoczność w firmie to szybka ścieżka do awansu. Liderzy dostrzegają ludzi którzy biorą inicjatywę. Szkolenie innych utrwala też Twoją wiedzę. Koszt: kilka godzin przygotowania. Benefit: reputacja osoby gotowej do wzięcia większej odpowiedzialności."
+    }
+  ],
+  "senior_comment": "Droga do seniora to nie suma lat doświadczenia — to suma odważnych, mądrych decyzji. Kluczowe: inwestuj w umiejętności które podnoszą Twoją wartość rynkową (automatyzacja, komunikacja techniczna, procesowa dojrzałość), negocjuj zawsze i wszędzie, i bądź widoczny dla osób które decydują o awansach."
+}

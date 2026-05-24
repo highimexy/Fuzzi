@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś w nowej pracy od 3 tygodni. QA Engineer, startup fintech 35 osób. Zauważasz że: brak dokumentacji procesów QA, nikt nie powiedział Ci dokładnie jak wygląda release process, developer który wdraża Cię jest zajęty i często nieosiągalny, PM jest chaotyczny i zmienia priorytety co 2 dni.",
+  "decisions": [
+    {
+      "id": "o1",
+      "decision": "Zacząć pisać dokumentację release procesu na podstawie obserwacji i pytań do teamu",
+      "correct_risk": "safe",
+      "explanation": "Doskonała inicjatywa dla nowego pracownika. Wnosi wartość natychmiast, wymaga aktywnego słuchania i pytań (co buduje relacje), i tworzy coś co firma realnie potrzebuje. Mało ryzykowne, wysokie ROI."
+    },
+    {
+      "id": "o2",
+      "decision": "Zaproponować wdrożenie JIRA + test management tool które znasz z poprzedniej firmy bo 'tu jest chaos'",
+      "correct_risk": "risky",
+      "explanation": "Za wcześnie na wielkie propozycje systemowe. Po 3 tygodniach nie rozumiesz jeszcze dlaczego obecny system wygląda jak wygląda. Może jest zaplanowana migracja. Może jest powód dla obecnego narzędzia. Obserwuj przez pierwsze 90 dni zanim proponujesz fundamentalne zmiany."
+    },
+    {
+      "id": "o3",
+      "decision": "Zaplanować 1-on-1 z każdym developerem w teamie — 15 minut, żeby się poznać i zrozumieć ich pracę",
+      "correct_risk": "safe",
+      "explanation": "Budowanie relacji z developerami to fundament efektywnej pracy QA. Po 3 tygodniach to idealny moment — nie za wcześnie (masz kontekst), nie za późno (nie ma jeszcze złych nawyków we współpracy). Zaproponuj krótkie nieformalne spotkania."
+    },
+    {
+      "id": "o4",
+      "decision": "Zgłosić managerowi że PM jest chaotyczny i zmienia priorytety — to niszczy produktywność",
+      "correct_risk": "risky",
+      "explanation": "Po 3 tygodniach nie masz wystarczającego kontekstu żeby oceniać zachowanie PM-a. Co wygląda jak chaos może być normalną odpowiedzią na szybko zmieniający się rynek. Obserwuj dłużej, buduj relację z PM-em bezpośrednio, zanim eskalujesz do managera."
+    },
+    {
+      "id": "o5",
+      "decision": "Zapytać managera o 90-dniowy plan rozwoju i kryteria oceny — czego oczekuje od Ciebie po 3 miesiącach?",
+      "correct_risk": "safe",
+      "explanation": "Kluczowe pytanie które większość nowych pracowników omija. Wiedząc czego manager oczekuje, możesz celować w właściwe rzeczy. Proaktywne pytanie o oczekiwania jest pozytywnie postrzegane."
+    },
+    {
+      "id": "o6",
+      "decision": "Zrezygnować po 3 tygodniach — 'ta firma jest zbyt chaotyczna i nie mam właściwego wsparcia'",
+      "correct_risk": "risky",
+      "explanation": "3 tygodnie to za mało żeby ocenić czy firma jest 'chaotyczna' czy to po prostu normalny startup w fazie wzrostu. Brak dokumentacji i chaotyczny PM mogą być problemami które Ty możesz pomóc rozwiązać. Rezygnacja po 3 tygodniach wygląda też źle na CV."
+    }
+  ],
+  "senior_comment": "Pierwsze 90 dni to inwestycja w kontekst i relacje. Bierz tyle projektów ile możesz obsłużyć dobrze — nie oferuj się do wszystkiego. Słuchaj więcej niż mówisz. Proponuj małe, konkretne ulepszenia zamiast wielkich reform."
+}

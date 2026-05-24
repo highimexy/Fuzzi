@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA Engineerem w dużej firmie ubezpieczeniowej. Piątek, 16:30. Release zaplanowany na 18:00. Manager podchodzi do Twojego biurka i prosi Cię o podpisanie 'Test Completion Report' — dokumentu stwierdzającego że cały zakres feature'u przeszedł testy.\n\nProblem: brakuje Ci 3 przypadków testowych — scenariusze z wieloma polisami dla jednego klienta. Nie zdążyłeś ich przetestować bo dostałeś środowisko testowe 4 godziny po planowanym terminie. Raporty z tych 3 przypadków są puste.\n\nManager mówi: 'Wiem że mamy mały dług, ale klient czeka. Podpiszesz?'",
+  "options": [
+    {
+      "id": "a",
+      "text": "Podpisujesz — manager wie co robi, to jego odpowiedzialność jeśli coś pójdzie nie tak.",
+      "user_percentage": 11,
+      "consequences": "Niebezpieczne. Podpisując dokument bierzesz na siebie odpowiedzialność prawną za stwierdzenie czegoś nieprawdziwego. W branży ubezpieczeniowej defekty mogą mieć konsekwencje regulacyjne. 'Manager kazał' nie jest obroną w audycie."
+    },
+    {
+      "id": "b",
+      "text": "Odmawiasz kategorycznie podpisania i blokujesz release bez dalszej rozmowy.",
+      "user_percentage": 14,
+      "consequences": "Etycznie uzasadnione, ale taktycznie słabe. Blokada bez propozycji rozwiązania stawia Cię w pozycji 'problem' a nie 'partner'. Manager eskaluje wyżej, Ty tracisz relację. Możesz mieć rację, ale stracisz wpływ na decyzję."
+    },
+    {
+      "id": "c",
+      "text": "Zgłaszasz swoje zastrzeżenia pisemnie (email do managera i CC do PM): opisujesz brakujące testy, ryzyko, powód opóźnienia (środowisko dostępne za późno). Mówisz że możesz podpisać raport z adnotacją o nieprzetestowanym zakresie.",
+      "user_percentage": 61,
+      "consequences": "Najlepsza opcja. Dokumentujesz ryzyko (chronisz siebie), dajesz decydentom pełen obraz, zostawiasz decyzję osobom które mają do tego uprawnienia. Adnotacja w raporcie jest uczciwa i akceptowalna przez większość firm. Email tworzy ślad audytowy który chroni Ciebie."
+    },
+    {
+      "id": "d",
+      "text": "Podpisujesz, ale robisz notatkę w swoim prywatnym dzienniku pracy na wszelki wypadek.",
+      "user_percentage": 14,
+      "consequences": "Prywatna notatka nie ma mocy prawnej. Podpisałeś dokument stwierdzający coś nieprawdziwego — prywatna notatka tego nie zmienia. Zabezpieczasz siebie pozornie, ale faktycznie jesteś narażony na te same konsekwencje co opcja A."
+    }
+  ]
+}

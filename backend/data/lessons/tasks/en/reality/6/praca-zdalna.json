@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Pracujesz zdalnie od 6 miesięcy. Zauważasz że odpowiadasz na Slacka o 22:00, sprawdzasz maila w weekendy i czujesz się winny gdy nie odpiszesz natychmiast. Co to oznacza i co robić?",
+  "options": [
+    { "id": "a", "text": "To normalne przy pracy zdalnej — musisz być dostępny żeby pokazać zaangażowanie" },
+    { "id": "b", "text": "Wczesne sygnały always-on culture — ustal granice: powiedz managerowi jakie są Twoje godziny i wycisz powiadomienia po pracy" },
+    { "id": "c", "text": "To znaczy że nie masz wystarczająco dużo pracy — poproś o więcej zadań" },
+    { "id": "d", "text": "Wróć do pracy w biurze — praca zdalna Ci nie służy" }
+  ],
+  "correct": "b",
+  "explanation": "Opisane zachowanie to klasyczne oznaki always-on culture która prowadzi do burnoutu. Poczucie winy za nieodpowiadanie natychmiast to sygnał że granice zniknęły. Rozwiązanie: formalnie zakomunikuj swoje godziny pracy, wycisz powiadomienia po godzinach, stwórz fizyczne rytuały końca dnia. To nie brak zaangażowania — to sustainable work.",
+  "trap_explanation": "Opcja A normalizuje niezdrowe zachowanie. 'Dostępność = zaangażowanie' to mit który niszczy ludzi. Prawdziwe zaangażowanie mierzy się wynikami, nie czasem online."
+}

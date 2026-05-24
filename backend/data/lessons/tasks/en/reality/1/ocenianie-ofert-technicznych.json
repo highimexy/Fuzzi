@@ -1,0 +1,36 @@
+{
+  "type": "bullshit_detector",
+  "quote": "Dołącz do naszego dynamicznego, zgranego teamu! Szukamy pasjonat(k)i QA gotowej na wyzwania w szybko rozwijającym się środowisku. Oferujemy nieograniczony PTO, możliwość pracy zdalnej po 3 miesiącach, atrakcyjne wynagrodzenie + opcje na akcje startupowe, i realny wpływ na produkt używany przez miliony. Nasz team to rodzina która wspiera się nawzajem — weekendy i wieczory należą do Ciebie!",
+  "source": "Oferta pracy: Mid QA Engineer — Startup fintech, Warszawa",
+  "phrases": [
+    {
+      "phrase": "dynamiczne środowisko / szybko rozwijające się środowisko",
+      "reality": "Często brak procesów, szybko zmieniające się priorytety, możliwe nadgodziny. Niekoniecznie złe — ale pytaj konkretnie: 'Co się zmieniło w produkcie w ciągu ostatnich 3 miesięcy?'"
+    },
+    {
+      "phrase": "zgrana rodzina / team to rodzina",
+      "reality": "Niebezpieczna metafora. Rodzina = oczekiwanie lojalności ponad granice zawodowe. Pytaj: 'Jak wygląda typowy dzień pracy? Jakie są godziny spotkań?' Zdrowy team to profesjonalny zespół, nie rodzina."
+    },
+    {
+      "phrase": "nieograniczony PTO (urlop)",
+      "reality": "W firmach z 'nieograniczonym urlopem' pracownicy biorą średnio MNIEJ urlopu niż tam gdzie jest określony limit. Brak normy = brak kultury urlopowania. Pytaj: 'Ile średnio dni urlopu biorą Wasi pracownicy?'"
+    },
+    {
+      "phrase": "możliwość pracy zdalnej po 3 miesiącach",
+      "reality": "Zdalność jako przywilej po próbie — nie prawo od dnia 1. Oznacza przymus biura przez 3 miesiące. Pytaj: 'Ile dni zdalnie po tych 3 miesiącach? 2/3 czy full remote?'"
+    },
+    {
+      "phrase": "opcje na akcje startupowe",
+      "reality": "Opcje mają wartość tylko jeśli firma trafi exit (sprzedaż lub IPO). Szansa na to: 1-5% startupów. Nie licz na to jako na część wynagrodzenia — traktuj jako lottery ticket."
+    },
+    {
+      "phrase": "atrakcyjne wynagrodzenie",
+      "reality": "Brak liczb = coś kryją. 'Atrakcyjne' jest subiektywne. Zawsze pytaj o widełki przed rozmową. Firma która odmawia podania widełek — bardzo często płaci poniżej rynku."
+    },
+    {
+      "phrase": "weekendy i wieczory należą do Ciebie",
+      "reality": "Dlaczego firma to podkreśla? Normalny pracodawca nie chwali się że nie wymaga pracy po godzinach — to standard. Podkreślenie tego sugeruje że to NIE jest standard i firma ma historię z nadgodzinami."
+    }
+  ],
+  "fuzzi_translation": "Tłumaczenie na konkretny: 'Szukamy QA do szybko zmieniającego się środowiska bez gwarancji stabilnych procesów. Wynagrodzenie jest nieokreślone. Opcje akcji mogą być warte zero. Praca zdalna jest możliwa po 3 miesiącach biurowych. Oczekujemy zaangażowania jak od rodziny, co często oznacza elastyczne granice pracy.' — Nie odrzucaj tej oferty automatycznie, ale idź na rozmowę z listą konkretnych pytań i nie akceptuj bez liczb."
+}

@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Pracujesz zdalnie jako QA od 6 miesięcy. Firma jest w pełni remote (brak biura). Masz dobrą relację z teamem przez Slack, ale zauważasz że coraz rzadziej rozmawiasz z ludźmi na żywo. Czujesz się produktywny ale też odizolowany. Manager jest zadowolony z Twojej pracy.",
+  "decisions": [
+    {
+      "id": "r1",
+      "decision": "Zaproponować cotygodniowe 30-minutowe pair testing z jednym z developerów przez Google Meet — dzielisz ekran i testujesz razem",
+      "correct_risk": "safe",
+      "explanation": "Pair testing rozwiązuje dwa problemy jednocześnie: izolację (kontakt z ludźmi) i jakość testowania (developer zna kod, ty znasz QA perspective). Bugi znalezione razem są naprawiane szybciej. Świetna inwestycja."
+    },
+    {
+      "id": "r2",
+      "decision": "Przestać używać kamerki na spotkaniach — jest bardziej komfortowo bez niej i oszczędzasz bandwidth",
+      "correct_risk": "risky",
+      "explanation": "Kamerka wideo to jedyne narzędzie które pozwala na komunikację niewerbalną w remote. Bez niej relacje stają się bardziej transakcyjne, trudniejsza jest empatia i wzajemne zrozumienie. Komfort krótkoterminowy kosztem relacji długoterminowych."
+    },
+    {
+      "id": "r3",
+      "decision": "Znaleźć lokalny coworking lub kawiarnia z WiFi i pracować stamtąd 2 razy w tygodniu",
+      "correct_risk": "safe",
+      "explanation": "Fizyczna zmiana środowiska walczy z izolacją. Obecność innych ludzi (nawet obcych) poprawia samopoczucie i koncentrację. Coworking 2x/tydzień to dobry kompromis koszt/benefit."
+    },
+    {
+      "id": "r4",
+      "decision": "Odpisywać na Slacka natychmiast gdy tylko przychodzi wiadomość, nawet w godzinach wieczornych — żeby być 'available'",
+      "correct_risk": "risky",
+      "explanation": "Immediate availability 24/7 to droga do wypalenia i zacierania granicy praca-życie. Ustaw oczekiwania jasno: odpowiadam w godzinach pracy, pilne sprawy przez telefon. Bycie 'always available' normalizuje oczekiwanie które jest nie do utrzymania."
+    },
+    {
+      "id": "r5",
+      "decision": "Zaproponować managerowi regularne 1-on-1 raz na 2 tygodnie — 30 minut na feedback, plany, problemy",
+      "correct_risk": "safe",
+      "explanation": "1-on-1 z managerem to inwestycja w relację i karierę. Remote szczególnie wymaga regularnego check-inu — problemy które w biurze byłyby widoczne naturalniem, remote wymagają aktywnego komunikowania. Dobrze też dla managera który nie widzi Twojej codziennej pracy."
+    },
+    {
+      "id": "r6",
+      "decision": "Zrezygnować z uczestnictwa w team socials (quiz online, virtual lunch) — wolisz ten czas na testowanie",
+      "correct_risk": "risky",
+      "explanation": "Team socials to inwestycja w relacje które bezpośrednio wpływają na współpracę. QA który nie zna developerów poza kontekstem pracy ma trudniejsze rozmowy o bugach i ryzyku. Raz na czas jest OK; systematyczna rezygnacja buduje izolację."
+    }
+  ],
+  "senior_comment": "Remote to umiejętność, nie tylko warunek pracy. Aktywne budowanie relacji, widoczność pracy i dbanie o granice — to rzeczy które wymagają świadomego wysiłku w remote, bo w biurze działy się naturalnie."
+}

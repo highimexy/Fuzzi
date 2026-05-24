@@ -1,0 +1,16 @@
+{
+  "type": "salary_decoder",
+  "job_offer": {
+    "title": "Senior QA Engineer — Remote (EU)",
+    "company": "TechFlow Ltd (UK, Series B startup, 80 osób)",
+    "raw_text": "We're looking for a Senior QA Engineer to join our distributed team. You'll be working closely with our engineering team across UK and Poland.\n\nCompensation: £55,000 - £70,000 per year (contractor rate: £350-£450/day)\nLocation: Remote (must be within EU timezone, ±2h from UK)\nContract type: Full-time employment OR B2B contract\nHours: 40h/week, core hours 10:00-16:00 UK time\n\nBenefits (employment only):\n- 25 days holiday + UK bank holidays\n- Private healthcare (Bupa)\n- £1,500/year learning budget\n- Home office setup allowance £500\n\nRequirements:\n- 5+ years QA experience\n- Strong Playwright or Cypress experience\n- API testing (REST, GraphQL)\n- Experience with CI/CD\n- Excellent written and spoken English\n- Eligible to work in EU (we cannot sponsor visas)"
+  },
+  "red_flags": [
+    "Wynagrodzenie podane w GBP — przelicz na PLN przy aktualnym kursie (£1 ≈ 5.2 PLN)",
+    "Contractor rate £350-450/day jest bardzo wysoki — sprawdź czy faktycznie chcą contractor czy to tylko alternatywa dla employment",
+    "Benefits tylko przy employment — przy B2B nie ma L&D budget ani Bupa (musisz te koszty pokryć sam)",
+    "UK bank holidays przy pracy zdalnej z Polski — nie jesteś w UK, upewnij się jak rozliczany jest urlop"
+  ],
+  "fuzzi_verdict": "Oferta jest legalna i atrakcyjna. Widełki £55k-70k to PLN 286,000 - 364,000 rocznie brutto (przy kursie 5.2). Porównaj: senior QA w Polsce = 120,000 - 180,000 PLN rocznie. Różnica 2-3× jest realna. Contractor rate £350-450/day = £7,000-9,000/miesiąc (20 dni roboczych) = PLN 36,000-47,000/miesiąc brutto — jako B2B przy prawidłowej strukturze podatkowej netto będzie znacząco wyższe niż polska etatówka.",
+  "market_context": "Firmy UK zatrudniające zdalne kontrakty z Polski to coraz popularniejszy model. Kluczowe: (1) upewnij się że masz prawo pracować dla UK firmy z Polski po Brexicie (tak, jako self-employed z Polski możesz), (2) podatki odprowadzasz w Polsce jako rezydent podatkowy, (3) przelew przez Wise zaoszczędzi ~1-2% na konwersji walutowej vs tradycyjny bank, (4) angielski na poziomie C1 jest prawdziwym wymaganiem — napisz cover letter i sprawdź swoje pismo."
+}

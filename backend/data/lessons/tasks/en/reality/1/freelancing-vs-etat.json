@@ -1,0 +1,32 @@
+{
+  "type": "salary_decoder",
+  "job_offer": {
+    "title": "Senior QA Engineer — B2B",
+    "company": "RemoteFirst sp. z o.o. — startup SaaS, 40 osób, pełny remote",
+    "raw_text": "Szukamy doświadczonego QA który dołączy do naszego zespołu na zasadach B2B.\n\nOferujemy:\n• Stawka: 120-140 PLN/h netto (B2B)\n• Wymiar: pełen etat (160h/miesiąc)\n• 100% remote, elastyczne godziny\n• Sprzęt: Macbook lub laptop do wyboru\n• 'Nieograniczone' dni wolne — bierzesz ile chcesz\n• Konferencje i szkolenia — decydujesz sam\n• Wymagania: B2B, faktura VAT, własna działalność\n• Notice period: 2 tygodnie"
+  },
+  "red_flags": [
+    {
+      "phrase": "120-140 PLN/h netto B2B = 19 200–22 400 PLN/miesiąc",
+      "reality": "Brzmi świetnie. Ale: po ZUS (~1400), podatku liniowym (~3600 przy 22k) i efektywnym koszcie urlopu (~1500/miesiąc przy 15 dniach/rok) — efektywne netto to ok. 15 500–17 900 PLN. To wciąż dobre wynagrodzenie dla seniora, ale nie tyle ile wygląda na papierze."
+    },
+    {
+      "phrase": "'Nieograniczone' dni wolne",
+      "reality": "Unlimited PTO to jeden z największych bullshitów korporacyjnych przetransportowany do startupów. Badania pokazują że pracownicy z unlimited PTO biorą MNIEJ urlopu niż z fixowaną liczbą dni — bo nie ma benchmarku co jest 'OK'. Na B2B unlimited days off = nie fakturujesz = nie zarabiasz. Zapytaj wprost: ile osób wzięło urlop w tym roku i ile średnio dni?"
+    },
+    {
+      "phrase": "Elastyczne godziny",
+      "reality": "Warto zapytać: czy są godziny core (np. 10-16 musisz być dostępny)? Czy standupy są codziennie o stałej porze? 'Elastyczne' może oznaczać 'możesz zaczynać o 8 lub 10' ale niekoniecznie 'możesz pracować w nocy'."
+    },
+    {
+      "phrase": "Notice period: 2 tygodnie",
+      "reality": "To bardzo krótki czas dla B2B. Dla Ciebie to ryzyko: firma może zakończyć kontrakt z 2-tygodniowym wyprzedzeniem. Standardem dla seniorów jest 1-3 miesiące. Negocjuj dłuższy notice lub upewnij się że masz fundusz awaryjny na 3 miesiące."
+    },
+    {
+      "phrase": "Konferencje i szkolenia — decydujesz sam",
+      "reality": "Bez budżetu to nic. 'Decydujesz sam' bez kwoty = możesz decydować ale firma nie finansuje. Zapytaj wprost: czy jest budżet szkoleniowy i jaka kwota rocznie?"
+    }
+  ],
+  "fuzzi_verdict": "Oferta jest atrakcyjna finansowo dla seniora (efektywne netto 15-18k to górna półka rynku). Główne ryzyka: krótki notice period (2 tygodnie to za mało dla bezpieczeństwa finansowego), niejasny unlimited PTO (pytaj o liczby), brak kwoty na szkolenia. Negocjuj: notice 1 miesiąc, potwierdzony budżet 5-8k/rok na szkolenia, clear policy dla urlopów.",
+  "market_context": "Senior QA B2B remote Polska 2025: 100-160 PLN/h. Oferta w górnej połowie widełek. Pełny remote bez biura = oszczędność na dojazdach (~500 PLN/miesiąc). Startups płacą dobrze ale oferują mniej stabilności niż korporacje."
+}

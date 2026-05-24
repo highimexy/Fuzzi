@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Pracujesz jako QA 2 lata w tej samej firmie. Ostatnie 6 miesięcy: dostałeś 2 obietnice podwyżki które nie doszły do skutku ('sytuacja budżetowa'), Twój manager zmienił się 3 razy, nowe funkcje które testujesz są coraz mniej interesujące technicznie, i czujesz że Twoje umiejętności stoją w miejscu.\n\nW tym tygodniu rekruter skontaktował się z ofertą: 20% więcej, większy team, projekt e-commerce z automatyzacją w Playwright. Firma wydaje się stabilna.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Odrzucasz ofertę — masz dobre relacje w obecnej firmie i zmiana jest ryzykowna.",
+      "user_percentage": 14,
+      "consequences": "Relacje są wartościowe, ale nie powinny być jedynym powodem zostania gdy inne sygnały są negatywne. 6 miesięcy bez obiecanej podwyżki, 3 zmiany managera, stagnacja techniczna — to poważne red flags. Strach przed ryzykiem jest zrozumiały, ale nie każda zmiana jest ryzykiem. Nowa firma może być bezpieczniejsza niż obecna."
+    },
+    {
+      "id": "b",
+      "text": "Akceptujesz ofertę bez rozmowy z obecnym managerem — sytuacja jest jasna.",
+      "user_percentage": 22,
+      "consequences": "Pochopne. Zanim zaakceptujesz — zrób due diligence nowej firmy (review na Glassdoor, porozmawiaj z kimś kto tam pracuje) i rozważ czy warto dać obecnej firmie ostatnią szansę na rozmowę. Może manager ma konkretny plan którego nie znasz. Może nie ma — ale warto sprawdzić. Decyzja będzie pewniejsza po tej rozmowie."
+    },
+    {
+      "id": "c",
+      "text": "Idź na rozmowę rekrutacyjną żeby zobaczyć co to za oferta, sprawdź nową firmę, a potem zdecyduj. Jeśli oferta jest dobra — poinformuj obecnego managera o zamiarze odejścia i daj mu szansę na kontrpropozycję.",
+      "user_percentage": 49,
+      "consequences": "Najdojrzalsze podejście. Rozmowa kwalifikacyjna to informacja, nie zobowiązanie. Po due diligence (firma, kultura, projekt) możesz podjąć świadomą decyzję. Rozmowa z obecnym managerem pozwala sprawdzić czy jest wola i możliwość zmiany — jeśli nie ma, masz potwierdzenie że decyzja o odejściu jest słuszna. Jeśli jest — możesz zostać z lepszymi warunkami."
+    },
+    {
+      "id": "d",
+      "text": "Używasz oferty jako leverage — mówisz managerowi że masz lepszą ofertę i chcesz podwyżki żeby zostać.",
+      "user_percentage": 15,
+      "consequences": "Ryzykowna taktyka. Może zadziałać, ale: (1) firma może powiedzieć 'OK, odejdź' — musisz być gotowy naprawdę odejść, (2) nawet jeśli dostaniesz podwyżkę, zaufanie jest nadszarpnięte i możesz być pierwszym do zwolnienia przy kolejnej restrukturyzacji. Użyj tej taktyki tylko jeśli naprawdę chcesz zostać i tylko jeśli jesteś gotów odejść gdy odmówią."
+    }
+  ]
+}

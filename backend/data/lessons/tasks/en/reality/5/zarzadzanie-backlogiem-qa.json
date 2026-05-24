@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "b1",
+      "title": "Naprawa 6 flakey testów w module checkout",
+      "description": "6 testów automatycznych E2E failuje nieregularnie — raz na ~20 uruchomień. Deweloperzy zaczęli ignorować czerwone CI bo 'to pewnie flakey'. Ostatni tydzień: 4 fałszywe alarmy.",
+      "metadata": "Wycena: 6h. Aktualny koszt: 30min tygodniowo na sprawdzanie czy to flakey czy prawdziwy bug."
+    },
+    {
+      "id": "b2",
+      "title": "Zaktualizowanie przypadków testowych dla modułu raportów (przepisany 2 miesiące temu)",
+      "description": "Moduł raportów został przepisany w Sprincie 19. Przypadki testowe nadal testują stary UI. Tester używa 'pamięci' zamiast dokumentacji.",
+      "metadata": "Wycena: 3h. Ryzyko: przy rotacji QA nowy tester nie wie co testować w raportach."
+    },
+    {
+      "id": "b3",
+      "title": "Napisanie smoke testów dla nowej funkcji eksport PDF",
+      "description": "Eksport PDF wyszedł w Sprincie 21. Brak jakichkolwiek testów automatycznych. Funkcja jest testowana manualnie przy każdym release — 20 min.",
+      "metadata": "Wycena: 4h. Koszt manualny: 20min × 2 release/miesiąc = 40min/miesiąc."
+    },
+    {
+      "id": "b4",
+      "title": "Zbadanie buga #3901: edycja profilu — pole 'bio' nie zapisuje emoji",
+      "description": "Użytkownik zgłosił że emoji w polu bio nie zapisują się. Brak repro ze strony QA po 1h prób. Bug jest w backlogu od 2 miesięcy.",
+      "metadata": "P3, 3 zgłoszenia supportowe przez 2 miesiące. Pole bio jest opcjonalne."
+    },
+    {
+      "id": "b5",
+      "title": "Przegląd i aktualizacja checklisty regresyjnej",
+      "description": "Aktualna checklista regresyjna pochodzi z marca. Od tego czasu wyszło 6 majorowych featureów — żaden nie jest w checkliście. Regresja robi się 'z głowy'.",
+      "metadata": "Wycena: 2h. Ryzyko: obszary z nowych featureów nie są systematycznie pokryte w regresji."
+    },
+    {
+      "id": "b6",
+      "title": "Dokumentacja środowiska testowego — jak skonfigurować lokalnie",
+      "description": "Nowi QA spędzają 2-3 dni na konfiguracji środowiska bo dokumentacja nie istnieje. Trzecia osoba w tym kwartale prosi o pomoc przy setup.",
+      "metadata": "Wycena: 4h jednorazowo. Oszczędność: 2-3 dni każdego nowego QA."
+    }
+  ],
+  "senior_decisions": [
+    {
+      "id": "b1",
+      "decision": "P1 — do zrobienia w tym sprincie",
+      "explanation": "Flakey testy które powodują ignorowanie CI to aktywne ryzyko. Jeśli prawdziwy bug ukryje się wśród false alarmów — zostanie wpuszczony na produkcję. 6h inwestycji żeby CI znowu było wiarygodne to oczywisty priorytet."
+    },
+    {
+      "id": "b2",
+      "decision": "P2 — następny sprint",
+      "explanation": "Brak aktualnej dokumentacji to tech debt który rośnie. Przy rotacji QA lub urlopie — nikt nie wie co testować. Nie jest palący jak flakey testy, ale w następnym sprincie warto zaadresować."
+    },
+    {
+      "id": "b3",
+      "decision": "P3 — parking (niski ROI)",
+      "explanation": "20 min manualnie × 2 w miesiącu = 40 min/miesiąc. Automatyzacja kosztuje 4h. ROI = 40min/240min = 0.17 — poniżej 1. Automatyzacja się nie zwróci w ciągu roku. Zostaw manualnie, sprawdź za 6 miesięcy."
+    },
+    {
+      "id": "b4",
+      "decision": "Archiwum lub zamknięcie — nie warto dalej inwestować",
+      "explanation": "3 zgłoszenia przez 2 miesiące, pole opcjonalne, brak repro. Koszt dalszego badania > wartość. Zamknij z komentarzem 'nie zreprodukowano po X h, 3 zgłoszenia supportowe w 2m, niski priorytet — monitoruj'. Jeśli liczba zgłoszeń wzrośnie — wróć."
+    },
+    {
+      "id": "b5",
+      "decision": "P1 — do zrobienia w tym sprincie razem z b1",
+      "explanation": "Regresja 'z głowy' = przypadkowe testowanie. 6 majorowych featureów bez pokrycia w regresji to ryzyko każdego release. 2h to mały koszt za systematyczne pokrycie. Checklista jest fundamentem procesu."
+    },
+    {
+      "id": "b6",
+      "decision": "P2 — następny sprint",
+      "explanation": "Trzecia osoba w kwartale prosi o pomoc = ~6-9 dni QA rocznie na konfigurację. 4h raz eliminuje powtarzający się koszt. Warto, ale nie pilne dziś — zaplanuj w następnym sprincie."
+    }
+  ],
+  "senior_comment": "Backlog QA ma dwie kategorie które zawsze wygrywają priorytet: to co niszczy wiarygodność procesu (flakey testy, brak checklisty) i to co skaluje ból z czasem (brak dokumentacji). Reszta — policz ROI i zdecyduj."
+}

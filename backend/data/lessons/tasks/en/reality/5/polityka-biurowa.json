@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Pracujesz w firmie od 2 lat. Jest napięcie między Twoim managerem (Head of QA) a dyrektorem R&D który kontroluje developerów. Te dwa działy mają różne priorytety.\n\nTwój manager pyta Cię prywatnie: 'Czy wiesz że Tomek (lead developer) ignoruje Wasze bugi i priorytetyzuje tylko to co mówi mu dyrektor R&D? Czy możesz mi zebrać przykłady z ostatnich 2 tygodni? Będę to eskalował do CEO.'\n\nMasz kilka przykładów gdzie Tomek faktycznie depriorytetyzował bugi QA, ale nie wiesz czy to efekt konfliktu między działami czy były inne uzasadnione powody.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zbierasz wszystkie przykłady i wysyłasz managerowi — to jego prośba, to jego odpowiedzialność.",
+      "user_percentage": 24,
+      "consequences": "Ryzykowne. Stajesz się narzędziem w konflikcie działów którego nie rozumiesz w pełni. Jeśli eskalacja do CEO zawiera Twoje obserwacje wyrwane z kontekstu — możesz zaszkodzić relacji z Tomkiem i całym działem developerskim. Twoja neutralność jest zagrożona."
+    },
+    {
+      "id": "b",
+      "text": "Odmawiasz zbierania 'materiałów' i mówisz managerowi że to nie Twoja rola.",
+      "user_percentage": 11,
+      "consequences": "Zbyt defensywne. Manager ma prawo prosić o informacje o procesie QA. Problem nie jest w zbieraniu danych, ale w tym jak zostaną użyte i czy są właściwe kontekstowo."
+    },
+    {
+      "id": "c",
+      "text": "Mówisz managerowi: 'Mam kilka przykładów, ale zanim je podsumuje — chciałbym wiedzieć jaki jest cel. Czy rozmawiałeś bezpośrednio z Tomkiem lub dyrektorem R&D o priorytetach bugów? Chcę mieć pewność że przekazuję kontekst, nie tylko listę zdarzeń.'",
+      "user_percentage": 57,
+      "consequences": "Właściwa odpowiedź. Nie odmawiasz pomocy, ale pytasz o kontekst i cel. To chroni Cię przed byciem narzędziem w konflikcie. Pytanie o 'czy rozmawiałeś bezpośrednio?' jest dyplomatycznym sygnałem że eskalacja do CEO bez prób rozwiązania na niższym poziomie może być przedwczesna."
+    },
+    {
+      "id": "d",
+      "text": "Zbierasz przykłady ale w raporcie dokładnie opisujesz kontekst każdego przypadku — zarówno to że bug był depriorytetyzowany, jak i możliwe uzasadnienia biznesowe jeśli znasz.",
+      "user_percentage": 8,
+      "consequences": "Dobra opcja jeśli manager jest otwarty na pełny obraz. Ryzyko: manager oczekuje 'amunicji', a Ty dajesz zrównoważony raport. Może być odebrane jako nielojalność wobec swojego managera. Ale jest etycznie właściwe."
+    }
+  ]
+}

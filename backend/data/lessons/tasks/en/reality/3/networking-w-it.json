@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś na meetupie QA. Po prelekcji o testowaniu mobilnym, podchodzisz do prelegenta — Senior QA w dużej firmie fintech. Masz 3 minuty zanim przyjdą inni rozmówcy.\n\nWiesz że ta firma ma otwarte stanowisko QA (widziałeś na LinkedIn). Szukasz pracy od 2 miesięcy.\n\nCo mówisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "'Cześć, szukam pracy QA od 2 miesięcy. Widziałem że wasza firma ma otwarcie. Czy mógłbyś mnie polecić swojemu rekruterowi?'",
+      "user_percentage": 22,
+      "consequences": "Zbyt bezpośrednie i transakcyjne. Prelegent dopiero Cię poznał — prośba o referencje od kogoś kogo nie zna jest niezręczna. Efekt: prelegent poczuje się jak obiekt do wykorzystania, nie rozmówca. Szanse na polecenie: bardzo małe."
+    },
+    {
+      "id": "b",
+      "text": "'Świetna prelekcja! Nie wiedziałem że problemy z Bluetooth mogą wpływać na test results. Mam pytanie — jak radzicie sobie z device farm maintenance? U nas to jeden z największych bólów głowy.'",
+      "user_percentage": 58,
+      "consequences": "Najlepsza opcja. Konkretny komentarz pokazuje że słuchałeś uważnie. Pytanie o prawdziwy problem otwiera rozmowę jako równorzędny dialog, nie prośbę. Prelegent zapamiętuje ludzi którzy zadają dobre pytania. Połączenie na LinkedIn po tej rozmowie będzie naturalne — a to otwiera furtkę do późniejszej rozmowy o pracy."
+    },
+    {
+      "id": "c",
+      "text": "Milczysz — zbyt nieśmiały żeby podejść. Obserwujesz z odległości i liczysz że prelegent sam zagada.",
+      "user_percentage": 15,
+      "consequences": "Prelegent nie zagada — ma dziesiątki rozmów po każdym meetupie. Introwertyczność jest zrozumiała, ale bierność jest wyborem. Jeśli masz problem z podchodzeniem, zacznij od komentarza na LinkedIn po meetupie — to jest bezpieczniejsze wejście w kontakt."
+    },
+    {
+      "id": "d",
+      "text": "Dajesz prelegentowi wizytówkę i mówisz: 'Jestem QA, oto mój kontakt, może kiedyś się przyda.'",
+      "user_percentage": 5,
+      "consequences": "Wizytówki bez kontekstu lądują w śmietniku lub są zapominane w 24h. Nie zrobiłeś nic żeby zostać zapamiętanym. Wymiana kontaktów bez rozmowy to iluzja networkingu."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA na dużym projekcie e-commerce. Znalazłeś critical buga: checkout nie działa dla użytkowników z adresem dostawy do paczkomatu — to 30% wszystkich zamówień. Zgłosiłeś buga 2 dni temu. Senior developer (Marek) przejrzał ticket i skomentował: 'Nie reprodukuję, u mnie działa. Zamykam jako Not a Bug.' Release zaplanowany jest jutro rano. Product Owner jest na urlopie do piątku.",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zaakceptuj decyzję Marka — on zna kod lepiej niż Ty, skoro u niego działa to może środowisko testowe ma problem.",
+      "user_percentage": 8,
+      "consequences": "Ryzykowne. Bug wychodzi na produkcję i blokuje 30% zamówień. Po kilku godzinach eskalacja do CEO, release rollback, strata przychodu za kilka godzin pracy. Twoja wiarygodność jako QA spada — 'dlaczego nie walczyłeś o ten bug?'"
+    },
+    {
+      "id": "b",
+      "text": "Eskaluj natychmiast do CTO / CEO — bug jest krytyczny i wymaga najwyższej decyzji.",
+      "user_percentage": 12,
+      "consequences": "Zbyt agresywne i może zaszkodzić relacjom. CTO nie powinien rozstrzygać sporów między QA a developerem bez wcześniejszego eskalowania do pośrednich szczebli. Może się udać, ale rysujesz się jako osoba która omija hierarchię."
+    },
+    {
+      "id": "c",
+      "text": "Udokumentuj buga szczegółowo (nagranie, logi, dane testowe, środowisko), znajdź zastępcę PO lub team leada i eskaluj z gotowymi dowodami.",
+      "user_percentage": 68,
+      "consequences": "Właściwe podejście. Masz dowody (nie 'słowo przeciw słowu'), eskalujesz przez właściwy kanał, dajesz decyzję osobie która może ją podjąć. Nawet jeśli release się opóźni, chronisz firmę przed krytycznym incydentem i budujesz reputację QA który działa profesjonalnie."
+    },
+    {
+      "id": "d",
+      "text": "Wyślij wiadomość do całego zespołu na głównym kanale Slacka informując o problemie.",
+      "user_percentage": 12,
+      "consequences": "Nieprofesjonalne. Publiczne oskarżenie kolegi wywołuje napięcia i odwraca uwagę od rozwiązania. Efekt: Marek się broni, inni komentują, bug nadal nienaprawiony. Komunikacja kryzysowa powinna iść kanałem prywatnym lub przez bezpośredniego przełożonego."
+    }
+  ]
+}

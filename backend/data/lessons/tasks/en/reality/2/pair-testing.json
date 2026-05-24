@@ -1,0 +1,18 @@
+{
+  "type": "scenario",
+  "situation": "Właśnie wdrożono nową funkcję: zaawansowane filtry w raporcie sprzedaży. Developer Michał pracował nad nią tydzień. Jutro jest release. Masz 3 godziny na testowanie.\n\nMichał mówi: 'Przetestowałem to lokalnie, wszystko działa. Mogę Ci wytłumaczyć co zmieniałem, żebyś wiedziała gdzie patrzeć.'\n\nTy masz dwie opcje:\nA) Michał tłumaczy Ci działanie przez 15 minut, potem testujesz samodzielnie przez 3 godziny\nB) Proponujesz 60-minutową sesję pair testing razem: Ty drivujesz, Michał nawiguje i wyjaśnia\n\nCo wybierasz i dlaczego?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Opcja A: 15 minut briefingu + 3 godziny samodzielnego testowania.",
+      "user_percentage": 44,
+      "consequences": "Standardowe podejście — i nie jest złe. Brief daje kontekst, potem testujesz niezależnie (ważne bo świeże oczy). Minusy: developer może pominąć ważne szczegóły w 15 minutach, i nie masz możliwości pytania 'co jeśli' w czasie rzeczywistym. Znajdziesz bugi ale możesz pominąć te które wymagają znajomości kodu."
+    },
+    {
+      "id": "b",
+      "text": "Opcja B: 60 minut pair testing + pozostały czas samodzielnego testowania.",
+      "user_percentage": 56,
+      "consequences": "Najlepsza odpowiedź dla tego scenariusza. 60 minut pair testing daje: (1) developer ujawnia założenia kodu w czasie rzeczywistym ('ta logika działa inaczej dla userów z rolą manager'), (2) możesz pytać 'co jeśli X?' i natychmiast sprawdzać, (3) Michał widzi na żywo jak testujesz i może wskazać co pominęłaś. Pozostałe 2 godziny samodzielnego testowania dają świeże oczy bez wpływu developera. Kombinacja daje maksimum pokrycia."
+    }
+  ]
+}

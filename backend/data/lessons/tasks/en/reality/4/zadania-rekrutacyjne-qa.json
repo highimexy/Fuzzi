@@ -1,0 +1,57 @@
+{
+  "type": "test_case_builder",
+  "feature_description": "Jesteś na rozmowie rekrutacyjnej. Dostałeś zadanie: 'Napisz przypadki testowe dla funkcji resetowania hasła w aplikacji SaaS B2B. Specyfikacja: użytkownik klika link Zapomniałem hasła, wpisuje email, dostaje link resetujący (ważny 24h, jednorazowy), klika link, wpisuje nowe hasło (min 8 znaków), potwierdza hasło, zostaje przekierowany na stronę logowania.'",
+  "task_instruction": "Masz 45 minut na to zadanie. Napisz przypadki testowe które pokazują Twoje myślenie — nie tylko happy path. Pokaż rekruterowi że myślisz o bezpieczeństwie, edge case'ach i UX.",
+  "expected_cases": [
+    {
+      "title": "Poprawny flow resetowania hasła od początku do końca",
+      "category": "happy_path",
+      "why_important": "Podstawowy scenariusz — musi działać. Weryfikuje cały flow: email → link → nowe hasło → redirect → możliwość logowania nowym hasłem."
+    },
+    {
+      "title": "Email który nie istnieje w systemie — brak ujawnienia czy konto istnieje",
+      "category": "negative",
+      "why_important": "Security: odpowiedź 'email nie istnieje' ujawnia enumeration użytkowników. Poprawna odpowiedź to zawsze 'Jeśli email istnieje, wyślemy link' — bez rozróżnienia."
+    },
+    {
+      "title": "Link resetowania hasła wygasa po 24 godzinach",
+      "category": "edge_case",
+      "why_important": "Weryfikacja TTL tokenu — link po 24h musi być nieważny. Test wymaga manipulacji czasem lub bezpośredniego testu API z wygasłym tokenem."
+    },
+    {
+      "title": "Link resetowania jest jednorazowy — drugie użycie zwraca błąd",
+      "category": "edge_case",
+      "why_important": "Jednorazowość tokenu to kluczowy wymóg bezpieczeństwa. Token po użyciu musi być unieważniony, nawet jeśli nie minęło 24h."
+    },
+    {
+      "title": "Nowe hasło mniej niż 8 znaków — walidacja",
+      "category": "negative",
+      "why_important": "Walidacja złożoności hasła. Komunikat błędu musi być precyzyjny ('min 8 znaków'), nie ogólny ('nieprawidłowe hasło')."
+    },
+    {
+      "title": "Nowe hasło i potwierdzenie hasła nie są identyczne",
+      "category": "negative",
+      "why_important": "Walidacja zgodności haseł musi działać po stronie klienta (natychmiast) i po stronie serwera (jako zabezpieczenie)."
+    },
+    {
+      "title": "Użycie tego samego hasła co poprzednie",
+      "category": "edge_case",
+      "why_important": "Wiele systemów wymaga ustawienia NOWEGO hasła, innego niż poprzednie. Specyfikacja tego nie mówi — warto zapytać rekrutera (to dobry przykład pytania o niejasność)."
+    },
+    {
+      "title": "Wiele requestów resetowania dla tego samego emaila w krótkim czasie",
+      "category": "edge_case",
+      "why_important": "Rate limiting: spam resetowania haseł może być atakiem lub przypadkowym double-submit. Czy wcześniejszy link jest unieważniany gdy wysyłamy nowy?"
+    },
+    {
+      "title": "Stary link po sukcesywnym resetowaniu hasła",
+      "category": "negative",
+      "why_important": "Jeśli użytkownik poprawnie zmienił hasło przez link A, a potem używa linku B (który też był ważny) — link B powinien być nieważny. Zabezpieczenie przed race condition."
+    },
+    {
+      "title": "Link resetowania z zmodyfikowanym tokenem w URL",
+      "category": "negative",
+      "why_important": "Security test: manipulacja tokenem nie może dać dostępu do resetowania cudzego hasła. Zmodyfikowany lub losowy token musi zwrócić błąd."
+    }
+  ]
+}

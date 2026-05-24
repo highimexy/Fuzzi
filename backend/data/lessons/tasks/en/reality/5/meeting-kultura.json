@@ -1,0 +1,28 @@
+{
+  "type": "bullshit_detector",
+  "quote": "Zapraszamy na All-Hands Meeting — kwartalne podsumowanie Q3. Omówimy nasze journey w kierunku synergii między teamami, alignment na roadmapę oraz deep-dive w naszą transformation towards a data-driven culture. Czas: 3 godziny. Obecność obowiązkowa dla wszystkich.",
+  "source": "Zaproszenie mailowe od CEO, firma 150 osób, Warszawa",
+  "phrases": [
+    {
+      "phrase": "journey w kierunku synergii między teamami",
+      "reality": "Nie wiadomo co to znaczy w praktyce. 'Synergia' to słowo które pojawia się gdy brakuje konkretów. Prawdziwe pytanie które powinieneś zadać: 'Co konkretnie zmieni się w moim codziennym workflow?' Jeśli nikt nie umie odpowiedzieć — to był teatr zarządzania."
+    },
+    {
+      "phrase": "alignment na roadmapę",
+      "reality": "W teorii: wszyscy będą wiedzieć co firma planuje. W praktyce: dostaniesz 40-slajdową prezentację z Q3 highlights i Q4 plans na poziomie ogólności który nie mówi nic. Prawdziwy alignment wymaga mniejszych grup i dwustronnego dialogu — nie 3-godzinnego slajdshofu dla 150 osób."
+    },
+    {
+      "phrase": "deep-dive w data-driven culture",
+      "reality": "Nowe buzzword. W 80% przypadków znaczy: 'teraz będziemy mieć więcej dashboardów'. W 20% znaczy prawdziwą zmianę sposobu podejmowania decyzji — ale żeby to wiedzieć, trzeba zapytać: 'Jakie konkretne decyzje były złe bez danych i jak to zmieniono?'"
+    },
+    {
+      "phrase": "transformation towards",
+      "reality": "Firm jest 'w transformacji' od zawsze. Transformation bez end-state i KPIs to ruch bez kierunku. Rzeczywista transformacja ma metryki sukcesu, datę ukończenia i właściciela. To słowo często maskuje brak planu."
+    },
+    {
+      "phrase": "Obecność obowiązkowa dla wszystkich",
+      "reality": "3 godziny × 150 osób = 450 roboczogodzin. To ~56 osobodni pracy. Zadaj sobie pytanie: czy 450 godzin jest warte tego co można przekazać przez nagranie wideo lub dobrze napisany dokument? Obowiązkowe 3h meetingi to symptom kultury która ceni pozory zaangażowania nad rzeczywistą produktywność."
+    }
+  ],
+  "fuzzi_translation": "CEO potrzebuje potwierdzenia że wszyscy słuchają. Dostaniesz 3 godziny ogólnych slajdów i motywacyjnych zdań. Prawdziwe informacje które mogłeś dostać w 15-minutowym emailu zostaną rozłożone na 150 slajdów. Jedyna rzecz która wyjdzie z tego meetingu to poczucie że 'jesteśmy aligned' — bez żadnego konkretnego działania."
+}

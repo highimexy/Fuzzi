@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA z 2-letnim doświadczeniem. Do teamu dołącza Kasia — junior QA, pierwsza praca w IT, poprzednio pracowała jako nauczycielka. Manager prosi Cię żebyś ją wprowadził w testowanie.\n\nPierwszy tydzień. Kasia dostaje zadanie: przetestuj funkcję 'dodawanie produktu do koszyka' i napisz raport. Po 4 godzinach przynosi Ci jeden ticket: 'Koszyk nie działa na mobile'.\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Mówisz Kasi żeby przepisała ticket — dajesz jej wzór dobrego raportu buga i prosisz żeby go wypełniła.",
+      "user_percentage": 28,
+      "consequences": "Niezły start — wzór jest potrzebny. Ale samo danie wzoru bez wyjaśnienia dlaczego tak raportujemy to nauka przez imitację, nie rozumienie. Kasia wypełni szablon mechanicznie. Przy kolejnym bugu, w innym kontekście, znowu napisze 'nie działa'. Lepiej zacząć od rozmowy o tym co widziała i co sprawdziła."
+    },
+    {
+      "id": "b",
+      "text": "Siadasz obok Kasi i pytasz: 'Powiedz mi co dokładnie sprawdziłaś i co zaobserwowałaś.' Słuchasz. Potem pytasz: 'Na jakim urządzeniu i przeglądarce? Jakie kroki wykonałaś?' Razem dochodzicie do dobrego raportu — Kasia go pisze, Ty zadajesz pytania.",
+      "user_percentage": 55,
+      "consequences": "Najlepsza odpowiedź. Uczysz procesu myślenia, nie tylko formy raportu. Kasia sama dochodzi do tego co potrzebne — z Twoją pomocą przez pytania. Zapamięta metodę lepiej niż szablon. Dodatkowo: 'na jakim mobile?' to pytanie które może ujawnić że Kasia nie wiedziała że trzeba testować na konkretnych urządzeniach — to kolejna lekcja do omówienia."
+    },
+    {
+      "id": "c",
+      "text": "Sam piszesz lepszy raport jako przykład i mówisz: 'Tak powinno wyglądać — następnym razem zrób tak samo.'",
+      "user_percentage": 12,
+      "consequences": "To działa jako demonstracja ale Kasia dostaje gotowy produkt bez zrozumienia procesu. Może nie wiedzieć dlaczego tak, nie tylko co. Robi za nią zamiast uczyć. Przy innym bugu będzie znowu potrzebować wzoru zamiast umieć samodzielnie."
+    },
+    {
+      "id": "d",
+      "text": "Zgłaszasz managerowi że Kasia nie nadaje się na QA — jeden ticket po 4 godzinach to za mało.",
+      "user_percentage": 5,
+      "consequences": "Zbyt pochopna ocena. Kasia jest w pierwszym tygodniu pierwszej pracy w IT. 'Jeden ticket po 4 godzinach' to sygnał że nie wie jeszcze co testować — nie że nie ma potencjału. Zadaniem mentora jest właśnie nauczyć jej jak eksplorować i co sprawdzać. Manager poprosił Cię o wprowadzenie — to jeszcze nie był czas na ocenę."
+    }
+  ]
+}

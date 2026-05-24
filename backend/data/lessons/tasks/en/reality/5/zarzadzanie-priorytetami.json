@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "bug-1",
+      "title": "Crash aplikacji mobilnej przy 3. próbie logowania",
+      "description": "Po 3 błędnych próbach logowania app crashuje zamiast pokazać komunikat o blokadzie konta. Dotyczy iOS i Android. Blocker dla użytkowników którzy zapomnieli hasła.",
+      "reporter": "QA / zgłoszone przez 3 użytkowników produkcyjnych"
+    },
+    {
+      "id": "bug-2",
+      "title": "Literówka w emailu powitalnym: 'Witaj w Platfomie' zamiast 'Platformie'",
+      "description": "Email powitalny wysyłany po rejestracji ma literówkę w tytule. Żaden flow nie jest blokowany.",
+      "reporter": "Marketing"
+    },
+    {
+      "id": "bug-3",
+      "title": "Strona wyników wyszukiwania ładuje się 8–12 sekund (docelowo 3s)",
+      "description": "Performance degradacja. Zidentyfikowana przyczyna: brakujący index w bazie danych. Dev oszacował naprawę na 4h. Nie blokuje użycia, ale UX bardzo zły.",
+      "reporter": "QA (performance testing)"
+    },
+    {
+      "id": "bug-4",
+      "title": "Formularz checkout przyjmuje numer telefonu bez walidacji formatu",
+      "description": "Pole 'telefon' akceptuje dowolny tekst — w tym litery, emoji, puste pole. Zamówienia z błędnym numerem powodują nieudane dostawy kurierskie.",
+      "reporter": "Customer Support (3 skargi w tym tygodniu)"
+    },
+    {
+      "id": "bug-5",
+      "title": "Zdjęcia w sekcji 'O nas' są nieaktualne (2019 rok)",
+      "description": "Strona /about zawiera zdjęcia starego biura i pracowników którzy już nie pracują w firmie.",
+      "reporter": "CEO po wizycie klienta"
+    },
+    {
+      "id": "bug-6",
+      "title": "Eksport raportu do PDF kończy się błędem 500 dla raportów powyżej 500 wierszy",
+      "description": "Funkcja używana przez ~2% użytkowników (głównie finanse). Małe raporty działają. Workaround: eksport do CSV. Dev: naprawa ~6h.",
+      "reporter": "Dział Finansowy"
+    }
+  ],
+  "senior_decisions": [
+    {
+      "bug_id": "bug-1",
+      "priority": "this_sprint",
+      "reason": "Crash na ścieżce logowania to blocker dla użytkowników którzy zapomnieli hasła. Dotyka produkcji, zgłoszony przez realnych użytkowników. Naprawa must-have przed następnym releasem."
+    },
+    {
+      "bug_id": "bug-2",
+      "priority": "backlog",
+      "reason": "Literówka nie wpływa na żaden flow. Ważna, ale nie pilna — może poczekać na sprint kiedy marketing ma czas. Nie blokuje nic."
+    },
+    {
+      "bug_id": "bug-3",
+      "priority": "next_sprint",
+      "reason": "Performance issue jest poważny dla UX, ale nie blokuje kompletnie. Znana przyczyna i estymata. Zaplanować na następny sprint — nie urgentne ale ważne."
+    },
+    {
+      "bug_id": "bug-4",
+      "priority": "this_sprint",
+      "reason": "Brak walidacji formatu telefonu generuje realne straty biznesowe (nieudane dostawy = zwroty, niezadowoleni klienci, koszty kurierskie). Customer Support już widzi efekty. Naprawa pilna."
+    },
+    {
+      "bug_id": "bug-5",
+      "priority": "wont_fix",
+      "reason": "To nie bug QA — to zadanie contentowe dla marketingu. Przekieruj ticket do właściwego działu. QA nie powinno trzymać contentowych tasków w backlogu."
+    },
+    {
+      "bug_id": "bug-6",
+      "priority": "next_sprint",
+      "reason": "Ograniczony zakres użytkowników (2%), istnieje workaround (CSV), estymata 6h. Realne, ale nie blokuje core business. Następny sprint jest odpowiedni."
+    }
+  ],
+  "senior_comment": "Dobre triage to nie 'naprawmy wszystko' — to 'naprawmy teraz to co boli biznes'. Crash na logowaniu i brakująca walidacja to realne straty (użytkownicy zablokowanych, nieudane dostawy). Performance i PDF mogą poczekać sprint. Literówka to content, nie bug. Nauka: zawsze pytaj 'jaki jest biznesowy impact?' — to jest prawdziwy priorytet, nie techniczna trudność naprawy."
+}

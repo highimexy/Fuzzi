@@ -1,0 +1,37 @@
+{
+  "type": "cv_audit",
+  "cv_fragment": "## Mateusz K. — QA Engineer\n\n**Doświadczenie:**\n- Ukończyłem kurs testowania oprogramowania na Udemy (40h)\n- Certyfikat ISTQB Foundation Level (w trakcie)\n- Ćwiczyłem testowanie na własnych projektach\n\n**Umiejętności:**\n- Jira, Confluence\n- Testowanie manualne\n- Znajomość metodyk Agile/Scrum\n- Chęć do nauki automatyzacji\n\n**Projekty:**\n- Testowałem aplikację moich znajomych (sklep internetowy)\n- Uczę się Selenium\n\n**Edukacja:**\n- Technikum informatyczne, 2022\n\n**O mnie:**\n Jestem zmotywowany do pracy w QA. Szybko się uczę i chętnie podejmuję nowe wyzwania. Dyspozycyjny od zaraz.",
+  "items": [
+    {
+      "text": "Ukończyłem kurs testowania oprogramowania na Udemy (40h)",
+      "is_problem": true,
+      "reason": "Sam ukończony kurs bez artefaktów (bugów, case'ów, projektów) nie pokazuje umiejętności. Rekruter widzi to codziennie. Zamień na: 'Na podstawie kursu zbudowałem portfolio 15 raportów bugów i kolekcję Postman dla API e-commerce — github.com/mateusz/qa-portfolio'."
+    },
+    {
+      "text": "Certyfikat ISTQB Foundation Level (w trakcie)",
+      "is_problem": false,
+      "reason": "ISTQB samo w sobie ma małą wartość w praktycznych rekrutacjach, ale 'w trakcie' jest lepsze niż brak. Nie jest problemem, ale nie jest też atutem. Nie usuwaj, ale nie licz na to jako wyróżnik."
+    },
+    {
+      "text": "Ćwiczyłem testowanie na własnych projektach",
+      "is_problem": true,
+      "reason": "Kompletnie niesprawdzalna deklaracja. Każdy pisze 'ćwiczyłem'. Bez linku do GitHub, bez nazw aplikacji, bez żadnych artefaktów — to zdanie jest niewidoczne dla rekrutera. Zamień na coś konkretnego lub usuń."
+    },
+    {
+      "text": "Chęć do nauki automatyzacji",
+      "is_problem": true,
+      "reason": "'Chęć do nauki' to czerwona flaga w CV seniora, żółta w CV juniora. Zamiast 'chęci' — pokaż że ZACZĄŁEŚ: 'Napisałem 3 testy Playwright dla The-Internet (Heroku) — github.com/...' Nawet 3 testy to dowód działania."
+    },
+    {
+      "text": "Testowałem aplikację moich znajomych (sklep internetowy)",
+      "is_problem": true,
+      "reason": "Dobry punkt wyjścia, ale bez dowodów to nic. Dokąd poszły wyniki testowania? Dodaj: nazwę aplikacji, link jeśli jest publiczny, liczbę znalezionych bugów, typy testów. Albo link do bug reportów w GitHub."
+    },
+    {
+      "text": "Jestem zmotywowany do pracy w QA. Szybko się uczę i chętnie podejmuję nowe wyzwania.",
+      "is_problem": true,
+      "reason": "Każde CV ma to zdanie. Dosłownie każde. Rekruter omija ten paragraf automatycznie. Zamień na konkretny fakt: 'W ciągu ostatnich 3 miesięcy przetestowałem 4 aplikacje open-source i zgłosiłem 12 bugów, z których 5 zostało zaakceptowanych.'"
+    }
+  ],
+  "fuzzi_audit": "To CV wygląda jak szablon wypełniony intencjami, nie dokonaniami. Rekruter szuka dowodów — nie deklaracji. Każde zdanie które można zweryfikować klikając link jest 10x cenniejsze niż zdanie które można tylko przeczytać. Konkretna rada: przed wysłaniem CV, przejdź przez każdy bullet point i zapytaj 'czy mogę to udowodnić linkiem lub plikiem?' Jeśli nie — przepisz lub usuń."
+}

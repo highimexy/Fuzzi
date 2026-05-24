@@ -1,0 +1,37 @@
+{
+  "type": "cv_audit",
+  "cv_fragment": "Fragment profilu LinkedIn — QA Engineer:\n\nNagłówek: Quality Assurance Engineer at TechCorp\n\nO mnie: Jestem QA Engineer z 3-letnim doświadczeniem. Pracuję w TechCorp. Lubię testować aplikacje i znajdować bugi.\n\nDoświadczenie:\nTechCorp (2021 - obecnie)\n- Testowanie aplikacji webowych\n- Zgłaszanie bugów w Jira\n- Uczestnictwo w spotkaniach\n- Pisanie przypadków testowych\n- Testowanie manualne i automatyczne\n\nUmiejętności: Testing, QA, Jira, Selenium, Python\n\nWykształcenie: Informatyka, AGH, 2021",
+  "items": [
+    {
+      "text": "Nagłówek 'Quality Assurance Engineer at TechCorp'",
+      "is_problem": true,
+      "reason": "Nagłówek mówi tylko gdzie pracujesz, nie w czym jesteś dobry. Znika przy wyszukiwaniu po umiejętnościach. Powinien zawierać specjalizację i kluczowe technologie."
+    },
+    {
+      "text": "'Lubię testować aplikacje i znajdować bugi' w About",
+      "is_problem": true,
+      "reason": "Zbyt ogólne. To mówi każdy QA. Brak specjalizacji, osiągnięć, kontekstu. Sekcja About powinna pokazać co Cię wyróżnia i jaką wartość wnosisz."
+    },
+    {
+      "text": "Lista obowiązków zamiast osiągnięć ('Testowanie aplikacji webowych', 'Zgłaszanie bugów')",
+      "is_problem": true,
+      "reason": "Obowiązki mówią co robisz — osiągnięcia mówią jaką wartość stworzyłeś. 'Znalazłem krytycznego buga przed release który dotknął 10k users' jest 100× mocniejsze niż 'zgłaszanie bugów w Jira'."
+    },
+    {
+      "text": "'Uczestnictwo w spotkaniach' jako punkt doświadczenia",
+      "is_problem": true,
+      "reason": "Uczestnictwo w spotkaniach to nie osiągnięcie — to oczekiwane minimum. Usuń. Każda linia w CV powinna dawać wartość."
+    },
+    {
+      "text": "Umiejętności: Testing, QA, Jira, Selenium, Python",
+      "is_problem": true,
+      "reason": "Zbyt ogólne i niespójne. 'Testing' i 'QA' to nie umiejętności techniczne — to opis roli. Konkretyzuj: 'Playwright', 'REST API testing', 'Postman', 'pytest', 'SQL'. Brak kontekstu czy Selenium i Python są używane razem (Selenium WebDriver z Pythonem?) czy osobno."
+    },
+    {
+      "text": "3-letnie doświadczenie jest wspomniane w sekcji About",
+      "is_problem": false,
+      "reason": "Dobrze że jest — daje kontekst seniorности. Można to rozwinąć: '3 lata w testowaniu aplikacji e-commerce i fintech'."
+    }
+  ],
+  "fuzzi_audit": "Ten profil jest niewidoczny. Recruiter szukający 'Playwright QA' nie znajdzie Cię przez wyszukiwarkę LinkedIn. Profil opisuje obowiązki, nie wartość. Trzy zmiany z największym ROI: (1) przepisz nagłówek — dodaj technologie i specjalizację, (2) zamień listę obowiązków na 2-3 konkretne osiągnięcia z liczbami, (3) dodaj do sekcji About co konkretnie testujesz i w czym jesteś dobry. Całość zajmie 2 godziny i może zmienić widoczność profilu radykalnie."
+}

@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś 3 tygodnie w nowej pracy jako QA. Firma ma 30 osób, produkt SaaS B2B. Okres próbny trwa 3 miesiące. Twój manager dał Ci sporą swobodę — 'wdrażaj się i pytaj jak potrzebujesz'. Masz kilka decyzji do podjęcia w tym tygodniu.",
+  "decisions": [
+    {
+      "id": "p1",
+      "decision": "Zaproponować na retrospekcji całkowitą przebudowę procesu testowania — masz pomysł jak to zrobić lepiej.",
+      "correct_risk": "risky",
+      "explanation": "Za wcześnie na radykalne propozycje. Po 3 tygodniach nie znasz jeszcze kontekstu dlaczego proces wygląda jak wygląda — może były próby zmian i się nie udały. Propozycja 'całkowitej przebudowy' będzie odebrana jako arogancja. Zaproponuj jedno małe usprawnienie, obserwuj jak jest przyjęte, buduj zaufanie stopniowo."
+    },
+    {
+      "id": "p2",
+      "decision": "Zapytać managera o check-in po pierwszym miesiącu — chcesz wiedzieć jak Cię oceniają.",
+      "correct_risk": "safe",
+      "explanation": "Doskonała inicjatywa. Manager doceni proaktywność. Check-in po miesiącu daje Ci informację zwrotną zanim będzie za późno na korektę kursu. Pytaj wprost: 'Co robię dobrze? Nad czym powinienem popracować?' — konkretne pytania dają konkretne odpowiedzi."
+    },
+    {
+      "id": "p3",
+      "decision": "Nie zgłaszać buga który znalazłeś w starszym module — nie jest w Twoim zakresie i nie chcesz 'wchodzić za bardzo'.",
+      "correct_risk": "risky",
+      "explanation": "Bug zawsze zgłaszaj, niezależnie od zakresu. QA który nie zgłasza bo 'nie jego obszar' to problem. Możesz to zrobić taktownie: 'Przy okazji testowania X natknąłem się na to w module Y — czy warto zgłosić?' Manager i team docenią że widzisz szerzej niż swój task."
+    },
+    {
+      "id": "p4",
+      "decision": "Codziennie o 17:00 pisać na Slacku krótki update co zrobiłeś i co planujesz jutro.",
+      "correct_risk": "safe",
+      "explanation": "Świetny nawyk na okres próbny. Manager widzi Twój postęp bez konieczności pytania. Eliminuje niepokój 'co on/ona właściwie robi'. Po kilku tygodniach gdy manager zaufał — możesz pisać rzadziej. Na początku widoczność jest cenna."
+    },
+    {
+      "id": "p5",
+      "decision": "Zgodzić się na każde dodatkowe zadanie które ktoś prosi bo chcesz pokazać że jesteś zaangażowany.",
+      "correct_risk": "risky",
+      "explanation": "Overcommitment jest pułapką. Lepiej zrobić 2-3 rzeczy dobrze niż 8 słabo. Na początku gdy jeszcze nie znasz tempa swojej pracy — chroń swój czas na priorytetowe zadania. Możesz powiedzieć: 'Chętnie, daj mi sprawdzić co mam na liście — wrócę do Ciebie do jutra z odpowiedzią.'"
+    },
+    {
+      "id": "p6",
+      "decision": "Poprosić senior QA o code review Twoich pierwszych raportów bugów i przypadków testowych.",
+      "correct_risk": "safe",
+      "explanation": "Proaktywne szukanie feedbacku na początku to jeden z najlepszych sygnałów dla firmy. Pokazujesz że chcesz robić to dobrze, a nie zakładasz że wszystko OK. Senior QA zyska na tym że Twoje standardy będą zgodne z firmowymi, Ty zyskujesz szybsze wdrożenie."
+    }
+  ],
+  "senior_comment": "Okres próbny to czas słuchania i obserwowania, nie rewolucji. Jeden dobry mały pomysł wdrożony skutecznie jest wart więcej niż 10 propozycji bez wykonania. Buduj zaufanie przez konsekwencję: mów co robisz, rób co mówisz."
+}

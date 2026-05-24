@@ -1,0 +1,12 @@
+{
+  "type": "doc_inspector",
+  "variant": "gap_finder",
+  "task_instruction": "Przeczytaj poniższy test plan napisany przez QA juniora dla nowej funkcji 'Powiadomienia Push'. Znajdź luki które spowodują że testy będą niemożliwe do wykonania przez inną osobę lub że ważne obszary ryzyka zostaną nieprzetestowane.",
+  "documents": [
+    {
+      "title": "Test Plan: Powiadomienia Push v1.0",
+      "content": "## Cel\nPrzetestować nową funkcję powiadomień push w aplikacji mobilnej.\n\n## Zakres\nTestowanie powiadomień push dla iOS i Android.\n\n## Środowisko\nAplikacja mobilna na telefonie testowym.\n\n## Przypadki testowe\n1. Sprawdzić czy powiadomienie przychodzi\n2. Sprawdzić kliknięcie w powiadomienie\n3. Sprawdzić ustawienia powiadomień\n\n## Harmonogram\nTesty do końca tygodnia.\n\n## Zatwierdzenie\nQA: Marek K."
+    }
+  ],
+  "example_answer": "Luki w test planie:\n\n**1. Środowisko nieopisane:**\n'Telefon testowy' to za mało. Brakuje: wersja iOS/Android, model urządzenia, wersja aplikacji, URL backendu (staging? produkcja?), jak zalogować się na konto testowe, czy potrzeba specjalnych uprawnień.\n\n**2. Przypadki testowe bez kroków i oczekiwanych wyników:**\n'Sprawdzić czy powiadomienie przychodzi' to nie przypadek testowy. Brakuje: jakie zdarzenie wyzwala powiadomienie? Jak długo czekamy? Co powiadomienie powinno zawierać (tytuł, body, deeplink)?\n\n**3. Brak przypadków negatywnych i edge case'ów:**\nNie ma testów dla: wyłączone powiadomienia w systemie, powiadomienia przy zamkniętej aplikacji vs w tle vs na pierwszym planie, brak internetu, wygaśnięcie tokenu powiadomień push (FCM/APNs token), wiele powiadomień jednocześnie.\n\n**4. Brak podziału iOS vs Android:**\nPowiadomienia push działają inaczej na iOS (APNs) i Android (FCM). Instrukcje konfiguracji różnią się, zachowanie może być inne. Test plan traktuje je identycznie.\n\n**5. Brak kryteriów wyjścia:**\nKiedy testowanie jest zakończone? Po wszystkich 3 przypadkach? Po przetestowaniu X% scenariuszy? Co jest akceptowalnym poziomem bugów do release?\n\n**6. Brak integracji z backendem:**\nCo wysyła powiadomienie po stronie serwera? Jak QA może wyzwolić powiadomienie testowe bez czekania na prawdziwe zdarzenie? Brakuje instrukcji jak testować backend trigger.\n\n**7. 'Do końca tygodnia' bez daty:**\nJeśli test plan jest pisany w czwartek — 'do końca tygodnia' to jutro. Jeśli w poniedziałek — to 4 dni. Zawsze używaj konkretnych dat."
+}

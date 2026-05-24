@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Masz 2 lata jako QA i jesteś na rozdrożu kariery. Dostałeś dwie oferty pracy w tym samym tygodniu.\n\nOferta A — FinTech (bank):\n• Rola: QA Automation Engineer\n• Stack: Python + Selenium + REST API testing\n• Zarobki: 12 000 PLN brutto (B2B: ~130 PLN/h)\n• Środowisko: korporacja, 200+ os., stabilny produkt\n• Minusy: większość testów to regresja, mało nowych wyzwań, duża biurokracja\n\nOferta B — SaaS Startup (CRM):\n• Rola: QA Engineer (manualne + automatyzacja od podstaw)\n• Stack: cokolwiek wybierzesz (Playwright rekomendowany)\n• Zarobki: 10 000 PLN brutto\n• Środowisko: 25 osób, seria A, szybkie tempo\n• Minusy: brak procesów, brak mentora QA, duże ryzyko \"zrób wszystko sam\"",
+  "options": [
+    {
+      "id": "a",
+      "text": "Wybierz ofertę A — wyższe wynagrodzenie i stabilność są ważniejsze na tym etapie kariery.",
+      "user_percentage": 31,
+      "consequences": "Rozsądna decyzja jeśli cenisz stabilność i masz zobowiązania finansowe. Ryzyko: za 2 lata możesz być ekspertem od legacy Selenium, co ogranicza opcje na rynku. Korporacje płacą stabilnie, ale tempo nauki bywa niższe. Dobre jeśli chcesz solidnego fundamentu bez chaosu."
+    },
+    {
+      "id": "b",
+      "text": "Wybierz ofertę B — budowanie automatyzacji od zera to cenne doświadczenie, a Playwright to przyszłość.",
+      "user_percentage": 29,
+      "consequences": "Dobra decyzja jeśli jesteś gotowy na intensywną naukę bez mentora. Ryzyko: startup może zmienić kierunek, a brak procesów QA może oznaczać że będziesz sam walczył o jakość bez wsparcia organizacji. Benefit: za rok masz na CV 'zbudowałem framework automatyzacji od podstaw' — bezcenne."
+    },
+    {
+      "id": "c",
+      "text": "Negocjuj obydwie oferty jednocześnie, porównaj ostateczne warunki (wynagrodzenie, equity, zakres, team) i wtedy decyduj.",
+      "user_percentage": 33,
+      "consequences": "Najbardziej racjonalne podejście. Możesz podwyższyć ofertę B bliżej A (startupy mają margines) lub wynegocjować lepszy scope w A. Decyzja na podstawie finalnych warunków to właściwa kolejność. Bonus: ćwiczysz negocjacje — umiejętność kluczową przez całą karierę."
+    },
+    {
+      "id": "d",
+      "text": "Odrzuć obydwie i szukaj dalej — żadna nie jest idealna.",
+      "user_percentage": 7,
+      "consequences": "Bardzo ryzykowne jeśli nie masz aktywnego zatrudnienia. 'Idealna oferta' rzadko istnieje — każda wymaga kompromisu. Szukanie kolejne 3–4 miesiące bez zatrudnienia to strata czasu i pieniędzy. Wyjątek: masz jasną wizję i finansową poduszkę na 6+ miesięcy."
+    }
+  ]
+}
