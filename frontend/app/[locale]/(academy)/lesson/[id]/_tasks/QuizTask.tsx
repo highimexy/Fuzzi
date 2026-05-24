@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
 import gsap from 'gsap'
+import { FiArrowRight } from 'react-icons/fi'
 
 type ConfidenceLevel = 'sure' | 'unsure' | null
 
@@ -16,15 +18,18 @@ interface QuizPayload {
 interface TaskProps {
   lessonId: string
   payload: QuizPayload
+  nextHref?: string
+  isLast?: boolean
 }
 
-export default function QuizTask({ lessonId, payload }: TaskProps) {
+export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
   const [selected, setSelected] = useState<string | null>(null)
   const [confidence, setConfidence] = useState<ConfidenceLevel>(null)
   const [submitted, setSubmitted] = useState(false)
 
   const confidenceRef = useRef<HTMLDivElement>(null)
   const feedbackRef = useRef<HTMLDivElement>(null)
+  const ctaRef = useRef<HTMLAnchorElement>(null)
 
   const isCorrect = selected === payload.correct
 
@@ -77,6 +82,13 @@ export default function QuizTask({ lessonId, payload }: TaskProps) {
         feedbackRef.current,
         { opacity: 0, y: 15 },
         { opacity: 1, y: 0, duration: 0.4, ease: 'back.out(1.2)' }
+      )
+    }
+    if (submitted && ctaRef.current) {
+      gsap.fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, delay: 0.35, ease: 'power3.out' }
       )
     }
   }, [submitted])
@@ -179,6 +191,18 @@ export default function QuizTask({ lessonId, payload }: TaskProps) {
             </p>
           )}
         </div>
+      )}
+
+      {/* CTA po ukończeniu */}
+      {submitted && nextHref && (
+        <Link
+          ref={ctaRef}
+          href={nextHref}
+          className="group bg-foreground text-background mt-6 flex items-center justify-between px-8 py-5 font-sans text-sm font-bold tracking-[0.2em] uppercase opacity-0 transition-all duration-200 hover:opacity-90"
+        >
+          <span>{isLast ? 'Wróć do rozdziału' : 'Następna lekcja'}</span>
+          <FiArrowRight className="text-lg transition-transform duration-200 group-hover:translate-x-1" />
+        </Link>
       )}
     </div>
   )

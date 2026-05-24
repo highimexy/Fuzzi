@@ -20,6 +20,9 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: 'Fuzzi. | QA Heaven',
   description: 'Twoje źródło inspiracji UI ze opruszone szczyptą 3D',
+  icons: {
+    icon: '/favicon.ico?v=2',
+  },
 }
 
 export default async function RootLayout({
