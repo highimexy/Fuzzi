@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/models"
@@ -60,6 +61,16 @@ func readPayload(path string) datatypes.JSON {
 		return datatypes.JSON([]byte("{}"))
 	}
 	return datatypes.JSON(content)
+}
+
+func extractTitle(content, fallback string) string {
+	for _, line := range strings.SplitN(content, "\n", 20) {
+		trimmed := strings.TrimSpace(line)
+		if strings.HasPrefix(trimmed, "# ") {
+			return strings.TrimPrefix(trimmed, "# ")
+		}
+	}
+	return fallback
 }
 
 func detectLessonType(payload datatypes.JSON) string {
@@ -158,15 +169,17 @@ func seedTrack(track string, enItems, plItems map[string]LessonItem) {
 			payloadEN := readPayload(filepath.Join("data/lessons/tasks/en", track, strconv.Itoa(g.Order), baseName+".json"))
 			payloadPL := readPayload(filepath.Join("data/lessons/tasks/pl", track, strconv.Itoa(g.Order), baseName+".json"))
 
+			titleEN := extractTitle(contentEN, baseName)
+			titlePL := extractTitle(contentPL, titleEN)
 			lesson := models.Lesson{
 				LessonGroupID: group.ID,
 				Order:         subIdx,
 				Track:         track,
 				Difficulty:    g.Difficulty,
-				Status:        "coming_soon",
+				Status:        "published",
 				LessonType:    detectLessonType(payloadEN),
-				TitleEN:       baseName,
-				TitlePL:       baseName,
+				TitleEN:       titleEN,
+				TitlePL:       titlePL,
 				ContentEN:     contentEN,
 				ContentPL:     contentPL,
 				PayloadEN:     payloadEN,
