@@ -1,0 +1,18 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>body{font-family:Arial,sans-serif;margin:0;padding:24px;background:#f8f8f8}h1{font-size:20px;margin-bottom:4px}.price{font-size:28px;font-weight:bold;color:#222;margin:12px 0}.btn-cart{background:#ffffff;color:#ffffff;border:2px solid #cccccc;padding:12px 28px;font-size:15px;cursor:pointer;border-radius:4px}.btn-cart:hover{background:#f0f0f0}.badge{background:#e8f5e9;color:#2e7d32;padding:2px 8px;font-size:12px;border-radius:2px;margin-left:8px}.product-card{background:#fff;padding:24px;border-radius:8px;max-width:340px;box-shadow:0 1px 4px rgba(0,0,0,.08)}</style></head><body><div class='product-card'><h1>Słuchawki BT Pro X3 <span class='badge'>Nowość</span></h1><p style='color:#777;font-size:13px;margin:4px 0'>Model: BT-PRO-X3 | Dostępność: 12 szt.</p><div class='price'>349,00 zł</div><p style='font-size:13px;color:#555;margin-bottom:16px'>Bezprzewodowe, ANC, 30h baterii. Darmowa dostawa powyżej 200 zł.</p><button class='btn-cart'>Dodaj do koszyka</button></div></body></html>",
+  "spec": "Strona produktu — wymagania:\n\n1. Przycisk 'Dodaj do koszyka' musi być wyraźnie widoczny:\n   - Tło: #2196F3 (niebieski)\n   - Tekst: #FFFFFF (biały)\n   - Padding: 12px 28px\n\n2. Odznaka 'Nowość' powinna być widoczna obok nazwy produktu.\n\n3. Cena produktu wyświetlona czarnym pogrubionym tekstem, rozmiar 28px.\n\n4. Informacja o dostępności sztuk widoczna pod nazwą.\n\n5. Kontrast kolorów przycisków musi spełniać WCAG AA (min. 4.5:1).",
+  "correct_severity": "major",
+  "severity_reason": "Przycisk 'Dodaj do koszyka' ma biały tekst na białym tle — jest całkowicie niewidoczny. To nie jest drobny defekt wizualny — uniemożliwia użytkownikowi dokonanie zakupu (core user journey). Severity: Major (nie Critical, bo strona się nie crashuje i produkt jest widoczny).",
+  "red_herrings": [
+    "Odznaka 'Nowość' jest zielona, a nie niebieska jak inne akcenty — ale spec nie określa koloru odznaki.",
+    "Opis produktu ma tylko 2 zdania, a inne produkty mają 4 — ale spec nie określa minimalnej długości opisu.",
+    "Informacja o dostawie jest w opisie produktu, nie w osobnej sekcji — ale spec tego nie wymaga."
+  ],
+  "model_report": {
+    "title": "Przycisk 'Dodaj do koszyka' — niewidoczny (biały tekst na białym tle)",
+    "steps": "1. Otwórz stronę produktu BT Pro X3\n2. Zlokalizuj przycisk 'Dodaj do koszyka' pod opisem produktu\n3. Zaobserwuj wygląd przycisku",
+    "expected": "Przycisk ma tło #2196F3 (niebieski) i biały tekst — wyraźnie widoczny, zgodny ze specyfikacją.",
+    "actual": "Przycisk ma białe tło i biały tekst — jest całkowicie niewidoczny. Jedyną wskazówką jego istnienia jest border #cccccc."
+  }
+}

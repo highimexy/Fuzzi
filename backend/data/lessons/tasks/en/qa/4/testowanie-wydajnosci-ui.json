@@ -1,0 +1,68 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Strona główna sklepu ładuje się w < 2.5 sekundy (LCP) na Fast 3G, Lighthouse Performance Score > 80, brak layout shift (CLS < 0.1).",
+  "logs": [
+    {
+      "timestamp": "0ms",
+      "level": "INFO",
+      "message": "Navigation started: GET https://sklep.pl/"
+    },
+    {
+      "timestamp": "180ms",
+      "level": "INFO",
+      "message": "HTML received (12KB)"
+    },
+    {
+      "timestamp": "210ms",
+      "level": "INFO",
+      "message": "CSS parsing started: main.css (340KB unminified)"
+    },
+    {
+      "timestamp": "890ms",
+      "level": "INFO",
+      "message": "JavaScript parsed: bundle.js (2.1MB, unminified)"
+    },
+    {
+      "timestamp": "920ms",
+      "level": "INFO",
+      "message": "Fonts loading: Google Fonts (4 font families, 8 requests)"
+    },
+    {
+      "timestamp": "1240ms",
+      "level": "WARN",
+      "message": "Image loaded without dimensions: hero-banner.jpg (1.8MB, no width/height attributes)"
+    },
+    {
+      "timestamp": "1850ms",
+      "level": "WARN",
+      "message": "Layout shift detected (CLS +0.18): hero-banner.jpg pushed content down after load"
+    },
+    {
+      "timestamp": "2200ms",
+      "level": "INFO",
+      "message": "Analytics scripts loaded: Google Analytics, Hotjar, Facebook Pixel, Intercom (4 scripts, ~600KB)"
+    },
+    {
+      "timestamp": "3100ms",
+      "level": "INFO",
+      "message": "Product images loading: 24 images visible in viewport, none with lazy loading"
+    },
+    {
+      "timestamp": "4800ms",
+      "level": "INFO",
+      "message": "LCP element: hero-banner.jpg — 4800ms"
+    },
+    {
+      "timestamp": "4800ms",
+      "level": "INFO",
+      "message": "Lighthouse Performance Score: 42/100"
+    }
+  ],
+  "hints": [
+    "Które zasoby są największe?",
+    "Dlaczego CLS jest wysoki?",
+    "Co powoduje opóźnienie LCP?",
+    "Które skrypty nie są krytyczne do pierwszego renderowania?"
+  ],
+  "correct_diagnosis": "Strona ma 4 poważne problemy wydajności:\n\n1. [CRITICAL] Hero image 1.8MB PNG bez wymiarów width/height — powoduje CLS 0.18 (cel: < 0.1) i jest głównym powodem LCP 4.8s. Naprawka: kompresja do WebP (~300KB), dodanie width/height attributes.\n\n2. [HIGH] JavaScript bundle 2.1MB niezminifikowany — blokuje rendering przez 680ms. Naprawka: minifikacja + code splitting.\n\n3. [HIGH] 4 analytics/tracking skrypty (~600KB) ładowane synchronicznie — opóźniają interaktywność. Naprawka: ładowanie async/defer, lub lazy loading po interakcji użytkownika.\n\n4. [MEDIUM] 24 obrazy produktów bez lazy loading — ładują się natychmiast mimo że są poza viewport. Naprawka: dodanie loading='lazy' do wszystkich produktowych obrazów.\n\nKolejność naprawek wg wpływu: hero image (LCP i CLS) → JS bundle → lazy loading obrazów → analytics async."
+}

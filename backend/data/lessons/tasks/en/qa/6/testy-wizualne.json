@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Wdrożyłeś visual regression testy dla aplikacji e-commerce. W pipeline widzisz że test 'Homepage matches snapshot' failuje po każdym deployu mimo że developer twierdzi że nic nie zmienił w wyglądzie strony. Co jest najbardziej prawdopodobną przyczyną?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Developer kłamie — na pewno coś zmienił w CSS.",
+      "is_correct": false,
+      "explanation": "False positive w visual testach to powszechne zjawisko i nie wymaga winy dewelopera. Zanim oskarżysz — sprawdź czy na stronie nie ma elementów dynamicznych."
+    },
+    {
+      "id": "b",
+      "text": "Na stronie głównej prawdopodobnie znajdują się elementy dynamiczne: baner reklamowy, aktualności, licznik promocji lub czas renderowania fontu — ich treść zmienia się między screenshotami.",
+      "is_correct": true,
+      "explanation": "Najczęstsza przyczyna false positives. Elementy takie jak: rotujące banery, nowości, lajki/komentarze, current datetime, featured products — zmieniają się między uruchomieniami. Rozwiązanie: zamaskuj dynamiczne obszary w konfiguracji testu (mask: [page.locator('[data-testid=\"banner\"]')]) lub testuj tylko statyczne elementy (header, footer, menu)."
+    },
+    {
+      "id": "c",
+      "text": "Playwright nie obsługuje visual testów — trzeba użyć Percy.",
+      "is_correct": false,
+      "explanation": "Playwright ma wbudowane wsparcie dla visual testów (toHaveScreenshot). Percy to inne rozwiązanie z dodatkowymi funkcjami (multi-browser, dashboard), ale Playwright sam w sobie jest w pełni zdolny do visual regression testing."
+    },
+    {
+      "id": "d",
+      "text": "Baseline screenshot jest nieaktualny — trzeba go usunąć i stworzyć od nowa.",
+      "is_correct": false,
+      "explanation": "Skasowanie baseline i odtworzenie go nie rozwiąże problemu jeśli strona ma dynamiczne elementy — nowy baseline też będzie się różnić przy następnym uruchomieniu. Trzeba najpierw naprawić test (maskowanie dynamicznych elementów), a potem zaktualizować baseline."
+    }
+  ]
+}

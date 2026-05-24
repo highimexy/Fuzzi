@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "Dokumentacja API (fragment):\n\nEndpoint: POST /api/auth/login\nRate limit: 10 prób na minutę per IP\nNagłówki rate limit:\n  X-RateLimit-Limit: 10\n  X-RateLimit-Remaining: [pozostałe próby]\n  X-RateLimit-Reset: [Unix timestamp]\n\n---\nWyniki testów QA:\n\nTest 1: Próba 1-10 → HTTP 200 OK\nTest 2: Próba 11 → HTTP 429 Too Many Requests ✓\nTest 3: Próba 11 response headers:\n  X-RateLimit-Limit: 10\n  X-RateLimit-Remaining: 0\n  (brak Retry-After)\n\nTest 4: Po 61 sekundach → HTTP 200 OK ✓\nTest 5: User A osiągnął limit, User B (inny token, ten sam IP) → HTTP 429\nTest 6: Błędne hasło 5 razy, poprawne hasło przy próbie 6 → HTTP 200 ✓\nTest 7: POST /api/auth/login z body {\\\"email\\\":{\\\"$gt\\\":\\\"\\\"}, \\\"password\\\":{\\\"$gt\\\":\\\"\\\"}} → HTTP 200 OK, response: {\\\"token\\\": \\\"eyJ...\\\"}\nTest 8: Frontend po HTTP 429 wyświetla: 'Błąd serwera. Odśwież stronę.'",
+  "spec": "Rate limiting musi być per-user (nie per-IP), musi zwracać Retry-After przy 429, frontend musi pokazywać czytelny komunikat z czasem oczekiwania, endpoint musi być odporny na NoSQL injection.",
+  "correct_severity": "critical",
+  "severity_reason": "Test 7 wykazał podatność na NoSQL injection w endpoincie logowania — atakujący może zalogować się na dowolne konto bez hasła. To jest podatność krytyczna. Dodatkowo rate limiting jest per-IP a nie per-user (Test 5).",
+  "red_herrings": [
+    "Brak Retry-After jest błędem ale nie krytycznym",
+    "Nieprawidłowy komunikat frontendu jest UX bug, nie security"
+  ],
+  "model_report": {
+    "title": "Raport bezpieczeństwa — endpoint /api/auth/login",
+    "steps": "1. Testy rate limiting (1-11 prób)\n2. Test per-user vs per-IP\n3. Test NoSQL injection\n4. Test komunikatu frontendu przy 429",
+    "expected": "Rate limiting per-user, Retry-After header przy 429, ochrona przed injection, czytelny komunikat 'Zbyt wiele prób — spróbuj za X sekund'",
+    "actual": "Znalezione problemy:\n\n[CRITICAL] NoSQL Injection — Test 7: payload {$gt:''} w polach email/password powoduje pomijanie weryfikacji hasła. Atakujący może zalogować się na dowolne konto. Natychmiastowa naprawa wymagana.\n\n[HIGH] Rate limiting per-IP zamiast per-user — Test 5: User B (inny token) z tego samego IP dostaje 429 gdy User A wyczerpał limit. Błędna implementacja — limit powinien być per-token/user.\n\n[MEDIUM] Brak nagłówka Retry-After przy HTTP 429 — Test 3: klienci nie wiedzą kiedy mogą spróbować ponownie. Wymagane przez RFC 6585.\n\n[LOW] Frontend pokazuje 'Błąd serwera' zamiast 'Zbyt wiele prób — spróbuj za X sekund' — zła UX, ale nie security issue."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Masz nową wersję aplikacji gotową do deployu na staging. Deployment właśnie się zakończył. Jaki typ testów uruchamiasz jako pierwszy i dlaczego?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Pełna regresja — chcę mieć pewność że nic nie jest zepsute.",
+      "is_correct": false,
+      "explanation": "Pełna regresja na samym początku to strata czasu jeśli deployment sam w sobie się nie powiódł. Jeśli aplikacja nie startuje lub login nie działa — 4 godziny regresji pójdą na marne. Zawsze najpierw smoke test."
+    },
+    {
+      "id": "b",
+      "text": "Smoke test — szybka weryfikacja że system w ogóle działa, zanim zacznę cokolwiek innego.",
+      "is_correct": true,
+      "explanation": "Poprawnie. Smoke test (5–15 min) potwierdza że deployment się powiódł i podstawowe funkcje działają. Dopiero gdy smoke test przejdzie, ma sens inwestowanie czasu w głębsze testowanie. To zasada 'fail fast' — wykryj fundamentalne problemy przed droższym testowaniem."
+    },
+    {
+      "id": "c",
+      "text": "Exploratory testing — nowa wersja, warto zobaczyć co się zmieniło.",
+      "is_correct": false,
+      "explanation": "ET jest wartościowy, ale nie jako pierwszy krok po deployu. Najpierw upewnij się że system działa (smoke), potem zbadaj zmiany (sanity na nowych features), a ET zrób gdy masz więcej czasu i kontekstu."
+    },
+    {
+      "id": "d",
+      "text": "Sanity test na nowych funkcjach — focus na tym co się zmieniło.",
+      "is_correct": false,
+      "explanation": "Sanity test jest właściwy po smoke teście — ale nie zamiast niego. Nowe funkcje mogą działać a stare być zepsute przez deployment. Smoke najpierw, sanity potem."
+    }
+  ]
+}

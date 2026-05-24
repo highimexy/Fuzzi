@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html><html lang='pl'><head><meta charset='UTF-8'><title>Koszyk</title><style>body{font-family:Arial;max-width:600px;margin:20px auto;padding:20px}.item{display:flex;justify-content:space-between;padding:10px;border-bottom:1px solid #eee}.total{font-size:20px;font-weight:bold;margin-top:20px;text-align:right}.btn{background:#28a745;color:white;padding:12px 24px;border:none;border-radius:4px;cursor:pointer;font-size:16px;margin-top:10px}.badge{background:#dc3545;color:white;border-radius:50%;padding:2px 6px;font-size:11px}</style></head><body><h1>Koszyk zakupowy</h1><div class='item'><span>Laptop Dell XPS 13 <span class='badge'>1</span></span><span>4,299.99 PLN</span></div><div class='item'><span>Mysz bezprzewodowa <span class='badge'>3</span></span><span>3x 89.00 PLN = 267.00 PLN</span></div><div class='item'><span>Kabel USB-C <span class='badge'>2</span></span><span>2x 29.00 PLN = 58.00 PLN</span></div><div class='total'>Suma: 4,624.99 PLN</div><p style='color:gray;font-size:12px'>Dostawa: Free shipping on orders over 500 PLN</p><p style='color:gray;font-size:12px'>Zamówienie złożono: 05/23/2026</p><p style='color:gray;font-size:12px'>Dostawa do: 05/27/2026 - 05/30/2026</p><button class='btn' onclick='checkout()'>Przejdź do kasy</button><p style='font-size:11px;color:#999'>Ceny zawierają VAT 23%. By placing your order you agree to our Terms of Service.</p></body></html>",
+  "spec": "## Specyfikacja: Koszyk zakupowy (rynek polski)\n\n### Wymagania lokalizacyjne:\n- Wszystkie teksty interfejsu muszą być po polsku (aplikacja jest przeznaczona na rynek PL)\n- Format daty: DD.MM.YYYY (polska konwencja, z kropkami)\n- Format liczb: spacja jako separator tysięcy, przecinek jako separator dziesiętny (4 299,99 PLN)\n- Separatory w cenach muszą być spójne z polskim formatem\n\n### Wymagania merytoryczne:\n- Suma koszyka musi być matematycznie poprawna\n- Tekst prawny (regulaminy) musi być po polsku",
+  "correct_severity": "major",
+  "severity_reason": "Kilka błędów lokalizacyjnych na stronie skierowanej do polskiego rynku: mieszane języki w jednym widoku obniżają zaufanie do sklepu. Błędna suma koszyka to potencjalny błąd finansowy.",
+  "red_herrings": [
+    "Przycisk 'Przejdź do kasy' jest po polsku — poprawnie",
+    "Ikona badge z ilością produktów wygląda prawidłowo"
+  ],
+  "model_report": {
+    "title": "[MAJOR] Koszyk: Mieszane języki PL/EN, błędny format dat, potencjalnie błędna suma",
+    "steps": "1. Otwórz stronę koszyka\n2. Sprawdź tekst informacji o dostawie — po angielsku\n3. Sprawdź tekst prawny (Terms of Service) — po angielsku\n4. Sprawdź format daty zamówienia: 05/23/2026 (format MM/DD/YYYY, USA)\n5. Sprawdź sumę koszyka: 4299.99 + 267.00 + 58.00 = 4624.99 PLN ← suma poprawna\n6. Sprawdź format liczb: '4,299.99' używa angielskiego formatu (przecinek = separator tysięcy, kropka = dziesiętne). Polski format: '4 299,99'",
+    "expected": "Wszystkie teksty po polsku. Daty w formacie DD.MM.YYYY. Liczby w formacie polskim: '4 299,99 PLN'.",
+    "actual": "Tekst dostawy po angielsku: 'Free shipping on orders over 500 PLN'. Tekst prawny po angielsku: 'By placing your order you agree to our Terms of Service.' Data w formacie US: '05/23/2026' (23 maja to 23/05, nie 05/23). Format liczb angielski: '4,299.99' zamiast '4 299,99'."
+  }
+}

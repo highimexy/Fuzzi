@@ -1,0 +1,19 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Aplikacja CRM. Zalogowany użytkownik z rolą 'editor' powinien: widzieć własny profil, edytować własne dane, przeglądać listę klientów. Nie powinien: otwierać panelu admina, edytować danych innych użytkowników, usuwać rekordów.",
+  "logs": [
+    { "level": "info", "message": "POST /api/auth/login 200 OK — user: jan.kowalski@firm.pl, role: editor", "source": "auth.js:14" },
+    { "level": "info", "message": "GET /api/user/me 200 OK — {id: 42, role: 'editor'}", "source": "user.js:8" },
+    { "level": "info", "message": "GET /api/customers 200 OK — returned 87 records", "source": "customers.js:22" },
+    { "level": "error", "message": "GET /api/admin/dashboard 403 Forbidden — {error: 'insufficient_role', required: 'admin'}", "source": "admin.js:5" },
+    { "level": "info", "message": "PATCH /api/user/42/profile 200 OK — updated email", "source": "user.js:45" },
+    { "level": "error", "message": "PATCH /api/user/99/profile 403 Forbidden — {error: 'cannot_edit_other_user'}", "source": "user.js:45" },
+    { "level": "error", "message": "DELETE /api/customers/15 403 Forbidden — {error: 'insufficient_role', required: 'admin'}", "source": "customers.js:88" },
+    { "level": "warn", "message": "DELETE /api/customers/15 attempted 3 times in 10s — possible automated probing", "source": "ratelimit.js:33" }
+  ],
+  "hints": [
+    "Sprawdź które endpointy zwracają 403 i porównaj z opisem uprawnień roli 'editor' — czy wszystkie 403 są uzasadnione?",
+    "Jeden z logów sugeruje coś niepokojącego niezwiązanego bezpośrednio z poprawną autentykacją."
+  ],
+  "correct_diagnosis": "Autoryzacja działa poprawnie — rola 'editor' ma dostęp dokładnie do tego co powinna (własny profil, lista klientów). Wszystkie 403 są zasadne. Jednak log z ratelimit.js to red flag: ktoś próbował wywołać DELETE /api/customers/15 trzy razy w 10 sekund. To może wskazywać na automatyczne skanowanie endpointów (security probing). Należy zgłosić jako osobny issue bezpieczeństwa."
+}

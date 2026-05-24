@@ -1,0 +1,63 @@
+{
+  "type": "test_case_builder",
+  "feature_description": "Zespół dodał nową funkcję: możliwość zmiany adresu email przez zalogowanego użytkownika. Zmiana wymaga potwierdzenia na stary email. Developer zmodyfikował moduł auth, user profile i email notification service. Jutro jest release. Masz 3 godziny na regresję.",
+  "task_instruction": "Stwórz listę przypadków testowych dla regresji. Uwzględnij:\n1. Nową funkcję (zmiana emaila)\n2. Obszary które mogły być dotknięte zmianami w auth/profile/email\n3. Priorytetyzację (P1/P2/P3)",
+  "expected_cases": [
+    {
+      "title": "Zmiana emaila — happy path",
+      "priority": "P1",
+      "area": "nowa funkcja",
+      "steps": "Zaloguj, przejdź do profilu, zmień email, potwierdź na stary email, sprawdź czy email się zmienił",
+      "expected": "Email zmieniony, potwierdzenie wysłane, stary email dezaktywowany"
+    },
+    {
+      "title": "Login ze starym emailem po zmianie",
+      "priority": "P1",
+      "area": "regresja auth",
+      "steps": "Po zmianie emaila spróbuj zalogować się starym emailem",
+      "expected": "Login odrzucony — stary email nieaktywny"
+    },
+    {
+      "title": "Login z nowym emailem po zmianie",
+      "priority": "P1",
+      "area": "regresja auth",
+      "steps": "Po zmianie emaila zaloguj się nowym emailem",
+      "expected": "Login udany"
+    },
+    {
+      "title": "Reset hasła po zmianie emaila",
+      "priority": "P1",
+      "area": "regresja auth + email",
+      "steps": "Po zmianie emaila kliknij 'forgot password', wpisz nowy email",
+      "expected": "Link resetujący wysłany na nowy email"
+    },
+    {
+      "title": "Zmiana emaila na już istniejący w systemie",
+      "priority": "P1",
+      "area": "nowa funkcja — edge case",
+      "steps": "Spróbuj zmienić email na adres który już jest zarejestrowany przez innego użytkownika",
+      "expected": "Błąd: 'Ten adres email jest już używany'"
+    },
+    {
+      "title": "Powiadomienia email po zmianie",
+      "priority": "P2",
+      "area": "regresja email service",
+      "steps": "Po zmianie emaila wywołaj akcję która wysyła powiadomienie (np. zamów produkt)",
+      "expected": "Powiadomienie trafia na NOWY email, nie stary"
+    },
+    {
+      "title": "Link potwierdzający zmianę emaila — wygasanie",
+      "priority": "P2",
+      "area": "nowa funkcja — bezpieczeństwo",
+      "steps": "Zainicjuj zmianę emaila, nie klikaj linka przez 24h (lub skróć czas w configu testowym), potem kliknij",
+      "expected": "Link wygasły, zmiana anulowana"
+    },
+    {
+      "title": "Istniejące sesje po zmianie emaila",
+      "priority": "P2",
+      "area": "regresja auth — bezpieczeństwo",
+      "steps": "Zaloguj na 2 urządzeniach, zmień email na jednym, sprawdź sesję na drugim",
+      "expected": "Sesja na drugim urządzeniu wygasa lub wymaga ponownego logowania"
+    }
+  ]
+}

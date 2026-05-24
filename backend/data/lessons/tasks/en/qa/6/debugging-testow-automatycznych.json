@@ -1,0 +1,78 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Test automatyczny E2E sprawdza proces dodawania produktu do koszyka i przejścia do checkout. Test powinien przejść w < 30 sekund na środowisku staging.",
+  "logs": [
+    {
+      "timestamp": "0ms",
+      "level": "INFO",
+      "message": "Test started: 'User can add product to cart and proceed to checkout'"
+    },
+    {
+      "timestamp": "120ms",
+      "level": "INFO",
+      "message": "page.goto('https://staging.sklep.pl/products') - OK"
+    },
+    {
+      "timestamp": "890ms",
+      "level": "INFO",
+      "message": "Waiting for [data-testid='product-card'] to be visible..."
+    },
+    {
+      "timestamp": "2100ms",
+      "level": "INFO",
+      "message": "Found 12 product cards"
+    },
+    {
+      "timestamp": "2150ms",
+      "level": "INFO",
+      "message": "Clicking first product: 'Laptop Dell XPS'"
+    },
+    {
+      "timestamp": "2900ms",
+      "level": "INFO",
+      "message": "page.goto → https://staging.sklep.pl/products/dell-xps-15"
+    },
+    {
+      "timestamp": "3200ms",
+      "level": "INFO",
+      "message": "Clicking [data-testid='add-to-cart-button']"
+    },
+    {
+      "timestamp": "3210ms",
+      "level": "INFO",
+      "message": "Waiting for [data-testid='cart-count'] to have text '1'..."
+    },
+    {
+      "timestamp": "33210ms",
+      "level": "ERROR",
+      "message": "TimeoutError: Waiting for locator('[data-testid=\"cart-count\"]').toHaveText('1') - timeout 30000ms exceeded"
+    },
+    {
+      "timestamp": "33215ms",
+      "level": "INFO",
+      "message": "Screenshot saved: test-results/add-to-cart-timeout.png"
+    },
+    {
+      "timestamp": "33220ms",
+      "level": "INFO",
+      "message": "Console errors captured during test: 1"
+    },
+    {
+      "timestamp": "33221ms",
+      "level": "ERROR",
+      "message": "Browser console error: 'POST https://api.staging.sklep.pl/api/cart/add - net::ERR_CONNECTION_REFUSED'"
+    },
+    {
+      "timestamp": "33222ms",
+      "level": "ERROR",
+      "message": "Test FAILED — 33.2 seconds"
+    }
+  ],
+  "hints": [
+    "Czy to jest problem z testem czy z aplikacją?",
+    "Zwróć uwagę na browser console error",
+    "Jaki URL wywołuje endpoint /api/cart/add?",
+    "Czy cart-count timeout = brak response z API?"
+  ],
+  "correct_diagnosis": "To jest prawdziwy bug w aplikacji — nie problem z testem. Cart count nie aktualizuje się bo API endpoint /api/cart/add zwraca ERR_CONNECTION_REFUSED na środowisku staging. Frontend próbuje połączyć się z api.staging.sklep.pl ale serwer nie odpowiada.\n\nMożliwe przyczyny: (1) Backend na staging jest wyłączony lub nie działa, (2) Błędna konfiguracja URL — może frontend staging wskazuje na api.production zamiast api.staging, (3) Deploy API nie przeszedł pomyślnie.\n\nNastępne kroki: (1) Sprawdź status backend staging (health check endpoint), (2) Sprawdź env vars frontendu — czy NEXT_PUBLIC_API_URL wskazuje na poprawny host, (3) Sprawdź logi backendu czy ostatni deploy był udany.\n\nTest jest poprawnie napisany — prawidłowo czeka na zmianę cart count. Problem leży po stronie środowiska/aplikacji, nie testu."
+}

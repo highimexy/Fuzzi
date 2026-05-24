@@ -1,0 +1,42 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "GraphQL API sklepu powinno zwracać dane zamówień użytkownika. Mutation createOrder powinna tworzyć zamówienie i zwracać jego ID. Wszystkie operacje wymagają autoryzacji Bearer tokenem.",
+  "logs": [
+    {
+      "level": "info",
+      "timestamp": "10:14:32",
+      "message": "POST /graphql 200 OK [query: GetUserOrders] user_id=u-991 duration=45ms"
+    },
+    {
+      "level": "info",
+      "timestamp": "10:14:32",
+      "message": "GraphQL response body: {\"data\":{\"orders\":null},\"errors\":[{\"message\":\"Not authorized\",\"path\":[\"orders\"]}]}"
+    },
+    {
+      "level": "warn",
+      "timestamp": "10:14:33",
+      "message": "POST /graphql 200 OK [mutation: CreateOrder] user_id=u-991 duration=12ms"
+    },
+    {
+      "level": "info",
+      "timestamp": "10:14:33",
+      "message": "GraphQL response body: {\"data\":{\"createOrder\":null},\"errors\":[{\"message\":\"Variable \\\"$input\\\" of required type \\\"CreateOrderInput!\\\" was not provided.\"}]}"
+    },
+    {
+      "level": "error",
+      "timestamp": "10:14:40",
+      "message": "POST /graphql 200 OK [query: __schema] user_id=u-991 duration=89ms — INTROSPECTION QUERY ON PRODUCTION"
+    },
+    {
+      "level": "info",
+      "timestamp": "10:14:41",
+      "message": "DB: SELECT * FROM orders WHERE user_id='u-991' — 0 rows"
+    }
+  ],
+  "hints": [
+    "W GraphQL status HTTP 200 nie oznacza sukcesu — zawsze sprawdzaj pole 'errors' w odpowiedzi",
+    "Użytkownik u-991 dostaje błąd 'Not authorized' przy próbie dostępu do swoich zamówień — to sugeruje problem z tokenem lub uprawnieniami",
+    "Introspection query na produkcji to luka bezpieczeństwa która powinna być zablokowana"
+  ],
+  "correct_diagnosis": "Zidentyfikowano 3 problemy:\n\n1. **Błąd autoryzacji dla GetUserOrders** — zapytanie zwraca HTTP 200 ale w body jest błąd 'Not authorized'. Użytkownik u-991 nie może zobaczyć swoich zamówień — prawdopodobnie token wygasł lub ma złe scope'y uprawnieniowe.\n\n2. **Brakujące zmienne w CreateOrder** — mutation była wywołana bez wymaganego parametru `$input`. To błąd po stronie klienta (frontend nie wysyła danych) lub brakująca walidacja w kliencie GraphQL.\n\n3. **Introspection włączona na produkcji** — to luka bezpieczeństwa. Atakujący może poznać cały schemat API. Powinno być wyłączone w środowisku produkcyjnym."
+}

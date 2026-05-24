@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Twoja firma ma automatyczny backup bazy danych co 24 godziny. Backup jest przechowywany na tym samym serwerze co produkcja. Restore nigdy nie był testowany. Manager twierdzi: 'Mamy backup — jesteśmy bezpieczni.'\n\nJako QA identyfikujesz 3 problemy z tym podejściem. Które z poniższych NIE jest problemem?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Backup na tym samym serwerze co produkcja — awaria serwera niszczy i produkcję, i backup.",
+      "is_correct": false,
+      "explanation": "To jest poważny problem. Jeśli serwer padnie (hardware failure, ransomware, zalanie serwerowni) — stracisz i dane produkcyjne, i backup. Backup musi być w innej lokalizacji: inny serwer, inny datacenter, chmura. Zasada 3-2-1: 3 kopie danych, 2 różne media, 1 poza siedzibą."
+    },
+    {
+      "id": "b",
+      "text": "Backup co 24 godziny oznacza że możesz stracić do 24 godzin danych (RPO = 24h).",
+      "is_correct": false,
+      "explanation": "To jest problem jeśli RPO (Recovery Point Objective) firmy to < 24h. Jeśli awaria nastąpi o 23:59, stracisz prawie całą dobę transakcji. Dla firm e-commerce to katastrofa. Backup co 1h, ciągły backup (WAL shipping), lub replikacja to możliwe rozwiązania."
+    },
+    {
+      "id": "c",
+      "text": "Backup jest wykonywany o 2:00 w nocy gdy ruch jest najmniejszy.",
+      "is_correct": true,
+      "explanation": "To NIE jest problem — wręcz przeciwnie, to dobra praktyka. Backup o niskim ruchu zmniejsza wpływ na wydajność produkcji i zapewnia spójny snapshot danych. Godzina wykonania backupu (przy niskim ruchu) jest właściwym wyborem."
+    },
+    {
+      "id": "d",
+      "text": "Restore nigdy nie był testowany — backup może być uszkodzony lub niekompletny.",
+      "is_correct": false,
+      "explanation": "To jest najpoważniejszy problem. Backup bez testu restore to backup który może nie zadziałać gdy będzie potrzebny. Typowe problemy: plik backup jest uszkodzony, brakuje plików konfiguracyjnych, sekwencje bazy są błędne po restore, uprawnienia się nie zgadzają. Testuj restore co miesiąc!"
+    }
+  ]
+}

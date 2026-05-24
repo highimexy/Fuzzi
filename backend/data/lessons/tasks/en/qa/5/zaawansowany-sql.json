@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Po akcji 'Usuń użytkownika' w UI chcesz sprawdzić czy powiązane zamówienia zostały obsłużone. Który query jest najwłaściwszy?",
+  "options": [
+    { "id": "a", "text": "DELETE FROM orders WHERE user_id = 42;" },
+    { "id": "b", "text": "SELECT COUNT(*) FROM orders WHERE user_id = 42;" },
+    { "id": "c", "text": "SELECT o.id, o.status, o.user_id FROM orders o LEFT JOIN users u ON o.user_id = u.id WHERE o.user_id = 42;" },
+    { "id": "d", "text": "UPDATE orders SET user_id = NULL WHERE user_id = 42;" }
+  ],
+  "correct": "c",
+  "explanation": "LEFT JOIN pokazuje zamówienia dla user_id = 42 razem z informacją czy użytkownik nadal istnieje (u.id będzie NULL jeśli usunięty). Dzięki temu weryfikujesz zarówno czy zamówienia istnieją, jak i jaki jest ich stan po usunięciu użytkownika. Opcja B tylko liczy — nie pokazuje szczegółów. Opcje A i D to modyfikujące zapytania — niedopuszczalne w kontekście weryfikacji.",
+  "trap_explanation": "Zawsze weryfikuj dane SELECT-em, nigdy nie modyfikuj danych podczas weryfikacji. LEFT JOIN to klucz do sprawdzenia integralności między tabelami."
+}

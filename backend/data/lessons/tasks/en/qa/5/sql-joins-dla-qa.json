@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Masz dwie tabele: `orders` (id, user_id, status, total) i `payments` (id, order_id, amount, confirmed_at). Chcesz znaleźć zamówienia ze statusem 'completed' które NIE mają powiązanego rekordu płatności. Które zapytanie jest poprawne?",
+  "options": [
+    {
+      "id": "a",
+      "text": "SELECT * FROM orders WHERE status = 'completed' AND id NOT IN (SELECT order_id FROM payments);",
+      "is_correct": true,
+      "explanation": "Poprawne zapytanie. Subquery zwraca listę order_id które mają płatność, a NOT IN wyklucza je z wyników. Alternatywnie można użyć LEFT JOIN: `SELECT o.* FROM orders o LEFT JOIN payments p ON o.id = p.order_id WHERE o.status = 'completed' AND p.id IS NULL` — to samo, czytelniejsze dla dużych zbiorów."
+    },
+    {
+      "id": "b",
+      "text": "SELECT * FROM orders INNER JOIN payments ON orders.id = payments.order_id WHERE orders.status = 'completed';",
+      "is_correct": false,
+      "explanation": "INNER JOIN zwraca tylko zamówienia KTÓRE MAJĄ płatność — to odwrotność tego czego szukamy. To zapytanie znajdzie zamówienia 'completed' z potwierdzeniem płatności."
+    },
+    {
+      "id": "c",
+      "text": "SELECT * FROM orders WHERE status = 'completed' AND payments.order_id IS NULL;",
+      "is_correct": false,
+      "explanation": "Błąd składni — tabela `payments` nie jest dołączona przez JOIN, więc `payments.order_id` jest niezdefiniowane. To zapytanie zwróci błąd SQL."
+    },
+    {
+      "id": "d",
+      "text": "SELECT * FROM orders o, payments p WHERE o.id != p.order_id AND o.status = 'completed';",
+      "is_correct": false,
+      "explanation": "Stary styl JOIN (przecinek = CROSS JOIN) z warunkiem != to nie to samo co 'brak płatności'. To zapytanie zwróci każde zamówienie sparowane z każdą płatnością która go nie dotyczy — praktycznie bezużyteczny wynik."
+    }
+  ]
+}

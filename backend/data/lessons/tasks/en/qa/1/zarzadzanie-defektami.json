@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "b1",
+      "title": "Błąd 500 przy płatności kartą Amex — 3 zgłoszenia klientów w ciągu godziny",
+      "description": "Klienci próbujący zapłacić kartą American Express dostają błąd 500. Visa i Mastercard działają. Amex to ok 8% transakcji. Brak obejścia dla użytkownika.",
+      "reporter": "Customer Support"
+    },
+    {
+      "id": "b2",
+      "title": "Przycisk 'Usuń konto' nie działa w Safari 16",
+      "description": "Użytkownik klika 'Usuń konto', nic się nie dzieje. Chrome działa. Safari 16 i 17 affected. Szacowany % użytkowników Safari: 18%. Istnieje obejście: może usunąć konto przez email do supportu.",
+      "reporter": "QA"
+    },
+    {
+      "id": "b3",
+      "title": "Favicon nie wyświetla się na karcie przeglądarki",
+      "description": "Logo firmy nie pojawia się na karcie przeglądarki. Dotyczy wszystkich przeglądarek. Brak wpływu na funkcjonalność.",
+      "reporter": "Marketing"
+    },
+    {
+      "id": "b4",
+      "title": "Sesja użytkownika wygasa po 5 minutach bezczynności zamiast po 30 minutach",
+      "description": "Zgodnie z wymaganiami, sesja powinna trwać 30 minut bezczynności. Aktualnie wygasa po 5 minutach. Użytkownicy tracą niezapisane dane formularzy. Zgłoszono 47 skarg w tym tygodniu.",
+      "reporter": "Customer Support"
+    },
+    {
+      "id": "b5",
+      "title": "Export CSV zwraca daty w formacie MM/DD/YYYY zamiast DD/MM/YYYY",
+      "description": "Aplikacja ma polskich użytkowników. Export CSV pokazuje daty po amerykańsku. Prowadzi do błędów przy imporcie do Excela. Używane przez ~15% użytkowników miesięcznie.",
+      "reporter": "Dział Finansowy"
+    },
+    {
+      "id": "b6",
+      "title": "Animacja loading spinnera zatrzymuje się na 1 klatkę co 2 sekundy",
+      "description": "Wizualny artefakt w animacji CSS. Spinner 'szarpie' raz na 2 sekundy. Reprodukowalny na Chrome/Windows z GPU acceleration. Nie wpływa na funkcjonalność ani wydajność.",
+      "reporter": "QA"
+    }
+  ],
+  "senior_decisions": [
+    {
+      "bug_id": "b1",
+      "priority": "this_sprint",
+      "reason": "Błąd 500 na płatności to bezpośrednia utrata przychodu. 8% transakcji × każda godzina = realne pieniądze. 3 zgłoszenia w godzinę to sygnał że problem narasta. Natychmiastowy fix lub wyłączenie opcji Amex jako workaround."
+    },
+    {
+      "bug_id": "b2",
+      "priority": "next_sprint",
+      "reason": "18% użytkowników Safari to istotny segment. Brak możliwości usunięcia konta to też problem prawny (RODO — prawo do bycia zapomnianym). Workaround istnieje, ale to nie jest akceptowalne długoterminowo. Następny sprint."
+    },
+    {
+      "bug_id": "b3",
+      "priority": "backlog",
+      "reason": "Czysto kosmetyczny. Zero wpływu na funkcjonalność ani UX. Backlog — do zrobienia gdy ktoś ma wolny czas lub przy okazji pracy w tym obszarze."
+    },
+    {
+      "bug_id": "b4",
+      "priority": "this_sprint",
+      "reason": "47 skarg to duży signal. Utrata danych formularzy przez przedwczesne wygaśnięcie sesji to frustrujący bug który wpływa na aktywnych użytkowników. Rozbieżność z wymaganiami (5 vs 30 min) to clear regression."
+    },
+    {
+      "bug_id": "b5",
+      "priority": "next_sprint",
+      "reason": "Format daty to bug z realnym business impact (błędy w imporcie Excela u 15% użytkowników) ale nie jest blokerem krytycznym. Jasna naprawa, warto zaplanować na następny sprint."
+    },
+    {
+      "bug_id": "b6",
+      "priority": "backlog",
+      "reason": "Wizualny artefakt bez wpływu na funkcjonalność. Niska priorytetyzacja — do naprawy gdy ktoś pracuje w tym obszarze CSS lub gdy masz sprint z mniejszym scope."
+    }
+  ],
+  "senior_comment": "Płatności i sesja użytkownika to krytyczne ścieżki — bugi tam są priorytetem niezależnie od technicznej trudności naprawy. Separator między 'this sprint' a 'next sprint' to impact na użytkownika: czy traci pieniądze / dane teraz (this sprint) czy jest to utrudnienie z obejściem (next sprint)."
+}

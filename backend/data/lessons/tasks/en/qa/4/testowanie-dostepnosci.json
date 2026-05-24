@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html>\n<head><title>Formularz kontaktowy</title></head>\n<body>\n\n<h1>Skontaktuj się z nami</h1>\n<h3>Wyślij wiadomość</h3>\n\n<img src=\"team-photo.jpg\">\n\n<form>\n  <input type=\"text\" placeholder=\"Imię i nazwisko\">\n  <br>\n  <input type=\"email\" placeholder=\"Email\">\n  <br>\n  <textarea placeholder=\"Treść wiadomości\"></textarea>\n  <br>\n  <div onclick=\"submitForm()\" style=\"background:#ccc; color:#ddd; padding:10px;\">Wyślij</div>\n</form>\n\n<p style=\"color: #aaa;\">Odpowiadamy w ciągu 24 godzin roboczych.</p>\n\n<div onclick=\"showPolicy()\" style=\"cursor:pointer\">Polityka prywatności</div>\n\n</body>\n</html>",
+  "spec": "Formularz kontaktowy musi być dostępny dla wszystkich użytkowników, w tym używających czytników ekranu i nawigacji klawiaturą. Wymagany standard: WCAG 2.1 AA.",
+  "correct_severity": "high",
+  "severity_reason": "Formularz jest praktycznie niedostępny dla użytkowników korzystających z klawiatury lub czytnika ekranu — żadne pole nie ma etykiety, przycisk nie jest buttonem, kontrast jest poniżej AA.",
+  "red_herrings": [
+    "Użycie placeholder jako pomocniczego tekstu (to dozwolone, ale nie zastępuje label)",
+    "Inline style (estetyczny problem, nie a11y)"
+  ],
+  "model_report": {
+    "title": "Krytyczne błędy dostępności — formularz kontaktowy",
+    "steps": "1. Otwórz stronę\n2. Uruchom axe DevTools lub WAVE\n3. Spróbuj wypełnić formularz tylko klawiaturą\n4. Sprawdź kontrast kolorów narzędziem",
+    "expected": "Formularz dostępny klawiaturą, pola z etykietami, przycisk jako <button>, kontrast ≥ 4.5:1, obrazek z alt textem",
+    "actual": "Znalezione błędy:\n\n1. [CRITICAL] Brak alt na <img src=\"team-photo.jpg\"> — screen reader nie wie co to jest\n\n2. [HIGH] Brakuje <label> dla wszystkich pól — czytniki ekranu nie ogłaszają co to za pole\n\n3. [HIGH] Przycisk 'Wyślij' to <div onclick=...> nie <button> — niedostępny klawiaturą (nie można aktywować Enter/Space, pomijany przez Tab)\n\n4. [HIGH] Kontrast przycisku: #ccc na #ddd = ~1.1:1 (wymagane 4.5:1) — tekst niewidoczny\n\n5. [HIGH] Kontrast tekstu: #aaa na białym = 2.32:1 (wymagane 4.5:1) — FAIL AA\n\n6. [MEDIUM] <div onclick> dla polityki prywatności — powinien być <a> lub <button>\n\n7. [LOW] Hierarchia nagłówków: H1 → H3 (pominięto H2) — logiczna struktura powinna być H1→H2"
+  }
+}

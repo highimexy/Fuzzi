@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś QA w firmie SaaS B2B (CRM dla małych firm, dane klientów). Firma właśnie wdraża nową funkcję: 'Eksport danych klientów do CSV'. Jesteś odpowiedzialna za ocenę ryzyka GDPR i prywatności przed release. Oceń każdą decyzję implementacyjną.",
+  "decisions": [
+    {
+      "id": "d1",
+      "decision": "Eksport CSV zawiera wszystkie kolumny z tabeli customers: id, name, email, phone, address, notes, created_at, last_login, ip_address, stripe_customer_id",
+      "correct_risk": "risky",
+      "explanation": "Eksport zawiera nadmiarowe dane (ip_address, stripe_customer_id) które prawdopodobnie nie są potrzebne w eksporcie CSV do codziennego użytku. Zasada minimalizacji danych (GDPR Art. 5). Zapytaj PM-a: do czego służy ten eksport? Dostosuj zakres pól do rzeczywistych potrzeb."
+    },
+    {
+      "id": "d2",
+      "decision": "Eksport jest dostępny dla każdego zalogowanego użytkownika konta (role: admin, manager, user)",
+      "correct_risk": "risky",
+      "explanation": "Eksport danych wszystkich klientów powinien być ograniczony do roli admin. Zwykły 'user' raczej nie powinien eksportować pełnej bazy klientów. To jest potencjalne naruszenie need-to-know principle. Dodatkowo: co jeśli pracownik odchodzi z firmy i eksportuje bazę klientów dla konkurencji?"
+    },
+    {
+      "id": "d3",
+      "decision": "Każdy eksport jest logowany: kto wyeksportował, kiedy, jaki zakres danych",
+      "correct_risk": "safe",
+      "explanation": "Audit log dla eksportów danych to dobra praktyka i wymaganie GDPR dla kontroli dostępu do danych osobowych. Pozwala wykryć nadużycia (masowy eksport przez odchodzącego pracownika) i spełnia wymagania art. 5 GDPR (accountability)."
+    },
+    {
+      "id": "d4",
+      "decision": "Eksportowane emaile klientów są widoczne w pełnej postaci: jan.kowalski@firma.pl",
+      "correct_risk": "safe",
+      "explanation": "Pełne emaile w eksporcie są dozwolone jeśli eksport jest chroniony odpowiednimi uprawnieniami i audit logiem. Eksport danych klientów to uzasadniony cel biznesowy (przetwarzanie w CRM). Ważne: że dostęp jest tylko dla uprawnionych użytkowników — co zostało już oznaczone jako ryzykowne w d2."
+    },
+    {
+      "id": "d5",
+      "decision": "Wygenerowany plik CSV nie ma hasła ani szyfrowania — można go otworzyć w Excelu",
+      "correct_risk": "risky",
+      "explanation": "Niezaszyfrowany plik z danymi osobowymi jest ryzykiem jeśli trafi w niepowołane ręce (zgubiony laptop, błędnie wysłany email). Minimum: ostrzeżenie przy pobieraniu 'Ten plik zawiera dane osobowe — przechowuj bezpiecznie i nie udostępniaj osobom nieupoważnionym'. Lepiej: możliwość pobrania z hasłem."
+    },
+    {
+      "id": "d6",
+      "decision": "Eksport danych klientów usuniętych z systemu (deleted_at IS NOT NULL) jest wykluczony",
+      "correct_risk": "safe",
+      "explanation": "Prawidłowe podejście z perspektywy GDPR. Klienci którzy żądali usunięcia danych (prawo do bycia zapomnianym) nie powinni pojawiać się w eksportach. Ich dane mogą być zachowane do celów prawnych (transakcje) ale nie w formie która identyfikuje osobę."
+    }
+  ],
+  "senior_comment": "GDPR w testowaniu to nie tylko compliance — to myślenie o tym kto ma dostęp do danych i co z nimi zrobi. Trzy pytania przed każdym feature z danymi osobowymi: (1) Kto ma dostęp? (2) Jakie minimum danych jest potrzebne? (3) Czy mamy audit trail?"
+}

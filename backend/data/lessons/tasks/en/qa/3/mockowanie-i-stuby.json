@@ -1,0 +1,58 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Sprint 31: Zintegrowano nowy payment provider (FastPay). Poprzedni provider (OldPay) był mockowany w testach przez 8 miesięcy. Pierwszy test na stagingu z prawdziwym FastPay API.",
+  "before_description": "Mock OldPay używany przez 8 miesięcy w testach automatycznych",
+  "after_description": "Prawdziwa odpowiedź z FastPay API na stagingu",
+  "changes": [
+    {
+      "field": "transactionId",
+      "mock_value": "txn_123456",
+      "real_value": "fp_8f3k2m9x1a",
+      "is_breaking": false,
+      "explanation": "Format ID się zmienił — prefix 'fp_' zamiast 'txn_'. Jeśli kod parsuje prefix transactionId — może się posypać."
+    },
+    {
+      "field": "status",
+      "mock_value": "success",
+      "real_value": "COMPLETED",
+      "is_breaking": true,
+      "explanation": "Wartość pola status jest różna: mock zwracał 'success', prawdziwe API zwraca 'COMPLETED'. Kod który sprawdza `if status === 'success'` nigdy nie przejdzie warunku!"
+    },
+    {
+      "field": "amount",
+      "mock_value": 99.99,
+      "real_value": 9999,
+      "is_breaking": true,
+      "explanation": "FastPay zwraca kwotę w groszach (integer), nie w złotówkach (float). Aplikacja wyświetli 9999 PLN zamiast 99.99 PLN — krytyczny błąd finansowy!"
+    },
+    {
+      "field": "currency",
+      "mock_value": "PLN",
+      "real_value": "PLN",
+      "is_breaking": false,
+      "explanation": "Bez zmian — to się zgadza."
+    },
+    {
+      "field": "timestamp",
+      "mock_value": "2024-03-15T10:30:00Z",
+      "real_value": 1710498600,
+      "is_breaking": true,
+      "explanation": "Mock zwracał ISO 8601 string, prawdziwe API zwraca Unix timestamp (integer). Każde miejsce które wyświetla datę transakcji wyświetli teraz liczbę zamiast daty."
+    },
+    {
+      "field": "errorCode",
+      "mock_value": null,
+      "real_value": null,
+      "is_breaking": false,
+      "explanation": "Zgodne — oba null dla udanej transakcji."
+    },
+    {
+      "field": "fees",
+      "mock_value": "BRAK POLA",
+      "real_value": {"processing": 150, "vat": 28},
+      "is_breaking": false,
+      "explanation": "Nowe pole w prawdziwym API! Mock tego nie miał. Aplikacja powinna obsłużyć to pole lub je zignorować — sprawdź czy nie powoduje błędu parsowania."
+    }
+  ],
+  "summary": "Mock był pisany 8 miesięcy temu pod stary provider i nigdy nie był aktualizowany. 3 breaking differences: status string, amount format (grosze vs złotówki), timestamp format. To jest klasyczny 'mock drift' — mock przestał odzwierciedlać rzeczywistość. Przed wdrożeniem FastPay: napraw obsługę status, przelicznik kwot i parsowanie timestamp."
+}

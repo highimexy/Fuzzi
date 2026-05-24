@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Twój tech lead proponuje przeprowadzenie pierwszego Game Day dla systemu e-commerce. Chce celowo wyłączyć serwis email na 10 minut w środowisku staging i obserwować co się dzieje.\n\nSystem wysyła email: po rejestracji, po złożeniu zamówienia, po zmianie hasła, przy powiadomieniach o wysyłce.\n\nGame Day zaplanowany na jutro 14:00, staging, cały team obecny.\n\nJako QA — co robisz przed i w trakcie Game Day?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Nic szczególnego — to zadanie dla DevOps i developerów. Czekasz i obserwujesz co się dzieje.",
+      "user_percentage": 8,
+      "consequences": "QA ma unikalną rolę w Chaos Engineering — obserwuje z perspektywy użytkownika. Pasywne czekanie marnuje Twoją wartość. Powinieneś: przed = przygotować listę co sprawdzać, w trakcie = aktywnie testować flows z perspektywy użytkownika, po = raportować co widziałeś."
+    },
+    {
+      "id": "b",
+      "text": "Przed Game Day tworzysz listę hipotez i test scenarios. W trakcie aktywnie testujesz user flows: próbujesz zarejestrować konto, złożyć zamówienie, zmienić hasło — i dokumentujesz co widzi użytkownik. Po Game Day raportujesz wyniki z perspektywy UX.",
+      "user_percentage": 73,
+      "consequences": "Wzorcowa rola QA w Chaos Engineering. Przed: hipotezy i plan testów. W trakcie: aktywne testowanie z perspektywy użytkownika (bo DevOps patrzy na infrastrukturę, developer na logi — ktoś musi patrzeć na UX). Po: raport co działało dobrze, co nie. Twoje obserwacje uzupełniają techniczne dane DevOps."
+    },
+    {
+      "id": "c",
+      "text": "Sprzeciwiasz się Game Day — testowanie na staging gdzie możesz dostać false sense of security jest bez sensu, trzeba to robić na produkcji jak Netflix.",
+      "user_percentage": 7,
+      "consequences": "Netflix uruchamia Chaos Monkey na produkcji po WIELU LATACH doświadczeń z Chaos Engineering na niższych środowiskach. Dla większości firm staging jest właściwym miejscem do nauki. Bezpieczne środowisko do eksperymentów jest lepsze niż brak eksperymentów. Staging może mieć ograniczenia, ale naucza bardzo dużo przed próbą na produkcji."
+    },
+    {
+      "id": "d",
+      "text": "Przygotowujesz szczegółowy raport z wszystkich możliwych awarii systemu i prezentujesz go teamowi zamiast Game Day — lepiej wiedzieć co może pójść nie tak z analizy niż z eksperymentu.",
+      "user_percentage": 12,
+      "consequences": "Analiza ryzyka jest wartościowa, ale nie zastąpi empirycznego testu. Systemy zachowują się inaczej niż się zakłada — właśnie to odkrywa Chaos Engineering. 'Serwis emailowy padnie i orders nie będą przetwarzane' brzmi oczywisto na papierze, ale empiryczny test może pokazać że orders faktycznie failują, albo że mają retry mechanism który działa, albo że failing email powoduje nieoczekiwany cascade failure w innym module."
+    }
+  ]
+}

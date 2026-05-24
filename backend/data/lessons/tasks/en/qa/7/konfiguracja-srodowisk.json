@@ -1,0 +1,39 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Aktualizacja konfiguracji środowiska staging przed nowym sprintem. Cel: lepsza wydajność bazy danych, włączenie nowego feature flaga, dostosowanie logowania.",
+  "before_description": "STAGING .env (poprzednia wersja):\nDB_POOL_SIZE=5\nENABLE_EMAIL_SENDING=false\nLOG_LEVEL=DEBUG\nAPI_TIMEOUT=30000\nFEATURE_FLAG_NEW_CHECKOUT=false\nSENTRY_ENABLED=false",
+  "after_description": "STAGING .env (nowa wersja):\nDB_POOL_SIZE=50\nENABLE_EMAIL_SENDING=true\nLOG_LEVEL=ERROR\nAPI_TIMEOUT=5000\nFEATURE_FLAG_NEW_CHECKOUT=true\nSENTRY_ENABLED=false",
+  "changes": [
+    {
+      "id": "db_pool",
+      "statement": "DB_POOL_SIZE zwiększone z 5 do 50",
+      "correct_category": "correct_change",
+      "explanation": "Pool 5 powodował bottleneck przy równoległych testach E2E. 50 to właściwa wartość dla staging z wieloma równoczesnymi sesjami testowymi."
+    },
+    {
+      "id": "email",
+      "statement": "ENABLE_EMAIL_SENDING zmienione z false na true",
+      "correct_category": "wrong_change",
+      "explanation": "Na staging emaile NIE powinny być wysyłane — środowisko zawiera dane testowe i adresy testowe. Włączenie wysyłki spowoduje spamowanie prawdziwych adresów jeśli ktoś użyje produkcyjnych danych. Staging zawsze powinien mieć ENABLE_EMAIL_SENDING=false."
+    },
+    {
+      "id": "log_level",
+      "statement": "LOG_LEVEL zmienione z DEBUG na ERROR",
+      "correct_category": "wrong_change",
+      "explanation": "Na staging potrzebujemy DEBUG — to środowisko do testowania i diagnostyki błędów. Poziom ERROR ukryje większość logów diagnostycznych, utrudniając investigację bugów. ERROR jest odpowiedni dla produkcji, nie dla staging."
+    },
+    {
+      "id": "api_timeout",
+      "statement": "API_TIMEOUT zmienione z 30000ms na 5000ms",
+      "correct_category": "wrong_change",
+      "explanation": "5 sekund timeout to za mało dla staging — baza danych bywa wolniejsza pod obciążeniem testami, niektóre operacje (PDF generation, email) mogą trwać dłużej. Zbyt krótki timeout spowoduje flaky testy i fałszywe alarmy."
+    },
+    {
+      "id": "feature_flag",
+      "statement": "FEATURE_FLAG_NEW_CHECKOUT zmienione z false na true",
+      "correct_category": "correct_change",
+      "explanation": "Włączenie feature flaga nowego checkoutu na staging to poprawna zmiana — to właśnie na staging testujemy nowe funkcjonalności przed produkcją. To był cel tej zmiany konfiguracji."
+    }
+  ],
+  "summary": "Z 5 zmian: 2 są poprawne (DB_POOL_SIZE, feature flag), 3 są problematyczne. ENABLE_EMAIL_SENDING=true może spowodować wysyłkę emaili do prawdziwych adresów. LOG_LEVEL=ERROR i API_TIMEOUT=5000 utrudnią testowanie i diagnostykę. Staging powinien być skonfigurowany do debugowania, nie do imitowania produkcji 1:1."
+}

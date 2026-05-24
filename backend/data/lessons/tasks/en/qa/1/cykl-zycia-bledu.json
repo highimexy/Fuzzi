@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Developer oznaczył buga jako 'Fixed'. Sprawdzasz go na środowisku staging i nie możesz odtworzyć błędu. Co robisz?",
+  "options": [
+    { "id": "a", "text": "Zamknij buga — skoro nie możesz odtworzyć, to znaczy że jest naprawiony" },
+    { "id": "b", "text": "Przed zamknięciem sprawdź: czy testujesz dokładnie te same kroki co przy zgłoszeniu, na tym samym środowisku i wersji" },
+    { "id": "c", "text": "Reopen buga — brak reprodukcji to podejrzane" },
+    { "id": "d", "text": "Zapytaj developera czy na pewno naprawił" }
+  ],
+  "correct": "b",
+  "explanation": "Przed zamknięciem buga QA MUSI zweryfikować w dokładnie tych samych warunkach co oryginalne zgłoszenie: te same kroki, to samo środowisko, ta sama wersja danych testowych. Brak reprodukcji może oznaczać naprawę — ale też może oznaczać że testujesz w złym scenariuszu. Weryfikacja to odpowiedzialność QA, nie deklaracja developera.",
+  "trap_explanation": "Opcja A to najczęstszy błąd — zamknięcie na podstawie braku reprodukcji bez upewnienia się że scenariusz jest poprawny. Opcja C (automatyczny reopen) też jest zła — najpierw zbadaj, potem decyduj."
+}

@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jest środa, sprint kończy się w piątek. Masz do przetestowania:\n- Feature A: nowy moduł płatności (krytyczny, 3 dni pracy developera)\n- Feature B: mała zmiana w stopce (1h pracy developera)\n- Feature C: poprawka buga w raportach (2h pracy, zgłoszony przez klienta premium)\n- Regresja: standardowy zestaw 40 przypadków testowych\n\nW środę rano developer kończy Feature A — jest gotowy do testowania. Szacujesz że Feature A potrzebuje 2 dni testowania. Regresja zajmuje ci 4 godziny. Masz 2.5 dnia do końca sprintu.\n\nPM pyta: 'Wszystko w tym sprincie zdążysz?'\n\nCo odpowiadasz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Mówisz 'tak' — spróbujesz zrobić wszystko, może da radę.",
+      "user_percentage": 18,
+      "consequences": "Klasyczna pułapka. Obiecujesz coś czego nie możesz dostarczyć, a PM planuje release bazując na Twoich słowach. Gdy piątek nadchodzi i połowa jest nieprzetestowana — zaufanie spada a ryzyko jest niewidzialne dla całego zespołu."
+    },
+    {
+      "id": "b",
+      "text": "Mówisz wprost: 'Nie, nie zdążę wszystkiego. Feature A wymaga 2 dni, regresja 4h, to przekracza mój czas. Proponuję: Feature A + C (krytyczny bug klienta) + skrócona regresja na krytycznych ścieżkach. Feature B przesuniemy do kolejnego sprintu.'",
+      "user_percentage": 65,
+      "consequences": "Najlepsza odpowiedź. Transparentność o kapacytecie, konkretna propozycja priorytetyzacji i jasny podział na 'co wchodzi' vs 'co przesuwa się'. PM może podjąć świadomą decyzję. To jest właśnie rola QA w Agile — partner w decyzjach, nie wytwórca iluzji 'wszystko OK'."
+    },
+    {
+      "id": "c",
+      "text": "Mówisz 'tak', ale pracujesz po godzinach w środę i czwartek żeby zdążyć.",
+      "user_percentage": 12,
+      "consequences": "Heroizm który normalizuje nadgodziny jako rozwiązanie problemu planowania. Sprint po sprincie. Jakość testów spada gdy jesteś zmęczony — bugi które powinieneś znaleźć, przeoczysz. I tak naprawdę nie rozwiązujesz problemu: za sprint znowu będziesz mieć za mało czasu."
+    },
+    {
+      "id": "d",
+      "text": "Milczysz — to PM powinien pilnować tego co jest realne do zrobienia w sprincie, nie QA.",
+      "user_percentage": 5,
+      "consequences": "QA jest częścią zespołu i odpowiada za transparentność procesu testowania. 'To nie mój problem' to postawa która prowadzi do niesynchronizowanych oczekiwań, niespodzianek przed releasem i kultury wzajemnego obwiniania się."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Order Service v2.5 — refactoring odpowiedzi API zamówień (zmiana nazw pól dla spójności z konwencją snake_case)",
+  "before_description": "Order Service API zwraca: { orderId, userEmail, totalPrice, paymentStatus, createdAt }. Używane przez: Notification Service, Analytics Service, Mobile App.",
+  "after_description": "Order Service API zwraca: { order_id, customer_email, total_amount, payment_state, created_at, updated_at }. Cel: spójność snake_case w całym API.",
+  "changes": [
+    {
+      "id": "ct1",
+      "description": "orderId → order_id",
+      "correct_category": "correct_change",
+      "explanation": "Zmiana z camelCase na snake_case. Wymaga aktualizacji wszystkich konsumentów tego pola. Pact contract test powinien wykryć czy Notification Service, Analytics i Mobile App używają 'orderId' czy 'order_id'."
+    },
+    {
+      "id": "ct2",
+      "description": "userEmail → customer_email",
+      "correct_category": "wrong_change",
+      "explanation": "Zmiana NAZWY pola (nie tylko konwencji) to breaking change. 'user_email' byłoby spójne z konwencją i mniej breaking. 'customer_email' to zmiana semantyczna — czy 'user' i 'customer' to to samo? Wymaga audytu wszystkich konsumentów i prawdopodobnie jest źródłem bugów."
+    },
+    {
+      "id": "ct3",
+      "description": "totalPrice → total_amount",
+      "correct_category": "wrong_change",
+      "explanation": "Kolejna zmiana semantyczna: 'price' vs 'amount' to nie to samo — price może oznaczać cenę jednostkową, amount to łączna kwota. Analytics Service może źle zinterpretować te dane. Breaking change bez konsultacji z konsumentami."
+    },
+    {
+      "id": "ct4",
+      "description": "paymentStatus → payment_state",
+      "correct_category": "wrong_change",
+      "explanation": "'status' i 'state' to słowa z różnymi konotacjami w API design. Zmiana może wprowadzić confusion. Jeśli klienci sprawdzają payment_status === 'paid', po tej zmianie sprawdzają undefined === 'paid' i logika przestaje działać."
+    },
+    {
+      "id": "ct5",
+      "description": "createdAt → created_at",
+      "correct_category": "correct_change",
+      "explanation": "Czysta zmiana konwencji nazewnictwa camelCase → snake_case, bez zmiany semantyki. Wymaga aktualizacji konsumentów, ale zmiana jest transparentna i przewidywalna."
+    },
+    {
+      "id": "ct6",
+      "description": "Dodanie nowego pola updated_at (nullable)",
+      "correct_category": "correct_change",
+      "explanation": "Dodanie nowego pola nullable to non-breaking change — konsumenci którzy nie znają tego pola po prostu go ignorują. Poprawna technika ewolucji API."
+    }
+  ],
+  "summary": "Refactoring ma kilka zmian konwencji (poprawnych) i kilka breaking semantic changes (problematycznych). userEmail→customer_email i totalPrice→total_amount to zmiany które wymagają synchronizacji ze wszystkimi konsumentami i powinny być poprzedzone weryfikacją Pact contractów."
+}

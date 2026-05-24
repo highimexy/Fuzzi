@@ -1,0 +1,15 @@
+{
+  "type": "dev_comm",
+  "variant": "rewrite",
+  "original_message": "hej, coś nie działa w rejestracji, wpisałem dane i kliknąłem ale nic się nie stało, chyba jakiś błąd jest. może validator? sprawdź",
+  "context": "Znalazłeś buga podczas testowania formularza rejestracji. Wiesz że: formularz rejestracji na stronie /register, wpisałeś email 'test@test.com' i hasło 'abc' (za krótkie — min 8 znaków wg wymagań), po kliknięciu Submit nic się nie dzieje — brak komunikatu błędu, brak zmiany stanu przycisku. W DevTools Console widzisz: 'Uncaught ReferenceError: validatePassword is not defined'. Środowisko: Chrome 124, staging.example.com, deploy z dzisiaj rano.",
+  "good_example": "**[Register]: Brak komunikatu błędu przy za krótkim haśle — cichy fail bez informacji dla użytkownika**\n\n**Środowisko:**\n- Przeglądarka: Chrome 124.0.6367.82\n- OS: Windows 11\n- Środowisko: staging.example.com\n- Deploy: 2025-05-23 rano\n\n**Kroki reprodukcji:**\n1. Otwórz https://staging.example.com/register\n2. Wpisz email: test@test.com\n3. Wpisz hasło: abc (3 znaki, poniżej wymaganych 8)\n4. Kliknij przycisk 'Zarejestruj się'\n\n**Oczekiwane zachowanie:**\nPojawia się komunikat walidacji: 'Hasło musi mieć minimum 8 znaków'\n\n**Rzeczywiste zachowanie:**\nNic się nie dzieje — brak komunikatu, brak zmiany stanu przycisku. W konsoli DevTools błąd JS: `Uncaught ReferenceError: validatePassword is not defined`\n\n**Severity:** Major\n**Uzasadnienie:** Użytkownik nie wie dlaczego rejestracja nie przechodzi. Brak feedbacku = użytkownik myśli że system nie działa i opuszcza stronę.\n\n**Załączniki:** [screenshot konsoli DevTools z błędem JS]",
+  "evaluation_tips": [
+    "Tytuł musi zawierać: moduł (Register), objaw (brak komunikatu), kontekst (za krótkie hasło)",
+    "Środowisko musi być kompletne: przeglądarka z wersją, OS, środowisko (staging/prod), data deployu",
+    "Kroki repro są numerowane i atomowe — każdy krok to jedna akcja",
+    "Oczekiwane i rzeczywiste to dwa oddzielne zdania, nie mieszaj ich",
+    "Severity jest uzasadniony — nie tylko etykieta ale powód",
+    "Logi z DevTools są dołączone — developer dostaje konkretny błąd"
+  ]
+}

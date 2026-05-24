@@ -1,0 +1,12 @@
+{
+  "type": "doc_inspector",
+  "variant": "gap_finder",
+  "task_instruction": "Przeanalizuj poniższą dokumentację API endpointu rejestracji użytkownika. Znajdź luki i niejednoznaczności które uniemożliwią Ci napisanie kompletnych przypadków testowych lub które mogą prowadzić do bugów na produkcji.",
+  "documents": [
+    {
+      "title": "POST /api/v1/users/register",
+      "content": "Tworzy nowe konto użytkownika.\n\n**Request body:**\n```json\n{\n  \"email\": \"string\",\n  \"password\": \"string\",\n  \"name\": \"string\"\n}\n```\n\n**Response 200:**\n```json\n{\n  \"user_id\": \"string\",\n  \"token\": \"string\"\n}\n```\n\n**Response 400:** Nieprawidłowe dane\n\n**Response 409:** Email już zajęty"
+    }
+  ],
+  "example_answer": "Znalezione luki w dokumentacji:\n\n1. **Brak walidacji email** — dokumentacja nie określa czy email musi być w formacie x@y.z, czy akceptowane są subdomeny, znaki specjalne, maksymalna długość.\n\n2. **Brak wymagań dla hasła** — brak informacji o minimalnej/maksymalnej długości, wymaganych znakach (duże litery, cyfry, znaki specjalne), czy hasło jest hashowane po stronie klienta czy serwera.\n\n3. **Pole 'name' nieokresślone** — czy to imię, imię i nazwisko, nick? Jakie znaki są dozwolone? Czy może być puste?\n\n4. **Response 400 bez struktury błędu** — 'Nieprawidłowe dane' to za mało. Jak rozróżnimy błąd walidacji emaila od błędu walidacji hasła? Frontend musi wiedzieć co wyświetlić użytkownikowi.\n\n5. **Brak rate limiting** — czy endpoint jest chroniony przed brute force? Ile requestów na minutę jest dozwolonych?\n\n6. **Brak informacji o weryfikacji emaila** — czy użytkownik musi zweryfikować email przed aktywacją konta? Co się dzieje z tokenem jeśli email nie jest zweryfikowany?\n\n7. **Token bez expiry** — zwracany token nie ma określonego czasu ważności ani type (JWT? session token?). Nie wiem jak go używać w kolejnych requestach.\n\n8. **Brak obsługi 500** — co się dzieje przy błędzie serwera? Dokumentacja milczy o scenariuszach infrastructure failure."
+}

@@ -1,0 +1,52 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Aplikacja e-commerce po deployu nowej wersji (v2.3) powinna działać normalnie. Error rate < 0.5%, request latency < 500ms dla 95% requestów, zamówienia przetwarzane normalnie (ok. 30/minutę w tym czasie dnia).",
+  "logs": [
+    {
+      "level": "info",
+      "timestamp": "15:00:01",
+      "message": "Deploy v2.3 zakończony. Canary: 10% ruchu na nowej wersji."
+    },
+    {
+      "level": "info",
+      "timestamp": "15:00:30",
+      "message": "Metrics: error_rate=0.2% | p95_latency=312ms | orders_per_min=31 ✓"
+    },
+    {
+      "level": "info",
+      "timestamp": "15:05:00",
+      "message": "Metrics: error_rate=0.3% | p95_latency=318ms | orders_per_min=29 ✓"
+    },
+    {
+      "level": "warn",
+      "timestamp": "15:10:15",
+      "message": "Metrics: error_rate=1.8% | p95_latency=1240ms | orders_per_min=22 ↑ ABOVE THRESHOLD"
+    },
+    {
+      "level": "error",
+      "timestamp": "15:10:20",
+      "message": "OrderService ERROR x47: Cannot read property 'discountCode' of undefined — TypeError at applyPromotion(order.js:142)"
+    },
+    {
+      "level": "error",
+      "timestamp": "15:10:21",
+      "message": "OrderService ERROR x12: Cannot read property 'discountCode' of undefined — TypeError at applyPromotion(order.js:142)"
+    },
+    {
+      "level": "warn",
+      "timestamp": "15:10:25",
+      "message": "PaymentService: Increased timeout detectedfor orders with null promotion — Stripe latency 1100ms avg (normal: 300ms)"
+    },
+    {
+      "level": "info",
+      "timestamp": "15:10:30",
+      "message": "Alert fired: error_rate > 1% for 5 minutes — PagerDuty notified"
+    }
+  ],
+  "hints": [
+    "Deploy był OK przez pierwsze 10 minut — co się zmieniło? Prawdopodobnie canary trafił na użytkowników z konkretną konfiguracją",
+    "TypeError 'discountCode of undefined' pojawia się w applyPromotion() — co może być null/undefined w tym kontekście?",
+    "Latency Stripe wzrosła gdy błąd się pojawia — możliwe że błąd jest w handlingu odpowiedzi Stripe dla zamówień bez kodu promocyjnego"
+  ],
+  "correct_diagnosis": "Regresja w v2.3 w module promocji zamówień.\n\nRoot cause: Nowy kod w applyPromotion() zakłada że obiekt zamówienia zawsze ma pole 'discountCode'. Zamówienia BEZ kodu promocyjnego mają discountCode=undefined, co powoduje TypeError.\n\nDlaczego pojawiło się po 10 minutach: pierwsze 10 minut ruchu canary to użytkownicy którzy mają aktywny kod promocyjny w sesji. Po 10 minutach traffic canary trafił na użytkowników bez kodu — i tam się sypie.\n\nRekomendacja: natychmiastowy rollback canary do v2.2 lub wyłączenie feature flaga dla applyPromotion. Fix: dodać null-check przed dostępem do discountCode.\n\nSzacowany impact: 47 błędnych zamówień w 5 minutach (użytkownicy bez kodu promocyjnego nie mogli złożyć zamówienia)."
+}

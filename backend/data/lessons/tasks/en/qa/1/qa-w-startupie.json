@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś pierwszym QA zatrudnionym w startupie (15 osób, SaaS B2B, roczna firma). Produkt ma ~2000 aktywnych użytkowników. Team deployuje kilka razy w tygodniu. Brak jakiejkolwiek automatyzacji. Brak dokumentacji testowej. Manager prosi Cię żebyś 'ogarnął QA' — nie ma żadnych oczekiwań co do tego jak.\n\nPierwszy tydzień. Najbliższy deployment za 2 dni. Co robisz najpierw?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zaczynam pisać automatyczne testy E2E dla całej aplikacji — bez automatyzacji nie ma profesjonalnego QA.",
+      "user_percentage": 12,
+      "consequences": "Za ambitne na start. Aplikacja startupowa zmienia się szybko — testy które napiszesz dziś mogą być nieaktualne za 2 tygodnie. Automatyzacja ma sens gdy znasz produkt i wiesz które obszary są stabilne. Najpierw poznaj produkt, zidentyfikuj ryzyka, potem zdecyduj co automatyzować. Zacznij od automatyzacji krytycznych flows po 2-3 miesiącach."
+    },
+    {
+      "id": "b",
+      "text": "Tworzysz 5-10 krytycznych przypadków testowych (smoke tests) dla najważniejszych flow — login, core feature, płatność — i testujesz je ręcznie przed każdym deploymentem.",
+      "user_percentage": 61,
+      "consequences": "Najlepszy start. Dasz wartość natychmiast (deploy w 2 dni będzie bezpieczniejszy), budujesz wiedzę o produkcie, i nie przepisujesz testów które za tydzień staną się nieaktualne. 5-10 case'ów manualnych = 20-30 minut testowania przed deploymentem. Minimal viable QA który można rozbudować."
+    },
+    {
+      "id": "c",
+      "text": "Odmów testowania bez pełnej dokumentacji i specyfikacji — nie możesz testować czego nie wiesz jak ma działać.",
+      "user_percentage": 4,
+      "consequences": "Nierealistyczne dla startupu. W środowisku bez dokumentacji czekanie na nią oznacza czekanie długo. QA w startupie musi pracować z niekompletyną informacją i aktywnie ją uzupełniać przez pytania. Brak QA w ogóle jest gorszy niż QA bez pełnej dokumentacji."
+    },
+    {
+      "id": "d",
+      "text": "Spędzasz tydzień na klikaniu po aplikacji jako użytkownik, zbierasz obserwacje, a potem proponujesz plan QA do akceptacji managera.",
+      "user_percentage": 23,
+      "consequences": "Dobre podejście do poznania produktu, ale zbyt pasywne na 2 dni przed deploymentem. Możesz klikać produktem jako użytkownik w trakcie pisania pierwszych smoke testów — jedno nie wyklucza drugiego. Deploy bez żadnego QA za 2 dni to ryzyko które możesz zmniejszyć nawet krótką sesją testową."
+    }
+  ]
+}

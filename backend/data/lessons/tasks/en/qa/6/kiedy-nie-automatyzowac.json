@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "auto-1",
+      "title": "Propozycja: zautomatyzować test logowania (happy path)",
+      "description": "Login istnieje od 2 lat, nie zmienił się od 8 miesięcy. Test manualny trwa 2 minuty. Używany w każdym regression suite (co sprint). Wymagania stabilne.",
+      "reporter": "QA Team"
+    },
+    {
+      "id": "auto-2",
+      "title": "Propozycja: zautomatyzować wizualny test nowego design systemu",
+      "description": "Firma właśnie zaczęła przepisywanie komponentów UI. Nowe komponenty pojawiają się co sprint, design się zmienia, styleguide jest w trakcie budowy. QA chce mieć automatyczne snapshoty.",
+      "reporter": "QA Lead"
+    },
+    {
+      "id": "auto-3",
+      "title": "Propozycja: zautomatyzować testy API dla endpointów /orders",
+      "description": "Endpoint /orders używany przez 3 różne frontendy. Zmiany w backendzie zdarzają się często. Kontrakt API jest udokumentowany w Swagger. Test manualny trwa 15 minut.",
+      "reporter": "Backend Team"
+    },
+    {
+      "id": "auto-4",
+      "title": "Propozycja: zautomatyzować weryfikację migracji danych (jednorazowej)",
+      "description": "Firma migruje dane użytkowników z legacy systemu. Migracja wykona się raz, w konkretnym oknie serwisowym. QA chce napisać framework automatyzacji do jej weryfikacji.",
+      "reporter": "QA Junior"
+    },
+    {
+      "id": "auto-5",
+      "title": "Propozycja: zautomatyzować smoke test po deploymencie",
+      "description": "Deployment trwa 5 minut. Brak automatycznej weryfikacji czy deployment się powiódł — QA manualnie sprawdza 15 podstawowych funkcji po każdym deployu (2x dziennie). Trwa 20 minut.",
+      "reporter": "DevOps"
+    },
+    {
+      "id": "auto-6",
+      "title": "Propozycja: zautomatyzować exploratory testing nowej funkcji płatności",
+      "description": "Nowa integracja z bramką płatności. PM chce mieć 'automatyczne testy exploratory' żeby QA mógł 'skupić się na czymś innym'. Funkcja jest w trakcie developmentu.",
+      "reporter": "PM"
+    }
+  ],
+  "senior_decisions": [
+    {
+      "bug_id": "auto-1",
+      "priority": "this_sprint",
+      "reason": "Idealny kandydat do automatyzacji: stabilna funkcja, wysoka częstotliwość, krótki czas manualny ale wysoka wartość regresji. ROI dodatni po pierwszym kwartale."
+    },
+    {
+      "bug_id": "auto-2",
+      "priority": "backlog",
+      "reason": "Zautomatyzowanie aktywnie zmieniającego się UI to przepis na testy które psują się co sprint. Poczekaj aż design system się ustabilizuje. Snapshots to dobry pomysł, ale nie teraz."
+    },
+    {
+      "bug_id": "auto-3",
+      "priority": "this_sprint",
+      "reason": "Testy API to najlepszy ROI w automatyzacji — stabilniejsze niż UI, szybkie, łatwe w utrzymaniu. Dokumentacja w Swagger przyspieszy pisanie testów. Wysoki priorytet."
+    },
+    {
+      "bug_id": "auto-4",
+      "priority": "wont_fix",
+      "reason": "Jednorazowa migracja nie uzasadnia budowania frameworku automatyzacji. Zamiast tego: napisz skrypt SQL do weryfikacji liczb i walidacji danych po migracji. 2h zamiast 2 tygodni."
+    },
+    {
+      "bug_id": "auto-5",
+      "priority": "this_sprint",
+      "reason": "20 minut × 2x dziennie = 40 minut straconych dziennie = ~150h rocznie. Smoke test po deploymencie to must-have i jeden z najwyższych ROI w automatyzacji. Pilne."
+    },
+    {
+      "bug_id": "auto-6",
+      "priority": "wont_fix",
+      "reason": "Automatyzacja nie zastępuje exploratory testing — to fundamentalne nieporozumienie. ET wymaga ludzkiej intuicji. Wyjaśnij PM że automatic ET nie istnieje i zaproponuj zamiast tego manual ET z session-based approach."
+    }
+  ],
+  "senior_comment": "Automatyzacja to inwestycja, nie domyślne zachowanie. Pytania przed automatyzacją: Czy to się wystarczająco często powtarza? Czy jest wystarczająco stabilne? Czy ROI jest pozytywny? Jeśli nie — zostań przy manualnym lub skrypcie SQL."
+}

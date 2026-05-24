@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś QA w firmie od 6 miesięcy. Manager pyta Cię o propozycję metryk jakości dla teamu. Macie 4 QA, 12 developerów, release co 2 tygodnie. Używacie Jiry. Brak automatyzacji testów.",
+  "decisions": [
+    {
+      "id": "m1",
+      "decision": "Śledzić liczbę bugów znalezionych przez QA na sprint jako główną metrykę sukcesu QA",
+      "correct_risk": "risky",
+      "explanation": "Liczba bugów znalezionych jest podatna na manipulację i źle motywuje. QA może zgłaszać drobne bugi kosmetyczne żeby mieć 'wysokie liczby'. Lepsza metryka: Defect Detection Rate (ile % bugów znaleźliśmy przed produkcją) lub escaped defects (ile wyszło na produkcję)."
+    },
+    {
+      "id": "m2",
+      "decision": "Śledzić Escaped Defects — ile bugów wyszło na produkcję pomimo testowania",
+      "correct_risk": "safe",
+      "explanation": "Kluczowa metryka QA. Każdy escaped defect to pytanie 'dlaczego tego nie złapaliśmy?' i wejście do analizy procesu. Niski escaped defect rate = skuteczny QA. Wzrost = sygnał do zbadania."
+    },
+    {
+      "id": "m3",
+      "decision": "Mierzyć 100% test coverage jako cel automatyzacji",
+      "correct_risk": "risky",
+      "explanation": "100% coverage to nierealistyczny cel który prowadzi do pisania bezużytecznych testów. Lepszy cel: coverage na krytycznych ścieżkach biznesowych (payment, auth, core CRUD). Jakość testów > procent coverage."
+    },
+    {
+      "id": "m4",
+      "decision": "Śledzić Defect Detection Rate — procent bugów znalezionych przed produkcją vs po",
+      "correct_risk": "safe",
+      "explanation": "DDR to jeden z najlepszych wskaźników skuteczności testowania. Łatwy do obliczenia z Jiry (bugi zgłoszone przez QA vs bugi zgłoszone przez support/users). Cel: > 90%."
+    },
+    {
+      "id": "m5",
+      "decision": "Mierzyć czas spędzony na testowaniu jako dowód zaangażowania QA",
+      "correct_risk": "risky",
+      "explanation": "Czas spędzony na testowaniu jest łatwy do udowodnienia ale nic nie mówi o efektywności. QA może spędzić 40h na testowaniu i nie znaleźć nic ważnego, albo 8h i znaleźć krytycznego buga. Metryki procesowe (DDR, escaped defects) są bardziej informatywne."
+    },
+    {
+      "id": "m6",
+      "decision": "Śledzić Defect Reopen Rate — ile % naprawionych bugów wraca do retestowania",
+      "correct_risk": "safe",
+      "explanation": "Wysoki reopen rate (> 15%) sygnalizuje problem z komunikacją o kryteriach naprawy lub developerzy zamykają bugi bez pełnego fix. Metryka która ujawnia problemy w workflow developer-QA."
+    }
+  ],
+  "senior_comment": "Zacznij od 3-4 prostych metryk zbieranych manualnie z Jiry. Nie buduj od razu dashboard — najpierw sprawdź czy metryki w ogóle są zbierane poprawnie i czy team rozumie co mierzysz. Metryki bez interpretacji to tylko liczby."
+}

@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "sec1",
+      "title": "Brak nagłówka Content-Security-Policy na stronie logowania i panelu użytkownika",
+      "description": "GET https://app.example.com/login — brak CSP header w odpowiedzi. Strona zawiera dynamiczne treści od użytkowników (komentarze, opisy produktów).",
+      "reporter": "Security Audit"
+    },
+    {
+      "id": "sec2",
+      "title": "Nagłówek Server ujawnia: 'nginx/1.18.0 (Ubuntu)'",
+      "description": "Odpowiedź serwera zawiera dokładną wersję nginx i OS. nginx 1.18.0 ma kilka znanych CVE.",
+      "reporter": "Pentest"
+    },
+    {
+      "id": "sec3",
+      "title": "Cookie sesji bez flagi HttpOnly — JavaScript może odczytać session token",
+      "description": "Set-Cookie: session=eyJhbGc...; Path=/; Secure — brak HttpOnly. JavaScript przez document.cookie może odczytać token sesji.",
+      "reporter": "Security Audit"
+    },
+    {
+      "id": "sec4",
+      "title": "Brak nagłówka X-Frame-Options — możliwy clickjacking",
+      "description": "Strona może być osadzona w iframe przez zewnętrzną stronę. Aplikacja obsługuje płatności — clickjacking może przechwycić kliknięcia potwierdzające transakcje.",
+      "reporter": "QA"
+    },
+    {
+      "id": "sec5",
+      "title": "Brak Referrer-Policy — URL z tokenem resetowania hasła jest wysyłany jako Referrer",
+      "description": "Link resetowania hasła wygląda: /reset-password?token=abc123. Gdy użytkownik kliknie link zewnętrzny ze strony resetowania, token jest wysyłany w nagłówku Referer.",
+      "reporter": "Security Audit"
+    },
+    {
+      "id": "sec6",
+      "title": "Brak nagłówka X-Content-Type-Options na endpointach plików",
+      "description": "Endpoint /api/files zwraca pliki przesyłane przez użytkowników bez nosniff. Przeglądarka może wykonać .txt jako HTML jeśli content wygląda jak HTML.",
+      "reporter": "QA"
+    }
+  ],
+  "senior_decisions": [
+    {
+      "bug_id": "sec1",
+      "priority": "this_sprint",
+      "reason": "Brak CSP na stronach z dynamiczną treścią użytkownika to poważne ryzyko XSS. Strona komentarzy/opisów bez CSP = potencjalny sklept złośliwych skryptów. Priorytet wysoki, szczególnie w kontekście treści user-generated."
+    },
+    {
+      "bug_id": "sec2",
+      "priority": "next_sprint",
+      "reason": "Ujawnienie wersji nginx ułatwia targetowanie znanych CVE. Ważne, ale nie krytyczne bezpośrednio — atakujący musi znać CVE i je eksploatować. Fix: `server_tokens off;` w nginx.conf. Następny sprint."
+    },
+    {
+      "bug_id": "sec3",
+      "priority": "this_sprint",
+      "reason": "Cookie sesji bez HttpOnly to bezpośrednie ryzyko kradzieży sesji przez XSS. Każdy skrypt wstrzyknięty na stronie może odczytać token. W połączeniu z brakiem CSP (sec1) — to krytyczna kombinacja. Natychmiastowa naprawa."
+    },
+    {
+      "bug_id": "sec4",
+      "priority": "this_sprint",
+      "reason": "Clickjacking na stronie z płatnościami to critical. Atakujący może nakłonić użytkownika do potwierdzenia transakcji myśląc że klika coś innego. X-Frame-Options: DENY to jednolinijkowa naprawa o wysokim impact."
+    },
+    {
+      "bug_id": "sec5",
+      "priority": "this_sprint",
+      "reason": "Token resetowania hasła w URL + brak Referrer-Policy = token może wyciec do zewnętrznych serwisów. Ktoś kto przechwytuje Referrer headery (np. analytics) dostaje linki resetowania haseł. Pilna naprawa."
+    },
+    {
+      "bug_id": "sec6",
+      "priority": "next_sprint",
+      "reason": "nosniff na endpointach plików jest ważny, ale wymaga analizy czy faktycznie pliki użytkowników mogą wyglądać jak HTML. W praktyce przeglądarki są coraz lepsze w tej ochronie. Następny sprint."
+    }
+  ],
+  "senior_comment": "Nagłówki bezpieczeństwa to najtańsze ulepszenia bezpieczeństwa jakie możesz zrobić — kilkanaście linii konfiguracji nginx/Apache blokuje całe klasy ataków. Priorytet: HttpOnly cookie + CSP + clickjacking ochrona to minimum dla aplikacji finansowej."
+}

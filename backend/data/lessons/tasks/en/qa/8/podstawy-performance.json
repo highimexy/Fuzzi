@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Testujesz endpoint GET /api/profile/{userId}. Jesteś zalogowany jako user #42. Jak sprawdzisz kontrolę dostępu (IDOR)?",
+  "options": [
+    { "id": "a", "text": "Sprawdź czy endpoint zwraca 200 dla Twojego ID — jeśli tak, jest OK" },
+    { "id": "b", "text": "Zmień URL na /api/profile/41 i sprawdź czy serwer zwraca dane innego użytkownika" },
+    { "id": "c", "text": "Przetestuj endpoint tylko przez Postmana, nie przez UI" },
+    { "id": "d", "text": "Sprawdź czy URL jest szyfrowany przez HTTPS" }
+  ],
+  "correct": "b",
+  "explanation": "To test na IDOR (Insecure Direct Object Reference) — jeden z najczęstszych błędów bezpieczeństwa. Zmiana ID w URL na inny użytkownik sprawdza czy backend weryfikuje uprawnienia. Oczekiwany wynik: 403 Forbidden lub 404. Jeśli serwer zwróci dane użytkownika 41 — to krytyczny bug bezpieczeństwa.",
+  "trap_explanation": "Samo 'działa dla mojego ID' nie testuje bezpieczeństwa. IDOR jest niewidoczne w happy path i wymaga celowego testowania autoryzacji między użytkownikami."
+}

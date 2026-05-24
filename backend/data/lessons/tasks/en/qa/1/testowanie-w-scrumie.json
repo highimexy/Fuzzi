@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Jesteś QA w nowym teamie. Sprint planning właśnie się zaczyna. PM przedstawia user story: 'Jako user chcę móc dodać produkt do listy życzeń.' Story nie ma acceptance criteria. Developer szacuje 3 story points i mówi 'to prosta rzecz, zrobimy w 2 dni'. Sprint ends in 10 days. Co robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Milczysz — developer wie co robi, nie chcesz spowalniać planowania jako nowy w teamie.",
+      "user_percentage": 34,
+      "consequences": "Story wchodzi do sprintu bez AC. W środę developer mówi 'gotowe' — ale co to znaczy? Czy lista życzeń persystuje po wylogowaniu? Czy działa dla niezalogowanych? Czy jest limit produktów? Kończysz sprint z funkcją która 'działa' ale ma 6 otwartych pytań. PM jest niezadowolony na review."
+    },
+    {
+      "id": "b",
+      "text": "Pytasz głośno: 'Jakie są acceptance criteria dla tej historyjki? Bez AC nie wiem jak ją przetestować.'",
+      "user_percentage": 41,
+      "consequences": "Dobry ruch. PM i developer wspólnie definiują AC: 'Zalogowany user może dodać max 50 produktów. Lista persystuje. Niezalogowany widzi komunikat.' Teraz wiesz co testować. Sprint planning trwa 15 minut dłużej — ale zaoszczędzasz 2 dni nieporozumień w połowie sprintu."
+    },
+    {
+      "id": "c",
+      "text": "Czekasz do końca planowania, potem piszesz do PM prywatnie z pytaniem o AC.",
+      "user_percentage": 18,
+      "consequences": "Lepiej niż milczeć — ale PM odpowie 'dopiszemy w trakcie'. Połowa AC zostanie zapomniana. Story wejdzie do sprintu z niekompletnymi kryteriami. Najlepsza praktyka: AC definiujemy publicznie, przed wejściem story do sprintu — nie w prywatnych wiadomościach."
+    },
+    {
+      "id": "d",
+      "text": "Akceptujesz story i samodzielnie piszesz test cases zakładając co developer prawdopodobnie zaimplementuje.",
+      "user_percentage": 7,
+      "consequences": "Ryzykowne. Twoje założenia mogą być inne niż implementacja developera, które z kolei mogą być inne niż oczekiwania PM. Testujesz 'swoją wyobrażoną funkcję' a nie 'wymaganą funkcję'. Bugi znajdziesz — ale możesz też zatwierdzić zachowanie które PM uważa za błąd."
+    }
+  ]
+}

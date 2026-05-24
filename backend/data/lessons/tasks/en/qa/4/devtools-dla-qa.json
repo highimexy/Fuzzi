@@ -1,0 +1,19 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "SPA — dashboard użytkownika po zalogowaniu. Powinna wyświetlać: imię i awatar użytkownika (z /api/user/profile), preferencje powiadomień (z /api/user/preferences), listę ostatnich aktywności (z /api/activity). Wszystkie requesty powinny działać po zalogowaniu.",
+  "logs": [
+    { "level": "info", "message": "GET /api/auth/session 200 OK — session valid", "source": "auth.js:12" },
+    { "level": "warn", "message": "Cookie 'auth_token' expires in 28 seconds", "source": "cookie-manager.js:44" },
+    { "level": "info", "message": "GET /api/static/avatar-placeholder.png 200 OK", "source": "network" },
+    { "level": "error", "message": "GET /api/user/profile 401 Unauthorized", "source": "network" },
+    { "level": "error", "message": "Uncaught TypeError: Cannot read properties of null (reading 'displayName')", "source": "UserHeader.jsx:31" },
+    { "level": "error", "message": "GET /api/user/preferences 401 Unauthorized", "source": "network" },
+    { "level": "error", "message": "GET /api/activity 401 Unauthorized", "source": "network" },
+    { "level": "info", "message": "Dashboard rendered with 3 failed sections", "source": "dashboard.js:88" }
+  ],
+  "hints": [
+    "Zwróć uwagę na kolejność logów — co się dzieje zanim pojawią się błędy 401?",
+    "Sesja jest poprawna (/api/auth/session zwraca 200), ale inne requesty zwracają 401. Dlaczego mogłoby się to zdarzyć?"
+  ],
+  "correct_diagnosis": "Token autoryzacyjny (auth_token cookie) wygasł w trakcie ładowania dashboardu. Log z cookie-manager.js pokazuje ostrzeżenie '28 seconds' — token był bliski wygaśnięcia gdy użytkownik wszedł na stronę. /api/auth/session używa innego mechanizmu (session cookie, nie JWT), dlatego zwrócił 200, ale pozostałe endpointy wymagają auth_token który wygasł. Potrzebny jest mechanizm automatycznego odświeżania tokenu (token refresh) przed wygaśnięciem."
+}

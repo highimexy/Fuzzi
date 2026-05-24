@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "API endpoint POST /users zwraca status 403. Użytkownik jest zalogowany i wysyła prawidłowy token. Co to oznacza?",
+  "options": [
+    { "id": "a", "text": "Token jest nieważny lub wygasły" },
+    { "id": "b", "text": "Użytkownik jest uwierzytelniony, ale nie ma uprawnień do tej operacji" },
+    { "id": "c", "text": "Endpoint nie istnieje" },
+    { "id": "d", "text": "Serwer ma wewnętrzny błąd" }
+  ],
+  "correct": "b",
+  "explanation": "403 Forbidden = token jest ważny (użytkownik jest uwierzytelniony), ale jego rola lub uprawnienia nie pozwalają na tę operację. Np. zwykły user próbuje stworzyć nowe konto admina. Różnica między 401 a 403: 401 = 'nie wiem kim jesteś', 403 = 'wiem kim jesteś, ale nie masz dostępu'.",
+  "trap_explanation": "401 to błąd autoryzacji (brak/zły token). 403 to brak uprawnień przy ważnym tokenie. To rozróżnienie pojawia się często na rozmowach kwalifikacyjnych."
+}

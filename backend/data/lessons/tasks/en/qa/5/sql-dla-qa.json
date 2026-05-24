@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Testujesz funkcję usuwania konta. Po kliknięciu 'Usuń konto' w UI, chcesz sprawdzić co się stało w bazie. Który query jest najwłaściwszy?",
+  "options": [
+    { "id": "a", "text": "SELECT * FROM users;" },
+    { "id": "b", "text": "DELETE FROM users WHERE id = 42;" },
+    { "id": "c", "text": "SELECT id, email, deleted_at FROM users WHERE id = 42;" },
+    { "id": "d", "text": "UPDATE users SET deleted_at = NULL WHERE id = 42;" }
+  ],
+  "correct": "c",
+  "explanation": "Poprawna odpowiedź to SELECT z kolumną deleted_at — sprawdzisz czy użytkownik został 'miękko' usunięty (soft delete: pole deleted_at jest ustawione) czy naprawdę usunięty z bazy. Opcja A zwróci wszystkich użytkowników — niepraktyczne. Opcje B i D to modyfikujące query — jako QA używasz tylko SELECT, chyba że celowo testujesz data operations.",
+  "trap_explanation": "QA powinien używać tylko SELECT na bazie produkcyjnej lub testowej. Nigdy nie uruchamiaj modyfikujących zapytań bez wyraźnej potrzeby i zgody."
+}

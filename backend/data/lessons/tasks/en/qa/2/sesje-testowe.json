@@ -1,0 +1,28 @@
+{
+  "type": "test_case_builder",
+  "feature_description": "Nowa funkcja: Komentarze do zamówień. Użytkownik może dodać komentarz do swojego zamówienia (max 500 znaków). Support może dodawać komentarze do dowolnego zamówienia. Komentarze są widoczne dla użytkownika i supportu. Brak specyfikacji edge cases.",
+  "task_instruction": "Zaplanuj 2 sesje testowe dla tej funkcji. Dla każdej sesji zdefiniuj:\n1. Misję (jedno konkretne zdanie)\n2. Obszary do sprawdzenia (3-5 punktów)\n3. Typ sesji (np. happy path, vandal tour, security tour)",
+  "expected_cases": [
+    {
+      "title": "Sesja 1: Happy Path i Podstawowa Funkcjonalność",
+      "priority": "P1",
+      "area": "Core functionality",
+      "steps": "Misja: Przetestuj dodawanie, wyświetlanie i uprawnienia komentarzy jako user i support — podstawowe flows.\n\nObszary:\n- User dodaje komentarz do własnego zamówienia (happy path)\n- Support dodaje komentarz do zamówienia innego użytkownika\n- Komentarz jest widoczny dla obu stron\n- Komentarz zapisuje się z datą i autorem\n- Długi komentarz (500 znaków) jest akceptowany",
+      "expected": "Wszystkie podstawowe flows działają, dane są poprawnie zapisane i wyświetlone"
+    },
+    {
+      "title": "Sesja 2: Edge Cases i Bezpieczeństwo (Vandal Tour)",
+      "priority": "P1",
+      "area": "Security & Edge Cases",
+      "steps": "Misja: Przetestuj co się dzieje gdy user próbuje zrobić coś nieoczekiwanego lub niebezpiecznego z komentarzami.\n\nObszary:\n- User próbuje skomentować zamówienie INNEGO usera (BOLA)\n- Komentarz z HTML/script tag (XSS)\n- Komentarz z 501 znakami (ponad limit)\n- Pusty komentarz (0 znaków)\n- Komentarz z tylko spacjami\n- Bardzo szybkie kolejne komentarze (rate limiting?)",
+      "expected": "Odpowiednie błędy dla każdego edge case, brak XSS, limit jest wymuszany"
+    },
+    {
+      "title": "Sesja 3 (opcjonalna): UX i Responsywność",
+      "priority": "P2",
+      "area": "UX",
+      "steps": "Misja: Sprawdź czy UX komentarzy jest intuicyjny na mobile i desktop.\n\nObszary:\n- Formularz komentarza na mobile (iPhone Safari)\n- Licznik znaków widoczny przy wpisywaniu\n- Komentarz wyświetla się w odpowiedniej kolejności (chronologicznie?)\n- Długa lista komentarzy — paginacja czy scroll?",
+      "expected": "UX jest spójny i intuicyjny na różnych urządzeniach"
+    }
+  ]
+}

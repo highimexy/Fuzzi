@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Developer mówi: 'Ten edge case jest niemożliwy do osiągnięcia przez normalnego użytkownika, nie musisz tego testować.' Co robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Ufasz developerowi — zna kod lepiej niż Ty.",
+      "is_correct": false,
+      "explanation": "Developer zna implementację, ale QA zna ryzyko użytkownika. 'Niemożliwy dla normalnego użytkownika' to nie to samo co 'niemożliwy'. Złośliwi użytkownicy, skrypty automatyczne, błędy sieciowe — wszystko to generuje edge case'y których developer nie przewidział pisząc kod."
+    },
+    {
+      "id": "b",
+      "text": "Prosisz o uzasadnienie: na jakiej podstawie twierdzi że jest niemożliwy? Proponujesz udokumentowanie tej decyzji jako świadome ryzyko.",
+      "is_correct": true,
+      "explanation": "Właściwa postawa. Nie walczysz — prosisz o uzasadnienie. Jeśli developer ma rację, dokumentujesz to jako świadomy skip. Jeśli nie ma racji — ujawniasz ryzyko. W obu przypadkach Twoja rola jest wypełniona."
+    },
+    {
+      "id": "c",
+      "text": "Testujesz to w ciszy i jeśli nie znajdziesz buga, przemilczasz całą rozmowę.",
+      "is_correct": false,
+      "explanation": "Cicha praca bez komunikacji nie buduje zaufania ani procesu. Nawet jeśli nic nie znajdziesz — rozmowa o zakresie testów jest ważna. QA powinien dokumentować co testuje i dlaczego, nie tylko wyniki."
+    },
+    {
+      "id": "d",
+      "text": "Eskalujesz od razu do managera — developer nie może decydować co testować.",
+      "is_correct": false,
+      "explanation": "Eskalacja bez próby rozmowy to konflikt zamiast współpracy. Najpierw dialog z developerem. Eskalacja jest uzasadniona gdy dialog zawodzi lub stawka jest wysoka (bezpieczeństwo, dane finansowe)."
+    }
+  ]
+}

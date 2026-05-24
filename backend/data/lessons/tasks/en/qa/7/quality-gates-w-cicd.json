@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "Jesteś QA leadem w firmie która właśnie wdraża CI/CD (wcześniej był tylko ręczny deployment). Manager pyta Cię o rekomendację jakie quality gates wprowadzić. Team: 8 developerów, 2 QA, deploy co 2 tygodnie (cel: deploy on demand). Stack: Node.js + React, testy jednostkowe istnieją (~40% coverage), brak E2E.",
+  "decisions": [
+    {
+      "id": "g1",
+      "decision": "Blokować każdy PR jeśli code coverage spadnie poniżej 80% (z obecnych 40%)",
+      "correct_risk": "risky",
+      "explanation": "Skok z 40% do 80% jako twarde wymaganie od razu = zablokowanie wszystkich PR. Deweloperzy będą pisać bezużyteczne testy żeby spełnić próg. Lepiej: ustaw próg na 40% (nie pozwól na spadek) i podnoś go o 5% co miesiąc. Cel: 80% za 8 miesięcy, nie jutro."
+    },
+    {
+      "id": "g2",
+      "decision": "Dodać automatyczne sprawdzanie sekretów (git-secrets/detect-secrets) jako pre-commit hook",
+      "correct_risk": "safe",
+      "explanation": "Jedno z najważniejszych i najtańszych zabezpieczeń. Jeden wyciek API key na GitHub = potencjalnie ogromna strata. Pre-commit hook jest szybki (< 2 sekundy), nieobciążający i chroni przed najczęstszym ludzkim błędem. Absolutny priorytet."
+    },
+    {
+      "id": "g3",
+      "decision": "Wymagać przejścia wszystkich istniejących unit testów przed każdym merge do main",
+      "correct_risk": "safe",
+      "explanation": "Podstawowy i konieczny gate. Jeśli istniejące testy nie przechodzą — kod jest zepsuty. Czas: < 5 minut dla typowego projektu Node.js. To minimum które powinno już istnieć."
+    },
+    {
+      "id": "g4",
+      "decision": "Wdrożyć pełny E2E test suite (200 przypadków) jako wymaganie przed każdym PR merge",
+      "correct_risk": "risky",
+      "explanation": "200 E2E testów przy braku obecnej automatyzacji to projekt na wiele miesięcy. Uruchamianie ich przy każdym PR będzie trwało 30-60 minut — drastycznie spowalnia development. Lepiej: zacznij od 10-15 krytycznych smoke tests, uruchamiaj po merge do main (nie na każdy PR)."
+    },
+    {
+      "id": "g5",
+      "decision": "Dodać Snyk security scan który blokuje PR jeśli znajdzie jakąkolwiek podatność (low/medium/high/critical)",
+      "correct_risk": "risky",
+      "explanation": "Blokowanie na low/medium podatności = ciągłe blokowanie. Każda biblioteka ma jakieś CVE. Lepiej: blokuj tylko na critical i high, reportuj medium/low. To zachowuje bezpieczeństwo bez blokowania codziennego workflow."
+    },
+    {
+      "id": "g6",
+      "decision": "Smoke tests (10-15 krytycznych przypadków E2E) uruchamiane automatycznie po deploymencie na staging",
+      "correct_risk": "safe",
+      "explanation": "Idealny pierwszy krok do E2E automatyzacji. 10-15 testów to 2-3 tygodnie pracy, uruchamiają się w 5-10 minut, i natychmiast informują czy deployment jest zdrowy. To jest ROI które manager zrozumie: 'zanim QA zacznie testować manualnie, automatycznie sprawdzamy że nic nie jest złamane.'"
+    }
+  ],
+  "senior_comment": "Wdrażaj quality gates stopniowo. Jeden gate dobrze wdrożony jest wart więcej niż 5 gate'ów które wszyscy omijają. Zacznij od: testy jednostkowe + secret scanning + smoke tests po deploymencie. Resztę dodawaj gdy team jest gotowy."
+}

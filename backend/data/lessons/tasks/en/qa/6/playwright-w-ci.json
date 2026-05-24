@@ -1,0 +1,88 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Playwright E2E testy uruchamiają się w GitHub Actions po każdym PR. Wszystkie testy przechodzą lokalnie. Na CI failują 3 testy.",
+  "logs": [
+    {
+      "timestamp": "2024-03-15T09:12:01Z",
+      "level": "INFO",
+      "message": "GitHub Actions Runner: ubuntu-22.04, Node 20.x"
+    },
+    {
+      "timestamp": "2024-03-15T09:12:15Z",
+      "level": "INFO",
+      "message": "Installing Playwright browsers..."
+    },
+    {
+      "timestamp": "2024-03-15T09:12:45Z",
+      "level": "INFO",
+      "message": "Running 24 tests using 4 workers"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:02Z",
+      "level": "PASS",
+      "message": "✓ [chromium] homepage loads (1.2s)"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:08Z",
+      "level": "FAIL",
+      "message": "✗ [chromium] user login (31.4s)"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:08Z",
+      "level": "ERROR",
+      "message": "Error: Timeout 30000ms exceeded waiting for selector '[data-testid=\"dashboard-welcome\"]'"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:08Z",
+      "level": "INFO",
+      "message": "Screenshot saved: test-results/login-fail.png [shows login page, not dashboard]"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:09Z",
+      "level": "INFO",
+      "message": "Browser console: 'POST https://localhost:3000/api/auth/login - net::ERR_CONNECTION_REFUSED'"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:22Z",
+      "level": "FAIL",
+      "message": "✗ [chromium] product search (31.1s)"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:22Z",
+      "level": "ERROR",
+      "message": "Error: Timeout 30000ms exceeded waiting for '[data-testid=\"search-results\"]'"
+    },
+    {
+      "timestamp": "2024-03-15T09:13:22Z",
+      "level": "INFO",
+      "message": "Browser console: 'GET https://localhost:3000/api/products - net::ERR_CONNECTION_REFUSED'"
+    },
+    {
+      "timestamp": "2024-03-15T09:14:01Z",
+      "level": "PASS",
+      "message": "✓ [chromium] API health check via request (0.1s) — using process.env.BASE_URL=https://staging.app.com"
+    },
+    {
+      "timestamp": "2024-03-15T09:14:10Z",
+      "level": "FAIL",
+      "message": "✗ [chromium] user registration visual comparison (2.1s)"
+    },
+    {
+      "timestamp": "2024-03-15T09:14:10Z",
+      "level": "ERROR",
+      "message": "Screenshot comparison failed: received image differs from baseline by 8.3% (threshold: 2%)\nDiff saved: test-results/registration-diff.png"
+    },
+    {
+      "timestamp": "2024-03-15T09:14:11Z",
+      "level": "INFO",
+      "message": "3 failed, 21 passed (2m 10s)"
+    }
+  ],
+  "hints": [
+    "Dlaczego login fail mówi localhost:3000 gdy API health check używa staging.app.com?",
+    "Co wspólnego mają 2 pierwsze faile?",
+    "Czemu visual comparison fail wygląda inaczej niż poprzednie?",
+    "Czy testy failują z tego samego powodu?"
+  ],
+  "correct_diagnosis": "Dwa różne problemy powodują 3 faile:\n\n1. [login] i [product search] — te same faile z innego powodu: testy używają hardcoded localhost:3000 jako BASE_URL zamiast process.env.BASE_URL. Na CI nie ma działającego localhost:3000. API health check przechodzi bo jako jedyny test używa process.env.BASE_URL. Naprawka: podmień wszystkie hardcoded localhost URL na process.env.BASE_URL.\n\n2. [visual comparison] — inny problem: baseline screenshot był zrobiony na macOS z font antialiasing, CI runner to Ubuntu z innym renderowaniem fontów. Diff 8.3% to niemal wyłącznie różnice w renderowaniu tekstu. Naprawki: (a) zwiększ threshold do 15-20% dla testów z tekstem, (b) regeneruj baseline na Linux (Dockerfile z playwright), (c) maskuj obszary tekstowe w snapshot comparison.\n\nŻeby zdiagnozować: pobierz artefakty 'registration-diff.png' i sprawdź gdzie jest różnica. Prawie na pewno widać pixelowe różnice w tekście, nie w układzie."
+}

@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "s1",
+      "title": "BOLA: GET /api/orders/{id} zwraca zamówienia innych użytkowników",
+      "description": "Zalogowany jako User A (id=100), wysyłam GET /api/orders/5001 (zamówienie User B). Odpowiedź: 200 OK z pełnymi danymi zamówienia User B włącznie z adresem, telefonem i historią płatności.",
+      "metadata": "Zreprodukowano: staging. Curl z tokenem User A, ID zamówienia User B → pełne dane."
+    },
+    {
+      "id": "s2",
+      "title": "Brak nagłówka X-Content-Type-Options na odpowiedziach API",
+      "description": "Żadna odpowiedź API nie zawiera nagłówka X-Content-Type-Options: nosniff. OWASP rekomenduje ten nagłówek jako standard.",
+      "metadata": "Wykryto przez OWASP ZAP scan. Brak nagłówka może umożliwić MIME sniffing w starszych przeglądarkach."
+    },
+    {
+      "id": "s3",
+      "title": "SQL Error w response przy specjalnych znakach w search",
+      "description": "GET /api/products?query=test' → HTTP 500 z response body: \"ERROR: unterminated quoted string at or near \\\"test'\\\" LINE 1: SELECT * FROM products WHERE name LIKE '%test'%'\". Pełny stack SQL error widoczny w response.",
+      "metadata": "Zreprodukowano na staging. Potencjalna SQL injection — przynajmniej wyciek informacji o strukturze DB."
+    },
+    {
+      "id": "s4",
+      "title": "Token JWT nie jest invalidowany po wylogowaniu",
+      "description": "Użytkownik loguje się, kopiuje token. Wylogowuje się. Używa skopiowanego tokenu do wywołania GET /api/user/profile → HTTP 200 OK (token nadal działa). Token wygasa dopiero po 7 dniach.",
+      "metadata": "JWT jest stateless — bez blacklisty invalidacja jest trudna technicznie, ale brak jej to bezpieczeństwo."
+    },
+    {
+      "id": "s5",
+      "title": "Endpoint /api/admin/stats dostępny dla zwykłych użytkowników",
+      "description": "GET /api/admin/stats z tokenem zwykłego usera → HTTP 200 OK z danymi: liczba użytkowników, przychód miesięczny, top produkty, dane konwersji.",
+      "metadata": "Endpoint nie jest w dokumentacji publicznej. Znaleziony przez analizę JavaScript bundle."
+    },
+    {
+      "id": "s6",
+      "title": "Pole 'role' w PATCH /api/user/profile podatne na mass assignment",
+      "description": "PATCH /api/user/profile z body {\"name\": \"Jan\", \"role\": \"admin\"} → HTTP 200, role w response: \"admin\". Użytkownik może zmienić własną rolę na administratora.",
+      "metadata": "Zreprodukowano na staging. Pełny dostęp do panelu admin po zmianie roli."
+    }
+  ],
+  "senior_decisions": [
+    {
+      "id": "s1",
+      "decision": "CRITICAL — natychmiastowy hotfix, blokuje release",
+      "explanation": "BOLA (Broken Object Level Authorization) to najczęstsza i najpoważniejsza podatność API. Dane osobowe i finansowe innych użytkowników są dostępne. Naruszenie GDPR. Hotfix musi wyjść w ciągu godzin, nie dni."
+    },
+    {
+      "id": "s2",
+      "decision": "LOW — dodać do backlogu, nie blokuje",
+      "explanation": "X-Content-Type-Options to hardening nagłówek — dobra praktyka, nie krytyczne. Nowoczesne przeglądarki domyślnie nie robią MIME sniffing. Dodać do backlogu security improvements, naprawić w ciągu miesiąca."
+    },
+    {
+      "id": "s3",
+      "decision": "HIGH — naprawić przed release, wyciek informacji + potencjalna SQLi",
+      "explanation": "SQL error w response to minimum information disclosure (atakujący zna strukturę DB). Może być wstępem do pełnej SQL injection. Error messages nigdy nie powinny trafiać do użytkownika. Naprawka: parameterized queries + generic error responses."
+    },
+    {
+      "id": "s4",
+      "decision": "MEDIUM — ważne ale nie blokujące, zaplanuj w ciągu 2 tygodni",
+      "explanation": "Token po wylogowaniu to znany problem JWT. Rozwiązania: token blacklista (Redis), krótszy TTL (1h zamiast 7 dni) + refresh tokens. Ryzyko realne ale wymaga dostępu fizycznego lub przejęcia tokenu. Nie blokuje release ale musi być zaplanowane."
+    },
+    {
+      "id": "s5",
+      "decision": "CRITICAL — natychmiastowy hotfix, blokuje release",
+      "explanation": "Dostęp do danych finansowych (przychód) przez zwykłego użytkownika to naruszenie poufności danych biznesowych i bezpieczeństwa. Endpoint musi być chroniony autoryzacją roli admin. Priorytet równy s1."
+    },
+    {
+      "id": "s6",
+      "decision": "CRITICAL — natychmiastowy hotfix, blokuje release",
+      "explanation": "Mass assignment który pozwala zmienić rolę na admin = pełne przejęcie aplikacji przez dowolnego użytkownika. To jest privilege escalation. Białe listy pól w PATCH (allowlist, nie blocklist). Hotfix przed jakimkolwiek deploymentem."
+    }
+  ],
+  "senior_comment": "W tym raporcie masz 3 Critical podatności (s1, s5, s6) które razem dają: dostęp do danych innych użytkowników, dostęp do danych finansowych firmy, i eskalację uprawnień do admina. To nie jest 'wypuść i napraw' — to jest 'nie wypuszczaj dopóki nie naprawione'. Bezpieczeństwo nie ma kompromisów przy Critical."
+}

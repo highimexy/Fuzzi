@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Twój team ma 200 test case'ów manualnych w regresji. Które podejście do automatyzacji jest najrozsądniejsze?",
+  "options": [
+    { "id": "a", "text": "Zautomatyzuj wszystkie 200 test case'ów przed pierwszym sprintem" },
+    { "id": "b", "text": "Nie automatyzuj — regresja manualna daje lepsze wyniki" },
+    { "id": "c", "text": "Zautomatyzuj 20–30 najważniejszych przypadków (smoke + kluczowe ścieżki) i iteruj każdy sprint" },
+    { "id": "d", "text": "Zautomatyzuj tylko testy jednostkowe, E2E są zbyt niestabilne" }
+  ],
+  "correct": "c",
+  "explanation": "Automatyzacja to inwestycja — kosztuje czas na napisanie i utrzymanie. Strategia stopniowego pokrycia (zacznij od najważniejszych, iteruj) daje wartość szybciej niż próba zautomatyzowania wszystkiego naraz. 200 test cases naraz to projekt na miesiące. Zacznij od krytycznych ścieżek i buduj bazę systematycznie.",
+  "trap_explanation": "Automatyzacja NIE zastępuje testowania manualnego. E2E testy mają sens — ale ich liczbę trzeba kontrolować, bo są drogie w utrzymaniu i pisaniu."
+}

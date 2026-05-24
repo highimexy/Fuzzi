@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Pole formularza akceptuje wiek 18–65. Używając BVA, które wartości MUSISZ przetestować?",
+  "options": [
+    { "id": "a", "text": "18, 40, 65" },
+    { "id": "b", "text": "17, 18, 19, 64, 65, 66" },
+    { "id": "c", "text": "0, 18, 65, 100" },
+    { "id": "d", "text": "18, 65" }
+  ],
+  "correct": "b",
+  "explanation": "BVA wymaga testowania wartości bezpośrednio przy każdej granicy: poniżej granicy (17, 64), na granicy (18, 65) i powyżej granicy (19, 66). Błędy kryją się właśnie tam — np. warunek '>' zamiast '>=' powoduje że 18 jest odrzucane, a powinno być akceptowane.",
+  "trap_explanation": "Opcja A (18, 40, 65) to Equivalence Partitioning, nie BVA. Opcja D testuje tylko granice bez wartości po obu stronach. BVA wymaga testowania PRZY granicy z obu stron."
+}

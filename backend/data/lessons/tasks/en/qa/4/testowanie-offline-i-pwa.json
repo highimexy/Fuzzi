@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Testujesz aplikację PWA (lista zakupów). Wyłączasz internet w DevTools (Offline mode) i zaczynasz testować. Które z poniższych zachowań jest POPRAWNE i świadczy o dobrze zaimplementowanym offline support?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Po przejściu w tryb offline aplikacja wyświetla stronę błędu przeglądarki 'ERR_INTERNET_DISCONNECTED' z dinozaurem.",
+      "is_correct": false,
+      "explanation": "To jest BRAK obsługi offline — przeglądarka pokazuje swój domyślny ekran błędu. Dobra PWA powinna przechwycić to przez Service Worker i pokazać własną stronę offline z cachem. Brak Service Worker lub brak poprawnej konfiguracji cache."
+    },
+    {
+      "id": "b",
+      "text": "Aplikacja ładuje się z cache, użytkownik widzi swoją listę zakupów (zapisaną lokalnie), może dodawać nowe elementy. Przy próbie synchronizacji z serwerem pojawia się niewidoczny banner 'Tryb offline — zmiany zostaną zsynchronizowane gdy wrócisz do sieci'.",
+      "is_correct": true,
+      "explanation": "To jest wzorcowe zachowanie offline. Service Worker serwuje aplikację z cache. IndexedDB lub localStorage przechowuje dane lokalnie. Użytkownik może pracować bez internetu. Synchronizacja odroczona z jasnym komunikatem. Gdy internet wróci — zmiany są synchronizowane z serwerem."
+    },
+    {
+      "id": "c",
+      "text": "Aplikacja ładuje się, ale wszystkie przyciski są zablokowane i pojawia się komunikat 'Brak internetu — aplikacja jest niedostępna'. Kliknięcie czegokolwiek nic nie robi.",
+      "is_correct": false,
+      "explanation": "Lepsze niż dinozaur przeglądarki, ale nadal złe. Aplikacja ładuje się (Service Worker działa), ale całkowite zablokowanie funkcjonalności offline to missed opportunity. Lista zakupów to idealna aplikacja do pracy offline — dane mogą być w lokalnym cache. Całkowita blokada = zła UX."
+    },
+    {
+      "id": "d",
+      "text": "Aplikacja ładuje się, użytkownik może przeglądać listę, ale gdy doda nowy element — strona się odświeża i element znika. Nie ma żadnego komunikatu.",
+      "is_correct": false,
+      "explanation": "Kilka problemów: (1) utrata danych — dodany element znikł, to Critical bug, (2) brak komunikatu o trybie offline — użytkownik nie wie dlaczego element zniknął, (3) puste odświeżenie strony dezorientuje. To jest częściowa implementacja offline bez obsługi błędów i bez lokalnego przechowywania danych."
+    }
+  ]
+}

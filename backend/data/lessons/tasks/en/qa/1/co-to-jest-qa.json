@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Jaka jest kluczowa różnica między QA a testowaniem?",
+  "options": [
+    { "id": "a", "text": "QA to inna nazwa testowania — nie ma różnicy" },
+    { "id": "b", "text": "QA skupia się na zapobieganiu defektom przez procesy, a testowanie na ich wykrywaniu" },
+    { "id": "c", "text": "QA to tylko automatyzacja, testowanie to praca manualna" },
+    { "id": "d", "text": "Testowanie jest ważniejsze od QA w projektach agile" }
+  ],
+  "correct": "b",
+  "explanation": "QA (Quality Assurance) to szerokie pojęcie obejmujące wszystkie działania zapewniające jakość — w tym procesy, standardy i prewencję. Testowanie to jedno z narzędzi QA, skupione na wykrywaniu defektów. Senior QA inżynier myśli 'jak zapobiec temu błędowi', nie tylko 'jak go znaleźć'.",
+  "trap_explanation": "Opcja A jest błędna — to częste nieporozumienie w branży. Opcja C myli QA z typem narzędzi."
+}

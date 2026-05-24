@@ -1,0 +1,12 @@
+{
+  "type": "doc_inspector",
+  "variant": "gap_finder",
+  "task_instruction": "Przeczytaj poniższe wymagania dla funkcji 'Koszyk zakupowy'. Znajdź niejednoznaczności, braki i sprzeczności które uniemożliwią napisanie kompletnych testów lub które doprowadzą do sporu QA↔Developer przy testowaniu.",
+  "documents": [
+    {
+      "title": "Wymagania: Koszyk Zakupowy v1.2",
+      "content": "1. Użytkownik może dodawać produkty do koszyka.\n2. Koszyk wyświetla sumę zamówienia.\n3. Użytkownik może usuwać produkty z koszyka.\n4. Koszyk jest zapisywany między sesjami.\n5. Maksymalna liczba produktów w koszyku: 'rozsądna ilość'.\n6. Ceny są aktualizowane automatycznie.\n7. Użytkownik może zastosować kod rabatowy.\n8. Koszyk działa dla zalogowanych i niezalogowanych użytkowników."
+    }
+  ],
+  "example_answer": "Znalezione problemy w wymaganiach:\n\n**Punkt 1 — 'dodawać produkty':**\n- Ile razy ten sam produkt można dodać? Czy ilość rośnie czy tworzą się duplikaty?\n- Co się dzieje gdy produkt jest niedostępny (sold out)? Czy można go dodać?\n- Czy kliknięcie 'Dodaj' dwa razy = 2 sztuki czy 1 sztuka?\n\n**Punkt 2 — 'suma zamówienia':**\n- Czy suma zawiera VAT? Koszty dostawy?\n- W jakiej walucie? Przeliczenie live czy stałe?\n\n**Punkt 4 — 'między sesjami':**\n- Jak długo? 7 dni? 30 dni? Wiecznie?\n- Czy koszyk anonimowy łączy się z koszykiem zalogowanego użytkownika po logowaniu?\n\n**Punkt 5 — 'rozsądna ilość':**\n- To nie jest kryterium akceptacji — to opinia. Potrzebuję liczby: 50? 100? Bez tego nie wiem co testować jako granicę.\n\n**Punkt 6 — 'aktualizowane automatycznie':**\n- Co jeśli cena wzrośnie gdy produkt jest w koszyku? Czy użytkownik dostaje ostrzeżenie? Czy cena zmienia się cicho?\n- Jak często 'automatycznie' — real-time? Przy odświeżeniu strony?\n\n**Punkt 7 — kod rabatowy:**\n- Ile kodów można zastosować jednocześnie?\n- Co jeśli kod wygasł?\n- Czy kod działa na produkty w promocji?\n\n**Punkt 8 — zalogowani i niezalogowani:**\nSprzeczność z punktem 4: jak zapisujesz koszyk między sesjami dla niezalogowanego użytkownika? Przez cookies? Co jeśli cookies są zablokowane?"
+}

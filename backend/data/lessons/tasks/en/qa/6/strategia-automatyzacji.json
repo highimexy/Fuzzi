@@ -1,0 +1,74 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": "a1",
+      "title": "Login — smoke test end-to-end",
+      "description": "Brak testu automatycznego dla logowania. Wykonywany manualnie przy każdym deploymencie (2× dziennie). Test trwa 3 minuty.",
+      "metadata": "Wykonanie: 2× dziennie × 250 dni = 500×/rok. Koszt manualny: 25h/rok. Pisanie testu: 2h."
+    },
+    {
+      "id": "a2",
+      "title": "Kalkulator podatkowy — 47 przypadków data-driven",
+      "description": "Tester manualnie sprawdza 47 kombinacji stawek VAT × typów produktów przy każdej zmianie modułu podatkowego. Zmiana jest 1× na kwartał. Każdy test trwa 1 minutę.",
+      "metadata": "Wykonanie: 4× rocznie × 47 × 1min = 188min/rok = 3.1h/rok. Pisanie testu: 8h."
+    },
+    {
+      "id": "a3",
+      "title": "Dashboard wykresów — animacje i kolory",
+      "description": "Sprawdzenie czy wykresy wyglądają prawidłowo po zmianie biblioteki charting. Wymagana ocena wizualna — kolory, proporcje, animacje.",
+      "metadata": "Wykonanie: po każdej zmianie charting (rzadko). Wizualna ocena jest subiektywna."
+    },
+    {
+      "id": "a4",
+      "title": "API endpoint /api/orders — contract test",
+      "description": "Brak weryfikacji że odpowiedź API jest zgodna z kontraktem. Frontend kilka razy dostał breaking change bez ostrzeżenia.",
+      "metadata": "Endpoint używany przez mobile app i web. Zmiana formatu danych bez testu = produkcyjny bug."
+    },
+    {
+      "id": "a5",
+      "title": "Formularz rejestracji — nowy flow A/B test",
+      "description": "Nowy flow rejestracji w trakcie A/B testu. W ciągu 3 tygodni zostanie wybrany jeden wariant i drugi usunięty.",
+      "metadata": "Tymczasowy kod. Pisanie testów dla kodu który zostanie usunięty."
+    },
+    {
+      "id": "a6",
+      "title": "Import CSV — 8 typów błędów walidacji",
+      "description": "Import pliku CSV z danymi klientów. 8 różnych scenariuszy błędów (pusty plik, zły format daty, duplikaty). Testowane po każdym deploymencie.",
+      "metadata": "Wykonanie: 1× dziennie. Test manualny: 15 minut × 8 scenariuszy = 2h/dzień."
+    }
+  ],
+  "senior_decisions": [
+    {
+      "id": "a1",
+      "decision": "automate_now",
+      "explanation": "ROI = 25h / 2h = 12.5. Smoke test logowania to fundament — powinien istnieć od dawna. Prosty, stabilny, wysoka wartość. Priorytet: najwyższy."
+    },
+    {
+      "id": "a2",
+      "decision": "skip",
+      "explanation": "ROI = 3.1h / 8h = 0.39 — poniżej 1. Automatyzacja nie zwróci się w najbliższym roku. Testy data-driven brzmią jak kandydat do automatyzacji, ale niska częstotliwość wykonania niweluje oszczędności."
+    },
+    {
+      "id": "a3",
+      "decision": "skip",
+      "explanation": "Ocena wizualna wymaga ludzkiego oka — automatyczne testy vizualne (np. screenshot diff) są możliwe, ale wymagają dużo kalibracji i dają wiele false positives. Nie warto dla rzadko zmieniającego się modułu."
+    },
+    {
+      "id": "a4",
+      "decision": "automate_now",
+      "explanation": "Contract test to nie test UI — to weryfikacja struktury odpowiedzi API. Tani w utrzymaniu, wysoka wartość. Kilka produkcyjnych bugów które by wykrył = uzasadnienie."
+    },
+    {
+      "id": "a5",
+      "decision": "skip",
+      "explanation": "Nie automatyzuj tymczasowego kodu. Za 3 tygodnie jeden wariant zniknie — testy stają się nieaktualne. Zaplanuj automatyzację po wyborze wariantu."
+    },
+    {
+      "id": "a6",
+      "decision": "automate_now",
+      "explanation": "ROI = (2h × 250 dni / 8 scenariuszy) — ogromny. Import CSV z 8 scenariuszami błędów to klasyczny kandydat: deterministyczny, data-driven, wysoka częstotliwość. Prawdopodobnie 1 dzień pracy oszczędza 500h rocznie."
+    }
+  ],
+  "senior_comment": "Reguła kciuka: jeśli test jest deterministyczny, wykonywany często i nie wymaga ludzkiej oceny — automatyzuj. Jeśli wymaga wizualnej oceny, jest tymczasowy lub wykonywany rzadko — nie automatyzuj. Policz ROI przed każdą decyzją."
+}

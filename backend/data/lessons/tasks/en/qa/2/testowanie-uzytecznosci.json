@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html>\n<head><title>Usuń konto</title></head>\n<body>\n\n<h2>Ustawienia konta</h2>\n\n<form action='/delete-account' method='POST'>\n  <p>Usunięcie konta jest nieodwracalne.</p>\n  <button type='submit' style='background:red; color:white;'>Usuń konto</button>\n</form>\n\n<hr>\n\n<h3>Eksport danych</h3>\n<p>Pobierz kopię swoich danych przed usunięciem konta.</p>\n<a href='/export'>Pobierz dane</a>\n\n<hr>\n\n<div class='notification' style='background:#eee; padding:10px;'>\n  Twoje konto zostało pomyślnie zapisane.\n</div>\n\n<hr>\n\n<label>Email:</label>\n<input type='text' value='jan@test.com'>\n<button>Zapisz zmiany</button>\n\n<p style='color:gray; font-size:11px;'>* Pola oznaczone gwiazdką są wymagane</p>\n\n</body>\n</html>",
+  "spec": "Strona 'Ustawienia konta' musi być bezpieczna i użyteczna. Użytkownik musi rozumieć konsekwencje swoich akcji, destruktywne operacje muszą wymagać potwierdzenia, a interfejs musi być spójny i czytelny.",
+  "correct_severity": "high",
+  "severity_reason": "Usunięcie konta jest nieodwracalne i dostępne jednym kliknięciem bez żadnego potwierdzenia ani weryfikacji tożsamości — to krytyczny UX bug.",
+  "red_herrings": [
+    "Czerwony kolor przycisku usuwania — to jest dobra praktyka (ostrzeżenie wizualne)",
+    "Informacja że usunięcie jest nieodwracalne — to poprawne, ale niewystarczające"
+  ],
+  "model_report": {
+    "title": "Raport UX — Strona Ustawień Konta",
+    "steps": "1. Otwórz /settings\n2. Przejrzyj przez pryzmat heurystyk Nielsena\n3. Sprawdź komunikaty i stany\n4. Zidentyfikuj problemy użyteczności",
+    "expected": "Destruktywne akcje z potwierdzeniem i weryfikacją, spójny interfejs, sensowne stany, pola z etykietami",
+    "actual": "Znalezione problemy:\n\n[CRITICAL] Usunięcie konta jednym kliknięciem bez potwierdzenia — żaden dialog, żadne 'czy na pewno?', żadna weryfikacja hasła. Użytkownik może przypadkowo usunąć konto. Powinno być: modal z prośbą o wpisanie hasła lub słowa 'USUŃ'\n\n[HIGH] Notyfikacja 'konto pomyślnie zapisane' pokazuje się zawsze, bez kontekstu — nie wiadomo kiedy powstała, czy jest aktualna, czy coś zostało zapisane właśnie. Powinna znikać po kilku sekundach lub być powiązana z akcją save.\n\n[HIGH] Pole email ma type='text' zamiast type='email' — brak walidacji formatu, brak klawiatury email na mobile\n\n[MEDIUM] Link 'Pobierz dane' i przycisk 'Zapisz zmiany' nie mają opisów co robią — brak aria-label lub kontekstu\n\n[LOW] '* Pola oznaczone gwiazdką są wymagane' — ale żadne pole nie ma gwiazdki. Komunikat jest bezużyteczny.\n\n[LOW] Brak potwierdzenia po kliknięciu 'Zapisz zmiany' — użytkownik nie wie czy zapisało się"
+  }
+}

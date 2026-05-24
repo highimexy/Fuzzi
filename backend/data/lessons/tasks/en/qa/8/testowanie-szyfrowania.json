@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Testujesz nowy checkout w aplikacji e-commerce. W DevTools Network widzisz taki request przy płatności kartą:\n\nPOST https://api.sklep.pl/api/payments\nPayload: {\n  \"card_number\": \"4111111111111111\",\n  \"cvv\": \"123\",\n  \"expiry\": \"12/26\",\n  \"amount\": 299.99\n}\n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Nic — request jest przez HTTPS, dane są zaszyfrowane w tranzycie, więc jest bezpiecznie.",
+      "is_correct": false,
+      "explanation": "HTTPS szyfruje dane w tranzycie, ale to nie wystarczy. Numer karty trafia do Twojego serwera i jest logowany, przechowywany, przetwarzany. To narusza PCI-DSS (Payment Card Industry Data Security Standard). Twoja firma nie powinna w ogóle 'widzieć' pełnego numeru karty — powinna używać tokenizacji przez payment provider."
+    },
+    {
+      "id": "b",
+      "text": "Zgłaszasz krytyczny bug: dane karty płatniczej nie powinny trafiać do serwera aplikacji. Należy wdrożyć tokenizację przez Stripe.js/Braintree.js — dane karty trafiają bezpośrednio do payment provider, backend dostaje tylko token.",
+      "is_correct": true,
+      "explanation": "Prawidłowe podejście. Pełny numer karty na backendzie = naruszenie PCI-DSS. Każda firma która 'widzi' numery kart musi przejść pełny audit PCI-DSS (SAQ D) — bardzo drogi i skomplikowany. Tokenizacja przez Stripe.js/Braintree.js sprawia że dane karty nigdy nie trafiają do Twojego serwera — JavaScript po stronie klienta wysyła je bezpośrednio do payment provider i dostaje token. Severity: Critical."
+    },
+    {
+      "id": "c",
+      "text": "Sprawdzasz czy CVV jest hashowany przed zapisem do bazy danych.",
+      "is_correct": false,
+      "explanation": "CVV nigdy nie powinien być zapisywany w bazie — ani w plaintexcie, ani zahashowany. PCI-DSS zakazuje przechowywania CVV po autoryzacji transakcji. Ale główny problem w tym scenariuszu jest wcześniejszy: dane karty w ogóle nie powinny trafiać do Twojego serwera."
+    },
+    {
+      "id": "d",
+      "text": "Sprawdzasz czy endpoint /api/payments ma rate limiting, żeby zapobiec brute-force.",
+      "is_correct": false,
+      "explanation": "Rate limiting jest ważny, ale to nie jest główny problem w tym scenariuszu. Masz krytyczny bug architektoniczny — pełne dane karty na backendzie. Rozwiązanie rate limiting nie usuwa problemu PCI-DSS compliance. Najpierw napraw krytyczne, potem dodaj rate limiting."
+    }
+  ]
+}

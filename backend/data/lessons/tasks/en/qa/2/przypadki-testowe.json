@@ -1,0 +1,57 @@
+{
+  "type": "test_case_builder",
+  "feature_description": "Formularz logowania: pola email i hasło, przycisk 'Zaloguj', checkbox 'Zapamiętaj mnie'. Po poprawnym logowaniu redirect na /dashboard. Wymagania: email musi być prawidłowym formatem, hasło min. 8 znaków, po 5 błędnych próbach konto blokowane na 15 minut.",
+  "task_instruction": "Napisz przypadki testowe dla tego formularza logowania. Pamiętaj o happy path, przypadkach negatywnych i edge case'ach.",
+  "expected_cases": [
+    {
+      "title": "Logowanie z poprawnymi danymi → redirect na /dashboard",
+      "category": "happy_path",
+      "why_important": "Podstawowy scenariusz — musi zawsze działać."
+    },
+    {
+      "title": "Zaznaczony checkbox 'Zapamiętaj mnie' → sesja przeżywa zamknięcie przeglądarki",
+      "category": "happy_path",
+      "why_important": "Core feature — bez testu nie wiesz czy checkbox w ogóle działa."
+    },
+    {
+      "title": "Błędne hasło → komunikat błędu, konto NIE jest zablokowane (1 próba)",
+      "category": "negative",
+      "why_important": "Blokada powinna zadziałać dopiero po 5. próbie, nie po 1."
+    },
+    {
+      "title": "Nieistniejący email → komunikat błędu bez podpowiedzi czy email istnieje",
+      "category": "negative",
+      "why_important": "User enumeration attack — system nie powinien zdradzać czy email istnieje."
+    },
+    {
+      "title": "Puste pole email → walidacja bez wysyłki do API",
+      "category": "negative",
+      "why_important": "Frontend validation przed kosztownym requestem."
+    },
+    {
+      "title": "Puste pole hasło → walidacja bez wysyłki do API",
+      "category": "negative",
+      "why_important": "Analogicznie — frontend walidacja."
+    },
+    {
+      "title": "Email z wielkimi literami (USER@EXAMPLE.COM) → logowanie działa",
+      "category": "edge_case",
+      "why_important": "Email jest case-insensitive z definicji — system nie może odrzucać wielkich liter."
+    },
+    {
+      "title": "Hasło z polskimi znakami i emoji → logowanie działa lub jasny błąd",
+      "category": "edge_case",
+      "why_important": "Specjalne znaki w haśle często powodują problemy z enkodowaniem."
+    },
+    {
+      "title": "5 błędnych prób z rzędu → konto zablokowane, komunikat o 15-minutowej blokadzie",
+      "category": "edge_case",
+      "why_important": "Mechanizm ochrony przed brute-force — bez testu może nie działać."
+    },
+    {
+      "title": "Logowanie podczas blokady (6. próba) → dalszy komunikat o blokadzie, czas restartuje",
+      "category": "edge_case",
+      "why_important": "Czy blokada kumuluje się? Czy próby w trakcie blokady resetują licznik?"
+    }
+  ]
+}

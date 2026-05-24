@@ -1,0 +1,45 @@
+{
+  "type": "diff_inspector",
+  "changelog": "PR #312: Optymalizacja wydajności modułu raportów — zmiany w zapytaniach SQL i schemacie bazy",
+  "before_description": "Raporty sprzedaży ładowały się 8-12 sekund dla danych z ostatniego roku. Brak indeksów na kluczowych kolumnach. Jeden endpoint zwracał wszystkie dane bez paginacji.",
+  "after_description": "Dodano indeksy, zoptymalizowano zapytania, dodano paginację dla endpointów raportów.",
+  "changes": [
+    {
+      "id": "perf1",
+      "description": "Dodano CREATE INDEX CONCURRENTLY sales_date_idx ON sales(sale_date) dla tabeli sales (2.3M rekordów)",
+      "correct_category": "correct_change",
+      "explanation": "CONCURRENTLY to kluczowe słowo — dodaje indeks bez blokowania tabeli do odczytu/zapisu. Na tabeli produkcyjnej z 2.3M rekordów, bez CONCURRENTLY indeks zablokowałby tabelę na minuty. Dobra praktyka."
+    },
+    {
+      "id": "perf2",
+      "description": "Zmieniono SELECT * FROM sales na SELECT id, product_id, amount, sale_date FROM sales w głównym raporcie",
+      "correct_category": "correct_change",
+      "explanation": "Eliminacja SELECT * zmniejsza transfer danych i pozwala bazie używać covering index. Tabela sales prawdopodobnie ma duże kolumny (notes, metadata JSON) które nie są potrzebne w raporcie."
+    },
+    {
+      "id": "perf3",
+      "description": "Usunięto paginację z endpointu /api/reports/summary — zwraca teraz wszystkie rekordy jednocześnie dla 'lepszego UX'",
+      "correct_category": "wrong_change",
+      "explanation": "Usunięcie paginacji to regresja wydajnościowa. Nawet jeśli teraz działa szybko (po dodaniu indeksów), za rok gdy danych będzie 10x więcej — endpoint znowu będzie powolny. 'Lepszy UX' przez brak paginacji nie uzasadnia tego ryzyka. Paginacja powinna pozostać."
+    },
+    {
+      "id": "perf4",
+      "description": "Dodano LIMIT 1000 do zapytań eksportu CSV bez informacji dla użytkownika",
+      "correct_category": "wrong_change",
+      "explanation": "Ukryty limit to gorsze rozwiązanie niż jawna paginacja. Użytkownik eksportuje 'wszystkie dane' ale dostaje tylko 1000 rekordów bez ostrzeżenia. To bug UX i potencjalny problem biznesowy (niepełne raporty finansowe). Prawidłowe rozwiązanie: informuj użytkownika o limicie lub zaimplementuj eksport asynchroniczny dla dużych zbiorów."
+    },
+    {
+      "id": "perf5",
+      "description": "Dodano composite index na sales(user_id, sale_date) dla zapytań 'raport użytkownika za okres'",
+      "correct_category": "correct_change",
+      "explanation": "Composite index jest optymalny dla zapytań z warunkiem WHERE user_id = X AND sale_date BETWEEN Y AND Z. Kolejność kolumn w indeksie jest poprawna (user_id o wyższej selektywności na pierwszym miejscu)."
+    },
+    {
+      "id": "perf6",
+      "description": "Zmieniono ORM query z lazy loading na eager loading dla relacji sales→products (eliminuje N+1)",
+      "correct_category": "correct_change",
+      "explanation": "Przejście z lazy na eager loading eliminuje N+1 problem. Zamiast 1 + N zapytań (jedno per produkt), teraz jest 1 zapytanie z JOIN. Przy liście 100 sprzedaży: 101 zapytań → 1 zapytanie. Znaczna poprawa."
+    }
+  ],
+  "summary": "PR ma 4 dobre optymalizacje i 2 problematyczne zmiany: usunięcie paginacji z /summary i ukryty LIMIT 1000 w eksporcie. Oba wymagają komentarza przed mergem."
+}

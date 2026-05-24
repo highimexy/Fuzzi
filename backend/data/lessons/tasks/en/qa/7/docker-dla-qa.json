@@ -1,0 +1,52 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Aplikacja powinna startować pomyślnie na porcie 8080. Backend łączy się z bazą PostgreSQL. Frontend łączy się z backendem. Po starcie wszystkich kontenerów aplikacja powinna być dostępna pod http://localhost:3000.",
+  "logs": [
+    {
+      "level": "info",
+      "timestamp": "09:15:01",
+      "message": "[docker compose up] Starting containers: postgres, backend, frontend"
+    },
+    {
+      "level": "info",
+      "timestamp": "09:15:02",
+      "message": "[postgres] PostgreSQL 15 starting up... listening on port 5432"
+    },
+    {
+      "level": "info",
+      "timestamp": "09:15:03",
+      "message": "[backend] Attempting database connection: postgres://user:pass@postgres:5432/myapp"
+    },
+    {
+      "level": "error",
+      "timestamp": "09:15:03",
+      "message": "[backend] ERROR: connect ECONNREFUSED 172.18.0.2:5432 — retrying in 2s (attempt 1/5)"
+    },
+    {
+      "level": "error",
+      "timestamp": "09:15:05",
+      "message": "[backend] ERROR: connect ECONNREFUSED 172.18.0.2:5432 — retrying in 2s (attempt 2/5)"
+    },
+    {
+      "level": "error",
+      "timestamp": "09:15:09",
+      "message": "[backend] FATAL: Unable to connect to database after 5 attempts. Exiting."
+    },
+    {
+      "level": "warn",
+      "timestamp": "09:15:10",
+      "message": "[frontend] Backend health check failed: GET http://backend:8080/health → Connection refused"
+    },
+    {
+      "level": "info",
+      "timestamp": "09:15:10",
+      "message": "[frontend] Starting anyway — will retry backend connection"
+    }
+  ],
+  "hints": [
+    "PostgreSQL logi pokazują że baza staruje poprawnie, ale backend dostaje ECONNREFUSED — jak to możliwe?",
+    "PostgreSQL 'starting up' ≠ 'ready to accept connections'. Baza potrzebuje kilku sekund na inicjalizację po starcie procesu",
+    "W docker-compose.yml można dodać 'healthcheck' dla postgres i 'depends_on condition: service_healthy' dla backendu"
+  ],
+  "correct_diagnosis": "Problem: race condition między startem PostgreSQL a próbą połączenia backendu.\n\nPostgreSQL uruchamia swój proces (co trwa ~1s), ale inicjalizacja bazy danych i gotowość do przyjmowania połączeń trwa ~2-3 sekundy dłużej. Backend próbuje połączyć się zanim PostgreSQL jest gotowy.\n\nRozwiązanie w docker-compose.yml:\n```yaml\npostgres:\n  image: postgres:15\n  healthcheck:\n    test: ['CMD', 'pg_isready', '-U', 'user']\n    interval: 5s\n    timeout: 3s\n    retries: 5\n\nbackend:\n  depends_on:\n    postgres:\n      condition: service_healthy\n```\n\n`depends_on: condition: service_healthy` sprawia że backend startuje dopiero gdy PostgreSQL healthcheck przejdzie — nie tylko gdy kontener się uruchomi."
+}

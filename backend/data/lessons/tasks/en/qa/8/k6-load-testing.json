@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Wyniki k6 pokazują: avg=180ms, p(95)=2800ms, p(99)=5100ms, error_rate=0.3%. Jak oceniasz wydajność?",
+  "options": [
+    { "id": "a", "text": "Świetna — średnia 180ms to doskonały wynik" },
+    { "id": "b", "text": "Zła — error_rate 0.3% przekracza próg 1% więc trzeba działać" },
+    { "id": "c", "text": "Problematyczna — p(95)=2.8s oznacza że co 20. użytkownik czeka prawie 3 sekundy, mimo dobrej średniej" },
+    { "id": "d", "text": "Akceptowalna — p(99) dotyczy tylko 1% użytkowników, nie ma co się przejmować" }
+  ],
+  "correct": "c",
+  "explanation": "Średnia (avg) kłamie — w tym przypadku ukrywa problem. p(95)=2800ms oznacza że 5% żądań (co 20. użytkownik) czeka prawie 3 sekundy. Dla serwisu z 10 000 użytkownikami dziennie to 500 osób z bardzo złym doświadczeniem. Zawsze patrz na p(95) i p(99), nie średnią.",
+  "trap_explanation": "Error_rate 0.3% jest poniżej progu 1% — ale to nie znaczy że wszystko jest OK. p(95)=2.8s to poważny problem UX który wymaga zbadania."
+}

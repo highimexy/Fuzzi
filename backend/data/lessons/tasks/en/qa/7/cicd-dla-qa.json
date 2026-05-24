@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "QA dostaje info: 'Deploy na staging zablokowany — test login_test.spec.ts fail od 3 dni, nikt nie zmieniał kodu logowania.' Co to najprawdopodobniej oznacza?",
+  "options": [
+    { "id": "a", "text": "Bug w logowaniu — natychmiast eskaluj do dev teamu" },
+    { "id": "b", "text": "Flaky test — problem z asynchronicznością lub zależnością od danych testowych" },
+    { "id": "c", "text": "Staging jest down — sprawdź uptime monitoringu" },
+    { "id": "d", "text": "Test należy usunąć — jest bezużyteczny skoro często fail" }
+  ],
+  "correct": "b",
+  "explanation": "Skoro nikt nie zmieniał kodu logowania, a test był wcześniej stabilny — to klasyczny objaw flaky testu. Najczęstsze przyczyny: (1) race condition — test nie czeka na element, (2) brudne dane testowe — użytkownik testowy już istnieje/nie istnieje, (3) timeout zbyt krótki. Procedura: uruchom test lokalnie kilka razy, sprawdź logi, poszukaj race condition.",
+  "trap_explanation": "Opcja D to zły instynkt. Nie usuwaj testów bo fail — najpierw zrozum dlaczego. Usuwanie testów to krótkoterminowe myślenie które zemści się przy kolejnym deploymencie."
+}

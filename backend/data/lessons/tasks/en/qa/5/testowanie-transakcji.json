@@ -1,0 +1,83 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Użytkownik kupuje 2 bilety na koncert. System pobiera płatność, rezerwuje miejsca, wysyła email z potwierdzeniem. Całość powinna być atomowa — albo wszystko, albo nic.",
+  "logs": [
+    {
+      "timestamp": "10:32:14.001",
+      "level": "INFO",
+      "message": "BEGIN TRANSACTION txn_9921 — user_id=445, concert_id=88"
+    },
+    {
+      "timestamp": "10:32:14.023",
+      "level": "INFO",
+      "message": "SELECT seats WHERE concert_id=88 AND status='available' LIMIT 2 → [seat_id: 12, seat_id: 13]"
+    },
+    {
+      "timestamp": "10:32:14.045",
+      "level": "INFO",
+      "message": "UPDATE seats SET status='reserved', user_id=445 WHERE id IN (12,13) → 2 rows affected"
+    },
+    {
+      "timestamp": "10:32:14.201",
+      "level": "INFO",
+      "message": "INSERT INTO payments (user_id=445, amount=299.98, status='pending') → payment_id=7744"
+    },
+    {
+      "timestamp": "10:32:15.440",
+      "level": "INFO",
+      "message": "PaymentGateway.charge(amount=299.98, card=****4521) → {status: 'success', charge_id: 'ch_abc123'}"
+    },
+    {
+      "timestamp": "10:32:15.441",
+      "level": "INFO",
+      "message": "UPDATE payments SET status='completed', charge_id='ch_abc123' WHERE id=7744 → 1 row affected"
+    },
+    {
+      "timestamp": "10:32:15.442",
+      "level": "INFO",
+      "message": "COMMIT txn_9921"
+    },
+    {
+      "timestamp": "10:32:15.443",
+      "level": "INFO",
+      "message": "EmailService.send(to='user@test.com', template='booking_confirmation', data={seats:[12,13], concert:'Metallica'})"
+    },
+    {
+      "timestamp": "10:32:16.891",
+      "level": "ERROR",
+      "message": "EmailService TIMEOUT after 1448ms — SMTP connection refused: smtp.mailprovider.com:587"
+    },
+    {
+      "timestamp": "10:32:16.892",
+      "level": "ERROR",
+      "message": "EmailService failed — raising EmailDeliveryException"
+    },
+    {
+      "timestamp": "10:32:16.893",
+      "level": "ERROR",
+      "message": "Unhandled exception in BookingController.createBooking — rolling back transaction txn_9921"
+    },
+    {
+      "timestamp": "10:32:16.894",
+      "level": "WARN",
+      "message": "ROLLBACK txn_9921 — but txn_9921 was already COMMITTED at 10:32:15.442"
+    },
+    {
+      "timestamp": "10:32:16.895",
+      "level": "INFO",
+      "message": "Rollback ignored — transaction already committed"
+    },
+    {
+      "timestamp": "10:32:16.896",
+      "level": "INFO",
+      "message": "HTTP Response: 500 Internal Server Error — {error: 'Booking failed, please try again'}"
+    }
+  ],
+  "hints": [
+    "Zwróć uwagę na timestamp COMMIT vs timestamp błędu",
+    "Co się stało z płatnością?",
+    "Co użytkownik widzi vs co jest w bazie?",
+    "Czy email jest częścią transakcji bazodanowej?"
+  ],
+  "correct_diagnosis": "Krytyczny bug architektoniczny: email jest wysyłany PO commitcie transakcji bazodanowej, ale błąd emaila powoduje zwrócenie HTTP 500 użytkownikowi. Efekt: płatność pobrana (ch_abc123), miejsca zarezerwowane (seats 12, 13), ale użytkownik widzi 'Booking failed'. Użytkownik zapłacił za bilety których 'nie ma'. Próba rollback po COMMIT jest ignorowana — baza jest w stanie: płatność=completed, seats=reserved, użytkownik=błąd. Naprawki wymagane: (1) email poza transakcją z graceful fallback (wyślij później), (2) odpowiedź sukcesu gdy transakcja DB się powiodła, (3) async email delivery z retry."
+}

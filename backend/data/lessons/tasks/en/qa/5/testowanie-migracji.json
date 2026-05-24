@@ -1,0 +1,45 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Release 2.4.0 — Migracja schematu bazy danych: zmiany w tabeli users i orders",
+  "before_description": "Tabela users: id (int), email (varchar 100), name (varchar 50), created_at. Tabela orders: id, user_id (FK), total (decimal 10,2), status (enum: pending/paid/shipped), created_at.",
+  "after_description": "Tabela users: id (int), email (varchar 100), name (varchar 100), phone (varchar 20 nullable), created_at, updated_at. Tabela orders: id, user_id (FK), total (decimal 10,2), status (enum: pending/paid/shipped/cancelled/refunded), note (text), created_at. Dodano index: orders(user_id, created_at).",
+  "changes": [
+    {
+      "id": "c1",
+      "description": "Kolumna name w tabeli users: varchar(50) → varchar(100)",
+      "correct_category": "correct_change",
+      "explanation": "Rozszerzenie varchar jest bezpieczną zmianą — istniejące dane nie są modyfikowane, tylko zwiększa się możliwy rozmiar. Użytkownicy z dłuższymi imionami będą teraz obsługiwani poprawnie."
+    },
+    {
+      "id": "c2",
+      "description": "Dodanie kolumny phone (varchar 20, nullable) do tabeli users",
+      "correct_category": "correct_change",
+      "explanation": "Dodanie nullable kolumny bez DEFAULT jest bezpieczną zmianą — istniejące rekordy dostaną NULL, aplikacja nie crasha jeśli pole jest puste. Poprawna praktyka migracji."
+    },
+    {
+      "id": "c3",
+      "description": "Usunięcie kolumny updated_at z tabeli users (była w before, nie ma w after)",
+      "correct_category": "wrong_change",
+      "explanation": "Uwaga: w opisie 'after' pojawia się updated_at, ale w opisie 'before' jej nie było — to nowe pole, nie usunięte. Jeśli kolumna byłaby usunięta, byłoby to krytyczne ryzyko: dane utracone, aplikacja która czyta to pole crashuje."
+    },
+    {
+      "id": "c4",
+      "description": "Dodanie wartości 'cancelled' i 'refunded' do enum status w tabeli orders",
+      "correct_category": "correct_change",
+      "explanation": "Dodanie nowych wartości do enum jest bezpieczne — istniejące rekordy nie są dotknięte. Nowe statusy rozszerzają możliwości bez breaking change."
+    },
+    {
+      "id": "c5",
+      "description": "Dodanie kolumny note (text) do tabeli orders bez DEFAULT i bez nullable constraint",
+      "correct_category": "wrong_change",
+      "explanation": "To potencjalny problem: jeśli kolumna NOT NULL nie ma DEFAULT, migracja może fail na tabeli z istniejącymi rekordami (PostgreSQL/MySQL różnie to obsługują). Bezpieczna wersja: nullable lub z DEFAULT ''."
+    },
+    {
+      "id": "c6",
+      "description": "Dodanie composite index na orders(user_id, created_at)",
+      "correct_category": "correct_change",
+      "explanation": "Dodanie indeksu przyspiesza zapytania 'zamówienia użytkownika posortowane po dacie'. W PostgreSQL powinno być CREATE INDEX CONCURRENTLY żeby nie blokować tabeli — warto to sprawdzić w skrypcie migracji."
+    }
+  ],
+  "summary": "Migracja zawiera głównie bezpieczne zmiany, ale kolumna 'note' w tabeli orders wymaga weryfikacji — brakuje informacji czy jest nullable lub ma DEFAULT. To potencjalny blocker migracji na produkcji jeśli tabela orders ma dane."
+}

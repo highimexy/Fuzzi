@@ -1,0 +1,14 @@
+{
+  "type": "dev_comm",
+  "variant": "rewrite",
+  "original_message": "ten bug na produkcji jest bardzo poważny, kiedy go naprawisz??? klienci się skarżą a ty nic nie robisz",
+  "context": "Krytyczny bug na produkcji: użytkownicy premium nie mogą pobrać faktur (błąd 500, trwa od 2 godzin). Developer Tomek jest przypisany do naprawy. Wiesz że Tomek pracuje nad tym — widziałeś jego ostatni commit 30 minut temu. PM czeka na update.",
+  "good_example": "Hej Tomek,\n\nUpdate o statusie buga #5521 (pobieranie faktur, błąd 500):\n- Bug aktywny od ~2h, dotyczy użytkowników premium\n- Support ma 7 zgłoszeń klientów\n- PM pyta o ETA naprawy\n\nCzy możesz dać mi przybliżony czas kiedy fix będzie gotowy do testu? Nawet 'za 1-2h' albo 'dziś nie dam rady' pomaga mi zarządzać oczekiwaniami.\n\nJeśli potrzebujesz czegoś z mojej strony (więcej logów, kroki repro) — daj znać.",
+  "evaluation_tips": [
+    "Ton jest spokojny i profesjonalny — presja jest wyrażona przez fakty (7 zgłoszeń, 2h) nie emocje",
+    "Pytasz o ETA zamiast atakować",
+    "Dajesz kontekst dlaczego ETA jest ważne (PM, klienci)",
+    "Oferujesz pomoc zamiast tylko żądasz",
+    "Wiadomość jest konkretna i zwięzła — developer dostaje to co potrzebuje"
+  ]
+}

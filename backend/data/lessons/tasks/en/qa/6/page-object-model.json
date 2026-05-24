@@ -1,0 +1,13 @@
+{
+  "type": "quiz",
+  "question": "Masz 30 testów E2E. Developer zmienił selektor przycisku 'Kup' z .buy-btn na data-testid='purchase-btn'. Jeśli używasz Page Object Model, ile miejsc musisz zaktualizować?",
+  "options": [
+    { "id": "a", "text": "30 — każdy test osobno" },
+    { "id": "b", "text": "1 — w klasie Page Object dla tej strony" },
+    { "id": "c", "text": "Żadnego — testy są niezależne od selektorów" },
+    { "id": "d", "text": "Tyle ile metod używa tego przycisku" }
+  ],
+  "correct": "b",
+  "explanation": "To jest główna zaleta Page Object Model: selektory są zdefiniowane w jednym miejscu (klasie Page Object). Zmiana selektora = zmiana w jednym pliku, niezależnie od liczby testów które korzystają z tej metody. Bez POM zmieniałbyś selektor w każdym z 30 testów, ryzykując że coś pominiesz.",
+  "trap_explanation": "Opcja D mogłaby być prawdą tylko przy złej implementacji POM gdzie selektor jest zduplikowany. Przy poprawnym POM — jeden selektor, jedna metoda, jedno miejsce zmiany."
+}

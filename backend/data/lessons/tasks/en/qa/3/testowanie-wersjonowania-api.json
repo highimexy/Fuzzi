@@ -1,0 +1,58 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Migracja z API v1 do v2. Frontend mobilny używa v1. Web frontend już przeszedł na v2. Backend deployuje v1 i v2 równolegle przez kolejne 3 miesiące (deprecation period).",
+  "before_description": "GET /api/v1/users/me — odpowiedź (aktualnie używana przez mobile app)",
+  "after_description": "GET /api/v2/users/me — nowa odpowiedź",
+  "changes": [
+    {
+      "field": "id",
+      "mock_value": 1542,
+      "real_value": "usr_a8f3k2",
+      "is_breaking": true,
+      "explanation": "Breaking change! v1 zwraca integer ID, v2 zwraca string z prefiksem. Kod mobilny który robi `userId.toString()` lub porównuje `userId === 1542` — krashuje. Wymaga aktualizacji mobile przed cutover."
+    },
+    {
+      "field": "full_name",
+      "mock_value": "Jan Kowalski",
+      "real_value": "BRAK POLA — zastąpione przez first_name + last_name",
+      "is_breaking": true,
+      "explanation": "Breaking change! Pole full_name zniknęło, zastąpione przez first_name i last_name. Każde miejsce w mobile które wyświetla full_name pokazuje undefined."
+    },
+    {
+      "field": "first_name",
+      "mock_value": "BRAK POLA",
+      "real_value": "Jan",
+      "is_breaking": false,
+      "explanation": "Nowe pole w v2. Mobile app je ignoruje — nie jest breaking change dla v1 klienta."
+    },
+    {
+      "field": "last_name",
+      "mock_value": "BRAK POLA",
+      "real_value": "Kowalski",
+      "is_breaking": false,
+      "explanation": "Nowe pole w v2. Mobile app je ignoruje."
+    },
+    {
+      "field": "created_at",
+      "mock_value": "2023-01-15T10:30:00Z",
+      "real_value": "2023-01-15T10:30:00Z",
+      "is_breaking": false,
+      "explanation": "Ten sam format ISO 8601 — zgodne."
+    },
+    {
+      "field": "roles",
+      "mock_value": ["admin", "user"],
+      "real_value": [{"name": "admin", "permissions": ["read","write"]}, {"name": "user", "permissions": ["read"]}],
+      "is_breaking": true,
+      "explanation": "Breaking change! v1 zwraca tablicę stringów, v2 zwraca tablicę obiektów. Kod który robi `roles.includes('admin')` — nie działa z v2. Każda logika sprawdzania ról w mobile musi być zaktualizowana."
+    },
+    {
+      "field": "Sunset header",
+      "mock_value": "BRAK",
+      "real_value": "Sunset: Wed, 31 Dec 2024 00:00:00 GMT",
+      "is_breaking": false,
+      "explanation": "Nowy nagłówek deprecation w v1 endpoint. Informuje klientów kiedy v1 zostanie wyłączony. Dobra praktyka — sprawdź czy mobile app loguje ten warning."
+    }
+  ],
+  "summary": "3 breaking changes wymagające aktualizacji mobile app PRZED wycofaniem v1: (1) ID zmienione z integer na string z prefiksem, (2) full_name podzielone na first_name + last_name, (3) roles zmienione z tablicy stringów na tablicę obiektów. Deprecation period (3 miesiące) daje czas na aktualizację, ale mobile release może trwać 2-4 tygodnie (review w App Store). Plan: zaktualizuj mobile app w ciągu pierwszego miesiąca deprecation."
+}

@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Twój team robi stopniowy rollout nowej funkcji koszyka zakupowego ('new_cart_v2'). Flaga jest włączona dla 20% użytkowników. Po 3 dniach support zaczyna dostawać skargi: część użytkowników ma zduplikowane pozycje w koszyku. Nie wiecie które 20% dostało nowy koszyk. Nie macie logów kto ma flagę włączoną.\n\nCo robisz jako QA?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Natychmiast zgłaszasz do managera żeby wyłączyć flagę dla wszystkich użytkowników.",
+      "user_percentage": 31,
+      "consequences": "Instynkt dobry — zatrzymanie bleeding jest ważne. Ale wyłączenie flagi bez diagnozy może samo być problematyczne: co się stanie z koszykami użytkowników którzy już mają duplikaty? Czy rollback jest bezpieczny? Zanim zgłosisz 'wyłącz' — musisz mieć odpowiedź na 'co się stanie po wyłączeniu'. Postaw to pytanie zanim wydasz rekomendację."
+    },
+    {
+      "id": "b",
+      "text": "Próbujesz samodzielnie zreprodukować bug — włączasz flagę na koncie testowym, dodajesz produkty do koszyka, sprawdzasz duplikaty.",
+      "user_percentage": 42,
+      "consequences": "Dobry pierwszy krok. Reprodukcja buga jest priorytetem — bez reprodukcji developer nie może naprawić. Ale to nie wystarczy: musisz też ocenić ryzyko dalszego rollout (czy wyłączyć flagę?), sprawdzić affected users i przygotować plan komunikacji. Reprodukcja to krok 1 z 4."
+    },
+    {
+      "id": "c",
+      "text": "Zbierasz informacje: repro na test account, szacujesz affected users z support ticketów, sprawdzasz czy rollback jest bezpieczny (co się stanie z istniejącymi koszykami), i dopiero dajesz rekomendację: wyłącz flagę + napraw duplikaty w DB + komunikat do support.",
+      "user_percentage": 19,
+      "consequences": "Najlepsza odpowiedź. Systematyczne podejście do incydentu z feature flagą: (1) repro — czy to rzeczywiście flaga? (2) skala — ilu users affected? (3) bezpieczeństwo rollback — czy wyłączenie nie pogorszy sytuacji? (4) rekomendacja z uzasadnieniem. To jest QA jako partner w decyzji biznesowej, nie tylko bug finder."
+    },
+    {
+      "id": "d",
+      "text": "Czekasz — może bug sam zniknie albo developer już to widzi.",
+      "user_percentage": 8,
+      "consequences": "Złe podejście. Każda godzina to więcej users z duplikatami. Brak logów kto ma flagę oznacza że nie możesz ocenić skali bez działania. Bierne czekanie przy aktywnym incydencie = brak profesjonalizmu QA."
+    }
+  ]
+}

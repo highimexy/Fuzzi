@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Testujesz integrację z bramką płatności (Stripe). Webhook płatności trafia na endpoint /api/webhooks/stripe. Po poprawnej płatności, aplikacja powinna: zmienić status zamówienia na 'paid', wysłać email potwierdzający do klienta, zmniejszyć stan magazynowy produktu.\n\nPodczas testowania zauważasz że gdy Stripe wysyła webhook dwukrotnie (retry po timeout), w bazie powstają dwa rekordy płatności dla tego samego zamówienia. Zamówienie jest oznaczone jako 'paid' poprawnie, ale email jest wysyłany dwa razy, a stan magazynowy jest zmniejszony dwukrotnie.\n\nJak dokumentujesz i priorytetyzujesz ten bug?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zgłaszasz jako Minor — webhook retry to rzadki przypadek, większość płatności dojdzie raz.",
+      "user_percentage": 9,
+      "consequences": "Błędna priorytetyzacja. Stripe domyślnie retryuje webhooki gdy endpoint odpowie > 30s lub zwróci błąd 5xx. Przy dużym ruchu retry jest normalnym scenariuszem, nie edge case'em. Podwójny email = złe UX. Podwójne zmniejszenie magazynu = dane finansowe są błędne."
+    },
+    {
+      "id": "b",
+      "text": "Zgłaszasz jako Major z opisem: brak idempotentności endpointu webhook. Opisujesz 3 efekty: duplikat rekordu płatności, podwójny email, błędny stan magazynowy. Proponujesz rozwiązanie: idempotency key (Stripe-Signature jako unique key per zdarzenie).",
+      "user_percentage": 67,
+      "consequences": "Kompletny raport. Trzy konkretne skutki, propozycja rozwiązania technicznego (idempotency key to standard w webhookach), właściwy severity. Developer dostaje wszystko co potrzebuje do naprawy."
+    },
+    {
+      "id": "c",
+      "text": "Zgłaszasz jako Critical/Blocker i natychmiast blokujesz release do naprawy.",
+      "user_percentage": 19,
+      "consequences": "Zbyt agresywna eskalacja bez kontekstu. Critical jest uzasadniony jeśli błędny stan magazynowy blokuje inne procesy lub powoduje straty finansowe natychmiast. Dla sklepu z małym ruchem — to Major do naprawienia w kolejnym sprincie, nie blocker."
+    },
+    {
+      "id": "d",
+      "text": "Zgłaszasz tylko duplikat emaila — to najbardziej widoczny efekt dla klienta.",
+      "user_percentage": 5,
+      "consequences": "Niepełny raport. Zgłaszasz objaw, nie problem. Developer naprawi duplikat emaila, a duplikat rekordu płatności i błędny magazyn zostaną. Zawsze zgłaszaj pełny impact, nie tylko jeden objaw."
+    }
+  ]
+}

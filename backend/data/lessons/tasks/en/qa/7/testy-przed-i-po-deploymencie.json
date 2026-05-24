@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Środa, 14:30. Twój team właśnie wdrożył wersję 3.1.0 na produkcję. Deployment trwał 8 minut i zakończył się sukcesem (zielone CI). Automatyczne smoke testy uruchomią się za 5 minut.\n\nZanim smoke testy skończą, Support pisze na Slacku: 'Mamy 3 zgłoszenia od klientów — nie mogą się zalogować. Pojawia się biały ekran po wpisaniu hasła.'\n\nAutomatyczne smoke testy właśnie skończyły: 8/10 passed, 2 failed — w tym test 'user login'. \n\nCo robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Czekasz na więcej danych — może to chwilowy problem, poczekaj 10 minut czy się samo naprawi.",
+      "user_percentage": 6,
+      "consequences": "10 minut przy broken login na produkcji to dziesiątki lub setki użytkowników którzy nie mogą się zalogować. Biały ekran po haśle to regresja krytyczna. Nie czekaj — działaj natychmiast. Smoke tests potwierdziły problem."
+    },
+    {
+      "id": "b",
+      "text": "Piszesz do developera żeby zbadał buga i naprawił go jak najszybciej.",
+      "user_percentage": 21,
+      "consequences": "Naprawka buga może trwać godzinę lub dłużej — trzeba zrozumieć problem, zakodować, przetestować, zdeployować. Przez ten czas login jest broken dla wszystkich użytkowników. Lepszą opcją jest natychmiastowy rollback (przywrócenie v3.0.x) i naprawka w spokoju."
+    },
+    {
+      "id": "c",
+      "text": "Natychmiast rekomiendujesz rollback do poprzedniej wersji (v3.0.x). Jednocześnie: piszesz do Tech Lead o rollbacku, informujesz Support że problem jest znany i working on it, zaczynasz zbierać logi z produkcji żeby developer mógł debugować po rollbacku.",
+      "user_percentage": 62,
+      "consequences": "Właściwa odpowiedź. Smoke tests + support zgłoszenia + repro = wystarczające potwierdzenie. Rollback przywraca login w ciągu minut zamiast godziny naprawki. Równoległe działania: informacja do supportu (zatrzymują napływ zgłoszeń), logi dla developera (żeby mógł debugować v3.1.0 lokalnie). Post-mortem po ustabilizowaniu."
+    },
+    {
+      "id": "d",
+      "text": "Próbujesz samodzielnie zreprodukować buga żeby mieć pewność przed rekomendacją rollbacku.",
+      "user_percentage": 11,
+      "consequences": "Reprodukcja jest dobra, ale nie może opóźniać decyzji o rollbacku. Masz: (1) smoke test który failuje na login, (2) 3 zgłoszenia od klientów z tym samym objawem, (3) świeży deployment. To wystarczy. Możesz zreprodukować RÓWNOLEGLE z rollbackiem, ale nie jako warunek rollbacku."
+    }
+  ]
+}
