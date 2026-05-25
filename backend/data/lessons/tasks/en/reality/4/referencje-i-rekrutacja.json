@@ -1,0 +1,19 @@
+{
+  "type": "interview",
+  "question": "Właśnie dotarłeś/aś do finalnego etapu rekrutacji na Senior QA w firmie X. Rekruter mówi: 'Na ostatnim etapie prosimy o 2-3 referencje od poprzednich pracodawców lub managerów. Czy możesz je podać do końca tygodnia?'\n\nMasz dobre relacje z byłym team leadem Anną, z którą pracowałeś/aś 2 lata temu. Masz też dobry kontakt z byłym PM Michałem. Natomiast z obecnym pracodawcą wolisz nie mówić o szukaniu pracy dopóki nie masz oferty.\n\nJak podchodzisz do tego zadania?",
+  "context": "Pytanie weryfikuje czy kandydat rozumie jak działają referencje profesjonalne i jak nimi zarządzać strategicznie. Sprawdza proaktywność, planowanie i umiejętność zarządzania relacjami zawodowymi.",
+  "star_hints": {
+    "s": "Sytuacja: finalna runda rekrutacji, potrzebujesz referencji przed końcem tygodnia",
+    "t": "Zadanie: zorganizować 2-3 wartościowe referencje nie ujawniając obecnemu pracodawcy",
+    "a": "Działania: jak kontaktujesz się z Anną i Michałem, co im mówisz, jak się przygotowujesz",
+    "r": "Rezultat: referencje dostarczone, relacje zadbane, obecny pracodawca nie wie"
+  },
+  "evaluation_criteria": [
+    "Kontaktuje konkretne osoby które znają jego/jej pracę bezpośrednio (nie ogólnych 'znajomych')",
+    "Przygotowuje referencje — wysyła JD i kontekst, nie tylko 'daj mnie polecić'",
+    "Nie podaje obecnego pracodawcy jako referencji bez zgody i przed otrzymaniem oferty",
+    "Ma plan B jeśli Anna lub Michał są niedostępni",
+    "Rozumie że referencja to przysługa — pyta a nie zakłada"
+  ],
+  "example_answer": "Zadzwonię do Anny i Michała osobno jeszcze dzisiaj — nie chcę tego odkładać, bo mam mniej niż tydzień.\n\nDo Anny napiszę: 'Hej Anno, aplikuję na Senior QA w firmie X i dotarłem do finału. Pracowaliśmy razem 2 lata przy projekcie Y — czy byłabyś skłonna być jedną z moich referencji? Wyślę Ci opis stanowiska i parę punktów które chciałbym żebyś podkreśliła, żebyś miała kontekst jeśli ktoś zadzwoni.'\n\nKluczowe: daję Annie czas się przygotować i JD — wtedy może zaakcentować to co rekruter będzie chciał usłyszeć.\n\nDo Michała podobnie, ale zaznaczę inny aspekt naszej współpracy — Michał może mówić o stronie komunikacyjnej i biznesowej, Anna o technikaliach i procesie.\n\nCo do obecnego pracodawcy — nie podaję go jako referencji teraz. To standardowe w rekrutacji i żadna firma nie powinna tego wymagać przed złożeniem oferty. Jeśli firma X nalega na referencję z aktualnego miejsca pracy — wyjaśnię sytuację i zaproponuję że mogę ją dostarczyć po otrzymaniu i zaakceptowaniu oferty.\n\nJeśli Anna lub Michał nie odezwą się w ciągu dnia — mam jeszcze byłego team lead z pierwszej pracy jako zapas."
+}

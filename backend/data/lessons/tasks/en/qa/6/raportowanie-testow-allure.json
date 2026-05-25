@@ -1,0 +1,44 @@
+{
+  "type": "diff_inspector",
+  "changelog": "Przebudowa raportowania testów — migracja z domyślnego pytest output na Allure z hierarchią Epic/Feature/Story, severity levels i automatycznymi screenshotami przy failurach.",
+  "before_description": "Domyślny pytest output w CI — lista passed/failed z nazwami plików testowych",
+  "after_description": "Allure report z hierarchią biznesową, severity levels, screenshotami przy failurach i trendem w czasie",
+  "changes": [
+    {
+      "type": "improvement",
+      "description": "Testy zgrupowane w hierarchię Epic → Feature → Story zamiast flat listy plików",
+      "impact": "Manager może zobaczyć 'Płatności > Checkout > Karta kredytowa: 1 failure' bez czytania nazw plików testowych"
+    },
+    {
+      "type": "improvement",
+      "description": "Każdy test ma przypisany severity level (BLOCKER/CRITICAL/NORMAL/MINOR/TRIVIAL)",
+      "impact": "Filtrowanie 'pokaż tylko CRITICAL i BLOCKER failures' — decyzja o release w 30 sekund"
+    },
+    {
+      "type": "improvement",
+      "description": "Automatyczny screenshot i browser logs dołączane do każdego failing testu",
+      "impact": "Developer widzi dokładnie co się działo na ekranie przy failurze — mniej 'nie mogę odtworzyć' w Jirze"
+    },
+    {
+      "type": "improvement",
+      "description": "Historia trendów (pass rate per sprint) przechowywana w GitHub Pages",
+      "impact": "Widoczny trend: 'Sprint 23: 96% → Sprint 24: 91% → Sprint 25: 88%' — sygnał do działania zanim będzie kryzys"
+    },
+    {
+      "type": "improvement",
+      "description": "Test steps opisane po polsku w format 'Działanie: X, Oczekiwany rezultat: Y'",
+      "impact": "PM i QA mogą przeczytać co test sprawdza bez znajomości Pythona"
+    },
+    {
+      "type": "neutral",
+      "description": "Czas wykonania testów wzrósł o ~15 sekund (generowanie raportu + screenshoty)",
+      "impact": "Akceptowalny overhead — CI pipeline wydłuża się z 4m20s do 4m35s"
+    },
+    {
+      "type": "regression",
+      "description": "Usunięto domyślny pytest terminal output z CI — teraz trzeba kliknąć w link do Allure żeby zobaczyć wyniki",
+      "impact": "Developer który chce szybko zobaczyć wyniki w terminalu musi przejść do osobnej strony — minor UX regression dla dev workflow"
+    }
+  ],
+  "summary": "Migracja na Allure zdecydowanie poprawia komunikację wyników testów z managementem i developerami. Główna wartość: hierarchia biznesowa + severity + screenshoty = mniej czasu na wyjaśnianie co się zepsuło. Minor trade-off: terminal output wymaga dodatkowego kliknięcia. Rekomendacja: wdrożyć, opcjonalnie dodać z powrotem brief terminal summary (tylko liczba passed/failed) dla deweloperskiego wygody."
+}

@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Testujesz platformę e-commerce na środowisku staging. Architektura ma: 1 primary DB (zapisy) + 2 read replicas (odczyty). Wykonujesz następującą sekwencję:\n\n1. Dodajesz produkt do koszyka (POST /cart/items → zapis do primary)\n2. Natychmiast odświeżasz stronę koszyka (GET /cart → odczyt z replica)\n3. Koszyk jest pusty — produkt 'zniknął'\n\nPiszesz bug report. Jak go kategoryzujesz i co rekomenujesz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "P1 — Krytyczny bug: dodanie produktu do koszyka nie działa. Koszyk jest pusty po odświeżeniu.",
+      "user_percentage": 28,
+      "consequences": "Nieprawidłowa diagnoza. Funkcja 'dodania do koszyka' działa — produkt jest w bazie. Problem leży w warstwie odczytu: replica nie zdążyła zsynchronizować się z primary (replication lag). Developer dostaje P1 buga z błędnym opisem → traci czas szukając nieistniejącego problemu w logice koszyka."
+    },
+    {
+      "id": "b",
+      "text": "P2 — Bug: replication lag powoduje read-after-write inconsistency w module koszyka. Użytkownik widzi pusty koszyk przez ~500ms po dodaniu produktu. Potrzebny mechanizm sticky reads lub read from primary po write.",
+      "user_percentage": 55,
+      "consequences": "Poprawna diagnoza i kategoryzacja. Identyfikujesz root cause (replication lag), opisujesz symptom z perspektywy użytkownika, i sugerujesz rozwiązanie techniczne. Developer i architekt wiedzą dokładnie co naprawić. P2 jest właściwe — dotyka UX ale nie niszczy danych."
+    },
+    {
+      "id": "c",
+      "text": "Nie piszesz buga — to 'znane ograniczenie architektury'. Replication lag jest normalny w replikacji asynchronicznej.",
+      "user_percentage": 12,
+      "consequences": "Replication lag jest normalny — ale read-after-write inconsistency dla krytycznych operacji jak koszyk zakupowy to problem wymagający rozwiązania architektonicznego. Milczenie pozwala problemowi iść na produkcję. Użytkownicy zgłoszą to jako 'koszyk nie działa' — support dostanie tysiące ticketów. Zawsze dokumentuj nawet 'znane' problemy."
+    },
+    {
+      "id": "d",
+      "text": "P3 — Minor: przejściowy problem z wyświetlaniem który sam się rozwiązuje po chwili. Nie wymaga pilnej naprawy.",
+      "user_percentage": 5,
+      "consequences": "P3 jest za niskie dla koszyka zakupowego — to core user journey. 'Sam się rozwiązuje po chwili' to prawda technicznie, ale dla użytkownika 'koszyk zniknął → dodaję jeszcze raz → mam podwójny koszyk' lub 'myślę że coś nie zadziałało → wychodzę ze sklepu'. Niedoszacowanie severity dla core flows = bug na produkcji."
+    }
+  ]
+}

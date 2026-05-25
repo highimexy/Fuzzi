@@ -1,0 +1,72 @@
+{
+  "type": "console_detective",
+  "expected_behavior": "Po złożeniu zamówienia przez użytkownika, serwis 'order-service' publikuje event OrderPlaced do Kafka. Serwis 'notification-service' konsumuje ten event i wysyła email potwierdzający zamówienie. Użytkownik powinien dostać email w ciągu 30 sekund od złożenia zamówienia.",
+  "logs": [
+    {
+      "timestamp": "14:32:01.123",
+      "service": "order-service",
+      "level": "INFO",
+      "message": "Order #ORD-8821 created for user user-442"
+    },
+    {
+      "timestamp": "14:32:01.145",
+      "service": "order-service",
+      "level": "INFO",
+      "message": "Publishing OrderPlaced event to topic 'orders' | order_id=ORD-8821 | partition=3"
+    },
+    {
+      "timestamp": "14:32:01.312",
+      "service": "kafka-broker",
+      "level": "INFO",
+      "message": "Message received on topic 'orders' partition=3 offset=10041"
+    },
+    {
+      "timestamp": "14:32:01.890",
+      "service": "notification-service",
+      "level": "INFO",
+      "message": "Consumer started processing message offset=10041 topic='orders'"
+    },
+    {
+      "timestamp": "14:32:01.921",
+      "service": "notification-service",
+      "level": "ERROR",
+      "message": "Failed to deserialize message: missing required field 'user_email' | offset=10041"
+    },
+    {
+      "timestamp": "14:32:01.922",
+      "service": "notification-service",
+      "level": "WARN",
+      "message": "Message processing failed, retry 1/3 | offset=10041"
+    },
+    {
+      "timestamp": "14:32:04.922",
+      "service": "notification-service",
+      "level": "WARN",
+      "message": "Message processing failed, retry 2/3 | offset=10041"
+    },
+    {
+      "timestamp": "14:32:10.922",
+      "service": "notification-service",
+      "level": "WARN",
+      "message": "Message processing failed, retry 3/3 | offset=10041"
+    },
+    {
+      "timestamp": "14:32:10.945",
+      "service": "notification-service",
+      "level": "ERROR",
+      "message": "Message moved to Dead Letter Queue after 3 failed retries | offset=10041 | dlq='orders-dlq'"
+    },
+    {
+      "timestamp": "14:32:10.946",
+      "service": "notification-service",
+      "level": "INFO",
+      "message": "Consumer committed offset=10041, continuing to next message"
+    }
+  ],
+  "hints": [
+    "Serwis notification-service dostał event ale co konkretnie się w nim nie zgadza?",
+    "Kto wysyła event? Kto go konsumuje? Co potrzebuje konsument a czego nie dostał?",
+    "Dead Letter Queue to efekt — co jest przyczyną?"
+  ],
+  "correct_diagnosis": "Serwis order-service publikuje event OrderPlaced bez pola 'user_email', którego wymaga notification-service żeby wysłać email. Event schema jest niezgodna między producentem a konsumentem — brak contract testing. Notification-service próbuje przetworzyć event 3 razy (retry logic działa poprawnie), ale każda próba kończy się tym samym błędem deserializacji — brakujące pole nie pojawi się magicznie po retry. Event trafia do DLQ. Użytkownik nie dostaje emaila. Fix: order-service musi dodać 'user_email' do eventu OrderPlaced, lub notification-service musi pobierać email osobno przez API z user-id który jest w evencie."
+}

@@ -1,0 +1,22 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html>\n<head>\n<style>\n  .submit-btn {\n    background: #007bff;\n    color: white;\n    padding: 12px 24px;\n    border: none;\n    cursor: pointer;\n    transition: all 0.3s;\n  }\n  .submit-btn:hover {\n    background: #0056b3;\n    transform: scale(1.05);\n  }\n  .spinner {\n    display: none;\n    width: 16px;\n    height: 16px;\n    border: 2px solid white;\n    border-top-color: transparent;\n    border-radius: 50%;\n    animation: spin 0.8s linear infinite;\n  }\n  @keyframes spin {\n    to { transform: rotate(360deg); }\n  }\n  .success-msg {\n    display: none;\n    color: green;\n    margin-top: 8px;\n  }\n</style>\n</head>\n<body>\n  <form id=\"order-form\">\n    <input type=\"text\" placeholder=\"Name\" required>\n    <input type=\"email\" placeholder=\"Email\" required>\n    <button type=\"submit\" class=\"submit-btn\" id=\"submit-btn\">\n      <span id=\"btn-text\">Złóż zamówienie</span>\n      <div class=\"spinner\" id=\"spinner\"></div>\n    </button>\n  </form>\n  <div class=\"success-msg\" id=\"success-msg\">Zamówienie złożone!</div>\n\n  <script>\n    document.getElementById('order-form').addEventListener('submit', function(e) {\n      e.preventDefault();\n      document.getElementById('btn-text').style.display = 'none';\n      document.getElementById('spinner').style.display = 'inline-block';\n      \n      // Simulate API call\n      setTimeout(function() {\n        document.getElementById('spinner').style.display = 'none';\n        document.getElementById('btn-text').style.display = 'inline';\n        document.getElementById('success-msg').style.display = 'block';\n      }, 2000);\n    });\n  </script>\n</body>\n</html>",
+  "spec": "Przycisk 'Złóż zamówienie' powinien: (1) wyświetlać spinner podczas przetwarzania, (2) być nieaktywny (disabled) podczas przetwarzania żeby zapobiec podwójnemu submitowi, (3) wrócić do stanu normalnego po sukcesie, (4) animacje powinny działać przy wyłączonym prefers-reduced-motion",
+  "correct_severity": "high",
+  "severity_reason": "Brak disabled podczas loading to P2 (wysoki) — podwójny submit może skutkować podwójnym zamówieniem i stratą finansową dla użytkownika lub firmy. Nie jest P1 (blokujący) bo funkcja działa dla pojedynczego submitu.",
+  "red_herrings": [
+    "Spinner używa border-top-color: transparent zamiast dedykowanego koloru — to jest prawidłowa technika CSS spinner, nie bug",
+    "Brak border-radius na przycisku — to design choice, nie funkcjonalny bug",
+    "setTimeout z 2000ms zamiast prawdziwego API calla — to symulacja w przykładzie, nie bug implementacji"
+  ],
+  "model_report": {
+    "title": "Przycisk formularza nie jest disabled podczas przetwarzania — ryzyko podwójnego zamówienia",
+    "steps": [
+      "1. Wypełnij formularz poprawnymi danymi",
+      "2. Kliknij 'Złóż zamówienie'",
+      "3. Natychmiast po pierwszym kliknięciu (spinner widoczny) kliknij przycisk ponownie"
+    ],
+    "expected": "Przycisk jest disabled podczas przetwarzania (cursor: not-allowed lub disabled attribute). Drugi klik jest ignorowany.",
+    "actual": "Przycisk jest aktywny podczas loading. Drugi klik submituje formularz ponownie — może skutkować dwoma zamówieniami. Brakuje również obsługi prefers-reduced-motion: animacja spinnera działa nawet gdy user ma włączone 'Reduce Motion' w systemie."
+  }
+}

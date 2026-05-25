@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Pracujesz nad nową funkcją — panel filtrowania produktów z 15 filtrami (cena, kategoria, rozmiar, kolor, marka, ocena, etc.). Masz 2 godziny na eksplorację. Jak zorganizujesz sesję?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Testujesz każdy filtr osobno po kolei — 15 filtrów × kilka wartości = kompletne pokrycie.",
+      "is_correct": false,
+      "explanation": "To podejście systematyczne ale nie eksploracyjne — i przy 15 filtrach skończy się czas zanim dojdziesz do kombinacji. Biggest risk w filtrach to kombinacje (filtr ceny + kategoria + ocena jednocześnie), a te zostaną pominięte."
+    },
+    {
+      "id": "b",
+      "text": "Piszesz charter 'Zbadaj zachowanie przy kombinacjach filtrów z naciskiem na edge cases i stany brzegowe', ustawiasz timer 90 minut i zapisujesz obserwacje w trakcie.",
+      "is_correct": true,
+      "explanation": "Dobry charter + time-box to esencja SBTM. Charter kieruje eksplorację na to co jest ryzykowne (kombinacje), a nie na to co jest oczywiste (jeden filtr na raz). 90 minut to wystarczająco dużo na głęboką eksplorację, zostaje czas na debrief."
+    },
+    {
+      "id": "c",
+      "text": "Używasz techniki SFDIPOT i systematycznie przechodzisz przez każdy element: Structure (jak filtry są zbudowane), Function (co robią), Data (jakie wartości przyjmują)...",
+      "is_correct": false,
+      "explanation": "SFDIPOT jest przydatny jako heurystyka ale nie jako mechaniczny checklist. Przy 15 filtrach przejście przez wszystkie elementy SFDIPOT zajmie więcej niż 2 godziny. Użyj SFDIPOT żeby generować pomysły na charter, nie jako kompletny plan."
+    },
+    {
+      "id": "d",
+      "text": "Zaczynasz od happy path (wybierz kategorię, kliknij Szukaj), potem testujesz edge cases w każdym filtrze.",
+      "is_correct": false,
+      "explanation": "Happy path powinien zająć maks 5 minut — to nie jest główne ryzyko. Potem edge cases per filtr to z powrotem test systematyczny per pole. Eksploracja powinna szukać 'co w ogóle nie zostało przetestowane' nie 'co jest oczywiste'."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Na retrospekcji po sprint 18 wychodzi powtarzający się problem: 3 bugi produkcyjne w tym sprincie — wszystkie w module 'user-profile'. Developer Kamil mówi: 'Testowałem lokalnie, wszystko działało. QA powinien był to złapać.' Ty (QA) mówisz: 'Historyjki trafiają do mnie dopiero w środę, release w piątek — nie mam czasu na regresję.' Scrum Master pyta: 'Co możemy zmienić żeby to nie się nie powtarzało?'\n\nCo proponujesz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Więcej czasu na QA — historyjki muszą być 'code complete' do wtorku a nie środy. Release przesunąć na poniedziałek.",
+      "user_percentage": 31,
+      "consequences": "Adresuje symptom (za mało czasu) ale nie root cause. Nawet z wtorkiem deadline developer nadal 'oddaje kod do testowania' bez własnych testów. Za miesiąc problem wróci bo dodamy nowe historyjki i znowu nie będzie czasu. Potrzebna zmiana kulturowa, nie tylko timeline."
+    },
+    {
+      "id": "b",
+      "text": "Dodać do DoD: każda historyjka w module user-profile musi mieć minimum 2 unit testy napisane przez developera. QA sign-off możliwy tylko jeśli testy przechodzą w CI.",
+      "user_percentage": 48,
+      "consequences": "Dobry ruch — przenosi część odpowiedzialności za jakość na developera (gdzie powinna być). Unit testy dla user-profile złapią regresje wcześniej. DoD enforcement wymaga konsekwencji: jeśli historyjka nie ma testów → nie przechodzi do QA → nie jest w sprincie. Kamil i inni developerzy będą na początku niezadowoleni — zmiana jest potrzebna."
+    },
+    {
+      "id": "c",
+      "text": "QA powinien dołączyć do code review historyjek z user-profile, żeby widzieć co się zmienia i móc lepiej zaplanować testowanie.",
+      "user_percentage": 16,
+      "consequences": "Dobra taktyczna zmiana — QA w code review daje wcześniejszy wgląd. Ale to nie eliminuje problemu: developer nadal myśli 'mój kod działa, reszta to problem QA'. Code review QA może być częścią rozwiązania, ale samodzielnie nie zmieni kultury odpowiedzialności za jakość."
+    },
+    {
+      "id": "d",
+      "text": "Moduł user-profile powinien mieć dedykowanego developera jako 'właściciela' który jest odpowiedzialny za stabilność — teraz wszyscy go modyfikują bez znajomości całości.",
+      "user_percentage": 5,
+      "consequences": "Interesujące podejście do code ownership. Może pomóc jeśli problem wynika z 'nikt nie zna całego modułu'. Ale owner bez procesu testowania nadal może wypuszczać bugi. To raczej uzupełnienie do unit tests + DoD niż samodzielne rozwiązanie."
+    }
+  ]
+}

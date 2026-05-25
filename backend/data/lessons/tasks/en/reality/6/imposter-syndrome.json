@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Pracujesz jako mid QA od 2 lat. Twój manager właśnie zaproponował Ci awans na Senior QA i udział w technicznym wywiadzie z nowym kandydatem na juniora. Twoja pierwsza reakcja to panika: 'Nie jestem gotowa/gotowy na seniora. Na interview techniczne zapytają mnie o rzeczy których nie wiem. Inni QA w teamie są lepsi.' Jak reagujesz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Odmawiasz awansu — 'Dziękuję, ale nie czuję się gotowa/gotowy. Może za rok.' Proponujesz kolegę który 'jest lepszy'.",
+      "user_percentage": 23,
+      "consequences": "Klasyczna pułapka imposter syndrome. Manager widzi Twoją pracę codziennie — propozycja awansu jest oparta na dowodach, nie na Twoim self-assessment. 'Nie czuję się gotowy/a' często jest odczuciem a nie faktem. Warto zapytać managera: 'Co konkretnie widzisz co sprawia że proponujesz awans?' — odpowiedź może zrewidować Twój self-obraz."
+    },
+    {
+      "id": "b",
+      "text": "Prosisz managera o rozmowę: pytasz co konkretnie widzi że kwalifikuje Cię na seniora i jakie oczekiwania ma wobec tej roli. Potem decydujesz.",
+      "user_percentage": 57,
+      "consequences": "Profesjonalne i mądre podejście. Manager powie Ci co widzi — to są fakty o Twojej pracy, nie Twoja subiektywna ocena. Może się okazać że kryteria seniora to dokładnie to co już robisz od miesięcy. 'Senior' to zakres odpowiedzialności, nie poziom wszechwiedzy. Każdy senior ma obszary których nie zna."
+    },
+    {
+      "id": "c",
+      "text": "Akceptujesz awans i interview ale całą noc uczysz się 'na szybko' wszystkich technikaliów żeby nie zostać zdemaskowani.",
+      "user_percentage": 17,
+      "consequences": "Akceptacja awansu to dobry krok. Ale 'nauka na szybko żeby nie zostać zdemaskowani' to symptom imposter syndrome w działaniu. Interview z kandydatem na juniora nie wymaga wszechwiedzy — wymaga zdolności do oceny potencjału, zadawania dobrych pytań, i wyciągania wniosków. To umiejętności które masz."
+    },
+    {
+      "id": "d",
+      "text": "Akceptujesz awans ze spokojem — widzisz że 2 lata pracy i znajomość systemu kwalifikuje Cię na tę rolę.",
+      "user_percentage": 3,
+      "consequences": "Idealny scenariusz — brak imposter syndrome lub skuteczne zarządzanie nim. Jeśli tak reagujesz naturalnie: świetnie. Jeśli to 'aspiracyjna odpowiedź' podczas gdy w środku panikujesz — to OK, działanie pomimo lęku jest również właściwe. Imposter syndrome nie musi zniknąć żebyś mógł/mogła efektywnie funkcjonować."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Uruchamiasz `npm audit` i widzisz:\n\n```\nfound 4 vulnerabilities (2 moderate, 1 high, 1 critical)\n\ncritical  Prototype pollution in lodash\nPackage: lodash\nDependency of: your-app\nPath: your-app > lodash\nMore info: https://npmjs.com/advisories/1523\nFix available: npm audit fix\n\nhigh  ReDoS in moment\nPackage: moment  \nDependency of: your-app > date-utils\nPath: your-app > date-utils > moment\nMore info: https://npmjs.com/advisories/2338\nFix available: npm audit fix --force (breaks semver)\n```\n\nCo robisz jako pierwsze?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Uruchamiasz `npm audit fix --force` żeby naprawić wszystko od razu.",
+      "is_correct": false,
+      "explanation": "`--force` może złamać zależności (breaks semver) — lodash może być zaktualizowany do major wersji z breaking changes. Na produkcyjnym projekcie to ryzyko. Naprawiaj critical/high osobno, testuj po każdej zmianie."
+    },
+    {
+      "id": "b",
+      "text": "Naprawiasz critical (lodash) przez `npm audit fix`, testujesz build i testy. Potem osobno oceniasz high (moment) — sprawdzasz czy fix --force złamie coś krytycznego.",
+      "is_correct": true,
+      "explanation": "Poprawne podejście: najpierw critical (CVSS 9-10), osobno, z testowaniem po każdej zmianie. Dla high z breaking fix — oceniasz ryzyko: moment to transitive dependency (date-utils ją importuje), więc fix może wymagać aktualizacji date-utils lub znalezienia alternatywy."
+    },
+    {
+      "id": "c",
+      "text": "Ignorujesz moderate (CVSS < 7) i skupiasz się tylko na critical. High możesz poczekać do następnego sprintu.",
+      "is_correct": false,
+      "explanation": "Critical naprawić od razu — zgadza się. Ale high (CVSS 7-8.9) nie powinna czekać do następnego sprintu — zaplanuj naprawę w bieżącym lub 1-2 dni. ReDoS (Regular Expression Denial of Service) w moment może być exploitowalne jeśli aplikacja przetwarza user input przez moment."
+    },
+    {
+      "id": "d",
+      "text": "Sprawdzasz czy lodash jest faktycznie używany w kodzie aplikacji — jeśli nie, podatność jest nieistotna.",
+      "is_correct": false,
+      "explanation": "To dobra myśl ale niekompletna. Jeśli lodash jest w dependencies (nie tylko devDependencies) i aplikacja go importuje gdziekolwiek — podatność jest istotna. Ale sprawdzenie zakresu użycia pomaga priorytetyzować. Prototype pollution w lodash jest krytyczne bo pozwala atakującemu zmodyfikować Object.prototype — dotyczy całej aplikacji Node.js."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "type": "risk_map",
+  "profile": "QA w firmie która właśnie zaczęła Agile transformację. Wcześniej: waterfall, QA faza na końcu projektu, dedykowany dział QA z własnym managerem. Teraz: Scrum, cross-functional teams, brak jasnej roli QA w ceremonjach. Transformacja trwa 2 miesiące.",
+  "decisions": [
+    {
+      "id": 1,
+      "decision": "Czekasz aż rola QA zostanie oficjalnie zdefiniowana przez management przed podjęciem jakichkolwiek inicjatyw.",
+      "correct_risk": "high",
+      "explanation": "Ryzyko: jeśli czekasz, inni ukształtują Twoją rolę za Ciebie — prawdopodobnie jako bramkarz na końcu sprintu. Agile transformacje trwają 6-12 miesięcy. Passywne czekanie = tracisz okno możliwości żeby aktywnie zdefiniować swoją rolę. Działaj teraz, nie czekaj na oficjalny dokument."
+    },
+    {
+      "id": 2,
+      "decision": "Proponujesz Scrum Masterowi że chcesz uczestniczyć we wszystkich refinementach jako stały uczestnik i uzasadniasz dlaczego to pomaga teamowi.",
+      "correct_risk": "low",
+      "explanation": "Niskie ryzyko, wysoka wartość. Refinement to moment gdzie QA może zapobiec problemom zanim będą kosztowne. Twoja obecność na refinemencie = historyjki z AC zamiast bez AC. Scrum Master powinien przyjąć tę propozycję pozytywnie — eliminujesz przyszłe spory o 'co oznacza done'."
+    },
+    {
+      "id": 3,
+      "decision": "Na pierwszej retrospekcji mówisz: 'Poprzedni model był lepszy, w waterfall mieliśmy więcej czasu na testowanie.' i proponujesz powrót do starego podejścia.",
+      "correct_risk": "high",
+      "explanation": "Wysokie ryzyko dla Twojej pozycji w teamie. Transformacja jest decyzją management — kwestionowanie jej na forum nie zmieni kursu, ale zbuduje Twoją reputację jako 'osoba opierająca się zmianie'. Lepiej: zidentyfikuj konkretny problem ('za mało czasu na regresję w 2-tygodniowym sprincie') i zaproponuj rozwiązanie w ramach Agile."
+    },
+    {
+      "id": 4,
+      "decision": "Proponujesz teamowi Definition of Done który zawiera: unit testy, code review, QA sign-off na AC, regression pass. Uzasadniasz każdy punkt.",
+      "correct_risk": "low",
+      "explanation": "Doskonały ruch. Ktoś musi zaproponować DoD — jeśli QA to zrobi, ma naturalny wpływ na to co DoD zawiera. DoD z QA sign-off na AC oznacza że testowanie jest wbudowane w definicję 'done', nie jest opcjonalnym dodatkiem na końcu. Uzasadniaj każdy punkt — team musi rozumieć wartość."
+    },
+    {
+      "id": 5,
+      "decision": "Zaczynasz automatyzować regresję równolegle z manualnym testowaniem, prezentując postęp na każdym sprint review.",
+      "correct_risk": "low",
+      "explanation": "Automatyzacja regresji to inwestycja która chroni szybkie tempo Agile. Bez niej każdy sprint = więcej manualnej regresji = coraz większy bottleneck. Prezentowanie postępu na review daje widoczność i buduje argument za czasem na automatyzację w przyszłych sprintach."
+    },
+    {
+      "id": 6,
+      "decision": "Nie uczestniczysz w daily standup — 'nie masz co raportować' gdy nie testujesz aktywnie w danym momencie.",
+      "correct_risk": "high",
+      "explanation": "Nieobecność na standupie = niewidzialność w teamie. Standup to też moment żeby poinformować o blokerach ('czekam na dostęp do staging'), pytaniach do developerów ('historyjka X jest code complete — testowanie zaczynam o 13'), i statusie ('regresja 60% done, 2 bugi otwarte'). Nawet jeśli 'nie ma co raportować' — raport o braku blokerów jest informacją."
+    }
+  ],
+  "senior_comment": "Agile transformacja to moment kiedy QA może albo stać się niewidzialnym wykonawcą poleceń, albo aktywnie ukształtować jakość w nowym modelu. Kluczowe decyzje: refinement + DoD + automatyzacja. To trójkąt który sprawia że QA jest integralną częścią teamu, nie walidatorem na końcu."
+}

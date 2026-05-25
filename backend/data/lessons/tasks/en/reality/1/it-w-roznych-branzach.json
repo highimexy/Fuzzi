@@ -1,0 +1,30 @@
+{
+  "type": "scenario",
+  "situation": "Dostałeś/aś dwie oferty pracy jako QA. Obie są na tym samym poziomie seniority i podobnym wynagrodzeniu (~9000 PLN netto B2B).\n\nOferta A: QA w fintechowym startupie (aplikacja do inwestowania). 50-osobowy team, szybkie tempo, tygodniowe release. Wymaga znajomości regulacji PCI DSS i KYC. Dużo manualnego testowania bezpieczeństwa. Trial period 3 miesiące.\n\nOferta B: QA w studiu gamingowym (mobile game F2P). 30-osobowy team, live ops co tydzień, możliwy crunch przed release. Wymaga znajomości platform iOS/Android, monetizacji. Duże możliwości automatyzacji UI testów.\n\nCo wybierasz? (odpowiedź nie ma złego wyniku — chodzi o świadome rozumowanie)",
+  "options": [
+    {
+      "id": "a",
+      "text": "Oferta A (fintech) — stabilniejsza, wyższe wymagania merytoryczne, wiedza o regulacjach zwiększa wartość rynkową.",
+      "user_percentage": 42,
+      "consequences": "Dobry wybór jeśli: cenisz stabilność, nie masz nic przeciwko wolniejszemu tempo release, i chcesz budować specjalizację w regulowanej branży. Wiedza PCI DSS/KYC to wąski rynek z wysokimi stawkami — za 3 lata będziesz mieć profil który wiele firm szuka. Minusy: prawdopodobnie więcej dokumentacji, wolniejsza iteracja, możliwe bardziej korporacyjna kultura."
+    },
+    {
+      "id": "b",
+      "text": "Oferta B (gaming) — bardziej dynamiczne, możliwość automatyzacji, pasja do gier jako atut.",
+      "user_percentage": 38,
+      "consequences": "Dobry wybór jeśli: lubisz szybkie tempo, interesują Cię gry mobilne jako produkt, i chcesz rozwijać automatyzację. Doświadczenie live ops i mobile testing to przydatne umiejętności. Crunch risk jest realny — przed podjęciem sprawdź jak team mówi o work-life balance. 'Możliwy crunch' w ogłoszeniu to często eufemizm dla 'regularny crunch'."
+    },
+    {
+      "id": "c",
+      "text": "Poproszę o więcej informacji zanim zdecyduję — chcę wiedzieć o kulturze teamów, realnym overtime i ścieżce kariery.",
+      "user_percentage": 18,
+      "consequences": "Profesjonalne podejście. Wynagrodzenie i tytuł to nie wszystko. Pytania które warto zadać: 'Jak wygląda typowy dzień QA?' 'Jakie były ostatnie 3 release — ile bugów trafiło na prod?' 'Jak team radzi sobie z technicznym długiem w testach?' 'Czy QA uczestniczy w planowaniu?' Odpowiedzi powiedzą Ci więcej niż JD."
+    },
+    {
+      "id": "d",
+      "text": "Odmawiam obu — poczekam na ofertę która bardziej pasuje do moich planów kariery.",
+      "user_percentage": 2,
+      "consequences": "Może być właściwe jeśli masz konkretny cel (np. healthcare QA) i czas do szukania. Ale 'czekanie na idealną ofertę' bez kryteriów może trwać wiecznie. Obie oferty są solidne — jeśli odmawiam obu, muszę wiedzieć co konkretnie szukam i czego w nich brakuje."
+    }
+  ]
+}

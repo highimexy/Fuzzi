@@ -1,0 +1,63 @@
+{
+  "type": "triage",
+  "bugs": [
+    {
+      "id": 1,
+      "title": "STRIPE_API_KEY ustawiony na klucz testowy (sk-test-...) na środowisku produkcyjnym",
+      "details": "Znaleziono podczas sprawdzenia env vars na prod. Aktualnie używany klucz: sk-test-4eC39HqLyjWDarjtT1zdp7dc. Płatności produkcyjne są przetwarzane przez Stripe sandbox — pieniądze nie są pobierane.",
+      "reporter": "QA podczas release checklist"
+    },
+    {
+      "id": 2,
+      "title": "Certyfikat SSL wygasa za 12 dni",
+      "details": "certbot renewal nie uruchomił się automatycznie przez błąd w cron. Certyfikat ważny do 2026-06-06. Po wygaśnięciu: przeglądarka pokaże ostrzeżenie bezpieczeństwa, HTTPS przestanie działać.",
+      "reporter": "Alert z monitoringu"
+    },
+    {
+      "id": 3,
+      "title": "Feature flag 'new_onboarding_v2' włączony na prod bez weryfikacji QA",
+      "details": "Flag został włączony przez PM bezpośrednio w panelu. QA nie testował nowego onboardingu na produkcyjnej konfiguracji. Dotknięte: nowi użytkownicy rejestrujący się od wczoraj.",
+      "reporter": "Developer który zauważył w feature flag dashboard"
+    },
+    {
+      "id": 4,
+      "title": "SMTP_HOST ustawiony na lokalny serwer mailowy (localhost:25) na staging",
+      "details": "Staging nie wysyła emaili. Testy które weryfikują email delivery failują. Developerzy nie mogą testować email flows.",
+      "reporter": "QA (własne odkrycie podczas testowania rejestracji)"
+    },
+    {
+      "id": 5,
+      "title": "Brak resource limits na pods w Kubernetes — 3 podserwisy bez memory limits",
+      "details": "Skrypt audit K8s wykazał że notification-service, email-service i analytics-service nie mają zdefiniowanych memory limits. Przy spike'u jeden pod może zjeść całą pamięć node'a.",
+      "reporter": "DevOps podczas tygodniowego audytu"
+    }
+  ],
+  "senior_decisions": [
+    {
+      "bug_id": 1,
+      "priority": "P0 — BLOCKER",
+      "action": "Natychmiastowe wstrzymanie przyjmowania płatności i zmiana klucza na produkcyjny. Eskalacja do CTO i zespołu finansowego. Sprawdzenie czy jakieś zamówienia zostały złożone bez pobrania opłaty."
+    },
+    {
+      "bug_id": 2,
+      "priority": "P1 — CRITICAL",
+      "action": "Zaplanować odnowienie certyfikatu w ciągu 24-48h. Nie jest jeszcze P0 bo mamy 12 dni — ale nie może czekać do następnego sprintu. DevOps naprawia cron + manualne odnowienie."
+    },
+    {
+      "bug_id": 3,
+      "priority": "P1 — CRITICAL",
+      "action": "Natychmiast wyłączyć flagę, przetestować nowy onboarding na staging, potem włączyć poprawnie przez proces QA sign-off. Sprawdzić ile użytkowników przeszło przez nowy flow i czy dane są poprawne."
+    },
+    {
+      "bug_id": 4,
+      "priority": "P2 — HIGH",
+      "action": "Naprawić konfigurację SMTP na staging w bieżącym sprincie. Blokuje testowanie ale nie dotyka produkcji. Użyj MailHog lub Mailtrap jako lokalny SMTP catcher zamiast localhost:25."
+    },
+    {
+      "bug_id": 5,
+      "priority": "P3 — MEDIUM",
+      "action": "Zaplanować dodanie resource limits w następnym sprincie. Ryzyko istnieje ale wymaga konkretnego spike'u żeby się zmaterializować. DevOps ticket z defined limits na podstawie aktualnego usage."
+    }
+  ],
+  "senior_comment": "Bug #1 (klucz testowy na prod) to incydent bezpieczeństwa i finansowy — każde zamówienie złożone od czasu tego błędu wymaga weryfikacji czy płatność została pobrana. Priorytet absolutny. Bug #3 (flag bez QA) to problem procesowy — ktoś ominął process. Oprócz naprawy technicznej, retrospekcja dlaczego PM miał bezpośredni dostęp do flag produkcyjnych."
+}

@@ -1,0 +1,30 @@
+{
+  "type": "quiz",
+  "question": "Masz 2 lata doświadczenia jako QA, głównie manualne testowanie, trochę podstaw Selenium. Właśnie skończyłeś/aś kurs Playwright i masz własne repozytorium z testami automatycznymi dla publicznej demo aplikacji. Rozglądasz się za nową pracą. Kolega z pracy mówi: 'Musisz zrobić ISTQB Advanced przed aplikowaniem — bez tego nikt Cię nie weźmie na mid QA.' Co robisz?",
+  "options": [
+    {
+      "id": "a",
+      "text": "Odkładasz szukanie pracy na 2-3 miesiące, robisz ISTQB Advanced i aplikujesz z certyfikatem.",
+      "is_correct": false,
+      "explanation": "ISTQB Advanced wymaga minimum 3 lat doświadczenia (oficjalny wymóg) i jest rzadko wymagany na poziomie mid w startupach i product companies. 2-3 miesięczne opóźnienie w szukaniu pracy dla certyfikatu który może być irrelewantny w większości ofert — nieoptymalne."
+    },
+    {
+      "id": "b",
+      "text": "Aplikujesz teraz z tym co masz. Twoje portfolio z Playwright + 2 lata doświadczenia + GitHub repo to mocna kombinacja dla mid QA w startupach i product teams.",
+      "is_correct": true,
+      "explanation": "Właściwa decyzja dla większości rynku. 2 lata + Playwright portfolio + aktywne GitHub repo > ISTQB Advanced dla większości product companies. Sprawdź JD które Cię interesują: jeśli żadna nie wymienia ISTQB jako must-have — nie potrzebujesz go teraz. Zrób go jeśli spodobają Ci się oferty z korporacji lub consultingu gdzie certyfikaty mają wagę."
+    },
+    {
+      "id": "c",
+      "text": "Robisz ISTQB Foundation (nie Advanced) — szybszy, tańszy, i daje wspólny język z teamem.",
+      "is_correct": false,
+      "explanation": "Foundation po 2 latach doświadczenia jest zbyt podstawowe — nie poprawi Twojego profilu znacząco na mid poziomie. Czas lepiej spędzić na rozwijaniu portfolio automatyzacji lub nauce narzędzi (k6 dla performance, Burp Suite dla security testing). Foundation ma sens dla juniora lub osoby bez żadnej formalnej edukacji w QA."
+    },
+    {
+      "id": "d",
+      "text": "Pytasz kolegi o źródło tej informacji — 3 konkretne firmy które odrzuciły kandydatów bez ISTQB Advanced na mid poziomie.",
+      "is_correct": false,
+      "explanation": "Zdrowy sceptycyzm — ale to nie jest action item na rekrutację. Kolega może mieć rację dla swojego segmentu rynku (np. outsourcing/consulting). Lepszy sposób weryfikacji: przejrzyj 20 ogłoszeń na mid QA na justjoin.it i policz ile wymaga ISTQB. Dane > anegdoty."
+    }
+  ]
+}
