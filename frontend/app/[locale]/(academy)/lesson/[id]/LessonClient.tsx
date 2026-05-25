@@ -72,7 +72,9 @@ export default function LessonClient({
   const titleRaw = locale === 'pl' ? lesson.title_pl : lesson.title_en
   const title = titleRaw || lesson.title_en
   const contentRaw = locale === 'pl' ? lesson.content_pl : lesson.content_en
-  const content = contentRaw?.startsWith('## Content Pending') ? lesson.content_en : (contentRaw || lesson.content_en)
+  const content = contentRaw?.startsWith('## Content Pending')
+    ? lesson.content_en
+    : contentRaw || lesson.content_en
   const rawPayload = locale === 'pl' ? lesson.payload_pl : lesson.payload_en
   const payload = rawPayload?.question ? rawPayload : lesson.payload_en
   const groupTitle = group ? (locale === 'pl' ? group.title_pl : group.title_en) : null
@@ -95,19 +97,19 @@ export default function LessonClient({
     <div className="flex h-full w-full flex-col font-sans">
       {/* ── NAWIGACJA SUB-LEKCJI ── */}
       {total > 0 && (
-        <div className="border-foreground/10 flex shrink-0 items-center justify-between border-b px-6 py-3 lg:px-8">
+        <div className="border-foreground/10 flex shrink-0 items-center justify-between border-b px-6 py-2 lg:px-8">
           {/* Lewa: powrót do rozdziału */}
           <Link
             href={group ? `/lessons/${group.track}/${group.id}` : '/lessons'}
-            className="text-foreground/30 hover:text-foreground/60 inline-flex items-center gap-1.5 font-sans text-[10px] tracking-widest uppercase transition-colors"
+            className="text-foreground/30 hover:text-foreground/60 inline-flex items-center gap-1.5 font-sans tracking-widest uppercase transition-colors"
           >
             <FiArrowLeft className="shrink-0" />
-            <span className="hidden max-w-[160px] truncate sm:block">{groupTitle ?? 'Lekcje'}</span>
+            <span className="hidden max-w-40 truncate sm:block">{groupTitle ?? 'Lekcje'}</span>
           </Link>
 
           {/* Środek: wskaźnik sub-lekcji */}
           <div className="flex items-center gap-3">
-            <span className="text-foreground/25 font-sans text-[9px] tracking-widest uppercase">
+            <span className="text-foreground/25 font-sans tracking-widest uppercase">
               Sub-lekcja
             </span>
             <div className="flex items-center gap-1.5">
@@ -123,7 +125,7 @@ export default function LessonClient({
                 </Link>
               ))}
             </div>
-            <span className="text-foreground/30 font-sans text-[9px] tabular-nums">
+            <span className="text-foreground/30 font-sans tabular-nums">
               {String(currentIdx + 1).padStart(2, '0')}&nbsp;/&nbsp;{String(total).padStart(2, '0')}
             </span>
           </div>
@@ -136,11 +138,11 @@ export default function LessonClient({
                 className="text-foreground/25 hover:text-foreground/60 rounded p-1.5 transition-colors"
                 title={prevLesson.title_en}
               >
-                <FiArrowLeft className="text-sm" />
+                <FiArrowLeft className="text-md" />
               </Link>
             ) : (
               <span className="p-1.5 opacity-0">
-                <FiArrowLeft className="text-sm" />
+                <FiArrowLeft className="text-md" />
               </span>
             )}
             {nextLesson ? (
@@ -149,7 +151,7 @@ export default function LessonClient({
                 className="text-foreground/25 hover:text-foreground/60 rounded p-1.5 transition-colors"
                 title={nextLesson.title_en}
               >
-                <FiArrowRight className="text-sm" />
+                <FiArrowRight className="text-md" />
               </Link>
             ) : (
               <span className="p-1.5 opacity-0">
@@ -198,7 +200,12 @@ export default function LessonClient({
 
           <div className="flex flex-1 flex-col">
             {TaskComponent ? (
-              <TaskComponent lessonId={lesson.id} payload={payload} nextHref={nextHref} isLast={isLast} />
+              <TaskComponent
+                lessonId={lesson.id}
+                payload={payload}
+                nextHref={nextHref}
+                isLast={isLast}
+              />
             ) : (
               <div className="border-foreground/10 flex flex-1 items-center justify-center border border-dashed font-sans text-xs opacity-30">
                 [SYSTEM ERROR] Brak modułu dla typu: {lesson.lesson_type}
