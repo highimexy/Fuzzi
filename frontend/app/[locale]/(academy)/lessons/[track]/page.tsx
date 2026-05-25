@@ -86,9 +86,9 @@ function ChapterCard({
         isBlocked
           ? 'border-foreground/10 cursor-not-allowed opacity-30 select-none'
           : lockState === 'completed'
-            ? 'border-emerald-500/20 bg-emerald-500/[0.02] cursor-pointer hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-emerald-500/40 hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)]'
+            ? 'cursor-pointer border-emerald-500/20 bg-emerald-500/2 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-emerald-500/40 hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)]'
             : lockState === 'in_progress'
-              ? 'border-primary/30 bg-primary/[0.02] cursor-pointer hover:border-primary/50 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)]'
+              ? 'border-primary/30 bg-primary/2 hover:border-primary/50 cursor-pointer hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)]'
               : 'border-foreground/10 hover:border-foreground/25 cursor-pointer hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)]'
       }`}
     >
@@ -118,7 +118,7 @@ function ChapterCard({
       </div>
 
       {/* Footer: difficulty + lesson count + arrow */}
-      <div className="flex items-center justify-between border-t border-foreground/8 pt-4">
+      <div className="border-foreground/8 flex items-center justify-between border-t pt-4">
         <div className="flex items-center gap-3">
           <span
             className={`border px-2 py-0.5 font-sans text-[9px] font-bold tracking-widest uppercase ${isBlocked ? 'border-foreground/10 text-foreground/15' : diffColor}`}
@@ -127,8 +127,7 @@ function ChapterCard({
           </span>
           {group.sub_lesson_count > 0 && (
             <span className="text-foreground/25 font-sans text-[10px] tracking-wider">
-              {group.sub_lesson_count}{' '}
-              {group.sub_lesson_count === 1 ? 'lekcja' : 'lekcji'}
+              {group.sub_lesson_count} {group.sub_lesson_count === 1 ? 'lekcja' : 'lekcji'}
             </span>
           )}
           {lockState === 'in_progress' && group.sub_lesson_count > 0 && (
@@ -188,16 +187,18 @@ export default async function TrackPage({
   return (
     <div className="flex min-h-full flex-col font-sans">
       {/* HEADER */}
+      <div className="border-foreground/10 shrink-0 border-b px-8 py-2 lg:px-16">
+        <Link
+          href="/lessons"
+          className="text-foreground/25 hover:text-foreground/50 inline-flex items-center gap-2 font-sans tracking-widest uppercase transition-colors"
+        >
+          <FiArrowLeft />
+          <span>Lessons</span>
+        </Link>
+      </div>
       <div className="border-foreground/10 border-b px-8 py-10 lg:px-16">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <Link
-              href="/lessons"
-              className="text-foreground/25 hover:text-foreground/50 mb-5 inline-flex items-center gap-1.5 font-sans text-[10px] tracking-widest uppercase transition-colors"
-            >
-              <FiArrowLeft />
-              <span>Lessons</span>
-            </Link>
             <p className="text-primary mb-2 font-sans text-[9px] tracking-[0.3em] uppercase">
               {meta.subtitle}
             </p>
