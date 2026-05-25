@@ -85,10 +85,10 @@ export default async function GroupPage({
   return (
     <div className="flex min-h-full flex-col font-sans">
       {/* ── BREADCRUMB ── */}
-      <div className="border-foreground/10 shrink-0 border-b px-8 py-4 lg:px-16">
+      <div className="border-foreground/10 shrink-0 border-b px-8 py-2 lg:px-16">
         <Link
           href={`/lessons/${track}`}
-          className="text-foreground/25 hover:text-foreground/50 inline-flex items-center gap-2 font-sans text-[10px] tracking-widest uppercase transition-colors"
+          className="text-foreground/25 hover:text-foreground/50 inline-flex items-center gap-2 font-sans tracking-widest uppercase transition-colors"
         >
           <FiArrowLeft />
           {trackLabel}
@@ -97,12 +97,10 @@ export default async function GroupPage({
 
       {/* ── 2-COLUMN LAYOUT ── */}
       <div className="flex flex-1 flex-col lg:flex-row">
-
         {/* ── LEFT: chapter info (sticky) ── */}
-        <div className="border-foreground/10 relative flex flex-col border-b px-8 py-12 lg:sticky lg:top-0 lg:h-screen lg:w-2/5 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-16 lg:py-16">
-
+        <div className="border-foreground/10 relative flex flex-col border-b px-8 py-12 lg:sticky lg:top-0 lg:h-screen lg:w-2/5 lg:overflow-y-auto lg:border-r lg:border-b-0 lg:px-16 lg:py-16">
           {/* Watermark number */}
-          <div className="pointer-events-none absolute top-8 left-8 select-none font-serif text-[12rem] font-bold leading-none tracking-tighter opacity-[0.04] lg:left-16">
+          <div className="pointer-events-none absolute top-8 left-8 font-serif text-[12rem] leading-none font-bold tracking-tighter opacity-[0.04] select-none lg:left-16">
             {chapterNum}
           </div>
 
@@ -121,7 +119,7 @@ export default async function GroupPage({
             </div>
 
             {/* Title */}
-            <h1 className="mb-6 font-serif text-4xl font-bold leading-[0.88] tracking-tighter uppercase lg:text-5xl">
+            <h1 className="mb-6 font-serif text-4xl leading-[0.88] font-bold tracking-tighter uppercase lg:text-5xl">
               {title}
             </h1>
 
@@ -133,7 +131,7 @@ export default async function GroupPage({
             {/* Stats */}
             <div className="border-foreground/10 mb-8 flex items-center gap-8 border-t pt-6">
               <div className="flex flex-col gap-1">
-                <span className="font-serif text-4xl font-bold leading-none">
+                <span className="font-serif text-4xl leading-none font-bold">
                   {subLessons.length}
                 </span>
                 <span className="text-foreground/25 font-sans text-[9px] tracking-widest uppercase">
@@ -142,7 +140,7 @@ export default async function GroupPage({
               </div>
               <div className="bg-foreground/10 h-8 w-px" />
               <div className="flex flex-col gap-1">
-                <span className="font-serif text-4xl font-bold leading-none">
+                <span className="font-serif text-4xl leading-none font-bold">
                   {uniqueTypes.length}
                 </span>
                 <span className="text-foreground/25 font-sans text-[9px] tracking-widest uppercase">
@@ -200,7 +198,7 @@ export default async function GroupPage({
                   <Link
                     key={sub.id}
                     href={`/lesson/${sub.id}`}
-                    className="group border-foreground/10 hover:border-foreground/25 bg-background relative flex items-center gap-6 border p-6 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:translate-x-0.5 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] lg:p-7"
+                    className="group border-foreground/10 hover:border-foreground/25 bg-background relative flex items-center gap-6 border p-6 transition-all duration-300 ease-out hover:translate-x-0.5 hover:-translate-y-0.5 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] lg:p-7"
                   >
                     {/* Number */}
                     <span className="text-foreground/20 w-6 shrink-0 font-sans text-[10px] tabular-nums">
@@ -208,7 +206,7 @@ export default async function GroupPage({
                     </span>
 
                     {/* Title */}
-                    <span className="flex-1 font-serif text-lg font-bold uppercase leading-tight lg:text-xl">
+                    <span className="flex-1 font-serif text-lg leading-tight font-bold uppercase lg:text-xl">
                       {subTitle}
                     </span>
 
