@@ -1,0 +1,29 @@
+{
+  "Quest": {
+    "pageTitle": "Quest",
+    "dailyChallenge": "Dzienne Wyzwanie",
+    "todayLabel": "Dzisiejsze Wyzwanie",
+    "allQuests": "Wszystkie Questy",
+    "filterAll": "Wszystkie",
+    "filterDaily": "Codzienne",
+    "filterSkillCheck": "Sprawdź Umiejętności",
+    "filterBugHunt": "Polowanie na Buga",
+    "difficultyBeginner": "Początkujący",
+    "difficultyIntermediate": "Średni",
+    "difficultyAdvanced": "Zaawansowany",
+    "xpLabel": "PD",
+    "streakLabel": "dni z rzędu",
+    "correctLabel": "poprawnych",
+    "completedLabel": "Ukończono",
+    "explanationLabel": "Wyjaśnienie",
+    "loginPrompt": "Zaloguj się, aby śledzić postępy",
+    "loginButton": "Zaloguj się",
+    "loadingLabel": "Ładowanie questa...",
+    "errorLabel": "Nie udało się załadować questów",
+    "alreadyAnswered": "Już odpowiedziano dzisiaj",
+    "xpEarned": "zdobytych PD",
+    "correctAnswer": "Poprawnie!",
+    "wrongAnswer": "Nie do końca",
+    "streakDays": "{n} dni z rzędu"
+  }
+}
