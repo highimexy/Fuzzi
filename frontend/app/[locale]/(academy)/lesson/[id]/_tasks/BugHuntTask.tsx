@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
+import { submitLesson } from '@/lib/lessonApi'
 
 type Severity = 'critical' | 'major' | 'minor'
 type Tab = 'page' | 'spec' | 'report'
@@ -48,17 +49,9 @@ export default function BugHuntTask({ lessonId, payload, nextHref, isLast }: Tas
 
   const handleSubmit = async () => {
     setSubmitted(true)
-    const token = localStorage.getItem('token')
     const locale = document.documentElement.lang || 'en'
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/lessons/${lessonId}/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({ answer: severity, report, locale }),
-      })
+      await submitLesson(lessonId, { answer: severity, report, locale })
     } catch {}
   }
 

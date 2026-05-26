@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight, FiChevronDown } from 'react-icons/fi'
+import { submitLesson } from '@/lib/lessonApi'
 
 type LogLevel = 'error' | 'warn' | 'info' | 'log'
 
@@ -51,17 +52,9 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
 
   const handleSubmit = async () => {
     setSubmitted(true)
-    const token = localStorage.getItem('token')
     const locale = document.documentElement.lang || 'en'
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/lessons/${lessonId}/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({ answer, locale }),
-      })
+      await submitLesson(lessonId, { answer, locale })
     } catch {}
   }
 
