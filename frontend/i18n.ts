@@ -24,6 +24,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     changelog,
     lessons,
     navbar,
+    quest,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/problemSection.json`, { with: { type: 'json' } }),
@@ -42,6 +43,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/changelog.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/lessons.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/navbar.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/quest.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -62,6 +64,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...changelog.default,
     ...lessons.default,
     ...navbar.default,
+    ...quest.default,
   }
 
   return {
