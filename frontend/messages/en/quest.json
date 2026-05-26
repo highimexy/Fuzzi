@@ -1,0 +1,29 @@
+{
+  "Quest": {
+    "pageTitle": "Quest",
+    "dailyChallenge": "Daily Challenge",
+    "todayLabel": "Today's Challenge",
+    "allQuests": "All Quests",
+    "filterAll": "All",
+    "filterDaily": "Daily",
+    "filterSkillCheck": "Skill Check",
+    "filterBugHunt": "Bug Hunt",
+    "difficultyBeginner": "Beginner",
+    "difficultyIntermediate": "Intermediate",
+    "difficultyAdvanced": "Advanced",
+    "xpLabel": "XP",
+    "streakLabel": "day streak",
+    "correctLabel": "correct",
+    "completedLabel": "Completed",
+    "explanationLabel": "Explanation",
+    "loginPrompt": "Login to track your progress",
+    "loginButton": "Sign in",
+    "loadingLabel": "Loading quest...",
+    "errorLabel": "Failed to load quests",
+    "alreadyAnswered": "Already answered today",
+    "xpEarned": "XP earned",
+    "correctAnswer": "Correct!",
+    "wrongAnswer": "Not quite right",
+    "streakDays": "{n} day streak"
+  }
+}
