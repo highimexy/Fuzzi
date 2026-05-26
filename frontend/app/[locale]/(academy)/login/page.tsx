@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 import { FcGoogle } from 'react-icons/fc'
+import { useUserStore } from '@/store/userStore'
 
 export default function LoginPage() {
   const router = useRouter()
+  const login = useUserStore((s) => s.login)
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
   const [step, setStep] = useState<'email' | 'otp'>('email')
@@ -62,10 +64,7 @@ export default function LoginPage() {
       })
       if (res.ok) {
         const data = await res.json()
-        localStorage.setItem('token', data.access_token)
-
-        window.dispatchEvent(new Event('auth-change'))
-
+        await login(data.access_token)
         router.push('/lessons')
       } else {
         setError('Invalid or expired code!')
