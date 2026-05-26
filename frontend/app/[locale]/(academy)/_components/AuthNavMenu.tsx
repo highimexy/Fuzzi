@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FiUser } from 'react-icons/fi'
 import { ExperienceBar } from './ExperienceBar'
+import { useUserStore } from '@/store/userStore'
 
 interface NavMenuItem {
   label: string
@@ -17,7 +18,8 @@ interface AuthNavMenuProps {
 }
 
 export function AuthNavMenu({ items }: AuthNavMenuProps) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const isLoggedIn = useUserStore((s) => s.isLoggedIn)
+  const logout = useUserStore((s) => s.logout)
   const [isOpen, setIsOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [position, setPosition] = useState({ top: 0, left: 0 })
@@ -28,13 +30,6 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
 
   useEffect(() => {
     setIsMounted(true)
-    const checkAuth = () => {
-      const token = localStorage.getItem('token')
-      setIsLoggedIn(!!token)
-    }
-    checkAuth()
-    window.addEventListener('auth-change', checkAuth)
-    return () => window.removeEventListener('auth-change', checkAuth)
   }, [])
 
   const updatePosition = () => {
@@ -69,8 +64,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
   }, [isOpen])
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
-    setIsLoggedIn(false)
+    logout()
     setIsOpen(false)
     router.push('/')
   }
