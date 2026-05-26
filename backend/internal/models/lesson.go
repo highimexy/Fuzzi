@@ -73,6 +73,7 @@ type LessonProgress struct {
 	Completed bool      `json:"completed"`
 	Score     int       `json:"score"`
 	Attempts  int       `json:"attempts"`
+	XPEarned  int       `gorm:"default:0" json:"xp_earned"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
