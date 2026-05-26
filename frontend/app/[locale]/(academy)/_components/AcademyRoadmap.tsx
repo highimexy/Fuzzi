@@ -804,12 +804,12 @@ export function RoadmapGraph() {
           style: { strokeWidth: 2 },
         }}
       >
-        <Controls className={isDark ? 'fill-zinc-300' : 'fill-zinc-700'} />
+        <Controls className="fill-foreground/60" />
         <Background
           variant={BackgroundVariant.Lines}
           gap={30}
           size={1}
-          color={isDark ? '#0a0a0a' : '#e5e5e5'}
+          color={isDark ? '#131924' : '#b8c4d0'}
         />
       </ReactFlow>
 
