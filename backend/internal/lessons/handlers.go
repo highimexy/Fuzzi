@@ -179,6 +179,17 @@ type quizPayload struct {
 	Correct string `json:"correct"`
 }
 
+func xpForDifficulty(difficulty string) int {
+	switch difficulty {
+	case "intermediate":
+		return 20
+	case "advanced":
+		return 30
+	default:
+		return 10
+	}
+}
+
 func SubmitHandler(c *gin.Context) {
 	lessonID := c.Param("id")
 	userID := getUserID(c)
@@ -206,13 +217,15 @@ func SubmitHandler(c *gin.Context) {
 	}
 
 	var qp quizPayload
+	hasCorrectField := false
 	isCorrect := false
 	if err := json.Unmarshal(rawPayload, &qp); err == nil && qp.Correct != "" {
+		hasCorrectField = true
 		isCorrect = req.Answer == qp.Correct
 	}
 
 	score := 0
-	if isCorrect {
+	if isCorrect || !hasCorrectField {
 		score = 100
 	}
 
@@ -223,17 +236,36 @@ func SubmitHandler(c *gin.Context) {
 		LessonID: lessonID,
 	}).FirstOrCreate(&progress)
 
-	database.DB.Model(&progress).Updates(map[string]interface{}{
-		"completed":  progress.Completed || isCorrect,
+	// XP przyznawane raz:
+	// - zadania z polem correct: przy pierwszej prawidłowej odpowiedzi
+	// - zadania bez pola correct: przy pierwszym submicie (samo wykonanie = wartość edukacyjna)
+	xpEarned := 0
+	if progress.XPEarned == 0 && (isCorrect || !hasCorrectField) {
+		xpEarned = xpForDifficulty(lesson.Difficulty)
+
+		var stats models.UserQuestStats
+		database.DB.FirstOrCreate(&stats, models.UserQuestStats{UserID: userID})
+		stats.TotalXP += xpEarned
+		stats.UpdatedAt = time.Now().UTC()
+		database.DB.Save(&stats)
+	}
+
+	updates := map[string]interface{}{
+		"completed":  progress.Completed || isCorrect || !hasCorrectField,
 		"score":      score,
 		"attempts":   progress.Attempts + 1,
 		"updated_at": time.Now(),
-	})
+	}
+	if xpEarned > 0 {
+		updates["xp_earned"] = xpEarned
+	}
+	database.DB.Model(&progress).Updates(updates)
 
 	c.JSON(http.StatusOK, gin.H{
-		"correct":  isCorrect,
-		"score":    score,
-		"progress": progress,
+		"correct":   isCorrect,
+		"score":     score,
+		"xp_earned": xpEarned,
+		"progress":  progress,
 	})
 }
 
