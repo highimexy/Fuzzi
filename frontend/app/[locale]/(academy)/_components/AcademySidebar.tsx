@@ -2,13 +2,14 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FiBook, FiTarget, FiCompass, FiMap, FiUser } from 'react-icons/fi'
+import { FiBook, FiTarget, FiCompass, FiMap, FiUser, FiTrendingUp } from 'react-icons/fi'
 
 const navItems = [
   { href: '/lessons', label: 'Library', icon: FiBook },
   { href: '/quest', label: 'Quest', icon: FiTarget, badge: 'New' },
   { href: '/explore', label: 'Explore', icon: FiCompass },
   { href: '/road-map', label: 'Road Map', icon: FiMap },
+  { href: '/stocks', label: 'Stocks', icon: FiTrendingUp },
 ]
 
 export function AcademySidebar() {
@@ -16,7 +17,7 @@ export function AcademySidebar() {
 
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
-  const allowedPaths = ['/lessons', '/quest', '/explore', '/road-map']
+  const allowedPaths = ['/lessons', '/quest', '/explore', '/road-map', '/stocks']
   if (!allowedPaths.includes(cleanPath)) return null
 
   return (
