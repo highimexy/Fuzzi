@@ -10,6 +10,7 @@ import (
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
 	"github.com/highimexy/it-shit/backend/internal/market"
+	"github.com/highimexy/it-shit/backend/internal/quest"
 	"github.com/highimexy/it-shit/backend/internal/twitter"
 	"github.com/joho/godotenv"
 )
@@ -52,6 +53,9 @@ func main() {
 
     v1.POST("/auth/otp/start", auth.StartOTPHandler)
     v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
+
+    v1.GET("/quest/daily", quest.GetDailyQuestHandler)
+    v1.GET("/quests", quest.ListQuestsHandler)
 	}
 
 	// PROTECTED
@@ -63,6 +67,10 @@ func main() {
 		protected.GET("/lessons/:id/progress", lessons.ProgressHandler)
 
 		protected.GET("/groups/:groupId/progress", lessons.GroupProgressHandler)
+
+		protected.POST("/quest/:id/submit", quest.SubmitQuestHandler)
+		protected.GET("/quest/stats", quest.GetUserStatsHandler)
+		protected.GET("/quest/:id/result", quest.GetQuestResultHandler)
 	}
 
 	port := ":8080"
