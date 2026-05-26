@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight, FiPlus, FiX } from 'react-icons/fi'
+import { submitLesson } from '@/lib/lessonApi'
 
 type TestCategory = 'happy_path' | 'edge_case' | 'negative'
 
@@ -68,17 +69,9 @@ export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLas
 
   const handleSubmit = async () => {
     setSubmitted(true)
-    const token = localStorage.getItem('token')
     const locale = document.documentElement.lang || 'en'
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/lessons/${lessonId}/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({ answer: cases, locale }),
-      })
+      await submitLesson(lessonId, { answer: cases, locale })
     } catch {}
   }
 

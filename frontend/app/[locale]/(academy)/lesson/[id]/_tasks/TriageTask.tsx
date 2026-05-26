@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
+import { submitLesson } from '@/lib/lessonApi'
 
 type Priority = 'this_sprint' | 'next_sprint' | 'backlog' | 'wont_fix'
 
@@ -58,17 +59,9 @@ export default function TriageTask({ lessonId, payload, nextHref, isLast }: Task
 
   const handleSubmit = async () => {
     setSubmitted(true)
-    const token = localStorage.getItem('token')
     const locale = document.documentElement.lang || 'en'
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/lessons/${lessonId}/submit`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({ answer: decisions, locale }),
-      })
+      await submitLesson(lessonId, { answer: decisions, locale })
     } catch {}
   }
 
