@@ -72,7 +72,9 @@ export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLas
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: cases, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -92,6 +94,17 @@ export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLas
       <span className="text-primary font-sans text-[9px] tracking-[0.3em] uppercase">
         Test Case Builder
       </span>
+
+      {payload.feature_description && (
+        <div className="border-foreground/10 bg-foreground/[0.02] border p-4">
+          <p className="text-foreground/30 mb-2 font-sans text-[9px] tracking-widest uppercase">
+            Funkcjonalność do testowania
+          </p>
+          <p className="text-foreground/70 whitespace-pre-wrap font-sans text-sm leading-relaxed">
+            {payload.feature_description}
+          </p>
+        </div>
+      )}
 
       <p className="text-foreground/60 font-sans text-sm">{payload.task_instruction}</p>
 
