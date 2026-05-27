@@ -40,7 +40,9 @@ export default function ScenarioTask({ lessonId, payload, nextHref, isLast }: Ta
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: selected, justification, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -75,10 +77,12 @@ export default function ScenarioTask({ lessonId, payload, nextHref, isLast }: Ta
             disabled={submitted}
             onClick={() => setSelected(opt.id)}
             className={`w-full border p-4 text-left font-sans text-sm transition-all duration-200 ${
-              selected === opt.id && !submitted
+              selected === opt.id
                 ? 'border-primary bg-primary/10'
-                : 'border-foreground/20 hover:border-foreground/50'
-            } ${submitted && selected === opt.id ? 'border-primary bg-primary/10' : ''}`}
+                : submitted
+                  ? 'border-foreground/20'
+                  : 'border-foreground/20 hover:border-foreground/50'
+            }`}
           >
             {opt.text}
           </button>
