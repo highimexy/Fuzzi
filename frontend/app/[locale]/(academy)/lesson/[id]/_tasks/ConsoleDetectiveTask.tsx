@@ -55,7 +55,9 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -99,9 +101,9 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
       </div>
 
       {/* Hints */}
-      {payload.hints.length > 0 && !submitted && (
+      {(payload.hints?.length ?? 0) > 0 && !submitted && (
         <div className="flex flex-col gap-2">
-          {payload.hints.slice(0, hintsRevealed).map((hint, i) => (
+          {(payload.hints ?? []).slice(0, hintsRevealed).map((hint, i) => (
             <div key={i} className="border-foreground/10 bg-foreground/[0.02] border p-3">
               <p className="text-foreground/30 mb-1 font-sans text-[9px] uppercase tracking-widest">
                 Podpowiedź {i + 1}
@@ -109,13 +111,13 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
               <p className="text-foreground/60 font-sans text-sm">{hint}</p>
             </div>
           ))}
-          {hintsRevealed < payload.hints.length && (
+          {hintsRevealed < (payload.hints?.length ?? 0) && (
             <button
               onClick={() => setHintsRevealed((n) => n + 1)}
               className="border-foreground/10 text-foreground/30 hover:text-foreground/60 flex items-center gap-1.5 border px-3 py-2 font-sans text-[9px] tracking-widest uppercase transition-colors"
             >
               <FiChevronDown className="text-sm" />
-              Pokaż podpowiedź {hintsRevealed + 1} / {payload.hints.length}
+              Pokaż podpowiedź {hintsRevealed + 1} / {payload.hints?.length ?? 0}
             </button>
           )}
         </div>
