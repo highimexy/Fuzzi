@@ -14,27 +14,38 @@ export interface LessonSubmitResult {
   }
 }
 
+const EMPTY_RESULT: LessonSubmitResult = {
+  correct: false,
+  score: 0,
+  xp_earned: 0,
+  progress: { completed: false, score: 0, attempts: 0, xp_earned: 0 },
+}
+
 export async function submitLesson(
   lessonId: string,
   body: Record<string, unknown>
 ): Promise<LessonSubmitResult> {
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
-  const headers: HeadersInit = { 'Content-Type': 'application/json' }
-  if (token) headers['Authorization'] = `Bearer ${token}`
 
-  const res = await fetch(`${API}/api/v1/lessons/${lessonId}/submit`, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(body),
-  })
+  if (!token) return EMPTY_RESULT
 
-  if (!res.ok) throw new Error('Submit failed')
+  try {
+    const res = await fetch(`${API}/api/v1/lessons/${lessonId}/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify(body),
+    })
 
-  const result: LessonSubmitResult = await res.json()
+    if (!res.ok) return EMPTY_RESULT
 
-  if (result.xp_earned > 0) {
-    useUserStore.getState().addXP(result.xp_earned)
+    const result: LessonSubmitResult = await res.json()
+
+    if (result.xp_earned > 0) {
+      useUserStore.getState().addXP(result.xp_earned)
+    }
+
+    return result
+  } catch {
+    return EMPTY_RESULT
   }
-
-  return result
 }
