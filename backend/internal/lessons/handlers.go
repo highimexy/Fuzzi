@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/auth0/go-jwt-middleware/v2/validator"
 	"github.com/gin-gonic/gin"
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/models"
@@ -175,8 +176,14 @@ type SubmitRequest struct {
 	Locale      string  `json:"locale"`
 }
 
+type quizOption struct {
+	ID        string `json:"id"`
+	IsCorrect bool   `json:"is_correct"`
+}
+
 type quizPayload struct {
-	Correct string `json:"correct"`
+	Correct string       `json:"correct"`
+	Options []quizOption `json:"options"`
 }
 
 func xpForDifficulty(difficulty string) int {
@@ -219,9 +226,20 @@ func SubmitHandler(c *gin.Context) {
 	var qp quizPayload
 	hasCorrectField := false
 	isCorrect := false
-	if err := json.Unmarshal(rawPayload, &qp); err == nil && qp.Correct != "" {
-		hasCorrectField = true
-		isCorrect = req.Answer == qp.Correct
+	if err := json.Unmarshal(rawPayload, &qp); err == nil {
+		if qp.Correct != "" {
+			hasCorrectField = true
+			isCorrect = req.Answer == qp.Correct
+		} else {
+			// Format 2: correctness encoded per-option via is_correct field
+			for _, opt := range qp.Options {
+				if opt.IsCorrect {
+					hasCorrectField = true
+					isCorrect = req.Answer == opt.ID
+					break
+				}
+			}
+		}
 	}
 
 	score := 0
@@ -299,13 +317,13 @@ func ProgressHandler(c *gin.Context) {
 // ─────────────────────────────────────────────
 
 func getUserID(c *gin.Context) string {
-	userID, exists := c.Get("user_id")
+	claims, exists := c.Get("user_claims")
 	if !exists {
 		return ""
 	}
-	str, ok := userID.(string)
+	validated, ok := claims.(*validator.ValidatedClaims)
 	if !ok {
 		return ""
 	}
-	return str
+	return validated.RegisteredClaims.Subject
 }
