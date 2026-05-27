@@ -56,7 +56,9 @@ export default function DiffInspectorTask({ lessonId, payload, nextHref, isLast 
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: answers, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {

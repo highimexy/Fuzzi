@@ -62,7 +62,9 @@ export default function TriageTask({ lessonId, payload, nextHref, isLast }: Task
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: decisions, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {

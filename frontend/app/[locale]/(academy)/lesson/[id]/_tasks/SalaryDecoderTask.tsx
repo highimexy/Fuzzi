@@ -48,7 +48,9 @@ export default function SalaryDecoderTask({ lessonId, payload, nextHref, isLast 
 
     try {
       await submitLesson(lessonId, { answer: verdict, selected_flags: [...selected], locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {

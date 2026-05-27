@@ -46,7 +46,9 @@ export default function InterviewTask({ lessonId, payload, nextHref, isLast }: T
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -139,7 +141,7 @@ export default function InterviewTask({ lessonId, payload, nextHref, isLast }: T
               Self-check // oceń swoją odpowiedź
             </p>
             <div className="flex flex-col gap-3">
-              {payload.evaluation_criteria.map((ec, i) => (
+              {(payload.evaluation_criteria ?? []).map((ec, i) => (
                 <button
                   key={i}
                   onClick={() => toggleCheck(i)}

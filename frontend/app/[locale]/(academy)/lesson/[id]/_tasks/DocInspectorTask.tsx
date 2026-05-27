@@ -47,7 +47,9 @@ export default function DocInspectorTask({ lessonId, payload, nextHref, isLast }
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {

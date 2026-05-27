@@ -54,7 +54,9 @@ export default function RiskMapTask({ lessonId, payload, nextHref, isLast }: Tas
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: answers, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {

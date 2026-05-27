@@ -39,7 +39,9 @@ export default function BullshitDetectorTask({ lessonId, payload, nextHref, isLa
 
     try {
       await submitLesson(lessonId, { answer, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
