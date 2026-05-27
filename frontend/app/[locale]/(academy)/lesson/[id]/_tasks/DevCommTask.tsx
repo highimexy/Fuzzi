@@ -9,9 +9,12 @@ import { submitLesson } from '@/lib/lessonApi'
 interface DevCommPayload {
   variant: 'rewrite' | 'unblock'
   original_message: string
-  task_instruction: string
-  checklist: string[]
-  example_answer: string
+  task_instruction?: string
+  context?: string
+  checklist?: string[]
+  evaluation_tips?: string[]
+  example_answer?: string
+  good_example?: string
 }
 
 interface TaskProps {
@@ -36,7 +39,9 @@ export default function DevCommTask({ lessonId, payload, nextHref, isLast }: Tas
 
     try {
       await submitLesson(lessonId, { answer, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -64,6 +69,9 @@ export default function DevCommTask({ lessonId, payload, nextHref, isLast }: Tas
     })
   }
 
+  const taskInstruction = payload.task_instruction || payload.context || ''
+  const checklist = payload.checklist ?? payload.evaluation_tips ?? []
+  const exampleAnswer = payload.example_answer || payload.good_example || ''
   const variantLabel = payload.variant === 'rewrite' ? 'Przepisz raport' : 'Odblokuj sytuację'
 
   return (
@@ -82,7 +90,7 @@ export default function DevCommTask({ lessonId, payload, nextHref, isLast }: Tas
         </p>
       </div>
 
-      <p className="text-foreground/60 font-sans text-sm">{payload.task_instruction}</p>
+      <p className="text-foreground/60 font-sans text-sm">{taskInstruction}</p>
 
       <textarea
         disabled={submitted}
@@ -111,7 +119,7 @@ export default function DevCommTask({ lessonId, payload, nextHref, isLast }: Tas
               Self-check // oceń swoją odpowiedź
             </p>
             <div className="flex flex-col gap-3">
-              {payload.checklist.map((item, i) => (
+              {checklist.map((item, i) => (
                 <button
                   key={i}
                   onClick={() => toggleCheck(i)}
@@ -142,7 +150,7 @@ export default function DevCommTask({ lessonId, payload, nextHref, isLast }: Tas
               Wzorcowa odpowiedź
             </p>
             <p className="text-foreground/70 whitespace-pre-wrap font-sans text-sm leading-relaxed">
-              {payload.example_answer}
+              {exampleAnswer}
             </p>
           </div>
         </div>
