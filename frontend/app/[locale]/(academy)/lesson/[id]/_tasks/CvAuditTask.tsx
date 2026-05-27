@@ -41,7 +41,9 @@ export default function CvAuditTask({ lessonId, payload, nextHref, isLast }: Tas
     const locale = document.documentElement.lang || 'en'
     try {
       await submitLesson(lessonId, { answer: verdicts, locale })
-    } catch {}
+    } catch (err) {
+      console.error('Submit error:', err)
+    }
   }
 
   useEffect(() => {
@@ -123,7 +125,7 @@ export default function CvAuditTask({ lessonId, payload, nextHref, isLast }: Tas
                   OK
                 </button>
               </div>
-              {submitted && item.is_problem && (
+              {submitted && (
                 <p className="text-foreground/45 mt-3 font-sans text-xs italic">{item.reason}</p>
               )}
             </div>
