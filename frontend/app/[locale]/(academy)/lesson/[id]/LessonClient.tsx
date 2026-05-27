@@ -76,7 +76,10 @@ export default function LessonClient({
     ? lesson.content_en
     : contentRaw || lesson.content_en
   const rawPayload = locale === 'pl' ? lesson.payload_pl : lesson.payload_en
-  const payload = rawPayload?.question ? rawPayload : lesson.payload_en
+  const payload =
+    rawPayload && typeof rawPayload === 'object' && Object.keys(rawPayload).length > 0
+      ? rawPayload
+      : lesson.payload_en
   const groupTitle = group ? (locale === 'pl' ? group.title_pl : group.title_en) : null
 
   const TaskComponent = LESSON_COMPONENTS[lesson.lesson_type]
