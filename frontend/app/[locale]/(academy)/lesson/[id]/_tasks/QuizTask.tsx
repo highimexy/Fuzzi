@@ -4,16 +4,25 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { submitLesson } from '@/lib/lessonApi'
 import { fireConfetti } from '@/lib/confetti'
 
 type ConfidenceLevel = 'sure' | 'unsure' | null
 
+interface QuizOption {
+  id: string
+  text: string
+  is_correct?: boolean
+  explanation?: string
+}
+
 interface QuizPayload {
   question: string
-  options: { id: string; text: string }[]
-  correct: string
-  explanation: string
+  options: QuizOption[]
+  correct?: string
+  explanation?: string
   trap_explanation?: string
 }
 
@@ -33,7 +42,15 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
   const feedbackRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLAnchorElement>(null)
 
-  const isCorrect = selected === payload.correct
+  // Support both Format 1 (top-level `correct`) and Format 2 (per-option `is_correct`)
+  const correctId = payload.correct || payload.options.find((o) => o.is_correct)?.id
+  const isCorrect = selected !== null && selected === correctId
+
+  const selectedOption = payload.options.find((o) => o.id === selected)
+  const explanation =
+    selectedOption?.explanation ||
+    (isCorrect ? payload.explanation : payload.trap_explanation || payload.explanation) ||
+    ''
 
   const handleSubmit = async () => {
     setSubmitted(true)
@@ -64,7 +81,6 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
     }
   }, [selected, submitted])
 
-  // Animacja GSAP: Pojawienie się feedbacku po odpowiedzi
   useEffect(() => {
     if (submitted && feedbackRef.current) {
       gsap.fromTo(
@@ -84,7 +100,9 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
 
   return (
     <div className="flex max-w-2xl flex-col gap-6">
-      <h2 className="font-serif text-xl font-bold uppercase">{payload.question}</h2>
+      <div className="prose prose-invert prose-sm max-w-none font-serif text-xl font-bold uppercase leading-snug">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{payload.question}</ReactMarkdown>
+      </div>
 
       {/* Wybór odpowiedzi */}
       <div className="flex flex-col gap-3">
@@ -101,7 +119,7 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
                 ? 'border-primary bg-primary/10'
                 : 'border-foreground/20 hover:border-foreground/50'
             } ${
-              submitted && opt.id === payload.correct
+              submitted && opt.id === correctId
                 ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500'
                 : ''
             } ${
@@ -165,19 +183,16 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
           }`}
         >
           <p
-            className={`mb-2 font-sans text-xs font-bold tracking-widest uppercase ${
+            className={`mb-3 font-sans text-xs font-bold tracking-widest uppercase ${
               isCorrect ? 'text-emerald-500' : 'text-rose-500'
             }`}
           >
             {isCorrect ? 'STATUS: SUCCESS' : 'STATUS: FAILURE'}
           </p>
-          <p className="text-foreground/80 text-sm leading-relaxed">{payload.explanation}</p>
-
-          {!isCorrect && payload.trap_explanation && (
-            <p className="text-foreground/60 border-foreground/10 mt-4 border-t pt-4 text-xs italic">
-              <span className="font-bold text-rose-500">RAPORT BŁĘDU: </span>
-              {payload.trap_explanation}
-            </p>
+          {explanation && (
+            <div className="prose prose-invert prose-sm max-w-none text-foreground/80 leading-relaxed">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{explanation}</ReactMarkdown>
+            </div>
           )}
         </div>
       )}
