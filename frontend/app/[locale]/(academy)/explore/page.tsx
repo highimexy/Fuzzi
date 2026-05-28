@@ -34,6 +34,7 @@ const CAROUSEL_DATA = {
       title: 'PerfectPixel',
       label: '01',
       icon: FiTarget,
+      slug: 'perfect-pixel',
       description: 'Overlay graphic designs directly onto your coded webpage.',
     },
     {
@@ -41,6 +42,7 @@ const CAROUSEL_DATA = {
       title: 'Greenshot / Flameshot',
       label: '02',
       icon: FiCamera,
+      slug: 'greenshot-flameshot',
       description: 'Advanced screenshots with annotations, arrows, and blurring.',
     },
     {
@@ -48,6 +50,7 @@ const CAROUSEL_DATA = {
       title: 'Loom / OBS Studio',
       label: '03',
       icon: FiVideo,
+      slug: 'loom-obs-studio',
       description: 'Record your screen with voice comments for bug reporting.',
     },
     {
@@ -55,6 +58,7 @@ const CAROUSEL_DATA = {
       title: 'Handbrake',
       label: '04',
       icon: FiMonitor,
+      slug: 'handbrake',
       description: 'Compress video recordings to fit GitHub or Jira file size limits.',
     },
     {
@@ -62,6 +66,7 @@ const CAROUSEL_DATA = {
       title: 'Expo Go / TestFlight',
       label: '05',
       icon: FiSmartphone,
+      slug: 'expo-go-testflight',
       description: 'Test mobile and web apps directly on physical devices.',
     },
     {
@@ -69,6 +74,7 @@ const CAROUSEL_DATA = {
       title: 'Responsively App',
       label: '06',
       icon: FiMonitor,
+      slug: 'responsively-app',
       description: 'Preview your project across multiple resolutions simultaneously.',
     },
     {
@@ -76,6 +82,7 @@ const CAROUSEL_DATA = {
       title: 'BrowserStack',
       label: '07',
       icon: FiSmartphone,
+      slug: 'browserstack',
       description: 'Cross-browser testing on virtual mobile devices.',
     },
     {
@@ -83,6 +90,7 @@ const CAROUSEL_DATA = {
       title: 'Fonts Ninja',
       label: '08',
       icon: FiType,
+      slug: 'fonts-ninja',
       description: 'Quickly identify, test, and download fonts used on any website.',
     },
     {
@@ -90,6 +98,7 @@ const CAROUSEL_DATA = {
       title: 'Window Resizer',
       label: '09',
       icon: FiMaximize,
+      slug: 'window-resizer',
       description: 'Resize your browser window to test responsive web design (RWD).',
     },
     {
@@ -97,6 +106,7 @@ const CAROUSEL_DATA = {
       title: 'Wappalyzer',
       label: '10',
       icon: FiLayers,
+      slug: 'wappalyzer',
       description: 'Check technologies, frameworks, and analytics tools used on a webpage.',
     },
   ],
@@ -106,6 +116,7 @@ const CAROUSEL_DATA = {
       title: 'Mastering Body Language',
       label: '01',
       icon: FiUser,
+      slug: 'mastering-body-language',
       description: 'Non-verbal communication tips to look confident.',
     },
     {
@@ -113,6 +124,7 @@ const CAROUSEL_DATA = {
       title: 'Dress Code for Tech',
       label: '02',
       icon: FiBriefcase,
+      slug: 'dress-code-for-tech',
       description: 'What to wear for success in modern tech interviews.',
     },
     {
@@ -120,6 +132,7 @@ const CAROUSEL_DATA = {
       title: 'Answering "Why You?"',
       label: '03',
       icon: FiTarget,
+      slug: 'answering-why-you',
       description: 'Craft your perfect pitch and stand out from the crowd.',
     },
     {
@@ -127,6 +140,7 @@ const CAROUSEL_DATA = {
       title: 'Salary Negotiation',
       label: '04',
       icon: FiStar,
+      slug: 'salary-negotiation',
       description: 'Strategies to get the compensation you actually deserve.',
     },
     {
@@ -134,6 +148,7 @@ const CAROUSEL_DATA = {
       title: 'Stress Management',
       label: '05',
       icon: FiSmile,
+      slug: 'stress-management',
       description: 'Stay calm and focused under extreme pressure.',
     },
     {
@@ -141,6 +156,7 @@ const CAROUSEL_DATA = {
       title: 'Mock Interview Simulator',
       label: '06',
       icon: FiTerminal,
+      slug: 'mock-interview-simulator',
       description: 'Practice makes perfect with realistic scenarios.',
     },
     {
@@ -148,6 +164,7 @@ const CAROUSEL_DATA = {
       title: 'The STAR Method',
       label: '07',
       icon: FiMessageSquare,
+      slug: 'the-star-method',
       description: 'Structure your behavioral answers (Situation, Task, Action, Result).',
     },
     {
@@ -155,6 +172,7 @@ const CAROUSEL_DATA = {
       title: 'Live Coding Survival',
       label: '08',
       icon: FiCode,
+      slug: 'live-coding-survival',
       description: 'How to think out loud and handle pressure during technical tasks.',
     },
     {
@@ -162,6 +180,7 @@ const CAROUSEL_DATA = {
       title: 'Portfolio Presentation',
       label: '09',
       icon: FiFolder,
+      slug: 'portfolio-presentation',
       description: 'Showcase your projects and explain architectural decisions effectively.',
     },
     {
@@ -169,6 +188,7 @@ const CAROUSEL_DATA = {
       title: 'Questions for Them',
       label: '10',
       icon: FiHelpCircle,
+      slug: 'questions-for-them',
       description: 'Smart questions to ask your interviewers to show real engagement.',
     },
   ],
@@ -238,7 +258,7 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
                 className="border-foreground/10 max-w-70 min-w-70 shrink-0 snap-start border sm:max-w-[320px] sm:min-w-[320px]"
               >
                 <Link
-                  href="#"
+                  href={`/explore/${item.slug}`}
                   className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]"
                 >
                   <Icon className="absolute -top-6 -right-6 text-8xl text-accent opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
