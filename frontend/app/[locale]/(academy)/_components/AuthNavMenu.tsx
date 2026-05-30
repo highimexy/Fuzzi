@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FiUser } from 'react-icons/fi'
 import { ExperienceBar } from './ExperienceBar'
+import { MorphRing } from './MorphRing'
 import { useUserStore } from '@/store/userStore'
 
 interface NavMenuItem {
@@ -69,7 +70,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
     router.push('/')
   }
 
-  if (!isMounted) return <div className="h-9 w-9" />
+  if (!isMounted) return <div className="flex h-9 w-9 items-center justify-center"><MorphRing size="sm" /></div>
 
   if (!isLoggedIn) {
     return (

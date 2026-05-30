@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { FiSun, FiMoon } from 'react-icons/fi'
+import { MorphRing } from './MorphRing'
 
 export default function AcademyThemeSwitcher() {
   const [mounted, setMounted] = useState(false)
@@ -13,7 +14,7 @@ export default function AcademyThemeSwitcher() {
   }, [])
 
   if (!mounted) {
-    return <div className="h-6 w-6 opacity-0" />
+    return <div className="flex h-6 w-6 items-center justify-center"><MorphRing size="sm" /></div>
   }
 
   return (
