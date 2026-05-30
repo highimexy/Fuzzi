@@ -2,6 +2,7 @@
 import { useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { FiChevronDown } from 'react-icons/fi'
 
 type DropdownProps = {
@@ -12,6 +13,9 @@ type DropdownProps = {
 export function StoreDropdown({ label, items }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [position, setPosition] = useState({ top: 0, left: 0 })
+  const pathname = usePathname()
+  const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
+  const isActive = items.some((item) => cleanPath === item.href || cleanPath.startsWith(item.href + '/'))
   const buttonRef = useRef<HTMLDivElement>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -48,7 +52,11 @@ export function StoreDropdown({ label, items }: DropdownProps) {
           setIsOpen(!isOpen)
         }}
         className={`flex h-full cursor-pointer items-center gap-1 font-sans uppercase transition-all hover:opacity-80 ${
-          isOpen ? 'text-foreground border-foreground/30' : 'border-transparent'
+          isActive
+            ? 'text-accent font-bold underline decoration-2 underline-offset-[6px]'
+            : isOpen
+              ? 'text-foreground border-foreground/30'
+              : 'border-transparent'
         }`}
       >
         {label}
