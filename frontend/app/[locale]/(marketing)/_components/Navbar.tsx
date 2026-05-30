@@ -77,7 +77,7 @@ export function Navbar() {
                   href={link.href}
                   className={`font-sans uppercase transition-all hover:opacity-80 ${
                     link.active
-                      ? 'text-foreground font-bold underline decoration-2 underline-offset-[6px]'
+                      ? 'text-accent font-bold underline decoration-2 underline-offset-[6px]'
                       : 'text-foreground'
                   }`}
                 >
