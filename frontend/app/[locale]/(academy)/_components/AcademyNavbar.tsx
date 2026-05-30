@@ -132,7 +132,9 @@ export function AcademyNavbar() {
                 key={link.href}
                 href={link.href}
                 className={`font-sans uppercase transition-all hover:opacity-80 ${
-                  link.active ? 'font-bold underline decoration-2 underline-offset-[6px]' : ''
+                  link.active
+                    ? 'text-accent font-bold underline decoration-2 underline-offset-[6px]'
+                    : ''
                 }`}
               >
                 {link.label}
