@@ -53,6 +53,60 @@ func StartOTPHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Verification code sent to your email"})
 }
 
+// GoogleCallbackHandler exchanges an authorization code (PKCE) for an access token.
+// The client_secret stays server-side; the frontend never sees it.
+func GoogleCallbackHandler(c *gin.Context) {
+	var req struct {
+		Code         string `json:"code" binding:"required"`
+		CodeVerifier string `json:"code_verifier" binding:"required"`
+		RedirectURI  string `json:"redirect_uri" binding:"required"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "code, code_verifier and redirect_uri are required"})
+		return
+	}
+
+	auth0Domain := os.Getenv("AUTH0_DOMAIN")
+	clientID := os.Getenv("AUTH0_CLIENT_ID")
+	clientSecret := os.Getenv("AUTH0_CLIENT_SECRET")
+	audience := os.Getenv("AUTH0_AUDIENCE")
+
+	payload := map[string]interface{}{
+		"grant_type":    "authorization_code",
+		"client_id":     clientID,
+		"client_secret": clientSecret,
+		"code":          req.Code,
+		"code_verifier": req.CodeVerifier,
+		"redirect_uri":  req.RedirectURI,
+		"audience":      audience,
+	}
+
+	jsonData, _ := json.Marshal(payload)
+	resp, err := http.Post(
+		fmt.Sprintf("https://%s/oauth/token", auth0Domain),
+		"application/json",
+		bytes.NewBuffer(jsonData),
+	)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to connect to authorization server"})
+		return
+	}
+	defer resp.Body.Close()
+
+	var result map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&result)
+
+	if resp.StatusCode >= 400 {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Failed to exchange authorization code"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"access_token": result["access_token"],
+		"expires_in":   result["expires_in"],
+	})
+}
+
 // VerifyOTPHandler exchanges the user's OTP code for a JWT token
 func VerifyOTPHandler(c *gin.Context) {
 	var req struct {
@@ -98,10 +152,12 @@ func VerifyOTPHandler(c *gin.Context) {
 	json.NewDecoder(resp.Body).Decode(&result)
 
 	if resp.StatusCode >= 400 {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid code or email", "details": result})
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid code or email"})
 		return
 	}
 
-	// Return tokens to frontend
-	c.JSON(http.StatusOK, result)
+	c.JSON(http.StatusOK, gin.H{
+		"access_token": result["access_token"],
+		"expires_in":   result["expires_in"],
+	})
 }
