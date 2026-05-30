@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import {
   FiEdit3,
   FiArrowUp,
@@ -7,64 +8,32 @@ import {
   FiMessageSquare,
   FiMoreHorizontal,
   FiUser,
-  FiCheckCircle,
   FiStar,
 } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
-
-const DISCUSS_POSTS = [
-  {
-    id: 1,
-    isVerified: true,
-    author: 'AcademyTeam',
-    date: 'Apr 27, 2026',
-    title: 'Would you trust AI code as is?',
-    excerpt:
-      "Would you ship AI-generated code without review? Sometimes it looks like the perfect solution at first glance... Then you run it and you realize: looking right isn't the same as being right. ☝️ Now it's your turn...",
-    upvotes: 6,
-    views: '1.9K',
-    comments: 27,
-  },
-  {
-    id: 2,
-    author: 'AcademyTeam',
-    date: 'Apr 16, 2026',
-    title: 'Academy App at Your Fingertips',
-    excerpt:
-      'Introducing the Academy mobile app, now available for smartphones and tablets. One challenge a day keeps your reasoning in play. Jump in for quick practice, browse your collections, and stay on top of...',
-    upvotes: 162,
-    views: '30K',
-    comments: 75,
-  },
-  {
-    id: 3,
-    isVerified: true,
-    author: 'AcademyTeam',
-    date: 'Apr 13, 2026',
-    title: '💥 Contest Rating Rule Updates 💥',
-    excerpt:
-      'Hello everyone, To maintain the integrity and accuracy of Academy Contest Rating and Global Ranking, we are introducing updates to the contest rating rules. I. Applicability New Users: Users who have not participated...',
-    upvotes: 93,
-    views: '16.2K',
-    comments: 39,
-  },
-  {
-    id: 4,
-    isVerified: true,
-    author: 'Anonymous User',
-    date: 'an hour ago',
-    title: 'Need some advice',
-    excerpt:
-      'i was laid off in feb.i have got an offer from eclerx as a java developer should i take it .my aim is to work in a good product based company ,need some suggestions on this',
-    upvotes: 0,
-    views: '28',
-    comments: 0,
-  },
-]
+import { fetchPosts, type DiscussPost } from '@/lib/discussApi'
+import { AcademyDiscussCreateModal } from './AcademyDiscussCreateModal'
 
 const TABS = ['For You', 'Career', 'Contest', 'Compensation', 'Feedback', 'Interview']
 
+function formatViews(n: number): string {
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}K`
+  return String(n)
+}
+
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' })
+}
+
 export function AcademyDiscussBoard() {
+  const [posts, setPosts] = useState<DiscussPost[]>([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    fetchPosts('newest').then((data) => setPosts(data.posts)).catch(() => {})
+  }, [])
+
   return (
     <div className="flex w-full flex-1 items-stretch justify-center font-sans">
       {/* === LEWA SIATKA === */}
@@ -91,7 +60,10 @@ export function AcademyDiscussBoard() {
             ))}
           </div>
 
-          <button className="flex cursor-pointer items-center gap-2 border bg-accent/10 px-2 font-bold text-accent hover:bg-accent/20">
+          <button
+            className="flex cursor-pointer items-center gap-2 border bg-accent/10 px-2 font-bold text-accent hover:bg-accent/20"
+            onClick={() => setIsModalOpen(true)}
+          >
             <FiEdit3 className="text-lg" />
             <span className="">Create</span>
           </button>
@@ -109,28 +81,27 @@ export function AcademyDiscussBoard() {
 
         {/* === POST LIST === */}
         <div className="flex flex-col">
-          {DISCUSS_POSTS.map((post) => (
+          {posts.map((post) => (
             <div
               key={post.id}
               className="border-foreground/10 flex cursor-pointer flex-col gap-4 border-b"
             >
-              {/* Treść posta */}
               <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 py-2">
                 <div className="text-foreground/60 flex items-center gap-1 pb-2 text-xs">
                   <div className="flex items-center justify-center">
                     <FiUser className="text-md" />
                   </div>
-                  <span className="text-foreground/80 font-bold">{post.author}</span>
-                  {post.isVerified && <FiCheckCircle className="text-primary" />}
+                  <span className="text-foreground/80 font-bold">
+                    {post.author?.name ?? post.author?.email ?? 'Anonim'}
+                  </span>
                   <span>•</span>
-                  <span>{post.date}</span>
+                  <span>{formatDate(post.created_at)}</span>
                 </div>
 
-                {/* NAPRAWIONY HEADING: Zmiana z h3 na h2 */}
                 <h2 className="font-serif text-base font-bold sm:text-lg">{post.title}</h2>
 
                 <p className="line-clamp-2 pb-2 text-sm text-foreground/60 sm:text-base">
-                  {post.excerpt}
+                  {post.body}
                 </p>
 
                 <div className="text-foreground/50 flex items-center justify-between">
@@ -139,10 +110,10 @@ export function AcademyDiscussBoard() {
                       <FiArrowUp className="text-base" /> {post.upvotes}
                     </span>
                     <span className="flex items-center gap-1">
-                      <FiEye className="text-base" /> {post.views}
+                      <FiEye className="text-base" /> {formatViews(post.views)}
                     </span>
                     <span className="flex items-center gap-1 transition-colors">
-                      <FiMessageSquare className="text-base" /> {post.comments}
+                      <FiMessageSquare className="text-base" /> 0
                     </span>
                   </div>
 
@@ -154,18 +125,27 @@ export function AcademyDiscussBoard() {
             </div>
           ))}
         </div>
-        <div className="mt-2 flex justify-center">
-          <button className="text-foreground hover:text-foreground/80 cursor-pointer font-bold uppercase transition-opacity">
-            Load more
-          </button>
-        </div>
+
+        {posts.length > 0 && (
+          <div className="mt-2 flex justify-center">
+            <button className="text-foreground hover:text-foreground/80 cursor-pointer font-bold uppercase transition-opacity">
+              Load more
+            </button>
+          </div>
+        )}
       </div>
 
       {/* === PRAWA SIATKA === */}
-      {/* flex-1 rozciąga ją na resztę wolnego miejsca z prawej strony */}
       <div className="border-foreground/10 relative hidden flex-1 border-l lg:block">
         <AcademyBackgroundGrid />
       </div>
+
+      {isModalOpen && (
+        <AcademyDiscussCreateModal
+          onClose={() => setIsModalOpen(false)}
+          onCreated={(post) => setPosts((prev) => [post, ...prev])}
+        />
+      )}
     </div>
   )
 }
