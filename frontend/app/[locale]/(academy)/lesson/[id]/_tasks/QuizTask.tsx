@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { submitLesson } from '@/lib/lessonApi'
 import { fireConfetti } from '@/lib/confetti'
+import { useToast } from '@/app/[locale]/_components/toast/useToast'
 
 type ConfidenceLevel = 'sure' | 'unsure' | null
 
@@ -34,6 +35,7 @@ interface TaskProps {
 }
 
 export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+  const { toast } = useToast()
   const [selected, setSelected] = useState<string | null>(null)
   const [confidence, setConfidence] = useState<ConfidenceLevel>(null)
   const [submitted, setSubmitted] = useState(false)
@@ -55,7 +57,10 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
   const handleSubmit = async () => {
     setSubmitted(true)
 
-    if (isCorrect) fireConfetti()
+    if (isCorrect) {
+      fireConfetti()
+      toast({ variant: 'achievement', title: 'Poprawna odpowiedź!' })
+    }
 
     const locale = document.documentElement.lang || 'en'
 
