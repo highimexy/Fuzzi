@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { FiX, FiCheck } from 'react-icons/fi'
 import { submitQuestAnswer } from '@/lib/questApi'
+import { MorphRing } from '../../_components/MorphRing'
+import { useToast } from '@/app/[locale]/_components/toast/useToast'
 import type { Quest, QuestSubmitResult } from '@/types/quest'
 
 interface Props {
@@ -15,6 +17,7 @@ interface Props {
 
 export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
   const t = useTranslations('Quest')
+  const { toast } = useToast()
   const [selected, setSelected] = useState<string | null>(null)
   const [result, setResult] = useState<QuestSubmitResult | null>(null)
   const [loading, setLoading] = useState<string | null>(null)
@@ -52,6 +55,13 @@ export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
       const res = await submitQuestAnswer(quest!.id, key)
       setResult(res)
       onStatsUpdate?.(res.stats)
+      if (res.is_correct) {
+        toast({
+          variant: 'achievement',
+          title: t('correctAnswer'),
+          description: res.xp_earned > 0 ? `+${res.xp_earned} XP` : undefined,
+        })
+      }
     } finally {
       setLoading(null)
     }
@@ -106,9 +116,7 @@ export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
                 >
                   <span className="shrink-0 font-bold uppercase text-foreground/50 w-4">{opt.key}</span>
                   <span className="flex-1">{text}</span>
-                  {loading === opt.key && (
-                    <span className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
-                  )}
+                  {loading === opt.key && <MorphRing size="sm" />}
                   {result && opt.key === result.correct_key && <FiCheck className="text-emerald-500" />}
                 </button>
               )

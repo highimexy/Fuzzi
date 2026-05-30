@@ -6,6 +6,8 @@ import { FiCheck, FiX } from 'react-icons/fi'
 import { submitQuestAnswer } from '@/lib/questApi'
 import { fireConfetti } from '@/lib/confetti'
 import { useUserStore } from '@/store/userStore'
+import { MorphRing } from '../../_components/MorphRing'
+import { useToast } from '@/app/[locale]/_components/toast/useToast'
 import type { Quest, QuestSubmitResult, QuestResult } from '@/types/quest'
 
 interface Props {
@@ -18,6 +20,7 @@ const XP_LABEL: Record<number, string> = { 10: 'Beginner', 15: 'Intermediate', 2
 
 export function DailyQuestCard({ quest, locale, initialResult }: Props) {
   const t = useTranslations('Quest')
+  const { toast } = useToast()
   const isLoggedIn = useUserStore((s) => s.isLoggedIn)
   const setStats = useUserStore((s) => s.setStats)
 
@@ -50,7 +53,14 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
     try {
       const res = await submitQuestAnswer(quest.id, key)
       setResult(res)
-      if (res.is_correct) fireConfetti()
+      if (res.is_correct) {
+        fireConfetti()
+        toast({
+          variant: 'achievement',
+          title: t('correctAnswer'),
+          description: res.xp_earned > 0 ? `+${res.xp_earned} XP` : undefined,
+        })
+      }
       if (isLoggedIn) {
         setStats(res.stats)
       }
@@ -108,9 +118,7 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
               >
                 <span className="shrink-0 font-bold uppercase text-foreground/40 w-4">{opt.key}</span>
                 <span className="flex-1 text-left">{text}</span>
-                {loading === opt.key && (
-                  <span className="shrink-0 h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
-                )}
+                {loading === opt.key && <MorphRing size="sm" />}
                 {optionIcon(opt.key)}
               </button>
             )

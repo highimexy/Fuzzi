@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { DailyQuestCard } from './_components/DailyQuestCard'
 import { StatsBar } from './_components/StatsBar'
+import { MorphRing } from '../_components/MorphRing'
 import { fetchDailyQuest, fetchQuestResult } from '@/lib/questApi'
 import { useUserStore } from '@/store/userStore'
 import type { Quest, QuestResult } from '@/types/quest'
@@ -66,20 +67,11 @@ export default function QuestPage() {
     weekday: 'long', day: 'numeric', month: 'long',
   })
 
-  if (loading) {
-    return (
-      <div className="mx-auto max-w-5xl space-y-8 p-8">
-        <div className="flex gap-6 animate-pulse">
-          {[1, 2, 3].map((i) => <div key={i} className="h-5 w-24 rounded bg-foreground/10" />)}
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-72 animate-pulse bg-foreground/5" />
-          ))}
-        </div>
-      </div>
-    )
-  }
+  if (loading) return (
+    <div className="flex h-full min-h-52 w-full flex-1 items-center justify-center">
+      <MorphRing size="lg" />
+    </div>
+  )
 
   if (error) {
     return (
