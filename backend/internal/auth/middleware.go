@@ -24,6 +24,9 @@ func EnsureValidToken() gin.HandlerFunc {
 		validator.RS256,
 		issuerURL.String(),
 		[]string{audience},
+		validator.WithCustomClaims(func() validator.CustomClaims {
+			return &CustomClaims{}
+		}),
 	)
 
 	return func(c *gin.Context) {
