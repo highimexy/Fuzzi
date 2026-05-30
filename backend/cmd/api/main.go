@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/highimexy/it-shit/backend/internal/auth"
 	"github.com/highimexy/it-shit/backend/internal/database"
+	"github.com/highimexy/it-shit/backend/internal/discuss"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
 	"github.com/highimexy/it-shit/backend/internal/market"
 	"github.com/highimexy/it-shit/backend/internal/quest"
@@ -35,8 +36,12 @@ func main() {
 
 	r := gin.Default()
 
+	allowedOrigin := os.Getenv("ALLOWED_ORIGIN")
+	if allowedOrigin == "" {
+		allowedOrigin = "http://localhost:3000"
+	}
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowOrigins = []string{allowedOrigin}
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
 	r.Use(cors.New(config))
 
@@ -53,9 +58,13 @@ func main() {
 
     v1.POST("/auth/otp/start", auth.StartOTPHandler)
     v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
+    v1.POST("/auth/google/callback", auth.GoogleCallbackHandler)
 
     v1.GET("/quest/daily", quest.GetDailyQuestHandler)
     v1.GET("/quests", quest.ListQuestsHandler)
+
+    v1.GET("/discuss/posts", discuss.ListHandler)
+    v1.GET("/discuss/posts/:id", discuss.GetHandler)
 	}
 
 	// PROTECTED
@@ -71,6 +80,8 @@ func main() {
 		protected.POST("/quest/:id/submit", quest.SubmitQuestHandler)
 		protected.GET("/quest/stats", quest.GetUserStatsHandler)
 		protected.GET("/quest/:id/result", quest.GetQuestResultHandler)
+
+		protected.POST("/discuss/posts", discuss.CreateHandler)
 	}
 
 	port := ":8080"
