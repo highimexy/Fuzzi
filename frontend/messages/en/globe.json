@@ -1,0 +1,25 @@
+{
+  "Globe": {
+    "badge": "Global Deployment",
+    "heading": "AI Testing is reshaping",
+    "headingAccent": "the world",
+    "sub": "89% of organizations are deploying Generative AI in QA.",
+    "hint": "Hover the markers — Fuzzi will report what's happening in each region.",
+    "hintMobile": "Tap the markers — Fuzzi will report what's happening in each region.",
+    "fuzziSays": "Fuzzi reports",
+    "regions": {
+      "usa":       { "name": "North America",  "value": "82.6",  "sub": "AI Readiness Index",          "insight": "Largest AI testing market globally — leads in GenAI QA adoption and investment." },
+      "canada":    { "name": "Canada",          "value": "+34%",  "sub": "QA automation growth",         "insight": "Strong AI talent pipeline; Toronto & Vancouver emerging as AI testing hubs." },
+      "uk":        { "name": "United Kingdom",  "value": "#1",    "sub": "AI investment hub in Europe",  "insight": "Europe's top AI investor — government-backed National AI Strategy drives QA adoption." },
+      "europe":    { "name": "Western Europe",  "value": "69.6",  "sub": "AI Readiness Index",          "insight": "GDPR-compliant AI testing frameworks lead globally. Germany & France at the forefront." },
+      "poland":    { "name": "Poland",          "value": "Top 3", "sub": "Tech outsourcing hubs, EU",   "insight": "Fastest-growing QA outsourcing destination in the EU — strong STEM talent base." },
+      "india":     { "name": "India",           "value": "66%",   "sub": "AI test-gen adoption",        "insight": "World's largest QA outsourcing market — AI-powered test generation leads APAC." },
+      "china":     { "name": "East Asia",       "value": "58.0",  "sub": "AI Readiness Index",          "insight": "Rapid domestic AI testing tooling growth; ByteDance & Alibaba invest heavily in QA AI." },
+      "japan":     { "name": "Japan",           "value": "+28%",  "sub": "QA market CAGR 2024–28",      "insight": "Precision manufacturing culture drives strict QA standards — AI adoption accelerating." },
+      "australia": { "name": "Australia / NZ",  "value": "+18%",  "sub": "APAC fastest growth region",  "insight": "Strong fintech & healthtech sectors drive AI QA growth — government AI ethics push." },
+      "brazil":    { "name": "Brazil",          "value": "+22%",  "sub": "LATAM QA market expansion",   "insight": "São Paulo becomes LATAM's AI hub — fintech testing drives 60% of regional growth." },
+      "uae":       { "name": "Middle East",     "value": "#1",    "sub": "GCC digital investment",      "insight": "UAE Vision 2031 commits $2B+ to AI — Dubai positions as global AI testing sandbox." }
+    },
+    "sources": "Sources: World Quality Report 2025 · Global AI Index 2024 · Grand View Research"
+  }
+}

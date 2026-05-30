@@ -1,0 +1,25 @@
+{
+  "Globe": {
+    "badge": "Globalny zasięg",
+    "heading": "AI Testing zmienia",
+    "headingAccent": "świat",
+    "sub": "89% organizacji wdraża Generatywne AI w zapewnieniu jakości.",
+    "hint": "Najedź na punkty — Fuzzi opowie ci, co dzieje się w danym regionie.",
+    "hintMobile": "Kliknij punkty — Fuzzi opowie ci, co dzieje się w danym regionie.",
+    "fuzziSays": "Fuzzi raportuje",
+    "regions": {
+      "usa":       { "name": "Ameryka Płn.",    "value": "82.6",  "sub": "Indeks gotowości AI",          "insight": "Największy rynek testów AI — lider adopcji GenAI w QA i inwestycji globalnie." },
+      "canada":    { "name": "Kanada",           "value": "+34%",  "sub": "Wzrost automatyzacji QA",      "insight": "Silny pipeline talentów AI; Toronto i Vancouver stają się hubami testów AI." },
+      "uk":        { "name": "Wielka Brytania",  "value": "#1",    "sub": "Hub inwestycji AI w Europie",  "insight": "Lider inwestycji AI w Europie — rządowa strategia AI napędza adopcję w QA." },
+      "europe":    { "name": "Europa Zachodnia", "value": "69.6",  "sub": "Indeks gotowości AI",          "insight": "Frameworki testów AI zgodne z GDPR prowadzą globalnie. Niemcy i Francja w czołówce." },
+      "poland":    { "name": "Polska",           "value": "Top 3", "sub": "Outsourcing technologiczny EU","insight": "Najszybciej rosnący kierunek outsourcingu QA w UE — silna baza talentów STEM." },
+      "india":     { "name": "Indie",            "value": "66%",   "sub": "Adopcja AI w testach",         "insight": "Największy rynek outsourcingu QA — generowanie testów AI prowadzi w APAC." },
+      "china":     { "name": "Azja Wschodnia",   "value": "58.0",  "sub": "Indeks gotowości AI",          "insight": "Szybki wzrost narzędzi QA AI; ByteDance i Alibaba intensywnie inwestują w testowanie." },
+      "japan":     { "name": "Japonia",          "value": "+28%",  "sub": "Wzrost rynku QA 2024–28",     "insight": "Kultura precyzji napędza surowe standardy QA — adopcja AI przyspiesza." },
+      "australia": { "name": "Australia / NZ",   "value": "+18%",  "sub": "Najszybszy wzrost w APAC",    "insight": "Fintech i healthtech napędzają wzrost QA AI — rządowe standardy etyki AI." },
+      "brazil":    { "name": "Brazylia",         "value": "+22%",  "sub": "Ekspansja rynku QA w LATAM",  "insight": "São Paulo staje się hubem AI LATAM — fintech odpowiada za 60% regionalnego wzrostu." },
+      "uae":       { "name": "Bliski Wschód",    "value": "#1",    "sub": "Inwestycje cyfrowe GCC",      "insight": "UAE Vision 2031 przeznacza 2 mld USD na AI — Dubaj pozycjonuje się jako sandbox testów AI." }
+    },
+    "sources": "Źródła: World Quality Report 2025 · Global AI Index 2024 · Grand View Research"
+  }
+}
