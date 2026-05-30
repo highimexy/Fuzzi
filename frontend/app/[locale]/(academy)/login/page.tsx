@@ -3,8 +3,27 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
+import { MorphRing } from '../_components/MorphRing'
 import { FcGoogle } from 'react-icons/fc'
 import { useUserStore } from '@/store/userStore'
+
+function generateCodeVerifier(): string {
+  const arr = new Uint8Array(32)
+  crypto.getRandomValues(arr)
+  return btoa(String.fromCharCode(...arr))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '')
+}
+
+async function generateCodeChallenge(verifier: string): Promise<string> {
+  const data = new TextEncoder().encode(verifier)
+  const hash = await crypto.subtle.digest('SHA-256', data)
+  return btoa(String.fromCharCode(...new Uint8Array(hash)))
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=/g, '')
+}
 
 export default function LoginPage() {
   const router = useRouter()
@@ -16,7 +35,6 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [resendTimer, setResendTimer] = useState(0)
 
-  // Odliczanie timera do ponownej wysyłki
   useEffect(() => {
     let timer: NodeJS.Timeout
     if (resendTimer > 0) {
@@ -25,7 +43,6 @@ export default function LoginPage() {
     return () => clearTimeout(timer)
   }, [resendTimer])
 
-  // 1. WYSYŁKA KODU DO GO
   const handleSendOTP = async () => {
     if (!email) return
     setError('')
@@ -43,15 +60,13 @@ export default function LoginPage() {
       } else {
         setError('Failed to send code. Please try again.')
       }
-    } catch (err) {
-      console.error(err)
+    } catch {
       setError('Network error. Check connection.')
     } finally {
       setLoading(false)
     }
   }
 
-  // 2. WERYFIKACJA KODU I ODBIÓR TOKENA
   const handleVerifyOTP = async () => {
     if (!code) return
     setError('')
@@ -69,23 +84,44 @@ export default function LoginPage() {
       } else {
         setError('Invalid or expired code!')
       }
-    } catch (err) {
-      console.error(err)
+    } catch {
       setError('Network error. Check connection.')
     } finally {
       setLoading(false)
     }
   }
 
-  // 3. GOOGLE LOGIN
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     const domain = process.env.NEXT_PUBLIC_AUTH0_DOMAIN
     const clientId = process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID
-    const redirectUri = encodeURIComponent('http://localhost:3000/lessons')
-    window.location.href = `https://${domain}/authorize?response_type=token&client_id=${clientId}&connection=google-oauth2&redirect_uri=${redirectUri}`
+    const audience = process.env.NEXT_PUBLIC_AUTH0_AUDIENCE
+    if (!domain || !clientId || !audience) return
+
+    const locale = window.location.pathname.split('/')[1] || 'en'
+    const redirectUri = `${window.location.origin}/${locale}/auth/callback`
+
+    const codeVerifier = generateCodeVerifier()
+    const codeChallenge = await generateCodeChallenge(codeVerifier)
+    const state = generateCodeVerifier()
+
+    sessionStorage.setItem('pkce_code_verifier', codeVerifier)
+    sessionStorage.setItem('pkce_state', state)
+
+    const params = new URLSearchParams({
+      response_type: 'code',
+      client_id: clientId,
+      redirect_uri: redirectUri,
+      scope: 'openid profile email',
+      audience,
+      connection: 'google-oauth2',
+      code_challenge: codeChallenge,
+      code_challenge_method: 'S256',
+      state,
+    })
+
+    window.location.href = `https://${domain}/authorize?${params}`
   }
 
-  // Cofanie z powrotem do wpisywania maila
   const handleBackToEmail = () => {
     setStep('email')
     setCode('')
@@ -143,7 +179,7 @@ export default function LoginPage() {
                   disabled={loading || !email}
                   className="w-full border bg-accent/10 p-3 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20 disabled:opacity-50"
                 >
-                  {loading ? 'Sending...' : 'Continue with email'}
+                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> Sending...</span> : 'Continue with email'}
                 </button>
               </>
             ) : (
@@ -152,10 +188,11 @@ export default function LoginPage() {
                   Code sent to <strong>{email}</strong>
                 </p>
                 <input
-                  type="text"
+                  type="tel"
+                  inputMode="numeric"
                   placeholder="Enter 6-digit code"
                   value={code}
-                  onChange={(e) => setCode(e.target.value)}
+                  onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                   disabled={loading}
                   maxLength={6}
                   className="border-foreground/20 focus:border-foreground/50 w-full border p-3 text-center font-sans tracking-widest outline-none disabled:opacity-50"
@@ -167,10 +204,9 @@ export default function LoginPage() {
                   disabled={loading || code.length < 6}
                   className="w-full border bg-accent p-3 font-sans font-bold text-black uppercase transition-colors hover:bg-accent disabled:opacity-50"
                 >
-                  {loading ? 'Verifying...' : 'Verify & Enter'}
+                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> Verifying...</span> : 'Verify & Enter'}
                 </button>
 
-                {/* Opcje nawigacji dla kroku OTP */}
                 <div className="text-foreground/60 mt-2 flex items-center justify-between font-sans text-sm">
                   <button
                     onClick={handleBackToEmail}
