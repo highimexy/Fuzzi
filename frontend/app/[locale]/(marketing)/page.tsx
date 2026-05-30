@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { HomeHeader } from './home/HomeHeader'
 import { SectionDivider } from './_components/SectionDivider'
 import { SupportersTicker } from './home/SupportersTicker'
@@ -7,6 +8,11 @@ import { ProblemSection } from './home/ProblemSection'
 import { EducationSection } from './home/EducationSection'
 import { TrustSection } from './home/TrustSection'
 import { LastSection } from './home/LastSection'
+import { BrokenUISection } from './home/BrokenUiSection'
+const GlobeSection = dynamic(
+  () => import('./home/GlobeSection').then((m) => m.GlobeSection),
+  { ssr: false, loading: () => <div style={{ minHeight: 560 }} /> }
+)
 
 export default function Home() {
   return (
@@ -24,11 +30,19 @@ export default function Home() {
         <ProblemSection />
         <SectionDivider />
 
-        {/* 4. EDUKACJA: Dwa Wektory */}
+        {/* 4. GLOBAL: Globalny zasięg AI Testing */}
+        <GlobeSection />
+        <SectionDivider />
+
+        {/* 5. EDUKACJA: Dwa Wektory */}
         <EducationSection />
         <SectionDivider />
 
-        {/* 5. ZAUFANIE: Referencje i liczby przed ostateczną decyzją */}
+        {/* 6. BROKEN UI: */}
+        <BrokenUISection />
+        <SectionDivider />
+
+        {/* 7. ZAUFANIE: Referencje i liczby przed ostateczną decyzją */}
         <TrustSection />
         <SectionDivider />
 
