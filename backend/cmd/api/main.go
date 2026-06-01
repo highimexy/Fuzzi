@@ -77,11 +77,18 @@ func main() {
 
 		protected.GET("/groups/:groupId/progress", lessons.GroupProgressHandler)
 
-		protected.POST("/quest/:id/submit", quest.SubmitQuestHandler)
 		protected.GET("/quest/stats", quest.GetUserStatsHandler)
 		protected.GET("/quest/:id/result", quest.GetQuestResultHandler)
 
 		protected.POST("/discuss/posts", discuss.CreateHandler)
+	}
+
+	// SEMI-PROTECTED — optional auth (guests allowed, logged-in users get full tracking)
+	semi := r.Group("/api/v1")
+	semi.Use(auth.OptionalToken())
+	{
+		semi.POST("/quest/:id/submit", quest.SubmitQuestHandler)
+		semi.GET("/groups/:groupId/completed-lessons", lessons.GroupCompletedLessonsHandler)
 	}
 
 	port := ":8080"

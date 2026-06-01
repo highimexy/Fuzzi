@@ -146,11 +146,6 @@ type submitRequest struct {
 
 func SubmitQuestHandler(c *gin.Context) {
 	userID := getUserID(c)
-	if userID == "" {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Login required"})
-		return
-	}
-
 	questID := c.Param("id")
 
 	var req submitRequest
@@ -159,40 +154,50 @@ func SubmitQuestHandler(c *gin.Context) {
 		return
 	}
 
-	var quest models.Quest
-	if err := database.DB.First(&quest, "id = ?", questID).Error; err != nil {
+	var q models.Quest
+	if err := database.DB.First(&q, "id = ?", questID).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Quest not found"})
 		return
 	}
 
-	// Idempotency check — raz na quest na zawsze
-	var existing models.QuestAttempt
-	if database.DB.Where("user_id = ? AND quest_id = ?", userID, questID).First(&existing).Error == nil {
-		// Already attempted — return previous result
-		var stats models.UserQuestStats
-		database.DB.Where("user_id = ?", userID).First(&stats)
+	isCorrect := req.AnswerKey == q.CorrectKey
+
+	// Guest — sprawdź tylko, nic nie zapisuj
+	if userID == "" {
 		c.JSON(http.StatusOK, gin.H{
-			"is_correct":     existing.IsCorrect,
-			"correct_key":    quest.CorrectKey,
-			"xp_earned":      existing.XPEarned,
-			"explanation_en": quest.ExplainEN,
-			"explanation_pl": quest.ExplainPL,
-			"stats": gin.H{
-				"total_xp":       stats.TotalXP,
-				"current_streak": stats.CurrentStreak,
-			},
+			"is_correct":     isCorrect,
+			"correct_key":    q.CorrectKey,
+			"xp_earned":      0,
+			"explanation_en": q.ExplainEN,
+			"explanation_pl": q.ExplainPL,
+			"stats":          gin.H{"total_xp": 0, "current_streak": 0},
 		})
 		return
 	}
 
-	isCorrect := req.AnswerKey == quest.CorrectKey
+	// Idempotency — raz na quest na zawsze
+	var existing models.QuestAttempt
+	if database.DB.Where("user_id = ? AND quest_id = ?", userID, questID).First(&existing).Error == nil {
+		var stats models.UserQuestStats
+		database.DB.Where("user_id = ?", userID).First(&stats)
+		c.JSON(http.StatusOK, gin.H{
+			"is_correct":     existing.IsCorrect,
+			"correct_key":    q.CorrectKey,
+			"xp_earned":      existing.XPEarned,
+			"explanation_en": q.ExplainEN,
+			"explanation_pl": q.ExplainPL,
+			"stats":          gin.H{"total_xp": stats.TotalXP, "current_streak": stats.CurrentStreak},
+		})
+		return
+	}
+
 	xpEarned := 0
 	if isCorrect {
-		xpEarned = quest.XP
+		xpEarned = q.XP
 	}
 
 	id, _ := gonanoid.New()
-	attempt := models.QuestAttempt{
+	database.DB.Create(&models.QuestAttempt{
 		ID:          id,
 		UserID:      userID,
 		QuestID:     questID,
@@ -200,10 +205,8 @@ func SubmitQuestHandler(c *gin.Context) {
 		IsCorrect:   isCorrect,
 		XPEarned:    xpEarned,
 		AttemptedAt: time.Now().UTC(),
-	}
-	database.DB.Create(&attempt)
+	})
 
-	// Upsert UserQuestStats
 	var stats models.UserQuestStats
 	database.DB.FirstOrCreate(&stats, models.UserQuestStats{UserID: userID})
 
@@ -213,13 +216,11 @@ func SubmitQuestHandler(c *gin.Context) {
 		stats.TotalCorrect++
 	}
 
-	// Streak logic
 	todayStr := today()
-	yesterdayStr := yesterday()
 	switch stats.LastActiveDate {
 	case todayStr:
 		// already active today — no change
-	case yesterdayStr:
+	case yesterday():
 		stats.CurrentStreak++
 	default:
 		stats.CurrentStreak = 1
@@ -229,19 +230,15 @@ func SubmitQuestHandler(c *gin.Context) {
 		stats.LongestStreak = stats.CurrentStreak
 	}
 	stats.UpdatedAt = time.Now().UTC()
-
 	database.DB.Save(&stats)
 
 	c.JSON(http.StatusOK, gin.H{
 		"is_correct":     isCorrect,
-		"correct_key":    quest.CorrectKey,
+		"correct_key":    q.CorrectKey,
 		"xp_earned":      xpEarned,
-		"explanation_en": quest.ExplainEN,
-		"explanation_pl": quest.ExplainPL,
-		"stats": gin.H{
-			"total_xp":       stats.TotalXP,
-			"current_streak": stats.CurrentStreak,
-		},
+		"explanation_en": q.ExplainEN,
+		"explanation_pl": q.ExplainPL,
+		"stats":          gin.H{"total_xp": stats.TotalXP, "current_streak": stats.CurrentStreak},
 	})
 }
 

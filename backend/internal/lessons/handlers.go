@@ -170,10 +170,10 @@ func GetHandler(c *gin.Context) {
 // ─────────────────────────────────────────────
 
 type SubmitRequest struct {
-	Answer      string  `json:"answer"`
-	Confidence  *string `json:"confidence"`
-	NeedsReview bool    `json:"needs_review"`
-	Locale      string  `json:"locale"`
+	Answer      json.RawMessage `json:"answer"`
+	Confidence  *string         `json:"confidence"`
+	NeedsReview bool            `json:"needs_review"`
+	Locale      string          `json:"locale"`
 }
 
 type quizOption struct {
@@ -223,19 +223,24 @@ func SubmitHandler(c *gin.Context) {
 		rawPayload = lesson.PayloadPL
 	}
 
+	// Wyciągnij odpowiedź jako string (dla tasków quiz)
+	// Dla tasków z odpowiedzią obiektową (CvAudit, Triage itp.) answerStr będzie ""
+	var answerStr string
+	json.Unmarshal(req.Answer, &answerStr)
+
 	var qp quizPayload
 	hasCorrectField := false
 	isCorrect := false
 	if err := json.Unmarshal(rawPayload, &qp); err == nil {
 		if qp.Correct != "" {
 			hasCorrectField = true
-			isCorrect = req.Answer == qp.Correct
+			isCorrect = answerStr == qp.Correct
 		} else {
 			// Format 2: correctness encoded per-option via is_correct field
 			for _, opt := range qp.Options {
 				if opt.IsCorrect {
 					hasCorrectField = true
-					isCorrect = req.Answer == opt.ID
+					isCorrect = answerStr == opt.ID
 					break
 				}
 			}
@@ -283,7 +288,12 @@ func SubmitHandler(c *gin.Context) {
 		"correct":   isCorrect,
 		"score":     score,
 		"xp_earned": xpEarned,
-		"progress":  progress,
+		"progress": gin.H{
+			"completed": progress.Completed || isCorrect || !hasCorrectField,
+			"score":     score,
+			"attempts":  progress.Attempts + 1,
+			"xp_earned": progress.XPEarned + xpEarned,
+		},
 	})
 }
 
@@ -310,6 +320,39 @@ func ProgressHandler(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, progress)
+}
+
+// ─────────────────────────────────────────────
+// COMPLETED LESSONS HANDLER
+// GET /api/v1/groups/:groupId/completed-lessons (OPTIONAL AUTH)
+// Zwraca listę ID ukończonych lekcji w grupie
+// ─────────────────────────────────────────────
+
+func GroupCompletedLessonsHandler(c *gin.Context) {
+	userID := getUserID(c)
+	groupID := c.Param("groupId")
+
+	if userID == "" {
+		c.JSON(http.StatusOK, gin.H{"completed": []string{}})
+		return
+	}
+
+	var lessonIDs []string
+	database.DB.Model(&models.Lesson{}).
+		Where("lesson_group_id = ?", groupID).
+		Pluck("id", &lessonIDs)
+
+	if len(lessonIDs) == 0 {
+		c.JSON(http.StatusOK, gin.H{"completed": []string{}})
+		return
+	}
+
+	var completed []string
+	database.DB.Model(&models.LessonProgress{}).
+		Where("user_id = ? AND lesson_id IN ? AND completed = true", userID, lessonIDs).
+		Pluck("lesson_id", &completed)
+
+	c.JSON(http.StatusOK, gin.H{"completed": completed})
 }
 
 // ─────────────────────────────────────────────

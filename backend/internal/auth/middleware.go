@@ -13,6 +13,30 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// OptionalToken sets user_claims if a valid token is present, but never rejects the request.
+func OptionalToken() gin.HandlerFunc {
+	issuerURL, _ := url.Parse("https://" + os.Getenv("AUTH0_DOMAIN") + "/")
+	audience := os.Getenv("AUTH0_AUDIENCE")
+	provider := jwks.NewCachingProvider(issuerURL, 5*time.Minute)
+	jwtValidator, _ := validator.New(
+		provider.KeyFunc,
+		validator.RS256,
+		issuerURL.String(),
+		[]string{audience},
+		validator.WithCustomClaims(func() validator.CustomClaims { return &CustomClaims{} }),
+	)
+
+	return func(c *gin.Context) {
+		if authHeader := c.GetHeader("Authorization"); authHeader != "" {
+			tokenString := strings.Replace(authHeader, "Bearer ", "", 1)
+			if claims, err := jwtValidator.ValidateToken(c.Request.Context(), tokenString); err == nil {
+				c.Set("user_claims", claims.(*validator.ValidatedClaims))
+			}
+		}
+		c.Next()
+	}
+}
+
 func EnsureValidToken() gin.HandlerFunc {
 	issuerURL, _ := url.Parse("https://" + os.Getenv("AUTH0_DOMAIN") + "/")
 	audience := os.Getenv("AUTH0_AUDIENCE")
