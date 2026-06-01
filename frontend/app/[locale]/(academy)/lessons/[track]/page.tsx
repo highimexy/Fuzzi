@@ -2,6 +2,12 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { FiLock, FiStar, FiCheckCircle, FiArrowRight, FiArrowLeft } from 'react-icons/fi'
 
+function plLekcja(n: number): string {
+  if (n === 1) return 'lekcja'
+  if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) return 'lekcje'
+  return 'lekcji'
+}
+
 interface LessonGroup {
   id: string
   track: string
@@ -127,7 +133,7 @@ function ChapterCard({
           </span>
           {group.sub_lesson_count > 0 && (
             <span className="text-foreground/25 font-sans text-[10px] tracking-wider">
-              {group.sub_lesson_count} {group.sub_lesson_count === 1 ? 'lekcja' : 'lekcji'}
+              {group.sub_lesson_count} {plLekcja(group.sub_lesson_count)}
             </span>
           )}
           {lockState === 'in_progress' && group.sub_lesson_count > 0 && (
