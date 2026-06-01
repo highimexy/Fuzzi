@@ -23,6 +23,7 @@ import {
   FiHelpCircle,
 } from 'react-icons/fi'
 import Link from 'next/link'
+import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 // ==========================================
 // 1. MOCK DATA
@@ -302,8 +303,8 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
 // ==========================================
 export default function ExplorePage() {
   return (
-    <div className="flex w-full flex-1 flex-col justify-center gap-8 overflow-hidden py-8 lg:gap-12 lg:py-12">
-      {/* H1 - Niewidoczny nagłówek SEO dla strony */}
+    <div className="relative flex w-full flex-1 flex-col justify-center gap-8 overflow-hidden py-8 lg:gap-12 lg:py-12">
+      <AcademyBackgroundGrid />
       <h1 className="sr-only">Explore Collections</h1>
 
       <CarouselRow title="Useful tools" items={CAROUSEL_DATA.tools} />
