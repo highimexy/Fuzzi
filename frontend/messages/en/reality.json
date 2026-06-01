@@ -75,23 +75,23 @@
       "label": "The Academy",
       "title1": "Market",
       "title2": "Survival",
-      "tagline": "Technical skills get you the interview; market intelligence gets you the job. Step into the lab to decode the hidden rules of the IT ecosystem.",
-      "curriculum": "Protocol v4.1",
-      "modules": "3 Layers Decoded",
+      "tagline": "What they won't teach you at bootcamp. The job market, dev relations, career and wellbeing.",
+      "curriculum": "100 Hard Truths",
+      "modules": "100 lessons",
       "step1": {
-        "title": "Corporate Lexicon",
-        "desc": "Decoding OKRs and KPIs. Speak the language of business stakeholders.",
-        "btn": "Start Training"
+        "title": "The IT Job Market",
+        "desc": "Startups, corporations, freelance. Where you actually want to work and what awaits you there.",
+        "btn": "Go to Lessons"
       },
       "step2": {
-        "title": "The \"ASAP\" Drills",
-        "desc": "Negotiating timelines. How to say \"no\" while sounding like a \"yes\".",
-        "btn": "Enter Drills"
+        "title": "The AI Barrier",
+        "desc": "How to build value machines can't replace. Architectural thinking versus syntax.",
+        "btn": "Go to Lessons"
       },
       "step3": {
-        "title": "The AI Shield",
-        "desc": "Optimizing for ATS filters. Making it through the machine gatekeepers.",
-        "btn": "Start Audit"
+        "title": "Survival",
+        "desc": "Communication, negotiation and long-term career growth in an industry that never sleeps.",
+        "btn": "Go to Lessons"
       }
     },
     "footer": {

@@ -279,7 +279,7 @@ export default function QaPage() {
               <div className="bg-foreground/10 border-foreground/10 mt-16 grid gap-px border text-left md:mt-20">
                 {/* STEP 01 */}
                 <Link
-                  href="/academy"
+                  href="/lessons/qa"
                   className="group bg-background border-foreground/20 relative border p-5 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] md:p-10 md:hover:translate-x-2 md:hover:-translate-y-2 md:hover:shadow-[-20px_25px_50px_-15px_rgba(0,0,0,0.12)]"
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
@@ -303,7 +303,7 @@ export default function QaPage() {
                 </Link>
                 {/* STEP 02 */}
                 <Link
-                  href="/academy"
+                  href="/lessons/qa"
                   className="group bg-background border-foreground/20 relative border p-5 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] md:p-10 md:hover:translate-x-2 md:hover:-translate-y-2 md:hover:shadow-[-20px_25px_50px_-15px_rgba(0,0,0,0.12)]"
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
@@ -327,7 +327,7 @@ export default function QaPage() {
                 </Link>
                 {/* STEP 03 */}
                 <Link
-                  href="/academy"
+                  href="/lessons/qa"
                   className="group bg-background border-foreground/20 relative border p-5 transition-all duration-300 ease-out hover:z-20 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)] md:p-10 md:hover:translate-x-2 md:hover:-translate-y-2 md:hover:shadow-[-20px_25px_50px_-15px_rgba(0,0,0,0.12)]"
                 >
                   <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">

@@ -75,23 +75,23 @@
       "label": "Akademia",
       "title1": "Rynkowe",
       "title2": "Przetrwanie",
-      "tagline": "Umiejętności techniczne dają Ci rozmowę; inteligencja rynkowa daje Ci pracę. Wejdź do labu, by zdekodować zasady IT.",
-      "curriculum": "Protokół v4.1",
-      "modules": "3 Zdekodowane Warstwy",
+      "tagline": "To czego nie powiedzą Ci na bootcampie. Rynek pracy, relacje z devami, kariera i wellbeing.",
+      "curriculum": "100 Hard Truths",
+      "modules": "100 lekcji",
       "step1": {
-        "title": "Korpo-Leksykon",
-        "desc": "Dekodowanie OKR-ów i KPI. Naucz się mówić językiem biznesu.",
-        "btn": "Rozpocznij Trening"
+        "title": "Rynek Pracy IT",
+        "desc": "Startupy, korpo, freelance. Gdzie naprawdę chcesz pracować i co Cię tam czeka.",
+        "btn": "Idź do lekcji"
       },
       "step2": {
-        "title": "Trening \"ASAP\"",
-        "desc": "Negocjowanie terminów. Jak mówić \"nie\", brzmiąc jak \"tak\".",
-        "btn": "Wejdź do Treningu"
+        "title": "Bariera AI",
+        "desc": "Jak budować wartość, której maszyny nie zastąpią. Architektura myślenia kontra składnia.",
+        "btn": "Idź do lekcji"
       },
       "step3": {
-        "title": "Tarcza Anty-AI",
-        "desc": "Optymalizacja pod filtry ATS. Jak przejść przez maszynowych strażników.",
-        "btn": "Rozpocznij Audyt"
+        "title": "Przetrwanie",
+        "desc": "Komunikacja, negocjacje i długofalowy rozwój kariery w branży, która nigdy nie śpi.",
+        "btn": "Idź do lekcji"
       }
     },
     "footer": {

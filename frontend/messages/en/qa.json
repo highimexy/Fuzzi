@@ -72,23 +72,23 @@
       "label": "The Academy",
       "title1": "Learning",
       "title2": "Pathology",
-      "tagline": "Theoretical knowledge is a liability without practice. Master the QA craft in the Post-Junior era.",
-      "curriculum": "Curriculum v1.0",
-      "modules": "3 Modules Available",
+      "tagline": "From testing fundamentals to performance and security. A complete QA Engineer path from A to Z.",
+      "curriculum": "Ultimate QA Compendium",
+      "modules": "100 lessons",
       "step1": {
-        "title": "The Lexicon",
-        "desc": "Terminology and visual evidence of UI components.",
-        "btn": "Start Training"
+        "title": "UI Anatomy",
+        "desc": "Box Model, component states, typography and accessibility. Break down interfaces into testable elements.",
+        "btn": "Go to Lessons"
       },
       "step2": {
-        "title": "Evidence Room",
-        "desc": "Visual bug hunting in simulated environments.",
-        "btn": "Start Training"
+        "title": "QA Toolkit",
+        "desc": "Figma, Jira, DevTools. Tools for bug documentation, fix cycles and network monitoring.",
+        "btn": "Go to Lessons"
       },
       "step3": {
-        "title": "Construction",
-        "desc": "Master technical documentation for developers.",
-        "btn": "Draft Ticket"
+        "title": "Quality in Practice",
+        "desc": "Performance, security and accessibility testing. From the happy path to the hardest edge cases.",
+        "btn": "Go to Lessons"
       }
     },
     "footer": {

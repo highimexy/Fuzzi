@@ -72,23 +72,23 @@
       "label": "Akademia",
       "title1": "Nauka",
       "title2": "Patologii",
-      "tagline": "Wiedza teoretyczna to obciążenie bez praktyki. Opanuj rzemiosło QA w erze Post-Juniora.",
-      "curriculum": "Program v1.0",
-      "modules": "Dostępne 3 moduły",
+      "tagline": "Od fundamentów testowania po performance i security. Kompletna ścieżka QA Engineera od A do Z.",
+      "curriculum": "Ultimate QA Compendium",
+      "modules": "100 lekcji",
       "step1": {
-        "title": "Leksykon",
-        "desc": "Terminologia i dowody wizualne komponentów UI.",
-        "btn": "Rozpocznij trening"
+        "title": "Anatomia UI",
+        "desc": "Box Model, stany komponentów, typografia i dostępność. Rozkładasz interfejs na elementy testowalne.",
+        "btn": "Idź do lekcji"
       },
       "step2": {
-        "title": "Pokój dowodów",
-        "desc": "Wizualne polowanie na błędy w symulacjach.",
-        "btn": "Rozpocznij trening"
+        "title": "Toolkit QA",
+        "desc": "Figma, Jira, DevTools. Narzędzia do dokumentacji błędów, cyklu naprawy i monitorowania sieci.",
+        "btn": "Idź do lekcji"
       },
       "step3": {
-        "title": "Konstrukcja",
-        "desc": "Mistrzowska dokumentacja techniczna dla deweloperów.",
-        "btn": "Szkicuj ticket"
+        "title": "Jakość w Praktyce",
+        "desc": "Testy wydajnościowe, bezpieczeństwa i dostępności. Od happy path do najtwardszych edge case'ów.",
+        "btn": "Idź do lekcji"
       }
     },
     "footer": {
