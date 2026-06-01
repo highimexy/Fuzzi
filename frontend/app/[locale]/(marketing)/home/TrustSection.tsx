@@ -315,13 +315,6 @@ function LogCard({ log }: { log: LogEntry }) {
           {log.text}
           {!log.featured && <>&rdquo;</>}
         </p>
-
-        {/* Przycisk akcji */}
-        {log.featured && (
-          <div className="text-accent mt-8 font-sans text-[10px] font-bold tracking-widest uppercase opacity-80 transition-opacity group-hover:opacity-100">
-            [ Rozpocznij Eksplorację ✛ ]
-          </div>
-        )}
       </div>
     </div>
   )
