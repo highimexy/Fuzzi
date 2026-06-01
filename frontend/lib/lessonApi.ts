@@ -21,6 +21,21 @@ const EMPTY_RESULT: LessonSubmitResult = {
   progress: { completed: false, score: 0, attempts: 0, xp_earned: 0 },
 }
 
+export async function fetchGroupCompletedLessons(groupId: string): Promise<string[]> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+  if (!token) return []
+  try {
+    const res = await fetch(`${API}/api/v1/groups/${groupId}/completed-lessons`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    if (!res.ok) return []
+    const data = await res.json()
+    return data.completed ?? []
+  } catch {
+    return []
+  }
+}
+
 export async function submitLesson(
   lessonId: string,
   body: Record<string, unknown>

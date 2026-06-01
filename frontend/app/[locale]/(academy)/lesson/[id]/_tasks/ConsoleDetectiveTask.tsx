@@ -26,6 +26,7 @@ interface TaskProps {
   payload: ConsoleDetectivePayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const logStyle: Record<LogLevel, string> = {
@@ -42,7 +43,7 @@ const logPrefix: Record<LogLevel, string> = {
   log: '  LOG  ',
 }
 
-export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [answer, setAnswer] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [hintsRevealed, setHintsRevealed] = useState(0)
@@ -54,7 +55,8 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer, locale })
+      const result = await submitLesson(lessonId, { answer, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

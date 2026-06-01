@@ -28,6 +28,7 @@ interface TaskProps {
   payload: BugHuntPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const severityStyle: Record<Severity, string> = {
@@ -36,7 +37,7 @@ const severityStyle: Record<Severity, string> = {
   minor: 'border-yellow-500 text-yellow-500 bg-yellow-500/10',
 }
 
-export default function BugHuntTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function BugHuntTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [tab, setTab] = useState<Tab>('page')
   const [report, setReport] = useState({ title: '', steps: '', expected: '', actual: '' })
   const [severity, setSeverity] = useState<Severity | null>(null)
@@ -51,7 +52,8 @@ export default function BugHuntTask({ lessonId, payload, nextHref, isLast }: Tas
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: severity, report, locale })
+      const result = await submitLesson(lessonId, { answer: severity, report, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

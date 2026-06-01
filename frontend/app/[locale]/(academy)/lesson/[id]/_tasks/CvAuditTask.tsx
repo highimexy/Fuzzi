@@ -25,9 +25,10 @@ interface TaskProps {
   payload: CvAuditPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
-export default function CvAuditTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function CvAuditTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [verdicts, setVerdicts] = useState<Record<number, ItemVerdict>>({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -40,7 +41,8 @@ export default function CvAuditTask({ lessonId, payload, nextHref, isLast }: Tas
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: verdicts, locale })
+      const result = await submitLesson(lessonId, { answer: verdicts, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

@@ -31,6 +31,7 @@ interface TaskProps {
   payload: TestCaseBuilderPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const categoryLabels: Record<TestCategory, string> = {
@@ -45,7 +46,7 @@ const categoryColors: Record<TestCategory, string> = {
   negative: 'text-rose-400 border-rose-500/30 bg-rose-500/5',
 }
 
-export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const nextId = useRef(1)
   const [cases, setCases] = useState<UserCase[]>([{ id: 0, title: '', category: 'happy_path' }])
   const [submitted, setSubmitted] = useState(false)
@@ -71,7 +72,8 @@ export default function TestCaseBuilderTask({ lessonId, payload, nextHref, isLas
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: cases, locale })
+      const result = await submitLesson(lessonId, { answer: cases, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

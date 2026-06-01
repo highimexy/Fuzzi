@@ -25,6 +25,7 @@ interface TaskProps {
   payload: SalaryDecoderPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const verdictLabels: Record<SalaryVerdict, string> = {
@@ -33,7 +34,7 @@ const verdictLabels: Record<SalaryVerdict, string> = {
   depends: 'Zależy',
 }
 
-export default function SalaryDecoderTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function SalaryDecoderTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [verdict, setVerdict] = useState<SalaryVerdict | null>(null)
   const [selected, setSelected] = useState<Set<number>>(new Set())
   const [submitted, setSubmitted] = useState(false)
@@ -47,7 +48,8 @@ export default function SalaryDecoderTask({ lessonId, payload, nextHref, isLast 
     const locale = document.documentElement.lang || 'en'
 
     try {
-      await submitLesson(lessonId, { answer: verdict, selected_flags: [...selected], locale })
+      const result = await submitLesson(lessonId, { answer: verdict, selected_flags: [...selected], locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

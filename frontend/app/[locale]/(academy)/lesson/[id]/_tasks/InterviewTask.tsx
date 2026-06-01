@@ -30,9 +30,10 @@ interface TaskProps {
   payload: InterviewPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
-export default function InterviewTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function InterviewTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [answer, setAnswer] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [starOpen, setStarOpen] = useState(false)
@@ -45,7 +46,8 @@ export default function InterviewTask({ lessonId, payload, nextHref, isLast }: T
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer, locale })
+      const result = await submitLesson(lessonId, { answer, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

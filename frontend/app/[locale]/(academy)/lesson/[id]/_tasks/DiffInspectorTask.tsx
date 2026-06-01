@@ -28,6 +28,7 @@ interface TaskProps {
   payload: DiffInspectorPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const categoryLabels: Record<ChangeCategory, string> = {
@@ -42,7 +43,7 @@ const categoryColors: Record<ChangeCategory, string> = {
   wrong_change: 'border-orange-400 text-orange-400 bg-orange-400/10',
 }
 
-export default function DiffInspectorTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function DiffInspectorTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [answers, setAnswers] = useState<Record<string, ChangeCategory>>({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -55,7 +56,8 @@ export default function DiffInspectorTask({ lessonId, payload, nextHref, isLast 
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: answers, locale })
+      const result = await submitLesson(lessonId, { answer: answers, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

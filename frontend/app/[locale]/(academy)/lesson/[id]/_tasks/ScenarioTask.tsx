@@ -23,9 +23,10 @@ interface TaskProps {
   payload: ScenarioPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
-export default function ScenarioTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function ScenarioTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [justification, setJustification] = useState('')
   const [selected, setSelected] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
@@ -39,7 +40,8 @@ export default function ScenarioTask({ lessonId, payload, nextHref, isLast }: Ta
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: selected, justification, locale })
+      const result = await submitLesson(lessonId, { answer: selected, justification, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

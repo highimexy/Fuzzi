@@ -32,9 +32,10 @@ interface TaskProps {
   payload: QuizPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
-export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function QuizTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const { toast } = useToast()
   const [selected, setSelected] = useState<string | null>(null)
   const [confidence, setConfidence] = useState<ConfidenceLevel>(null)
@@ -65,12 +66,13 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
     const locale = document.documentElement.lang || 'en'
 
     try {
-      await submitLesson(lessonId, {
+      const result = await submitLesson(lessonId, {
         answer: selected,
         confidence,
         needs_review: confidence === 'sure' && !isCorrect,
         locale,
       })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit network error:', err)
     }
@@ -175,7 +177,7 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast }: TaskPr
           onClick={handleSubmit}
           className="bg-primary hover:bg-primary/90 mt-4 p-4 text-sm font-bold tracking-widest text-white uppercase transition-colors"
         >
-          Zatwierdź Kod
+          Zatwierdź
         </button>
       )}
 

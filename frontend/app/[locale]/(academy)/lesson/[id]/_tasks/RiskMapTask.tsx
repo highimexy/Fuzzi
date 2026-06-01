@@ -26,6 +26,7 @@ interface TaskProps {
   payload: RiskMapPayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const riskLabels: Record<RiskLevel, string> = {
@@ -40,7 +41,7 @@ const riskColors: Record<RiskLevel, string> = {
   depends: 'border-yellow-500 text-yellow-500 bg-yellow-500/10',
 }
 
-export default function RiskMapTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function RiskMapTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [answers, setAnswers] = useState<Record<string, RiskLevel>>({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -53,7 +54,8 @@ export default function RiskMapTask({ lessonId, payload, nextHref, isLast }: Tas
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: answers, locale })
+      const result = await submitLesson(lessonId, { answer: answers, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

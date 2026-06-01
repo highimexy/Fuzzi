@@ -32,6 +32,7 @@ interface TaskProps {
   payload: TriagePayload
   nextHref?: string
   isLast?: boolean
+  onComplete?: (completed: boolean, xp: number) => void
 }
 
 const priorityLabels: Record<Priority, string> = {
@@ -48,7 +49,7 @@ const priorityColors: Record<Priority, string> = {
   wont_fix: 'border-foreground/30 text-foreground/50 bg-foreground/5',
 }
 
-export default function TriageTask({ lessonId, payload, nextHref, isLast }: TaskProps) {
+export default function TriageTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
   const [decisions, setDecisions] = useState<Record<string, Priority>>({})
   const [submitted, setSubmitted] = useState(false)
 
@@ -61,7 +62,8 @@ export default function TriageTask({ lessonId, payload, nextHref, isLast }: Task
     setSubmitted(true)
     const locale = document.documentElement.lang || 'en'
     try {
-      await submitLesson(lessonId, { answer: decisions, locale })
+      const result = await submitLesson(lessonId, { answer: decisions, locale })
+      onComplete?.(result.progress?.completed ?? false, result.xp_earned)
     } catch (err) {
       console.error('Submit error:', err)
     }

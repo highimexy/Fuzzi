@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
-import { FiArrowLeft, FiArrowRight } from 'react-icons/fi'
+import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiZap } from 'react-icons/fi'
+import { useUserStore } from '@/store/userStore'
+import { fetchGroupCompletedLessons } from '@/lib/lessonApi'
+import { fireConfetti } from '@/lib/confetti'
 
 interface LessonDetail {
   id: string
@@ -68,6 +71,17 @@ export default function LessonClient({
   group: GroupInfo | null
 }) {
   const [activeTab, setActiveTab] = useState<'theory' | 'task'>('theory')
+  const [completedIds, setCompletedIds] = useState<Set<string>>(new Set())
+  const [completionXP, setCompletionXP] = useState<number | null>(null)
+
+  const isLoggedIn = useUserStore((s) => s.isLoggedIn)
+
+  useEffect(() => {
+    if (!isLoggedIn || !lesson.lesson_group_id) return
+    fetchGroupCompletedLessons(lesson.lesson_group_id).then((ids) => {
+      setCompletedIds(new Set(ids))
+    })
+  }, [isLoggedIn, lesson.lesson_group_id])
 
   const titleRaw = locale === 'pl' ? lesson.title_pl : lesson.title_en
   const title = titleRaw || lesson.title_en
@@ -96,12 +110,23 @@ export default function LessonClient({
       : '/lessons'
   const isLast = !nextLesson
 
+  const handleComplete = useCallback((completed: boolean, xp: number) => {
+    if (!isLoggedIn) return
+    if (completed) {
+      setCompletedIds((prev) => new Set([...prev, lesson.id]))
+    }
+    // Modal tylko na pierwszym zaliczeniu ostatniej sublekcji (xp > 0 = pierwsze podejście)
+    if (isLast && xp > 0) {
+      fireConfetti()
+      setTimeout(() => setCompletionXP(xp), 600)
+    }
+  }, [isLoggedIn, lesson.id, isLast])
+
   return (
     <div className="flex h-full w-full flex-col font-sans">
       {/* ── NAWIGACJA SUB-LEKCJI ── */}
       {total > 0 && (
         <div className="border-foreground/10 flex shrink-0 items-center justify-between border-b px-6 py-2 lg:px-8">
-          {/* Lewa: powrót do rozdziału */}
           <Link
             href={group ? `/lessons/${group.track}/${group.id}` : '/lessons'}
             className="text-foreground/30 hover:text-foreground/60 inline-flex items-center gap-1.5 font-sans tracking-widest uppercase transition-colors"
@@ -110,19 +135,24 @@ export default function LessonClient({
             <span className="hidden max-w-40 truncate sm:block">{groupTitle ?? 'Lekcje'}</span>
           </Link>
 
-          {/* Środek: wskaźnik sub-lekcji */}
           <div className="flex items-center gap-3">
             <span className="text-foreground/25 font-sans tracking-widest uppercase">
               Sub-lekcja
             </span>
             <div className="flex items-center gap-1.5">
               {sortedSiblings.map((s) => (
-                <Link key={s.id} href={`/lesson/${s.id}`} title={s.title_en}>
+                <Link
+                  key={s.id}
+                  href={`/lesson/${s.id}`}
+                  title={locale === 'pl' ? s.title_pl || s.title_en : s.title_en}
+                >
                   <div
                     className={`rounded-full transition-all duration-300 ${
                       s.id === lesson.id
                         ? 'bg-foreground h-2 w-2'
-                        : 'bg-foreground/20 hover:bg-foreground/40 h-1.5 w-1.5'
+                        : completedIds.has(s.id)
+                          ? 'bg-primary h-1.5 w-1.5'
+                          : 'bg-foreground/20 hover:bg-foreground/40 h-1.5 w-1.5'
                     }`}
                   />
                 </Link>
@@ -133,7 +163,6 @@ export default function LessonClient({
             </span>
           </div>
 
-          {/* Prawa: prev / next */}
           <div className="flex items-center gap-1">
             {prevLesson ? (
               <Link
@@ -144,9 +173,7 @@ export default function LessonClient({
                 <FiArrowLeft className="text-md" />
               </Link>
             ) : (
-              <span className="p-1.5 opacity-0">
-                <FiArrowLeft className="text-md" />
-              </span>
+              <span className="p-1.5 opacity-0"><FiArrowLeft className="text-md" /></span>
             )}
             {nextLesson ? (
               <Link
@@ -157,9 +184,7 @@ export default function LessonClient({
                 <FiArrowRight className="text-md" />
               </Link>
             ) : (
-              <span className="p-1.5 opacity-0">
-                <FiArrowRight className="text-sm" />
-              </span>
+              <span className="p-1.5 opacity-0"><FiArrowRight className="text-sm" /></span>
             )}
           </div>
         </div>
@@ -167,7 +192,7 @@ export default function LessonClient({
 
       {/* ── GŁÓWNA TREŚĆ ── */}
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
-        {/* LEWA STRONA: TEORIA */}
+        {/* LEWA: TEORIA */}
         <div
           className={`${activeTab === 'theory' ? 'flex' : 'hidden'} border-foreground/10 h-full w-full flex-col overflow-y-auto border-r p-6 pb-24 lg:flex lg:w-1/2 lg:p-12 lg:pb-12`}
         >
@@ -178,6 +203,12 @@ export default function LessonClient({
             <span className="border-foreground/10 border px-2 py-0.5 font-sans text-[10px] tracking-widest uppercase opacity-50">
               {lesson.difficulty}
             </span>
+            {completedIds.has(lesson.id) && (
+              <span className="flex items-center gap-1 font-sans text-[10px] tracking-widest uppercase text-emerald-500">
+                <FiCheckCircle className="shrink-0" />
+                Ukończono
+              </span>
+            )}
           </div>
 
           <h1 className="mb-8 font-serif text-3xl font-bold uppercase md:text-4xl">{title}</h1>
@@ -191,7 +222,7 @@ export default function LessonClient({
           </div>
         </div>
 
-        {/* PRAWA STRONA: ZADANIE */}
+        {/* PRAWA: ZADANIE */}
         <div
           className={`${activeTab === 'task' ? 'flex' : 'hidden'} bg-foreground/2 h-full w-full flex-col overflow-y-auto p-6 pb-24 lg:flex lg:w-1/2 lg:p-12 lg:pb-12`}
         >
@@ -208,6 +239,7 @@ export default function LessonClient({
                 payload={payload}
                 nextHref={nextHref}
                 isLast={isLast}
+                onComplete={handleComplete}
               />
             ) : (
               <div className="border-foreground/10 flex flex-1 items-center justify-center border border-dashed font-sans text-xs opacity-30">
@@ -233,6 +265,52 @@ export default function LessonClient({
           Task
         </button>
       </div>
+
+      {/* ── MODAL UKOŃCZENIA ── */}
+      {completionXP !== null && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+          <div className="bg-background border-foreground/10 relative mx-4 w-full max-w-sm border p-8 text-center">
+            <button
+              onClick={() => setCompletionXP(null)}
+              className="text-foreground/25 hover:text-foreground/60 absolute top-3 right-4 font-sans text-lg transition-colors"
+              aria-label="Zamknij"
+            >
+              ×
+            </button>
+
+            <div className="mb-4 flex items-center justify-center gap-2">
+              <FiCheckCircle className="text-2xl text-emerald-500" />
+            </div>
+
+            <h2 className="font-serif text-2xl font-bold uppercase tracking-tight">
+              Lekcja ukończona!
+            </h2>
+
+            {completionXP > 0 && (
+              <div className="mt-4 inline-flex items-center gap-2 border border-accent/30 bg-accent/5 px-4 py-2">
+                <FiZap className="text-accent" />
+                <span className="font-mono text-xl font-bold text-accent">+{completionXP} XP</span>
+              </div>
+            )}
+
+            <div className="mt-6 flex flex-col gap-3">
+              <Link
+                href={nextHref}
+                onClick={() => setCompletionXP(null)}
+                className="bg-foreground text-background block px-8 py-4 font-sans text-sm font-bold tracking-[0.2em] uppercase transition-opacity hover:opacity-80"
+              >
+                {isLast ? 'Wróć do rozdziału' : 'Następna lekcja'}
+              </Link>
+              <button
+                onClick={() => setCompletionXP(null)}
+                className="font-sans text-xs text-foreground/30 transition-colors hover:text-foreground/60"
+              >
+                Zostań na stronie
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
