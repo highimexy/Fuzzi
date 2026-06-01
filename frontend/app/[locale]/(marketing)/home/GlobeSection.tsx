@@ -296,7 +296,7 @@ function RegionTooltip({
     : 'color-mix(in srgb, var(--foreground) 18%, transparent)'
 
   return (
-    <div className="w-full px-5" style={{ pointerEvents: 'none' }}>
+    <div className="w-full px-3" style={{ pointerEvents: 'none' }}>
       {/* Bubble box */}
       <div
         className="relative overflow-hidden border px-4 py-4"
@@ -462,28 +462,35 @@ function MobileModal({
 export function GlobeSection() {
   const t = useTranslations('Globe')
   const [activeId, setActiveId] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
+  const [screenWidth, setScreenWidth] = useState(0)
   const [autoRotate, setAutoRotate] = useState(true)
 
   useEffect(() => {
-    const mobileMq = window.matchMedia('(max-width: 639px)')
-    const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setScreenWidth(window.innerWidth)
 
-    setIsMobile(mobileMq.matches)
-    if (motionMq.matches) setAutoRotate(false)
-
-    const onMobile = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    const onMotion = (e: MediaQueryListEvent) => {
-      if (e.matches) setAutoRotate(false)
+    let debounce: ReturnType<typeof setTimeout>
+    const onResize = () => {
+      clearTimeout(debounce)
+      debounce = setTimeout(() => setScreenWidth(window.innerWidth), 150)
     }
+    window.addEventListener('resize', onResize)
 
-    mobileMq.addEventListener('change', onMobile)
+    const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motionMq.matches) setAutoRotate(false)
+    const onMotion = (e: MediaQueryListEvent) => { if (e.matches) setAutoRotate(false) }
     motionMq.addEventListener('change', onMotion)
+
     return () => {
-      mobileMq.removeEventListener('change', onMobile)
+      window.removeEventListener('resize', onResize)
+      clearTimeout(debounce)
       motionMq.removeEventListener('change', onMotion)
     }
   }, [])
+
+  // screenWidth=0 = not yet mounted → safe default (no panel)
+  const showPanel   = screenWidth >= 1440
+  const isMobile    = screenWidth === 0 || screenWidth < 768
+  const canvasHeight = isMobile ? 280 : showPanel ? 480 : 420
 
   const handleHover = (id: string | null) => {
     setActiveId(id)
@@ -497,7 +504,7 @@ export function GlobeSection() {
           <BackgroundGrid />
 
           {/* Header */}
-          <div className="relative z-10 px-6 py-12 text-center">
+          <div className="relative z-10 px-4 py-8 text-center sm:px-6 sm:py-10 lg:py-12">
             <span
               className="mb-4 inline-block border font-sans font-bold uppercase"
               style={{
@@ -518,20 +525,20 @@ export function GlobeSection() {
 
           {/* Canvas + Fuzzi panel */}
           <div
-            className="relative z-10 mx-6 mb-6 grid"
+            className="relative z-10 mx-2 mb-4 grid sm:mx-4 sm:mb-5 lg:mx-6 lg:mb-6"
             style={{
               border: '1px solid color-mix(in srgb, var(--foreground) 10%, transparent)',
-              gridTemplateColumns: isMobile ? '1fr' : '1.6fr 1fr',
+              gridTemplateColumns: showPanel ? '1.6fr 1fr' : '1fr',
               background: 'color-mix(in srgb, var(--secondary) 10%, var(--background))',
             }}
           >
             {/* Canvas */}
             <div
               style={{
-                height: isMobile ? 300 : 440,
-                borderRight: isMobile
-                  ? 'none'
-                  : '1px solid color-mix(in srgb, var(--foreground) 10%, transparent)',
+                height: canvasHeight,
+                borderRight: showPanel
+                  ? '1px solid color-mix(in srgb, var(--foreground) 10%, transparent)'
+                  : 'none',
               }}
             >
               <Canvas
@@ -545,18 +552,17 @@ export function GlobeSection() {
               </Canvas>
             </div>
 
-            {/* Fuzzi Mark panel — hidden on mobile (modal handles tap) */}
-            {!isMobile && (
+            {/* Fuzzi Mark panel — only on ≥1440px */}
+            {showPanel && (
               <div
                 className="relative flex flex-col items-center justify-end"
-                style={{ height: 440 }}
+                style={{ height: 480 }}
               >
                 {/* Tooltip sits directly above Fuzzi */}
                 <div className="w-full">
                   <RegionTooltip regionId={activeId} t={t} />
                 </div>
 
-                {/* Character */}
                 <FuzziMark size={300} />
               </div>
             )}
@@ -564,7 +570,7 @@ export function GlobeSection() {
 
           {/* Sources */}
           <p
-            className="relative z-10 pb-6 text-center font-sans opacity-25"
+            className="relative z-10 pb-4 text-center font-sans opacity-25 sm:pb-6"
             style={{ fontSize: '10px', letterSpacing: '0.05em' }}
           >
             {t('sources')}
@@ -572,8 +578,8 @@ export function GlobeSection() {
         </div>
       </Container>
 
-      {/* Mobile modal */}
-      {isMobile && activeId && (
+      {/* Modal — shown on all screens without the Fuzzi panel */}
+      {!showPanel && activeId && (
         <MobileModal regionId={activeId} onClose={() => handleHover(null)} t={t} />
       )}
     </section>
