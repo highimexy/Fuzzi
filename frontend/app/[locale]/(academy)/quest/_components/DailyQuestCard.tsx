@@ -61,11 +61,9 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
           description: res.xp_earned > 0 ? `+${res.xp_earned} XP` : undefined,
         })
       }
-      if (isLoggedIn) {
-        setStats(res.stats)
-      }
+      if (isLoggedIn) setStats(res.stats)
     } catch {
-      setResult({ is_correct: false, correct_key: key, xp_earned: 0, explanation_en: '', explanation_pl: '', stats: { total_xp: 0, current_streak: 0 } })
+      setSelected(null)
     } finally {
       setLoading(null)
     }
@@ -96,15 +94,15 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
   const diffLabel = XP_LABEL[quest.xp] ?? ''
 
   return (
-    <div className="border border-foreground/10 bg-background flex flex-col">
-      <div className="border-b border-foreground/10 px-4 py-3 flex items-center justify-between">
-        <span className="font-mono text-xs text-foreground/40 uppercase tracking-widest">{diffLabel}</span>
+    <div className="border-foreground/10 bg-background flex flex-col border">
+      <div className="border-foreground/10 flex items-center justify-between border-b px-5 py-3">
+        <span className="font-sans text-[9px] font-bold tracking-widest uppercase text-foreground/40">{diffLabel}</span>
         <span className="font-mono text-xs font-bold text-accent">+{quest.xp} {t('xpLabel')}</span>
       </div>
 
-      <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-serif font-bold mb-1">{title}</h3>
-        <p className="text-sm text-foreground/60 mb-4">{body}</p>
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="font-serif text-lg font-bold leading-tight tracking-tight mb-2">{title}</h3>
+        <p className="font-sans text-sm leading-relaxed text-foreground/55 mb-5">{body}</p>
 
         <div className="flex flex-col gap-2">
           {quest.options.map((opt) => {
