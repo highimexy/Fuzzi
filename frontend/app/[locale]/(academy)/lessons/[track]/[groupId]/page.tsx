@@ -1,6 +1,13 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi'
+import { SubLessonList } from './SubLessonList'
+
+function plLekcja(n: number): string {
+  if (n === 1) return 'lekcja'
+  if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) return 'lekcje'
+  return 'lekcji'
+}
 
 interface SubLesson {
   id: string
@@ -135,7 +142,7 @@ export default async function GroupPage({
                   {subLessons.length}
                 </span>
                 <span className="text-foreground/25 font-sans text-[9px] tracking-widest uppercase">
-                  {subLessons.length === 1 ? 'Lekcja' : 'Lekcje'}
+                  {plLekcja(subLessons.length)}
                 </span>
               </div>
               <div className="bg-foreground/10 h-8 w-px" />
@@ -180,54 +187,10 @@ export default async function GroupPage({
         <div className="flex-1 px-8 py-10 lg:px-12 lg:py-12">
           <p className="text-foreground/25 mb-6 font-sans text-[9px] tracking-[0.3em] uppercase">
             Lekcje &nbsp;//&nbsp; {subLessons.length}{' '}
-            {subLessons.length === 1 ? 'lekcja' : 'lekcje'}
+            {plLekcja(subLessons.length)}
           </p>
 
-          {subLessons.length === 0 ? (
-            <div className="border-foreground/10 text-foreground/20 flex h-40 items-center justify-center border border-dashed font-sans text-xs">
-              Brak lekcji
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {subLessons.map((sub, i) => {
-                const subTitle = locale === 'pl' ? sub.title_pl : sub.title_en
-                const typeLabel = lessonTypeLabel[sub.lesson_type] ?? sub.lesson_type
-                const subDiffColor = getDifficultyColor(sub.difficulty)
-
-                return (
-                  <Link
-                    key={sub.id}
-                    href={`/lesson/${sub.id}`}
-                    className="group border-foreground/10 hover:border-foreground/25 bg-background relative flex items-center gap-6 border p-6 transition-all duration-300 ease-out hover:translate-x-0.5 hover:-translate-y-0.5 hover:rounded-md hover:shadow-[0_12px_24px_-10px_rgba(0,0,0,0.1)] lg:p-7"
-                  >
-                    {/* Number */}
-                    <span className="text-foreground/20 w-6 shrink-0 font-sans text-[10px] tabular-nums">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-
-                    {/* Title */}
-                    <span className="flex-1 font-serif text-lg leading-tight font-bold uppercase lg:text-xl">
-                      {subTitle}
-                    </span>
-
-                    {/* Badges */}
-                    <div className="flex shrink-0 items-center gap-3">
-                      <span
-                        className={`hidden border px-2 py-0.5 font-sans text-[9px] font-bold tracking-widest uppercase sm:inline ${subDiffColor}`}
-                      >
-                        {sub.difficulty}
-                      </span>
-                      <span className="border-foreground/10 text-foreground/30 group-hover:border-foreground/25 group-hover:text-foreground/50 border px-2 py-0.5 font-sans text-[9px] tracking-widest uppercase transition-colors">
-                        {typeLabel}
-                      </span>
-                    </div>
-
-                    <FiArrowRight className="text-foreground/20 group-hover:text-foreground/50 shrink-0 transition-all duration-200 group-hover:translate-x-0.5" />
-                  </Link>
-                )
-              })}
-            </div>
-          )}
+          <SubLessonList subLessons={subLessons} groupId={groupId} locale={locale} />
         </div>
       </div>
     </div>
