@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { DailyQuestCard } from './_components/DailyQuestCard'
 import { StatsBar } from './_components/StatsBar'
 import { MorphRing } from '../_components/MorphRing'
+import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 import { fetchDailyQuest, fetchQuestResult } from '@/lib/questApi'
 import { useUserStore } from '@/store/userStore'
 import type { Quest, QuestResult } from '@/types/quest'
@@ -75,31 +76,40 @@ export default function QuestPage() {
 
   if (error) {
     return (
-      <div className="flex h-64 items-center justify-center font-mono text-sm text-foreground/50">
+      <div className="flex h-64 items-center justify-center font-sans text-sm text-foreground/40">
         {t('errorLabel')}
       </div>
     )
   }
 
   return (
-    <div className="mx-auto max-w-5xl space-y-8 p-8">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="font-serif text-2xl font-bold">{t('dailyChallenge')}</h1>
-          <p className="font-mono text-xs text-foreground/40 mt-0.5">{today}</p>
+    <div className="flex min-h-full flex-col">
+      {/* Header */}
+      <div className="border-foreground/10 border-b px-8 py-8 lg:px-16">
+        <div className="flex flex-wrap items-start justify-between gap-6">
+          <div>
+            <p className="text-primary mb-2 font-sans text-[9px] tracking-[0.3em] uppercase">{today}</p>
+            <h1 className="font-serif text-4xl font-bold leading-[0.88] tracking-tighter uppercase lg:text-5xl">
+              {t('dailyChallenge')}
+            </h1>
+          </div>
+          <StatsBar stats={stats} />
         </div>
-        <StatsBar stats={stats} />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        {dailyQuests.map((quest) => (
-          <DailyQuestCard
-            key={quest.id}
-            quest={quest}
-            locale={locale}
-            initialResult={dailyResults[quest.id]}
-          />
-        ))}
+      {/* Cards — vertically centered, grid only in content area */}
+      <div className="relative flex flex-1 items-center px-8 py-8 lg:px-16">
+        <AcademyBackgroundGrid />
+        <div className="relative grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {dailyQuests.map((quest) => (
+            <DailyQuestCard
+              key={quest.id}
+              quest={quest}
+              locale={locale}
+              initialResult={dailyResults[quest.id]}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
