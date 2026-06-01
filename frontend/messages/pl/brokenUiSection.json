@@ -1,0 +1,39 @@
+{
+  "BrokenUiSection": {
+    "badge": "Środowisko Testowe",
+    "heading": "Spróbuj zmienić",
+    "headingAccent": "głośność.",
+    "headingDim": "To prostsze niż myślisz.",
+    "sub": "Cztery kontrolki. Każda działa. Żadna nie powinna istnieć. Twoje zadanie: dotknij każdej i poczuj ból użytkownika.",
+    "testedLabel": "Przetestowane:",
+    "testedBadge": "Testowany",
+    "volumeLabel": "Głośność",
+    "hintShow": "Co tu nie gra?",
+    "hintHide": "Ukryj",
+    "paint": {
+      "clear": "Wyczyść"
+    },
+    "pump": {
+      "button": "Pompuj"
+    },
+    "paywall": {
+      "modalTitle": "Odblokuj Pełną Głośność",
+      "modalBody": "Głośność powyżej 50% to funkcja premium. Słuchaj bez ograniczeń za jedyne 19,99 zł/mc.",
+      "modalCTA": "Odblokuj za 19,99 zł",
+      "modalDismiss": "Wytrzymam w ciszy"
+    },
+    "catapult": {
+      "charge": "Przytrzymaj, by naładować",
+      "charging": "Ładowanie..."
+    },
+    "ctaSub": "Każdy z tych wzorców istnieje w prawdziwych aplikacjach.",
+    "ctaStrong": "QA wyłapuje je zanim zrobi to użytkownik.",
+    "ctaButton": "Naucz się je wykrywać →",
+    "bugs": {
+      "paint":    { "title": "Malowanie Głośności",  "hint": "Trzeba \"zamalować\" pasek. Im więcej powierzchni pokryjesz, tym głośniej. Precyzja? Nie znamy." },
+      "pump":     { "title": "Pompka Ciśnieniowa",   "hint": "Głośność to ciśnienie. Przestaniesz pompować — zacznie uciekać. Witaj w aktywnym słuchaniu." },
+      "paywall":  { "title": "Głośność Premium",     "hint": "Pierwsze 50% za darmo. Reszta wymaga subskrypcji. Monetyzacja decybeli." },
+      "catapult": { "title": "Katapulta Audio",      "hint": "Naładuj, zwolnij, módl się. Siła zależy od czasu ładowania. Lądowanie kuli = nowa głośność." }
+    }
+  }
+}

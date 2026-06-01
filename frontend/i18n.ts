@@ -27,6 +27,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     quest,
     notificationBanner,
     globe,
+    brokenUiSection,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/problemSection.json`, { with: { type: 'json' } }),
@@ -48,6 +49,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/quest.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/notificationBanner.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/globe.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/brokenUiSection.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -71,6 +73,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...quest.default,
     ...notificationBanner.default,
     ...globe.default,
+    ...brokenUiSection.default,
   }
 
   return {

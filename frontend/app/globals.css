@@ -66,6 +66,9 @@
   --accent: #b88a00;
 
   --error: #dc2626;
+
+  /* Powierzchnia kart z fakturą (RoughBackground) — nieco ciemniejsza od tła */
+  --rough-card: #cdd5e3;
 }
 
 .dark {
@@ -79,6 +82,9 @@
   --accent: #fde047;
 
   --error: #ef4444; /* Nieco jaśniejszy czerwony, żeby "świecił" w ciemności */
+
+  /* Powierzchnia kart z fakturą (RoughBackground) */
+  --rough-card: #252d3b;
 }
 
 body {

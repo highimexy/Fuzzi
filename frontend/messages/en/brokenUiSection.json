@@ -1,0 +1,39 @@
+{
+  "BrokenUiSection": {
+    "badge": "Test Environment",
+    "heading": "Try to change the",
+    "headingAccent": "volume.",
+    "headingDim": "Simpler than you think.",
+    "sub": "Four controls. Each works. None should exist. Your task: touch each one and feel the user's pain.",
+    "testedLabel": "Tested:",
+    "testedBadge": "Tested",
+    "volumeLabel": "Volume",
+    "hintShow": "What's wrong here?",
+    "hintHide": "Hide",
+    "paint": {
+      "clear": "Clear"
+    },
+    "pump": {
+      "button": "Pump"
+    },
+    "paywall": {
+      "modalTitle": "Unlock Full Volume",
+      "modalBody": "Volume above 50% is a premium feature. Listen without limits for just $4.99/mo.",
+      "modalCTA": "Unlock for $4.99",
+      "modalDismiss": "I'll manage with silence"
+    },
+    "catapult": {
+      "charge": "Hold to charge",
+      "charging": "Charging..."
+    },
+    "ctaSub": "Each of these patterns exists in real apps.",
+    "ctaStrong": "QA catches them before users do.",
+    "ctaButton": "Learn to detect them →",
+    "bugs": {
+      "paint":    { "title": "Paint the Volume",   "hint": "You must \"paint\" the bar. The more surface you cover, the louder. Precision? Unknown." },
+      "pump":     { "title": "Pressure Pump",      "hint": "Volume is pressure. Stop pumping — it starts leaking. Welcome to active listening." },
+      "paywall":  { "title": "Premium Volume",     "hint": "First 50% is free. The rest requires a subscription. Decibel monetization." },
+      "catapult": { "title": "Audio Catapult",     "hint": "Charge, release, pray. Force depends on charge time. Ball landing = new volume." }
+    }
+  }
+}
