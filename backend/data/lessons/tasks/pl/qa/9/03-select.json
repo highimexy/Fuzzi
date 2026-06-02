@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html lang='pl'>\n<head>\n<title>Dane dostawy</title>\n<style>\n  body { font-family: sans-serif; padding: 24px; }\n  h2 { margin-bottom: 20px; }\n  .field { margin-bottom: 20px; }\n  .custom-select { border: 1px solid #ccc; padding: 10px 36px 10px 12px; width: 240px; background: #fff; position: relative; display: inline-block; font-size: 14px; cursor: pointer; }\n  .custom-select::after { content: '\\25BC'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #666; }\n  select { width: 240px; padding: 10px 12px; font-size: 14px; border: 1px solid #ccc; }\n  button { margin-top: 24px; background: #333; color: #fff; padding: 10px 22px; border: none; cursor: pointer; font-size: 14px; }\n</style>\n</head>\n<body>\n<h2>Dane dostawy</h2>\n<form>\n  <div class='field'>\n    <p style='margin:0 0 6px;font-size:14px;'>Kraj</p>\n    <div class='custom-select' tabindex='-1'>\n      Wybierz kraj\n    </div>\n  </div>\n  <div class='field'>\n    <select>\n      <option value=''>Wybierz miasto</option>\n      <option value='waw'>Warszawa</option>\n      <option value='kra'>Kraków</option>\n      <option value='wro'>Wrocław</option>\n    </select>\n  </div>\n  <button type='submit'>Przejdź do płatności</button>\n</form>\n</body>\n</html>",
+  "spec": "Formularz dostawy musi pozwalać użytkownikom wybrać Kraj i Miasto za pomocą nawigacji klawiaturą. Oba kontrolki muszą mieć dostępne nazwy, żeby screen readery ogłaszały ich cel. Selector Kraju musi być osiągalny przez Tab i obsługiwalny klawiaturą.",
+  "correct_severity": "critical",
+  "severity_reason": "Selector Kraju ma tabindex='-1', co jawnie usuwa go z kolejności Tab. Użytkownicy klawiatury nie mogą w ogóle dotrzeć do kontrolki i nie mogą ukończyć formularza dostawy. Blokuje to cały przepływ zamówienia dla znaczącej grupy użytkowników.",
+  "red_herrings": [
+    "Lista opcji krajów nie jest widoczna — oczekiwane, ponieważ customowy dropdown wymaga JavaScript do przełączania; strukturalny błąd HTML (tabindex='-1') jest głównym problemem",
+    "Użycie tagu <p> jako etykiety dla pola kraju — to też błąd (powinno być <label>), ale drugorzędny wobec problemu tabindex"
+  ],
+  "model_report": {
+    "title": "Selector kraju usunięty z kolejności Tab przez tabindex='-1' — użytkownicy klawiatury nie mogą kontynuować",
+    "steps": "1. Otwórz stronę\n2. Naciśnij Tab żeby nawigować przez formularz\n3. Zaobserwuj które elementy otrzymują focus klawiatury\n4. Policz elementy interaktywne osiągnięte Tab vs łączna liczba widocznych kontrolek\n5. Zbadaj HTML selectora Kraju",
+    "expected": "Tab przechodzi przez: selector Kraju → select Miasta → przycisk Przejdź. Selector Kraju można otworzyć i nawigować klawiaturą. Oba kontrolki mają powiązane etykiety.",
+    "actual": "Bug 1 [CRITICAL]: Selector Kraju (<div class='custom-select' tabindex='-1'>) ma tabindex='-1', jawnie usuwając go z nawigacji klawiaturą. Wciśnięcie Tab pomija bezpośrednio do selecta Miasta. Nie istnieje żaden sposób dostępny klawiaturą na wybór kraju.\n\nBug 2 [MAJOR]: Selector Kraju nie ma ról ARIA (role='combobox', aria-expanded, aria-haspopup) — screen readery nie mogą zidentyfikować go jako interaktywnej kontrolki.\n\nBug 3 [MAJOR]: Element <select> Miasta nie ma <label> — screen readery ogłaszają tylko 'lista rozwijana' bez nazwy pola.\n\nBug 4 [MINOR]: Etykieta Kraju to tag <p>, nie <label> — nie jest programowo powiązana z selectorem."
+  }
+}

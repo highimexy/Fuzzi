@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html lang='en'>\n<head>\n<title>Edit Profile</title>\n<style>\n  body { font-family: sans-serif; padding: 24px; }\n  h2 { margin-bottom: 20px; }\n  .field { margin-bottom: 18px; }\n  input, textarea { width: 100%; padding: 9px; border: 1px solid #ccc; font-size: 14px; box-sizing: border-box; }\n  input:focus, textarea:focus { outline: none; border-color: #ccc; }\n  textarea { resize: none; height: 90px; }\n  button { background: #333; color: #fff; padding: 10px 22px; border: none; cursor: pointer; font-size: 14px; }\n</style>\n</head>\n<body>\n<h2>Edit Profile</h2>\n<form>\n  <div class='field'>\n    <input type='text' placeholder='Full name *'>\n  </div>\n  <div class='field'>\n    <input type='text' placeholder='Email address *'>\n  </div>\n  <div class='field'>\n    <input type='password' placeholder='New password' autocomplete='off'>\n  </div>\n  <div class='field'>\n    <input type='number' placeholder='Age'>\n  </div>\n  <div class='field'>\n    <textarea placeholder='Bio (max 200 characters)'></textarea>\n  </div>\n  <button type='submit'>Save changes</button>\n</form>\n</body>\n</html>",
+  "spec": "The profile edit form must be accessible to screen reader users. Every input field must have a programmatically associated label so screen readers announce the field's purpose when it is focused. Focus state must be clearly visible. The email field must use type='email'. Password fields must be compatible with password managers.",
+  "correct_severity": "major",
+  "severity_reason": "None of the five input fields have a <label> element. Screen reader users hear only 'edit text' with no indication of what data to enter. The form is functionally unusable for this significant user group, though mouse users can still read placeholder text.",
+  "red_herrings": [
+    "The asterisk (*) inside placeholder text — it is a visual hint for sighted users, but does not replace a proper <label>",
+    "The number type for Age field — appropriate for a numeric value, not a bug"
+  ],
+  "model_report": {
+    "title": "All form inputs lack <label> elements — screen readers cannot identify field purpose",
+    "steps": "1. Open the page\n2. Navigate the form using Tab\n3. For each focused input, observe what a screen reader announces (or use browser accessibility inspector)\n4. Check input types by inspecting the HTML source",
+    "expected": "Each field has a <label> programmatically linked via for/id. Screen reader announces 'Full name, required, edit text' etc. Email field uses type='email'. Focus state is clearly visible.",
+    "actual": "Bug 1 [MAJOR]: No <label> element on any of the five input fields. Only placeholder text is present — it disappears when the user starts typing and is never announced by screen readers as the field name.\n\nBug 2 [MAJOR]: Email field uses type='text' instead of type='email'. Mobile users get a standard keyboard without the @ key. Built-in browser email validation is disabled.\n\nBug 3 [MAJOR]: input:focus { outline: none; border-color: #ccc } — focus indicator is completely invisible. Keyboard users cannot tell which field is active.\n\nBug 4 [MINOR]: Password field has autocomplete='off' which prevents password managers from filling credentials, forcing users to type passwords manually."
+  }
+}

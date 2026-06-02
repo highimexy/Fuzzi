@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html lang='pl'>\n<head>\n<title>Edytuj profil</title>\n<style>\n  body { font-family: sans-serif; padding: 24px; }\n  h2 { margin-bottom: 20px; }\n  .field { margin-bottom: 18px; }\n  input, textarea { width: 100%; padding: 9px; border: 1px solid #ccc; font-size: 14px; box-sizing: border-box; }\n  input:focus, textarea:focus { outline: none; border-color: #ccc; }\n  textarea { resize: none; height: 90px; }\n  button { background: #333; color: #fff; padding: 10px 22px; border: none; cursor: pointer; font-size: 14px; }\n</style>\n</head>\n<body>\n<h2>Edytuj profil</h2>\n<form>\n  <div class='field'>\n    <input type='text' placeholder='Imię i nazwisko *'>\n  </div>\n  <div class='field'>\n    <input type='text' placeholder='Adres email *'>\n  </div>\n  <div class='field'>\n    <input type='password' placeholder='Nowe hasło' autocomplete='off'>\n  </div>\n  <div class='field'>\n    <input type='number' placeholder='Wiek'>\n  </div>\n  <div class='field'>\n    <textarea placeholder='Bio (maks. 200 znaków)'></textarea>\n  </div>\n  <button type='submit'>Zapisz zmiany</button>\n</form>\n</body>\n</html>",
+  "spec": "Formularz edycji profilu musi być dostępny dla użytkowników czytników ekranu. Każde pole inputa musi mieć programowo powiązaną etykietę, dzięki której screen readery ogłaszają cel pola po jego sfocusowaniu. Stan focusu musi być wyraźnie widoczny. Pole email musi używać type='email'. Pola haseł muszą być kompatybilne z menedżerami haseł.",
+  "correct_severity": "major",
+  "severity_reason": "Żadne z pięciu pól inputa nie ma elementu <label>. Użytkownicy czytników ekranu słyszą tylko 'pole edycji' bez wskazania jakich danych wpisać. Formularz jest praktycznie bezużyteczny dla tej znaczącej grupy użytkowników, choć użytkownicy myszy mogą wciąż odczytać tekst placeholder.",
+  "red_herrings": [
+    "Gwiazdka (*) wewnątrz tekstu placeholder — to wizualna wskazówka dla widzących użytkowników, ale nie zastępuje właściwego <label>",
+    "Typ number dla pola Wiek — odpowiedni dla wartości numerycznej, nie jest bugiem"
+  ],
+  "model_report": {
+    "title": "Wszystkie pola formularza bez elementów <label> — screen readery nie mogą zidentyfikować pól",
+    "steps": "1. Otwórz stronę\n2. Nawiguj po formularzu używając Tab\n3. Dla każdego sfocusowanego inputa zaobserwuj co ogłasza screen reader (lub użyj inspektora dostępności)\n4. Sprawdź typy inputów przez inspekcję źródła HTML",
+    "expected": "Każde pole ma <label> programowo powiązany przez for/id. Screen reader ogłasza 'Imię i nazwisko, wymagane, pole edycji' itp. Pole email używa type='email'. Stan focusu jest wyraźnie widoczny.",
+    "actual": "Bug 1 [MAJOR]: Brak elementu <label> na żadnym z pięciu pól inputa. Obecny jest tylko tekst placeholder — znika gdy użytkownik zaczyna pisać i nigdy nie jest ogłaszany przez screen readery jako nazwa pola.\n\nBug 2 [MAJOR]: Pole email używa type='text' zamiast type='email'. Użytkownicy mobile dostają standardową klawiaturę bez klawisza @. Wbudowana walidacja email przeglądarki jest wyłączona.\n\nBug 3 [MAJOR]: input:focus { outline: none; border-color: #ccc } — wskaźnik focusu jest całkowicie niewidoczny. Użytkownicy klawiatury nie mogą stwierdzić które pole jest aktywne.\n\nBug 4 [MINOR]: Pole hasła ma autocomplete='off', co uniemożliwia menedżerom haseł uzupełnianie danych logowania."
+  }
+}

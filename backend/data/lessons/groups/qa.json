@@ -70,5 +70,14 @@
     "desc_pl": "Load testing, OWASP Top 10 i błędy, które kosztują miliony.",
     "difficulty": "Advanced",
     "access_tier": "free"
+  },
+  {
+    "order": 9,
+    "title_en": "UI Component Testing",
+    "title_pl": "Testowanie Komponentów UI",
+    "desc_en": "How to test every standard UI building block — buttons, inputs, modals, tables and beyond.",
+    "desc_pl": "Jak testować każdy standardowy komponent interfejsu — przyciski, pola, modale, tabele i nie tylko.",
+    "difficulty": "Intermediate",
+    "access_tier": "free"
   }
 ]

@@ -230,7 +230,7 @@
         },
         "36": {
           "title": "Component: Button (States & Focus)",
-          "status": "Coming Soon",
+          "status": "published",
           "difficulty": "Intermediate",
           "progress": 0
         },
@@ -320,7 +320,7 @@
         },
         "51": {
           "title": "Component: Form Validation",
-          "status": "Coming Soon",
+          "status": "published",
           "difficulty": "Intermediate",
           "progress": 0
         },
@@ -362,7 +362,7 @@
         },
         "58": {
           "title": "Component: Modal & Dialog",
-          "status": "Coming Soon",
+          "status": "published",
           "difficulty": "Advanced",
           "progress": 0
         },
@@ -434,7 +434,7 @@
         },
         "70": {
           "title": "Component: Select",
-          "status": "Coming Soon",
+          "status": "published",
           "difficulty": "Intermediate",
           "progress": 0
         },

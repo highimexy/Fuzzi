@@ -1,0 +1,17 @@
+{
+  "type": "bug_hunt",
+  "buggy_html": "<!DOCTYPE html>\n<html lang='en'>\n<head>\n<title>Account Registration</title>\n<style>\n  body { font-family: sans-serif; padding: 24px; background: #f5f5f5; }\n  .card { background: #fff; padding: 28px; max-width: 400px; box-shadow: 0 2px 8px rgba(0,0,0,.1); position: relative; }\n  h2 { margin: 0 0 20px; font-size: 22px; }\n  .field { margin-bottom: 16px; }\n  label { display: block; margin-bottom: 4px; font-size: 14px; color: #333; }\n  input { width: 100%; padding: 9px; border: 1px solid #ccc; font-size: 14px; box-sizing: border-box; }\n  .btn-primary { display: inline-block; background: #1976d2; color: #1976d2; padding: 12px 24px; font-size: 15px; border-radius: 3px; cursor: pointer; user-select: none; }\n  .btn-secondary { background: #fff; color: #d0d0d0; padding: 11px 22px; font-size: 15px; border: 1px solid #e8e8e8; border-radius: 3px; cursor: pointer; }\n  .close-btn { position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 20px; cursor: pointer; color: #888; }\n  .actions { display: flex; gap: 12px; margin-top: 24px; }\n</style>\n</head>\n<body>\n<div class='card'>\n  <button class='close-btn'>&#x2715;</button>\n  <h2>Create your account</h2>\n  <div class='field'>\n    <label for='name'>Full name</label>\n    <input type='text' id='name' placeholder='Jane Smith'>\n  </div>\n  <div class='field'>\n    <label for='email'>Email address</label>\n    <input type='email' id='email' placeholder='jane@example.com'>\n  </div>\n  <div class='actions'>\n    <div class='btn-primary'>Create Account</div>\n    <button class='btn-secondary'>Cancel</button>\n  </div>\n</div>\n</body>\n</html>",
+  "spec": "The registration form must be fully operable via keyboard and accessible to screen reader users. The primary 'Create Account' action must be reachable and activatable with Tab + Enter/Space. All buttons must have descriptive accessible names. Text must meet WCAG 2.1 AA contrast ratio of 4.5:1.",
+  "correct_severity": "critical",
+  "severity_reason": "The primary action 'Create Account' is a <div>, not a <button> — it is completely inaccessible by keyboard. Keyboard users have no way to submit the registration form, which blocks the core user flow entirely.",
+  "red_herrings": [
+    "The form fields use both label and placeholder — this is correct; placeholder is supplementary",
+    "Inline CSS styling on the card — a code style issue, not an accessibility or functional bug"
+  ],
+  "model_report": {
+    "title": "Primary CTA inaccessible via keyboard — <div> used instead of <button>",
+    "steps": "1. Open the page\n2. Press Tab to navigate through interactive elements\n3. Observe which elements receive focus\n4. Attempt to activate 'Create Account' using Enter or Space",
+    "expected": "Tab order includes the 'Create Account' button; pressing Enter or Space while focused on it triggers account creation",
+    "actual": "Bug 1 [CRITICAL]: 'Create Account' is a <div class='btn-primary'> — not a native button or any interactive element. It is skipped entirely by Tab navigation. Keyboard users cannot register.\n\nBug 2 [MAJOR]: The close button &#x2715; is a <button> but has no aria-label. Screen readers announce 'button' with no context about its purpose.\n\nBug 3 [MAJOR]: 'Cancel' button has text colour #d0d0d0 on white background — contrast ratio ≈ 1.6:1 (required: 4.5:1). The button label is effectively invisible for users with low vision."
+  }
+}
