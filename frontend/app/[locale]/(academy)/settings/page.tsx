@@ -1,7 +1,8 @@
 'use client'
 
-import { FiMail, FiShield, FiBell } from 'react-icons/fi'
+import { FiMail, FiShield, FiBell, FiMessageSquare } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
+import { MyDiscussPosts } from './_components/MyDiscussPosts'
 
 export default function SettingsPage() {
   return (
@@ -71,6 +72,14 @@ export default function SettingsPage() {
                 <input type="checkbox" defaultChecked className="h-5 w-5 accent-yellow-500" />
               </label>
             </div>
+          </section>
+
+          {/* MY DISCUSS POSTS */}
+          <section className="border-foreground/10 bg-background border p-8">
+            <h2 className="border-foreground/5 mb-6 flex items-center gap-2 border-b pb-4 font-serif text-xl font-bold uppercase">
+              <FiMessageSquare className="text-foreground/50" /> My Discuss Posts
+            </h2>
+            <MyDiscussPosts />
           </section>
 
           {/* DANGER ZONE */}
