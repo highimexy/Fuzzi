@@ -10,6 +10,7 @@ import (
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/discuss"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
+	"github.com/highimexy/it-shit/backend/internal/users"
 	"github.com/highimexy/it-shit/backend/internal/market"
 	"github.com/highimexy/it-shit/backend/internal/quest"
 	"github.com/highimexy/it-shit/backend/internal/twitter"
@@ -51,20 +52,19 @@ func main() {
 	// PUBLIC
 	v1 := r.Group("/api/v1")
 	{
-    v1.GET("/tracks/:track/groups", lessons.TrackHandler)
-    v1.GET("/groups/:groupId", lessons.GroupHandler)
-    v1.GET("/lessons", lessons.ListHandler)
-    v1.GET("/lessons/:id", lessons.GetHandler)
+		v1.GET("/tracks/:track/groups", lessons.TrackHandler)
+		v1.GET("/groups/:groupId", lessons.GroupHandler)
+		v1.GET("/lessons", lessons.ListHandler)
+		v1.GET("/lessons/:id", lessons.GetHandler)
 
-    v1.POST("/auth/otp/start", auth.StartOTPHandler)
-    v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
-    v1.POST("/auth/google/callback", auth.GoogleCallbackHandler)
+		v1.POST("/auth/otp/start", auth.StartOTPHandler)
+		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
+		v1.POST("/auth/google/callback", auth.GoogleCallbackHandler)
 
-    v1.GET("/quest/daily", quest.GetDailyQuestHandler)
-    v1.GET("/quests", quest.ListQuestsHandler)
+		v1.GET("/quest/daily", quest.GetDailyQuestHandler)
+		v1.GET("/quests", quest.ListQuestsHandler)
 
-    v1.GET("/discuss/posts", discuss.ListHandler)
-    v1.GET("/discuss/posts/:id", discuss.GetHandler)
+		v1.GET("/users/:id", users.GetPublicProfileHandler)
 	}
 
 	// PROTECTED
@@ -81,14 +81,24 @@ func main() {
 		protected.GET("/quest/:id/result", quest.GetQuestResultHandler)
 
 		protected.POST("/discuss/posts", discuss.CreateHandler)
+		protected.PUT("/discuss/posts/:id", discuss.UpdateHandler)
+		protected.DELETE("/discuss/posts/:id", discuss.DeleteHandler)
+		protected.POST("/discuss/posts/:id/vote", discuss.VoteHandler)
+		protected.POST("/discuss/posts/:id/comments", discuss.CreateCommentHandler)
+		protected.DELETE("/discuss/comments/:commentId", discuss.DeleteCommentHandler)
+		protected.GET("/discuss/my-posts", discuss.ListMyPostsHandler)
 	}
 
-	// SEMI-PROTECTED — optional auth (guests allowed, logged-in users get full tracking)
+	// SEMI-PROTECTED — optional auth (guests see data, logged-in users get has_voted etc.)
 	semi := r.Group("/api/v1")
 	semi.Use(auth.OptionalToken())
 	{
 		semi.POST("/quest/:id/submit", quest.SubmitQuestHandler)
 		semi.GET("/groups/:groupId/completed-lessons", lessons.GroupCompletedLessonsHandler)
+
+		semi.GET("/discuss/posts", discuss.ListHandler)
+		semi.GET("/discuss/posts/:id", discuss.GetHandler)
+		semi.GET("/discuss/posts/:id/comments", discuss.ListCommentsHandler)
 	}
 
 	port := ":8080"
