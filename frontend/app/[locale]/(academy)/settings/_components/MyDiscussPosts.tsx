@@ -7,15 +7,19 @@ import { fetchMyPosts, deletePost, getCategoryLabel, type DiscussPost } from '@/
 import { AcademyDiscussCreateModal } from '../../_components/AcademyDiscussCreateModal'
 import { useUserStore } from '@/store/userStore'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
-
-function formatDate(iso: string): string {
-  const d = new Date(iso)
-  return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' })
-}
+import { useTranslations, useLocale } from 'next-intl'
 
 export function MyDiscussPosts() {
+  const t = useTranslations('Discuss')
+  const locale = useLocale()
   const token = useUserStore((s) => s.token)
   const { toast } = useToast()
+
+  function formatDate(iso: string) {
+    return new Date(iso).toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-US', {
+      day: 'numeric', month: 'short', year: 'numeric',
+    })
+  }
   const [posts, setPosts] = useState<DiscussPost[]>([])
   const [loading, setLoading] = useState(false)
   const [editPost, setEditPost] = useState<DiscussPost | null>(null)
@@ -35,9 +39,9 @@ export function MyDiscussPosts() {
     try {
       await deletePost(token, id)
       setPosts((prev) => prev.filter((p) => p.id !== id))
-      toast({ variant: 'success', title: 'Post usunięty.' })
+      toast({ variant: 'success', title: t('postDeleted') })
     } catch (err) {
-      toast({ variant: 'error', title: err instanceof Error ? err.message : 'Błąd serwera' })
+      toast({ variant: 'error', title: err instanceof Error ? err.message : t('serverError') })
     } finally {
       setConfirmDeleteId(null)
     }
@@ -48,12 +52,12 @@ export function MyDiscussPosts() {
   return (
     <>
       <div className="space-y-4">
-        {loading && <p className="text-foreground/40 text-sm">Ładowanie postów...</p>}
+        {loading && <p className="text-foreground/40 text-sm">{t('myPosts.loading')}</p>}
         {!loading && posts.length === 0 && (
           <p className="text-foreground/40 text-sm">
-            Nie masz jeszcze żadnych postów.{' '}
+            {t('myPosts.empty')}{' '}
             <Link href="/discuss" className="text-accent hover:underline">
-              Dodaj pierwszy!
+              {t('myPosts.addFirst')}
             </Link>
           </p>
         )}
@@ -91,7 +95,7 @@ export function MyDiscussPosts() {
                   onClick={() => setEditPost(post)}
                   className="text-foreground/40 hover:text-foreground flex items-center gap-1 text-xs transition-colors"
                 >
-                  <FiEdit3 /> Edytuj
+                  <FiEdit3 /> {t('myPosts.edit')}
                 </button>
                 {confirmDeleteId === post.id ? (
                   <span className="flex items-center gap-2 text-xs">
@@ -99,13 +103,13 @@ export function MyDiscussPosts() {
                       onClick={() => handleDelete(post.id)}
                       className="font-bold text-red-400 hover:text-red-300"
                     >
-                      Tak
+                      {t('myPosts.confirmYes')}
                     </button>
                     <button
                       onClick={() => setConfirmDeleteId(null)}
                       className="text-foreground/40 hover:text-foreground"
                     >
-                      Nie
+                      {t('myPosts.confirmNo')}
                     </button>
                   </span>
                 ) : (
@@ -113,7 +117,7 @@ export function MyDiscussPosts() {
                     onClick={() => setConfirmDeleteId(post.id)}
                     className="flex items-center gap-1 text-xs text-red-400/60 transition-colors hover:text-red-400"
                   >
-                    <FiTrash2 /> Usuń
+                    <FiTrash2 /> {t('myPosts.delete')}
                   </button>
                 )}
               </div>
