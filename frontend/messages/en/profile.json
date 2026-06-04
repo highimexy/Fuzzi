@@ -1,0 +1,47 @@
+{
+  "Profile": {
+    "loading": "Loading profile...",
+    "notFound": "Profile not found.",
+    "anon": "Anonymous",
+    "level": "Level",
+    "xp": "XP",
+    "privateUntilLevel": "Your profile is private until you reach level 10",
+    "aboutMe": "About me",
+    "bioPlaceholder": "A little something about me...",
+    "noBio": "No bio yet.",
+    "save": "Save",
+    "cancel": "Cancel",
+    "backToDiscuss": "Discuss",
+    "posts": "Posts",
+    "noPosts": "No posts yet.",
+    "socials": {
+      "location": "Location",
+      "website": "Personal site",
+      "twitter": "Twitter handle",
+      "linkedin": "LinkedIn URL",
+      "github": "GitHub handle"
+    },
+    "stats": {
+      "lessonsSolved": "Lessons solved",
+      "leaderboardRank": "Leaderboard rank",
+      "joined": "Joined",
+      "karma": "Karma",
+      "discussPosts": "Discuss posts",
+      "currentStreak": "Current streak",
+      "days": "days"
+    },
+    "avatar": {
+      "alt": "Profile avatar",
+      "updated": "Avatar updated",
+      "uploadFailed": "Upload failed",
+      "tooLarge": "File too large",
+      "tooLargeDesc": "Max 2MB",
+      "invalidType": "Invalid file type",
+      "invalidTypeDesc": "Only JPG and PNG allowed"
+    },
+    "field": {
+      "saved": "Saved",
+      "saveFailed": "Failed to save"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "Login": {
+    "googleButton": "Continue with Google",
+    "or": "or",
+    "emailPlaceholder": "Enter your email",
+    "sendFailed": "Failed to send code. Please try again.",
+    "networkError": "Network error. Check connection.",
+    "sending": "Sending...",
+    "continueEmail": "Continue with email",
+    "codeSentTo": "Code sent to",
+    "codePlaceholder": "Enter 6-digit code",
+    "invalidCode": "Invalid or expired code!",
+    "verifying": "Verifying...",
+    "verifyEnter": "Verify & Enter",
+    "changeEmail": "Change email",
+    "resendIn": "Resend in {n}s",
+    "resendCode": "Resend code",
+    "privacyNote": "By continuing, you agree to",
+    "privacyLink": "Privacy Policy",
+    "callbackLoading": "Logging in...",
+    "googleInvalidData": "Invalid Google login data",
+    "googleLoginFailed": "Failed to log in with Google",
+    "serverConnectionError": "Server connection error"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "Academy": {
+    "nav": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "achievements": "Achievements",
+      "recruitFriend": "Recruit a friend",
+      "bookmarks": "Bookmarks",
+      "merch": "Merch Shop",
+      "redeem": "Redeem",
+      "premium": "Premium",
+      "lessons": "Lessons",
+      "ranking": "Ranking",
+      "discuss": "Discuss",
+      "store": "Store",
+      "toggleMenu": "Toggle Mobile Menu",
+      "theme": "Theme",
+      "language": "Language"
+    },
+    "sidebar": {
+      "library": "Library",
+      "quest": "Quest",
+      "questBadge": "New",
+      "explore": "Explore",
+      "roadMap": "Road Map",
+      "stocks": "Stocks",
+      "signInPrompt": "Sign in to view lists.",
+      "signIn": "Sign in"
+    },
+    "auth": {
+      "signIn": "Sign In",
+      "logout": "Logout"
+    },
+    "xp": {
+      "level": "Level",
+      "totalXp": "total xp"
+    },
+    "footer": {
+      "copyright": "Copyright © {year} Fuzzi.",
+      "downloadApp": "Download App",
+      "helpCenter": "Help Center",
+      "terms": "Terms",
+      "privacy": "Privacy Policy"
+    },
+    "roadmap": {
+      "noData": "No data.",
+      "freeResources": "Free Resources & Prompts",
+      "copied": "Copied to clipboard!"
+    }
+  }
+}

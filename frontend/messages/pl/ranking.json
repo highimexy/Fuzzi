@@ -1,0 +1,11 @@
+{
+  "Ranking": {
+    "title": "Ranking",
+    "subtitle": "Najlepsi gracze w tym sezonie",
+    "loading": "Ładowanie...",
+    "empty": "Brak danych rankingowych.",
+    "lessons": "lekcji",
+    "loadMore": "Załaduj więcej rekrutów",
+    "anon": "Anonim"
+  }
+}

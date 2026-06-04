@@ -1,0 +1,51 @@
+{
+  "Academy": {
+    "nav": {
+      "profile": "Profil",
+      "settings": "Ustawienia",
+      "achievements": "Osiągnięcia",
+      "recruitFriend": "Zaproś znajomego",
+      "bookmarks": "Zakładki",
+      "merch": "Sklep z gadżetami",
+      "redeem": "Realizuj kod",
+      "premium": "Premium",
+      "lessons": "Lekcje",
+      "ranking": "Ranking",
+      "discuss": "Discuss",
+      "store": "Sklep",
+      "toggleMenu": "Przełącz menu mobilne",
+      "theme": "Motyw",
+      "language": "Język"
+    },
+    "sidebar": {
+      "library": "Biblioteka",
+      "quest": "Quest",
+      "questBadge": "Nowe",
+      "explore": "Odkryj",
+      "roadMap": "Mapa drogi",
+      "stocks": "Giełda",
+      "signInPrompt": "Zaloguj się, aby zobaczyć listy.",
+      "signIn": "Zaloguj się"
+    },
+    "auth": {
+      "signIn": "Zaloguj się",
+      "logout": "Wyloguj"
+    },
+    "xp": {
+      "level": "Poziom",
+      "totalXp": "łączne XP"
+    },
+    "footer": {
+      "copyright": "Copyright © {year} Fuzzi.",
+      "downloadApp": "Pobierz aplikację",
+      "helpCenter": "Centrum pomocy",
+      "terms": "Regulamin",
+      "privacy": "Polityka prywatności"
+    },
+    "roadmap": {
+      "noData": "Brak danych.",
+      "freeResources": "Darmowe zasoby i prompty",
+      "copied": "Skopiowano do schowka!"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "Settings": {
+    "identity": {
+      "title": "Tożsamość konta",
+      "displayName": "Nazwa wyświetlana",
+      "email": "Adres e-mail",
+      "emailNote": "Adres e-mail nie może być zmieniony bezpośrednio. Skontaktuj się z HQ.",
+      "updateButton": "Zaktualizuj tożsamość",
+      "saving": "Zapisywanie..."
+    },
+    "notifications": {
+      "title": "Komunikacja i alerty",
+      "weeklyTitle": "Tygodniowy raport",
+      "weeklyDesc": "Otrzymuj podsumowanie swojej aktywności i nowych lekcji.",
+      "repliesTitle": "Wzmianki i odpowiedzi",
+      "repliesDesc": "Otrzymuj powiadomienia gdy ktoś odpowie Ci w Discuss.",
+      "comingSoon": "Preferencje powiadomień wkrótce."
+    },
+    "myPosts": {
+      "title": "Moje posty w Discuss"
+    },
+    "dangerZone": {
+      "title": "Strefa niebezpieczna",
+      "description": "Trwale usuń swoje dane i cofnij dostęp do Frontieru. Tej operacji nie można cofnąć.",
+      "button": "Dezaktywuj konto",
+      "modal": {
+        "title": "Potwierdź usunięcie",
+        "description": "To trwale usunie Twoje konto i wszystkie powiązane dane. Wpisz DELETE aby potwierdzić.",
+        "placeholder": "Wpisz DELETE",
+        "confirm": "Usuń konto",
+        "deleting": "Usuwanie...",
+        "cancel": "Anuluj"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "Login": {
+    "googleButton": "Kontynuuj z Google",
+    "or": "lub",
+    "emailPlaceholder": "Wpisz swój e-mail",
+    "sendFailed": "Nie udało się wysłać kodu. Spróbuj ponownie.",
+    "networkError": "Błąd sieci. Sprawdź połączenie.",
+    "sending": "Wysyłanie...",
+    "continueEmail": "Kontynuuj z e-mailem",
+    "codeSentTo": "Kod wysłany na",
+    "codePlaceholder": "Wpisz 6-cyfrowy kod",
+    "invalidCode": "Nieprawidłowy lub wygasły kod!",
+    "verifying": "Weryfikowanie...",
+    "verifyEnter": "Zweryfikuj i wejdź",
+    "changeEmail": "Zmień e-mail",
+    "resendIn": "Wyślij ponownie za {n}s",
+    "resendCode": "Wyślij kod ponownie",
+    "privacyNote": "Kontynuując, akceptujesz",
+    "privacyLink": "Politykę prywatności",
+    "callbackLoading": "Logowanie...",
+    "googleInvalidData": "Nieprawidłowe dane logowania Google",
+    "googleLoginFailed": "Nie udało się zalogować przez Google",
+    "serverConnectionError": "Błąd połączenia z serwerem"
+  }
+}

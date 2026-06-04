@@ -28,6 +28,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     notificationBanner,
     globe,
     brokenUiSection,
+    profile,
+    settings,
+    ranking,
+    discuss,
+    academy,
+    login,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/problemSection.json`, { with: { type: 'json' } }),
@@ -50,6 +56,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/notificationBanner.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/globe.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/brokenUiSection.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/profile.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/settings.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/ranking.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/discuss.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/academy.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/login.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -74,6 +86,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...notificationBanner.default,
     ...globe.default,
     ...brokenUiSection.default,
+    ...profile.default,
+    ...settings.default,
+    ...ranking.default,
+    ...discuss.default,
+    ...academy.default,
+    ...login.default,
   }
 
   return {

@@ -1,0 +1,47 @@
+{
+  "Profile": {
+    "loading": "Ładowanie profilu...",
+    "notFound": "Profil nie istnieje.",
+    "anon": "Anonim",
+    "level": "Poziom",
+    "xp": "XP",
+    "privateUntilLevel": "Twój profil jest prywatny do osiągnięcia poziomu 10",
+    "aboutMe": "O mnie",
+    "bioPlaceholder": "Napisz coś o sobie...",
+    "noBio": "Brak opisu.",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "backToDiscuss": "Discuss",
+    "posts": "Posty",
+    "noPosts": "Brak postów.",
+    "socials": {
+      "location": "Lokalizacja",
+      "website": "Strona osobista",
+      "twitter": "Handle Twitter",
+      "linkedin": "URL LinkedIn",
+      "github": "Handle GitHub"
+    },
+    "stats": {
+      "lessonsSolved": "Rozwiązane lekcje",
+      "leaderboardRank": "Pozycja w rankingu",
+      "joined": "Dołączył/a",
+      "karma": "Karma",
+      "discussPosts": "Posty w Discuss",
+      "currentStreak": "Aktualny streak",
+      "days": "dni"
+    },
+    "avatar": {
+      "alt": "Zdjęcie profilowe",
+      "updated": "Avatar zaktualizowany",
+      "uploadFailed": "Przesyłanie nie powiodło się",
+      "tooLarge": "Plik za duży",
+      "tooLargeDesc": "Maks. 2MB",
+      "invalidType": "Nieprawidłowy format",
+      "invalidTypeDesc": "Dozwolone tylko JPG i PNG"
+    },
+    "field": {
+      "saved": "Zapisano",
+      "saveFailed": "Nie udało się zapisać"
+    }
+  }
+}

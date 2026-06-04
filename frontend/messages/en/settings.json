@@ -1,0 +1,36 @@
+{
+  "Settings": {
+    "identity": {
+      "title": "Account Identity",
+      "displayName": "Display Name",
+      "email": "Email Address",
+      "emailNote": "Email cannot be changed directly. Contact HQ.",
+      "updateButton": "Update Identity",
+      "saving": "Saving..."
+    },
+    "notifications": {
+      "title": "Comms & Alerts",
+      "weeklyTitle": "Weekly Debrief",
+      "weeklyDesc": "Receive a summary of your activity and new lessons.",
+      "repliesTitle": "Mentions & Replies",
+      "repliesDesc": "Get notified when someone replies to you in Discuss.",
+      "comingSoon": "Notification preferences coming soon."
+    },
+    "myPosts": {
+      "title": "My Discuss Posts"
+    },
+    "dangerZone": {
+      "title": "Danger Zone",
+      "description": "Permanently erase your data and revoke your access to the Frontier. This action cannot be undone.",
+      "button": "Deactivate Account",
+      "modal": {
+        "title": "Confirm deletion",
+        "description": "This will permanently delete your account and all associated data. Type DELETE to confirm.",
+        "placeholder": "Type DELETE",
+        "confirm": "Delete Account",
+        "deleting": "Deleting...",
+        "cancel": "Cancel"
+      }
+    }
+  }
+}

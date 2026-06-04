@@ -1,0 +1,11 @@
+{
+  "Ranking": {
+    "title": "Leaderboard",
+    "subtitle": "Top rated players this season",
+    "loading": "Loading...",
+    "empty": "No ranking data yet.",
+    "lessons": "lessons",
+    "loadMore": "Load More Recruits",
+    "anon": "Anon"
+  }
+}
