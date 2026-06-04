@@ -5,8 +5,10 @@ import { useRouter } from 'next/navigation'
 import { useUserStore } from '@/store/userStore'
 import { MorphRing } from '../../_components/MorphRing'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
+import { useTranslations } from 'next-intl'
 
 export default function AuthCallbackPage() {
+  const t = useTranslations('Login')
   const router = useRouter()
   const login = useUserStore((s) => s.login)
   const { toast } = useToast()
@@ -19,7 +21,7 @@ export default function AuthCallbackPage() {
     const codeVerifier = sessionStorage.getItem('pkce_code_verifier')
 
     if (!code || !codeVerifier || returnedState !== storedState) {
-      toast({ variant: 'error', title: 'Nieprawidłowe dane logowania Google' })
+      toast({ variant: 'error', title: t('googleInvalidData') })
       router.replace('/login')
       return
     }
@@ -42,19 +44,19 @@ export default function AuthCallbackPage() {
           await login(data.access_token)
           router.replace('/lessons')
         } else {
-          toast({ variant: 'error', title: 'Nie udało się zalogować przez Google' })
+          toast({ variant: 'error', title: t('googleLoginFailed') })
           router.replace('/login')
         }
       })
       .catch(() => {
-        toast({ variant: 'error', title: 'Błąd połączenia z serwerem' })
+        toast({ variant: 'error', title: t('serverConnectionError') })
         router.replace('/login')
       })
   }, [login, router, toast])
 
   return (
     <div className="flex h-screen items-center justify-center font-sans">
-      <MorphRing size="lg" label="Logging in..." />
+      <MorphRing size="lg" label={t('callbackLoading')} />
     </div>
   )
 }

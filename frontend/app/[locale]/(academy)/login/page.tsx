@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 import { MorphRing } from '../_components/MorphRing'
 import { FcGoogle } from 'react-icons/fc'
+import { useTranslations } from 'next-intl'
 import { useUserStore } from '@/store/userStore'
 
 function generateCodeVerifier(): string {
@@ -26,6 +27,7 @@ async function generateCodeChallenge(verifier: string): Promise<string> {
 }
 
 export default function LoginPage() {
+  const t = useTranslations('Login')
   const router = useRouter()
   const login = useUserStore((s) => s.login)
   const [email, setEmail] = useState('')
@@ -58,10 +60,10 @@ export default function LoginPage() {
         setResendTimer(30)
         setCode('')
       } else {
-        setError('Failed to send code. Please try again.')
+        setError(t('sendFailed'))
       }
     } catch {
-      setError('Network error. Check connection.')
+      setError(t('networkError'))
     } finally {
       setLoading(false)
     }
@@ -82,10 +84,10 @@ export default function LoginPage() {
         await login(data.access_token)
         router.push('/lessons')
       } else {
-        setError('Invalid or expired code!')
+        setError(t('invalidCode'))
       }
     } catch {
-      setError('Network error. Check connection.')
+      setError(t('networkError'))
     } finally {
       setLoading(false)
     }
@@ -156,17 +158,17 @@ export default function LoginPage() {
             onClick={handleGoogleLogin}
             className="flex w-72 items-center justify-center gap-2 border p-3 font-serif uppercase transition-colors hover:bg-black/5"
           >
-            <FcGoogle className="text-xl" /> Continue with Google
+            <FcGoogle className="text-xl" /> {t('googleButton')}
           </button>
 
-          <p className="text-foreground/60 font-serif text-sm">or</p>
+          <p className="text-foreground/60 font-serif text-sm">{t('or')}</p>
 
           <div className="flex w-72 flex-col gap-3">
             {step === 'email' ? (
               <>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={loading}
@@ -179,18 +181,18 @@ export default function LoginPage() {
                   disabled={loading || !email}
                   className="w-full border bg-accent/10 p-3 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20 disabled:opacity-50"
                 >
-                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> Sending...</span> : 'Continue with email'}
+                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> {t('sending')}</span> : t('continueEmail')}
                 </button>
               </>
             ) : (
               <>
                 <p className="text-foreground/80 text-center font-sans text-sm">
-                  Code sent to <strong>{email}</strong>
+                  {t('codeSentTo')} <strong>{email}</strong>
                 </p>
                 <input
                   type="tel"
                   inputMode="numeric"
-                  placeholder="Enter 6-digit code"
+                  placeholder={t('codePlaceholder')}
                   value={code}
                   onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
                   disabled={loading}
@@ -204,7 +206,7 @@ export default function LoginPage() {
                   disabled={loading || code.length < 6}
                   className="w-full border bg-accent p-3 font-sans font-bold text-black uppercase transition-colors hover:bg-accent disabled:opacity-50"
                 >
-                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> Verifying...</span> : 'Verify & Enter'}
+                  {loading ? <span className="flex items-center justify-center gap-2"><MorphRing size="sm" /> {t('verifying')}</span> : t('verifyEnter')}
                 </button>
 
                 <div className="text-foreground/60 mt-2 flex items-center justify-between font-sans text-sm">
@@ -212,14 +214,14 @@ export default function LoginPage() {
                     onClick={handleBackToEmail}
                     className="hover:text-foreground underline transition-colors"
                   >
-                    Change email
+                    {t('changeEmail')}
                   </button>
                   <button
                     onClick={handleSendOTP}
                     disabled={resendTimer > 0 || loading}
                     className="hover:text-foreground underline transition-colors disabled:no-underline disabled:opacity-50"
                   >
-                    {resendTimer > 0 ? `Resend in ${resendTimer}s` : 'Resend code'}
+                    {resendTimer > 0 ? t('resendIn', { n: resendTimer }) : t('resendCode')}
                   </button>
                 </div>
               </>
@@ -230,9 +232,9 @@ export default function LoginPage() {
         {/* Footer */}
         <div className="text-foreground/70 mt-8">
           <p className="text-center font-sans text-sm">
-            By continuing, you agree to <span className="font-serif uppercase">Frontier's</span>
+            {t('privacyNote')} <span className="font-serif uppercase">Frontier's</span>
             <a href="#" className="hover:text-foreground ml-1 underline">
-              Privacy Policy
+              {t('privacyLink')}
             </a>
             .
           </p>
