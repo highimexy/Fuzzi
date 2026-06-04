@@ -31,6 +31,7 @@ export interface UserProfile {
   auth0_id: string
   email: string
   name: string
+  avatar_url?: string
 }
 
 interface StatsUpdate {
@@ -56,6 +57,7 @@ interface UserState {
   setStats: (stats: StatsUpdate) => void
   addXP: (xp: number) => void
   refreshStats: () => Promise<void>
+  refreshUser: () => Promise<void>
 }
 
 export const useUserStore = create<UserState>()(
@@ -124,6 +126,18 @@ export const useUserStore = create<UserState>()(
       },
 
       addXP: (xp) => set((s) => ({ totalXP: s.totalXP + xp })),
+
+      refreshUser: async () => {
+        const token = get().token
+        if (!token) return
+        const res = await fetch(`${API}/api/v1/sync-user`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        if (res.ok) {
+          const user = await res.json()
+          set({ user })
+        }
+      },
 
       refreshStats: async () => {
         const token = get().token
