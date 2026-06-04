@@ -3,17 +3,19 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FiBook, FiTarget, FiCompass, FiMap, FiUser, FiTrendingUp } from 'react-icons/fi'
-
-const navItems = [
-  { href: '/lessons', label: 'Library', icon: FiBook },
-  { href: '/quest', label: 'Quest', icon: FiTarget, badge: 'New' },
-  { href: '/explore', label: 'Explore', icon: FiCompass },
-  { href: '/road-map', label: 'Road Map', icon: FiMap },
-  { href: '/stocks', label: 'Stocks', icon: FiTrendingUp },
-]
+import { useTranslations } from 'next-intl'
 
 export function AcademySidebar() {
+  const t = useTranslations('Academy')
   const pathname = usePathname()
+
+  const navItems = [
+    { href: '/lessons', label: t('sidebar.library'), icon: FiBook },
+    { href: '/quest', label: t('sidebar.quest'), icon: FiTarget, badge: t('sidebar.questBadge') },
+    { href: '/explore', label: t('sidebar.explore'), icon: FiCompass },
+    { href: '/road-map', label: t('sidebar.roadMap'), icon: FiMap },
+    { href: '/stocks', label: t('sidebar.stocks'), icon: FiTrendingUp },
+  ]
 
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
@@ -65,9 +67,9 @@ export function AcademySidebar() {
 
       {/* KARTA LOGOWANIA / PROFILU */}
       <div className="border-foreground/10 w-full border-t p-5 text-center">
-        <p className="mb-4 font-sans text-xs leading-relaxed opacity-60">Sign in to view lists.</p>
+        <p className="mb-4 font-sans text-xs leading-relaxed opacity-60">{t('sidebar.signInPrompt')}</p>
         <button className="bg-foreground text-background flex h-10 w-full items-center justify-center gap-2 rounded-full py-2 text-xs font-bold transition-transform hover:scale-105">
-          <FiUser /> Sign in
+          <FiUser /> {t('sidebar.signIn')}
         </button>
       </div>
     </aside>

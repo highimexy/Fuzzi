@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { FiFileText, FiVideo, FiActivity, FiCopy, FiCheck } from 'react-icons/fi'
+import { useTranslations } from 'next-intl'
 import { ROADMAP_DATA } from './AcademyRoadMapData'
 
 const IconMap = {
@@ -13,11 +14,12 @@ const IconMap = {
 }
 
 export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
+  const t = useTranslations('Academy')
   const content = ROADMAP_DATA[topicTitle]
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
 
   if (!content) {
-    return <div className="mt-10 text-center text-sm opacity-50">Brak danych.</div>
+    return <div className="mt-10 text-center text-sm opacity-50">{t('roadmap.noData')}</div>
   }
 
   const handleCopy = (text: string, idx: number) => {
@@ -44,7 +46,7 @@ export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
       {content.resources.length > 0 && (
         <div className="border-foreground/10 border-t pt-6">
           <h4 className="mb-4 font-sans text-xs font-bold tracking-widest text-accent uppercase">
-            Free Resources & Prompts
+            {t('roadmap.freeResources')}
           </h4>
           <div className="flex flex-col gap-3">
             {content.resources.map((res, idx) => {
@@ -62,7 +64,7 @@ export function TopicSidebarContent({ topicTitle }: { topicTitle: string }) {
                       className={`mt-0.5 transition-colors ${isCopied ? 'text-primary' : 'text-foreground/50 group-hover:text-accent'}`}
                     />
                     <span className="text-foreground/80 group-hover:text-foreground font-sans text-sm font-semibold transition-colors">
-                      {isCopied ? 'Copied to clipboard!' : res.title}
+                      {isCopied ? t('roadmap.copied') : res.title}
                     </span>
                   </button>
                 )

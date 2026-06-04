@@ -3,9 +3,11 @@
 import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { useTranslations } from 'next-intl'
 import { useUserStore, levelFromXP } from '@/store/userStore'
 
 export function ExperienceBar() {
+  const t = useTranslations('Academy')
   const totalXP = useUserStore((s) => s.totalXP)
   const user = useUserStore((s) => s.user)
   const [showPopover, setShowPopover] = useState(false)
@@ -39,9 +41,9 @@ export function ExperienceBar() {
   return (
     <div className="flex items-center" ref={containerRef}>
       <div className="hidden flex-col pl-2 lg:flex">
-        <p className="font-serif leading-none">{displayName}</p>
+        <p className="max-w-28 truncate font-serif leading-none">{displayName}</p>
         <p className="text-foreground/80 font-sans text-[10px] tracking-widest uppercase">
-          Level {level} · {title}
+          {t('xp.level')} {level} · {title}
         </p>
       </div>
 
@@ -72,7 +74,7 @@ export function ExperienceBar() {
                 <span>XP</span>
               </div>
               <p className="text-foreground/50 font-sans text-[9px] tracking-widest uppercase">
-                {totalXP} total xp
+                {totalXP} {t('xp.totalXp')}
               </p>
             </div>
           </div>

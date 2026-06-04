@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { FiMenu, FiX } from 'react-icons/fi'
 import gsap from 'gsap'
+import { useTranslations } from 'next-intl'
 import { StoreDropdown } from './StoreDropdown'
 import { AcademyLanguageSwitcher } from './AcademyLanguageSwitcher'
 import AcademyThemeSwitcher from './AcademyThemeSwitcher'
@@ -13,6 +14,7 @@ import Dot from '../../global-components/dot/page'
 import { FuzziMark } from '../../global-components/logo/page'
 
 export function AcademyNavbar() {
+  const t = useTranslations('Academy')
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -22,35 +24,23 @@ export function AcademyNavbar() {
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
   const profileMenu = [
-    { label: 'Profile', href: '/profile' },
-    { label: 'Settings', href: '/settings' },
-    { label: 'Achievements', href: '/achievements' },
-    { label: 'Recruit a friend', href: '/recruit-a-friend' },
-    { label: 'Bookmarks', href: '/bookmarks' },
+    { label: t('nav.profile'), href: '/profile' },
+    { label: t('nav.settings'), href: '/settings' },
+    { label: t('nav.achievements'), href: '/achievements' },
+    { label: t('nav.recruitFriend'), href: '/recruit-a-friend' },
+    { label: t('nav.bookmarks'), href: '/bookmarks' },
   ]
 
   const storeItems = [
-    { label: 'Merch Shop', href: '/store/merch' },
-    { label: 'Redeem', href: '/store/redeem' },
-    { label: 'Premium', href: '/premium' },
+    { label: t('nav.merch'), href: '/store/merch' },
+    { label: t('nav.redeem'), href: '/store/redeem' },
+    { label: t('nav.premium'), href: '/premium' },
   ]
 
   const navLinks = [
-    {
-      href: '/lessons',
-      label: 'Lessons',
-      active: cleanPath === '/lessons' || cleanPath.startsWith('/lessons'),
-    },
-    {
-      href: '/ranking',
-      label: 'Ranking',
-      active: cleanPath.startsWith('/ranking'),
-    },
-    {
-      href: '/discuss',
-      label: 'Discuss',
-      active: cleanPath.startsWith('/discuss'),
-    },
+    { href: '/lessons', label: t('nav.lessons'), active: cleanPath === '/lessons' || cleanPath.startsWith('/lessons') },
+    { href: '/ranking', label: t('nav.ranking'), active: cleanPath.startsWith('/ranking') },
+    { href: '/discuss', label: t('nav.discuss'), active: cleanPath.startsWith('/discuss') },
   ]
 
   // BLOKADA SCROLLOWANIA GDY MENU JEST OTWARTE
@@ -140,7 +130,7 @@ export function AcademyNavbar() {
                 {link.label}
               </Link>
             ))}
-            <StoreDropdown label="Store" items={storeItems} />
+            <StoreDropdown label={t('nav.store')} items={storeItems} />
           </div>
 
           {/* PRAWA STRONA */}
@@ -156,7 +146,7 @@ export function AcademyNavbar() {
                 href="/premium"
                 className="bg-accent/10 text-accent hover:bg-accent/20 border px-3 py-1.5 font-sans font-bold uppercase transition-colors"
               >
-                Premium
+                {t('nav.premium')}
               </Link>
             </div>
 
@@ -164,7 +154,7 @@ export function AcademyNavbar() {
             <button
               onClick={() => (isMobileMenuOpen ? handleCloseMenu() : setIsMobileMenuOpen(true))}
               className="border-foreground/10 hover:bg-foreground/5 flex w-16 items-center justify-center border-l text-2xl transition-colors lg:hidden"
-              aria-label="Toggle Mobile Menu"
+              aria-label={t('nav.toggleMenu')}
             >
               {isMobileMenuOpen ? <FiX /> : <FiMenu />}
             </button>
@@ -185,7 +175,7 @@ export function AcademyNavbar() {
               {link.label}
             </Link>
           ))}
-          <StoreDropdown label="Store" items={storeItems} />
+          <StoreDropdown label={t('nav.store')} items={storeItems} />
         </div>
       </nav>
 
@@ -206,14 +196,14 @@ export function AcademyNavbar() {
             <div className="flex flex-col gap-6">
               <div className="flex items-center justify-between">
                 <span className="text-foreground/60 font-sans text-sm font-bold tracking-wider uppercase">
-                  Theme
+                  {t('nav.theme')}
                 </span>
                 <AcademyThemeSwitcher />
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="text-foreground/60 font-sans text-sm font-bold tracking-wider uppercase">
-                  Language
+                  {t('nav.language')}
                 </span>
                 <AcademyLanguageSwitcher />
               </div>

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FiUser } from 'react-icons/fi'
+import { useTranslations } from 'next-intl'
 import { ExperienceBar } from './ExperienceBar'
 import { MorphRing } from './MorphRing'
 import { useUserStore } from '@/store/userStore'
@@ -18,9 +19,14 @@ interface AuthNavMenuProps {
   items: NavMenuItem[]
 }
 
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'
+
 export function AuthNavMenu({ items }: AuthNavMenuProps) {
+  const t = useTranslations('Academy')
   const isLoggedIn = useUserStore((s) => s.isLoggedIn)
+  const user = useUserStore((s) => s.user)
   const logout = useUserStore((s) => s.logout)
+  const refreshUser = useUserStore((s) => s.refreshUser)
   const [isOpen, setIsOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [position, setPosition] = useState({ top: 0, left: 0 })
@@ -31,7 +37,8 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
 
   useEffect(() => {
     setIsMounted(true)
-  }, [])
+    if (isLoggedIn && !user?.avatar_url) refreshUser()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const updatePosition = () => {
     if (buttonRef.current) {
@@ -78,7 +85,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
         href="/login"
         className="font-sans font-bold uppercase transition-opacity hover:opacity-80"
       >
-        Sign In
+        {t('auth.signIn')}
       </Link>
     )
   }
@@ -92,7 +99,16 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
           isOpen ? 'border-foreground/50' : ''
         }`}
       >
-        <FiUser className="text-foreground text-lg" />
+        {user?.avatar_url ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`${API}${user.avatar_url}`}
+            alt=""
+            className="h-full w-full rounded-full object-cover"
+          />
+        ) : (
+          <FiUser className="text-foreground text-lg" />
+        )}
       </button>
 
       {isOpen &&
@@ -121,7 +137,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
                   className="hover:bg-foreground/5 border-foreground/5 block w-full border-t p-4 text-left font-sans text-sm text-error uppercase transition-colors"
                   role="menuitem"
                 >
-                  Logout
+                  {t('auth.logout')}
                 </button>
               </div>
             </div>
