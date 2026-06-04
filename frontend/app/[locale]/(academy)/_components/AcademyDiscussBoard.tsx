@@ -22,25 +22,29 @@ import { AcademyDiscussCreateModal } from './AcademyDiscussCreateModal'
 import { AuthorLink } from './AuthorLink'
 import { useUserStore } from '@/store/userStore'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
-
-const ALL_TABS = [
-  { slug: 'for-you', label: 'For You' },
-  ...DISCUSS_CATEGORIES,
-]
+import { useTranslations, useLocale } from 'next-intl'
 
 function formatViews(n: number): string {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}K`
   return String(n)
 }
 
-function formatDate(iso: string): string {
-  const d = new Date(iso)
-  return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' })
-}
-
 export function AcademyDiscussBoard() {
+  const t = useTranslations('Discuss')
+  const locale = useLocale()
   const token = useUserStore((s) => s.token)
   const { toast } = useToast()
+
+  const ALL_TABS = [
+    { slug: 'for-you', label: t('forYou') },
+    ...DISCUSS_CATEGORIES,
+  ]
+
+  function formatDate(iso: string) {
+    return new Date(iso).toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-US', {
+      day: 'numeric', month: 'short', year: 'numeric',
+    })
+  }
   const [posts, setPosts] = useState<DiscussPost[]>([])
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(1)
@@ -57,7 +61,7 @@ export function AcademyDiscussBoard() {
         setPosts((prev) => (append ? [...prev, ...data.posts] : data.posts))
         setTotal(data.total)
       } catch {
-        toast({ variant: 'error', title: 'Nie udało się załadować postów.' })
+        toast({ variant: 'error', title: t('loadFailed') })
       } finally {
         setLoading(false)
       }
@@ -78,7 +82,7 @@ export function AcademyDiscussBoard() {
 
   const handleVote = async (postId: string) => {
     if (!token) {
-      toast({ variant: 'error', title: 'Musisz być zalogowany, żeby głosować.' })
+      toast({ variant: 'error', title: t('mustLoginVote') })
       return
     }
     // Optimistic update
@@ -105,7 +109,7 @@ export function AcademyDiscussBoard() {
             : p,
         ),
       )
-      toast({ variant: 'error', title: 'Nie udało się zapisać głosu.' })
+      toast({ variant: 'error', title: t('voteFailed') })
     }
   }
 
@@ -140,7 +144,7 @@ export function AcademyDiscussBoard() {
             onClick={() => setIsModalOpen(true)}
           >
             <FiEdit3 className="text-base" />
-            <span className="text-xs">Create</span>
+            <span className="text-xs">{t('create')}</span>
           </button>
         </div>
 
@@ -150,20 +154,20 @@ export function AcademyDiscussBoard() {
             onClick={() => setSort('votes')}
             className={`flex cursor-pointer items-center gap-1.5 border-r border-foreground/10 pr-4 text-xs transition-colors hover:text-foreground ${sort === 'votes' ? 'text-foreground font-bold' : ''}`}
           >
-            <FiArrowUp className="text-base" /> Most Votes
+            <FiArrowUp className="text-base" /> {t('mostVotes')}
           </button>
           <button
             onClick={() => setSort('newest')}
             className={`flex cursor-pointer items-center gap-1.5 text-xs transition-colors hover:text-foreground ${sort === 'newest' ? 'text-foreground font-bold' : ''}`}
           >
-            <FiStar className="text-base" /> Newest
+            <FiStar className="text-base" /> {t('newest')}
           </button>
         </div>
 
         {/* === POST LIST === */}
         <div className="flex flex-col">
           {posts.length === 0 && !loading && (
-            <p className="text-foreground/30 py-12 text-center text-sm">Brak postów w tej kategorii.</p>
+            <p className="text-foreground/30 py-12 text-center text-sm">{t('noPosts')}</p>
           )}
           {posts.map((post) => (
             <div key={post.id} className="border-foreground/10 flex flex-col gap-2 border-b py-4">
@@ -186,7 +190,9 @@ export function AcademyDiscussBoard() {
               </Link>
 
               {/* Body preview */}
-              <p className="line-clamp-2 text-sm text-foreground/60">{post.body}</p>
+              <p className="line-clamp-2 text-sm text-foreground/60">
+                {post.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()}
+              </p>
 
               {/* Stats row */}
               <div className="text-foreground/40 mt-1 flex items-center gap-4 sm:gap-6 text-xs">
@@ -214,7 +220,7 @@ export function AcademyDiscussBoard() {
               disabled={loading}
               className="text-foreground/60 hover:text-foreground cursor-pointer text-xs font-bold uppercase tracking-widest transition-colors disabled:opacity-40"
             >
-              {loading ? 'Ładowanie...' : 'Load more'}
+              {loading ? t('loading') : t('loadMore')}
             </button>
           </div>
         )}

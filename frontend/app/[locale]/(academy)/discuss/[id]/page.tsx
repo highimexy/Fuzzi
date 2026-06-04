@@ -17,21 +17,26 @@ import {
   type DiscussComment,
 } from '@/lib/discussApi'
 import { AcademyDiscussCreateModal } from '../../_components/AcademyDiscussCreateModal'
+import { RichContent } from '../../_components/RichContent'
 import { useUserStore } from '@/store/userStore'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
-
-function formatDate(iso: string): string {
-  const d = new Date(iso)
-  return d.toLocaleDateString('pl-PL', { day: 'numeric', month: 'short', year: 'numeric' })
-}
+import { useTranslations, useLocale } from 'next-intl'
 
 export default function DiscussPostPage() {
+  const t = useTranslations('Discuss')
+  const locale = useLocale()
   const params = useParams()
   const router = useRouter()
   const id = params.id as string
   const token = useUserStore((s) => s.token)
   const user = useUserStore((s) => s.user)
   const { toast } = useToast()
+
+  function formatDate(iso: string) {
+    return new Date(iso).toLocaleDateString(locale === 'pl' ? 'pl-PL' : 'en-US', {
+      day: 'numeric', month: 'short', year: 'numeric',
+    })
+  }
 
   const [post, setPost] = useState<DiscussPost | null>(null)
   const [comments, setComments] = useState<DiscussComment[]>([])
@@ -52,7 +57,7 @@ export default function DiscussPostPage() {
 
   const handleVote = async () => {
     if (!token || !post) {
-      toast({ variant: 'error', title: 'Musisz być zalogowany, żeby głosować.' })
+      toast({ variant: 'error', title: t('mustLoginVote') })
       return
     }
     setPost((p) =>
@@ -65,13 +70,13 @@ export default function DiscussPostPage() {
       setPost((p) =>
         p ? { ...p, upvotes: p.has_voted ? p.upvotes - 1 : p.upvotes + 1, has_voted: !p.has_voted } : p,
       )
-      toast({ variant: 'error', title: 'Nie udało się zapisać głosu.' })
+      toast({ variant: 'error', title: t('voteFailed') })
     }
   }
 
   const handleAddComment = async () => {
     if (!token) {
-      toast({ variant: 'error', title: 'Musisz być zalogowany, żeby komentować.' })
+      toast({ variant: 'error', title: t('mustLoginComment') })
       return
     }
     const body = commentBody.trim()
@@ -83,7 +88,7 @@ export default function DiscussPostPage() {
       setPost((p) => (p ? { ...p, comment_count: p.comment_count + 1 } : p))
       setCommentBody('')
     } catch (err) {
-      toast({ variant: 'error', title: err instanceof Error ? err.message : 'Błąd serwera' })
+      toast({ variant: 'error', title: err instanceof Error ? err.message : t('serverError') })
     } finally {
       setSubmittingComment(false)
     }
@@ -96,7 +101,7 @@ export default function DiscussPostPage() {
       setComments((prev) => prev.filter((c) => c.id !== commentId))
       setPost((p) => (p ? { ...p, comment_count: Math.max(0, p.comment_count - 1) } : p))
     } catch (err) {
-      toast({ variant: 'error', title: err instanceof Error ? err.message : 'Błąd serwera' })
+      toast({ variant: 'error', title: err instanceof Error ? err.message : t('serverError') })
     }
   }
 
@@ -104,17 +109,17 @@ export default function DiscussPostPage() {
     if (!token || !post) return
     try {
       await deletePost(token, post.id)
-      toast({ variant: 'success', title: 'Post usunięty.' })
+      toast({ variant: 'success', title: t('postDeleted') })
       router.push('/discuss')
     } catch (err) {
-      toast({ variant: 'error', title: err instanceof Error ? err.message : 'Błąd serwera' })
+      toast({ variant: 'error', title: err instanceof Error ? err.message : t('serverError') })
     }
   }
 
   if (notFound) {
     return (
       <div className="flex flex-1 items-center justify-center p-12">
-        <p className="text-foreground/40 text-sm">Post nie istnieje lub został usunięty.</p>
+        <p className="text-foreground/40 text-sm">{t('notFound')}</p>
       </div>
     )
   }
@@ -122,7 +127,7 @@ export default function DiscussPostPage() {
   if (!post) {
     return (
       <div className="flex flex-1 items-center justify-center p-12">
-        <p className="text-foreground/30 text-sm">Ładowanie...</p>
+        <p className="text-foreground/30 text-sm">{t('loading')}</p>
       </div>
     )
   }
@@ -141,7 +146,7 @@ export default function DiscussPostPage() {
           href="/discuss"
           className="text-foreground/40 hover:text-foreground mb-6 flex items-center gap-1.5 text-xs uppercase tracking-widest transition-colors"
         >
-          <FiArrowLeft /> Discuss
+          <FiArrowLeft /> {t('backToDiscuss')}
         </Link>
 
         {/* Post header */}
@@ -165,26 +170,26 @@ export default function DiscussPostPage() {
                 onClick={() => setShowEditModal(true)}
                 className="text-foreground/40 hover:text-foreground flex items-center gap-1 text-xs transition-colors"
               >
-                <FiEdit3 /> Edytuj
+                <FiEdit3 /> {t('edit')}
               </button>
               {!showDeleteConfirm ? (
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
                   className="flex items-center gap-1 text-xs text-red-400 transition-colors hover:text-red-300"
                 >
-                  <FiTrash2 /> Usuń
+                  <FiTrash2 /> {t('delete')}
                 </button>
               ) : (
                 <span className="flex items-center gap-2 text-xs">
-                  <span className="text-foreground/50">Na pewno?</span>
+                  <span className="text-foreground/50">{t('deleteConfirm')}</span>
                   <button onClick={handleDeletePost} className="font-bold text-red-400 hover:text-red-300">
-                    Tak, usuń
+                    {t('deleteYes')}
                   </button>
                   <button
                     onClick={() => setShowDeleteConfirm(false)}
                     className="text-foreground/40 hover:text-foreground"
                   >
-                    Anuluj
+                    {t('cancel')}
                   </button>
                 </span>
               )}
@@ -193,8 +198,8 @@ export default function DiscussPostPage() {
         </div>
 
         {/* Post body */}
-        <div className="border-foreground/10 whitespace-pre-wrap border-b py-6 text-sm leading-relaxed text-foreground/80">
-          {post.body}
+        <div className="border-foreground/10 border-b py-6">
+          <RichContent html={post.body} />
         </div>
 
         {/* Stats + vote */}
@@ -204,21 +209,21 @@ export default function DiscussPostPage() {
             className={`flex cursor-pointer items-center gap-1.5 transition-colors hover:text-accent ${post.has_voted ? 'text-accent' : ''}`}
           >
             <FiArrowUp className="text-sm" />
-            <span>{post.upvotes} głosów</span>
+            <span>{post.upvotes} {t('votes')}</span>
           </button>
           <span className="flex items-center gap-1.5">
-            <FiEye className="text-sm" /> {post.views} wyświetleń
+            <FiEye className="text-sm" /> {post.views} {t('views')}
           </span>
         </div>
 
         {/* Comments */}
         <div className="mt-6 flex flex-col gap-4">
           <h2 className="text-foreground/60 text-xs font-bold uppercase tracking-widest">
-            Komentarze ({post.comment_count})
+            {t('comments', { n: post.comment_count })}
           </h2>
 
           {comments.length === 0 && (
-            <p className="text-foreground/30 text-sm">Brak komentarzy. Bądź pierwszy!</p>
+            <p className="text-foreground/30 text-sm">{t('noComments')}</p>
           )}
 
           {comments.map((comment) => {
@@ -239,7 +244,7 @@ export default function DiscussPostPage() {
                     </button>
                   )}
                 </div>
-                <p className="whitespace-pre-wrap text-sm text-foreground/70">{comment.body}</p>
+                <RichContent html={comment.body} className="text-foreground/70" />
               </div>
             )
           })}
@@ -250,7 +255,7 @@ export default function DiscussPostPage() {
               <textarea
                 className="border-foreground/20 bg-background focus:border-foreground/50 w-full resize-none border px-3 py-2 text-sm outline-none"
                 rows={3}
-                placeholder="Dodaj komentarz..."
+                placeholder={t('commentPlaceholder')}
                 value={commentBody}
                 onChange={(e) => setCommentBody(e.target.value)}
               />
@@ -260,16 +265,16 @@ export default function DiscussPostPage() {
                   disabled={submittingComment || commentBody.trim() === ''}
                   className="bg-foreground text-background cursor-pointer px-4 py-2 text-xs font-bold uppercase tracking-widest transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-30"
                 >
-                  {submittingComment ? 'Wysyłanie...' : 'Dodaj komentarz'}
+                  {submittingComment ? t('commentSending') : t('commentSubmit')}
                 </button>
               </div>
             </div>
           ) : (
             <p className="text-foreground/30 text-sm">
               <Link href="/login" className="text-accent hover:underline">
-                Zaloguj się
+                {t('loginLink')}
               </Link>{' '}
-              aby dodać komentarz.
+              {t('loginToComment')}
             </p>
           )}
         </div>

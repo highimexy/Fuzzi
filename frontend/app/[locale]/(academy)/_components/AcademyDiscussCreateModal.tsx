@@ -5,7 +5,9 @@ import { FiX } from 'react-icons/fi'
 import { useUserStore } from '@/store/userStore'
 import { createPost, updatePost, DISCUSS_CATEGORIES, type DiscussPost } from '@/lib/discussApi'
 import { MorphRing } from './MorphRing'
+import { RichTextEditor } from './RichTextEditor'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   onClose: () => void
@@ -22,6 +24,7 @@ export function AcademyDiscussCreateModal({
   initialPost,
   onUpdated,
 }: Props) {
+  const t = useTranslations('Discuss')
   const token = useUserStore((s) => s.token)
   const { toast } = useToast()
   const [title, setTitle] = useState(initialPost?.title ?? '')
@@ -58,7 +61,7 @@ export function AcademyDiscussCreateModal({
 
   const handleSubmit = async () => {
     if (!token) {
-      toast({ variant: 'error', title: 'Musisz być zalogowany, żeby dodać post.' })
+      toast({ variant: 'error', title: t('modal.mustLogin') })
       return
     }
     setLoading(true)
@@ -67,21 +70,22 @@ export function AcademyDiscussCreateModal({
         const updated = await updatePost(token, initialPost.id, { title, body, category, tags })
         onUpdated?.(updated)
         onClose()
-        toast({ variant: 'success', title: 'Post zaktualizowany!' })
+        toast({ variant: 'success', title: t('modal.postUpdated') })
       } else {
         const post = await createPost(token, { title, body, tags, category })
         onCreated?.(post)
         onClose()
-        toast({ variant: 'success', title: 'Post opublikowany!' })
+        toast({ variant: 'success', title: t('modal.postPublished') })
       }
     } catch (err) {
-      toast({ variant: 'error', title: err instanceof Error ? err.message : 'Błąd serwera' })
+      toast({ variant: 'error', title: err instanceof Error ? err.message : t('serverError') })
     } finally {
       setLoading(false)
     }
   }
 
-  const canSubmit = title.trim() !== '' && body.length >= 20 && category !== ''
+  const bodyText = body.replace(/<[^>]+>/g, '').trim()
+  const canSubmit = title.trim() !== '' && bodyText.length >= 20 && category !== ''
 
   return (
     <div
@@ -95,7 +99,7 @@ export function AcademyDiscussCreateModal({
         {/* Header */}
         <div className="border-foreground/10 flex items-center justify-between border-b px-6 py-4">
           <span className="font-serif text-lg font-bold">
-            {mode === 'edit' ? 'Edytuj post' : 'Nowy post'}
+            {mode === 'edit' ? t('modal.editTitle') : t('modal.newTitle')}
           </span>
           <button
             onClick={onClose}
@@ -110,14 +114,14 @@ export function AcademyDiscussCreateModal({
           {/* Category */}
           <div className="flex flex-col gap-1">
             <label className="text-foreground/60 text-xs uppercase tracking-wide">
-              Kategoria <span className="text-red-400">*</span>
+              {t('modal.category')} <span className="text-red-400">*</span>
             </label>
             <select
               className="border-foreground/20 bg-background focus:border-foreground/50 w-full border px-3 py-2 text-sm outline-none"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="">Wybierz kategorię...</option>
+              <option value="">{t('modal.categoryPlaceholder')}</option>
               {DISCUSS_CATEGORIES.map((c) => (
                 <option key={c.slug} value={c.slug}>
                   {c.label}
@@ -129,12 +133,12 @@ export function AcademyDiscussCreateModal({
           {/* Title */}
           <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-foreground/60 text-xs uppercase tracking-wide">Tytuł</label>
+              <label className="text-foreground/60 text-xs uppercase tracking-wide">{t('modal.titleLabel')}</label>
               <span className="text-foreground/40 text-xs">{title.length}/200</span>
             </div>
             <input
               className="border-foreground/20 bg-background focus:border-foreground/50 w-full border px-3 py-2 text-sm outline-none"
-              placeholder="O czym chcesz porozmawiać?"
+              placeholder={t('modal.titlePlaceholder')}
               maxLength={200}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -144,26 +148,24 @@ export function AcademyDiscussCreateModal({
           {/* Body */}
           <div className="flex flex-col gap-1">
             <div className="flex items-center justify-between">
-              <label className="text-foreground/60 text-xs uppercase tracking-wide">Treść</label>
-              <span
-                className={`text-xs ${body.length < 20 && body.length > 0 ? 'text-red-400' : 'text-foreground/40'}`}
-              >
-                {body.length < 20 ? `min. 20 znaków (${body.length})` : body.length}
-              </span>
+              <label className="text-foreground/60 text-xs uppercase tracking-wide">{t('modal.bodyLabel')}</label>
+              {bodyText.length > 0 && bodyText.length < 20 && (
+                <span className="text-xs text-red-400">
+                  {t('modal.bodyMinChars', { n: bodyText.length })}
+                </span>
+              )}
             </div>
-            <textarea
-              className="border-foreground/20 bg-background focus:border-foreground/50 w-full resize-none border px-3 py-2 text-sm outline-none"
-              placeholder="Opisz swój temat..."
-              rows={6}
-              value={body}
-              onChange={(e) => setBody(e.target.value)}
+            <RichTextEditor
+              content={body}
+              onChange={setBody}
+              placeholder={t('modal.bodyPlaceholder')}
             />
           </div>
 
           {/* Tags */}
           <div className="flex flex-col gap-1">
             <label className="text-foreground/60 text-xs uppercase tracking-wide">
-              Tagi <span className="normal-case">({tags.length}/5)</span>
+              {t('modal.tagsLabel')} <span className="normal-case">({tags.length}/5)</span>
             </label>
             <div className="border-foreground/20 focus-within:border-foreground/50 flex flex-wrap gap-1.5 border px-3 py-2">
               {tags.map((tag) => (
@@ -183,7 +185,7 @@ export function AcademyDiscussCreateModal({
               {tags.length < 5 && (
                 <input
                   className="bg-background min-w-24 flex-1 text-sm outline-none"
-                  placeholder={tags.length === 0 ? 'Enter lub , aby dodać tag' : ''}
+                  placeholder={tags.length === 0 ? t('modal.tagsPlaceholder') : ''}
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={handleTagKeyDown}
@@ -200,7 +202,7 @@ export function AcademyDiscussCreateModal({
             onClick={onClose}
             className="text-foreground/60 hover:text-foreground cursor-pointer text-sm transition-colors"
           >
-            Anuluj
+            {t('modal.cancel')}
           </button>
           <button
             onClick={handleSubmit}
@@ -209,12 +211,12 @@ export function AcademyDiscussCreateModal({
           >
             {loading ? (
               <span className="flex items-center gap-2">
-                <MorphRing size="sm" /> {mode === 'edit' ? 'Zapisywanie...' : 'Wysyłanie...'}
+                <MorphRing size="sm" /> {mode === 'edit' ? t('modal.saving') : t('modal.sending')}
               </span>
             ) : mode === 'edit' ? (
-              'Zapisz'
+              t('modal.save')
             ) : (
-              'Opublikuj'
+              t('modal.publish')
             )}
           </button>
         </div>
