@@ -10,10 +10,11 @@ import (
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/discuss"
 	"github.com/highimexy/it-shit/backend/internal/lessons"
-	"github.com/highimexy/it-shit/backend/internal/users"
 	"github.com/highimexy/it-shit/backend/internal/market"
 	"github.com/highimexy/it-shit/backend/internal/quest"
+	"github.com/highimexy/it-shit/backend/internal/ranking"
 	"github.com/highimexy/it-shit/backend/internal/twitter"
+	"github.com/highimexy/it-shit/backend/internal/users"
 	"github.com/joho/godotenv"
 )
 
@@ -46,6 +47,7 @@ func main() {
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
 	r.Use(cors.New(config))
 
+	r.Static("/uploads", "./uploads")
 	r.GET("/api/v1/tweets", gin.WrapF(twitter.NewHandler(tweetCache)))
 	r.GET("/ws/market", gin.WrapF(market.NewHandler(marketHub, marketEngine)))
 
@@ -65,6 +67,8 @@ func main() {
 		v1.GET("/quests", quest.ListQuestsHandler)
 
 		v1.GET("/users/:id", users.GetPublicProfileHandler)
+		v1.GET("/users/:id/posts", users.GetPublicProfilePostsHandler)
+		v1.GET("/ranking", ranking.GetRankingHandler)
 	}
 
 	// PROTECTED
@@ -87,6 +91,11 @@ func main() {
 		protected.POST("/discuss/posts/:id/comments", discuss.CreateCommentHandler)
 		protected.DELETE("/discuss/comments/:commentId", discuss.DeleteCommentHandler)
 		protected.GET("/discuss/my-posts", discuss.ListMyPostsHandler)
+
+		protected.GET("/me/profile", users.GetMyProfileHandler)
+		protected.PUT("/me/profile", users.UpdateMyProfileHandler)
+		protected.POST("/me/avatar", users.UploadAvatarHandler)
+		protected.DELETE("/me", users.DeleteMyAccountHandler)
 	}
 
 	// SEMI-PROTECTED — optional auth (guests see data, logged-in users get has_voted etc.)
