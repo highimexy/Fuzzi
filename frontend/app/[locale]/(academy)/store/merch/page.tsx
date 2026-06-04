@@ -1,8 +1,20 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { BsFillBasketFill } from 'react-icons/bs'
 import { AcademyBackgroundGrid } from '../../_components/AcademyBackgroundGrid'
 import { MerchDropdown } from '../../_components/MerchDropdown'
+import { MorphRing } from '../../_components/MorphRing'
+
+const TShirtScene = dynamic(
+  () => import('./_components/TShirtScene').then((m) => m.TShirtScene),
+  { ssr: false, loading: () => <div className="flex h-full items-center justify-center"><MorphRing size="lg" /></div> },
+)
+
+const KeychainScene = dynamic(
+  () => import('./_components/KeychainScene').then((m) => m.KeychainScene),
+  { ssr: false, loading: () => <div className="flex h-full items-center justify-center"><MorphRing size="lg" /></div> },
+)
 
 const MerchSize = [
   { label: 'XL', href: '' },
@@ -18,16 +30,14 @@ export default function MerchShopPage() {
         <AcademyBackgroundGrid />
       </div>
 
-      {/* UKRYTY GŁÓWNY NAGŁÓWEK DLA STRONY */}
       <h1 className="sr-only">Merch Shop</h1>
 
-      {/* Kolumna 1 */}
+      {/* T-Shirt */}
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
-        <div className="flex flex-1 items-center justify-center">
-          {/* ZMIENIONO H1 NA H2 */}
-          <h2 className="font-sans text-2xl font-bold">3D Model</h2>
+        <div className="w-full flex-1" style={{ minHeight: '380px' }}>
+          <TShirtScene />
         </div>
-        <div className="mt-auto mb-4 flex gap-2">
+        <div className="mt-4 mb-4 flex gap-2">
           <button className="flex items-center gap-2 border bg-accent/10 px-3 py-1.5 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
             <BsFillBasketFill className="text-xl" />
             Add to Cart
@@ -40,13 +50,12 @@ export default function MerchShopPage() {
         <AcademyBackgroundGrid />
       </div>
 
-      {/* Kolumna 2 */}
+      {/* Keychain */}
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
-        <div className="flex flex-1 items-center justify-center">
-          {/* ZMIENIONO H1 NA H2 */}
-          <h2 className="font-sans text-2xl font-bold">3D Model</h2>
+        <div className="w-full flex-1" style={{ minHeight: '380px' }}>
+          <KeychainScene />
         </div>
-        <button className="mt-auto mb-4 flex gap-2 border bg-accent/10 px-3 py-1.75 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
+        <button className="mt-4 mb-4 flex gap-2 border bg-accent/10 px-3 py-1.75 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
           <BsFillBasketFill className="text-xl" />
           Add to Cart
         </button>
