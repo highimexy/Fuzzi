@@ -33,8 +33,8 @@ export default function MerchShopPage() {
       <h1 className="sr-only">Merch Shop</h1>
 
       {/* T-Shirt */}
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
-        <div className="w-full flex-1" style={{ minHeight: '380px' }}>
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 lg:justify-center xl:max-w-2xl">
+        <div className="h-72 w-full md:h-[650px]">
           <TShirtScene />
         </div>
         <div className="mt-4 mb-4 flex gap-2">
@@ -51,14 +51,17 @@ export default function MerchShopPage() {
       </div>
 
       {/* Keychain */}
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 xl:max-w-2xl">
-        <div className="w-full flex-1" style={{ minHeight: '380px' }}>
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 py-8 lg:justify-center xl:max-w-2xl">
+        <div className="h-72 w-full md:h-[650px]">
           <KeychainScene />
         </div>
-        <button className="mt-4 mb-4 flex gap-2 border bg-accent/10 px-3 py-1.75 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
-          <BsFillBasketFill className="text-xl" />
-          Add to Cart
-        </button>
+        <div className="mt-4 mb-4 flex gap-2">
+          <button className="flex items-center gap-2 border bg-accent/10 px-3 py-1.5 font-sans font-bold text-accent uppercase transition-colors hover:bg-accent/20">
+            <BsFillBasketFill className="text-xl" />
+            Add to Cart
+          </button>
+          <MerchDropdown label="Size" items={MerchSize} />
+        </div>
       </div>
 
       <div className="border-foreground/10 relative hidden flex-1 border-r border-l lg:block">
