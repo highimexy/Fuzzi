@@ -43,8 +43,7 @@ export function EducationSection() {
       <Container className="py-16 md:py-24">
         {/* NAGŁÓWEK SEKCJI */}
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <span className="text-fluid-small text-secondary flex items-center justify-center gap-2 font-sans font-bold tracking-[0.4em] uppercase">
-            <span className="bg-secondary/50 h-1.5 w-1.5 animate-pulse rounded-full" />
+          <span className="border-secondary/40 text-secondary inline-block border px-4 py-1.5 font-sans text-[10px] font-bold tracking-[0.4em] uppercase">
             {t('label')}
           </span>
 

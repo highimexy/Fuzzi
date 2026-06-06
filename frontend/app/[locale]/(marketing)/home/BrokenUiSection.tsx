@@ -453,8 +453,7 @@ export function BrokenUISection() {
 
           {/* Header */}
           <div className="relative z-10 px-4 py-8 text-center sm:px-6 sm:py-12">
-            <span className="text-error mb-4 inline-flex items-center gap-2 font-sans text-[10px] font-bold tracking-[0.3em] uppercase opacity-80">
-              <span className="bg-error inline-block h-1.5 w-1.5 animate-pulse rounded-full" />
+            <span className="border-error/40 text-error mb-4 inline-block border px-4 py-1.5 font-sans text-[10px] font-bold tracking-[0.3em] uppercase">
               {t('badge')}
             </span>
 

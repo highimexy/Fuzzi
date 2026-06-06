@@ -182,8 +182,7 @@ export function TrustSection() {
       <Container className="py-14 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center text-center">
-            <span className="text-accent flex items-center gap-2 font-sans text-[10px] font-bold tracking-widest uppercase opacity-80">
-              <span className="bg-accent h-2 w-2 animate-pulse rounded-full" />
+            <span className="border-accent/40 text-accent mb-4 inline-block border px-4 py-1.5 font-sans text-[10px] font-bold tracking-[0.3em] uppercase">
               {t('badge')}
             </span>
             <h2 className="text-fluid-h3 mt-4 max-w-2xl font-serif leading-[0.9] tracking-tighter uppercase">
