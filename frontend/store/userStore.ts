@@ -32,6 +32,7 @@ export interface UserProfile {
   email: string
   name: string
   avatar_url?: string
+  role?: string
 }
 
 interface StatsUpdate {
@@ -44,7 +45,9 @@ interface StatsUpdate {
 
 interface UserState {
   token: string | null
+  expiresAt: number | null
   isLoggedIn: boolean
+  bootstrapped: boolean
   user: UserProfile | null
   totalXP: number
   currentStreak: number
@@ -52,8 +55,10 @@ interface UserState {
   totalCorrect: number
   totalAttempts: number
 
-  login: (token: string) => Promise<void>
+  login: (token: string, expiresIn?: number) => Promise<void>
   logout: () => void
+  setToken: (token: string, expiresIn: number) => void
+  bootstrap: () => Promise<void>
   setStats: (stats: StatsUpdate) => void
   addXP: (xp: number) => void
   refreshStats: () => Promise<void>
@@ -64,7 +69,9 @@ export const useUserStore = create<UserState>()(
   persist(
     (set, get) => ({
       token: null,
+      expiresAt: null,
       isLoggedIn: false,
+      bootstrapped: false,
       user: null,
       totalXP: 0,
       currentStreak: 0,
@@ -72,15 +79,15 @@ export const useUserStore = create<UserState>()(
       totalCorrect: 0,
       totalAttempts: 0,
 
-      login: async (token: string) => {
-        localStorage.setItem('token', token)
-        set({ token, isLoggedIn: true })
+      login: async (token: string, expiresIn?: number) => {
+        const expiresAt = expiresIn ? Date.now() + expiresIn * 1000 : null
+        set({ token, isLoggedIn: true, expiresAt })
 
         const headers = { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }
 
         const [userRes, statsRes] = await Promise.allSettled([
-          fetch(`${API}/api/v1/sync-user`, { headers }),
-          fetch(`${API}/api/v1/quest/stats`, { headers }),
+          fetch(`${API}/api/v1/sync-user`, { headers, credentials: 'include' }),
+          fetch(`${API}/api/v1/quest/stats`, { headers, credentials: 'include' }),
         ])
 
         const update: Partial<UserState> = {}
@@ -102,9 +109,10 @@ export const useUserStore = create<UserState>()(
       },
 
       logout: () => {
-        localStorage.removeItem('token')
+        fetch(`${API}/api/v1/auth/logout`, { method: 'POST', credentials: 'include' }).catch(() => {})
         set({
           token: null,
+          expiresAt: null,
           isLoggedIn: false,
           user: null,
           totalXP: 0,
@@ -113,6 +121,24 @@ export const useUserStore = create<UserState>()(
           totalCorrect: 0,
           totalAttempts: 0,
         })
+      },
+
+      setToken: (token: string, expiresIn: number) => {
+        set({ token, isLoggedIn: true, expiresAt: Date.now() + expiresIn * 1000 })
+      },
+
+      bootstrap: async () => {
+        const res = await fetch(`${API}/api/v1/auth/refresh`, {
+          method: 'POST',
+          credentials: 'include',
+        })
+        if (!res.ok) {
+          set({ bootstrapped: true })
+          return
+        }
+        const { access_token, expires_in } = await res.json()
+        await get().login(access_token, expires_in)
+        set({ bootstrapped: true })
       },
 
       setStats: (stats) => {
@@ -132,6 +158,7 @@ export const useUserStore = create<UserState>()(
         if (!token) return
         const res = await fetch(`${API}/api/v1/sync-user`, {
           headers: { Authorization: `Bearer ${token}` },
+          credentials: 'include',
         })
         if (res.ok) {
           const user = await res.json()
@@ -144,6 +171,7 @@ export const useUserStore = create<UserState>()(
         if (!token) return
         const res = await fetch(`${API}/api/v1/quest/stats`, {
           headers: { Authorization: `Bearer ${token}` },
+          credentials: 'include',
         })
         if (res.ok) {
           const s = await res.json()
@@ -160,8 +188,6 @@ export const useUserStore = create<UserState>()(
     {
       name: 'fuzzi-user',
       partialize: (s) => ({
-        token: s.token,
-        isLoggedIn: s.isLoggedIn,
         user: s.user,
         totalXP: s.totalXP,
         currentStreak: s.currentStreak,

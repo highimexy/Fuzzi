@@ -36,12 +36,13 @@ export default function AuthCallbackPage() {
     fetch(`${api}/api/v1/auth/google/callback`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ code, code_verifier: codeVerifier, redirect_uri: redirectUri }),
     })
       .then((r) => r.json())
       .then(async (data) => {
         if (data.access_token) {
-          await login(data.access_token)
+          await login(data.access_token, data.expires_in)
           router.replace('/lessons')
         } else {
           toast({ variant: 'error', title: t('googleLoginFailed') })

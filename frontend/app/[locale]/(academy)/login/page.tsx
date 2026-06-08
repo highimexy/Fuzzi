@@ -81,7 +81,7 @@ export default function LoginPage() {
       })
       if (res.ok) {
         const data = await res.json()
-        await login(data.access_token)
+        await login(data.access_token, data.expires_in)
         router.push('/lessons')
       } else {
         setError(t('invalidCode'))
@@ -113,7 +113,7 @@ export default function LoginPage() {
       response_type: 'code',
       client_id: clientId,
       redirect_uri: redirectUri,
-      scope: 'openid profile email',
+      scope: 'openid profile email offline_access',
       audience,
       connection: 'google-oauth2',
       code_challenge: codeChallenge,
