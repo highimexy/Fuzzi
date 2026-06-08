@@ -18,6 +18,7 @@ type User struct {
 	Twitter   string         `gorm:"column:twitter" json:"twitter"`
 	LinkedIn  string         `gorm:"column:linkedin" json:"linkedin"`
 	GitHub    string         `gorm:"column:github" json:"github"`
+	Role      string         `gorm:"type:varchar(20);default:'user'" json:"role"`
 	Karma     int            `gorm:"default:0;column:karma" json:"karma"`
 	CreatedAt time.Time      `json:"created_at"`
 	UpdatedAt time.Time      `json:"updated_at"`

@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/highimexy/it-shit/backend/internal/admin"
 	"github.com/highimexy/it-shit/backend/internal/auth"
 	"github.com/highimexy/it-shit/backend/internal/database"
 	"github.com/highimexy/it-shit/backend/internal/discuss"
@@ -45,6 +46,7 @@ func main() {
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{allowedOrigin}
 	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
+	config.AllowCredentials = true
 	r.Use(cors.New(config))
 
 	r.Static("/uploads", "./uploads")
@@ -62,6 +64,8 @@ func main() {
 		v1.POST("/auth/otp/start", auth.StartOTPHandler)
 		v1.POST("/auth/otp/verify", auth.VerifyOTPHandler)
 		v1.POST("/auth/google/callback", auth.GoogleCallbackHandler)
+		v1.POST("/auth/refresh", auth.RefreshHandler)
+		v1.POST("/auth/logout", auth.LogoutHandler)
 
 		v1.GET("/quest/daily", quest.GetDailyQuestHandler)
 		v1.GET("/quests", quest.ListQuestsHandler)
@@ -96,6 +100,25 @@ func main() {
 		protected.PUT("/me/profile", users.UpdateMyProfileHandler)
 		protected.POST("/me/avatar", users.UploadAvatarHandler)
 		protected.DELETE("/me", users.DeleteMyAccountHandler)
+	}
+
+	// ADMIN
+	adminGroup := r.Group("/api/v1/admin")
+	adminGroup.Use(auth.EnsureValidToken(), auth.EnsureAdmin())
+	{
+		adminGroup.GET("/stats", admin.StatsHandler)
+		adminGroup.GET("/charts", admin.ChartsHandler)
+
+		adminGroup.GET("/users", admin.ListUsersHandler)
+		adminGroup.PATCH("/users/:id/role", admin.UpdateUserRoleHandler)
+		adminGroup.DELETE("/users/:id", admin.DeleteUserHandler)
+
+		adminGroup.GET("/discuss/posts", admin.ListDiscussPostsHandler)
+		adminGroup.DELETE("/discuss/posts/:id", admin.DeleteDiscussPostHandler)
+
+		adminGroup.GET("/quests", admin.ListQuestsHandler)
+		adminGroup.POST("/quests", admin.CreateQuestHandler)
+		adminGroup.PUT("/quests/:id", admin.UpdateQuestHandler)
 	}
 
 	// SEMI-PROTECTED — optional auth (guests see data, logged-in users get has_voted etc.)
