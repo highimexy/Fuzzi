@@ -155,14 +155,9 @@ func CreateHandler(c *gin.Context) {
 		return
 	}
 
-	email := auth.FetchEmailFromUserInfo(strings.TrimPrefix(c.GetHeader("Authorization"), "Bearer "))
-	var user models.User
-	if res := database.DB.Where("auth0_id = ?", userID).First(&user); res.Error != nil {
-		user = models.User{Auth0ID: userID, Email: email}
-		if err := database.DB.Create(&user).Error; err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
-			return
-		}
+	if _, err := auth.EnsureUser(c); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
+		return
 	}
 
 	post := models.DiscussPost{
@@ -227,14 +222,9 @@ func VoteHandler(c *gin.Context) {
 	}
 
 	// Ensure user record exists (FK constraint)
-	email := auth.FetchEmailFromUserInfo(strings.TrimPrefix(c.GetHeader("Authorization"), "Bearer "))
-	var user models.User
-	if res := database.DB.Where("auth0_id = ?", userID).First(&user); res.Error != nil {
-		user = models.User{Auth0ID: userID, Email: email}
-		if err := database.DB.Create(&user).Error; err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
-			return
-		}
+	if _, err := auth.EnsureUser(c); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
+		return
 	}
 
 	hasVoted := false
@@ -396,14 +386,9 @@ func CreateCommentHandler(c *gin.Context) {
 		return
 	}
 
-	email := auth.FetchEmailFromUserInfo(strings.TrimPrefix(c.GetHeader("Authorization"), "Bearer "))
-	var user models.User
-	if res := database.DB.Where("auth0_id = ?", userID).First(&user); res.Error != nil {
-		user = models.User{Auth0ID: userID, Email: email}
-		if err := database.DB.Create(&user).Error; err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
-			return
-		}
+	if _, err := auth.EnsureUser(c); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to provision user"})
+		return
 	}
 
 	var comment models.DiscussComment
