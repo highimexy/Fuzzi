@@ -1,0 +1,101 @@
+{
+  "Admin": {
+    "title": "Panel admina",
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Użytkownicy",
+      "discuss": "Discuss",
+      "quests": "Questy",
+      "backToApp": "Wróć do aplikacji"
+    },
+    "stats": {
+      "title": "Dashboard",
+      "users": "Użytkownicy",
+      "newUsers": "Nowi użytkownicy",
+      "posts": "Posty",
+      "totalXp": "Łączne XP",
+      "attempts": "Próby questów",
+      "successRate": "Skuteczność",
+      "last7d": "ostatnie 7 dni"
+    },
+    "charts": {
+      "registrations": "Rejestracje — ostatnie 30 dni",
+      "xpEarned": "XP zdobyte — ostatnie 30 dni",
+      "successRate": "Skuteczność odpowiedzi",
+      "topTracks": "Popularne tracki",
+      "noData": "Brak danych",
+      "totalNew": "Łącznie nowych",
+      "totalXpPeriod": "Łącznie XP",
+      "peak": "Szczyt dzienny"
+    },
+    "users": {
+      "title": "Użytkownicy",
+      "total": "rekordów",
+      "search": "Szukaj po emailu lub nazwie...",
+      "searchBtn": "Szukaj",
+      "id": "ID",
+      "email": "Email",
+      "name": "Nazwa",
+      "role": "Rola",
+      "karma": "Karma",
+      "createdAt": "Dołączył",
+      "actions": "Akcje",
+      "makeAdmin": "Zrób adminem",
+      "makeUser": "Zdegraduj",
+      "delete": "Usuń",
+      "confirmDelete": "Na pewno usunąć tego użytkownika?",
+      "lastAdminError": "Nie można zdegradować ostatniego admina.",
+      "empty": "Brak użytkowników."
+    },
+    "discuss": {
+      "title": "Posty Discuss",
+      "total": "postów",
+      "id": "ID",
+      "author": "Autor",
+      "postTitle": "Tytuł",
+      "category": "Kategoria",
+      "upvotes": "Głosy",
+      "createdAt": "Data",
+      "delete": "Usuń",
+      "confirmDelete": "Na pewno usunąć ten post?",
+      "empty": "Brak postów.",
+      "showBody": "Podgląd treści",
+      "hideBody": "Ukryj treść",
+      "bodyLabel": "Treść posta",
+      "views": "Wyświetlenia",
+      "comments": "Komentarze"
+    },
+    "quests": {
+      "title": "Questy",
+      "total": "questów",
+      "new": "Nowy quest",
+      "edit": "Edytuj quest",
+      "save": "Zapisz",
+      "cancel": "Anuluj",
+      "id": "ID",
+      "type": "Typ",
+      "track": "Track",
+      "difficulty": "Poziom",
+      "titleEn": "Tytuł (EN)",
+      "titlePl": "Tytuł (PL)",
+      "bodyEn": "Treść (EN)",
+      "bodyPl": "Treść (PL)",
+      "options": "Opcje (JSON)",
+      "correctKey": "Klucz odpowiedzi",
+      "explainEn": "Wyjaśnienie (EN)",
+      "explainPl": "Wyjaśnienie (PL)",
+      "xp": "XP",
+      "activeDate": "Data aktywna (YYYY-MM-DD)",
+      "createdAt": "Utworzono",
+      "delete": "Usuń",
+      "empty": "Brak questów."
+    },
+    "pagination": {
+      "prev": "Poprzednia",
+      "next": "Następna",
+      "page": "Strona {page}"
+    },
+    "loading": "Ładowanie...",
+    "error": "Błąd ładowania danych."
+  }
+}

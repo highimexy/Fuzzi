@@ -1,0 +1,101 @@
+{
+  "Admin": {
+    "title": "Admin Panel",
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "discuss": "Discuss",
+      "quests": "Quests",
+      "backToApp": "Back to app"
+    },
+    "stats": {
+      "title": "Dashboard",
+      "users": "Users",
+      "newUsers": "New users",
+      "posts": "Posts",
+      "totalXp": "Total XP",
+      "attempts": "Quest attempts",
+      "successRate": "Success rate",
+      "last7d": "last 7 days"
+    },
+    "charts": {
+      "registrations": "Registrations — last 30 days",
+      "xpEarned": "XP earned — last 30 days",
+      "successRate": "Answer success rate",
+      "topTracks": "Popular tracks",
+      "noData": "No data",
+      "totalNew": "Total new",
+      "totalXpPeriod": "Total XP",
+      "peak": "Daily peak"
+    },
+    "users": {
+      "title": "Users",
+      "total": "records",
+      "search": "Search by email or name...",
+      "searchBtn": "Search",
+      "id": "ID",
+      "email": "Email",
+      "name": "Name",
+      "role": "Role",
+      "karma": "Karma",
+      "createdAt": "Joined",
+      "actions": "Actions",
+      "makeAdmin": "Make admin",
+      "makeUser": "Demote",
+      "delete": "Delete",
+      "confirmDelete": "Are you sure you want to delete this user?",
+      "lastAdminError": "Cannot demote the last admin.",
+      "empty": "No users found."
+    },
+    "discuss": {
+      "title": "Discuss Posts",
+      "total": "posts",
+      "id": "ID",
+      "author": "Author",
+      "postTitle": "Title",
+      "category": "Category",
+      "upvotes": "Votes",
+      "createdAt": "Date",
+      "delete": "Delete",
+      "confirmDelete": "Are you sure you want to delete this post?",
+      "empty": "No posts found.",
+      "showBody": "Preview content",
+      "hideBody": "Hide content",
+      "bodyLabel": "Post body",
+      "views": "Views",
+      "comments": "Comments"
+    },
+    "quests": {
+      "title": "Quests",
+      "total": "quests",
+      "new": "New quest",
+      "edit": "Edit quest",
+      "save": "Save",
+      "cancel": "Cancel",
+      "id": "ID",
+      "type": "Type",
+      "track": "Track",
+      "difficulty": "Difficulty",
+      "titleEn": "Title (EN)",
+      "titlePl": "Title (PL)",
+      "bodyEn": "Body (EN)",
+      "bodyPl": "Body (PL)",
+      "options": "Options (JSON)",
+      "correctKey": "Correct key",
+      "explainEn": "Explanation (EN)",
+      "explainPl": "Explanation (PL)",
+      "xp": "XP",
+      "activeDate": "Active date (YYYY-MM-DD)",
+      "createdAt": "Created",
+      "delete": "Delete",
+      "empty": "No quests found."
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page {page}"
+    },
+    "loading": "Loading...",
+    "error": "Failed to load data."
+  }
+}

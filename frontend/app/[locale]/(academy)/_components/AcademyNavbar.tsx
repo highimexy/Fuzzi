@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { FiMenu, FiX } from 'react-icons/fi'
 import gsap from 'gsap'
 import { useTranslations } from 'next-intl'
+import { useUserStore } from '@/store/userStore'
 import { StoreDropdown } from './StoreDropdown'
 import { AcademyLanguageSwitcher } from './AcademyLanguageSwitcher'
 import AcademyThemeSwitcher from './AcademyThemeSwitcher'
@@ -16,6 +17,7 @@ import { FuzziMark } from '../../global-components/logo/page'
 export function AcademyNavbar() {
   const t = useTranslations('Academy')
   const pathname = usePathname()
+  const user = useUserStore((s) => s.user)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -24,6 +26,7 @@ export function AcademyNavbar() {
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
   const profileMenu = [
+    ...(user?.role === 'admin' ? [{ label: t('nav.admin'), href: '/admin' }] : []),
     { label: t('nav.profile'), href: '/profile' },
     { label: t('nav.settings'), href: '/settings' },
     { label: t('nav.achievements'), href: '/achievements' },

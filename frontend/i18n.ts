@@ -34,6 +34,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     discuss,
     academy,
     login,
+    admin,
   ] = await Promise.all([
     import(`./messages/${validLocale}/homeHeader.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/problemSection.json`, { with: { type: 'json' } }),
@@ -62,6 +63,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     import(`./messages/${validLocale}/discuss.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/academy.json`, { with: { type: 'json' } }),
     import(`./messages/${validLocale}/login.json`, { with: { type: 'json' } }),
+    import(`./messages/${validLocale}/admin.json`, { with: { type: 'json' } }),
   ])
 
   const messages = {
@@ -92,6 +94,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ...discuss.default,
     ...academy.default,
     ...login.default,
+    ...admin.default,
   }
 
   return {

@@ -15,7 +15,8 @@
       "store": "Sklep",
       "toggleMenu": "Przełącz menu mobilne",
       "theme": "Motyw",
-      "language": "Język"
+      "language": "Język",
+      "admin": "Admin"
     },
     "sidebar": {
       "library": "Biblioteka",

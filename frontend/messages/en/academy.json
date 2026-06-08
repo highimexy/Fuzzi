@@ -15,7 +15,8 @@
       "store": "Store",
       "toggleMenu": "Toggle Mobile Menu",
       "theme": "Theme",
-      "language": "Language"
+      "language": "Language",
+      "admin": "Admin"
     },
     "sidebar": {
       "library": "Library",
