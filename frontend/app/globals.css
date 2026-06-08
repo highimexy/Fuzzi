@@ -122,3 +122,17 @@ body {
 .rte-content hr { border: none; border-top: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent); margin: 1rem 0; }
 .rte-content .ProseMirror { outline: none; min-height: 120px; }
 .rte-content .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: color-mix(in srgb, var(--foreground) 30%, transparent); pointer-events: none; float: left; height: 0; }
+
+@keyframes fuzzi-leg {
+  0%   { transform: rotate(0deg);   }
+  50%  { transform: rotate(3.5deg); }
+  100% { transform: rotate(-2deg);  }
+}
+@keyframes fuzzi-led {
+  0%, 100% { opacity: 1;    }
+  45%, 55% { opacity: 0.08; }
+}
+@keyframes fuzzi-visor-pulse {
+  0%, 100% { opacity: 1;    }
+  50%       { opacity: 0.78; }
+}

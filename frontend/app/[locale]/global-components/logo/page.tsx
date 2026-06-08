@@ -30,22 +30,6 @@ const LEGS = [
 export function FuzziMark({ size = 40, className = '' }) {
   return (
     <>
-      <style>{`
-        @keyframes fuzzi-leg {
-          0%   { transform: rotate(0deg);  }
-          50%  { transform: rotate(3.5deg); }
-          100% { transform: rotate(-2deg); }
-        }
-        @keyframes fuzzi-led {
-          0%, 100% { opacity: 1;    }
-          45%, 55% { opacity: 0.08; }
-        }
-        @keyframes fuzzi-visor-pulse {
-          0%, 100% { opacity: 1;    }
-          50%       { opacity: 0.78; }
-        }
-      `}</style>
-
       <svg
         viewBox="-26 0 152 118"
         width={size}
