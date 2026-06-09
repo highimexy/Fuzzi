@@ -23,6 +23,7 @@ import {
   FiHelpCircle,
 } from 'react-icons/fi'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 // ==========================================
@@ -302,13 +303,23 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
 // 3. GŁÓWNA STRONA EXPLORE
 // ==========================================
 export default function ExplorePage() {
-  return (
-    <div className="relative flex w-full flex-1 flex-col justify-center gap-8 overflow-hidden py-8 lg:gap-12 lg:py-12">
-      <AcademyBackgroundGrid />
-      <h1 className="sr-only">Explore Collections</h1>
+  const t = useTranslations('Academy.explore')
 
-      <CarouselRow title="Useful tools" items={CAROUSEL_DATA.tools} />
-      <CarouselRow title="Interviews & Growth" items={CAROUSEL_DATA.interviews} />
+  return (
+    <div className="relative flex w-full flex-1 flex-col overflow-hidden">
+      <AcademyBackgroundGrid />
+
+      <div className="relative z-10 shrink-0 px-4 py-8 lg:px-8 lg:py-10">
+        <h1 className="font-serif text-3xl font-black uppercase tracking-tight lg:text-4xl">
+          {t('title')}
+        </h1>
+        <p className="text-foreground/45 mt-2 font-sans text-sm">{t('subtitle')}</p>
+      </div>
+
+      <div className="relative z-10 flex flex-col justify-center gap-8 pb-8 lg:gap-12 lg:pb-12">
+        <CarouselRow title="Useful tools" items={CAROUSEL_DATA.tools} />
+        <CarouselRow title="Interviews & Growth" items={CAROUSEL_DATA.interviews} />
+      </div>
     </div>
   )
 }
