@@ -4,9 +4,20 @@ import { useEffect, useRef } from 'react'
 import { FuzziMark } from '../../../global-components/logo/page'
 
 const ERROR_COLOR = 'var(--error)'
-const ERRORS = ['404', 'BUG', 'TypeError', 'null', 'NaN', 'undefined', '500', 'race-cond', 'flaky', 'timeout']
+const ERRORS = [
+  '404',
+  'BUG',
+  'TypeError',
+  'null',
+  'NaN',
+  'undefined',
+  '500',
+  'race-cond',
+  'flaky',
+  'timeout',
+]
 const LANES = [0.22, 0.5, 0.78]
-const FW = 64
+const FW = 100
 
 type Err = { el: HTMLDivElement; lane: number; x: number; y: number; vy: number }
 
@@ -25,7 +36,6 @@ export function QaDodgeGame({
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (!stageRef.current || !playerRef.current) return
-    // Safe after the null checks above — aliases for use in closures
     const stage = stageRef.current as HTMLDivElement
     const player = playerRef.current as HTMLDivElement
 
@@ -34,6 +44,7 @@ export function QaDodgeGame({
     let px = laneX(1)
     let targetX = px
     const errors: Err[] = []
+    let lastLane = -1
 
     if (reduce) {
       player.style.transform = `translateX(${laneX(1)}px)`
@@ -47,7 +58,12 @@ export function QaDodgeGame({
     }
 
     function spawn() {
-      const lane = Math.floor(Math.random() * 3)
+      let lane
+      do {
+        lane = Math.floor(Math.random() * 3)
+      } while (lane === lastLane)
+      lastLane = lane
+
       const el = document.createElement('div')
       el.textContent = ERRORS[Math.floor(Math.random() * ERRORS.length)] ?? ''
       el.style.cssText = [
@@ -88,10 +104,13 @@ export function QaDodgeGame({
     let raf = 0
     let spawnTimer = 0
     function scheduleSpawn() {
-      spawnTimer = window.setTimeout(() => {
-        spawn()
-        scheduleSpawn()
-      }, activeRef.current ? 620 : 1050)
+      spawnTimer = window.setTimeout(
+        () => {
+          spawn()
+          scheduleSpawn()
+        },
+        activeRef.current ? 620 : 1050
+      )
     }
 
     function loop() {
@@ -133,16 +152,6 @@ export function QaDodgeGame({
 
   return (
     <div ref={stageRef} className="pointer-events-none absolute inset-0 overflow-hidden">
-      {LANES.map((f, i) => (
-        <div
-          key={i}
-          className="absolute top-0 bottom-0"
-          style={{
-            left: `${f * 100}%`,
-            borderLeft: '1px dashed color-mix(in srgb, var(--primary) 12%, transparent)',
-          }}
-        />
-      ))}
       <div
         ref={playerRef}
         style={{ position: 'absolute', bottom: 14, width: FW, height: FW, marginLeft: -FW / 2 }}

@@ -3,14 +3,14 @@
 import { useEffect, useRef } from 'react'
 import { FuzziMark } from '../../../global-components/logo/page'
 
-const CX = 130
-const CY = 130
+const CX = 300
+const CY = 410
 const TEAM = [
-  { rad: 90, speed: 0.0021, size: 34, ang: 0 },
-  { rad: 90, speed: 0.0021, size: 34, ang: (Math.PI * 2) / 3 },
-  { rad: 90, speed: 0.0021, size: 34, ang: (Math.PI * 4) / 3 },
-  { rad: 114, speed: 0.0015, size: 28, ang: Math.PI / 2 },
-  { rad: 114, speed: 0.0015, size: 28, ang: Math.PI * 1.5 },
+  { rad: 130, speed: 0.0021, size: 34, ang: 0 },
+  { rad: 130, speed: 0.0021, size: 34, ang: (Math.PI * 2) / 3 },
+  { rad: 130, speed: 0.0021, size: 34, ang: (Math.PI * 4) / 3 },
+  { rad: 160, speed: 0.0015, size: 28, ang: Math.PI / 2 },
+  { rad: 160, speed: 0.0015, size: 28, ang: Math.PI * 1.5 },
 ]
 
 export function RealityTeamOrbit({ active }: { active: boolean }) {
@@ -71,12 +71,20 @@ export function RealityTeamOrbit({ active }: { active: boolean }) {
         <svg
           ref={svgRef}
           viewBox="0 0 260 260"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            overflow: 'visible',
+          }}
         >
           {TEAM.map((_, i) => (
             <line
               key={i}
-              ref={(el) => { lineRefs.current[i] = el }}
+              ref={(el) => {
+                lineRefs.current[i] = el
+              }}
               x1={CX}
               y1={CY}
               stroke="var(--secondary)"
@@ -86,15 +94,34 @@ export function RealityTeamOrbit({ active }: { active: boolean }) {
           ))}
         </svg>
 
-        <div style={{ position: 'absolute', left: '50%', top: '50%', width: 72, height: 72, margin: -36, zIndex: 3 }}>
-          <FuzziMark size={72} />
+        <div
+          style={{
+            position: 'absolute',
+            left: '100%',
+            top: '150%',
+            width: 72,
+            height: 72,
+            margin: -36,
+            zIndex: 3,
+          }}
+        >
+          <FuzziMark size={150} />
         </div>
 
         {TEAM.map((m, i) => (
           <div
             key={i}
-            ref={(el) => { orbRefs.current[i] = el }}
-            style={{ position: 'absolute', left: 0, top: 0, width: m.size, height: m.size, zIndex: 2 }}
+            ref={(el) => {
+              orbRefs.current[i] = el
+            }}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              width: m.size,
+              height: m.size,
+              zIndex: 2,
+            }}
           >
             <FuzziMark size={m.size} />
           </div>

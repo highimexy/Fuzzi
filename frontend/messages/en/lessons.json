@@ -1221,6 +1221,24 @@
           "progress": 0
         }
       }
+    },
+    "tracks": {
+      "index": "/ 02",
+      "cta": "Enter",
+      "qa": {
+        "label": "QA Track",
+        "subtitle": "Ultimate QA Compendium",
+        "title": "Quality Assurance",
+        "desc": "Master testing from the ground up — network internals, UI edge cases, accessibility traps, API contracts, and automation. No filler. No shortcuts.",
+        "highlights": ["Networks & Protocols", "UI Components", "Automation & CI/CD"]
+      },
+      "reality": {
+        "label": "Reality Track",
+        "subtitle": "100 Hard Truths",
+        "title": "Reality Check",
+        "desc": "The unfiltered guide to surviving in tech. Career traps, team politics, salary negotiation, burnout — everything they skip in the textbooks.",
+        "highlights": ["Hiring & Negotiation", "Team Politics", "Career & Finance"]
+      }
     }
   }
 }

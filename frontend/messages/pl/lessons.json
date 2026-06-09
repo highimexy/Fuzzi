@@ -1221,6 +1221,24 @@
           "progress": 0
         }
       }
+    },
+    "tracks": {
+      "index": "/ 02",
+      "cta": "Wejdź",
+      "qa": {
+        "label": "QA Track",
+        "subtitle": "Ultimate QA Compendium",
+        "title": "Quality Assurance",
+        "desc": "Testowanie od podstaw — protokoły sieciowe, edge case'y UI, pułapki dostępności, kontrakty API i automatyzacja. Bez lania wody.",
+        "highlights": ["Sieci i protokoły", "Komponenty UI", "Automatyzacja i CI/CD"]
+      },
+      "reality": {
+        "label": "Reality Track",
+        "subtitle": "100 Twardych Prawd",
+        "title": "Reality Check",
+        "desc": "Nieocenzurowany przewodnik po branży IT. Pułapki kariery, polityka zespołu, negocjacje wynagrodzenia, wypalenie — to czego nie ma w podręcznikach.",
+        "highlights": ["Rekrutacja i negocjacje", "Polityka zespołu", "Kariera i finanse"]
+      }
     }
   }
 }
