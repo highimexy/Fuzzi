@@ -23,10 +23,27 @@
       "quest": "Quest",
       "questBadge": "Nowe",
       "explore": "Odkryj",
+      "components": "Komponenty",
       "roadMap": "Mapa drogi",
       "stocks": "Giełda",
       "signInPrompt": "Zaloguj się, aby zobaczyć listy.",
       "signIn": "Zaloguj się"
+    },
+    "components": {
+      "title": "Komponenty UI",
+      "subtitle": "Referencja QA do testowania komponentów UI — co testować, typowe bugi i porady.",
+      "searchPlaceholder": "Szukaj komponentów...",
+      "sortByName": "Sortuj po nazwie",
+      "noResults": "Brak wyników.",
+      "alsoKnownAs": "Znane też jako",
+      "whatToTest": "Co testować",
+      "commonBugs": "Typowe bugi",
+      "tips": "Porady",
+      "related": "Powiązane komponenty",
+      "backLink": "Komponenty",
+      "severityCritical": "Krytyczny",
+      "severityMajor": "Poważny",
+      "severityMinor": "Drobny"
     },
     "auth": {
       "signIn": "Zaloguj się",
@@ -44,9 +61,27 @@
       "privacy": "Polityka prywatności"
     },
     "roadmap": {
+      "title": "Mapa drogi",
+      "subtitle": "Twoja ścieżka nauki QA — od podstaw do poziomu seniora.",
       "noData": "Brak danych.",
       "freeResources": "Darmowe zasoby i prompty",
       "copied": "Skopiowano do schowka!"
+    },
+    "lessons": {
+      "title": "Biblioteka",
+      "subtitle": "Strukturalne ścieżki nauki pokrywające podstawy QA, narzędzia i praktykę."
+    },
+    "quest": {
+      "subtitle": "Codzienne wyzwania, które wyostrzają umiejętności QA i utrzymują passę.",
+      "loginHint": "Zaloguj się, aby śledzić swoje postępy."
+    },
+    "explore": {
+      "title": "Odkryj",
+      "subtitle": "Narzędzia, techniki i zasoby kariery zebrane dla inżynierów QA."
+    },
+    "stocks": {
+      "title": "Giełda",
+      "subtitle": "Ćwicz ocenę ryzyka i podejmowanie decyzji przez symulowane scenariusze rynkowe."
     }
   }
 }

@@ -23,10 +23,27 @@
       "quest": "Quest",
       "questBadge": "New",
       "explore": "Explore",
+      "components": "Components",
       "roadMap": "Road Map",
       "stocks": "Stocks",
       "signInPrompt": "Sign in to view lists.",
       "signIn": "Sign in"
+    },
+    "components": {
+      "title": "UI Components",
+      "subtitle": "QA reference for testing UI components — what to test, common bugs, and tips.",
+      "searchPlaceholder": "Search components...",
+      "sortByName": "Sort by name",
+      "noResults": "No components found.",
+      "alsoKnownAs": "Also known as",
+      "whatToTest": "What to test",
+      "commonBugs": "Common bugs",
+      "tips": "Tips",
+      "related": "Related components",
+      "backLink": "Components",
+      "severityCritical": "Critical",
+      "severityMajor": "Major",
+      "severityMinor": "Minor"
     },
     "auth": {
       "signIn": "Sign In",
@@ -44,9 +61,27 @@
       "privacy": "Privacy Policy"
     },
     "roadmap": {
+      "title": "Road Map",
+      "subtitle": "Your QA learning path — from fundamentals to senior-level expertise.",
       "noData": "No data.",
       "freeResources": "Free Resources & Prompts",
       "copied": "Copied to clipboard!"
+    },
+    "lessons": {
+      "title": "Library",
+      "subtitle": "Structured learning paths covering QA fundamentals, tools, and real-world practice."
+    },
+    "quest": {
+      "subtitle": "Daily challenges to sharpen your QA skills and keep your streak alive.",
+      "loginHint": "Sign in to track your progress."
+    },
+    "explore": {
+      "title": "Explore",
+      "subtitle": "Tools, techniques, and career resources curated for QA engineers."
+    },
+    "stocks": {
+      "title": "Stocks",
+      "subtitle": "Practice risk assessment and decision-making through simulated market scenarios."
     }
   }
 }

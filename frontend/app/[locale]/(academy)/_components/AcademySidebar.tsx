@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { FiBook, FiTarget, FiCompass, FiMap, FiUser, FiTrendingUp } from 'react-icons/fi'
+import { FiBook, FiTarget, FiCompass, FiMap, FiUser, FiTrendingUp, FiGrid } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 
 export function AcademySidebar() {
@@ -13,14 +13,15 @@ export function AcademySidebar() {
     { href: '/lessons', label: t('sidebar.library'), icon: FiBook },
     { href: '/quest', label: t('sidebar.quest'), icon: FiTarget, badge: t('sidebar.questBadge') },
     { href: '/explore', label: t('sidebar.explore'), icon: FiCompass },
+    { href: '/components', label: t('sidebar.components'), icon: FiGrid },
     { href: '/road-map', label: t('sidebar.roadMap'), icon: FiMap },
     { href: '/stocks', label: t('sidebar.stocks'), icon: FiTrendingUp },
   ]
 
   const cleanPath = pathname.replace(/^\/[a-zA-Z]{2}(?=\/|$)/, '') || '/'
 
-  const allowedPaths = ['/lessons', '/quest', '/explore', '/road-map', '/stocks']
-  if (!allowedPaths.includes(cleanPath)) return null
+  const allowedPaths = ['/lessons', '/quest', '/explore', '/components', '/road-map', '/stocks']
+  if (!allowedPaths.includes(cleanPath) && !cleanPath.startsWith('/components')) return null
 
   return (
     <aside className="border-foreground/10 bg-background relative z-50 hidden w-40 shrink-0 flex-col border-r lg:flex">
