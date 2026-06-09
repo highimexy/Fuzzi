@@ -5,6 +5,7 @@ import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight, FiChevronDown } from 'react-icons/fi'
 import { submitLesson } from '@/lib/lessonApi'
+import { MarkdownRenderer } from '../../../_components/MarkdownRenderer'
 
 type LogLevel = 'error' | 'warn' | 'info' | 'log'
 
@@ -153,9 +154,9 @@ export default function ConsoleDetectiveTask({ lessonId, payload, nextHref, isLa
           <p className="text-primary mb-3 font-sans text-[9px] tracking-[0.3em] uppercase">
             Poprawna diagnoza
           </p>
-          <p className="text-foreground/70 font-sans text-sm leading-relaxed">
-            {payload.correct_diagnosis}
-          </p>
+          <div className="prose prose-invert prose-sm max-w-none text-foreground/70 leading-relaxed">
+            <MarkdownRenderer>{payload.correct_diagnosis}</MarkdownRenderer>
+          </div>
         </div>
       )}
 

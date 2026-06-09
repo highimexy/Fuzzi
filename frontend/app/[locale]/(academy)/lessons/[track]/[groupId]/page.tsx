@@ -39,14 +39,12 @@ const lessonTypeLabel: Record<string, string> = {
   triage: 'Triage',
   diff_inspector: 'Diff',
   console_detective: 'Console',
-  test_case_builder: 'Test Cases',
-  dev_comm: 'Komunikacja',
   scenario: 'Scenariusz',
   salary_decoder: 'Salary',
   bullshit_detector: 'Bullshit',
   risk_map: 'Ryzyko',
   cv_audit: 'CV',
-  interview: 'Rozmowa',
+  audit: 'Audit',
 }
 
 function getDifficultyColor(diff: string): string {

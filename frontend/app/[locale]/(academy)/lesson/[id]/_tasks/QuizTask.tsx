@@ -4,8 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import { MarkdownRenderer } from '../../../_components/MarkdownRenderer'
 import { submitLesson } from '@/lib/lessonApi'
 import { fireConfetti } from '@/lib/confetti'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
@@ -25,17 +24,37 @@ interface QuizPayload {
   correct?: string
   explanation?: string
   trap_explanation?: string
+  reflective?: boolean
+}
+
+function adaptScenario(p: any): QuizPayload {
+  return {
+    question: p.situation ?? '',
+    options: (p.options ?? []).map((o: any) => ({
+      id: o.id,
+      text: o.text,
+      explanation: [
+        o.consequences,
+        o.user_percentage !== undefined
+          ? `*${o.user_percentage}% uczestników wybrało tę odpowiedź.*`
+          : null,
+      ]
+        .filter(Boolean)
+        .join('\n\n'),
+    })),
+    reflective: true,
+  }
 }
 
 interface TaskProps {
   lessonId: string
-  payload: QuizPayload
+  payload: any
   nextHref?: string
   isLast?: boolean
   onComplete?: (completed: boolean, xp: number) => void
 }
 
-export default function QuizTask({ lessonId, payload, nextHref, isLast, onComplete }: TaskProps) {
+export default function QuizTask({ lessonId, payload: rawPayload, nextHref, isLast, onComplete }: TaskProps) {
   const { toast } = useToast()
   const [selected, setSelected] = useState<string | null>(null)
   const [confidence, setConfidence] = useState<ConfidenceLevel>(null)
@@ -45,20 +64,28 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
   const feedbackRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLAnchorElement>(null)
 
+  const payload: QuizPayload =
+    rawPayload?.type === 'scenario' ? adaptScenario(rawPayload) : (rawPayload as QuizPayload)
+
+  const isReflective = !!payload.reflective
+
   // Support both Format 1 (top-level `correct`) and Format 2 (per-option `is_correct`)
-  const correctId = payload.correct || payload.options.find((o) => o.is_correct)?.id
-  const isCorrect = selected !== null && selected === correctId
+  const correctId = isReflective
+    ? null
+    : payload.correct || payload.options.find((o) => o.is_correct)?.id
+  const isCorrect = isReflective ? selected !== null : selected !== null && selected === correctId
 
   const selectedOption = payload.options.find((o) => o.id === selected)
-  const explanation =
-    selectedOption?.explanation ||
-    (isCorrect ? payload.explanation : payload.trap_explanation || payload.explanation) ||
-    ''
+  const explanation = isReflective
+    ? selectedOption?.explanation || ''
+    : selectedOption?.explanation ||
+      (isCorrect ? payload.explanation : payload.trap_explanation || payload.explanation) ||
+      ''
 
   const handleSubmit = async () => {
     setSubmitted(true)
 
-    if (isCorrect) {
+    if (isCorrect && !isReflective) {
       fireConfetti()
       toast({ variant: 'achievement', title: 'Poprawna odpowiedź!' })
     }
@@ -68,8 +95,8 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
     try {
       const result = await submitLesson(lessonId, {
         answer: selected,
-        confidence,
-        needs_review: confidence === 'sure' && !isCorrect,
+        confidence: isReflective ? null : confidence,
+        needs_review: !isReflective && confidence === 'sure' && !isCorrect,
         locale,
       })
       onComplete?.(result.progress?.completed ?? false, result.xp_earned)
@@ -108,7 +135,7 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
   return (
     <div className="flex max-w-2xl flex-col gap-6">
       <div className="prose prose-invert prose-sm max-w-none font-serif text-xl font-bold uppercase leading-snug">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{payload.question}</ReactMarkdown>
+        <MarkdownRenderer>{payload.question}</MarkdownRenderer>
       </div>
 
       {/* Wybór odpowiedzi */}
@@ -126,12 +153,16 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
                 ? 'border-primary bg-primary/10'
                 : 'border-foreground/20 hover:border-foreground/50'
             } ${
-              submitted && opt.id === correctId
+              !isReflective && submitted && opt.id === correctId
                 ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500'
                 : ''
             } ${
-              submitted && selected === opt.id && !isCorrect
+              !isReflective && submitted && selected === opt.id && !isCorrect
                 ? 'border-rose-500 bg-rose-500/10 text-rose-500'
+                : ''
+            } ${
+              isReflective && submitted && selected === opt.id
+                ? 'border-primary bg-primary/10'
                 : ''
             }`}
           >
@@ -140,8 +171,8 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
         ))}
       </div>
 
-      {/* Confidence meter */}
-      {!submitted && selected && (
+      {/* Confidence meter — tylko dla trybu klasycznego */}
+      {!isReflective && !submitted && selected && (
         <div ref={confidenceRef} className="mt-2 flex flex-col gap-3">
           <span className="text-foreground/50 text-xs tracking-widest uppercase">
             Jak bardzo jesteś pewny?
@@ -171,13 +202,13 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
         </div>
       )}
 
-      {/* Przycisk akcji */}
-      {!submitted && confidence && (
+      {/* Przycisk akcji — tryb klasyczny wymaga confidence, tryb refleksyjny tylko selekcji */}
+      {!submitted && (isReflective ? selected : confidence) && (
         <button
           onClick={handleSubmit}
           className="bg-primary hover:bg-primary/90 mt-4 p-4 text-sm font-bold tracking-widest text-white uppercase transition-colors"
         >
-          Zatwierdź
+          {isReflective ? 'Sprawdź konsekwencje' : 'Zatwierdź'}
         </button>
       )}
 
@@ -186,19 +217,30 @@ export default function QuizTask({ lessonId, payload, nextHref, isLast, onComple
         <div
           ref={feedbackRef}
           className={`mt-4 border-l-2 p-6 ${
-            isCorrect ? 'border-emerald-500 bg-emerald-500/5' : 'border-rose-500 bg-rose-500/5'
+            isReflective
+              ? 'border-primary bg-primary/5'
+              : isCorrect
+              ? 'border-emerald-500 bg-emerald-500/5'
+              : 'border-rose-500 bg-rose-500/5'
           }`}
         >
-          <p
-            className={`mb-3 font-sans text-xs font-bold tracking-widest uppercase ${
-              isCorrect ? 'text-emerald-500' : 'text-rose-500'
-            }`}
-          >
-            {isCorrect ? 'STATUS: SUCCESS' : 'STATUS: FAILURE'}
-          </p>
+          {!isReflective && (
+            <p
+              className={`mb-3 font-sans text-xs font-bold tracking-widest uppercase ${
+                isCorrect ? 'text-emerald-500' : 'text-rose-500'
+              }`}
+            >
+              {isCorrect ? 'STATUS: SUCCESS' : 'STATUS: FAILURE'}
+            </p>
+          )}
+          {isReflective && (
+            <p className="text-primary mb-3 font-sans text-xs font-bold tracking-widest uppercase">
+              Konsekwencje
+            </p>
+          )}
           {explanation && (
             <div className="prose prose-invert prose-sm max-w-none text-foreground/80 leading-relaxed">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{explanation}</ReactMarkdown>
+              <MarkdownRenderer>{explanation}</MarkdownRenderer>
             </div>
           )}
         </div>
