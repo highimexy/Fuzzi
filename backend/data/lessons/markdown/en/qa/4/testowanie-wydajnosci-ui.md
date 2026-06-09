@@ -50,6 +50,25 @@ Zły: > 0.25
 
 CLS to częsty problem gdy: obrazy bez wymiarów, reklamy które się ładują, czcionki które zastępują systemowe.
 
+## Przepływ Testu Wydajnościowego
+
+```mermaid
+flowchart TD
+    A[Otwórz stronę w Chrome Incognito] --> B[DevTools → Lighthouse\nMobile + Fast 3G + Clear Storage]
+    B --> C{Wynik Performance}
+    C -->|≥ 80 ✓| D[Dokumentuj metryki\ni zamknij ticket]
+    C -->|< 80 ✗| E[Sprawdź bottlenecki]
+    E --> F{Duże zasoby?\nNetwork tab}
+    E --> G{Long Tasks?\nPerformance tab}
+    E --> H{Layout Shift?\nCLS > 0.1}
+    F --> I[Optymalizuj obrazy\nWebP + lazy loading]
+    G --> J[Code splitting\nbundle analysis]
+    H --> K[Dodaj width/height na img\npreload kluczowych czcionek]
+    I --> B
+    J --> B
+    K --> B
+```
+
 ## Narzędzia Pomiaru
 
 ### Chrome DevTools — Lighthouse
@@ -117,6 +136,30 @@ Czerwone flagi:
 🔴 Nieużywane CSS które jest ładowane przy każdej stronie
 🔴 Brak lazy loading dla obrazów poniżej fold
 ```
+
+## Przykład: Efekt Optymalizacji LCP
+
+Poniżej realne dane przed i po optymalizacji hero image (PNG 1.2MB → WebP 180KB + wymiary na `<img>`):
+
+```chart
+{
+  "type": "bar",
+  "title": "LCP PRZED I PO OPTYMALIZACJI — strona produktu",
+  "xKey": "scenario",
+  "yLabel": "LCP (sekundy)",
+  "series": [
+    { "key": "lcp", "name": "LCP (s)" }
+  ],
+  "data": [
+    { "scenario": "Desktop przed", "lcp": 3.8 },
+    { "scenario": "Desktop po", "lcp": 1.6 },
+    { "scenario": "Mobile 3G przed", "lcp": 6.2 },
+    { "scenario": "Mobile 3G po", "lcp": 2.1 }
+  ]
+}
+```
+
+Próg "dobry" to 2.5s. Przed optymalizacją obie wersje (desktop i mobile) nie spełniały wymagań. Po — desktop zdał, mobile jest na granicy i wymaga kolejnej iteracji.
 
 ## Metryki do Raportowania
 

@@ -1,14 +1,27 @@
 {
-  "type": "dev_comm",
-  "variant": "rewrite",
-  "original_message": "ten bug na produkcji jest bardzo poważny, kiedy go naprawisz??? klienci się skarżą a ty nic nie robisz",
-  "context": "Krytyczny bug na produkcji: użytkownicy premium nie mogą pobrać faktur (błąd 500, trwa od 2 godzin). Developer Tomek jest przypisany do naprawy. Wiesz że Tomek pracuje nad tym — widziałeś jego ostatni commit 30 minut temu. PM czeka na update.",
-  "good_example": "Hej Tomek,\n\nUpdate o statusie buga #5521 (pobieranie faktur, błąd 500):\n- Bug aktywny od ~2h, dotyczy użytkowników premium\n- Support ma 7 zgłoszeń klientów\n- PM pyta o ETA naprawy\n\nCzy możesz dać mi przybliżony czas kiedy fix będzie gotowy do testu? Nawet 'za 1-2h' albo 'dziś nie dam rady' pomaga mi zarządzać oczekiwaniami.\n\nJeśli potrzebujesz czegoś z mojej strony (więcej logów, kroki repro) — daj znać.",
-  "evaluation_tips": [
-    "Ton jest spokojny i profesjonalny — presja jest wyrażona przez fakty (7 zgłoszeń, 2h) nie emocje",
-    "Pytasz o ETA zamiast atakować",
-    "Dajesz kontekst dlaczego ETA jest ważne (PM, klienci)",
-    "Oferujesz pomoc zamiast tylko żądasz",
-    "Wiadomość jest konkretna i zwięzła — developer dostaje to co potrzebuje"
+  "type": "quiz",
+  "question": "Twój kolega QA wysłał deweloperowi taką wiadomość:\n\n> *\"ten bug na produkcji jest bardzo poważny, kiedy go naprawisz??? klienci się skarżą a ty nic nie robisz\"*\n\nDeweloper nie odpowiedział od godziny. **Który element NAJBARDZIEJ utrudnia skuteczną komunikację w tej wiadomości?**",
+  "options": [
+    {
+      "id": "a",
+      "text": "Agresywny ton i oskarżycielskie sformułowania ('ty nic nie robisz', '???') — blokują dialog i mogą wywołać defensywność zamiast działania.",
+      "is_correct": true,
+      "explanation": "Tak — to najpoważniejszy problem. Agresja blokuje współpracę. Deweloper dostaje atak, nie prośbę, więc naturalną reakcją jest defensywność lub ignorowanie.\n\n**Wzorcowa wiadomość:**\n\n> Hej Tomek, update o bugu #5521 (pobieranie faktur, błąd 500): aktywny od ~2h, 7 zgłoszeń od supportu, PM pyta o ETA. Czy możesz dać przybliżony czas naprawy? Nawet 'za 1-2h' albo 'dziś nie dam rady' pomaga mi zarządzać oczekiwaniami. Jeśli potrzebujesz czegoś z mojej strony — daj znać.\n\nKluczowe: ton spokojny, fakty zamiast emocji, konkretne pytanie, oferta pomocy."
+    },
+    {
+      "id": "b",
+      "text": "Brak informacji o liczbie zgłoszeń i czasie trwania buga — deweloper nie wie jak poważna jest sytuacja.",
+      "explanation": "To jest problem, ale wtórny. Nawet gdyby te dane były podane, ton ('nic nie robisz') nadal niszczyłby komunikację. Dane bez dobrego tonu nie rozwiążą konfliktu."
+    },
+    {
+      "id": "c",
+      "text": "Wiadomość jest za krótka — brakuje pełnego opisu buga, kroków reprodukcji i screenshotów.",
+      "explanation": "Bug jest już znany (to bug produkcyjny w toku naprawy). Tu nie chodzi o raport buga, tylko o update statusu i pytanie o ETA. Długość i szczegółowość nie są problemem."
+    },
+    {
+      "id": "d",
+      "text": "Wiadomość powinna być wysłana przez system ticketów, nie przez czat — brak formalnej ścieżki eskalacji.",
+      "explanation": "W pilnych sytuacjach produkcyjnych bezpośredni kontakt przez Slacka jest właściwy. Format kanału komunikacji nie jest tu głównym problemem."
+    }
   ]
 }

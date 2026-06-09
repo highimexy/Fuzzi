@@ -1,77 +1,40 @@
 {
-  "type": "test_case_builder",
-  "feature_description": "Formularz rejestracji użytkownika w aplikacji e-commerce. Pola: email (wymagany, unikalny), hasło (wymagany, min 8 znaków, min 1 cyfra, min 1 wielka litera), imię (wymagany, min 2 znaki, max 50 znaków), numer telefonu (opcjonalny, format: +48XXXXXXXXX lub 9 cyfr). Po poprawnej rejestracji: redirect na stronę powitalną, wysyłka emaila weryfikacyjnego. Przycisk Submit zostaje zablokowany po kliknięciu do czasu odpowiedzi serwera.",
-  "task_instruction": "Zaplanuj kompletny zestaw przypadków testowych dla formularza rejestracji. Pamiętaj o walidacjach granicznych, bezpieczeństwie i stanach formularza.",
-  "expected_cases": [
+  "type": "audit",
+  "intro_label": "Audit przypadków testowych formularza",
+  "material": "**Formularz rejestracji:** email (wymagany, unikalny), hasło (min 8 znaków, min 1 cyfra, min 1 wielka litera), imię (min 2, max 50 znaków), telefon (opcjonalny, format: +48XXXXXXXXX lub 9 cyfr). Po rejestracji: redirect na stronę powitalną + email weryfikacyjny. Przycisk Submit blokuje się po kliknięciu do odpowiedzi serwera.",
+  "material_label": "Specyfikacja formularza rejestracji",
+  "instruction": "Oceń każdy przypadek testowy: czy jest **poprawny** (OK), czy zawiera **błąd lub przeoczenie** (Problem)?",
+  "items": [
     {
-      "title": "Poprawna rejestracja z wszystkimi polami",
-      "category": "happy_path",
-      "why_important": "Podstawowy scenariusz — musi działać bezbłędnie. Weryfikuje cały flow: walidacja → zapis do bazy → redirect → email."
+      "text": "Hasło 'Password!' (8 znaków, brak cyfry) → błąd 'Hasło musi zawierać co najmniej jedną cyfrę'",
+      "is_problem": false,
+      "reason": "Poprawny test wartości granicznej dla warunku cyfry. 'Password!' ma 8 znaków i wielką literę, ale brak cyfry — oczekiwany błąd jest precyzyjny."
     },
     {
-      "title": "Rejestracja bez opcjonalnego numeru telefonu",
-      "category": "happy_path",
-      "why_important": "Pole opcjonalne nie może blokować rejestracji. Częsty błąd: pole oznaczone jako optional, ale walidacja wymaga wartości."
+      "text": "Imię 'A' (1 znak) → walidacja akceptuje (imię jest wymagane, nie ma minimalnej długości)",
+      "is_problem": true,
+      "reason": "Błędne założenie: specyfikacja mówi min 2 znaki. Imię 'A' (1 znak) powinno dać błąd walidacji 'Imię musi mieć co najmniej 2 znaki'. Ten TC ma błędne oczekiwanie."
     },
     {
-      "title": "Email bez znaku @ (np. 'userexample.com')",
-      "category": "negative",
-      "why_important": "Podstawowa walidacja formatu email. Komunikat błędu musi być widoczny i zrozumiały."
+      "text": "Podwójne kliknięcie przycisku Submit → pierwsze żądanie wysłane, drugie zignorowane (przycisk zablokowany)",
+      "is_problem": false,
+      "reason": "Ważny test double-submit. Specyfikacja wprost mówi że przycisk blokuje się po kliknięciu — brak tej ochrony tworzy duplikaty w bazie."
     },
     {
-      "title": "Hasło bez cyfry (np. 'Password!')",
-      "category": "negative",
-      "why_important": "Walidacja złożoności hasła — minimum 1 cyfra. Test graniczny: wszystkie inne wymagania spełnione, brakuje tylko cyfry."
+      "text": "Email 'user@example.com' który już istnieje → błąd 'Coś poszło nie tak, spróbuj ponownie'",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie co do komunikatu: ogólny błąd 'Coś poszło nie tak' to zły UX. Dla zajętego emaila poprawny komunikat to precyzyjne 'Ten adres email jest już zarejestrowany'. Ogólny błąd zostawia użytkownika bez wskazówki co poprawić."
     },
     {
-      "title": "Hasło dokładnie 8 znaków z wymaganymi znakami (np. 'Pass123!')",
-      "category": "edge_case",
-      "why_important": "Granica minimalna — 8 znaków to exactly minimum. Musi przejść walidację."
+      "text": "Numer telefonu '+48abc456789' (zawiera litery) → błąd walidacji formatu",
+      "is_problem": false,
+      "reason": "Poprawny test — pole numeryczne nie powinno akceptować liter. Błąd walidacji jest oczekiwany."
     },
     {
-      "title": "Hasło 7 znaków (np. 'Pass12!')",
-      "category": "negative",
-      "why_important": "Poniżej granicy minimalnej. Musi zwrócić błąd walidacji."
-    },
-    {
-      "title": "Imię z jednym znakiem (np. 'A')",
-      "category": "negative",
-      "why_important": "Poniżej minimalnej długości 2 znaków. Graniczny błąd walidacji."
-    },
-    {
-      "title": "Imię z 50 znakami (granica maksymalna)",
-      "category": "edge_case",
-      "why_important": "Maksimum powinno być akceptowane. 51 znaków — odrzucone. Testuj obie granice."
-    },
-    {
-      "title": "Email który już istnieje w systemie",
-      "category": "negative",
-      "why_important": "Unikalność emaila — częsty błąd: brak walidacji unikalności lub niejasny komunikat błędu ('coś poszło nie tak' zamiast 'email zajęty')."
-    },
-    {
-      "title": "Podwójne kliknięcie przycisku Submit",
-      "category": "edge_case",
-      "why_important": "Double-submit może tworzyć duplikaty w bazie. Przycisk powinien być zablokowany po pierwszym kliknięciu."
-    },
-    {
-      "title": "Wpisanie skryptu JS w polu imienia (<script>alert(1)</script>)",
-      "category": "negative",
-      "why_important": "XSS prevention — znaki specjalne muszą być escapowane lub odrzucane. Jeśli skrypt się wykonuje po zapisie i wyświetleniu imienia — mamy XSS."
-    },
-    {
-      "title": "Numer telefonu w formacie +48123456789",
-      "category": "happy_path",
-      "why_important": "Format z prefiksem +48 musi być akceptowany zgodnie z wymaganiami."
-    },
-    {
-      "title": "Numer telefonu z literami (np. '+48abc456789')",
-      "category": "negative",
-      "why_important": "Numer telefonu to pole numeryczne — litery muszą być odrzucone z jasnym komunikatem."
-    },
-    {
-      "title": "Email po rejestracji jest wysłany na podany adres",
-      "category": "happy_path",
-      "why_important": "Weryfikacja end-to-end — nie tylko że formularz przeszedł, ale że email faktycznie wyszedł. Testuj w środowisku z prawdziwym mail serverem lub Mailtrap."
+      "text": "Wpisanie '<script>alert(1)</script>' w polu imienia → skrypt wykonuje się przy wyświetleniu imienia w profilu",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie jako 'zaliczony' test: wykonanie skryptu to XSS — poważna luka bezpieczeństwa! Poprawne oczekiwanie: znaki są escapowane, skrypt wyświetlany jako tekst, NIGDY nie wykonywany. Ten TC powinien mieć is_problem: true (to luka, którą trzeba znaleźć i zgłosić)."
     }
-  ]
+  ],
+  "summary": "**Typowe błędy w TC dla formularzy:**\n- Ignorowanie minimalnych długości zdefiniowanych w specyfikacji\n- Akceptowanie ogólnych komunikatów błędów zamiast precyzyjnych — użytkownik nie wie co poprawić\n- Uznawanie XSS za 'poprawne zachowanie' zamiast lukę bezpieczeństwa"
 }

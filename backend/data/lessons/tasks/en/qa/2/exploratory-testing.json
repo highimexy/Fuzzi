@@ -1,57 +1,40 @@
 {
-  "type": "test_case_builder",
-  "feature_description": "Funkcja wyszukiwania produktów w sklepie internetowym. Użytkownik wpisuje frazę w pole wyszukiwania i otrzymuje listę wyników. Wyniki można filtrować po kategorii, cenie i dostępności. Wyszukiwanie działa przez AJAX (bez przeładowania strony). Historia ostatnich 5 wyszukiwań jest zapamiętywana w localStorage.",
-  "task_instruction": "Prowadzisz sesję exploratory testing na funkcji wyszukiwania. Zaplanuj przypadki testowe które chcesz sprawdzić — pamiętaj o edge case'ach, danych granicznych i interakcjach między funkcjami.",
-  "expected_cases": [
+  "type": "audit",
+  "intro_label": "Audit sesji exploratory",
+  "material": "**Feature:** Wyszukiwanie produktów w sklepie internetowym. Użytkownik wpisuje frazę, wyniki filtrowane po kategorii/cenie/dostępności. Wyszukiwanie działa przez AJAX. Historia ostatnich 5 wyszukiwań zapamiętywana w localStorage.",
+  "material_label": "Specyfikacja feature'a",
+  "instruction": "Oceń każdy przypadek testowy z planu sesji exploratory: czy jest **poprawny i wartościowy** (OK), czy zawiera **błąd lub niepoprawne założenie** (Problem)?",
+  "items": [
     {
-      "title": "Wyszukiwanie pustym zapytaniem",
-      "category": "edge_case",
-      "why_important": "Puste pole wyszukiwania to częsty błąd użytkownika. Aplikacja może crashować, zwracać wszystkie produkty, lub pokazywać błąd — każde zachowanie wymaga świadomej decyzji projektowej."
+      "text": "Wyszukiwanie frazą z < i > (np. '<script>') → aplikacja wyświetla błąd 'Niedozwolone znaki' i blokuje zapytanie",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie: < i > są znakami specjalnymi HTML, ale poprawna obsługa to escapowanie (np. &lt;), nie blokowanie. Blokowanie znaków specjalnych w wyszukiwarce jest złym UX — użytkownik może szukać '<div> error'. Prawidłowe oczekiwanie: znaki są escapowane i wyświetlone bezpiecznie, nie wykoywane jako kod."
     },
     {
-      "title": "Wyszukiwanie frazą z tylko spacjami",
-      "category": "edge_case",
-      "why_important": "Whitespace-only input omija 'empty check' w wielu implementacjach. Często trafia do bazy jako nieprawidłowe zapytanie lub zwraca niespodziewane wyniki."
+      "text": "Wyszukiwanie pustym zapytaniem (klik bez wpisania) → wyświetlenie wszystkich produktów lub komunikat 'Wpisz frazę'",
+      "is_problem": false,
+      "reason": "Dobre pytanie o edge case — zachowanie dla pustego inputu jest niezdefiniowane w specyfikacji, warto je zweryfikować i dokumentować jako known behavior."
     },
     {
-      "title": "Wyszukiwanie frazą 500+ znaków",
-      "category": "negative",
-      "why_important": "Przekroczenie limitu długości może powodować błąd 500, SQL injection vulnerability, lub obcięcie frazy bez informacji dla użytkownika."
+      "text": "Wyszukiwanie frazą 501 znaków (powyżej typowego limitu 500) → błąd lub obcięcie frazy",
+      "is_problem": false,
+      "reason": "Dobry test wartości granicznej — przekroczenie limitu długości to klasyczny wektor błędów bazodanowych i API."
     },
     {
-      "title": "Wyszukiwanie ze znakami specjalnymi (<, >, ', \")",
-      "category": "negative",
-      "why_important": "Znaki specjalne to klasyczny wektor XSS i SQL injection. QA musi sprawdzić czy aplikacja escapeuje znaki poprawnie."
+      "text": "Tryb prywatny przeglądarki → historia wyszukiwań działa identycznie jak w normalnym trybie",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie: localStorage jest zablokowany w trybie prywatnym na niektórych przeglądarkach (Safari ITP). Prawidłowe oczekiwanie: historia wyszukiwań jest niedostępna lub aplikacja gracefully degrades (brak historii, bez błędu)."
     },
     {
-      "title": "Wyszukiwanie z emoji (🔥, ♥)",
-      "category": "edge_case",
-      "why_important": "Emoji to UTF-8 wielobajtowy — wiele baz danych i API nie obsługuje ich poprawnie. Może powodować błąd kodowania lub crash."
+      "text": "Wyszukiwanie z emoji (🔥) → aplikacja obsługuje lub wyświetla jasny błąd",
+      "is_problem": false,
+      "reason": "Emoji to wielobajtowy UTF-8 — wiele baz danych (szczególnie starsze MySQL z utf8, nie utf8mb4) crashuje na emoji. Wartościowy test."
     },
     {
-      "title": "Poprawne wyszukiwanie zwracające wyniki",
-      "category": "happy_path",
-      "why_important": "Podstawowy scenariusz: użytkownik wpisuje nazwę istniejącego produktu i widzi go na liście wyników."
-    },
-    {
-      "title": "Wyszukiwanie bez wyników",
-      "category": "happy_path",
-      "why_important": "Stan 'brak wyników' musi być obsłużony — komunikat dla użytkownika, sugestie, link powrotny. Brak obsługi tego stanu to klasyczny UX bug."
-    },
-    {
-      "title": "Filtrowanie wyników po kategorii",
-      "category": "happy_path",
-      "why_important": "Filtry muszą działać w kombinacji z wyszukiwaniem, nie osobno. Często implemetowane niezależnie i nie testowane razem."
-    },
-    {
-      "title": "Historia wyszukiwań jest zapisywana i wyświetlana",
-      "category": "happy_path",
-      "why_important": "localStorage może być zablokowany (tryb prywatny, Safari ITP). Aplikacja musi działać gdy storage jest niedostępny."
-    },
-    {
-      "title": "Wyczyszczenie historii wyszukiwań",
-      "category": "edge_case",
-      "why_important": "Czy historia się czyści? Czy limit 5 działa — co się dzieje przy 6. wyszukiwaniu? Czy historia synchronizuje się między zakładkami?"
+      "text": "Filtrowanie po kategorii + cenie jednocześnie → wyniki poprawnie łączą oba filtry",
+      "is_problem": false,
+      "reason": "Ważny test interakcji między filtrami — często implementowane niezależnie i niestestowane w kombinacji."
     }
-  ]
+  ],
+  "summary": "**Pułapki w testowaniu wyszukiwarek:**\n- Blokowanie znaków specjalnych zamiast escapowania to złe UX i zły wzorzec bezpieczeństwa\n- localStorage + tryb prywatny = klasyczny bug na mobilnym Safari\n- Zawsze testuj filtry w kombinacjach, nie tylko osobno"
 }

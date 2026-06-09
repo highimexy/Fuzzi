@@ -1,28 +1,35 @@
 {
-  "type": "test_case_builder",
-  "feature_description": "Nowa funkcja: Komentarze do zamówień. Użytkownik może dodać komentarz do swojego zamówienia (max 500 znaków). Support może dodawać komentarze do dowolnego zamówienia. Komentarze są widoczne dla użytkownika i supportu. Brak specyfikacji edge cases.",
-  "task_instruction": "Zaplanuj 2 sesje testowe dla tej funkcji. Dla każdej sesji zdefiniuj:\n1. Misję (jedno konkretne zdanie)\n2. Obszary do sprawdzenia (3-5 punktów)\n3. Typ sesji (np. happy path, vandal tour, security tour)",
-  "expected_cases": [
+  "type": "audit",
+  "intro_label": "Audit sesji testowych",
+  "material": "**Feature:** Komentarze do zamówień. Użytkownik może dodać komentarz do swojego zamówienia (max 500 znaków). Support może dodawać komentarze do dowolnego zamówienia. Komentarze widoczne dla użytkownika i supportu. Brak specyfikacji edge cases.",
+  "material_label": "Specyfikacja feature'a",
+  "instruction": "Oceń poniższe opisy sesji testowych: czy misja/zakres są **poprawnie sformułowane** (OK), czy zawierają **błąd w podejściu lub przeoczenie** (Problem)?",
+  "items": [
     {
-      "title": "Sesja 1: Happy Path i Podstawowa Funkcjonalność",
-      "priority": "P1",
-      "area": "Core functionality",
-      "steps": "Misja: Przetestuj dodawanie, wyświetlanie i uprawnienia komentarzy jako user i support — podstawowe flows.\n\nObszary:\n- User dodaje komentarz do własnego zamówienia (happy path)\n- Support dodaje komentarz do zamówienia innego użytkownika\n- Komentarz jest widoczny dla obu stron\n- Komentarz zapisuje się z datą i autorem\n- Długi komentarz (500 znaków) jest akceptowany",
-      "expected": "Wszystkie podstawowe flows działają, dane są poprawnie zapisane i wyświetlone"
+      "text": "Sesja 1 — Misja: 'Przetestować komentarze'. Zakres: dodawanie komentarzy, wyświetlanie komentarzy.",
+      "is_problem": true,
+      "reason": "Misja zbyt ogólna — 'przetestować komentarze' to nie misja, to opis feature'a. Dobra misja sesji exploratory to jedno konkretne zdanie z pytaniem badawczym, np. 'Sprawdzić czy user może skomentować zamówienie innego usera (BOLA)' lub 'Przetestować reakcję systemu na niestandardowy input w polu komentarza'. Ogólna misja prowadzi do niefokusowanego testowania."
     },
     {
-      "title": "Sesja 2: Edge Cases i Bezpieczeństwo (Vandal Tour)",
-      "priority": "P1",
-      "area": "Security & Edge Cases",
-      "steps": "Misja: Przetestuj co się dzieje gdy user próbuje zrobić coś nieoczekiwanego lub niebezpiecznego z komentarzami.\n\nObszary:\n- User próbuje skomentować zamówienie INNEGO usera (BOLA)\n- Komentarz z HTML/script tag (XSS)\n- Komentarz z 501 znakami (ponad limit)\n- Pusty komentarz (0 znaków)\n- Komentarz z tylko spacjami\n- Bardzo szybkie kolejne komentarze (rate limiting?)",
-      "expected": "Odpowiednie błędy dla każdego edge case, brak XSS, limit jest wymuszany"
+      "text": "Sesja 2 — Misja: 'Sprawdzić czy user może czytać lub modyfikować komentarze do zamówień innych userów'. Zakres: próby dostępu do /orders/{inny-id}/comments jako zalogowany user.",
+      "is_problem": false,
+      "reason": "Wzorcowa sesja bezpieczeństwa (BOLA / IDOR test). Konkretna misja, jasny zakres, fokus na jednym wektorze ryzyka. Brak autoryzacji na poziomie obiektu to OWASP Top 10."
     },
     {
-      "title": "Sesja 3 (opcjonalna): UX i Responsywność",
-      "priority": "P2",
-      "area": "UX",
-      "steps": "Misja: Sprawdź czy UX komentarzy jest intuicyjny na mobile i desktop.\n\nObszary:\n- Formularz komentarza na mobile (iPhone Safari)\n- Licznik znaków widoczny przy wpisywaniu\n- Komentarz wyświetla się w odpowiedniej kolejności (chronologicznie?)\n- Długa lista komentarzy — paginacja czy scroll?",
-      "expected": "UX jest spójny i intuicyjny na różnych urządzeniach"
+      "text": "Sesja 3 — Misja: 'Sprawdzić czy komentarz z HTML/script tag jest bezpiecznie obsługiwany'. Zakres: wpisanie '<script>alert(1)</script>', '<img src=x onerror=alert(1)>', sprawdzenie czy skrypt nie wykonuje się przy wyświetleniu.",
+      "is_problem": false,
+      "reason": "Dobra sesja XSS. Konkretna misja, konkretne payloady testowe, jasne kryterium sukcesu (skrypt nie wykonuje się). Testowanie XSS jest kluczowe dla każdego pola tekstowego które wyświetla dane użytkownika."
+    },
+    {
+      "text": "Sesja 4 — Misja: 'Przetestować wydajność komentarzy pod dużym obciążeniem'. Zakres: wysłanie 1000 komentarzy jednocześnie przez skrypt.",
+      "is_problem": true,
+      "reason": "Nieprawidłowy zakres dla sesji manualnej — load testing (1000 requestów) to zadanie dla dedykowanych narzędzi (k6, JMeter), nie dla sesji exploratory. Ręczna sesja nie może wysłać 1000 requestów. Ponadto: brak rate limiting jest realnym ryzykiem, ale do sprawdzenia przez kilka szybkich kliknięć (nie 1000 requestów skryptem)."
+    },
+    {
+      "text": "Sesja 5 — Misja: 'Sprawdzić zachowanie systemu dla komentarzy granicznych długości'. Zakres: komentarz 499 znaków (OK), 500 znaków (granica, OK), 501 znaków (odrzucony), 0 znaków (pusty, odrzucony), tylko spacje (odrzucony).",
+      "is_problem": false,
+      "reason": "Wzorcowa sesja boundary testing. Testuje obie strony granicy (499/500/501), zerowy input i whitespace-only — klasyczne edge case'y które często są przeoczone."
     }
-  ]
+  ],
+  "summary": "**Zasady dobrych sesji exploratory:**\n- Misja = jedno konkretne zdanie z pytaniem badawczym, nie ogólny opis feature'a\n- Load testing nie należy do sesji manualnych — to osobne narzędzia\n- Każda sesja powinna mieć jasne kryterium 'kiedy skończyłem' (timeboxing + misja)"
 }

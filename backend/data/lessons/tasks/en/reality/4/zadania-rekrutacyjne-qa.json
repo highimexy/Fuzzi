@@ -1,57 +1,40 @@
 {
-  "type": "test_case_builder",
-  "feature_description": "Jesteś na rozmowie rekrutacyjnej. Dostałeś zadanie: 'Napisz przypadki testowe dla funkcji resetowania hasła w aplikacji SaaS B2B. Specyfikacja: użytkownik klika link Zapomniałem hasła, wpisuje email, dostaje link resetujący (ważny 24h, jednorazowy), klika link, wpisuje nowe hasło (min 8 znaków), potwierdza hasło, zostaje przekierowany na stronę logowania.'",
-  "task_instruction": "Masz 45 minut na to zadanie. Napisz przypadki testowe które pokazują Twoje myślenie — nie tylko happy path. Pokaż rekruterowi że myślisz o bezpieczeństwie, edge case'ach i UX.",
-  "expected_cases": [
+  "type": "audit",
+  "intro_label": "Audit zadania rekrutacyjnego",
+  "material": "**Zadanie rekrutacyjne:** Napisz przypadki testowe dla funkcji resetowania hasła. Specyfikacja: użytkownik klika 'Zapomniałem hasła', wpisuje email, dostaje link resetujący (ważny 24h, jednorazowy), klika link, wpisuje nowe hasło (min 8 znaków), potwierdza hasło, redirect na stronę logowania.",
+  "material_label": "Treść zadania rekrutacyjnego",
+  "instruction": "Poniżej propozycje przypadków testowych kandydata na QA. Oceń każdy: czy jest **poprawny** (OK), czy zawiera **błąd lub poważne przeoczenie** (Problem)?",
+  "items": [
     {
-      "title": "Poprawny flow resetowania hasła od początku do końca",
-      "category": "happy_path",
-      "why_important": "Podstawowy scenariusz — musi działać. Weryfikuje cały flow: email → link → nowe hasło → redirect → możliwość logowania nowym hasłem."
+      "text": "Email który nie istnieje w systemie → komunikat 'Podany adres email nie jest zarejestrowany'",
+      "is_problem": true,
+      "reason": "Poważny błąd bezpieczeństwa w oczekiwaniu: taki komunikat ujawnia czy dany email jest zarejestrowany w systemie (user enumeration attack). Poprawna odpowiedź zawsze brzmi 'Jeśli email istnieje, wyślemy link' — bez rozróżnienia między istniejącym a nieistniejącym emailem."
     },
     {
-      "title": "Email który nie istnieje w systemie — brak ujawnienia czy konto istnieje",
-      "category": "negative",
-      "why_important": "Security: odpowiedź 'email nie istnieje' ujawnia enumeration użytkowników. Poprawna odpowiedź to zawsze 'Jeśli email istnieje, wyślemy link' — bez rozróżnienia."
+      "text": "Link ważny 24h: kliknięcie po 23h59m → zmiana hasła działa; kliknięcie po 24h01m → 'Link wygasł'",
+      "is_problem": false,
+      "reason": "Wzorcowy test wartości granicznej TTL — testuje oba kierunki granicy (przed i po), nie tylko jeden punkt."
     },
     {
-      "title": "Link resetowania hasła wygasa po 24 godzinach",
-      "category": "edge_case",
-      "why_important": "Weryfikacja TTL tokenu — link po 24h musi być nieważny. Test wymaga manipulacji czasem lub bezpośredniego testu API z wygasłym tokenem."
+      "text": "Użycie tego samego linku dwa razy → drugie użycie powinno działać (użytkownik mógł się pomylić)",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie: specyfikacja mówi wprost 'jednorazowy'. Drugie użycie musi dać błąd 'Link został już wykorzystany'. Jednorazowość tokenu to kluczowy wymóg bezpieczeństwa."
     },
     {
-      "title": "Link resetowania jest jednorazowy — drugie użycie zwraca błąd",
-      "category": "edge_case",
-      "why_important": "Jednorazowość tokenu to kluczowy wymóg bezpieczeństwa. Token po użyciu musi być unieważniony, nawet jeśli nie minęło 24h."
+      "text": "Nowe hasło i potwierdzenie hasła różnią się → błąd walidacji 'Hasła nie są identyczne'",
+      "is_problem": false,
+      "reason": "Poprawny i konieczny test — walidacja zgodności haseł musi działać zarówno po stronie klienta (UX) jak i serwera (bezpieczeństwo)."
     },
     {
-      "title": "Nowe hasło mniej niż 8 znaków — walidacja",
-      "category": "negative",
-      "why_important": "Walidacja złożoności hasła. Komunikat błędu musi być precyzyjny ('min 8 znaków'), nie ogólny ('nieprawidłowe hasło')."
+      "text": "3 kolejne requesty resetowania dla tego samego emaila w ciągu minuty → wszystkie 3 linki są aktywne jednocześnie",
+      "is_problem": true,
+      "reason": "Błędne oczekiwanie: wiele aktywnych linków jednocześnie to problem bezpieczeństwa. Prawidłowe zachowanie: nowy request powinien unieważniać poprzedni link (lub być rate-limitowany). 3 aktywne linki to 3 różne wektory ataku."
     },
     {
-      "title": "Nowe hasło i potwierdzenie hasła nie są identyczne",
-      "category": "negative",
-      "why_important": "Walidacja zgodności haseł musi działać po stronie klienta (natychmiast) i po stronie serwera (jako zabezpieczenie)."
-    },
-    {
-      "title": "Użycie tego samego hasła co poprzednie",
-      "category": "edge_case",
-      "why_important": "Wiele systemów wymaga ustawienia NOWEGO hasła, innego niż poprzednie. Specyfikacja tego nie mówi — warto zapytać rekrutera (to dobry przykład pytania o niejasność)."
-    },
-    {
-      "title": "Wiele requestów resetowania dla tego samego emaila w krótkim czasie",
-      "category": "edge_case",
-      "why_important": "Rate limiting: spam resetowania haseł może być atakiem lub przypadkowym double-submit. Czy wcześniejszy link jest unieważniany gdy wysyłamy nowy?"
-    },
-    {
-      "title": "Stary link po sukcesywnym resetowaniu hasła",
-      "category": "negative",
-      "why_important": "Jeśli użytkownik poprawnie zmienił hasło przez link A, a potem używa linku B (który też był ważny) — link B powinien być nieważny. Zabezpieczenie przed race condition."
-    },
-    {
-      "title": "Link resetowania z zmodyfikowanym tokenem w URL",
-      "category": "negative",
-      "why_important": "Security test: manipulacja tokenem nie może dać dostępu do resetowania cudzego hasła. Zmodyfikowany lub losowy token musi zwrócić błąd."
+      "text": "Nowe hasło identyczne ze starym → system akceptuje (specyfikacja tego nie zabrania)",
+      "is_problem": false,
+      "reason": "Poprawna obserwacja: specyfikacja nie mówi że nowe hasło musi być inne. To dobry przykład testu który ujawnia niejasność — warto zapytać rekrutera czy to świadome zachowanie czy przeoczenie w specyfikacji."
     }
-  ]
+  ],
+  "summary": "**Bezpieczeństwo w resetowaniu haseł — 3 kluczowe zasady:**\n1. Nigdy nie ujawniaj czy email istnieje w systemie\n2. Token jednorazowy = wymóg twardy, nie opcja\n3. Wiele aktywnych tokenów dla jednego emaila to luka — najnowszy powinien unieważniać poprzednie"
 }

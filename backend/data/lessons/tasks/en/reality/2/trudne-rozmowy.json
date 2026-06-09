@@ -1,14 +1,27 @@
 {
-  "type": "dev_comm",
-  "variant": "rewrite",
-  "original_message": "Ten bug jest EWIDENTNY i nie rozumiem jak możesz twierdzić że to feature. Użytkownik traci dane i to jest Twoja wina że nie napisałeś odpowiedniej walidacji. Eskaluję to do managera.",
-  "context": "Zgłosiłeś buga: formularz edycji profilu nie zapisuje zmian jeśli użytkownik opuści stronę przez kliknięcie Back w przeglądarce — dane są tracone bez ostrzeżenia. Developer zamknął ticket jako 'Expected behavior — browser back button is outside our control'. Nie masz dokumentacji która potwierdza to zachowanie jako zamierzone.",
-  "good_example": "Hej [Imię],\n\nDziękuję za odpowiedź na ticket. Chcę się upewnić że dobrze rozumiem Twoje stanowisko.\n\nZgadzam się że zachowanie przycisku Back przeglądarki jest poza bezpośrednią kontrolą aplikacji. Jednocześnie mam wątpliwość czy ten scenariusz jest naprawdę 'Expected behavior' z perspektywy użytkownika — gdy edytuje swoje dane i klika Back, nie dostaje żadnego ostrzeżenia że zmiany zostaną utracone.\n\nCzy jest dokumentacja UX lub decyzja designerska która to potwierdza? Jeśli tak, chętnie zamknę ticket i dodam to do known behaviors żeby QA w przyszłości wiedziało czego się spodziewać.\n\nJeśli tej dokumentacji nie ma, proponuję żebyśmy wspólnie zapytali Product Ownera o klaryfikację — bo to decyzja biznesowa o akceptowalnym UX, nie techniczna.\n\nDzięki,\n[Twoje imię]",
-  "evaluation_tips": [
-    "Ton jest spokojny i profesjonalny — żadnych emocji, oskarżeń, słowa 'ewidentny'",
-    "Opisujesz obserwację (brak ostrzeżenia) a nie diagnozę (to Twoja wina)",
-    "Proponujesz konkretne rozwiązanie: dokumentacja lub wspólne pytanie do PO",
-    "Nie eskalujesz bezpośrednio do managera — daje szansę na rozwiązanie na poziomie peer",
-    "Zostawiasz otwartą opcję że developer ma rację i może mieć dokumentację której nie widzisz"
+  "type": "quiz",
+  "question": "Zgłosiłeś buga: formularz edycji profilu traci dane gdy użytkownik kliknie Back w przeglądarce bez ostrzeżenia. Developer zamknął ticket: *'Expected behavior — browser back button is outside our control'*. Ty nie masz dokumentacji potwierdzającej to jako zamierzone.\n\nOdpisujesz mu wiadomość. **Które podejście jest NAJSKUTECZNIEJSZE w tej sytuacji?**",
+  "options": [
+    {
+      "id": "a",
+      "text": "Zapytaj o dokumentację decyzji UX i zaproponuj wspólną klaryfikację z Product Ownerem — bez eskalacji do managera.",
+      "is_correct": true,
+      "explanation": "Tak. Dobre podejście: zakwestionujesz stanowisko dewelopera bez ataku. Pytasz o dokumentację (może ją mieć), a jeśli jej brak — proponujesz wspólne ustalenie z PO zamiast jednostronnej eskalacji.\n\n**Wzorcowa wiadomość:**\n\n> Hej [Imię], dziękuję za odpowiedź. Zgadzam się że zachowanie przycisku Back jest poza bezpośrednią kontrolą aplikacji. Jednocześnie zastanawiam się czy ten scenariusz jest naprawdę 'Expected behavior' — użytkownik nie dostaje żadnego ostrzeżenia że zmiany zostaną utracone.\n>\n> Czy jest dokumentacja UX potwierdzająca to zachowanie? Jeśli tak, chętnie zamknę ticket. Jeśli nie, proponuję żebyśmy zapytali Product Ownera o klaryfikację — to decyzja biznesowa, nie techniczna."
+    },
+    {
+      "id": "b",
+      "text": "Eskaluj do managera teraz — developer nie ma racji i to musi być rozwiązane przez kogoś z autorytetem.",
+      "explanation": "Eskalacja bez próby rozwiązania na poziomie peer jest zbyt agresywna i niszczy relację. Manager nie powinien rozstrzygać sporów technicznych przed rozmową bezpośrednią. Eskaluj tylko jeśli bezpośrednia rozmowa nie przyniosła efektu."
+    },
+    {
+      "id": "c",
+      "text": "Zamknij ticket — jeśli developer mówi że to expected behavior, musisz mu ufać jako ekspertowi technicznemu.",
+      "explanation": "Ślepe zamknięcie ticketu bez weryfikacji to rezygnacja z roli QA. QA kwestionuje decyzje gdy brakuje dokumentacji. Autorytety mogą się mylić — twoim zadaniem jest upewnienie się że zachowanie jest świadome i udokumentowane."
+    },
+    {
+      "id": "d",
+      "text": "Odpisz stanowczo że bug jest EWIDENTNY i jego zamknięcie jest błędem — zaznacz że eskalujesz do managera.",
+      "explanation": "Emocjonalny język ('EWIDENTNY') i natychmiastowa groźba eskalacji wywołają defensywność i zniszczą relację. Developer skupi się na obronie, nie na rozwiązaniu problemu. To najgorsze podejście."
+    }
   ]
 }

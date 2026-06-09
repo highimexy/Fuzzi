@@ -1,19 +1,27 @@
 {
-  "type": "interview",
-  "question": "Rekruter pyta: 'Opowiedz mi o najtrudniejszym bugu który kiedykolwiek znalazłeś. Jak do niego doszedłeś i jaki miał wpływ?'",
-  "context": "To jest klasyczne pytanie behawioralne na rozmowie QA. Rekruter szuka: procesu myślenia, umiejętności komunikacji, rozumienia impaktu biznesowego, i tego czy uczysz się ze swoich doświadczeń. Idealna odpowiedź to 2-3 minuty, konkretna, ze strukturą STAR.",
-  "star_hints": {
-    "s": "Situation: opisz kontekst — jaka aplikacja, jaki moduł, kiedy",
-    "t": "Task: jakie było Twoje zadanie (co testowałeś, jaka była Twoja rola)",
-    "a": "Action: jak znalazłeś buga — jakie kroki, co Cię naprowadził, co sprawdziłeś",
-    "r": "Result: jaki był impact — co by się stało gdybyś nie znalazł, co zostało naprawione"
-  },
-  "evaluation_criteria": [
-    "Konkretność — prawdziwy przykład z liczbami i detalami, nie abstrakcja",
-    "Proces myślenia — jak dochodziłeś do buga, nie tylko 'znalazłem go'",
-    "Impact biznesowy — rozumiesz co bug mógł oznaczać dla użytkowników lub firmy",
-    "Lekcja — co wyniosłeś z tego doświadczenia",
-    "Spójność — czy historia jest logiczna i wiarygodna"
-  ],
-  "example_answer": "Testowałem moduł płatności dla e-commerce — konkretnie checkout z kartą kredytową. Był to release przed Black Friday.\n\nMoje zadanie: pełna regresja płatności przed największym sprzedażowym weekendem roku.\n\nPrzez pierwsze 2 godziny wszystko przechodziło poprawnie. Happy path, błędne numery kart, niewystarczające środki — wszystko działało. Prawie kończyłem.\n\nZdecydowałem sprawdzić jeden edge case który mnie gnębił: co jeśli użytkownik ma produkty w koszyku w dwóch różnych walutach? Sklep sprzedawał w PLN i EUR dla klientów zagranicznych.\n\nKoszyk: produkt PLN (99 PLN) + produkt EUR (25 EUR). Przeszedłem przez checkout, zapłaciłem kartą. Strona powiedziała 'Zamówienie złożone'. Sprawdziłem email — brak potwierdzenia. Sprawdziłem bazę danych — zamówienie istnieje, status 'pending'. Po 5 minutach — status zmienił się na 'failed' bez komunikatu.\n\nZaszłam głębiej: logi pokazały że payment gateway otrzymał kwotę 99 jako PLN, ale currency code był EUR. Bramka płatności odrzuciła transakcję bo 99 EUR to nie jest 99 PLN.\n\nImpact: gdyby to wyszło na produkcję, każde zamówienie z mieszaną walutą — a mieliśmy ok. 15% takich zamówień — cicho failowało. Użytkownik myślał że zamówił, dostaliśmy pending które nigdy się nie zamknęło. Przed Black Friday mogliśmy stracić kilkadziesiąt tysięcy złotych w zamówieniach.\n\nNaprawa zajęła developerowi 4 godziny. Nauczyłem się że edge cases z walutami są zawsze ryzykowne — od tego czasu mam je w checkliście dla każdego release sklepu."
+  "type": "quiz",
+  "question": "Rekruter pyta: *\"Opowiedz mi o najtrudniejszym bugu który kiedykolwiek znalazłeś.\"*\n\n**Która z poniższych odpowiedzi jest NAJLEPSZA?**",
+  "options": [
+    {
+      "id": "a",
+      "text": "\"Raz znalazłem bardzo skomplikowanego buga w module płatności. Przetestowałem wszystkie edge case'y i ostatecznie go wykryłem. To było bardzo ważne dla projektu.\"",
+      "explanation": "To odpowiedź ogólnikowa i abstrakcyjna — brak konkretów, liczb, procesu myślenia. Brzmi jak wypełniacz. Rekruter nie może ocenić czy naprawdę to przeżyłeś ani jak rozwiązujesz problemy."
+    },
+    {
+      "id": "b",
+      "text": "\"Znalazłem buga w module płatności, który dotyczył koszyków z produktami w dwóch walutach. Payment gateway otrzymał kwotę PLN z kodem EUR — zamówienia cicho failowały. Dotyczyło ~15% zamówień. Znalazłem go przez edge case testowania mieszanego koszyka.\"",
+      "is_correct": true,
+      "explanation": "Tak. Konkretna historia z: liczbami (15% zamówień), procesem (jak doszedłeś do edge case'u), impaktem biznesowym (potencjalna strata), i lekcją. Rekruter może ocenić myślenie i doświadczenie.\n\n**Wzorzec dobrej odpowiedzi:**\n- Konkretny przykład z prawdziwej pracy (nie hipotetyczny)\n- Liczby i szczegóły techniczne\n- Jak DOSZEDŁEŚ do buga (nie tylko że go znalazłeś)\n- Impact biznesowy — co by się stało gdybyś nie znalazł\n- Lekcja którą wyciągnąłeś"
+    },
+    {
+      "id": "c",
+      "text": "\"Najtrudniejszy bug to był race condition w systemie concurrent writes. Musiałem użyć zaawansowanych technik testowania współbieżności z Apache JMeter i własnych skryptów Python...\"",
+      "explanation": "Techniczna głębia jest dobra, ale jeśli koncentrujesz się głównie na narzędziach i technikach bez kontekstu biznesowego i procesu myślenia, możesz brzmieć jak osoba skupiona na technologii, nie na wartości dla biznesu."
+    },
+    {
+      "id": "d",
+      "text": "\"Kiedyś znalazłem buga na produkcji który dotykał 80% użytkowników. Mój raport doprowadził do naprawy w ciągu godziny i uratował launch. Management bardzo chodził mnie po tym.\"",
+      "explanation": "Autopromocja bez szczegółów procesu brzmi niewiarygodnie. Rekruter będzie chciał wiedzieć jak znalazłeś buga, jaki był mechanizm — samo chwałenie się efektem nie pokazuje umiejętności."
+    }
+  ]
 }
