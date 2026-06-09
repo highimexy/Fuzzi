@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
+import { MarkdownRenderer } from '../../_components/MarkdownRenderer'
 import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiZap } from 'react-icons/fi'
 import { useUserStore } from '@/store/userStore'
 import { fetchGroupCompletedLessons } from '@/lib/lessonApi'
@@ -42,21 +41,25 @@ interface GroupInfo {
   lessons: SubLesson[]
 }
 
+const _auditTask = dynamic(() => import('./_tasks/AuditTask'), { ssr: false })
+
 const LESSON_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  // Group C — multiple choice
   quiz: dynamic(() => import('./_tasks/QuizTask'), { ssr: false }),
-  dev_comm: dynamic(() => import('./_tasks/DevCommTask'), { ssr: false }),
-  salary_decoder: dynamic(() => import('./_tasks/SalaryDecoderTask'), { ssr: false }),
-  bullshit_detector: dynamic(() => import('./_tasks/BullshitDetectorTask'), { ssr: false }),
-  bug_hunt: dynamic(() => import('./_tasks/BugHuntTask'), { ssr: false }),
-  doc_inspector: dynamic(() => import('./_tasks/DocInspectorTask'), { ssr: false }),
-  triage: dynamic(() => import('./_tasks/TriageTask'), { ssr: false }),
-  diff_inspector: dynamic(() => import('./_tasks/DiffInspectorTask'), { ssr: false }),
   console_detective: dynamic(() => import('./_tasks/ConsoleDetectiveTask'), { ssr: false }),
-  test_case_builder: dynamic(() => import('./_tasks/TestCaseBuilderTask'), { ssr: false }),
-  scenario: dynamic(() => import('./_tasks/ScenarioTask'), { ssr: false }),
-  risk_map: dynamic(() => import('./_tasks/RiskMapTask'), { ssr: false }),
-  cv_audit: dynamic(() => import('./_tasks/CvAuditTask'), { ssr: false }),
-  interview: dynamic(() => import('./_tasks/InterviewTask'), { ssr: false }),
+  // Group A — audit/mark → reveal (all via AuditTask with adapters)
+  bullshit_detector: _auditTask,
+  salary_decoder: _auditTask,
+  cv_audit: _auditTask,
+  doc_inspector: _auditTask,
+  diff_inspector: _auditTask,
+  risk_map: _auditTask,
+  triage: _auditTask,
+  // Migrated types (legacy JSON → adapted via AuditTask / QuizTask)
+  bug_hunt: _auditTask,
+  scenario: dynamic(() => import('./_tasks/QuizTask'), { ssr: false }),
+  // Skeleton
+  code_playground: dynamic(() => import('./_tasks/CodePlaygroundTask'), { ssr: false }),
 }
 
 export default function LessonClient({
@@ -215,7 +218,7 @@ export default function LessonClient({
 
           <div className="text-foreground/80 prose prose-invert max-w-none space-y-6 leading-relaxed">
             {content ? (
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+              <MarkdownRenderer>{content}</MarkdownRenderer>
             ) : (
               'Treść w przygotowaniu...'
             )}
@@ -242,8 +245,9 @@ export default function LessonClient({
                 onComplete={handleComplete}
               />
             ) : (
-              <div className="border-foreground/10 flex flex-1 items-center justify-center border border-dashed font-sans text-xs opacity-30">
-                [SYSTEM ERROR] Brak modułu dla typu: {lesson.lesson_type}
+              <div className="border-foreground/10 flex flex-1 flex-col items-center justify-center gap-3 border border-dashed p-8 text-center">
+                <p className="font-sans text-sm font-bold opacity-40">Ten typ zadania nie jest jeszcze dostępny.</p>
+                <p className="font-sans text-xs opacity-25">Typ: {lesson.lesson_type}</p>
               </div>
             )}
           </div>

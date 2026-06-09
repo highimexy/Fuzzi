@@ -1,5 +1,7 @@
 'use client'
 
+// TODO: wymaga realnej oceny (AI/heurystyka) zanim policzymy to jako naukę
+
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
