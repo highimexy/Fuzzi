@@ -103,36 +103,140 @@ body {
   line-height: 1.7;
   color: var(--foreground);
 }
-.rte-content p { margin-bottom: 0.75rem; }
-.rte-content p:last-child { margin-bottom: 0; }
-.rte-content h2 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin: 1.25rem 0 0.5rem; }
-.rte-content h3 { font-family: var(--font-serif); font-size: 1rem; font-weight: 700; margin: 1rem 0 0.4rem; }
-.rte-content strong { font-weight: 700; }
-.rte-content em { font-style: italic; }
-.rte-content u { text-decoration: underline; }
-.rte-content s { text-decoration: line-through; opacity: 0.6; }
-.rte-content code { font-family: monospace; font-size: 0.8rem; background: color-mix(in srgb, var(--foreground) 8%, transparent); padding: 0.15em 0.4em; border-radius: 3px; }
-.rte-content pre { background: color-mix(in srgb, var(--foreground) 6%, transparent); border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent); padding: 0.75rem 1rem; margin: 0.75rem 0; overflow-x: auto; }
-.rte-content pre code { background: none; padding: 0; font-size: 0.8rem; }
-.rte-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.75rem; }
-.rte-content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 0.75rem; }
-.rte-content li { margin-bottom: 0.25rem; }
-.rte-content blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 0.75rem 0; opacity: 0.75; font-style: italic; }
-.rte-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-.rte-content hr { border: none; border-top: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent); margin: 1rem 0; }
-.rte-content .ProseMirror { outline: none; min-height: 120px; }
-.rte-content .ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); color: color-mix(in srgb, var(--foreground) 30%, transparent); pointer-events: none; float: left; height: 0; }
+.rte-content p {
+  margin-bottom: 0.75rem;
+}
+.rte-content p:last-child {
+  margin-bottom: 0;
+}
+.rte-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.5rem;
+}
+.rte-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1rem 0 0.4rem;
+}
+.rte-content strong {
+  font-weight: 700;
+}
+.rte-content em {
+  font-style: italic;
+}
+.rte-content u {
+  text-decoration: underline;
+}
+.rte-content s {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.rte-content code {
+  font-family: monospace;
+  font-size: 0.8rem;
+  background: color-mix(in srgb, var(--foreground) 8%, transparent);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+.rte-content pre {
+  background: color-mix(in srgb, var(--foreground) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+.rte-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.8rem;
+}
+.rte-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.rte-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.rte-content li {
+  margin-bottom: 0.25rem;
+}
+.rte-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  opacity: 0.75;
+  font-style: italic;
+}
+.rte-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.rte-content hr {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent);
+  margin: 1rem 0;
+}
+.rte-content .ProseMirror {
+  outline: none;
+  min-height: 120px;
+}
+.rte-content .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: color-mix(in srgb, var(--foreground) 30%, transparent);
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
 
 @keyframes fuzzi-leg {
-  0%   { transform: rotate(0deg);   }
-  50%  { transform: rotate(3.5deg); }
-  100% { transform: rotate(-2deg);  }
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3.5deg);
+  }
+  100% {
+    transform: rotate(-2deg);
+  }
 }
 @keyframes fuzzi-led {
-  0%, 100% { opacity: 1;    }
-  45%, 55% { opacity: 0.08; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45%,
+  55% {
+    opacity: 0.08;
+  }
 }
 @keyframes fuzzi-visor-pulse {
-  0%, 100% { opacity: 1;    }
-  50%       { opacity: 0.78; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.78;
+  }
+}
+
+/* Custom Scrollbar for 3D Board */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--foreground);
+  opacity: 0.2;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
 }

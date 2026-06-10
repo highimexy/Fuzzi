@@ -1239,6 +1239,18 @@
         "desc": "The unfiltered guide to surviving in tech. Career traps, team politics, salary negotiation, burnout — everything they skip in the textbooks.",
         "highlights": ["Hiring & Negotiation", "Team Politics", "Career & Finance"]
       }
+    },
+    "Library": {
+      "notebook": {
+        "hint": "Click a notebook to open it",
+        "close": "Close",
+        "toc": "Table of Contents",
+        "sublessons": "Sub-lessons",
+        "startLesson": "Start Lesson",
+        "backToToc": "Table of Contents",
+        "lesson": "Lesson",
+        "authorNote": "— from the author's notes"
+      }
     }
   }
 }

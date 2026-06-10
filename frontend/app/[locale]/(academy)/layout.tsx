@@ -2,17 +2,24 @@ import { ReactNode } from 'react'
 import { AcademyNavbar } from './_components/AcademyNavbar'
 import { AcademySidebar } from './_components/AcademySidebar'
 import { AcademyFooter } from './_components/AcademyFooter'
+import Academy3DWrapper from './_components/Academy3DWrapper' // <-- Dodany import
 
 export default function AcademyLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="bg-background flex w-full flex-1 flex-col overflow-hidden">
+    // Usunięte 'bg-background' by nie blokowało widoczności 3D w tle
+    <div className="flex w-full flex-1 flex-col overflow-hidden bg-transparent">
       <AcademyNavbar />
 
       <div className="relative z-60 flex flex-1">
         <AcademySidebar />
 
-        <div className="flex flex-1 flex-col overflow-y-auto">
-          <main className="flex flex-1 flex-col">{children}</main>
+        {/* Usunięte overflow-y-auto stąd - Wrapper decyduje o scrollu */}
+        <div className="relative flex flex-1 flex-col overflow-hidden">
+          {/* Main musi mieć h-full, żeby wypełnić miejsce pod 3D */}
+          <main className="relative flex h-full flex-1 flex-col">
+            <Academy3DWrapper>{children}</Academy3DWrapper>
+          </main>
+
           <div className="mt-auto">
             <AcademyFooter />
           </div>

@@ -14,14 +14,10 @@ export function HomeHeader() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.gsap-item', {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        delay: 0.1,
-      })
+      gsap.fromTo('.gsap-item',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', delay: 0.1 }
+      )
     }, containerRef)
     return () => ctx.revert()
   }, [])
@@ -33,12 +29,12 @@ export function HomeHeader() {
 
         <div ref={containerRef} className="flex flex-col items-center px-6 py-14 text-center">
           {/* Badge */}
-          <div className="gsap-item border-accent/40 text-accent mb-8 inline-block border px-4 py-1.5 font-sans text-[10px] font-bold tracking-[0.3em] uppercase">
+          <div className="gsap-item opacity-0 border-accent/40 text-accent mb-8 inline-block border px-4 py-1.5 font-sans text-[10px] font-bold tracking-[0.3em] uppercase">
             {t('hero.badge')}
           </div>
 
           <h1
-            className="gsap-item max-w-3xl font-serif leading-[0.9] tracking-tighter text-balance uppercase"
+            className="gsap-item opacity-0 max-w-3xl font-serif leading-[0.9] tracking-tighter text-balance uppercase"
             style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)' }}
           >
             {t.rich('hero.headline', {
@@ -49,12 +45,12 @@ export function HomeHeader() {
           </h1>
 
           {/* Subheadline */}
-          <p className="gsap-item mt-5 max-w-sm font-sans text-sm leading-relaxed tracking-[0.12em] uppercase opacity-40">
+          <p className="gsap-item opacity-0 mt-5 max-w-sm font-sans text-sm leading-relaxed tracking-[0.12em] uppercase">
             {t('hero.subheadline')}
           </p>
 
           {/* CTAs */}
-          <div className="gsap-item mt-10 flex flex-wrap items-center justify-center gap-4">
+          <div className="gsap-item opacity-0 mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/lessons"
               className="bg-accent text-background inline-block px-10 py-4 font-sans text-sm font-bold tracking-[0.2em] uppercase transition-opacity duration-300 hover:opacity-80"
@@ -71,7 +67,7 @@ export function HomeHeader() {
           </div>
 
           {/* Social proof */}
-          <p className="gsap-item mt-4 font-sans text-xs tracking-[0.12em] uppercase opacity-25">
+          <p className="gsap-item opacity-0 mt-4 font-sans text-xs tracking-[0.12em] uppercase">
             {t('hero.socialProof')}
           </p>
         </div>

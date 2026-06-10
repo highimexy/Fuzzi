@@ -1239,6 +1239,18 @@
         "desc": "Nieocenzurowany przewodnik po branży IT. Pułapki kariery, polityka zespołu, negocjacje wynagrodzenia, wypalenie — to czego nie ma w podręcznikach.",
         "highlights": ["Rekrutacja i negocjacje", "Polityka zespołu", "Kariera i finanse"]
       }
+    },
+    "Library": {
+      "notebook": {
+        "hint": "Kliknij notes, by go otworzyć",
+        "close": "Zamknij",
+        "toc": "Spis treści",
+        "sublessons": "Sublekcje",
+        "startLesson": "Zacznij lekcję",
+        "backToToc": "Spis treści",
+        "lesson": "Lekcja",
+        "authorNote": "— z notatek autora"
+      }
     }
   }
 }
