@@ -6,7 +6,7 @@ import { Grid } from '@react-three/drei'
 import * as THREE from 'three'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import OpenBookOverlay from './OpenBookOverlay'
+import { OpenBook } from './OpenBook3d'
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -73,7 +73,7 @@ function useCSSColors(): ThemeColors {
   return colors
 }
 
-// ── Constants ──────────────────────────────────────────────────────────────
+// ── Constants & Configuration ──────────────────────────────────────────────
 
 const BW = 2.0,
   BH = 2.75,
@@ -96,7 +96,34 @@ const LEGS: { r: Pt; c1: Pt; k: Pt; c2: Pt; t: Pt }[] = [
   { r: [74, 78], c1: [94, 84], k: [96, 92], c2: [98, 100], t: [94, 112] },
 ]
 
-// ── Canvas texture helpers (FM remains fixed brand identity) ──────────────
+const NOISE_BASE = '#20271f'
+
+interface CoverPalette {
+  cover: string
+  coverDark: string
+  titleInk: string
+  descInk: string
+  sceneAccent: string
+}
+
+const TRACK_COVER: Record<TrackId, CoverPalette> = {
+  qa: {
+    cover: '#89937E',
+    coverDark: '#192218',
+    titleInk: '#F4F1EA',
+    descInk: 'rgba(244, 241, 234, 0.65)',
+    sceneAccent: '#FF4A4A', // Neonowy, laserowy czerwony do błędów
+  },
+  reality: {
+    cover: '#576966',
+    coverDark: '#12191D',
+    titleInk: '#F1EDE2',
+    descInk: 'rgba(241, 237, 226, 0.6)',
+    sceneAccent: '#FDE047', // Sygnałowy żółty do wykrzyknika
+  },
+}
+
+// ── Canvas texture helpers ─────────────────────────────────────────────────
 
 const FM = {
   armor: '#7a8a6e',
@@ -247,15 +274,16 @@ function drawFuzzi(
   ctx.restore()
 }
 
-function drawQAScene(ctx: CanvasRenderingContext2D, col: { coverDark: string; error: string }) {
+function drawQAScene(ctx: CanvasRenderingContext2D, col: CoverPalette) {
   drawFuzzi(ctx, 290, 330, 1.55, false)
   const ex = 290 + (34 - 50) * 1.55,
     ey = 330 + (52 - 59) * 1.55
   const bx = 140,
     by = 545
+
   const bg = ctx.createLinearGradient(ex, ey, bx, by)
-  bg.addColorStop(0, 'rgba(245,230,66,0.4)')
-  bg.addColorStop(1, 'rgba(245,230,66,0.04)')
+  bg.addColorStop(0, 'rgba(255, 74, 74, 0.25)')
+  bg.addColorStop(1, 'rgba(255, 74, 74, 0.01)')
   ctx.beginPath()
   ctx.moveTo(ex - 4, ey + 4)
   ctx.lineTo(bx - 30, by)
@@ -264,6 +292,7 @@ function drawQAScene(ctx: CanvasRenderingContext2D, col: { coverDark: string; er
   ctx.closePath()
   ctx.fillStyle = bg
   ctx.fill()
+
   ctx.save()
   ctx.translate(bx, by)
   ctx.strokeStyle = col.coverDark
@@ -298,7 +327,8 @@ function drawQAScene(ctx: CanvasRenderingContext2D, col: { coverDark: string; er
   ctx.lineWidth = 1
   ctx.stroke()
   ctx.restore()
-  ctx.strokeStyle = FM.visor
+
+  ctx.strokeStyle = col.sceneAccent
   ctx.lineWidth = 2
   ctx.setLineDash([6, 5])
   ctx.beginPath()
@@ -318,16 +348,25 @@ function drawQAScene(ctx: CanvasRenderingContext2D, col: { coverDark: string; er
     ctx.lineTo(bx + dx * 40, by + dy * 40)
     ctx.stroke()
   })
-  ctx.fillStyle = col.error
-  ctx.font = '700 15px monospace'
+  ctx.fillStyle = col.sceneAccent
+  ctx.font = '700 16px monospace'
   ctx.textAlign = 'left'
-  ctx.fillText('ERR', bx + 42, by - 30)
+  ctx.fillText('ERR_', bx + 42, by - 30)
 }
 
-function drawRealityScene(ctx: CanvasRenderingContext2D, col: { coverDark: string }) {
+function drawRealityScene(ctx: CanvasRenderingContext2D, col: CoverPalette) {
   drawFuzzi(ctx, 150, 430, 1.15, false)
   drawFuzzi(ctx, 362, 430, 1.15, true)
-  const bubble = (bx: number, by: number, bw: number, bh: number, tailX: number, txt: string) => {
+
+  const bubble = (
+    bx: number,
+    by: number,
+    bw: number,
+    bh: number,
+    tailX: number,
+    txt: string,
+    isAccent: boolean
+  ) => {
     const r = 10
     ctx.beginPath()
     ctx.moveTo(bx + r, by)
@@ -343,18 +382,20 @@ function drawRealityScene(ctx: CanvasRenderingContext2D, col: { coverDark: strin
     ctx.lineTo(bx, by + r)
     ctx.quadraticCurveTo(bx, by, bx + r, by)
     ctx.closePath()
-    ctx.fillStyle = 'rgba(230,233,220,0.92)'
+
+    ctx.fillStyle = isAccent ? col.sceneAccent : '#EAE5D9'
     ctx.fill()
-  ctx.strokeStyle = col.coverDark
-    ctx.lineWidth = 2
+    ctx.strokeStyle = col.coverDark
+    ctx.lineWidth = 2.5
     ctx.stroke()
     ctx.fillStyle = col.coverDark
-    ctx.font = '700 22px monospace'
+    ctx.font = '800 24px monospace'
     ctx.textAlign = 'center'
     ctx.fillText(txt, bx + bw / 2, by + bh / 2 + 8)
   }
-  bubble(86, 268, 120, 52, 160, '...')
-  bubble(306, 240, 120, 52, 352, '!')
+
+  bubble(86, 268, 120, 52, 160, '...', false)
+  bubble(306, 240, 120, 52, 352, '!', true)
 }
 
 function wrapText(ctx: CanvasRenderingContext2D, text: string, maxW: number): string[] {
@@ -376,8 +417,8 @@ function buildCoverTexture(
   title: string,
   desc: string,
   bottom: string,
-  scene: (ctx: CanvasRenderingContext2D, col: { coverDark: string; error: string }) => void,
-  col: { cover: string; titleInk: string; descInk: string } & { coverDark: string; error: string }
+  scene: (ctx: CanvasRenderingContext2D, col: CoverPalette) => void,
+  col: CoverPalette
 ): THREE.CanvasTexture {
   const cn = document.createElement('canvas')
   cn.width = 512
@@ -431,22 +472,6 @@ function buildSheetTexture(): THREE.CanvasTexture {
   return t
 }
 
-const NOISE_BASE = '#20271f'
-
-const TRACK_COVER: Record<TrackId, { cover: string; coverDark: string; titleInk: string; descInk: string }> = {
-  qa: {
-    cover: '#243322',
-    coverDark: '#14201a',
-    titleInk: '#efead9',
-    descInk: 'rgba(239,234,217,0.62)',
-  },
-  reality: {
-    cover: '#1e2d42',
-    coverDark: '#0f1a2a',
-    titleInk: '#efead9',
-    descInk: 'rgba(239,234,217,0.62)',
-  },
-}
 function buildNoiseTex(base: string, strength: number): THREE.CanvasTexture {
   const cn = document.createElement('canvas')
   cn.width = 128
@@ -547,7 +572,7 @@ function BookMesh({
     const backMats = [lam(coverDark), lam(coverDark)]
     return { pGeo, pageMats, cGeo, frontMats, backMats }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coverDark])
+  }, [coverDark, coverTex, sheetTex])
 
   return (
     <group ref={groupRef} position={[HOME[id].x, 0, 0]} rotation-y={HOME[id].ry}>
@@ -557,7 +582,7 @@ function BookMesh({
       <mesh geometry={cGeo} material={frontMats} position={[0, 0, BD / 2 - 0.06]} />
       {/* Back cover */}
       <mesh geometry={cGeo} material={backMats} position={[0, 0, -BD / 2]} />
-      {/* Spine — nudged out to avoid coplanar faces */}
+      {/* Spine */}
       <mesh material={roughMat} position={[-BW / 2 - 0.015, 0, 0]}>
         <boxGeometry args={[0.1, BH + 0.012, BD + 0.04]} />
       </mesh>
@@ -603,13 +628,34 @@ function FloorShadow({
   )
 }
 
-// ── Camera look-at setup ───────────────────────────────────────────────────
+// ── Camera rig ─────────────────────────────────────────────────────────────
 
-function CameraSetup() {
+function CameraRig({
+  openProgressRef,
+  reducedMotion,
+  hasOpen,
+}: {
+  openProgressRef: React.MutableRefObject<number>
+  reducedMotion: boolean
+  hasOpen: boolean
+}) {
   const { camera } = useThree()
-  useEffect(() => {
-    camera.lookAt(0, -0.3, 0)
-  }, [camera])
+  const camPos = useRef(new THREE.Vector3(0, 2.0, 6.3))
+  const lookTgt = useRef(new THREE.Vector3(0, -0.3, 0))
+
+  const closedPos = useMemo(() => new THREE.Vector3(0, 2.0, 6.3), [])
+  const openPos = useMemo(() => new THREE.Vector3(0, 0.4, 6.6), [])
+  const closedLook = useMemo(() => new THREE.Vector3(0, -0.3, 0), [])
+  const openLook = useMemo(() => new THREE.Vector3(0, -0.2, 0.5), [])
+
+  useFrame(() => {
+    const zp = reducedMotion ? (hasOpen ? 1 : 0) : openProgressRef.current
+    camPos.current.lerpVectors(closedPos, openPos, zp)
+    lookTgt.current.lerpVectors(closedLook, openLook, zp)
+    camera.position.copy(camPos.current)
+    camera.lookAt(lookTgt.current)
+  })
+
   return null
 }
 
@@ -619,18 +665,24 @@ interface BooksSceneProps {
   openId: TrackId | null
   reducedMotion: boolean
   onBookClick: (id: TrackId) => void
-  onOverlayChange: (visible: boolean) => void
-  onSceneHideChange: (hidden: boolean) => void
+  onOpenBookVisibilityChange: (show: boolean) => void
   colors: ThemeColors
+  openProgressRef: React.MutableRefObject<number>
+  coverTexes: Record<TrackId, THREE.CanvasTexture>
+  sheetTex: THREE.CanvasTexture
+  roughMat: THREE.MeshPhongMaterial
 }
 
 function BooksScene({
   openId,
   reducedMotion,
   onBookClick,
-  onOverlayChange,
-  onSceneHideChange,
+  onOpenBookVisibilityChange,
   colors,
+  openProgressRef,
+  coverTexes,
+  sheetTex,
+  roughMat,
 }: BooksSceneProps) {
   const qaGroupRef = useRef<THREE.Group>(null!)
   const realityGroupRef = useRef<THREE.Group>(null!)
@@ -649,56 +701,12 @@ function BooksScene({
   const hoveredRef = useRef<TrackId | null>(null)
   const openIdRef = useRef<TrackId | null>(openId)
   const zoomProgRef = useRef(0)
-  const prevOverlayRef = useRef(false)
-  const prevHiddenRef = useRef(false)
+  const prevShowOpenBookRef = useRef(false)
+  const lastOpenedIdRef = useRef<TrackId | null>(null)
 
   useEffect(() => {
     openIdRef.current = openId
   }, [openId])
-
-  const { sheetTex, noiseTex, bumpTex, coverTexes } = useMemo(() => {
-    const sheetTex = buildSheetTexture()
-    const noiseTex = buildNoiseTex(NOISE_BASE, 0.07)
-    const bumpTex = buildBumpTex()
-    const coverTexes: Record<TrackId, THREE.CanvasTexture> = {
-      qa: buildCoverTexture(
-        'Quality Assurance',
-        'From bits to UI',
-        'Fuzzi | QA TRACK',
-        drawQAScene,
-        { ...TRACK_COVER.qa, error: colors.error }
-      ),
-      reality: buildCoverTexture(
-        'Reality Check',
-        "What they won't tell you",
-        'Fuzzi | Reality Track',
-        drawRealityScene,
-        { ...TRACK_COVER.reality, error: colors.error }
-      ),
-    }
-    return { sheetTex, noiseTex, bumpTex, coverTexes }
-  }, [colors])
-
-  const roughMat = useMemo(
-    () =>
-      new THREE.MeshPhongMaterial({
-        map: noiseTex,
-        bumpMap: bumpTex,
-        bumpScale: 0.012,
-        shininess: 5,
-      }),
-    [noiseTex, bumpTex]
-  )
-
-  useEffect(() => {
-    return () => {
-      sheetTex.dispose()
-      noiseTex.dispose()
-      bumpTex.dispose()
-      Object.values(coverTexes).forEach((t) => t.dispose())
-      roughMat.dispose()
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
@@ -711,21 +719,18 @@ function BooksScene({
       zoomProgRef.current += (zp_target - zoomProgRef.current) * 0.09
     }
     const zp = zoomProgRef.current
+    openProgressRef.current = zp
 
-    // Overlay visibility transitions
-    const shouldShowOverlay = zp > 0.45 && !!oid
-    if (shouldShowOverlay !== prevOverlayRef.current) {
-      prevOverlayRef.current = shouldShowOverlay
-      onOverlayChange(shouldShowOverlay)
-    }
-    // Scene hide transitions
-    const shouldHide = !!oid && zp > 0.92
-    if (shouldHide !== prevHiddenRef.current) {
-      prevHiddenRef.current = shouldHide
-      onSceneHideChange(shouldHide)
+    if (oid) lastOpenedIdRef.current = oid
+    if (!oid && zp < 0.02) lastOpenedIdRef.current = null
+
+    const shouldShowOpenBook = zp > 0.88 && !!oid
+    if (shouldShowOpenBook !== prevShowOpenBookRef.current) {
+      prevShowOpenBookRef.current = shouldShowOpenBook
+      onOpenBookVisibilityChange(shouldShowOpenBook)
     }
 
-    if (shouldHide) return
+    const transId = lastOpenedIdRef.current
 
     ORDER.forEach((id, i) => {
       const b = groupRefs[id].current
@@ -733,6 +738,10 @@ function BooksScene({
       if (!b || !sh) return
 
       const isOpening = id === oid
+      const hiddenAsOpening = id === transId && zp > 0.88
+      const hiddenAsOther = transId !== null && id !== transId && zp > 0.3
+      b.visible = !hiddenAsOpening && !hiddenAsOther
+
       const sway = !reducedMotion && zp < 0.05 ? Math.sin(t * 0.55 + i) * 0.025 : 0
       const hov = hoveredRef.current === id && !oid
 
@@ -836,76 +845,149 @@ export default function NotebookLibrary({ tracks, locale }: Props) {
   const router = useRouter()
   const colors = useCSSColors()
   const [openId, setOpenId] = useState<TrackId | null>(null)
-  const [overlayVisible, setOverlayVisible] = useState(false)
-  const [sceneHidden, setSceneHidden] = useState(false)
+  const [showOpenBook, setShowOpenBook] = useState(false)
+  const [displayTrack, setDisplayTrack] = useState<TrackData | null>(null)
+  const openProgressRef = useRef(0)
 
   const reducedMotion =
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  const { sheetTex, noiseTex, bumpTex, roughMat, coverTexes } = useMemo(() => {
+    const sheetTex = buildSheetTexture()
+    const noiseTex = buildNoiseTex(NOISE_BASE, 0.07)
+    const bumpTex = buildBumpTex()
+
+    const coverTexes: Record<TrackId, THREE.CanvasTexture> = {
+      qa: buildCoverTexture(
+        'Quality Assurance',
+        'From bits to UI',
+        'Fuzzi | QA TRACK',
+        drawQAScene,
+        TRACK_COVER.qa
+      ),
+      reality: buildCoverTexture(
+        'Reality Check',
+        "What they won't tell you",
+        'Fuzzi | Reality Track',
+        drawRealityScene,
+        TRACK_COVER.reality
+      ),
+    }
+
+    const roughMat = new THREE.MeshPhongMaterial({
+      map: noiseTex,
+      bumpMap: bumpTex,
+      bumpScale: 0.012,
+      shininess: 5,
+    })
+
+    return { sheetTex, noiseTex, bumpTex, roughMat, coverTexes }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      sheetTex.dispose()
+      noiseTex.dispose()
+      bumpTex.dispose()
+      Object.values(coverTexes).forEach((tex) => tex.dispose())
+      roughMat.dispose()
+    }
+  }, [sheetTex, noiseTex, bumpTex, coverTexes, roughMat])
+
+  useEffect(() => {
+    if (openId) setDisplayTrack(tracks.find((tr) => tr.id === openId) ?? null)
+  }, [openId, tracks])
+
   const handleBookClick = (id: TrackId) => setOpenId(id)
-  const handleClose = () => {
-    setOpenId(null)
-    setSceneHidden(false)
-    if (reducedMotion) setOverlayVisible(false)
-  }
+  const handleClose = () => setOpenId(null)
   const handleStartLesson = (lessonId: string) => router.push(`/lesson/${lessonId}`)
 
-  const openTrack = tracks.find((t) => t.id === openId) ?? null
-
   return (
-    <div className="absolute inset-0 flex flex-col bg-background">
-      {/* 3D Canvas */}
-      <div
-        className="absolute inset-0"
-        style={{
-          opacity: sceneHidden ? 0 : 1,
-          transition: 'opacity 0.25s',
-          pointerEvents: sceneHidden ? 'none' : 'auto',
-        }}
-      >
+    <div className="bg-background absolute inset-0 flex flex-col">
+      <div className="absolute inset-0">
         <Canvas
           camera={{ fov: 44, position: [0, 2.0, 6.3] }}
           gl={{ antialias: true, alpha: false }}
           dpr={[1, 2]}
         >
-          <CameraSetup />
+          <CameraRig
+            openProgressRef={openProgressRef}
+            reducedMotion={reducedMotion}
+            hasOpen={!!openId}
+          />
           <color attach="background" args={[colors.background]} />
           <fog attach="fog" args={[colors.background, 3, 12]} />
           <ambientLight intensity={0.6} color="#ffffff" />
           <directionalLight position={[3, 6, 5]} intensity={0.85} color="#ffffff" />
           <directionalLight position={[-4, 2, -3]} intensity={0.35} color={colors.primary} />
+
           <BooksScene
             openId={openId}
             reducedMotion={reducedMotion}
             onBookClick={handleBookClick}
-            onOverlayChange={setOverlayVisible}
-            onSceneHideChange={setSceneHidden}
+            onOpenBookVisibilityChange={setShowOpenBook}
             colors={colors}
+            openProgressRef={openProgressRef}
+            coverTexes={coverTexes}
+            sheetTex={sheetTex}
+            roughMat={roughMat}
           />
+
+          {showOpenBook && displayTrack && (
+            <group position={[0, 0, 0.5]}>
+              <OpenBook
+                key={displayTrack.id}
+                track={displayTrack}
+                locale={locale}
+                onStartLesson={handleStartLesson}
+                coverTex={coverTexes[displayTrack.id]}
+                reducedMotion={reducedMotion}
+                onClose={handleClose}
+              />
+            </group>
+          )}
         </Canvas>
       </div>
 
       {/* Hint text */}
       <div
-        className="absolute bottom-4 left-0 right-0 text-center font-mono text-[11px] uppercase tracking-[0.22em] pointer-events-none"
+        className="pointer-events-none absolute right-0 bottom-4 left-0 text-center font-mono text-[11px] tracking-[0.22em] uppercase"
         style={{
           color: colors.secondary,
-          opacity: overlayVisible || openId ? 0 : 1,
+          opacity: openId ? 0 : 1,
           transition: 'opacity 0.25s',
         }}
       >
         {t('hint')}
       </div>
 
-      {/* Overlay — rendered independently of 3D scene */}
-      {openTrack && (
-        <OpenBookOverlay
-          track={openTrack}
-          locale={locale}
-          visible={overlayVisible}
-          onClose={handleClose}
-          onStartLesson={handleStartLesson}
-        />
+      {/* Close button */}
+      {openId && (
+        <button
+          onClick={handleClose}
+          aria-label={t('close')}
+          style={{
+            position: 'absolute',
+            top: 16,
+            right: 16,
+            zIndex: 20,
+            width: 36,
+            height: 36,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(20,32,26,0.72)',
+            color: '#ece9df',
+            border: '1px solid rgba(255,255,255,0.14)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 16,
+            borderRadius: 4,
+            backdropFilter: 'blur(4px)',
+          }}
+        >
+          ✕
+        </button>
       )}
     </div>
   )
