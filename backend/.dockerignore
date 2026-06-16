@@ -1,0 +1,7 @@
+.env
+.env.local
+seed
+api
+bin/
+uploads/
+*.log

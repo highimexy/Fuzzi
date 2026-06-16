@@ -9,6 +9,8 @@
 bin/
 backend/bin/
 backend/main
+backend/seed
+backend/api
 *.exe
 *.exe~
 *.dll
@@ -46,6 +48,9 @@ yarn-error.log*
 *.sql
 # Prevent committing local data directories if using Docker
 postgres-data/
+
+# User-uploaded content (served from a persistent volume in prod, not git)
+backend/uploads/
 
 # --- IDEs/Tools ---
 .vscode/

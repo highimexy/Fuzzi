@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"os"
+	"strings"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -38,6 +39,22 @@ func main() {
 	go marketEngine.Start(finnhubKey)
 
 	r := gin.Default()
+
+	// Behind a reverse proxy (nginx/Cloudflare), trust only the configured
+	// proxies so c.ClientIP() reflects the real visitor — the OTP rate limiter
+	// keys on it. TRUSTED_PROXIES is a comma-separated list of CIDRs/IPs;
+	// when unset, no proxy is trusted and ClientIP falls back to RemoteAddr.
+	if tp := os.Getenv("TRUSTED_PROXIES"); tp != "" {
+		proxies := strings.Split(tp, ",")
+		for i := range proxies {
+			proxies[i] = strings.TrimSpace(proxies[i])
+		}
+		if err := r.SetTrustedProxies(proxies); err != nil {
+			log.Fatalf("[FATAL] Invalid TRUSTED_PROXIES: %v", err)
+		}
+	} else {
+		r.SetTrustedProxies(nil)
+	}
 
 	allowedOrigin := os.Getenv("ALLOWED_ORIGIN")
 	if allowedOrigin == "" {
