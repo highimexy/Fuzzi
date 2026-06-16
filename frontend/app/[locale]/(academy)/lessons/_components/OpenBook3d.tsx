@@ -6,7 +6,7 @@ import { Html } from '@react-three/drei'
 import * as THREE from 'three'
 import type { TrackData } from './NotebookLibrary'
 import { useLessonContent } from './useLessonContent'
-import type { LessonSection } from './useLessonContent'
+import type { Section as LessonSection } from './useLessonContent'
 import { MarkdownRenderer } from '../../_components/MarkdownRenderer'
 
 /* ════════════════════════════════════════════════════════════════════════

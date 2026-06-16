@@ -1,6 +1,6 @@
 import type { Quest, QuestSubmitResult, UserQuestStats, QuestResult } from '@/types/quest'
 
-const API = 'http://localhost:8080/api/v1'
+const API = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/v1`
 
 function getAuthHeaders(): HeadersInit {
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null

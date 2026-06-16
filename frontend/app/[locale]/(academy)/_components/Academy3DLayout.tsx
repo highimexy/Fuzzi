@@ -142,7 +142,6 @@ export default function Academy3DLayout({ children }: { children: React.ReactNod
 
         <PresentationControls
           global
-          config={{ mass: 1, tension: 120, friction: 20 }}
           polar={[-0.02, 0.02]}
           azimuth={[-0.05, 0.05]}
         >
