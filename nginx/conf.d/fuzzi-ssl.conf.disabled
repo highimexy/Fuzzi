@@ -1,26 +1,19 @@
-upstream fuzzi_frontend { server frontend:3000; }
-upstream fuzzi_backend  { server backend:8080; }
-
-# Real visitor IP: prefer Cloudflare's header if present, else the direct peer.
-map $http_cf_connecting_ip $client_ip {
-    ""      $remote_addr;
-    default $http_cf_connecting_ip;
-}
+# HTTPS server — ENABLE ONLY AFTER the Let's Encrypt cert exists, otherwise
+# nginx fails to start (missing cert files). nginx loads *.conf only, so this
+# file is inert until renamed:
+#     mv fuzzi-ssl.conf.disabled fuzzi-ssl.conf  &&  docker compose restart nginx
+#
+# Then switch the :80 server in fuzzi.conf to redirect (see comment there).
 
 server {
-    listen 80;
+    listen 443 ssl;
+    http2 on;
     server_name fuzzi.wkowalczyk.pl;
 
-    client_max_body_size 10m; # avatar uploads
+    ssl_certificate     /etc/letsencrypt/live/fuzzi.wkowalczyk.pl/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/fuzzi.wkowalczyk.pl/privkey.pem;
 
-    # Let's Encrypt HTTP-01 challenge — must stay reachable on :80.
-    location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
-    }
-
-    # --- after HTTPS is live, replace the location blocks below with:
-    #     return 301 https://$host$request_uri;
-    # --- and serve the app from the :443 server in fuzzi-ssl.conf.
+    client_max_body_size 10m;
 
     location /api/ {
         proxy_pass http://fuzzi_backend;

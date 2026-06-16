@@ -52,6 +52,12 @@ postgres-data/
 # User-uploaded content (served from a persistent volume in prod, not git)
 backend/uploads/
 
+# Active Let's Encrypt vhost — copied from fuzzi-ssl.conf.disabled on the server
+nginx/conf.d/fuzzi-ssl.conf
+# Let's Encrypt ACME challenge files written at runtime
+nginx/certbot-www/*
+!nginx/certbot-www/.gitkeep
+
 # --- IDEs/Tools ---
 .vscode/
 .idea/
