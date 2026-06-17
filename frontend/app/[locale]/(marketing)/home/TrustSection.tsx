@@ -266,6 +266,7 @@ function LogCard({ log }: { log: LogEntry }) {
                   src={log.avatar}
                   alt={log.id}
                   fill
+                  sizes={log.featured ? '64px' : '40px'}
                   className="object-cover opacity-70 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                 />
               ) : (
