@@ -1,7 +1,8 @@
-# Deploy — Hetzner + Cloudflare
+# Deploy — Hetzner (Docker + nginx + Let's Encrypt)
 
-The stack runs as four containers: `nginx` (public 80/443) → `frontend` (Next.js)
-+ `backend` (Go API) → `db` (Postgres). Uploads and the DB live on named volumes.
+The stack runs as five containers: `nginx` (public 80/443) → `frontend` (Next.js)
++ `backend` (Go API) → `db` (Postgres), plus `certbot` for TLS. Uploads, the DB
+and the Let's Encrypt certs live on named volumes.
 
 ## 1. Prerequisites on the server
 
@@ -47,23 +48,57 @@ docker compose run --rm backend /app/seed-admin <your-email>   # grant admin
 
 The backend runs GORM AutoMigrate on boot, so the schema is created automatically.
 
-## 5. Cloudflare + DNS
+## 5. DNS
 
-1. Point an `A` record for the domain at the server's public IP (proxied / orange cloud).
-2. **SSL/TLS mode:** start with *Flexible* (works with the default nginx `:80`).
-   For real end-to-end TLS use *Full (strict)*:
-   - Create an **Origin Certificate** (SSL/TLS → Origin Server).
-   - Save it as `nginx/certs/origin.pem` and `nginx/certs/origin.key`.
-   - Uncomment the `:443` block in `nginx/conf.d/fuzzi.conf`, switch the `:80`
-     server to `return 301 https://$host$request_uri;`, then
-     `docker compose restart nginx`.
+Point an `A` record for `fuzzi.<domain>` at the server's public IP. The cert
+issuance in step 6 needs this resolving and port 80 reachable from the internet.
 
-## 6. Harden ingress (recommended)
+## 6. HTTPS with Let's Encrypt
 
-nginx trusts the `CF-Connecting-IP` header for the real visitor IP. To stop
-anyone bypassing Cloudflare and spoofing it, allow inbound 80/443 **only from
-Cloudflare IP ranges** (https://www.cloudflare.com/ips/) via the Hetzner Cloud
-Firewall or ufw.
+The stack ships a `certbot` service and an inert `:443` vhost
+(`nginx/conf.d/fuzzi-ssl.conf.disabled`). The flow is **two-phase** because nginx
+won't start if its config references a cert that doesn't exist yet.
+
+**Order matters — never enable the SSL vhost before the cert exists.**
+
+```bash
+# 1. nginx must already be serving :80 (the ACME challenge lives there)
+curl -I http://localhost          # expect 307
+
+# 2. Issue the cert. NOTE: --entrypoint certbot is required — the certbot
+#    service's default entrypoint is the renewal loop, which would ignore
+#    `certonly` and hang.
+docker compose run --rm --entrypoint certbot certbot certonly \
+  --webroot -w /var/www/certbot \
+  -d fuzzi.<domain> --email you@example.com --agree-tos --no-eff-email
+# wait for: "Successfully received certificate"
+
+# 3. Only now enable the HTTPS vhost (it's gitignored, so pulls stay clean)
+cp nginx/conf.d/fuzzi-ssl.conf.disabled nginx/conf.d/fuzzi-ssl.conf
+docker compose restart nginx
+curl -I https://fuzzi.<domain>    # expect 307/200, valid cert
+```
+
+Renewal is automatic: the always-on `certbot` service runs `certbot renew` every
+12h, and nginx reloads every 6h to pick up renewed certs.
+
+**If nginx crash-loops with `cannot load certificate ... No such file`:** the SSL
+vhost was enabled without a cert. Recover with:
+```bash
+rm -f nginx/conf.d/fuzzi-ssl.conf
+docker compose up -d --force-recreate nginx   # back on :80, then redo step 2
+```
+
+Optionally force HTTP→HTTPS: in `fuzzi.conf`, replace the proxy `location` blocks
+of the `:80` server with `return 301 https://$host$request_uri;` (keep the
+`/.well-known/acme-challenge/` location so renewals keep working).
+
+## 7. Harden ingress (recommended)
+
+Restrict inbound 80/443 to expected sources via the Hetzner Cloud Firewall or ufw,
+and keep SSH (22) open only for yourself. If you later put Cloudflare in front,
+nginx already prefers the `CF-Connecting-IP` header for the real visitor IP — then
+allow 80/443 only from Cloudflare's ranges (https://www.cloudflare.com/ips/).
 
 ## Operations
 
