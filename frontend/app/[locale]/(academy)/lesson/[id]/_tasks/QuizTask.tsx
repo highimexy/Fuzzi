@@ -87,7 +87,7 @@ export default function QuizTask({ lessonId, payload: rawPayload, nextHref, isLa
 
     if (isCorrect && !isReflective) {
       fireConfetti()
-      toast({ variant: 'achievement', title: 'Poprawna odpowiedź!' })
+      toast({ variant: 'success', title: 'Poprawna odpowiedź!' })
     }
 
     const locale = document.documentElement.lang || 'en'
@@ -154,11 +154,11 @@ export default function QuizTask({ lessonId, payload: rawPayload, nextHref, isLa
                 : 'border-foreground/20 hover:border-foreground/50'
             } ${
               !isReflective && submitted && opt.id === correctId
-                ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500'
+                ? 'border-correct bg-correct/10 text-correct'
                 : ''
             } ${
               !isReflective && submitted && selected === opt.id && !isCorrect
-                ? 'border-rose-500 bg-rose-500/10 text-rose-500'
+                ? 'border-wrong bg-wrong/10 text-wrong'
                 : ''
             } ${
               isReflective && submitted && selected === opt.id
@@ -220,14 +220,14 @@ export default function QuizTask({ lessonId, payload: rawPayload, nextHref, isLa
             isReflective
               ? 'border-primary bg-primary/5'
               : isCorrect
-              ? 'border-emerald-500 bg-emerald-500/5'
-              : 'border-rose-500 bg-rose-500/5'
+              ? 'border-correct bg-correct/5'
+              : 'border-wrong bg-wrong/5'
           }`}
         >
           {!isReflective && (
             <p
               className={`mb-3 font-sans text-xs font-bold tracking-widest uppercase ${
-                isCorrect ? 'text-emerald-500' : 'text-rose-500'
+                isCorrect ? 'text-correct' : 'text-wrong'
               }`}
             >
               {isCorrect ? 'STATUS: SUCCESS' : 'STATUS: FAILURE'}

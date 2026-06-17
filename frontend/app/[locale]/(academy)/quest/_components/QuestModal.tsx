@@ -57,7 +57,7 @@ export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
       onStatsUpdate?.(res.stats)
       if (res.is_correct) {
         toast({
-          variant: 'achievement',
+          variant: 'success',
           title: t('correctAnswer'),
           description: res.xp_earned > 0 ? `+${res.xp_earned} XP` : undefined,
         })
@@ -72,8 +72,8 @@ export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
     if (!result) {
       return `${base} border-foreground/20 bg-foreground/5 hover:border-foreground/40 hover:bg-foreground/10 cursor-pointer`
     }
-    if (key === result.correct_key) return `${base} border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300`
-    if (key === selected && !result.is_correct) return `${base} border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300`
+    if (key === result.correct_key) return `${base} border-correct/30 bg-correct/10 text-correct`
+    if (key === selected && !result.is_correct) return `${base} border-wrong/30 bg-wrong/10 text-wrong`
     return `${base} border-foreground/10 text-foreground/40`
   }
 
@@ -125,7 +125,7 @@ export function QuestModal({ quest, locale, onClose, onStatsUpdate }: Props) {
 
           {result && (
             <div className="border-t border-foreground/10 pt-4 space-y-2">
-              <p className={`font-mono text-sm font-bold ${result.is_correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
+              <p className={`font-mono text-sm font-bold ${result.is_correct ? 'text-correct' : 'text-wrong'}`}>
                 {result.is_correct ? t('correctAnswer') : t('wrongAnswer')}
                 {result.xp_earned > 0 && <span className="ml-3 text-accent">+{result.xp_earned} {t('xpLabel')}</span>}
               </p>

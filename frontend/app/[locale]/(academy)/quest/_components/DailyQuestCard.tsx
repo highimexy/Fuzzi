@@ -56,7 +56,7 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
       if (res.is_correct) {
         fireConfetti()
         toast({
-          variant: 'achievement',
+          variant: 'success',
           title: t('correctAnswer'),
           description: res.xp_earned > 0 ? `+${res.xp_earned} XP` : undefined,
         })
@@ -75,18 +75,18 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
       return `${base} border-foreground/20 bg-foreground/5 hover:border-foreground/40 hover:bg-foreground/10 cursor-pointer`
     }
     if (key === result.correct_key) {
-      return `${base} border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300`
+      return `${base} border-correct/30 bg-correct/10 text-correct`
     }
     if (key === selected && key !== result.correct_key) {
-      return `${base} border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300`
+      return `${base} border-wrong/30 bg-wrong/10 text-wrong`
     }
     return `${base} border-foreground/10 bg-foreground/5 text-foreground/40`
   }
 
   function optionIcon(key: string) {
     if (!result) return null
-    if (key === result.correct_key) return <FiCheck className="shrink-0 text-emerald-500" />
-    if (key === selected && key !== result.correct_key) return <FiX className="shrink-0 text-red-500" />
+    if (key === result.correct_key) return <FiCheck className="shrink-0 text-correct" />
+    if (key === selected && key !== result.correct_key) return <FiX className="shrink-0 text-wrong" />
     return null
   }
 
@@ -126,7 +126,7 @@ export function DailyQuestCard({ quest, locale, initialResult }: Props) {
         {result && (
           <div className="mt-4 border-t border-foreground/10 pt-4 space-y-2">
             <div className="flex items-center justify-between">
-              <span className={`font-mono text-xs font-bold ${result.is_correct ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
+              <span className={`font-mono text-xs font-bold ${result.is_correct ? 'text-correct' : 'text-wrong'}`}>
                 {result.is_correct ? t('correctAnswer') : t('wrongAnswer')}
               </span>
               {result.xp_earned > 0 && (

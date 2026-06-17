@@ -8,9 +8,9 @@ const VARIANTS: Record<
   { color: string; label: string }
 > = {
   default:     { color: 'var(--secondary)', label: '' },
-  success:     { color: 'var(--primary)',   label: '✓ Success' },
+  success:     { color: 'var(--correct)',   label: '✓ Success' },
   warning:     { color: 'var(--accent)',    label: '⚠ Warning' },
-  error:       { color: 'var(--error)',     label: '✗ Error' },
+  error:       { color: 'var(--wrong)',     label: '✗ Error' },
   achievement: { color: 'var(--accent)',    label: '🏆 Achievement' },
 }
 
