@@ -703,13 +703,20 @@ function BooksScene({
   const zoomProgRef = useRef(0)
   const prevShowOpenBookRef = useRef(false)
   const lastOpenedIdRef = useRef<TrackId | null>(null)
+  const timerRef = useRef(new THREE.Timer())
 
   useEffect(() => {
     openIdRef.current = openId
   }, [openId])
 
+  useEffect(() => {
+    const timer = timerRef.current
+    return () => void timer.dispose()
+  }, [])
+
   useFrame((state) => {
-    const t = state.clock.getElapsedTime()
+    timerRef.current.update()
+    const t = timerRef.current.getElapsed()
     const oid = openIdRef.current
     const zp_target = oid ? 1 : 0
 
