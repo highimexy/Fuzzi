@@ -16,9 +16,7 @@ export default function AcademyLayout({ children }: { children: ReactNode }) {
         {/* Usunięte overflow-y-auto stąd - Wrapper decyduje o scrollu */}
         <div className="relative flex flex-1 flex-col overflow-hidden">
           {/* Main musi mieć h-full, żeby wypełnić miejsce pod 3D */}
-          <main className="relative flex h-full flex-1 flex-col">
-            <Academy3DWrapper>{children}</Academy3DWrapper>
-          </main>
+          <main className="relative flex h-full flex-1 flex-col">{children}</main>
 
           <div className="mt-auto">
             <AcademyFooter />
