@@ -261,12 +261,12 @@ function CarouselRow({ title, items }: { title: string; items: any[] }) {
               >
                 <Link
                   href={`/explore/${item.slug}`}
-                  className="bg-background border-foreground/10 group relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]"
+                  className="bg-background border-foreground/10 group hover:border-foreground/20 relative flex h-52 w-full flex-col justify-between overflow-hidden border p-4 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]"
                 >
-                  <Icon className="absolute -top-6 -right-6 text-8xl text-accent opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
+                  <Icon className="text-accent absolute -top-6 -right-6 text-8xl opacity-5 transition-transform duration-500 group-hover:scale-110 group-hover:opacity-10 dark:opacity-[0.03] dark:group-hover:opacity-[0.08]" />
 
                   <div>
-                    <span className="mb-2 block font-sans text-[10px] font-bold tracking-widest text-accent uppercase">
+                    <span className="text-accent mb-2 block font-sans text-[10px] font-bold tracking-widest uppercase">
                       {item.label}
                     </span>
                     {/* H3 - tytuł konkretnej karty */}
@@ -310,13 +310,13 @@ export default function ExplorePage() {
       <AcademyBackgroundGrid />
 
       <div className="relative z-10 shrink-0 px-4 py-8 lg:px-8 lg:py-10">
-        <h1 className="font-serif text-3xl font-black uppercase tracking-tight lg:text-4xl">
+        <h1 className="font-serif text-3xl font-black tracking-tight uppercase lg:text-4xl">
           {t('title')}
         </h1>
         <p className="text-foreground/45 mt-2 font-sans text-sm">{t('subtitle')}</p>
       </div>
 
-      <div className="relative z-10 flex flex-col justify-center gap-8 pb-8 lg:gap-12 lg:pb-12">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 lg:gap-12">
         <CarouselRow title="Useful tools" items={CAROUSEL_DATA.tools} />
         <CarouselRow title="Interviews & Growth" items={CAROUSEL_DATA.interviews} />
       </div>
