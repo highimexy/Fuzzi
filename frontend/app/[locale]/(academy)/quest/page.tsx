@@ -63,8 +63,9 @@ export default function QuestPage() {
   }
 
   return (
-    <div className="flex min-h-full flex-col">
-      <div className="shrink-0 px-4 py-8 lg:px-8 lg:py-10">
+    <div className="relative flex w-full min-h-full flex-col overflow-hidden">
+      <AcademyBackgroundGrid />
+      <div className="relative z-10 shrink-0 px-4 py-8 lg:px-8 lg:py-10">
         <h1 className="font-serif text-3xl font-black uppercase tracking-tight lg:text-4xl">
           {t('dailyChallenge')}
         </h1>
@@ -74,9 +75,8 @@ export default function QuestPage() {
         </p>
       </div>
 
-      <div className="relative flex flex-1 items-center px-4 py-8 lg:px-8">
-        <AcademyBackgroundGrid />
-        <div className="relative grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="relative z-10 flex flex-1 items-center px-4 py-8 lg:px-8">
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {dailyQuests.map((quest) => (
             <DailyQuestCard
               key={quest.id}
