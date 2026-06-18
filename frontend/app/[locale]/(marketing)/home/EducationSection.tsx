@@ -47,7 +47,7 @@ export function EducationSection() {
             {t('label')}
           </span>
 
-          <h2 className="text-fluid-h3 mt-6 font-serif leading-[0.85] tracking-tighter text-pretty uppercase sm:text-balance">
+          <h2 className="text-fluid-h3 mt-4 font-serif leading-[0.85] tracking-tighter text-pretty uppercase sm:text-balance">
             {t.rich('title', {
               dim: (chunks) => (
                 <span className="text-foreground/60 italic opacity-60">{chunks}</span>
@@ -56,7 +56,7 @@ export function EducationSection() {
             })}
           </h2>
 
-          <p className="mx-auto mt-8 max-w-2xl font-sans text-sm leading-relaxed opacity-60">
+          <p className="mx-auto mt-2 max-w-2xl font-sans text-sm leading-relaxed opacity-60">
             {t('description')}
           </p>
         </div>

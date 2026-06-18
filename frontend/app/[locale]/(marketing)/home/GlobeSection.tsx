@@ -477,7 +477,9 @@ export function GlobeSection() {
 
     const motionMq = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (motionMq.matches) setAutoRotate(false)
-    const onMotion = (e: MediaQueryListEvent) => { if (e.matches) setAutoRotate(false) }
+    const onMotion = (e: MediaQueryListEvent) => {
+      if (e.matches) setAutoRotate(false)
+    }
     motionMq.addEventListener('change', onMotion)
 
     return () => {
@@ -488,8 +490,8 @@ export function GlobeSection() {
   }, [])
 
   // screenWidth=0 = not yet mounted → safe default (no panel)
-  const showPanel   = screenWidth >= 1440
-  const isMobile    = screenWidth === 0 || screenWidth < 768
+  const showPanel = screenWidth >= 1440
+  const isMobile = screenWidth === 0 || screenWidth < 768
   const canvasHeight = isMobile ? 280 : showPanel ? 480 : 420
 
   const handleHover = (id: string | null) => {
@@ -517,7 +519,7 @@ export function GlobeSection() {
             >
               {t('badge')}
             </span>
-            <h2 className="text-fluid-h3 font-serif tracking-tighter uppercase">
+            <h2 className="text-fluid-h3 font-serif leading-[0.85] tracking-tighter uppercase">
               {t('heading')} <span className="text-accent italic">{t('headingAccent')}</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl font-sans text-sm opacity-50">{t('sub')}</p>
