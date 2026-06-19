@@ -2,11 +2,11 @@
   "HomeHeader": {
     "hero": {
       "badge": "Era Post-Junior",
-      "headline": "AI nie zabija <accent>testerów</accent>. Zabija tych, którzy testują jak <dim>5 lat temu</dim>.",
+      "headline": "Wyobraź sobie, że płacą Ci za posiadanie <accent>gustu</accent> i umiejętność powiedzenia, <dim>co Ci się nie podoba</dim>.",
       "subheadline": "Poligon treningowy dla QA inżynierów.",
       "cta": "Zacznij za darmo",
       "ctaSecondary": "Sprawdź Academy",
-      "socialProof": "Dołącz do inżynierów, którzy nie czekają aż AI ich zastąpi"
+      "socialProof": "Dołącz do inżynierów, którzy wierzą własnemu instynktowi"
     }
   }
 }
