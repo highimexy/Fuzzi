@@ -2,8 +2,6 @@ import { ReactNode } from 'react'
 import { AcademyNavbar } from './_components/AcademyNavbar'
 import { AcademySidebar } from './_components/AcademySidebar'
 import { AcademyFooter } from './_components/AcademyFooter'
-import Academy3DWrapper from './_components/Academy3DWrapper' // <-- Dodany import
-
 export default function AcademyLayout({ children }: { children: ReactNode }) {
   return (
     // Usunięte 'bg-background' by nie blokowało widoczności 3D w tle
