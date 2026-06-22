@@ -1,0 +1,53 @@
+{
+  "Premium": {
+    "header": {
+      "title": "Premium",
+      "subtitle": "Get started with a <accent>Frontier</accent> Subscription that works for you."
+    },
+    "monthly": {
+      "period": "Monthly",
+      "billedLabel": "billed monthly",
+      "description": "Short-term commitment. Full access to <strong>all premium features</strong>. No contracts, no hidden fees.",
+      "strikethrough": "$39",
+      "price": "$35",
+      "unit": "/mo",
+      "cta": "Subscribe"
+    },
+    "yearly": {
+      "badge": "Most Popular",
+      "period": "Yearly",
+      "billedLabel": "billed yearly ($179)",
+      "description": "Our <strong>most popular</strong> plan. Previously sold for $299, now <strong>$14.92/month</strong>. <strong>Saves you over 62%</strong> vs the monthly plan.",
+      "price": "$14.92",
+      "unit": "/mo",
+      "cta": "Subscribe"
+    },
+    "pricesNote": "Prices are marked in USD",
+    "faq": {
+      "title": "Frequently<br/>asked<br/>questions",
+      "q1": "What do I get with a premium subscription?",
+      "a1": "Full access to exclusive articles, advanced video explanations, and company-filtered questions. No fluff — just the edge cases that actually show up in interviews.",
+      "q2": "What are premium solutions? Can I see a sample?",
+      "a2": "Step-by-step guides written by engineers who've been in the trench. Multiple approaches, complexity analysis, interactive snippets. Not recycled bootcamp material.",
+      "q3": "How do you group questions by company?",
+      "a3": "We aggregate and verify interview experiences shared by the community. Company tags stay current because the market doesn't wait.",
+      "q4": "What if I subscribe and want to cancel?",
+      "a4": "Cancel anytime from your account settings. You keep access until the end of your billing cycle. No questions asked. No hard feelings.",
+      "q5": "Can I lock in my current rate?",
+      "a5": "Yes. As long as your subscription stays active, your price is frozen. Future price hikes won't touch you."
+    },
+    "testimonials": {
+      "title": "Trusted by engineers who've been in the trench",
+      "log1": {
+        "id": "OP-473",
+        "role": "Junior QA Engineer",
+        "text": "Zero filler. After a few lessons I finally understood what a true quality engineer mindset looks like."
+      },
+      "log2": {
+        "id": "OP-204",
+        "role": "Frontend Developer",
+        "text": "Clean, highly responsive interface without marketing babble. A lot of heart went into this and it really shows."
+      }
+    }
+  }
+}

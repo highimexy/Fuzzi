@@ -1,0 +1,53 @@
+{
+  "Premium": {
+    "header": {
+      "title": "Premium",
+      "subtitle": "Zacznij z subskrypcją <accent>Frontier</accent>, która działa dla Ciebie."
+    },
+    "monthly": {
+      "period": "Miesięczny",
+      "billedLabel": "płatny miesięcznie",
+      "description": "Krótkoterminowe zobowiązanie. Pełny dostęp do <strong>wszystkich funkcji premium</strong>. Bez umów, bez ukrytych opłat.",
+      "strikethrough": "$39",
+      "price": "$35",
+      "unit": "/mc",
+      "cta": "Subskrybuj"
+    },
+    "yearly": {
+      "badge": "Najpopularniejszy",
+      "period": "Roczny",
+      "billedLabel": "płatny rocznie ($179)",
+      "description": "Nasz <strong>najpopularniejszy</strong> plan. Wcześniej $299, teraz <strong>$14.92/mc</strong>. <strong>Oszczędzasz ponad 62%</strong> w porównaniu z planem miesięcznym.",
+      "price": "$14.92",
+      "unit": "/mc",
+      "cta": "Subskrybuj"
+    },
+    "pricesNote": "Ceny podane w USD",
+    "faq": {
+      "title": "Najczęściej<br/>zadawane<br/>pytania",
+      "q1": "Co dostaję w ramach subskrypcji premium?",
+      "a1": "Pełny dostęp do ekskluzywnych artykułów, zaawansowanych wyjaśnień wideo i pytań filtrowanych po firmach. Zero lania wody — tylko case'y, które faktycznie pojawiają się na rozmowach.",
+      "q2": "Czym są premium solutions?",
+      "a2": "Szczegółowe przewodniki napisane przez inżynierów z pierwszej linii frontu. Wiele podejść, analiza złożoności, interaktywne snippet'y. Żaden recyclowany bootcamp.",
+      "q3": "Jak grupujecie pytania po firmach?",
+      "a3": "Agregujemy i weryfikujemy doświadczenia rekrutacyjne zgłaszane przez społeczność. Tagi firm są na bieżąco — rynek nie czeka.",
+      "q4": "Co jeśli zapiszę się i zechcę anulować?",
+      "a4": "Anuluj w każdej chwili z ustawień konta. Zachowujesz dostęp do końca cyklu rozliczeniowego. Bez pytań. Bez urazy.",
+      "q5": "Czy mogę zablokować obecną stawkę?",
+      "a5": "Tak. Dopóki subskrypcja jest aktywna, cena zostaje zamrożona. Przyszłe podwyżki Cię nie dotkną."
+    },
+    "testimonials": {
+      "title": "Zaufane przez inżynierów z pierwszej linii frontu",
+      "log1": {
+        "id": "OP-473",
+        "role": "Junior QA Engineer",
+        "text": "Zero lania wody. Po kilku lekcjach w końcu zrozumiałem, na czym polega prawdziwy mindset inżyniera jakości."
+      },
+      "log2": {
+        "id": "OP-204",
+        "role": "Frontend Developer",
+        "text": "Czysty, bardzo responsywny interfejs bez marketingowego bełkotu. Włożono w to mnóstwo serca i to po prostu widać."
+      }
+    }
+  }
+}
