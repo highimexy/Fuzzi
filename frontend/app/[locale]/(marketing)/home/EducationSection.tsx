@@ -91,7 +91,7 @@ export function EducationSection() {
                 <div className="border-foreground/10 flex w-full items-center gap-2 border-t pt-6">
                   <div className={`h-1 w-8 transition-colors duration-300 ${vec.lineColor}`} />
                   <span className="font-sans text-[8px] tracking-widest uppercase opacity-20">
-                    System Path {idx + 1}
+                    {t('systemPath', { n: idx + 1 })}
                   </span>
                 </div>
               </div>

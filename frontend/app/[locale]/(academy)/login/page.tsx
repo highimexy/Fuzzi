@@ -142,13 +142,13 @@ export default function LoginPage() {
         <div className="mb-16 flex flex-col">
           <h1 className="flex flex-col items-center justify-center leading-tight">
             <span className="text-fluid-h2 font-serif uppercase">
-              I want <span className="font-serif underline">you</span>
+              {t('headline.line1')} <span className="font-serif underline">{t('headline.line1Accent')}</span>
             </span>
             <span className="flex items-center justify-center">
-              <span className="text-fluid-h3 mr-4 font-serif">for the</span>
-              <span className="text-fluid-h2 font-serif text-accent uppercase">Frontier</span>
+              <span className="text-fluid-h3 mr-4 font-serif">{t('headline.line2Prefix')}</span>
+              <span className="text-fluid-h2 font-serif text-accent uppercase">{t('headline.line2Brand')}</span>
             </span>
-            <span className="text-fluid-h2 font-serif uppercase">Enlist Now</span>
+            <span className="text-fluid-h2 font-serif uppercase">{t('headline.line3')}</span>
           </h1>
         </div>
 

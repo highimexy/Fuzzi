@@ -14,6 +14,7 @@
       "title": "Reality Check",
       "desc": "Rynek juniorów nie istnieje? AI zabierze Ci pracę? Odrzucamy marketingowy bullshit kursów od zera i zderzamy mity z twardymi realiami IT.",
       "cta": "Zderz się z rynkiem"
-    }
+    },
+    "systemPath": "Ścieżka systemu {n}"
   }
 }

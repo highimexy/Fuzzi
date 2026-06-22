@@ -1,5 +1,12 @@
 {
   "Login": {
+    "headline": {
+      "line1": "I want",
+      "line1Accent": "you",
+      "line2Prefix": "for the",
+      "line2Brand": "Frontier",
+      "line3": "Enlist Now"
+    },
     "googleButton": "Continue with Google",
     "or": "or",
     "emailPlaceholder": "Enter your email",
