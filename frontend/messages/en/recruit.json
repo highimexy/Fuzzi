@@ -1,0 +1,17 @@
+{
+  "Recruit": {
+    "header": {
+      "title": "Share your deployment code",
+      "desc": "Send this link to a friend. When they enlist and complete their first 3 lessons, you both receive 14 days of Premium access and an exclusive badge."
+    },
+    "linkLabel": "Your unique link",
+    "copyBtn": "Copy",
+    "copiedAlert": "Coordinates copied to clipboard!",
+    "stats": {
+      "recruitsTitle": "Recruits Enlisted",
+      "recruitMore": "Recruit {n} more to unlock the 'Commander' medal.",
+      "premiumTitle": "Premium Earned",
+      "days": "Days"
+    }
+  }
+}

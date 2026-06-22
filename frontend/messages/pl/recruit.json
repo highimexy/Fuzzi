@@ -1,0 +1,17 @@
+{
+  "Recruit": {
+    "header": {
+      "title": "Udostępnij kod deployacji",
+      "desc": "Wyślij ten link znajomemu. Gdy zaciągnie się i ukończy pierwsze 3 lekcje, oboje dostajecie 14 dni Premium i ekskluzywną odznakę."
+    },
+    "linkLabel": "Twój unikalny link",
+    "copyBtn": "Kopiuj",
+    "copiedAlert": "Współrzędne skopiowane do schowka!",
+    "stats": {
+      "recruitsTitle": "Zaciągnięci Rekruci",
+      "recruitMore": "Zrekrutuj {n} więcej, aby odblokować medal 'Komandor'.",
+      "premiumTitle": "Zarobione Premium",
+      "days": "Dni"
+    }
+  }
+}
