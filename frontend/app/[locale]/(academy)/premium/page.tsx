@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { FiPlus, FiMinus } from 'react-icons/fi'
+import { FiPlus, FiMinus, FiAward, FiSmartphone, FiBookOpen, FiFilter, FiCode, FiZap } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 import { useTranslations } from 'next-intl'
 
@@ -144,6 +144,71 @@ export default function PremiumPage() {
               <button className="w-full bg-zinc-900 py-3 font-sans font-bold text-white transition-transform hover:scale-[1.02] hover:bg-zinc-800">
                 {t('yearly.cta')}
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* FEATURES */}
+        <div className="mb-24 w-full">
+          <p className="text-foreground/50 mb-10 text-center font-sans text-[10px] font-bold tracking-[0.3em] uppercase">
+            {t('features.title')}
+          </p>
+          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiAward className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.badge.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t('features.badge.description')}
+                </p>
+              </div>
+            </div>
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiSmartphone className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.app.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t.rich('features.app.description', {
+                    strong: (chunks) => <strong className="text-foreground">{chunks}</strong>,
+                  })}
+                </p>
+              </div>
+            </div>
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiBookOpen className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.articles.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t('features.articles.description')}
+                </p>
+              </div>
+            </div>
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiFilter className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.companyQuestions.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t('features.companyQuestions.description')}
+                </p>
+              </div>
+            </div>
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiCode className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.premiumSolutions.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t('features.premiumSolutions.description')}
+                </p>
+              </div>
+            </div>
+            <div className="border-foreground/10 relative h-48 border">
+              <div className="group bg-background border-foreground/10 flex h-full flex-col items-start border p-6 transition-all duration-300 ease-out hover:z-20 hover:translate-x-1 hover:-translate-y-1 hover:rounded-md hover:border-foreground/20 hover:shadow-[0_10px_20px_-10px_rgba(0,0,0,0.08)]">
+                <FiZap className="text-accent mb-3 size-6 transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="mb-1 font-sans text-sm font-bold">{t('features.practiceTests.title')}</h3>
+                <p className="text-foreground/60 font-sans text-sm leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
+                  {t('features.practiceTests.description')}
+                </p>
+              </div>
             </div>
           </div>
         </div>

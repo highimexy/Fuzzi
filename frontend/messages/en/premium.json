@@ -2,31 +2,58 @@
   "Premium": {
     "header": {
       "title": "Premium",
-      "subtitle": "Get started with a <accent>Frontier</accent> Subscription that works for you."
+      "subtitle": "Level up your QA game with a <accent>Frontier</accent> Subscription."
     },
     "monthly": {
       "period": "Monthly",
       "billedLabel": "billed monthly",
-      "description": "Short-term commitment. Full access to <strong>all premium features</strong>. No contracts, no hidden fees.",
-      "strikethrough": "$39",
-      "price": "$35",
+      "description": "Full access to <strong>all premium features</strong>. Cancel anytime, no strings attached.",
+      "strikethrough": "$19.99",
+      "price": "$9.99",
       "unit": "/mo",
       "cta": "Subscribe"
     },
     "yearly": {
-      "badge": "Most Popular",
+      "badge": "Best Value",
       "period": "Yearly",
-      "billedLabel": "billed yearly ($179)",
-      "description": "Our <strong>most popular</strong> plan. Previously sold for $299, now <strong>$14.92/month</strong>. <strong>Saves you over 62%</strong> vs the monthly plan.",
-      "price": "$14.92",
+      "billedLabel": "billed yearly ($59.88)",
+      "description": "Our <strong>best value</strong> plan. Just <strong>$4.99/month</strong>. <strong>Save 50%</strong> vs the monthly plan.",
+      "price": "$4.99",
       "unit": "/mo",
       "cta": "Subscribe"
     },
     "pricesNote": "Prices are marked in USD",
+    "features": {
+      "title": "Everything you get",
+      "badge": {
+        "title": "Premium Profile Badge",
+        "description": "Stand out with an exclusive badge on your profile — visible to every user in the community."
+      },
+      "app": {
+        "title": "Fuzzi – QA Tools Mobile App",
+        "description": "Full access to the native <strong>iOS & Android</strong> app. Practice questions, flashcards, and progress trackers on the go."
+      },
+      "articles": {
+        "title": "Exclusive Articles & Videos",
+        "description": "In-depth articles and advanced video explanations covering real interview edge cases."
+      },
+      "companyQuestions": {
+        "title": "Company-Filtered Questions",
+        "description": "Browse questions tagged by company. See what actually gets asked at top tech companies."
+      },
+      "premiumSolutions": {
+        "title": "Premium Solutions",
+        "description": "Step-by-step guides with multiple approaches, complexity analysis, and interactive snippets."
+      },
+      "practiceTests": {
+        "title": "Unlimited Practice Tests",
+        "description": "Simulate real QA interviews with unlimited timed practice tests. Track your progress and identify weak spots."
+      }
+    },
     "faq": {
       "title": "Frequently<br/>asked<br/>questions",
       "q1": "What do I get with a premium subscription?",
-      "a1": "Full access to exclusive articles, advanced video explanations, and company-filtered questions. No fluff — just the edge cases that actually show up in interviews.",
+      "a1": "Full access to exclusive articles, advanced video explanations, company-filtered questions, and premium solutions. Plus a special profile badge and full access to the Fuzzi – QA Tools mobile app on iOS & Android.",
       "q2": "What are premium solutions? Can I see a sample?",
       "a2": "Step-by-step guides written by engineers who've been in the trench. Multiple approaches, complexity analysis, interactive snippets. Not recycled bootcamp material.",
       "q3": "How do you group questions by company?",

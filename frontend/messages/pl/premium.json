@@ -2,31 +2,58 @@
   "Premium": {
     "header": {
       "title": "Premium",
-      "subtitle": "Zacznij z subskrypcją <accent>Frontier</accent>, która działa dla Ciebie."
+      "subtitle": "Podnieś swoje QA na wyższy poziom z subskrypcją <accent>Frontier</accent>."
     },
     "monthly": {
       "period": "Miesięczny",
       "billedLabel": "płatny miesięcznie",
-      "description": "Krótkoterminowe zobowiązanie. Pełny dostęp do <strong>wszystkich funkcji premium</strong>. Bez umów, bez ukrytych opłat.",
-      "strikethrough": "$39",
-      "price": "$35",
+      "description": "Pełny dostęp do <strong>wszystkich funkcji premium</strong>. Anuluj w każdej chwili, bez zobowiązań.",
+      "strikethrough": "$19.99",
+      "price": "$9.99",
       "unit": "/mc",
       "cta": "Subskrybuj"
     },
     "yearly": {
-      "badge": "Najpopularniejszy",
+      "badge": "Najlepsza wartość",
       "period": "Roczny",
-      "billedLabel": "płatny rocznie ($179)",
-      "description": "Nasz <strong>najpopularniejszy</strong> plan. Wcześniej $299, teraz <strong>$14.92/mc</strong>. <strong>Oszczędzasz ponad 62%</strong> w porównaniu z planem miesięcznym.",
-      "price": "$14.92",
+      "billedLabel": "płatny rocznie ($59.88)",
+      "description": "Nasz plan z <strong>najlepszą wartością</strong>. Tylko <strong>$4.99/mc</strong>. <strong>Oszczędzasz 50%</strong> w porównaniu z planem miesięcznym.",
+      "price": "$4.99",
       "unit": "/mc",
       "cta": "Subskrybuj"
     },
     "pricesNote": "Ceny podane w USD",
+    "features": {
+      "title": "Co zyskujesz",
+      "badge": {
+        "title": "Odznaka Premium na Profilu",
+        "description": "Wyróżnij się ekskluzywną odznaką na swoim profilu — widoczną dla każdego użytkownika społeczności."
+      },
+      "app": {
+        "title": "Aplikacja mobilna Fuzzi – QA Tools",
+        "description": "Pełny dostęp do natywnej aplikacji na <strong>iOS & Android</strong>. Pytania, fiszki i śledzenie postępów w podróży."
+      },
+      "articles": {
+        "title": "Ekskluzywne Artykuły i Wideo",
+        "description": "Dogłębne artykuły i zaawansowane wyjaśnienia wideo pokazujące rzeczywiste case'y z rozmów."
+      },
+      "companyQuestions": {
+        "title": "Pytania Filtrowane po Firmach",
+        "description": "Przeglądaj pytania oznaczone tagami firm. Zobacz, co faktycznie pada na rozmowach w topowych firmach technologicznych."
+      },
+      "premiumSolutions": {
+        "title": "Premium Solutions",
+        "description": "Szczegółowe przewodniki z wieloma podejściami, analizą złożoności i interaktywnymi snippetami."
+      },
+      "practiceTests": {
+        "title": "Nielimitowane Testy Praktyczne",
+        "description": "Symuluj prawdziwe rozmowy QA z nielimitowanymi testami praktycznymi na czas. Śledź postępy i identyfikuj słabe punkty."
+      }
+    },
     "faq": {
       "title": "Najczęściej<br/>zadawane<br/>pytania",
       "q1": "Co dostaję w ramach subskrypcji premium?",
-      "a1": "Pełny dostęp do ekskluzywnych artykułów, zaawansowanych wyjaśnień wideo i pytań filtrowanych po firmach. Zero lania wody — tylko case'y, które faktycznie pojawiają się na rozmowach.",
+      "a1": "Pełny dostęp do ekskluzywnych artykułów, zaawansowanych wyjaśnień wideo, pytań filtrowanych po firmach i premium solutions. Plus specjalna odznaka na profilu i pełny dostęp do aplikacji mobilnej Fuzzi – QA Tools na iOS i Android.",
       "q2": "Czym są premium solutions?",
       "a2": "Szczegółowe przewodniki napisane przez inżynierów z pierwszej linii frontu. Wiele podejść, analiza złożoności, interaktywne snippet'y. Żaden recyclowany bootcamp.",
       "q3": "Jak grupujecie pytania po firmach?",
