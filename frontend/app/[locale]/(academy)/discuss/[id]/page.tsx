@@ -132,7 +132,7 @@ export default function DiscussPostPage() {
     )
   }
 
-  const isAuthor = user?.auth0_id === post.user_id
+  const isAuthor = !!token && user?.auth0_id === post.user_id
 
   return (
     <div className="flex w-full flex-1 items-stretch justify-center font-sans">
@@ -227,7 +227,7 @@ export default function DiscussPostPage() {
           )}
 
           {comments.map((comment) => {
-            const isCommentAuthor = user?.auth0_id === comment.user_id
+            const isCommentAuthor = !!token && user?.auth0_id === comment.user_id
             return (
               <div key={comment.id} className="border-foreground/10 border-b pb-4">
                 <div className="text-foreground/40 mb-1 flex items-center gap-1.5 text-xs">
