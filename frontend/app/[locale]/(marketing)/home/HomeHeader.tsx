@@ -5,7 +5,7 @@ import { BackgroundGrid } from '../_components/BackgroundGrid'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiArrowRight } from 'react-icons/fi'
 
 export function HomeHeader() {

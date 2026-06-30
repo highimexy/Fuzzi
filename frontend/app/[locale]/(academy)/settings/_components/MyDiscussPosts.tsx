@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiEdit3, FiTrash2, FiArrowUp, FiEye, FiMessageSquare } from 'react-icons/fi'
 import { fetchMyPosts, deletePost, getCategoryLabel, type DiscussPost } from '@/lib/discussApi'
 import { AcademyDiscussCreateModal } from '../../_components/AcademyDiscussCreateModal'

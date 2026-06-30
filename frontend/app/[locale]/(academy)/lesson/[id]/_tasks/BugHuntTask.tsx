@@ -3,7 +3,7 @@
 // TODO: wymaga realnej oceny (AI/heurystyka) zanim policzymy to jako naukę
 
 import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
 import { submitLesson } from '@/lib/lessonApi'

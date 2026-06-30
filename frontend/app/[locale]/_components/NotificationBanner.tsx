@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiX } from 'react-icons/fi'
 
 type Variant = 'info' | 'success' | 'warning' | 'accent'

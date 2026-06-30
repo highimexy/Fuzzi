@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiArrowRight } from 'react-icons/fi'
 import { Container } from '../../wrappers/Container'
 import { useTranslations } from 'next-intl'

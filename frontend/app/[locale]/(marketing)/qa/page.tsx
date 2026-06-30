@@ -4,7 +4,7 @@ import { BackgroundGrid } from '../_components/BackgroundGrid'
 import { SectionDivider } from '../_components/SectionDivider'
 import { SubpageHeader } from '../_components/SubpageHeader'
 import { Container } from '../../wrappers/Container'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiArrowRight } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 

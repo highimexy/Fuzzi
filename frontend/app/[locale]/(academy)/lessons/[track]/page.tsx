@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { notFound } from 'next/navigation'
 import { FiLock, FiStar, FiCheckCircle, FiArrowRight, FiArrowLeft } from 'react-icons/fi'
 

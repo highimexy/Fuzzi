@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { FiMail, FiShield, FiBell, FiMessageSquare } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
@@ -14,7 +14,7 @@ export default function SettingsPage() {
   const t = useTranslations('Settings')
   const token = useUserStore((s) => s.token)
   const logout = useUserStore((s) => s.logout)
-  const router = useRouter()
+  const router = useTransitionRouter()
   const { toast } = useToast()
 
   const [displayName, setDisplayName] = useState('')

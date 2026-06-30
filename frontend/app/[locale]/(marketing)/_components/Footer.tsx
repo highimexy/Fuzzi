@@ -1,7 +1,7 @@
 'use client'
 
 import { Container } from '../../wrappers/Container'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiCoffee } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 import { FuzziMark } from '../../global-components/logo/page'

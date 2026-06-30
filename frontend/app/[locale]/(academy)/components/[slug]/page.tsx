@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { notFound } from 'next/navigation'
 import { FiArrowLeft, FiGrid } from 'react-icons/fi'
 import { getTranslations } from 'next-intl/server'

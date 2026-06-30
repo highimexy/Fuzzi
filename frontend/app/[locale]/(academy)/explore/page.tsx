@@ -22,7 +22,7 @@ import {
   FiFolder,
   FiHelpCircle,
 } from 'react-icons/fi'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { useTranslations } from 'next-intl'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 

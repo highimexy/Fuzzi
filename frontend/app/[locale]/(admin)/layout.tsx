@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { useTranslations } from 'next-intl'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { useUserStore } from '@/store/userStore'
 import AcademyThemeSwitcher from '@/app/[locale]/(academy)/_components/AcademyThemeSwitcher'
@@ -61,7 +61,7 @@ function NavLinks({ onClose }: { onClose?: () => void }) {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const t = useTranslations('Admin')
-  const router = useRouter()
+  const router = useTransitionRouter()
   const bootstrapped = useUserStore((s) => s.bootstrapped)
   const isLoggedIn = useUserStore((s) => s.isLoggedIn)
   const role = useUserStore((s) => s.user?.role)

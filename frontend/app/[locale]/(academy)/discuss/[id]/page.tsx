@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
+import { Link } from 'next-view-transitions'
 import { FiArrowUp, FiArrowLeft, FiEye, FiUser, FiTrash2, FiEdit3 } from 'react-icons/fi'
 import { AcademyBackgroundGrid } from '../../_components/AcademyBackgroundGrid'
 import { AuthorLink } from '../../_components/AuthorLink'
@@ -26,7 +27,7 @@ export default function DiscussPostPage() {
   const t = useTranslations('Discuss')
   const locale = useLocale()
   const params = useParams()
-  const router = useRouter()
+  const router = useTransitionRouter()
   const id = params.id as string
   const token = useUserStore((s) => s.token)
   const user = useUserStore((s) => s.user)

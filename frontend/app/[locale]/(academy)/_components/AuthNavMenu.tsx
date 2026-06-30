@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { Link } from 'next-view-transitions'
+import { useTransitionRouter } from 'next-view-transitions'
 import { FiUser } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 import { ExperienceBar } from './ExperienceBar'
@@ -33,7 +33,7 @@ export function AuthNavMenu({ items }: AuthNavMenuProps) {
 
   const buttonRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
-  const router = useRouter()
+  const router = useTransitionRouter()
 
   useEffect(() => {
     setIsMounted(true)

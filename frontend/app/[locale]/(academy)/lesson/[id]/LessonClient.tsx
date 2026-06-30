@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { MarkdownRenderer } from '../../_components/MarkdownRenderer'
 import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiZap } from 'react-icons/fi'
 import { useUserStore } from '@/store/userStore'

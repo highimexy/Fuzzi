@@ -4,7 +4,7 @@ import { useRef, useMemo, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Grid } from '@react-three/drei'
 import * as THREE from 'three'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { useTranslations } from 'next-intl'
 import { OpenBook } from './OpenBook3d'
 
@@ -849,7 +849,7 @@ interface Props {
 
 export default function NotebookLibrary({ tracks, locale }: Props) {
   const t = useTranslations('Lessons.Library.notebook')
-  const router = useRouter()
+  const router = useTransitionRouter()
   const colors = useCSSColors()
   const [openId, setOpenId] = useState<TrackId | null>(null)
   const [showOpenBook, setShowOpenBook] = useState(false)

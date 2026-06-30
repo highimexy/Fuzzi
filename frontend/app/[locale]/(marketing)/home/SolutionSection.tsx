@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Container } from '../../wrappers/Container'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiArrowRight } from 'react-icons/fi'
 
 const solutionLinks = ['/qa', '/reality-check', '/lessons'] as const

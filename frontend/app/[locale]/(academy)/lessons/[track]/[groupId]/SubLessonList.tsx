@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiArrowRight, FiCheckCircle } from 'react-icons/fi'
 import { fetchGroupCompletedLessons } from '@/lib/lessonApi'
 

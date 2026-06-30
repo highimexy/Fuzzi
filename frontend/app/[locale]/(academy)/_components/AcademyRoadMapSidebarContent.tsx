@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiFileText, FiVideo, FiActivity, FiCopy, FiCheck } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 import { ROADMAP_DATA } from './AcademyRoadMapData'

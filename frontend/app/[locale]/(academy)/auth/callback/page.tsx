@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { useUserStore } from '@/store/userStore'
 import { MorphRing } from '../../_components/MorphRing'
 import { useToast } from '@/app/[locale]/_components/toast/useToast'
@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl'
 
 export default function AuthCallbackPage() {
   const t = useTranslations('Login')
-  const router = useRouter()
+  const router = useTransitionRouter()
   const login = useUserStore((s) => s.login)
   const { toast } = useToast()
 

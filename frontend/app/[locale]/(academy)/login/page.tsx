@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useTransitionRouter } from 'next-view-transitions'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 import { MorphRing } from '../_components/MorphRing'
 import { FcGoogle } from 'react-icons/fc'
@@ -28,7 +28,7 @@ async function generateCodeChallenge(verifier: string): Promise<string> {
 
 export default function LoginPage() {
   const t = useTranslations('Login')
-  const router = useRouter()
+  const router = useTransitionRouter()
   const login = useUserStore((s) => s.login)
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')

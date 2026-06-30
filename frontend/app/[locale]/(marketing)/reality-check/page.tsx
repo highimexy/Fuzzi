@@ -5,7 +5,7 @@ import { BackgroundGrid } from '../_components/BackgroundGrid'
 import { SectionDivider } from '../_components/SectionDivider'
 import { SubpageHeader } from '../_components/SubpageHeader'
 import { Container } from '../../wrappers/Container'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { useTranslations } from 'next-intl'
 
 export default function RealityCheckPage() {

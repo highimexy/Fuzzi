@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiSmartphone } from 'react-icons/fi'
 import { getTranslations } from 'next-intl/server'
 

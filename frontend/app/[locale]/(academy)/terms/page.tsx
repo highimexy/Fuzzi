@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
 
 export default function TermsPage() {

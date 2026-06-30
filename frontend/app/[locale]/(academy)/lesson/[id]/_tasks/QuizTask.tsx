@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import gsap from 'gsap'
 import { FiArrowRight } from 'react-icons/fi'
 import { MarkdownRenderer } from '../../../_components/MarkdownRenderer'

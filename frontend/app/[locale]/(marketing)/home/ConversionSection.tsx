@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Container } from '../../wrappers/Container'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 
 export function ConversionSection() {
   const t = useTranslations('ConversionSection')

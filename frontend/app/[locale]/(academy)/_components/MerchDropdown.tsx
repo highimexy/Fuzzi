@@ -1,7 +1,7 @@
 'use client'
 import { useState, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiChevronDown } from 'react-icons/fi'
 
 interface DropdownProps {

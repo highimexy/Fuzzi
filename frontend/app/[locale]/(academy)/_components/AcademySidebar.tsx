@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { FiBook, FiTarget, FiCompass, FiMap, FiUser, FiTrendingUp, FiGrid } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'

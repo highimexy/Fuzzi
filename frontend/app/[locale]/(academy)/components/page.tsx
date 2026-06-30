@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { FiGrid, FiSearch } from 'react-icons/fi'
 import { useTranslations } from 'next-intl'
 import { AcademyBackgroundGrid } from '../_components/AcademyBackgroundGrid'
