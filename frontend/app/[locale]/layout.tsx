@@ -20,7 +20,10 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   title: 'Fuzzi. | QA Heaven',
-  description: 'Twoje źródło inspiracji UI ze opruszone szczyptą 3D',
+  description: 'Imagine getting paid for having taste and the ability to say what you dont like.',
+  icons: {
+    icon: '/icon.ico',
+  },
 }
 
 export default async function RootLayout({
@@ -38,9 +41,7 @@ export default async function RootLayout({
       <body className="bg-background flex min-h-screen flex-col" suppressHydrationWarning>
         <ViewTransitions>
           <Providers>
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
+            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           </Providers>
         </ViewTransitions>
       </body>
